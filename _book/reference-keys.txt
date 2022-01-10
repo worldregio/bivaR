@@ -1,0 +1,6 @@
+présentation
+à-propos-de-r
+rstudio
+à-propos-du-tidyverse
+structure-du-document
+prérequis

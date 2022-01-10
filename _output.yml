@@ -1,7 +1,7 @@
 bookdown::gitbook:
   dev: svglite
   highlight: kate
-  css: css/tidyverse.css
+  css: css/bivaR.css
   self_contained: false
   df_print: default
   split_by: rmd
@@ -12,7 +12,7 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./index.html">Introduction à R et au <em>tidyverse</em></a></li>
+        <li><a href="./index.html">Introduction à la statistique bivariée et aux représentations graphiques avec R</a></li>
     sharing:
       twitter: yes
       github: no

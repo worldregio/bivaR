@@ -1,10 +1,10 @@
 --- 
-title: "Introduction à R et au tidyverse"
-author: "Julien Barnier"
+title: "Introduction à la statistique bivariée et aux représentations graphiques avec R"
+author: "Claude Grasland"
 date: "`r Sys.Date()`"
 documentclass: book
 link-citations: yes
-description: "Une introduction à R et aux extensions du *tidyverse*"
+description: "Cours dispensé en M1 MECI Option Data"
 site: bookdown::bookdown_site
 always_allow_html: yes
 ---
@@ -27,7 +27,6 @@ options(max.print = 200)
 
 # À propos de ce document {-}
 
-Ce document est une introduction à l'utilisation du logiciel libre de traitement de données et d'analyse statistique R. Il se veut le plus accessible possible, y compris pour ceux qui ne sont pas particulièrement familiers avec l'informatique. Il se base à la fois sur les fonctionnalités de R "de base", et sur une série d'extensions regroupées sous l'appellation *tidyverse*.
 
 Ce document *n'est pas* une introduction aux méthodes statistiques d'analyse de données.
 
@@ -35,20 +34,16 @@ Il est basé sur `r R.Version()[["version.string"]]`.
 
 Ce document est régulièrement corrigé et mis à jour. La version de référence est disponible en ligne à l'adresse :
 
-- [https://juba.github.io/tidyverse](https://juba.github.io/tidyverse)
+- [https://github.com/ClaudeGrasland/bivaR](https://github.com/ClaudeGrasland/bivaR)
 
-Le code source est disponible [sur GitHub](https://github.com/juba/tidyverse).
+Le code source est disponible [sur GitHub](https://github.com/ClaudeGrasland/bivaR).
 
-Pour toute suggestion ou correction, il est possible de me contacter [par mail](mailto:julien.barnier@cnrs.fr) ou [sur Twitter](https://twitter.com/lapply).
+Pour toute suggestion ou correction, il est possible de me contacter [par mail](mailto:claude.grasland@parisgeo.cnrs.fr)
 
 
 ## Remerciements {-}
 
-Un remerciement tout particulier à mes formidables collègues Sofiane Bouzid, Behnaz Khosravi et Karine Pietropaoli pour leurs nombreux et utiles retours sur la partie *Aller plus loin*.
-
-Ce document a également bénéficié de la relecture, des suggestions et des corrections de Diane Rodet, Mayeul Kauffmann, Jimmy Raturat, Fabienne Marquant, Julien Biaudet, Frédérique Giraud, Joël Gombin, Milan Bouchet-Valat et Joseph Larmarange.
-
-Ce document est généré par l'excellente extension [bookdown](https://bookdown.org/) de [Yihui Xie](https://yihui.name/).
+Ce document est généré par l' extension [bookdown](https://bookdown.org/) de [Yihui Xie](https://yihui.name/), complétée par les ajouts de Julien Barnier (css, javascript, ...) dans son [Introduction à R et au Tidyverse](https://github.com/juba/tidyverse)
 
 ## Licence {-}
 
