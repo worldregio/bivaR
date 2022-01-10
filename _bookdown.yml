@@ -1,7 +1,7 @@
 book_filename: "introduction_au_tidyverse"
 repo: https://github.com/ClaudeGrasland/bivaR
 delete_merged_file: true
-output_dir: "doc"
+output_dir: "docs"
 edit: https://github.com/ClaudeGrasland/bivR/blob/main/%s
 language:
   ui:
