@@ -6,6 +6,8 @@
 Nous allons commencer par passer quelques commandes arithmétiques simples. Il suffit de les taper dans la console de R pour qu'elles s'executent automatiquement. 
 
 
+
+
 ```{r func}
 8+2
 
@@ -35,42 +37,83 @@ tan(pi)
 
 ## Les objets de base : valeur, vecteur, matrice
 
-Les objets R apparaissent dans la fenêtre environnement (en haut à droite). Il peut s'agir :
+Les objets élémentéires de R apparaissent dans la fenêtre environnement sous la rubrique `Values`
 
-- de valeurs élémentaires 
-- de vecteurs
-- de matrices
+### Eléments
 
+Un élément est unique et constitue la brique de base de tous les objets suivants. On peut aussi l'interpréter comme un vecteur de longueur 1 ou une matrice de dimension 1x1. 
 
+```{r elem numeric}
+x<-8
+y<-2
 
-```{r elem}
-# constantes
-x <- 8
-y <- 4
 x+y
 x*y
 x**y
 
-# vecteurs
+```
+Les éléments se combinent différemment selon leur type. Par exemple, des éléments de type caractère (*character*) peuvent être assemblés avec l'instruction `paste()` ou découpez avec l'instruction `substr()` :
+
+```{r elem charact}
+x<-"Bonjour"
+y<- "tout le monde"
+z<- "!"
+paste(x,y,z)
+substr(x,1,3)
+```
+Quant aux éléments logiques (*logical*) nous verrons qu'ils peuvent se combiner avec des opérateurs comme `&`  quii signifie *ET* ou bien `|` qui signifie *OU*.
+
+```{r elem logic}
+x<-TRUE
+y<-FALSE
+
+x & y
+x | y 
+```
+
+
+### vecteurs (*vectors*)
+
+Un vecteur est un ensemble d'éléments **de même type** que l'on a concaténés à l'aide de l'instruction `c()`. On peut ensuite les aditionner, les multiplier ou les combiner avec des éléments.
+
+
+```{r vecteurs }
 x <- c(1,2,4,8,16)
 y <- 4
 x+y
 x*y
 x**y
+```
+On remarque dans l'exemple ci-dessus que R n'a pas de problème pour combiner des vecteurs de tailles différentes. 
 
-# matrices
+
+### Matrices (*matrix*)
+
+Une matrice est un ensemble de vecteurs **de même longueur et de même  type**. On peut donc construire une matrice en concaténant des vecteurs verticalement avec `cbind()`ou horizontalement avec `rbind()`. 
+
+```{r matrices }
+
+# deux vecteurs
 x1 <- c(1,2,4,8,16)
 x2 <- c(5,10,15,20,25)
+
+# matrice en colonnes
 m1 <- cbind(x1,x2)
 m1
+
+# matrice en lignes
 m2 <- rbind(x1,x2)
 m2
+
 # piège !
 m3 <- c(x1,x2)
 m3
 is.matrix(m3)
 ```
 
+```{block, type='rmdimportant'}
+Si on assemble deux vecteurs à l'aide de la commande `c()`on obtient un vecteur et pas une matrice.
+```
 
 
 ## Ne pas confondre listes et vecteurs !
@@ -81,6 +124,12 @@ R utilise des types plus complexes d'objets qui lui sont propres et qui sont en 
 - liste de liste
 - listes de vecteur = data.frame
 - ...
+
+```{block, type='rmdimportant'}
+Les `vecteurs` regroupent des `éléments de même type` tandis que les `listes` regroupent des `éléments ou des objets de type quelconque`. Le type liste est donc beaucoup plus général, mais aussi plus difficile d'emploi. 
+
+On peut comparer une liste à un *panier de course* dans lequel on mélange des choux, des carottes, des navets, une boîte de douze oeufs, un paquet de croquettes pour chiens, etc...
+```
 
 
 ```{r listvec}
@@ -111,19 +160,20 @@ Ali
 
 Chaque valeur, vecteur ou matrice appartient à un seul type de données. Il est important de ne pas les confondre, sous peine d'obtenir des résultats ... douteux. On se limitera ici aux principaux types, d'autres étant vus ultérieurement dans l'année :
 
-- numeric : type général (entier, réels, ...)
-- logique : type booleen (TRUE/FALSE)
-- date : année, mois, jour,n heure, minutes, secondes, ...
-- character : texte quelconque
-- factor : variable catégorielle (codage d'enquêtes ...)
+- *numeric* : type général (entier, réels, ...)
+- *logique* : type booleen (TRUE/FALSE)
+- *date* : année, mois, jour,n heure, minutes, secondes, ...
+- *character* : texte quelconque
+- *factor* : variable catégorielle (codage d'enquêtes ...)
 
-la commande **str()** permet de vérifier le type d'un vecteur (ou d'une matrice)
+La commande `str()` permet de vérifier le type d'un vecteur (ou d'une matrice) et d'en afficher la dimension. 
 
 ```{r typevar}
 # Format charactère
 prenom <- c("Ali", "Amine","Anne",
             "Marc","Zayneb")
 str(prenom)
+
 # Format logique
 likeR <- c(TRUE,FALSE, TRUE,
            FALSE, FALSE)
@@ -143,71 +193,178 @@ nais<-c("1999-10-28","1998-10-13",
  "1996-10-15","2002-02-07","1995-06-18")
 nais<-as.Date(nais)
 str(nais)
-
-# Création d'un data.frame
-tab<-data.frame(prenom,nais,
-                age,sexe,likeR)
-tab
-str(tab)
-
-
 ```
 
 
 
 ## Types de tableaux et guerres de religion.
 
-R est un langage qui a beaucouop évolué au cours du temps, suscitant l'apparition de nouveaux types d'objets mieux adapéts à certaines fonctions. Du coup, il existe plusieurs format de tableaux de données, plus ou moins compatibles entre eux...
+R est un langage qui a beaucouop évolué au cours du temps, suscitant l'apparition de nouveaux types d'objets mieux adapéts à certaines fonctions. Du coup, il existe plusieurs format de tableaux de données, plus ou moins compatibles entre eux.
 
-- *data.frame* : c'est le type d'origine correspondant à ce qu'on appelle le langage **R-Base**
+On notera que dans la fenêtre environnement, les tableaux apparaissent dans la sous-fenêtre `data` et non plus dans la sous-fenêtre `values` comme c'était le cas pour les éléments, vecteurs ou matrices.
 
-- *tibble* : c'est un type créé par Hadley Wickham pour développer la suite de fonctions **Tidyverse** ou **ggplot**
 
-- *data.table* : c'est un type récent créé pour traiter les tableaux de très grande taille à l'aide du package ... **data.table**
-- date : année, mois, jour,n heure, minutes, secondes, ...
-- character : texte quelconque
-- factor : variable catégorielle (codage d'enquêtes ...)
+### Le type  *data.frame* :
 
-```{r typetab}
-# Création des variables
-prenom <- c("Ali", "Amine","Anne", "Marc","Zayneb")
-likeR <- c(TRUE,FALSE, TRUE, FALSE, FALSE)
-sexe <- c(1,1,2,1,2)
-sexe<-as.factor(sexe)
-levels(sexe) <-c("Homme","Femme")
-age  <- c(21,22,24,18,25)
-nais<-c("1999-10-28","1998-10-13","1996-10-15","2002-02-07","1995-06-18")
-nais<-as.Date(nais)
+C'est le type d'origine correspondant à ce qu'on appelle le langage **R-Base**. Il se présente en pratique comme une `liste de vecteurs` qui peuvent être de types différents mais qui sont de même longueur. 
 
+```{r dataframe}
 # Création d'un data.frame
-tab<-data.frame(prenom,nais,
+tab1<-data.frame(prenom,nais,
                 age,sexe,likeR)
-str(tab)
-
-# Création d'un tibble
-library(tidyverse)
-tab<-data_frame(prenom,nais,
-            age,sexe,likeR)
-str(tab)
-
-# Création d'un data.table
-library(data.table)
-tab<-data.table(prenom,nais,
-                age,sexe,likeR)
-str(tab)
+str(tab1)
 ```
 
 
 
 
-## 1.6 En résumé
+### Le type *tibble*
 
+c'est un type créé par Hadley Wickham pour développer la suite de fonctions **Tidyverse** ou **ggplot**
+
+```{r tibble}
+# Création d'un tibble
+library(tidyr, quiet=T)
+tab2<-tibble(prenom,nais,
+            age,sexe,likeR)
+str(tab2)
+
+```
+
+### Le type *data.table*
+
+C'est un type récent créé pour traiter les tableaux de très grande taille à l'aide du package ... **data.table**
+
+
+```{r datatable}
+
+# Création d'un data.table
+library(data.table, quiet=T)
+tab3<-data.table(prenom,nais,
+                age,sexe,likeR)
+str(tab3)
+```
+
+
+
+
+## En résumé
+
+
+```{block, type='rmdimportant'}
 R est un langage de programmation multifonction qui évolue depuis maintenant plus de 30 ans et auquel s'ajoutent continuellement de nouveaux packages. A la différence de SPSS, il n'est pas spécialisé uniquement en statistique, même si le coeur du logiciel est bien centré sur la statistique. Pour progresser rapidement en R il est indispensable :
 
-- de prêter une grande attention aux **types de variables et de tableaux**.
-- de ne pas chercher à utiliser trop vite de nouveaux packages tant que l'on n'a pas acquis une pratique suffisante du **R-Base**. 
-- de consulter la **documentation et les forums de discussion** en cas de difficulté. 
+- de prêter une grande attention aux types de `variables et de tableaux.`
+- de ne pas chercher à utiliser trop vite de nouveaux packages tant que l'on n'a pas acquis une pratique suffisante du `R-Base`. 
+- de consulter la `documentation` et les `forums de discussion` en cas de difficulté.
+
+```
+
+## Exercices
+
+
+**Exercice 1**
+
+Construire le vecteur `x` suivant :
+
+```{r echo=FALSE}
+x <- c("Paris", "Londres","Tokyo","New York")
+x
+```
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+x <- c("Paris", "Londres","Tokyo","New York")
+```
+</div>
+\fi
+
+Construire le vecteur `y` suivant :
+
+```{r echo=FALSE}
+y <- c("France", "Royaume-Uni","Japon","USA")
+y
+```
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+y <- c("France", "Royaume-Uni","Japon","USA")
+```
+</div>
+\fi
+
+
+Construire le vecteur `z` suivant :
+
+```{r echo=FALSE}
+z <- c(10.2, 14.6,42.8,23.9)
+z
+```
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+z <- c(10.2, 14.6,42.8,23.9)
+```
+</div>
+\fi
+
+
+Construire la matrice `m1` 
+
+```{r echo=FALSE}
+m1<-rbind(x,y)
+m1
+```
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+m1<-rbind(x,y)
+```
+</div>
+\fi
 
 
 
+
+Construire le data.frame `df` 
+
+```{r echo=FALSE}
+df<-data.frame(y,x,z)
+df
+```
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+df<-data.frame(y,x,z)
+```
+</div>
+\fi
+
+
+
+**Exercice 2 (d'après J.Barnier)**
+
+On a demandé à 4 ménages le revenu des deux conjoints, et le nombre de personnes du ménage :
+
+```{r eval=FALSE}
+conjoint1 <- c(1200, 1180, 1750, 2100)
+conjoint2 <- c(1450, 1870, 1690, 0)
+nb_personnes <- c(4, 2, 3, 2)
+```
+
+Calculer le revenu total de chaque ménage, puis diviser par le nombre de personnes pour obtenir le revenu par personne de chaque ménage.
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+revenu_total <- conjoint1 + conjoint2
+revenu_total / nb_personnes
+```
+</div>
+\fi
 
