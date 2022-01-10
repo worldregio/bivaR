@@ -1,0 +1,213 @@
+
+# Chapitre 1 : Principes du langage R
+
+## Opérations arithmétiques
+
+Nous allons commencer par passer quelques commandes arithmétiques simples. Il suffit de les taper dans la console de R pour qu'elles s'executent automatiquement. 
+
+
+```{r func}
+8+2
+
+8-2
+
+8*2
+
+8/2
+
+8**2
+
+8**(1/2)
+
+log(10)
+
+log10(10)
+
+sqrt(10)
+
+sin(pi)
+
+cos(pi)
+
+tan(pi)
+```
+
+
+## Les objets de base : valeur, vecteur, matrice
+
+Les objets R apparaissent dans la fenêtre environnement (en haut à droite). Il peut s'agir :
+
+- de valeurs élémentaires 
+- de vecteurs
+- de matrices
+
+
+
+```{r elem}
+# constantes
+x <- 8
+y <- 4
+x+y
+x*y
+x**y
+
+# vecteurs
+x <- c(1,2,4,8,16)
+y <- 4
+x+y
+x*y
+x**y
+
+# matrices
+x1 <- c(1,2,4,8,16)
+x2 <- c(5,10,15,20,25)
+m1 <- cbind(x1,x2)
+m1
+m2 <- rbind(x1,x2)
+m2
+# piège !
+m3 <- c(x1,x2)
+m3
+is.matrix(m3)
+```
+
+
+
+## Ne pas confondre listes et vecteurs !
+
+R utilise des types plus complexes d'objets qui lui sont propres et qui sont en général des listes ou des listes de listes.
+
+- liste simple
+- liste de liste
+- listes de vecteur = data.frame
+- ...
+
+
+```{r listvec}
+# Format vecteur
+prenom <- c("Ali", "Amine",
+    "Anne","Marc","Zayneb")
+sexe <- c("H","H","F","H","F")
+age  <- c(21,22,24,18,25)
+
+
+# Format liste
+Ali <- list("H",21)
+Amine <- list("F",22)
+Anne <- list("F",28)
+Marc <- list ("H",18)
+Zayneb <- list("F",25)
+
+# Ne pas confondre !
+Ali <- c("H",21)
+Ali
+Ali <- list("H",21)
+Ali
+```
+
+
+
+## Attention aux types de variables ...
+
+Chaque valeur, vecteur ou matrice appartient à un seul type de données. Il est important de ne pas les confondre, sous peine d'obtenir des résultats ... douteux. On se limitera ici aux principaux types, d'autres étant vus ultérieurement dans l'année :
+
+- numeric : type général (entier, réels, ...)
+- logique : type booleen (TRUE/FALSE)
+- date : année, mois, jour,n heure, minutes, secondes, ...
+- character : texte quelconque
+- factor : variable catégorielle (codage d'enquêtes ...)
+
+la commande **str()** permet de vérifier le type d'un vecteur (ou d'une matrice)
+
+```{r typevar}
+# Format charactère
+prenom <- c("Ali", "Amine","Anne",
+            "Marc","Zayneb")
+str(prenom)
+# Format logique
+likeR <- c(TRUE,FALSE, TRUE,
+           FALSE, FALSE)
+str(likeR)
+# Format Factor
+sexe <- c(1,1,2,1,2)
+sexe<-as.factor(sexe)
+levels(sexe) <-c("Homme","Femme")
+str(sexe)
+
+# Format numerique
+age  <- c(21,22,24,18,25)
+str(age)
+
+# Format date
+nais<-c("1999-10-28","1998-10-13",
+ "1996-10-15","2002-02-07","1995-06-18")
+nais<-as.Date(nais)
+str(nais)
+
+# Création d'un data.frame
+tab<-data.frame(prenom,nais,
+                age,sexe,likeR)
+tab
+str(tab)
+
+
+```
+
+
+
+## Types de tableaux et guerres de religion.
+
+R est un langage qui a beaucouop évolué au cours du temps, suscitant l'apparition de nouveaux types d'objets mieux adapéts à certaines fonctions. Du coup, il existe plusieurs format de tableaux de données, plus ou moins compatibles entre eux...
+
+- *data.frame* : c'est le type d'origine correspondant à ce qu'on appelle le langage **R-Base**
+
+- *tibble* : c'est un type créé par Hadley Wickham pour développer la suite de fonctions **Tidyverse** ou **ggplot**
+
+- *data.table* : c'est un type récent créé pour traiter les tableaux de très grande taille à l'aide du package ... **data.table**
+- date : année, mois, jour,n heure, minutes, secondes, ...
+- character : texte quelconque
+- factor : variable catégorielle (codage d'enquêtes ...)
+
+```{r typetab}
+# Création des variables
+prenom <- c("Ali", "Amine","Anne", "Marc","Zayneb")
+likeR <- c(TRUE,FALSE, TRUE, FALSE, FALSE)
+sexe <- c(1,1,2,1,2)
+sexe<-as.factor(sexe)
+levels(sexe) <-c("Homme","Femme")
+age  <- c(21,22,24,18,25)
+nais<-c("1999-10-28","1998-10-13","1996-10-15","2002-02-07","1995-06-18")
+nais<-as.Date(nais)
+
+# Création d'un data.frame
+tab<-data.frame(prenom,nais,
+                age,sexe,likeR)
+str(tab)
+
+# Création d'un tibble
+library(tidyverse)
+tab<-data_frame(prenom,nais,
+            age,sexe,likeR)
+str(tab)
+
+# Création d'un data.table
+library(data.table)
+tab<-data.table(prenom,nais,
+                age,sexe,likeR)
+str(tab)
+```
+
+
+
+
+## 1.6 En résumé
+
+R est un langage de programmation multifonction qui évolue depuis maintenant plus de 30 ans et auquel s'ajoutent continuellement de nouveaux packages. A la différence de SPSS, il n'est pas spécialisé uniquement en statistique, même si le coeur du logiciel est bien centré sur la statistique. Pour progresser rapidement en R il est indispensable :
+
+- de prêter une grande attention aux **types de variables et de tableaux**.
+- de ne pas chercher à utiliser trop vite de nouveaux packages tant que l'on n'a pas acquis une pratique suffisante du **R-Base**. 
+- de consulter la **documentation et les forums de discussion** en cas de difficulté. 
+
+
+
+

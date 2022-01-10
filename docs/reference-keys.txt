@@ -3,3 +3,10 @@ présentation
 rstudio
 structure-du-document
 prérequis
+principes-du-langage-r
+opérations-arithmétiques
+les-objets-de-base-valeur-vecteur-matrice
+ne-pas-confondre-listes-et-vecteurs
+attention-aux-types-de-variables
+types-de-tableaux-et-guerres-de-religion.
+en-résumé
