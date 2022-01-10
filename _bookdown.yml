@@ -1,4 +1,4 @@
-book_filename: "introduction_au_tidyverse"
+book_filename: "bivaR"
 repo: https://github.com/ClaudeGrasland/bivaR
 delete_merged_file: true
 output_dir: "docs"
