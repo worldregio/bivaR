@@ -193,7 +193,6 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="02-initiation.html"><a href="02-initiation.html#diapos-rmd-power-point-killer"><i class="fa fa-check"></i><b>2.4</b> Diapos Rmd : Power Point killer</a></li>
 <li class="chapter" data-level="2.5" data-path="02-initiation.html"><a href="02-initiation.html#en-résumé-1"><i class="fa fa-check"></i><b>2.5</b> En résumé</a></li>
-<li class="chapter" data-level="2.6" data-path="02-initiation.html"><a href="02-initiation.html#exercices-1"><i class="fa fa-check"></i><b>2.6</b> Exercices</a></li>
 </ul></li>
 </ul>
 
@@ -285,161 +284,161 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="round-1.-saisie-des-données-et-affichage-du-tableau" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Round 1. Saisie des données et affichage du tableau</h3>
 <p>On crée un programme R avec <em>File/New File/R Script</em> puis on l’enregistre avec <em>File/Save/ …</em> suivi du nom du programme.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="02-initiation.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saisie des variables</span></span>
-<span id="cb1-2"><a href="02-initiation.html#cb1-2" aria-hidden="true" tabindex="-1"></a>CODE <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>)</span>
-<span id="cb1-3"><a href="02-initiation.html#cb1-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">50</span>,<span class="dv">180</span>)</span>
-<span id="cb1-4"><a href="02-initiation.html#cb1-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">50</span>)</span>
-<span id="cb1-5"><a href="02-initiation.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="02-initiation.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Regroupement dans un tableau</span></span>
-<span id="cb1-7"><a href="02-initiation.html#cb1-7" aria-hidden="true" tabindex="-1"></a>coo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(X,Y)</span>
-<span id="cb1-8"><a href="02-initiation.html#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="02-initiation.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du nom des lignes</span></span>
-<span id="cb1-10"><a href="02-initiation.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(coo) <span class="ot">&lt;-</span> CODE</span>
-<span id="cb1-11"><a href="02-initiation.html#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="02-initiation.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage du tableau</span></span>
-<span id="cb1-13"><a href="02-initiation.html#cb1-13" aria-hidden="true" tabindex="-1"></a>coo</span></code></pre></div>
-<pre><code>##     X  Y
-## A  10 40
-## B  20 60
-## C  40 40
-## D  50 60
-## E 180 50</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="02-initiation.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Saisie des variables</span></span>
+<span id="cb24-2"><a href="02-initiation.html#cb24-2" aria-hidden="true" tabindex="-1"></a>CODE <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>)</span>
+<span id="cb24-3"><a href="02-initiation.html#cb24-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">50</span>,<span class="dv">180</span>)</span>
+<span id="cb24-4"><a href="02-initiation.html#cb24-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">50</span>)</span>
+<span id="cb24-5"><a href="02-initiation.html#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="02-initiation.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Regroupement dans un tableau</span></span>
+<span id="cb24-7"><a href="02-initiation.html#cb24-7" aria-hidden="true" tabindex="-1"></a>coo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(X,Y)</span>
+<span id="cb24-8"><a href="02-initiation.html#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="02-initiation.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du nom des lignes</span></span>
+<span id="cb24-10"><a href="02-initiation.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(coo) <span class="ot">&lt;-</span> CODE</span>
+<span id="cb24-11"><a href="02-initiation.html#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="02-initiation.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage du tableau</span></span>
+<span id="cb24-13"><a href="02-initiation.html#cb24-13" aria-hidden="true" tabindex="-1"></a>coo</span>
+<span id="cb24-14"><a href="02-initiation.html#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     X  Y</span></span>
+<span id="cb24-15"><a href="02-initiation.html#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; A  10 40</span></span>
+<span id="cb24-16"><a href="02-initiation.html#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; B  20 60</span></span>
+<span id="cb24-17"><a href="02-initiation.html#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C  40 40</span></span>
+<span id="cb24-18"><a href="02-initiation.html#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; D  50 60</span></span>
+<span id="cb24-19"><a href="02-initiation.html#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; E 180 50</span></span></code></pre></div>
 <p>Normalement, les étudiants qui utilisent un tableur ont du aller plus vite et Excel mène sur R par 1-0</p>
 </div>
 <div id="round-2.-affichage-de-la-carte" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Round 2. Affichage de la carte</h3>
 <p>Vous devez essayez de reproduire l’image correspondant au problème posé</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="02-initiation.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X,Y, </span>
-<span id="cb3-2"><a href="02-initiation.html#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;red&quot;</span>, </span>
-<span id="cb3-3"><a href="02-initiation.html#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">20</span>, </span>
-<span id="cb3-4"><a href="02-initiation.html#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">180</span>),</span>
-<span id="cb3-5"><a href="02-initiation.html#cb3-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>),</span>
-<span id="cb3-6"><a href="02-initiation.html#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>)</span>
-<span id="cb3-7"><a href="02-initiation.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(X,Y,</span>
-<span id="cb3-8"><a href="02-initiation.html#cb3-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> CODE, </span>
-<span id="cb3-9"><a href="02-initiation.html#cb3-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-6-1.svg" width="672" />
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="02-initiation.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X,Y, </span>
+<span id="cb25-2"><a href="02-initiation.html#cb25-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;red&quot;</span>, </span>
+<span id="cb25-3"><a href="02-initiation.html#cb25-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">20</span>, </span>
+<span id="cb25-4"><a href="02-initiation.html#cb25-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">180</span>),</span>
+<span id="cb25-5"><a href="02-initiation.html#cb25-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>),</span>
+<span id="cb25-6"><a href="02-initiation.html#cb25-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>)</span>
+<span id="cb25-7"><a href="02-initiation.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(X,Y,</span>
+<span id="cb25-8"><a href="02-initiation.html#cb25-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> CODE, </span>
+<span id="cb25-9"><a href="02-initiation.html#cb25-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-22-1.svg" width="672" />
 La création d’un graphique est à première vue plus facile avec un logiciel click-bouton. L’avantage est très clairement pour Excel qui mène désormais 2 à 0.</p>
 </div>
 <div id="round-3.-calcul-de-la-station-la-plus-accessible-à-vol-doiseau-distance-euclidienne" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Round 3. Calcul de la station la plus accessible à vol d’oiseau (distance euclidienne)</h3>
 <p>Vous devez calculer une matrice de <strong>distance euclidienne</strong> entre toutes les stations et trouver la plus accessible.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="02-initiation.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calcul la matrice de distance euclidienne</span></span>
-<span id="cb4-2"><a href="02-initiation.html#cb4-2" aria-hidden="true" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">dist</span>(coo, <span class="at">upper =</span> T, <span class="at">method =</span> <span class="st">&quot;euclidean&quot;</span>)</span>
-<span id="cb4-3"><a href="02-initiation.html#cb4-3" aria-hidden="true" tabindex="-1"></a>mat</span></code></pre></div>
-<pre><code>##           A         B         C         D         E
-## A            22.36068  30.00000  44.72136 170.29386
-## B  22.36068            28.28427  30.00000 160.31220
-## C  30.00000  28.28427            22.36068 140.35669
-## D  44.72136  30.00000  22.36068           130.38405
-## E 170.29386 160.31220 140.35669 130.38405</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="02-initiation.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># distance moyenne</span></span>
-<span id="cb6-2"><a href="02-initiation.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">as.matrix</span>(mat),<span class="dv">1</span>,mean)</span></code></pre></div>
-<pre><code>##         A         B         C         D         E 
-##  53.47518  48.19143  44.20033  45.49322 120.26936</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="02-initiation.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calcul la matrice de distance euclidienne</span></span>
+<span id="cb26-2"><a href="02-initiation.html#cb26-2" aria-hidden="true" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">dist</span>(coo, <span class="at">upper =</span> T, <span class="at">method =</span> <span class="st">&quot;euclidean&quot;</span>)</span>
+<span id="cb26-3"><a href="02-initiation.html#cb26-3" aria-hidden="true" tabindex="-1"></a>mat</span>
+<span id="cb26-4"><a href="02-initiation.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           A         B         C         D         E</span></span>
+<span id="cb26-5"><a href="02-initiation.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; A            22.36068  30.00000  44.72136 170.29386</span></span>
+<span id="cb26-6"><a href="02-initiation.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; B  22.36068            28.28427  30.00000 160.31220</span></span>
+<span id="cb26-7"><a href="02-initiation.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C  30.00000  28.28427            22.36068 140.35669</span></span>
+<span id="cb26-8"><a href="02-initiation.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; D  44.72136  30.00000  22.36068           130.38405</span></span>
+<span id="cb26-9"><a href="02-initiation.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; E 170.29386 160.31220 140.35669 130.38405</span></span>
+<span id="cb26-10"><a href="02-initiation.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># distance moyenne</span></span>
+<span id="cb26-11"><a href="02-initiation.html#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">as.matrix</span>(mat),<span class="dv">1</span>,mean)</span>
+<span id="cb26-12"><a href="02-initiation.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         A         B         C         D         E </span></span>
+<span id="cb26-13"><a href="02-initiation.html#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  53.47518  48.19143  44.20033  45.49322 120.26936</span></span></code></pre></div>
 <p>Là, je parie que les utilisateurs d’Excel ont eu un peu plus de mal … En tous les cas, Excel ne mèneplus que par 2 à 1</p>
 </div>
 <div id="round-4.-calcul-de-la-station-la-plus-accessible-par-la-route-distance-de-manhattan" class="section level3" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> Round 4. Calcul de la station la plus accessible par la route (distance de Manhattan)</h3>
 <p>Vous devez calculer une matrice de distance de Manhattan entre toutes les stations et trouver la plus accessible.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="02-initiation.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calcul la matrice de distance de Manhattan</span></span>
-<span id="cb8-2"><a href="02-initiation.html#cb8-2" aria-hidden="true" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">dist</span>(coo,<span class="at">upper =</span> T, <span class="at">method =</span> <span class="st">&quot;manhattan&quot;</span>)</span>
-<span id="cb8-3"><a href="02-initiation.html#cb8-3" aria-hidden="true" tabindex="-1"></a>mat</span></code></pre></div>
-<pre><code>##     A   B   C   D   E
-## A      30  30  60 180
-## B  30      40  30 170
-## C  30  40      30 150
-## D  60  30  30     140
-## E 180 170 150 140</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="02-initiation.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># distance moyenne de Manhattan</span></span>
-<span id="cb10-2"><a href="02-initiation.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">as.matrix</span>(mat),<span class="dv">1</span>,mean)</span></code></pre></div>
-<pre><code>##   A   B   C   D   E 
-##  60  54  50  52 128</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="02-initiation.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calcul la matrice de distance de Manhattan</span></span>
+<span id="cb27-2"><a href="02-initiation.html#cb27-2" aria-hidden="true" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">dist</span>(coo,<span class="at">upper =</span> T, <span class="at">method =</span> <span class="st">&quot;manhattan&quot;</span>)</span>
+<span id="cb27-3"><a href="02-initiation.html#cb27-3" aria-hidden="true" tabindex="-1"></a>mat</span>
+<span id="cb27-4"><a href="02-initiation.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     A   B   C   D   E</span></span>
+<span id="cb27-5"><a href="02-initiation.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; A      30  30  60 180</span></span>
+<span id="cb27-6"><a href="02-initiation.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; B  30      40  30 170</span></span>
+<span id="cb27-7"><a href="02-initiation.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; C  30  40      30 150</span></span>
+<span id="cb27-8"><a href="02-initiation.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; D  60  30  30     140</span></span>
+<span id="cb27-9"><a href="02-initiation.html#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; E 180 170 150 140</span></span>
+<span id="cb27-10"><a href="02-initiation.html#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># distance moyenne de Manhattan</span></span>
+<span id="cb27-11"><a href="02-initiation.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(<span class="fu">as.matrix</span>(mat),<span class="dv">1</span>,mean)</span>
+<span id="cb27-12"><a href="02-initiation.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   A   B   C   D   E </span></span>
+<span id="cb27-13"><a href="02-initiation.html#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  60  54  50  52 128</span></span></code></pre></div>
 <p>Je reconnais que c’est unpeu facile, mais à nouveau R l’emporte ce qui fait désormais match nul 2-2</p>
 </div>
 <div id="round-5.-localisation-du-dépôt-de-carburant" class="section level3" number="2.2.5">
 <h3><span class="header-section-number">2.2.5</span> Round 5. Localisation du dépôt de carburant</h3>
 <p>Dans le cas particulier de la distance de Manhattan, le calcul du point le plus proche de tous les autres s’obtient facilement en calculant le point médian dont les coordonnées correspondent à la médiane de X et la médiane de Y.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="02-initiation.html#cb12-1" aria-hidden="true" tabindex="-1"></a>medX <span class="ot">&lt;-</span> <span class="fu">median</span>(X)</span>
-<span id="cb12-2"><a href="02-initiation.html#cb12-2" aria-hidden="true" tabindex="-1"></a>medX</span></code></pre></div>
-<pre><code>## [1] 40</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="02-initiation.html#cb14-1" aria-hidden="true" tabindex="-1"></a>medY <span class="ot">&lt;-</span> <span class="fu">median</span>(Y)</span>
-<span id="cb14-2"><a href="02-initiation.html#cb14-2" aria-hidden="true" tabindex="-1"></a>medY</span></code></pre></div>
-<pre><code>## [1] 50</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="02-initiation.html#cb28-1" aria-hidden="true" tabindex="-1"></a>medX <span class="ot">&lt;-</span> <span class="fu">median</span>(X)</span>
+<span id="cb28-2"><a href="02-initiation.html#cb28-2" aria-hidden="true" tabindex="-1"></a>medX</span>
+<span id="cb28-3"><a href="02-initiation.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 40</span></span>
+<span id="cb28-4"><a href="02-initiation.html#cb28-4" aria-hidden="true" tabindex="-1"></a>medY <span class="ot">&lt;-</span> <span class="fu">median</span>(Y)</span>
+<span id="cb28-5"><a href="02-initiation.html#cb28-5" aria-hidden="true" tabindex="-1"></a>medY</span>
+<span id="cb28-6"><a href="02-initiation.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 50</span></span></code></pre></div>
 <p>A priori, le calcul est aussi facile dans R et dans Excel : match nul 3-3</p>
 </div>
 <div id="round-6.-localisation-de-la-caserne-de-pompiers" class="section level3" number="2.2.6">
 <h3><span class="header-section-number">2.2.6</span> Round 6. Localisation de la caserne de pompiers</h3>
 <p>Dans le cas particulier de la distance de Manhattan, le calcul du point minimisant la distance maximale s’obtient en trouvant le centre du diamètre minimal en X et en Y. Il s’agit de la localisation la plus <strong>équitable</strong> où le plus défavorisé est le moins défavorisé possible.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="02-initiation.html#cb16-1" aria-hidden="true" tabindex="-1"></a>equX <span class="ot">&lt;-</span> (<span class="fu">max</span>(X)<span class="sc">+</span><span class="fu">min</span>(X))<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb16-2"><a href="02-initiation.html#cb16-2" aria-hidden="true" tabindex="-1"></a>equX</span></code></pre></div>
-<pre><code>## [1] 95</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="02-initiation.html#cb18-1" aria-hidden="true" tabindex="-1"></a>equY <span class="ot">&lt;-</span> (<span class="fu">max</span>(Y)<span class="sc">+</span><span class="fu">min</span>(Y))<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb18-2"><a href="02-initiation.html#cb18-2" aria-hidden="true" tabindex="-1"></a>equY</span></code></pre></div>
-<pre><code>## [1] 50</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="02-initiation.html#cb29-1" aria-hidden="true" tabindex="-1"></a>equX <span class="ot">&lt;-</span> (<span class="fu">max</span>(X)<span class="sc">+</span><span class="fu">min</span>(X))<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb29-2"><a href="02-initiation.html#cb29-2" aria-hidden="true" tabindex="-1"></a>equX</span>
+<span id="cb29-3"><a href="02-initiation.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 95</span></span>
+<span id="cb29-4"><a href="02-initiation.html#cb29-4" aria-hidden="true" tabindex="-1"></a>equY <span class="ot">&lt;-</span> (<span class="fu">max</span>(Y)<span class="sc">+</span><span class="fu">min</span>(Y))<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb29-5"><a href="02-initiation.html#cb29-5" aria-hidden="true" tabindex="-1"></a>equY</span>
+<span id="cb29-6"><a href="02-initiation.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 50</span></span></code></pre></div>
 <p>A priori, le calcul est toujours aussi facile dans R et dans Excel : match nul 4-4</p>
 </div>
 <div id="round-7.-visualisation-des-deux-points-sur-la-carte" class="section level3" number="2.2.7">
 <h3><span class="header-section-number">2.2.7</span> Round 7. Visualisation des deux points sur la carte</h3>
 <p>On va placer en bleu le point médian et en vert le point le plus équitable. Dans le cas de R on peut recopier les lignes de code du graphique du round n°2 ce qui gagne désormais du temps :</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="02-initiation.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Programme antérieur</span></span>
-<span id="cb20-2"><a href="02-initiation.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X,Y, </span>
-<span id="cb20-3"><a href="02-initiation.html#cb20-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;red&quot;</span>, </span>
-<span id="cb20-4"><a href="02-initiation.html#cb20-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">20</span>, </span>
-<span id="cb20-5"><a href="02-initiation.html#cb20-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">180</span>),</span>
-<span id="cb20-6"><a href="02-initiation.html#cb20-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>),</span>
-<span id="cb20-7"><a href="02-initiation.html#cb20-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>)</span>
-<span id="cb20-8"><a href="02-initiation.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(X,Y,</span>
-<span id="cb20-9"><a href="02-initiation.html#cb20-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> CODE, </span>
-<span id="cb20-10"><a href="02-initiation.html#cb20-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">2</span>)</span>
-<span id="cb20-11"><a href="02-initiation.html#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="02-initiation.html#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du dépôt de carburant</span></span>
-<span id="cb20-13"><a href="02-initiation.html#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(medX, medY, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">pch=</span><span class="dv">3</span>)</span>
-<span id="cb20-14"><a href="02-initiation.html#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(medX,medY, <span class="st">&quot;dépot&quot;</span>,<span class="at">pos=</span><span class="dv">1</span>)</span>
-<span id="cb20-15"><a href="02-initiation.html#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-16"><a href="02-initiation.html#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du point médian</span></span>
-<span id="cb20-17"><a href="02-initiation.html#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(equX, equY, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">pch=</span><span class="dv">3</span>)</span>
-<span id="cb20-18"><a href="02-initiation.html#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(equX,equY, <span class="st">&quot;caserne&quot;</span>,<span class="at">pos=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-11-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="02-initiation.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Programme antérieur</span></span>
+<span id="cb30-2"><a href="02-initiation.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X,Y, </span>
+<span id="cb30-3"><a href="02-initiation.html#cb30-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;red&quot;</span>, </span>
+<span id="cb30-4"><a href="02-initiation.html#cb30-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">20</span>, </span>
+<span id="cb30-5"><a href="02-initiation.html#cb30-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">180</span>),</span>
+<span id="cb30-6"><a href="02-initiation.html#cb30-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>),</span>
+<span id="cb30-7"><a href="02-initiation.html#cb30-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>)</span>
+<span id="cb30-8"><a href="02-initiation.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(X,Y,</span>
+<span id="cb30-9"><a href="02-initiation.html#cb30-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> CODE, </span>
+<span id="cb30-10"><a href="02-initiation.html#cb30-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">2</span>)</span>
+<span id="cb30-11"><a href="02-initiation.html#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="02-initiation.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du dépôt de carburant</span></span>
+<span id="cb30-13"><a href="02-initiation.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(medX, medY, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">pch=</span><span class="dv">3</span>)</span>
+<span id="cb30-14"><a href="02-initiation.html#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(medX,medY, <span class="st">&quot;dépot&quot;</span>,<span class="at">pos=</span><span class="dv">1</span>)</span>
+<span id="cb30-15"><a href="02-initiation.html#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="02-initiation.html#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du point médian</span></span>
+<span id="cb30-17"><a href="02-initiation.html#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(equX, equY, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">pch=</span><span class="dv">3</span>)</span>
+<span id="cb30-18"><a href="02-initiation.html#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(equX,equY, <span class="st">&quot;caserne&quot;</span>,<span class="at">pos=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
 <p>Le résultat du match est incertain mais R n’est plus désavantagé puisqu’on peut recycler les lignes de code précédentes pour le graphique de base. Disons 5-5 même s’il y a de fortes chances que R l’emporte.</p>
 </div>
 <div id="dernier-round.-refaire-toute-lanalyse-avec-une-station-de-plus" class="section level3" number="2.2.8">
 <h3><span class="header-section-number">2.2.8</span> Dernier round. Refaire toute l’analyse avec une station de plus</h3>
 <p>Deux stations F(100,20) et G(150,30) ont été ajoutées. Il faut refaire la carte finale. Cela ne pose aucun problème dans R puisqu’il suffit de modifier l’entrée des données et récupérer des bouts de programme</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="02-initiation.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (1) Saisie des variables</span></span>
-<span id="cb21-2"><a href="02-initiation.html#cb21-2" aria-hidden="true" tabindex="-1"></a>CODE <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;G&quot;</span>)</span>
-<span id="cb21-3"><a href="02-initiation.html#cb21-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">50</span>,<span class="dv">180</span>,<span class="dv">100</span>,<span class="dv">150</span>)</span>
-<span id="cb21-4"><a href="02-initiation.html#cb21-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">50</span>,<span class="dv">20</span>,<span class="dv">30</span>)</span>
-<span id="cb21-5"><a href="02-initiation.html#cb21-5" aria-hidden="true" tabindex="-1"></a>coo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(X,Y)</span>
-<span id="cb21-6"><a href="02-initiation.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(coo) <span class="ot">&lt;-</span> CODE</span>
-<span id="cb21-7"><a href="02-initiation.html#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="02-initiation.html#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="02-initiation.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) calcul des points centraux</span></span>
-<span id="cb21-10"><a href="02-initiation.html#cb21-10" aria-hidden="true" tabindex="-1"></a>medX <span class="ot">&lt;-</span> <span class="fu">median</span>(X)</span>
-<span id="cb21-11"><a href="02-initiation.html#cb21-11" aria-hidden="true" tabindex="-1"></a>medY <span class="ot">&lt;-</span> <span class="fu">median</span>(Y)</span>
-<span id="cb21-12"><a href="02-initiation.html#cb21-12" aria-hidden="true" tabindex="-1"></a>equX <span class="ot">&lt;-</span> (<span class="fu">max</span>(X)<span class="sc">+</span><span class="fu">min</span>(X))<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb21-13"><a href="02-initiation.html#cb21-13" aria-hidden="true" tabindex="-1"></a>equY <span class="ot">&lt;-</span> (<span class="fu">max</span>(Y)<span class="sc">+</span><span class="fu">min</span>(Y))<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb21-14"><a href="02-initiation.html#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-15"><a href="02-initiation.html#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-16"><a href="02-initiation.html#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co"># (3) Graphique</span></span>
-<span id="cb21-17"><a href="02-initiation.html#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X,Y, </span>
-<span id="cb21-18"><a href="02-initiation.html#cb21-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;red&quot;</span>, </span>
-<span id="cb21-19"><a href="02-initiation.html#cb21-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">20</span>, </span>
-<span id="cb21-20"><a href="02-initiation.html#cb21-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">180</span>),</span>
-<span id="cb21-21"><a href="02-initiation.html#cb21-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>),</span>
-<span id="cb21-22"><a href="02-initiation.html#cb21-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>)</span>
-<span id="cb21-23"><a href="02-initiation.html#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(X,Y,</span>
-<span id="cb21-24"><a href="02-initiation.html#cb21-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> CODE, </span>
-<span id="cb21-25"><a href="02-initiation.html#cb21-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">2</span>)</span>
-<span id="cb21-26"><a href="02-initiation.html#cb21-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-27"><a href="02-initiation.html#cb21-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du dépôt de carburant</span></span>
-<span id="cb21-28"><a href="02-initiation.html#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(medX, medY, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">pch=</span><span class="dv">3</span>)</span>
-<span id="cb21-29"><a href="02-initiation.html#cb21-29" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(medX,medY, <span class="st">&quot;Dépôt&quot;</span>,<span class="at">pos=</span><span class="dv">1</span>)</span>
-<span id="cb21-30"><a href="02-initiation.html#cb21-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-31"><a href="02-initiation.html#cb21-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du point médian</span></span>
-<span id="cb21-32"><a href="02-initiation.html#cb21-32" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(equX, equY, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">pch=</span><span class="dv">3</span>)</span>
-<span id="cb21-33"><a href="02-initiation.html#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(equX,equY, <span class="st">&quot;Caserne&quot;</span>,<span class="at">pos=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="02-initiation.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (1) Saisie des variables</span></span>
+<span id="cb31-2"><a href="02-initiation.html#cb31-2" aria-hidden="true" tabindex="-1"></a>CODE <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;G&quot;</span>)</span>
+<span id="cb31-3"><a href="02-initiation.html#cb31-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">40</span>,<span class="dv">50</span>,<span class="dv">180</span>,<span class="dv">100</span>,<span class="dv">150</span>)</span>
+<span id="cb31-4"><a href="02-initiation.html#cb31-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">40</span>,<span class="dv">60</span>,<span class="dv">50</span>,<span class="dv">20</span>,<span class="dv">30</span>)</span>
+<span id="cb31-5"><a href="02-initiation.html#cb31-5" aria-hidden="true" tabindex="-1"></a>coo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(X,Y)</span>
+<span id="cb31-6"><a href="02-initiation.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(coo) <span class="ot">&lt;-</span> CODE</span>
+<span id="cb31-7"><a href="02-initiation.html#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="02-initiation.html#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="02-initiation.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) calcul des points centraux</span></span>
+<span id="cb31-10"><a href="02-initiation.html#cb31-10" aria-hidden="true" tabindex="-1"></a>medX <span class="ot">&lt;-</span> <span class="fu">median</span>(X)</span>
+<span id="cb31-11"><a href="02-initiation.html#cb31-11" aria-hidden="true" tabindex="-1"></a>medY <span class="ot">&lt;-</span> <span class="fu">median</span>(Y)</span>
+<span id="cb31-12"><a href="02-initiation.html#cb31-12" aria-hidden="true" tabindex="-1"></a>equX <span class="ot">&lt;-</span> (<span class="fu">max</span>(X)<span class="sc">+</span><span class="fu">min</span>(X))<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb31-13"><a href="02-initiation.html#cb31-13" aria-hidden="true" tabindex="-1"></a>equY <span class="ot">&lt;-</span> (<span class="fu">max</span>(Y)<span class="sc">+</span><span class="fu">min</span>(Y))<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb31-14"><a href="02-initiation.html#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="02-initiation.html#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="02-initiation.html#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="co"># (3) Graphique</span></span>
+<span id="cb31-17"><a href="02-initiation.html#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X,Y, </span>
+<span id="cb31-18"><a href="02-initiation.html#cb31-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;red&quot;</span>, </span>
+<span id="cb31-19"><a href="02-initiation.html#cb31-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">20</span>, </span>
+<span id="cb31-20"><a href="02-initiation.html#cb31-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">180</span>),</span>
+<span id="cb31-21"><a href="02-initiation.html#cb31-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>),</span>
+<span id="cb31-22"><a href="02-initiation.html#cb31-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>)</span>
+<span id="cb31-23"><a href="02-initiation.html#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(X,Y,</span>
+<span id="cb31-24"><a href="02-initiation.html#cb31-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> CODE, </span>
+<span id="cb31-25"><a href="02-initiation.html#cb31-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">2</span>)</span>
+<span id="cb31-26"><a href="02-initiation.html#cb31-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-27"><a href="02-initiation.html#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du dépôt de carburant</span></span>
+<span id="cb31-28"><a href="02-initiation.html#cb31-28" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(medX, medY, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">pch=</span><span class="dv">3</span>)</span>
+<span id="cb31-29"><a href="02-initiation.html#cb31-29" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(medX,medY, <span class="st">&quot;Dépôt&quot;</span>,<span class="at">pos=</span><span class="dv">1</span>)</span>
+<span id="cb31-30"><a href="02-initiation.html#cb31-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-31"><a href="02-initiation.html#cb31-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du point médian</span></span>
+<span id="cb31-32"><a href="02-initiation.html#cb31-32" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(equX, equY, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">pch=</span><span class="dv">3</span>)</span>
+<span id="cb31-33"><a href="02-initiation.html#cb31-33" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(equX,equY, <span class="st">&quot;Caserne&quot;</span>,<span class="at">pos=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-28-1.svg" width="672" /></p>
 <p>Excel n’a aucune chance d’aller plus vite et R remporte le match par KO !</p>
 </div>
 </div>
@@ -465,93 +464,93 @@ Nous allons illustrer l’usage de R markdown en rédigeant une courte note sur 
 <div id="contour-de-rennes" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Contour de Rennes</h3>
 <p>On charge le fichier avec <code>read.table()</code> puis on affiche ses premières lignes avec <code>head()</code>et on regarde sa taille avec <code>dim()</code></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="02-initiation.html#cb22-1" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/rennes/map.csv&quot;</span>,</span>
-<span id="cb22-2"><a href="02-initiation.html#cb22-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> T,</span>
-<span id="cb22-3"><a href="02-initiation.html#cb22-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
-<span id="cb22-4"><a href="02-initiation.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(map,<span class="dv">2</span>)</span></code></pre></div>
-<pre><code>##          x       y
-## 1 346382.1 6786334
-## 2 346460.0 6786704</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="02-initiation.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(map)</span></code></pre></div>
-<pre><code>## [1] 37  2</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="02-initiation.html#cb32-1" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/rennes/map.csv&quot;</span>,</span>
+<span id="cb32-2"><a href="02-initiation.html#cb32-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> T,</span>
+<span id="cb32-3"><a href="02-initiation.html#cb32-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb32-4"><a href="02-initiation.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(map,<span class="dv">2</span>)</span>
+<span id="cb32-5"><a href="02-initiation.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          x       y</span></span>
+<span id="cb32-6"><a href="02-initiation.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 346382.1 6786334</span></span>
+<span id="cb32-7"><a href="02-initiation.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 346460.0 6786704</span></span>
+<span id="cb32-8"><a href="02-initiation.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(map)</span>
+<span id="cb32-9"><a href="02-initiation.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 37  2</span></span></code></pre></div>
 <p>On affiche le contour avec les instructions <code>plot()</code> et <code>lines()</code>. On doit impérativement ajouter le paramètre <em>asp = 1</em> dans plot() pour imposer une échelle identique sur l’axe vertical et l’axe horizontal.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="02-initiation.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>)</span>
-<span id="cb26-2"><a href="02-initiation.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-15-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="02-initiation.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>)</span>
+<span id="cb33-2"><a href="02-initiation.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-31-1.svg" width="672" /></p>
 </div>
 <div id="distribution-de-la-population" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Distribution de la population</h3>
 <p>On charge le fichier de population de la même manière et on constate qu’il comporte une troisième colonne indiquant la population localisée en chaque point. En fait, il s’agit d’une grille de population qui localise les habitants sur une maille de ??? m</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="02-initiation.html#cb27-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/rennes/popu.csv&quot;</span>,</span>
-<span id="cb27-2"><a href="02-initiation.html#cb27-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> T,</span>
-<span id="cb27-3"><a href="02-initiation.html#cb27-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
-<span id="cb27-4"><a href="02-initiation.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop,<span class="dv">2</span>)</span></code></pre></div>
-<pre><code>##          x       y pop
-## 1 346202.1 6790631  20
-## 2 346203.4 6792843   5</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="02-initiation.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(pop)</span></code></pre></div>
-<pre><code>## [1] 24916     3</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="02-initiation.html#cb34-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/rennes/popu.csv&quot;</span>,</span>
+<span id="cb34-2"><a href="02-initiation.html#cb34-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> T,</span>
+<span id="cb34-3"><a href="02-initiation.html#cb34-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb34-4"><a href="02-initiation.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pop,<span class="dv">2</span>)</span>
+<span id="cb34-5"><a href="02-initiation.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          x       y pop</span></span>
+<span id="cb34-6"><a href="02-initiation.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 346202.1 6790631  20</span></span>
+<span id="cb34-7"><a href="02-initiation.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 346203.4 6792843   5</span></span>
+<span id="cb34-8"><a href="02-initiation.html#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(pop)</span>
+<span id="cb34-9"><a href="02-initiation.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 24916     3</span></span></code></pre></div>
 <p>On procède à une première cartographie qui ne tient pas compte de l’effectif de population mais indique juste les cases occupées et inoccupées, ce qui permet de donner une vision générale de l’occuparion du sol et du peuplement de Rennes et de l’espace environnant.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="02-initiation.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop<span class="sc">$</span>x,pop<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>,<span class="at">pch=</span><span class="dv">22</span>, <span class="at">cex=</span><span class="fl">0.01</span>)</span>
-<span id="cb31-2"><a href="02-initiation.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-17-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="02-initiation.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop<span class="sc">$</span>x,pop<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>,<span class="at">pch=</span><span class="dv">22</span>, <span class="at">cex=</span><span class="fl">0.01</span>)</span>
+<span id="cb35-2"><a href="02-initiation.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-33-1.svg" width="672" /></p>
 </div>
 <div id="distribution-des-équipements" class="section level3" number="2.3.4">
 <h3><span class="header-section-number">2.3.4</span> Distribution des équipements</h3>
 <p>L’INSEE a extrait du fichier de la Base Publique des Equipements quatre types de localisations correspondant aux écoles, aux médecins, aux pharmacies et aux commerces de vêtements. On notera l’ajout du paramètre <em>encoding=“UTF-8”</em> qui permet de lire sans erreur les caractères accentués et d’éviter par exemple que “Vêtements” devienne “VÃªtements”.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="02-initiation.html#cb32-1" aria-hidden="true" tabindex="-1"></a>bpe <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/rennes/bpe.csv&quot;</span>,</span>
-<span id="cb32-2"><a href="02-initiation.html#cb32-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> T,</span>
-<span id="cb32-3"><a href="02-initiation.html#cb32-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>,</span>
-<span id="cb32-4"><a href="02-initiation.html#cb32-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb32-5"><a href="02-initiation.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bpe,<span class="dv">2</span>)</span></code></pre></div>
-<pre><code>##            x       y    equ
-## 286 349156.2 6790525 Ecoles
-## 287 351800.4 6786774 Ecoles</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="02-initiation.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(bpe)</span></code></pre></div>
-<pre><code>## [1] 767   3</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="02-initiation.html#cb36-1" aria-hidden="true" tabindex="-1"></a>bpe <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/rennes/bpe.csv&quot;</span>,</span>
+<span id="cb36-2"><a href="02-initiation.html#cb36-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> T,</span>
+<span id="cb36-3"><a href="02-initiation.html#cb36-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>,</span>
+<span id="cb36-4"><a href="02-initiation.html#cb36-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">encoding=</span><span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb36-5"><a href="02-initiation.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bpe,<span class="dv">2</span>)</span>
+<span id="cb36-6"><a href="02-initiation.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            x       y    equ</span></span>
+<span id="cb36-7"><a href="02-initiation.html#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 286 349156.2 6790525 Ecoles</span></span>
+<span id="cb36-8"><a href="02-initiation.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 287 351800.4 6786774 Ecoles</span></span>
+<span id="cb36-9"><a href="02-initiation.html#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(bpe)</span>
+<span id="cb36-10"><a href="02-initiation.html#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 767   3</span></span></code></pre></div>
 <p>On utilise l’instruction <code>table()</code>pour dénombrer l’effectif de chaque équipement :</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="02-initiation.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(bpe<span class="sc">$</span>equ)</span></code></pre></div>
-<pre><code>## 
-##     Ecoles   Médecins Pharmacies  Vêtements 
-##         59        268         70        370</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="02-initiation.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(bpe<span class="sc">$</span>equ)</span>
+<span id="cb37-2"><a href="02-initiation.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb37-3"><a href="02-initiation.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     Ecoles   Médecins Pharmacies  Vêtements </span></span>
+<span id="cb37-4"><a href="02-initiation.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         59        268         70        370</span></span></code></pre></div>
 <p>Puis on visualise après avoir attribué une couleur à chaque équipement. On crée pour cela une nouvelle variable :</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="02-initiation.html#cb38-1" aria-hidden="true" tabindex="-1"></a>bpe<span class="sc">$</span>couleur<span class="ot">&lt;-</span><span class="fu">as.factor</span>(bpe<span class="sc">$</span>equ)</span>
-<span id="cb38-2"><a href="02-initiation.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(bpe<span class="sc">$</span>couleur)</span></code></pre></div>
-<pre><code>## [1] &quot;Ecoles&quot;     &quot;Médecins&quot;   &quot;Pharmacies&quot; &quot;Vêtements&quot;</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="02-initiation.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(bpe<span class="sc">$</span>couleur)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;red&quot;</span>)</span>
-<span id="cb40-2"><a href="02-initiation.html#cb40-2" aria-hidden="true" tabindex="-1"></a>bpe<span class="sc">$</span>couleur<span class="ot">&lt;-</span><span class="fu">as.character</span>(bpe<span class="sc">$</span>couleur)</span>
-<span id="cb40-3"><a href="02-initiation.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(bpe<span class="sc">$</span>couleur)</span></code></pre></div>
-<pre><code>## 
-##   blue  green orange    red 
-##     59    268     70    370</code></pre>
+<span id="cb38-2"><a href="02-initiation.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(bpe<span class="sc">$</span>couleur)</span>
+<span id="cb38-3"><a href="02-initiation.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Ecoles&quot;     &quot;Médecins&quot;   &quot;Pharmacies&quot; &quot;Vêtements&quot;</span></span>
+<span id="cb38-4"><a href="02-initiation.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(bpe<span class="sc">$</span>couleur)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;red&quot;</span>)</span>
+<span id="cb38-5"><a href="02-initiation.html#cb38-5" aria-hidden="true" tabindex="-1"></a>bpe<span class="sc">$</span>couleur<span class="ot">&lt;-</span><span class="fu">as.character</span>(bpe<span class="sc">$</span>couleur)</span>
+<span id="cb38-6"><a href="02-initiation.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(bpe<span class="sc">$</span>couleur)</span>
+<span id="cb38-7"><a href="02-initiation.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb38-8"><a href="02-initiation.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   blue  green orange    red </span></span>
+<span id="cb38-9"><a href="02-initiation.html#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     59    268     70    370</span></span></code></pre></div>
 </div>
 <div id="synthèse" class="section level3" number="2.3.5">
 <h3><span class="header-section-number">2.3.5</span> Synthèse</h3>
 <p>On peut désormais assembler nos trois couches :</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="02-initiation.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop<span class="sc">$</span>x,pop<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;gray&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>,<span class="at">pch=</span><span class="dv">22</span>, <span class="at">cex=</span><span class="fl">0.01</span>)</span>
-<span id="cb42-2"><a href="02-initiation.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb42-3"><a href="02-initiation.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(bpe<span class="sc">$</span>x,bpe<span class="sc">$</span>y,<span class="at">bg=</span>bpe<span class="sc">$</span>couleur, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-21-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="02-initiation.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop<span class="sc">$</span>x,pop<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;gray&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>,<span class="at">pch=</span><span class="dv">22</span>, <span class="at">cex=</span><span class="fl">0.01</span>)</span>
+<span id="cb39-2"><a href="02-initiation.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
+<span id="cb39-3"><a href="02-initiation.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(bpe<span class="sc">$</span>x,bpe<span class="sc">$</span>y,<span class="at">bg=</span>bpe<span class="sc">$</span>couleur, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-37-1.svg" width="672" /></p>
 <p>Il est facile de procéder à un zoom en ajoutant des paramètres <em>xlim</em> et <em>ylim</em> dans la fonction plot() qui précise l’espace d’étude.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="02-initiation.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop<span class="sc">$</span>x,</span>
-<span id="cb43-2"><a href="02-initiation.html#cb43-2" aria-hidden="true" tabindex="-1"></a>     pop<span class="sc">$</span>y, </span>
-<span id="cb43-3"><a href="02-initiation.html#cb43-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb43-4"><a href="02-initiation.html#cb43-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>,</span>
-<span id="cb43-5"><a href="02-initiation.html#cb43-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">22</span>, </span>
-<span id="cb43-6"><a href="02-initiation.html#cb43-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="fl">0.1</span>,</span>
-<span id="cb43-7"><a href="02-initiation.html#cb43-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">351000</span>,<span class="dv">353000</span>),</span>
-<span id="cb43-8"><a href="02-initiation.html#cb43-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">6788500</span>,<span class="dv">6790500</span>))</span>
-<span id="cb43-9"><a href="02-initiation.html#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-10"><a href="02-initiation.html#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,</span>
-<span id="cb43-11"><a href="02-initiation.html#cb43-11" aria-hidden="true" tabindex="-1"></a>      map<span class="sc">$</span>y, </span>
-<span id="cb43-12"><a href="02-initiation.html#cb43-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
-<span id="cb43-13"><a href="02-initiation.html#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-14"><a href="02-initiation.html#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(bpe<span class="sc">$</span>x,</span>
-<span id="cb43-15"><a href="02-initiation.html#cb43-15" aria-hidden="true" tabindex="-1"></a>       bpe<span class="sc">$</span>y,</span>
-<span id="cb43-16"><a href="02-initiation.html#cb43-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">bg=</span>bpe<span class="sc">$</span>couleur, </span>
-<span id="cb43-17"><a href="02-initiation.html#cb43-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">21</span>, </span>
-<span id="cb43-18"><a href="02-initiation.html#cb43-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-22-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="02-initiation.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop<span class="sc">$</span>x,</span>
+<span id="cb40-2"><a href="02-initiation.html#cb40-2" aria-hidden="true" tabindex="-1"></a>     pop<span class="sc">$</span>y, </span>
+<span id="cb40-3"><a href="02-initiation.html#cb40-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb40-4"><a href="02-initiation.html#cb40-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">asp =</span> <span class="dv">1</span>,</span>
+<span id="cb40-5"><a href="02-initiation.html#cb40-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">22</span>, </span>
+<span id="cb40-6"><a href="02-initiation.html#cb40-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="fl">0.1</span>,</span>
+<span id="cb40-7"><a href="02-initiation.html#cb40-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">351000</span>,<span class="dv">353000</span>),</span>
+<span id="cb40-8"><a href="02-initiation.html#cb40-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">6788500</span>,<span class="dv">6790500</span>))</span>
+<span id="cb40-9"><a href="02-initiation.html#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="02-initiation.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,</span>
+<span id="cb40-11"><a href="02-initiation.html#cb40-11" aria-hidden="true" tabindex="-1"></a>      map<span class="sc">$</span>y, </span>
+<span id="cb40-12"><a href="02-initiation.html#cb40-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
+<span id="cb40-13"><a href="02-initiation.html#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="02-initiation.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(bpe<span class="sc">$</span>x,</span>
+<span id="cb40-15"><a href="02-initiation.html#cb40-15" aria-hidden="true" tabindex="-1"></a>       bpe<span class="sc">$</span>y,</span>
+<span id="cb40-16"><a href="02-initiation.html#cb40-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">bg=</span>bpe<span class="sc">$</span>couleur, </span>
+<span id="cb40-17"><a href="02-initiation.html#cb40-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">21</span>, </span>
+<span id="cb40-18"><a href="02-initiation.html#cb40-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-38-1.svg" width="672" /></p>
 <p>OK, notre carte n’a pas de légende (c’est possible mais vraiment compliqué en R-Base) mais on appréciera le fait d’avoir pu la réaliser en ne se servant que de quelques fonctions élémentaires de R comme</p>
 </div>
 </div>
@@ -570,51 +569,6 @@ Nous allons illustrer l’usage de R markdown en rédigeant une courte note sur 
 <p>
 R est un <code>Excel killer</code> mais aussi un <code>Word killer</code> voire un <code>Power point killer</code>… Adopter R peut nuire gravement à vos habitudes antérieures de travail.
 </p>
-</div>
-</div>
-<div id="exercices-1" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Exercices</h2>
-<p><strong>Exercice 1</strong></p>
-<p>Construire le vecteur <code>x</code> suivant :</p>
-<pre><code>## [1] &quot;Paris&quot;    &quot;Londres&quot;  &quot;Tokyo&quot;    &quot;New York&quot;</code></pre>
-<div class="solution-exo">
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="02-initiation.html#cb45-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Paris&quot;</span>, <span class="st">&quot;Londres&quot;</span>,<span class="st">&quot;Tokyo&quot;</span>,<span class="st">&quot;New York&quot;</span>)</span></code></pre></div>
-</div>
-<p>Construire le vecteur <code>y</code> suivant :</p>
-<pre><code>## [1] &quot;France&quot;      &quot;Royaume-Uni&quot; &quot;Japon&quot;       &quot;USA&quot;</code></pre>
-<div class="solution-exo">
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="02-initiation.html#cb47-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Royaume-Uni&quot;</span>,<span class="st">&quot;Japon&quot;</span>,<span class="st">&quot;USA&quot;</span>)</span></code></pre></div>
-</div>
-<p>Construire le vecteur <code>z</code> suivant :</p>
-<pre><code>## [1] 10.2 14.6 42.8 23.9</code></pre>
-<div class="solution-exo">
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="02-initiation.html#cb49-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">14.6</span>,<span class="fl">42.8</span>,<span class="fl">23.9</span>)</span></code></pre></div>
-</div>
-<p>Construire la matrice <code>m1</code></p>
-<pre><code>##   [,1]     [,2]          [,3]    [,4]      
-## x &quot;Paris&quot;  &quot;Londres&quot;     &quot;Tokyo&quot; &quot;New York&quot;
-## y &quot;France&quot; &quot;Royaume-Uni&quot; &quot;Japon&quot; &quot;USA&quot;</code></pre>
-<div class="solution-exo">
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="02-initiation.html#cb51-1" aria-hidden="true" tabindex="-1"></a>m1<span class="ot">&lt;-</span><span class="fu">rbind</span>(x,y)</span></code></pre></div>
-</div>
-<p>Construire le data.frame <code>df</code></p>
-<pre><code>##             y        x    z
-## 1      France    Paris 10.2
-## 2 Royaume-Uni  Londres 14.6
-## 3       Japon    Tokyo 42.8
-## 4         USA New York 23.9</code></pre>
-<div class="solution-exo">
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="02-initiation.html#cb53-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(y,x,z)</span></code></pre></div>
-</div>
-<p><strong>Exercice 2 (d’après J.Barnier)</strong></p>
-<p>On a demandé à 4 ménages le revenu des deux conjoints, et le nombre de personnes du ménage :</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="02-initiation.html#cb54-1" aria-hidden="true" tabindex="-1"></a>conjoint1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1200</span>, <span class="dv">1180</span>, <span class="dv">1750</span>, <span class="dv">2100</span>)</span>
-<span id="cb54-2"><a href="02-initiation.html#cb54-2" aria-hidden="true" tabindex="-1"></a>conjoint2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1450</span>, <span class="dv">1870</span>, <span class="dv">1690</span>, <span class="dv">0</span>)</span>
-<span id="cb54-3"><a href="02-initiation.html#cb54-3" aria-hidden="true" tabindex="-1"></a>nb_personnes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span></code></pre></div>
-<p>Calculer le revenu total de chaque ménage, puis diviser par le nombre de personnes pour obtenir le revenu par personne de chaque ménage.</p>
-<div class="solution-exo">
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="02-initiation.html#cb55-1" aria-hidden="true" tabindex="-1"></a>revenu_total <span class="ot">&lt;-</span> conjoint1 <span class="sc">+</span> conjoint2</span>
-<span id="cb55-2"><a href="02-initiation.html#cb55-2" aria-hidden="true" tabindex="-1"></a>revenu_total <span class="sc">/</span> nb_personnes</span></code></pre></div>
 </div>
 
 </div>

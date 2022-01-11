@@ -29,9 +29,7 @@ document-rmd-word-killer
 chargement-des-données
 contour-de-rennes
 distribution-de-la-population
-a-vous-de-jouer
-en-résumé-1
-exercices-1
 distribution-des-équipements
 synthèse
 diapos-rmd-power-point-killer
+en-résumé-1
