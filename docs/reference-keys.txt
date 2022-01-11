@@ -32,3 +32,6 @@ distribution-de-la-population
 a-vous-de-jouer
 en-résumé-1
 exercices-1
+distribution-des-équipements
+synthèse
+diapos-rmd-power-point-killer

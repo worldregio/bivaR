@@ -309,7 +309,7 @@ Comme nous avons pris la perspective de n'employer aucun package R au cours de c
 Nous disposons de trois fichiers qui comportent chacun des coordonnées de localisation utilisant la même projection Lambert et que l'on pourra de ce fait superposer. Après les avoir chargés et décrits, on en propose une première visualisation à l'aide des fonctions graphiques de base de R.
 
 
-#### Contour de Rennes
+### Contour de Rennes
 
 On charge le fichier avec `read.table()` puis on affiche ses premières lignes avec `head()`et on regarde sa taille avec `dim()`
 
@@ -327,7 +327,7 @@ plot(map$x,map$y, col="red", asp = 1)
 lines(map$x,map$y, col="blue")
 ```
 
-#### Distribution de la population
+### Distribution de la population
 
 On charge le fichier de population de la même manière et on constate qu'il comporte une troisième colonne indiquant la population localisée en chaque point. En fait, il s'agit d'une grille de population qui localise les habitants sur une maille de ??? m 
 
@@ -345,7 +345,8 @@ plot(pop$x,pop$y, col="red", asp = 1,pch=22, cex=0.01)
 lines(map$x,map$y, col="black")
 
 ```
-#### Distribution des équipements
+
+### Distribution des équipements
 
 L'INSEE a extrait du fichier de la Base Publique des Equipements quatre types de localisations correspondant aux écoles, aux médecins, aux pharmacies et aux commerces de vêtements. On notera l'ajout du paramètre *encoding="UTF-8"* qui permet de lire sans erreur les caractères accentués et d'éviter par exemple que "Vêtements" devienne "VÃªtements".
 
@@ -374,6 +375,9 @@ levels(bpe$couleur)<-c("blue","green","orange","red")
 bpe$couleur<-as.character(bpe$couleur)
 table(bpe$couleur)
 ```
+
+
+### Synthèse 
 
 On peut désormais assembler nos trois couches : 
 
@@ -409,9 +413,28 @@ points(bpe$x,
 
 OK, notre carte n'a pas de légende (c'est possible mais vraiment compliqué en R-Base) mais on appréciera le fait d'avoir pu la réaliser en ne se servant que de quelques fonctions élémentaires de R comme 
 
-### A vous de jouer !
 
-En vous inspirant de l'exemple des stations services, essayez de définir un certain nombre de questions et tentez d'y répondre ...
+## Diapos Rmd : Power Point killer
+
+Lorsque l'on crée un fichier Markdown, on peut décider qu'il ne s'agit pas d'un document mais d'une présentation et opter pour l'un des deux modes par défaut appelés `slidy` et `ioslides`.
+
+```{r, echo = FALSE}
+knitr::include_graphics("resources/figures/RmdDiapo.png")
+```
+
+On peut ensuite créer un diaporama en donnant un titre général et en séparant chaque diapo par un titre de niveau 2 correspondant à des lignes débutant par `##` comme dans l'exemple ci-dessous :
+
+```{r, echo = FALSE}
+knitr::include_graphics("resources/figures/diapo_prog.png")
+```
+
+Il ne reste plus qu'à compiler le programme avec l'icône `Knit` (pelotte de laine) pour générer un document .html en forme de dipositives. 
+
+```{r, echo = FALSE, fig.width=3}
+knitr::include_graphics("resources/figures/diapo1.png")
+knitr::include_graphics("resources/figures/diapo2.png")
+knitr::include_graphics("resources/figures/diapo3.png")
+```
 
 
 
