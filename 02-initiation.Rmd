@@ -31,7 +31,7 @@ Par comparaison avec le jeu de lego, cela revient à effectuer des constructions
 knitr::include_graphics("resources/figures/Lego1.jpg")
 ```
 
-
+Télécharger le [dossier exo2](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo2.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo2.Rproj` dans Rstudio.
 
 
 
