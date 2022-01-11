@@ -1,4 +1,4 @@
-chapitre-1-principes-du-langage-r
+premiers-pas
 opérations-arithmétiques
 les-objets-de-base-valeur-vecteur-matrice
 eléments
@@ -12,7 +12,7 @@ le-type-tibble
 le-type-data.table
 en-résumé
 exercices
-chapitre-2-office-killer
+office-killer
 rstudio-et-les-projets-r
 lancement-de-r-studio
 création-dun-projet

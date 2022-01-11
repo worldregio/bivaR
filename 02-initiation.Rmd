@@ -1,11 +1,14 @@
 
-# Chapitre 2 : Office killer !
+# Office killer
 
-```{r}
+
+```{r, echo = FALSE}
 library(knitr)
+knitr::include_graphics("resources/figures/chap2_intro.jpg")
 ```
 
 
+- **Mise en place** : Télécharger le [dossier exo2](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo2.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo2.Rproj` dans Rstudio.
 
 
 
@@ -26,12 +29,6 @@ Bref, si tout a bien marché, l'étudiant n'aura même pas besoin de consulter l
 Les deux exercices qui suivent utilisent volontairement les fonctions de base du langage R (on dit que l'on *programme en R-base*) à l'exclusion de tout *package* c'est-à-dire de tout outil graphique ou statistique mis au point ultérieurement. 
 
 Par comparaison avec le jeu de lego, cela revient à effectuer des constructions avec la boîte de base. A première vue cela peut sembler frustrant. Mais en réalité cela ne bride en rien l'imagination et permet d'apprendre plein de choses sans être distrait ...
-
-```{r, echo = FALSE}
-knitr::include_graphics("resources/figures/Lego1.jpg")
-```
-
-Télécharger le [dossier exo2](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo2.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo2.Rproj` dans Rstudio.
 
 
 
@@ -421,7 +418,7 @@ En vous inspirant de l'exemple des stations services, essayez de définir un cer
 ## En résumé
 
 
-```{block, type='rmdimportant'}
+```{block, type='rmdnote'}
 R est un `Excel killer` mais aussi un `Word killer` voire un `Power point killer`...  Adopter R peut nuire gravement à vos habitudes antérieures de travail.
 
 ```

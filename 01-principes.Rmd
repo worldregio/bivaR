@@ -1,11 +1,19 @@
 
-# Chapitre 1 : Principes du langage R
+# Premiers pas 
+
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/chap1_intro.jpg")
+```
+
+- **Mise en place** : Télécharger le [dossier exo1](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo1.zip) et décompressez le sur votre ordinateur. Placez le dossier exo1 comme sous-dossier de votre dossier de cours. Puis ouvrez le programme R `exo1.R` 
+
+
 
 ## Opérations arithmétiques
 
 Nous allons commencer par passer quelques commandes arithmétiques simples. Il suffit de les taper dans la console de R pour qu'elles s'executent automatiquement. 
-
-
 
 
 ```{r func}
@@ -251,7 +259,7 @@ str(tab3)
 ## En résumé
 
 
-```{block, type='rmdimportant'}
+```{block, type='rmdnote'}
 R est un langage de programmation multifonction qui évolue depuis maintenant plus de 30 ans et auquel s'ajoutent continuellement de nouveaux packages. A la différence de SPSS, il n'est pas spécialisé uniquement en statistique, même si le coeur du logiciel est bien centré sur la statistique. Pour progresser rapidement en R il est indispensable :
 
 - de prêter une grande attention aux types de `variables et de tableaux.`
