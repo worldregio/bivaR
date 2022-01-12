@@ -12,6 +12,7 @@ new_session: no
 rmd_files: [
   "index.Rmd",
   "01-principes.Rmd",
-  "02-initiation.Rmd"
+  "02-initiation.Rmd",
+  "03-R-Base.Rmd"
 ]
 
