@@ -50,4 +50,17 @@ sélection-simultanée-de-lignes-et-colonnes
 extractions
 extraction-dune-variable-vecteur
 création-dune-matrice
+exploration-i-var.-quali.
+sélection-et-recodage
+table-de-dénombrement
+graphique-avec-plot
+exploration-ii-var.-quanti
+résumés-numériques
+dénombrement
+boîte-à-moustaches
+histogramme
+exploration-iii-2-variables
+deux-variables-qualitatives
+deux-variables-quantitatives
+une-quantitative-et-une-qualitative
 en-résumé-2
