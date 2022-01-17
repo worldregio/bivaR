@@ -246,12 +246,24 @@ code span.wa { color: #bf0303; } /* Warning */
 <ul>
 <li><strong>Mise en place</strong> : Télécharger le <a href="https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo3.zip">dossier exo3</a> et décompressez le sur votre ordinateur. Puis ouvrez le projet R <code>exo3.Rproj</code> dans Rstudio.</li>
 </ul>
-<p>L’objectif de ce chapitre assez long est d’apprendre aux étudiants les bases du langage R dans sa version originale que l’on appelle <code>R-Base</code> dans la mesure où elle ne fait appel à aucun package et constitue le noyau central du langage. Ce chapitre se compose de deux parties complémentaires :</p>
+<p>L’idée pédagogique est d’apprendre directement aux étudiants à programmer en R markdown plutôt qu’en R. Pourquoi ? Parce qu’ainsi ils vont simultanément :</p>
+<ul>
+<li>taper du code R qu’ils ignorent</li>
+<li>écrire sous ce code les explications du point de vue informatique</li>
+<li>observer les résultats statistiques</li>
+<li>interpréter ces résultats d’un point de vue statistique</li>
+</ul>
+<p>Cela n’a l’air de rien, mais en procédant ainsi les étudiants apprennent à produire à la fois leurs notes de cours en R, leurs notes de cours en statistiques et … le langage Rmarkdown pour rédiger leurs futurs travaux.</p>
+<p>Bref, si tout a bien marché, l’étudiant n’aura même pas besoin de consulter le présent document, si ce n’est pour vérifier que son programme donne les mêmes résultats …</p>
+<p>Les deux exercices qui suivent utilisent volontairement les fonctions de base du langage R (on dit que l’on <em>programme en R-base</em>) à l’exclusion de tout <em>package</em> c’est-à-dire de tout outil graphique ou statistique mis au point ultérieurement.</p>
+<p>Par comparaison avec le jeu de lego, cela revient à effectuer des constructions avec la boîte de base. A première vue cela peut sembler frustrant. Mais en réalité cela ne bride en rien l’imagination et permet d’apprendre plein de choses sans être distrait …</p>
 <ol style="list-style-type: decimal">
 <li><strong>La manipulation des tableaux de données</strong> : c’est-à-dire à la fois l’importation, le recodage éventuel des variables et la correction de leur type, la sélection de lignes ou de colonnes pour créer des sous-tableaux.</li>
 <li><strong>L’exploration statistique univariée</strong> : c’est-à-dire le calcul de résumés simples d’une variable à l’aide de paramètres statistiques (valeurs centrales, dispersion) et la production de graphiques élémentaires.</li>
 </ol>
-<p>Pour rendre l’apprentissage moins austère, nous avons choisi un tableau de données original qui présente les principales caractéristiques de 25 pays européens en 1989, à la veille de la chute du Mur de Berlin. Plutôt que de se contenter apprendre par coeur des commandes R (ce qu’il faudra faire, évidemment), les étudiants seront amenés à construire un véritable rapport sur la situation économique, démographique et sociale de l’Europe en 1989, ce qui les amènera à renforcer leur pratique du R markdown. Par ailleurs, on organisera un débat entre les étudiants qui seront placés en deux groupes rivaux chargés de défendre respectivement les pays socialistes et lespays capitalistes. A chaque groupe de montrer que son système politique est le meilleur …</p>
+<p>Pour rendre l’apprentissage moins austère, nous avons choisi un tableau de données original qui présente les principales caractéristiques de 25 pays européens en 1989, à la veille de la chute du Mur de Berlin. Pour ceux qui ne connaissent pas cette période ancienne, voici une petite carte :</p>
+<p><img src="resources/figures/iron-curtain.jpg" width="638" /></p>
+<p>Plutôt que de se contenter apprendre par coeur des commandes R (ce qu’il faudra faire, évidemment), les étudiants seront amenés à construire un véritable rapport sur la situation économique, démographique et sociale de l’Europe en 1989, ce qui les amènera à renforcer leur pratique du R markdown. Par ailleurs, on organisera un débat entre les étudiants qui seront placés en deux groupes rivaux chargés de défendre respectivement les pays socialistes et lespays capitalistes. A chaque groupe de montrer que son système politique est le meilleur …</p>
 <div id="tableaux" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Tableaux</h2>
 <div id="importation" class="section level3" number="3.1.1">
@@ -829,7 +841,7 @@ On retiendra donc dans l’immédiat que les résultats de l’instruction <code
 <span id="cb79-7"><a href="03-R-Base.html#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       7      13       4       0       1</span></span></code></pre></div>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="03-R-Base.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;green&quot;</span>,<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;brown&quot;</span>),</span>
 <span id="cb80-2"><a href="03-R-Base.html#cb80-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Fécondité en Europe en 1988&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;classes&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-76-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-77-1.svg" width="672" /></p>
 </div>
 <div id="boîte-à-moustaches" class="section level3" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Boîte à moustaches</h3>
@@ -843,18 +855,18 @@ On retiendra donc dans l’immédiat que les résultats de l’instruction <code
 <p>La syntaxe de base est la suivante :</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="03-R-Base.html#cb81-1" aria-hidden="true" tabindex="-1"></a>X<span class="ot">&lt;-</span>don<span class="sc">$</span>FEC</span>
 <span id="cb81-2"><a href="03-R-Base.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(X)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-77-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-78-1.svg" width="672" /></p>
 <p>Mais on peut améliorer la figure avec quelques paramètres de plus</p>
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="03-R-Base.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(X,<span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;gray80&quot;</span>,</span>
 <span id="cb82-2"><a href="03-R-Base.html#cb82-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Fécondité des pays européens en 1988&quot;</span>,</span>
 <span id="cb82-3"><a href="03-R-Base.html#cb82-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;nb. enfants par femme&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-78-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-79-1.svg" width="672" /></p>
 <p>Et on peut retirer les valeurs exceptionnelles avec le paramètre <code>outline=FALSE</code></p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="03-R-Base.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(X,<span class="at">horizontal =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;gray80&quot;</span>,</span>
 <span id="cb83-2"><a href="03-R-Base.html#cb83-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Fécondité des pays européens en 1988&quot;</span>,</span>
 <span id="cb83-3"><a href="03-R-Base.html#cb83-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;nb. enfants par femme&quot;</span>,</span>
 <span id="cb83-4"><a href="03-R-Base.html#cb83-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">outline =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-79-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-80-1.svg" width="672" /></p>
 </div>
 <div id="histogramme" class="section level3" number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> Histogramme</h3>
@@ -862,7 +874,7 @@ On retiendra donc dans l’immédiat que les résultats de l’instruction <code
 <p>Comme d’hebitude, on peut appliquer la syntaxe la plus simple :</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="03-R-Base.html#cb84-1" aria-hidden="true" tabindex="-1"></a>X<span class="ot">&lt;-</span>don<span class="sc">$</span>FEC</span>
 <span id="cb84-2"><a href="03-R-Base.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-80-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-81-1.svg" width="672" /></p>
 <p>On peut ensuite améliorer avec l’ajout de titres et un choix précis de classes. Dans le cas de la fécondité, il est par exemple important d’utiliser le seuil de 2.1 enfants par femme qui correspond au renouvellement des générations. On remarque que si les classes sont d’amplitudes inégales R utilise la densité de probabilité (rapport entre effectif et amplitude de la classe) et non plus l’effectif ce qui est statistiquement correct (et que ne fait pas Excel …).</p>
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="03-R-Base.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X, </span>
 <span id="cb85-2"><a href="03-R-Base.html#cb85-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">1.5</span>, <span class="fl">1.8</span>, <span class="fl">2.1</span>, <span class="fl">2.4</span>, <span class="fl">3.3</span>), </span>
@@ -871,7 +883,7 @@ On retiendra donc dans l’immédiat que les résultats de l’instruction <code
 <span id="cb85-5"><a href="03-R-Base.html#cb85-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Densité de probabilité&quot;</span>, </span>
 <span id="cb85-6"><a href="03-R-Base.html#cb85-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Nombre d&#39;enfants par femme&quot;</span>,</span>
 <span id="cb85-7"><a href="03-R-Base.html#cb85-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">3.5</span>))</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-81-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-82-1.svg" width="672" /></p>
 <p>On peut également ajouter une courbe lissée de la distribution avec les fonctions <code>lines() et</code>density()<code>en indiquant la portée du lissage à l'aide du paramètre</code>bw`(<em>band width</em>) qui est exprimé dans l’unité de mesure de X</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="03-R-Base.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(X, </span>
 <span id="cb86-2"><a href="03-R-Base.html#cb86-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">1.5</span>, <span class="fl">1.8</span>, <span class="fl">2.1</span>, <span class="fl">2.4</span>, <span class="fl">3.3</span>),</span>
@@ -881,7 +893,7 @@ On retiendra donc dans l’immédiat que les résultats de l’instruction <code
 <span id="cb86-6"><a href="03-R-Base.html#cb86-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Nombre d&#39;enfants par femme&quot;</span>,</span>
 <span id="cb86-7"><a href="03-R-Base.html#cb86-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">3.5</span>))</span>
 <span id="cb86-8"><a href="03-R-Base.html#cb86-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(X,<span class="at">bw=</span><span class="fl">0.3</span>),<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-82-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-83-1.svg" width="672" /></p>
 </div>
 </div>
 <div id="exploration-iii-2-variables" class="section level2" number="3.4">
@@ -907,7 +919,7 @@ On retiendra donc dans l’immédiat que les résultats de l’instruction <code
 <li>Graphique</li>
 </ul>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="03-R-Base.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tab, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;brown&quot;</span>))</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-84-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-85-1.svg" width="672" /></p>
 <ul>
 <li>Test (Chi-2)</li>
 </ul>
@@ -938,7 +950,7 @@ On retiendra donc dans l’immédiat que les résultats de l’instruction <code
 </ul>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="03-R-Base.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X,Y, <span class="at">xlab=</span><span class="st">&quot;PNB par habitant&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Mortalité infantile&quot;</span>)</span>
 <span id="cb91-2"><a href="03-R-Base.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(X,Y,don<span class="sc">$</span>PAYS,<span class="at">pos =</span> <span class="dv">4</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-87-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-88-1.svg" width="672" /></p>
 <ul>
 <li>Test (Pearson)</li>
 </ul>
@@ -968,7 +980,7 @@ On retiendra donc dans l’immédiat que les résultats de l’instruction <code
 <span id="cb93-6"><a href="03-R-Base.html#cb93-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span><span class="st">&quot;Mortalité infantile&quot;</span>,</span>
 <span id="cb93-7"><a href="03-R-Base.html#cb93-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Bloc politique&quot;</span>,</span>
 <span id="cb93-8"><a href="03-R-Base.html#cb93-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">horizontal=</span>T)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-89-1.svg" width="672" />
+<p><img src="bivaR_files/figure-html/unnamed-chunk-90-1.svg" width="672" />
 - Test (Fischer)</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="03-R-Base.html#cb94-1" aria-hidden="true" tabindex="-1"></a>mod<span class="ot">&lt;-</span><span class="fu">aov</span>(Y<span class="sc">~</span>X)</span>
 <span id="cb94-2"><a href="03-R-Base.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span>
