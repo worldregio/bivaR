@@ -13,6 +13,7 @@ rmd_files: [
   "index.Rmd",
   "01-principes.Rmd",
   "02-initiation.Rmd",
-  "03-R-Base.Rmd"
+  "03-R-Base.Rmd",
+  "04-Corrélation.Rmd"
 ]
 
