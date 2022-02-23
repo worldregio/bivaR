@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Partie 5 Régression | Introduction à la statistique bivariée et aux représentations graphiques avec R</title>
+  <meta name="description" content="Cours dispensé en M1 MECI Option Data" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Partie 5 Régression | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Partie 5 Régression | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  
+  <meta name="twitter:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+<meta name="author" content="Claude Grasland" />
+
+
+<meta name="date" content="2022-02-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="04-Corrélation.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/tidyverse.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">Introduction à la statistique bivariée et aux représentations graphiques avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>À propos de ce document</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#remerciements"><i class="fa fa-check"></i>Remerciements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="01-principes.html"><a href="01-principes.html"><i class="fa fa-check"></i><b>1</b> Premiers pas</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="01-principes.html"><a href="01-principes.html#opérations-arithmétiques"><i class="fa fa-check"></i><b>1.1</b> Opérations arithmétiques</a></li>
+<li class="chapter" data-level="1.2" data-path="01-principes.html"><a href="01-principes.html#les-objets-de-base-valeur-vecteur-matrice"><i class="fa fa-check"></i><b>1.2</b> Les objets de base : valeur, vecteur, matrice</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="01-principes.html"><a href="01-principes.html#eléments"><i class="fa fa-check"></i><b>1.2.1</b> Eléments</a></li>
+<li class="chapter" data-level="1.2.2" data-path="01-principes.html"><a href="01-principes.html#vecteurs-vectors"><i class="fa fa-check"></i><b>1.2.2</b> vecteurs (<em>vectors</em>)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="01-principes.html"><a href="01-principes.html#matrices-matrix"><i class="fa fa-check"></i><b>1.2.3</b> Matrices (<em>matrix</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="01-principes.html"><a href="01-principes.html#ne-pas-confondre-listes-et-vecteurs"><i class="fa fa-check"></i><b>1.3</b> Ne pas confondre listes et vecteurs !</a></li>
+<li class="chapter" data-level="1.4" data-path="01-principes.html"><a href="01-principes.html#attention-aux-types-de-variables"><i class="fa fa-check"></i><b>1.4</b> Attention aux types de variables …</a></li>
+<li class="chapter" data-level="1.5" data-path="01-principes.html"><a href="01-principes.html#types-de-tableaux-et-guerres-de-religion."><i class="fa fa-check"></i><b>1.5</b> Types de tableaux et guerres de religion.</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="01-principes.html"><a href="01-principes.html#le-type-data.frame"><i class="fa fa-check"></i><b>1.5.1</b> Le type <em>data.frame</em> :</a></li>
+<li class="chapter" data-level="1.5.2" data-path="01-principes.html"><a href="01-principes.html#le-type-tibble"><i class="fa fa-check"></i><b>1.5.2</b> Le type <em>tibble</em></a></li>
+<li class="chapter" data-level="1.5.3" data-path="01-principes.html"><a href="01-principes.html#le-type-data.table"><i class="fa fa-check"></i><b>1.5.3</b> Le type <em>data.table</em></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="01-principes.html"><a href="01-principes.html#en-résumé"><i class="fa fa-check"></i><b>1.6</b> En résumé</a></li>
+<li class="chapter" data-level="1.7" data-path="01-principes.html"><a href="01-principes.html#exercices"><i class="fa fa-check"></i><b>1.7</b> Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="02-initiation.html"><a href="02-initiation.html"><i class="fa fa-check"></i><b>2</b> Office killer</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="02-initiation.html"><a href="02-initiation.html#rstudio-et-les-projets-r"><i class="fa fa-check"></i><b>2.1</b> Rstudio et les projets R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="02-initiation.html"><a href="02-initiation.html#lancement-de-r-studio"><i class="fa fa-check"></i><b>2.1.1</b> Lancement de R studio</a></li>
+<li class="chapter" data-level="2.1.2" data-path="02-initiation.html"><a href="02-initiation.html#création-dun-projet"><i class="fa fa-check"></i><b>2.1.2</b> Création d’un projet</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="02-initiation.html"><a href="02-initiation.html#programme-r-excel-killer"><i class="fa fa-check"></i><b>2.2</b> Programme R : Excel killer ?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="02-initiation.html"><a href="02-initiation.html#round-1.-saisie-des-données-et-affichage-du-tableau"><i class="fa fa-check"></i><b>2.2.1</b> Round 1. Saisie des données et affichage du tableau</a></li>
+<li class="chapter" data-level="2.2.2" data-path="02-initiation.html"><a href="02-initiation.html#round-2.-affichage-de-la-carte"><i class="fa fa-check"></i><b>2.2.2</b> Round 2. Affichage de la carte</a></li>
+<li class="chapter" data-level="2.2.3" data-path="02-initiation.html"><a href="02-initiation.html#round-3.-calcul-de-la-station-la-plus-accessible-à-vol-doiseau-distance-euclidienne"><i class="fa fa-check"></i><b>2.2.3</b> Round 3. Calcul de la station la plus accessible à vol d’oiseau (distance euclidienne)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="02-initiation.html"><a href="02-initiation.html#round-4.-calcul-de-la-station-la-plus-accessible-par-la-route-distance-de-manhattan"><i class="fa fa-check"></i><b>2.2.4</b> Round 4. Calcul de la station la plus accessible par la route (distance de Manhattan)</a></li>
+<li class="chapter" data-level="2.2.5" data-path="02-initiation.html"><a href="02-initiation.html#round-5.-localisation-du-dépôt-de-carburant"><i class="fa fa-check"></i><b>2.2.5</b> Round 5. Localisation du dépôt de carburant</a></li>
+<li class="chapter" data-level="2.2.6" data-path="02-initiation.html"><a href="02-initiation.html#round-6.-localisation-de-la-caserne-de-pompiers"><i class="fa fa-check"></i><b>2.2.6</b> Round 6. Localisation de la caserne de pompiers</a></li>
+<li class="chapter" data-level="2.2.7" data-path="02-initiation.html"><a href="02-initiation.html#round-7.-visualisation-des-deux-points-sur-la-carte"><i class="fa fa-check"></i><b>2.2.7</b> Round 7. Visualisation des deux points sur la carte</a></li>
+<li class="chapter" data-level="2.2.8" data-path="02-initiation.html"><a href="02-initiation.html#dernier-round.-refaire-toute-lanalyse-avec-une-station-de-plus"><i class="fa fa-check"></i><b>2.2.8</b> Dernier round. Refaire toute l’analyse avec une station de plus</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="02-initiation.html"><a href="02-initiation.html#document-rmd-word-killer"><i class="fa fa-check"></i><b>2.3</b> Document Rmd : Word killer ?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="02-initiation.html"><a href="02-initiation.html#chargement-des-données"><i class="fa fa-check"></i><b>2.3.1</b> Chargement des données</a></li>
+<li class="chapter" data-level="2.3.2" data-path="02-initiation.html"><a href="02-initiation.html#contour-de-rennes"><i class="fa fa-check"></i><b>2.3.2</b> Contour de Rennes</a></li>
+<li class="chapter" data-level="2.3.3" data-path="02-initiation.html"><a href="02-initiation.html#distribution-de-la-population"><i class="fa fa-check"></i><b>2.3.3</b> Distribution de la population</a></li>
+<li class="chapter" data-level="2.3.4" data-path="02-initiation.html"><a href="02-initiation.html#distribution-des-équipements"><i class="fa fa-check"></i><b>2.3.4</b> Distribution des équipements</a></li>
+<li class="chapter" data-level="2.3.5" data-path="02-initiation.html"><a href="02-initiation.html#synthèse"><i class="fa fa-check"></i><b>2.3.5</b> Synthèse</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="02-initiation.html"><a href="02-initiation.html#diapos-rmd-power-point-killer"><i class="fa fa-check"></i><b>2.4</b> Diapos Rmd : Power Point killer</a></li>
+<li class="chapter" data-level="2.5" data-path="02-initiation.html"><a href="02-initiation.html#en-résumé-1"><i class="fa fa-check"></i><b>2.5</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03-R-Base.html"><a href="03-R-Base.html"><i class="fa fa-check"></i><b>3</b> R-Base</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#tableaux"><i class="fa fa-check"></i><b>3.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="03-R-Base.html"><a href="03-R-Base.html#importation"><i class="fa fa-check"></i><b>3.1.1</b> Importation</a></li>
+<li class="chapter" data-level="3.1.2" data-path="03-R-Base.html"><a href="03-R-Base.html#transformations"><i class="fa fa-check"></i><b>3.1.2</b> Transformations</a></li>
+<li class="chapter" data-level="3.1.3" data-path="03-R-Base.html"><a href="03-R-Base.html#extractions"><i class="fa fa-check"></i><b>3.1.3</b> Extractions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-i-var.-quali."><i class="fa fa-check"></i><b>3.2</b> Exploration I (<em>var. quali.</em>)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="03-R-Base.html"><a href="03-R-Base.html#sélection-et-recodage"><i class="fa fa-check"></i><b>3.2.1</b> Sélection et recodage</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03-R-Base.html"><a href="03-R-Base.html#table-de-dénombrement"><i class="fa fa-check"></i><b>3.2.2</b> Table de dénombrement</a></li>
+<li class="chapter" data-level="3.2.3" data-path="03-R-Base.html"><a href="03-R-Base.html#graphique-avec-plot"><i class="fa fa-check"></i><b>3.2.3</b> Graphique avec plot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-ii-var.-quanti"><i class="fa fa-check"></i><b>3.3</b> Exploration II (<em>var. quanti</em>)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#résumés-numériques"><i class="fa fa-check"></i><b>3.3.1</b> Résumés numériques</a></li>
+<li class="chapter" data-level="3.3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#dénombrement"><i class="fa fa-check"></i><b>3.3.2</b> Dénombrement</a></li>
+<li class="chapter" data-level="3.3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#boîte-à-moustaches"><i class="fa fa-check"></i><b>3.3.3</b> Boîte à moustaches</a></li>
+<li class="chapter" data-level="3.3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#histogramme"><i class="fa fa-check"></i><b>3.3.4</b> Histogramme</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-iii-2-variables"><i class="fa fa-check"></i><b>3.4</b> Exploration III (<em>2 variables</em>)</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-qualitatives"><i class="fa fa-check"></i><b>3.4.1</b> Deux variables qualitatives</a></li>
+<li class="chapter" data-level="3.4.2" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-quantitatives"><i class="fa fa-check"></i><b>3.4.2</b> Deux variables quantitatives</a></li>
+<li class="chapter" data-level="3.4.3" data-path="03-R-Base.html"><a href="03-R-Base.html#une-quantitative-et-une-qualitative"><i class="fa fa-check"></i><b>3.4.3</b> Une quantitative et une qualitative</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="03-R-Base.html"><a href="03-R-Base.html#en-résumé-2"><i class="fa fa-check"></i><b>3.5</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04-Corrélation.html"><a href="04-Corrélation.html"><i class="fa fa-check"></i><b>4</b> Corrélation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#préparation-des-données"><i class="fa fa-check"></i><b>4.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#chargement-du-tableau-principal"><i class="fa fa-check"></i><b>4.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#choix-des-deux-variables-à-analyser"><i class="fa fa-check"></i><b>4.1.2</b> Choix des deux variables à analyser</a></li>
+<li class="chapter" data-level="4.1.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-malin"><i class="fa fa-check"></i><b>4.1.3</b> On est malin …</a></li>
+<li class="chapter" data-level="4.1.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-paresseux"><i class="fa fa-check"></i><b>4.1.4</b> On est paresseux …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exploration-visuelle"><i class="fa fa-check"></i><b>4.2</b> Exploration visuelle</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-avec-plotxy"><i class="fa fa-check"></i><b>4.2.1</b> Visualisation avec plot(X,Y)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#identification-des-points-avec-cor-text"><i class="fa fa-check"></i><b>4.2.2</b> Identification des points avec <strong>cor</strong> + <strong>text(…)</strong></a></li>
+<li class="chapter" data-level="4.2.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#ajout-de-lignes-horizontales-ou-verticales-avec-cor-abline"><i class="fa fa-check"></i><b>4.2.3</b> Ajout de lignes horizontales ou verticales avec <strong>cor()</strong> + <strong>abline(…)</strong></a></li>
+<li class="chapter" data-level="4.2.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#au-delà-de-r-base"><i class="fa fa-check"></i><b>4.2.4</b> Au delà de R-Base …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#coefficients-de-corrélation"><i class="fa fa-check"></i><b>4.3</b> Coefficients de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#définition"><i class="fa fa-check"></i><b>4.3.1</b> Définition</a></li>
+<li class="chapter" data-level="4.3.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor"><i class="fa fa-check"></i><b>4.3.2</b> La fonction <strong>cor()</strong></a></li>
+<li class="chapter" data-level="4.3.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor.test"><i class="fa fa-check"></i><b>4.3.3</b> La fonction cor.test()</a></li>
+<li class="chapter" data-level="4.3.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#en-résumé-intensité-ou-significativité"><i class="fa fa-check"></i><b>4.3.4</b> En résumé : intensité ou significativité ?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4</b> Matrice de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#objectif-de-lanalyse"><i class="fa fa-check"></i><b>4.4.1</b> Objectif de l’analyse</a></li>
+<li class="chapter" data-level="4.4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-des-résultats"><i class="fa fa-check"></i><b>4.4.2</b> Utilisation des résultats</a></li>
+<li class="chapter" data-level="4.4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-dune-matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4.3</b> Visualisation d’une matrice de corrélation</a></li>
+<li class="chapter" data-level="4.4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exemple-création-dun-tableau-quantitatif"><i class="fa fa-check"></i><b>4.4.4</b> Exemple : création d’un tableau quantitatif</a></li>
+<li class="chapter" data-level="4.4.5" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-psych"><i class="fa fa-check"></i><b>4.4.5</b> Utilisation du package psych</a></li>
+<li class="chapter" data-level="4.4.6" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-factominer"><i class="fa fa-check"></i><b>4.4.6</b> Utilisation du package factoMineR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-Régression.html"><a href="05-Régression.html"><i class="fa fa-check"></i><b>5</b> Régression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05-Régression.html"><a href="05-Régression.html#préparation-des-données-1"><i class="fa fa-check"></i><b>5.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="05-Régression.html"><a href="05-Régression.html#chargement-du-tableau-principal-1"><i class="fa fa-check"></i><b>5.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="5.1.2" data-path="05-Régression.html"><a href="05-Régression.html#choix-des-deux-variables-à-analyser-1"><i class="fa fa-check"></i><b>5.1.2</b> Choix des deux variables à analyser</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="05-Régression.html"><a href="05-Régression.html#forme-de-la-relation"><i class="fa fa-check"></i><b>5.2</b> Forme de la relation</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="05-Régression.html"><a href="05-Régression.html#vérification-de-la-normalité-de-x-et-y"><i class="fa fa-check"></i><b>5.2.1</b> Vérification de la normalité de X et Y</a></li>
+<li class="chapter" data-level="5.2.2" data-path="05-Régression.html"><a href="05-Régression.html#visualisation-de-la-forme-de-la-relation"><i class="fa fa-check"></i><b>5.2.2</b> Visualisation de la forme de la relation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="05-Régression.html"><a href="05-Régression.html#analyse-de-la-corrélation"><i class="fa fa-check"></i><b>5.2.3</b> Analyse de la corrélation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="05-Régression.html"><a href="05-Régression.html#ajustement-du-modèle"><i class="fa fa-check"></i><b>5.3</b> Ajustement du modèle</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="05-Régression.html"><a href="05-Régression.html#hypothèses-statistiques"><i class="fa fa-check"></i><b>5.3.1</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="5.3.2" data-path="05-Régression.html"><a href="05-Régression.html#la-fonction-lm"><i class="fa fa-check"></i><b>5.3.2</b> La fonction lm()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostics-du-modèle"><i class="fa fa-check"></i><b>5.4</b> Diagnostics du modèle</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-1-indépendance-des-résidus"><i class="fa fa-check"></i><b>5.4.1</b> Diagnostic 1 : Indépendance des résidus ?</a></li>
+<li class="chapter" data-level="5.4.2" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-2-normalité-des-résidus"><i class="fa fa-check"></i><b>5.4.2</b> Diagnostic 2 : Normalité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.3" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-3-homogénéité-des-résidus"><i class="fa fa-check"></i><b>5.4.3</b> Diagnostic 3 : Homogénéité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-4-absence-de-valeur-exceptionnelles"><i class="fa fa-check"></i><b>5.4.4</b> Diagnostic 4 : Absence de valeur exceptionnelles ?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="05-Régression.html"><a href="05-Régression.html#améliorations-du-modèle"><i class="fa fa-check"></i><b>5.5</b> Améliorations du modèle</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-r2-46"><i class="fa fa-check"></i><b>5.5.1</b> Modèle linéaire (R2 = 46%)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-sans-lalbanie-r2-53"><i class="fa fa-check"></i><b>5.5.2</b> Modèle linéaire sans l’Albanie (R2 = 53%)</a></li>
+<li class="chapter" data-level="5.5.3" data-path="05-Régression.html"><a href="05-Régression.html#modèle-exponentiel-r2-63"><i class="fa fa-check"></i><b>5.5.3</b> Modèle exponentiel (R2 = 63%)</a></li>
+<li class="chapter" data-level="5.5.4" data-path="05-Régression.html"><a href="05-Régression.html#modèle-puissance-r2-83"><i class="fa fa-check"></i><b>5.5.4</b> Modèle puissance (R2 = 83%)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction à la statistique bivariée et aux représentations graphiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="régression" class="section level1" number="5">
+<h1><span class="header-section-number">Partie 5</span> Régression</h1>
+<p><img src="resources/figures/chap5_intro.jpg" width="250" /></p>
+<ul>
+<li><strong>Mise en place</strong> : Télécharger le <a href="https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo5.zip">dossier exo5</a> et décompressez le sur votre ordinateur. Puis ouvrez le projet R <code>exo5.Rproj</code> dans Rstudio.</li>
+</ul>
+<div id="préparation-des-données-1" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Préparation des données</h2>
+<div id="chargement-du-tableau-principal-1" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Chargement du tableau principal</h3>
+<p>On charge notre bon vieux fichier des pays européens en 1988</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="05-Régression.html#cb121-1" aria-hidden="true" tabindex="-1"></a>don<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/europe88/euro1988.csv&quot;</span>,</span>
+<span id="cb121-2"><a href="05-Régression.html#cb121-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>,</span>
+<span id="cb121-3"><a href="05-Régression.html#cb121-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">header =</span> T)</span>
+<span id="cb121-4"><a href="05-Régression.html#cb121-4" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>BLOC<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>BLOC)</span>
+<span id="cb121-5"><a href="05-Régression.html#cb121-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>BLOC)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Capitaliste&quot;</span>,<span class="st">&quot;Socialiste&quot;</span>)</span>
+<span id="cb121-6"><a href="05-Régression.html#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(don)</span>
+<span id="cb121-7"><a href="05-Régression.html#cb121-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   PAYS        BLOC   PNB  TMI ESP URB NAT MOR FEC JEU VIE SUP  POP       X</span></span>
+<span id="cb121-8"><a href="05-Régression.html#cb121-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  ALB  Socialiste   600 43.0  71  34  27   6 3.3  35   5  29  3.1 4825115</span></span>
+<span id="cb121-9"><a href="05-Régression.html#cb121-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  AUT Capitaliste 10000 10.3  75  55  12  12 1.4  18  14  84  7.6 4299715</span></span>
+<span id="cb121-10"><a href="05-Régression.html#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  BEL Capitaliste  9200  9.7  75  95  12  11 1.5  19  14  31  9.9 3636312</span></span>
+<span id="cb121-11"><a href="05-Régression.html#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  BGR  Socialiste  2000 14.5  72  65  13  11 2.0  21  11 111  9.0 5206070</span></span>
+<span id="cb121-12"><a href="05-Régression.html#cb121-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  CHE Capitaliste 17800  6.8  77  61  12   9 1.5  17  14  41  6.6 3869378</span></span>
+<span id="cb121-13"><a href="05-Régression.html#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  CSK  Socialiste  3200 13.9  71  74  14  12 2.0  24  11 128 15.6 4487005</span></span>
+<span id="cb121-14"><a href="05-Régression.html#cb121-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         Y</span></span>
+<span id="cb121-15"><a href="05-Régression.html#cb121-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 1684833</span></span>
+<span id="cb121-16"><a href="05-Régression.html#cb121-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 2335579</span></span>
+<span id="cb121-17"><a href="05-Régression.html#cb121-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 2667243</span></span>
+<span id="cb121-18"><a href="05-Régression.html#cb121-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 1930219</span></span>
+<span id="cb121-19"><a href="05-Régression.html#cb121-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 2243130</span></span>
+<span id="cb121-20"><a href="05-Régression.html#cb121-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 2540281</span></span></code></pre></div>
+</div>
+<div id="choix-des-deux-variables-à-analyser-1" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Choix des deux variables à analyser</h3>
+<p>En dehors de BLOC et PAYS, on ne garde que les deux variables PNB et TMI que l’on renomme X et Y avec <strong>colnames()</strong> et que l’on convertit en type numérique général. Il suffira par la suite de modifier le choix des variables X et Y pour faire d’autres analyses.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="05-Régression.html#cb122-1" aria-hidden="true" tabindex="-1"></a>eur<span class="ot">&lt;-</span>don[,<span class="fu">c</span>(<span class="st">&quot;PAYS&quot;</span>,<span class="st">&quot;BLOC&quot;</span>,<span class="st">&quot;PNB&quot;</span>,<span class="st">&quot;TMI&quot;</span>)]</span>
+<span id="cb122-2"><a href="05-Régression.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(eur)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;PAYS&quot;</span>,<span class="st">&quot;BLOC&quot;</span>,<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>)</span>
+<span id="cb122-3"><a href="05-Régression.html#cb122-3" aria-hidden="true" tabindex="-1"></a>eur<span class="sc">$</span>X<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(eur<span class="sc">$</span>X)</span>
+<span id="cb122-4"><a href="05-Régression.html#cb122-4" aria-hidden="true" tabindex="-1"></a>eur<span class="sc">$</span>Y<span class="ot">&lt;-</span><span class="fu">as.numeric</span>(eur<span class="sc">$</span>Y)</span>
+<span id="cb122-5"><a href="05-Régression.html#cb122-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(eur)</span>
+<span id="cb122-6"><a href="05-Régression.html#cb122-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   PAYS        BLOC     X    Y</span></span>
+<span id="cb122-7"><a href="05-Régression.html#cb122-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  ALB  Socialiste   600 43.0</span></span>
+<span id="cb122-8"><a href="05-Régression.html#cb122-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  AUT Capitaliste 10000 10.3</span></span>
+<span id="cb122-9"><a href="05-Régression.html#cb122-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  BEL Capitaliste  9200  9.7</span></span>
+<span id="cb122-10"><a href="05-Régression.html#cb122-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  BGR  Socialiste  2000 14.5</span></span>
+<span id="cb122-11"><a href="05-Régression.html#cb122-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  CHE Capitaliste 17800  6.8</span></span>
+<span id="cb122-12"><a href="05-Régression.html#cb122-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  CSK  Socialiste  3200 13.9</span></span></code></pre></div>
+<p>On prépare les titres</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="05-Régression.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pour la version française</span></span>
+<span id="cb123-2"><a href="05-Régression.html#cb123-2" aria-hidden="true" tabindex="-1"></a>titre <span class="ot">&lt;-</span> <span class="st">&quot;Les pays européens en 1988&quot;</span></span>
+<span id="cb123-3"><a href="05-Régression.html#cb123-3" aria-hidden="true" tabindex="-1"></a>nomX <span class="ot">&lt;-</span> <span class="st">&quot;Produit National brut ($/hab)&quot;</span></span>
+<span id="cb123-4"><a href="05-Régression.html#cb123-4" aria-hidden="true" tabindex="-1"></a>nomY <span class="ot">&lt;-</span> <span class="st">&quot;Taux de mortalité infantile en p. 1000&quot;</span></span>
+<span id="cb123-5"><a href="05-Régression.html#cb123-5" aria-hidden="true" tabindex="-1"></a>auteur <span class="ot">&lt;-</span> <span class="st">&quot;Claude Grasland, Université Paris Diderot, 2020&quot;</span></span></code></pre></div>
+<p>Comme on prévoit qu’il y aura des différences entre pays socialistes et capitalistes, on crée deux sous-tableaux</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="05-Régression.html#cb124-1" aria-hidden="true" tabindex="-1"></a>eur_soc<span class="ot">&lt;-</span>eur[eur<span class="sc">$</span>BLOC<span class="sc">==</span><span class="st">&quot;Socialiste&quot;</span>,]</span>
+<span id="cb124-2"><a href="05-Régression.html#cb124-2" aria-hidden="true" tabindex="-1"></a>eur_cap<span class="ot">&lt;-</span>eur[eur<span class="sc">$</span>BLOC<span class="sc">==</span><span class="st">&quot;Capitaliste&quot;</span>,]</span></code></pre></div>
+</div>
+</div>
+<div id="forme-de-la-relation" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Forme de la relation</h2>
+<div id="vérification-de-la-normalité-de-x-et-y" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Vérification de la normalité de X et Y</h3>
+<p>La régression linéaire met en relation deux variables quantitatives X et Y dont on suppose que la distribution est <strong>normale (gaussienne)</strong> , c’est-à-dire unimodale et symérique.</p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-135-1.svg" width="672" /></p>
+<p>On peut tester la normalité des disributions par inspection visuelle à l’aide de <strong>hist()</strong></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-136-1.svg" width="672" /></p>
+<p>Les fonctions <strong>qqnorm()</strong> et <strong>qqline()</strong> sont plus précises …</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="05-Régression.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(eur<span class="sc">$</span>X, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">ylab=</span>nomX)</span>
+<span id="cb125-2"><a href="05-Régression.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(eur<span class="sc">$</span>X,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-137-1.svg" width="672" /></p>
+<p>Les fonctions <strong>qqnorm()</strong> et <strong>qqline()</strong> sont plus précises …</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="05-Régression.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(eur<span class="sc">$</span>Y, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">ylab=</span>nomY)</span>
+<span id="cb126-2"><a href="05-Régression.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(eur<span class="sc">$</span>Y,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-138-1.svg" width="672" /></p>
+<p>Mais la solution la plus précise est le <strong>test de Shapiro</strong> qui pose l’hypothèse H0 : la distribution est normale.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="05-Régression.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(eur<span class="sc">$</span>X)</span>
+<span id="cb127-2"><a href="05-Régression.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb127-3"><a href="05-Régression.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Shapiro-Wilk normality test</span></span>
+<span id="cb127-4"><a href="05-Régression.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb127-5"><a href="05-Régression.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  eur$X</span></span>
+<span id="cb127-6"><a href="05-Régression.html#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; W = 0.9175, p-value = 0.04495</span></span>
+<span id="cb127-7"><a href="05-Régression.html#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(eur<span class="sc">$</span>Y)</span>
+<span id="cb127-8"><a href="05-Régression.html#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb127-9"><a href="05-Régression.html#cb127-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Shapiro-Wilk normality test</span></span>
+<span id="cb127-10"><a href="05-Régression.html#cb127-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb127-11"><a href="05-Régression.html#cb127-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  eur$Y</span></span>
+<span id="cb127-12"><a href="05-Régression.html#cb127-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; W = 0.72466, p-value = 1.594e-05</span></span></code></pre></div>
+</div>
+<div id="visualisation-de-la-forme-de-la-relation" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Visualisation de la forme de la relation</h3>
+<p>On peut faire un simple plot(X,Y). Mais on peut aussi créer pour cela une <strong>fonction personalisée</strong> adapté à ses préférences</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="05-Régression.html#cb128-1" aria-hidden="true" tabindex="-1"></a>monplot <span class="ot">&lt;-</span> <span class="cf">function</span> (varX , varY,  varN )</span>
+<span id="cb128-2"><a href="05-Régression.html#cb128-2" aria-hidden="true" tabindex="-1"></a>{ </span>
+<span id="cb128-3"><a href="05-Régression.html#cb128-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(varX,varY,</span>
+<span id="cb128-4"><a href="05-Régression.html#cb128-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> titre,      <span class="co"># titre</span></span>
+<span id="cb128-5"><a href="05-Régression.html#cb128-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main =</span> <span class="dv">1</span>,      <span class="co"># police du titre</span></span>
+<span id="cb128-6"><a href="05-Régression.html#cb128-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.6</span>,         <span class="co"># taille des symboles</span></span>
+<span id="cb128-7"><a href="05-Régression.html#cb128-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,          <span class="co"># cercles pleins</span></span>
+<span id="cb128-8"><a href="05-Régression.html#cb128-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)      <span class="co"># couleur des symboles</span></span>
+<span id="cb128-9"><a href="05-Régression.html#cb128-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">text</span>(varX,varY,varN,<span class="at">cex=</span><span class="fl">0.5</span>,<span class="at">pos=</span><span class="dv">3</span>) <span class="co"># nom des élément</span></span>
+<span id="cb128-10"><a href="05-Régression.html#cb128-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(varX),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">1</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>) <span class="co"># moyenne X</span></span>
+<span id="cb128-11"><a href="05-Régression.html#cb128-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(varY),<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">1</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>) <span class="co"># moyenne Y   </span></span>
+<span id="cb128-12"><a href="05-Régression.html#cb128-12" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<p>Je peux désormais utiliser ma fonction <strong>monplot()</strong> !</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="05-Régression.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">monplot</span>(<span class="at">varX =</span> eur<span class="sc">$</span>X,<span class="at">varY =</span> eur<span class="sc">$</span>Y, <span class="at">varN =</span> eur<span class="sc">$</span>PAYS)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-141-1.svg" width="672" /></p>
+<p>Je peux décider de ne pas afficher le label des points.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="05-Régression.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">monplot</span>(<span class="at">varX =</span> eur<span class="sc">$</span>X,<span class="at">varY =</span> eur<span class="sc">$</span>Y, <span class="at">varN =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-142-1.svg" width="672" /></p>
+</div>
+<div id="analyse-de-la-corrélation" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Analyse de la corrélation</h3>
+<p>Je commence par celuler le coefficient de corrélation linéaire (r) et le pouvoir explicatif de X par rapport à Y (r2)</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="05-Régression.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(eur<span class="sc">$</span>X,eur<span class="sc">$</span>Y)       <span class="co"># coefficient de corrélation (r)</span></span>
+<span id="cb131-2"><a href="05-Régression.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] -0.6584308</span></span>
+<span id="cb131-3"><a href="05-Régression.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="sc">*</span><span class="fu">cor</span>(eur<span class="sc">$</span>X,eur<span class="sc">$</span>Y)<span class="sc">**</span><span class="dv">2</span>    <span class="co"># pouvoir explicatif (r2)</span></span>
+<span id="cb131-4"><a href="05-Régression.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 43.35312</span></span></code></pre></div>
+<p>Puis, je teste la significativité de la corrélation linéaire …</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="05-Régression.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(eur<span class="sc">$</span>X,eur<span class="sc">$</span>Y)  <span class="co"># test de significativité (p-value)</span></span>
+<span id="cb132-2"><a href="05-Régression.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb132-3"><a href="05-Régression.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Pearson&#39;s product-moment correlation</span></span>
+<span id="cb132-4"><a href="05-Régression.html#cb132-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb132-5"><a href="05-Régression.html#cb132-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  eur$X and eur$Y</span></span>
+<span id="cb132-6"><a href="05-Régression.html#cb132-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = -4.1955, df = 23, p-value = 0.0003459</span></span>
+<span id="cb132-7"><a href="05-Régression.html#cb132-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true correlation is not equal to 0</span></span>
+<span id="cb132-8"><a href="05-Régression.html#cb132-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb132-9"><a href="05-Régression.html#cb132-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -0.8360497 -0.3558907</span></span>
+<span id="cb132-10"><a href="05-Régression.html#cb132-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb132-11"><a href="05-Régression.html#cb132-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        cor </span></span>
+<span id="cb132-12"><a href="05-Régression.html#cb132-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -0.6584308</span></span></code></pre></div>
+<p>… et je la compare à celle du coefficient de corrélation de rang de Spearman</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="05-Régression.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(eur<span class="sc">$</span>X,eur<span class="sc">$</span>Y, <span class="at">method=</span><span class="st">&quot;spearman&quot;</span>)  <span class="co"># test de significativité (p-value)</span></span>
+<span id="cb133-2"><a href="05-Régression.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in cor.test.default(eur$X, eur$Y, method = &quot;spearman&quot;): Cannot compute</span></span>
+<span id="cb133-3"><a href="05-Régression.html#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; exact p-value with ties</span></span>
+<span id="cb133-4"><a href="05-Régression.html#cb133-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb133-5"><a href="05-Régression.html#cb133-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Spearman&#39;s rank correlation rho</span></span>
+<span id="cb133-6"><a href="05-Régression.html#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb133-7"><a href="05-Régression.html#cb133-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  eur$X and eur$Y</span></span>
+<span id="cb133-8"><a href="05-Régression.html#cb133-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; S = 4796.3, p-value = 1.094e-07</span></span>
+<span id="cb133-9"><a href="05-Régression.html#cb133-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true rho is not equal to 0</span></span>
+<span id="cb133-10"><a href="05-Régression.html#cb133-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb133-11"><a href="05-Régression.html#cb133-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        rho </span></span>
+<span id="cb133-12"><a href="05-Régression.html#cb133-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -0.8447182</span></span></code></pre></div>
+<p>On peut conclure des analyses précédentes que :</p>
+<ul>
+<li>il existe une relation <strong>significative</strong> (p-value &lt; 0.05)</li>
+<li>cette relation est <strong>positive</strong> (r &gt; 0 )</li>
+<li>cette relation a un <strong>pouvoir explicatif moyen</strong> (r2 = 45%)</li>
+</ul>
+<p><strong>Mais …</strong></p>
+<ul>
+<li>la relation est <strong>monotone mais non linéaire</strong> car le coefficient de Spearman (-0.90) est beaucoup plus fort que le coefficient de Pearson (-0.68) et également plus significatif</li>
+</ul>
+</div>
+</div>
+<div id="ajustement-du-modèle" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Ajustement du modèle</h2>
+<div id="hypothèses-statistiques" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Hypothèses statistiques</h3>
+<p><strong>Conditions a priori</strong></p>
+<ol style="list-style-type: decimal">
+<li>X et Y sont deux variables normales (gaussienne)</li>
+<li>il existe une corrélation significative entre X et Y (p&lt; 0.05)</li>
+<li>X explique une part suffisamment forte de Y (r2 &gt; 20% )</li>
+<li>Le nuage de point affiche une forme linéaire</li>
+<li>les points sont répartis de façon régulière le long du nuage de points</li>
+<li>Il n’y a pas de valeurs exceptionnelles susceptibles de perturber le calcul.</li>
+</ol>
+<p>On charge le package <strong>car</strong> (companion to applied regession).</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="05-Régression.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
+<p><strong>Méthode des moindres carrés ordinaire (MCO)</strong></p>
+<ul>
+<li><p>La droite <span class="math inline">\(y_i = a.x_i + b + \epsilon_i\)</span> qui minimise la somme des carrés des écarts entre les valeurs observées <span class="math inline">\(y_i\)</span> et les valeurs estimées <span class="math inline">\(\hat{y_i}\)</span> a pour équation :</p></li>
+<li><p><span class="math inline">\(COV(X,Y) = \sum_{i=1}^k \sum_{j=1}^k (x_{i}-\bar{x})^2.(y_{i}-\bar{y})^2\)</span></p></li>
+<li><p><span class="math inline">\(a = COV(X,Y) / (\sigma_X)^2\)</span></p></li>
+<li><p><span class="math inline">\(b = \bar{y} - a.\bar{x}\)</span></p></li>
+</ul>
+<p><strong>Analyse de la variance</strong></p>
+<ul>
+<li><p>La <strong>somme des carré des écarts totale</strong> (<span class="math inline">\(SCE_{tot}\)</span>) correspond à la variance de la variable à expliquer :
+<span class="math inline">\(SCE_{tot} = \sum_{i=1}^k (y_{i}-\bar{y})^2\)</span></p></li>
+<li><p>La <strong>somme des carré des écarts résiduels</strong> (<span class="math inline">\(SCE_{err}\)</span>) correspond à la somme des carrés des différences entre valeurs observées et estimées
+<span class="math inline">\(SCE_{error} = \sum_{i=1}^k (y_{i}-\hat{y})^2\)</span></p></li>
+<li><p>Le <strong>pouvoir explicatif</strong> d’un modèle de régression correspond à la part de la variance de Y expliquée par X.</p></li>
+<li><p><span class="math inline">\(Var. expliquée = (SCE_{tot}-SCE_{res}) / SCE_{tot} = r(X,Y)^{2}\)</span></p></li>
+</ul>
+<p><strong>Vérifications a posteriori</strong></p>
+<p>Un modèle de régression n’est valide que si les résidus de ce modèle <span class="math inline">\(\epsilon_i = (y_i - \hat{y}_i)\)</span> remplissent les conditions suivantes :</p>
+<ol style="list-style-type: decimal">
+<li><strong>Normalité</strong> de la distribution des résidus</li>
+<li>Absence d’<strong>autocorrélation</strong> des résidus</li>
+<li><strong>Homogénéité</strong> de la variance des résidus</li>
+<li>Absence de valeur à fort <strong>effet de levier</strong></li>
+</ol>
+<p>Si ces quatre conditions ne sont pas remplies, les estimations de Y en fonction de X seront entâchées d’erreur et leur intervalle de confiance ne sera pas valable.</p>
+</div>
+<div id="la-fonction-lm" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> La fonction lm()</h3>
+<p>La fonction <strong>lm()</strong> ou lm est l’abbréviation de <strong>linear model</strong> permet d’effectuer la plupart des modèles de régression linéaire basés sur la méthode des moindres carrés ordinaire. Sa syntaxe est a priori très simple et renvoie les coefficients b et a du modèle de régression.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="05-Régression.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(eur<span class="sc">$</span>Y<span class="sc">~</span>eur<span class="sc">$</span>X)</span>
+<span id="cb135-2"><a href="05-Régression.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb135-3"><a href="05-Régression.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb135-4"><a href="05-Régression.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; lm(formula = eur$Y ~ eur$X)</span></span>
+<span id="cb135-5"><a href="05-Régression.html#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb135-6"><a href="05-Régression.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb135-7"><a href="05-Régression.html#cb135-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (Intercept)        eur$X  </span></span>
+<span id="cb135-8"><a href="05-Régression.html#cb135-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   20.890709    -0.001042</span></span></code></pre></div>
+<p>Mais en réalité lm() crée <strong>une liste de résultats</strong> que l’on a intérêt à stocker pour en examiner les composantes une à une.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="05-Régression.html#cb136-1" aria-hidden="true" tabindex="-1"></a>monmodel<span class="ot">&lt;-</span><span class="fu">lm</span>(eur<span class="sc">$</span>Y<span class="sc">~</span>eur<span class="sc">$</span>X)</span>
+<span id="cb136-2"><a href="05-Régression.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(monmodel)</span>
+<span id="cb136-3"><a href="05-Régression.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 12</span></span>
+<span id="cb136-4"><a href="05-Régression.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ coefficients : Named num [1:2] 20.89071 -0.00104</span></span>
+<span id="cb136-5"><a href="05-Régression.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;(Intercept)&quot; &quot;eur$X&quot;</span></span>
+<span id="cb136-6"><a href="05-Régression.html#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ residuals    : Named num [1:25] 22.73 -0.17 -1.6 -4.31 4.46 ...</span></span>
+<span id="cb136-7"><a href="05-Régression.html#cb136-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:25] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb136-8"><a href="05-Régression.html#cb136-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ effects      : Named num [1:25] -64.96 26.96 -5.02 -8.69 2.2 ...</span></span>
+<span id="cb136-9"><a href="05-Régression.html#cb136-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:25] &quot;(Intercept)&quot; &quot;eur$X&quot; &quot;&quot; &quot;&quot; ...</span></span>
+<span id="cb136-10"><a href="05-Régression.html#cb136-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ rank         : int 2</span></span>
+<span id="cb136-11"><a href="05-Régression.html#cb136-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ fitted.values: Named num [1:25] 20.27 10.47 11.3 18.81 2.34 ...</span></span>
+<span id="cb136-12"><a href="05-Régression.html#cb136-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:25] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb136-13"><a href="05-Régression.html#cb136-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ assign       : int [1:2] 0 1</span></span>
+<span id="cb136-14"><a href="05-Régression.html#cb136-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ qr           :List of 5</span></span>
+<span id="cb136-15"><a href="05-Régression.html#cb136-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ qr   : num [1:25, 1:2] -5 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 ...</span></span>
+<span id="cb136-16"><a href="05-Régression.html#cb136-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;dimnames&quot;)=List of 2</span></span>
+<span id="cb136-17"><a href="05-Régression.html#cb136-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..$ : chr [1:25] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb136-18"><a href="05-Régression.html#cb136-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..$ : chr [1:2] &quot;(Intercept)&quot; &quot;eur$X&quot;</span></span>
+<span id="cb136-19"><a href="05-Régression.html#cb136-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;assign&quot;)= int [1:2] 0 1</span></span>
+<span id="cb136-20"><a href="05-Régression.html#cb136-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ qraux: num [1:2] 1.2 1.14</span></span>
+<span id="cb136-21"><a href="05-Régression.html#cb136-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ pivot: int [1:2] 1 2</span></span>
+<span id="cb136-22"><a href="05-Régression.html#cb136-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ tol  : num 1e-07</span></span>
+<span id="cb136-23"><a href="05-Régression.html#cb136-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ rank : int 2</span></span>
+<span id="cb136-24"><a href="05-Régression.html#cb136-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;class&quot;)= chr &quot;qr&quot;</span></span>
+<span id="cb136-25"><a href="05-Régression.html#cb136-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ df.residual  : int 23</span></span>
+<span id="cb136-26"><a href="05-Régression.html#cb136-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ xlevels      : Named list()</span></span>
+<span id="cb136-27"><a href="05-Régression.html#cb136-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ call         : language lm(formula = eur$Y ~ eur$X)</span></span>
+<span id="cb136-28"><a href="05-Régression.html#cb136-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ terms        :Classes &#39;terms&#39;, &#39;formula&#39;  language eur$Y ~ eur$X</span></span>
+<span id="cb136-29"><a href="05-Régression.html#cb136-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;variables&quot;)= language list(eur$Y, eur$X)</span></span>
+<span id="cb136-30"><a href="05-Régression.html#cb136-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1</span></span>
+<span id="cb136-31"><a href="05-Régression.html#cb136-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2</span></span>
+<span id="cb136-32"><a href="05-Régression.html#cb136-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. .. ..$ : chr [1:2] &quot;eur$Y&quot; &quot;eur$X&quot;</span></span>
+<span id="cb136-33"><a href="05-Régression.html#cb136-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. .. ..$ : chr &quot;eur$X&quot;</span></span>
+<span id="cb136-34"><a href="05-Régression.html#cb136-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;eur$X&quot;</span></span>
+<span id="cb136-35"><a href="05-Régression.html#cb136-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;order&quot;)= int 1</span></span>
+<span id="cb136-36"><a href="05-Régression.html#cb136-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;intercept&quot;)= int 1</span></span>
+<span id="cb136-37"><a href="05-Régression.html#cb136-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;response&quot;)= int 1</span></span>
+<span id="cb136-38"><a href="05-Régression.html#cb136-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; </span></span>
+<span id="cb136-39"><a href="05-Régression.html#cb136-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;predvars&quot;)= language list(eur$Y, eur$X)</span></span>
+<span id="cb136-40"><a href="05-Régression.html#cb136-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;</span></span>
+<span id="cb136-41"><a href="05-Régression.html#cb136-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;eur$Y&quot; &quot;eur$X&quot;</span></span>
+<span id="cb136-42"><a href="05-Régression.html#cb136-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ model        :&#39;data.frame&#39;:   25 obs. of  2 variables:</span></span>
+<span id="cb136-43"><a href="05-Régression.html#cb136-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ eur$Y: num [1:25] 43 10.3 9.7 14.5 6.8 13.9 9.2 8.6 8.4 9 ...</span></span>
+<span id="cb136-44"><a href="05-Régression.html#cb136-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ eur$X: num [1:25] 600 10000 9200 2000 17800 3200 3700 12000 12600 4800 ...</span></span>
+<span id="cb136-45"><a href="05-Régression.html#cb136-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39;  language eur$Y ~ eur$X</span></span>
+<span id="cb136-46"><a href="05-Régression.html#cb136-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;variables&quot;)= language list(eur$Y, eur$X)</span></span>
+<span id="cb136-47"><a href="05-Régression.html#cb136-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;factors&quot;)= int [1:2, 1] 0 1</span></span>
+<span id="cb136-48"><a href="05-Régression.html#cb136-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2</span></span>
+<span id="cb136-49"><a href="05-Régression.html#cb136-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. .. .. ..$ : chr [1:2] &quot;eur$Y&quot; &quot;eur$X&quot;</span></span>
+<span id="cb136-50"><a href="05-Régression.html#cb136-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. .. .. ..$ : chr &quot;eur$X&quot;</span></span>
+<span id="cb136-51"><a href="05-Régression.html#cb136-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;term.labels&quot;)= chr &quot;eur$X&quot;</span></span>
+<span id="cb136-52"><a href="05-Régression.html#cb136-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;order&quot;)= int 1</span></span>
+<span id="cb136-53"><a href="05-Régression.html#cb136-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;intercept&quot;)= int 1</span></span>
+<span id="cb136-54"><a href="05-Régression.html#cb136-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;response&quot;)= int 1</span></span>
+<span id="cb136-55"><a href="05-Régression.html#cb136-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; </span></span>
+<span id="cb136-56"><a href="05-Régression.html#cb136-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;predvars&quot;)= language list(eur$Y, eur$X)</span></span>
+<span id="cb136-57"><a href="05-Régression.html#cb136-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:2] &quot;numeric&quot; &quot;numeric&quot;</span></span>
+<span id="cb136-58"><a href="05-Régression.html#cb136-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;eur$Y&quot; &quot;eur$X&quot;</span></span>
+<span id="cb136-59"><a href="05-Régression.html#cb136-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;class&quot;)= chr &quot;lm&quot;</span></span></code></pre></div>
+<p>Un résumé des résultats principaux est fourni avec <strong>summary()</strong> appliqué à l’objet créé par lm().</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="05-Régression.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(monmodel)</span></code></pre></div>
+<p>On obtient ainsi :</p>
+<ul>
+<li>l’équation de la droite Y = a.X+b</li>
+<li>la significativité et l’intervalle de confiance de a et b</li>
+<li>le pouvoir explicatif du modèle <span class="math inline">\(r(X,Y)^2\)</span></li>
+</ul>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = eur$Y ~ eur$X)
+#&gt; 
+#&gt; Residuals:
+#&gt;     Min      1Q  Median      3Q     Max 
+#&gt; -7.8351 -2.7982 -1.6039  0.6391 22.7345 
+#&gt; 
+#&gt; Coefficients:
+#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    
+#&gt; (Intercept) 20.8907087  2.2796125   9.164 3.86e-09 ***
+#&gt; eur$X       -0.0010420  0.0002484  -4.196 0.000346 ***
+#&gt; ---
+#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+#&gt; 
+#&gt; Residual standard error: 6.427 on 23 degrees of freedom
+#&gt; Multiple R-squared:  0.4335, Adjusted R-squared:  0.4089 
+#&gt; F-statistic:  17.6 on 1 and 23 DF,  p-value: 0.0003459</code></pre>
+<p>On peut également analyser plus en détail la variance en appliquant <strong>anova()</strong> à l’objet créé par lm() ce qui monte la quantité de variance expliquée par X et la quantité de variance résiduelle. Le test de Fisher (Pr&gt;F) détermine si le modèle est significatif et renvoie la même valeur que la p-value du coeff. de corrélation.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="05-Régression.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(monmodel)</span>
+<span id="cb139-2"><a href="05-Régression.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Analysis of Variance Table</span></span>
+<span id="cb139-3"><a href="05-Régression.html#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb139-4"><a href="05-Régression.html#cb139-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Response: eur$Y</span></span>
+<span id="cb139-5"><a href="05-Régression.html#cb139-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           Df Sum Sq Mean Sq F value    Pr(&gt;F)    </span></span>
+<span id="cb139-6"><a href="05-Régression.html#cb139-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; eur$X      1 727.09  727.09  17.602 0.0003459 ***</span></span>
+<span id="cb139-7"><a href="05-Régression.html#cb139-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Residuals 23 950.05   41.31                      </span></span>
+<span id="cb139-8"><a href="05-Régression.html#cb139-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb139-9"><a href="05-Régression.html#cb139-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span></code></pre></div>
+<p>On peut extraire de l’objet créé par lm() les <strong>valeurs estimées</strong> de Y et les <strong>résidus</strong> c’est-à-dire les erreurs d’estimation.</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="05-Régression.html#cb140-1" aria-hidden="true" tabindex="-1"></a>eur<span class="sc">$</span>Y_estim<span class="ot">&lt;-</span>monmodel<span class="sc">$</span>fitted.values</span>
+<span id="cb140-2"><a href="05-Régression.html#cb140-2" aria-hidden="true" tabindex="-1"></a>eur<span class="sc">$</span>Y_resid<span class="ot">&lt;-</span>monmodel<span class="sc">$</span>residuals</span>
+<span id="cb140-3"><a href="05-Régression.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(eur)</span>
+<span id="cb140-4"><a href="05-Régression.html#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   PAYS        BLOC     X    Y  Y_estim    Y_resid</span></span>
+<span id="cb140-5"><a href="05-Régression.html#cb140-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  ALB  Socialiste   600 43.0 20.26548 22.7345189</span></span>
+<span id="cb140-6"><a href="05-Régression.html#cb140-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  AUT Capitaliste 10000 10.3 10.47025 -0.1702487</span></span>
+<span id="cb140-7"><a href="05-Régression.html#cb140-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  BEL Capitaliste  9200  9.7 11.30389 -1.6038855</span></span>
+<span id="cb140-8"><a href="05-Régression.html#cb140-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  BGR  Socialiste  2000 14.5 18.80662 -4.3066167</span></span>
+<span id="cb140-9"><a href="05-Régression.html#cb140-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  CHE Capitaliste 17800  6.8  2.34229  4.4577101</span></span>
+<span id="cb140-10"><a href="05-Régression.html#cb140-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  CSK  Socialiste  3200 13.9 17.55616 -3.6561615</span></span></code></pre></div>
+<p>On peut tracer la droite de régression avec <strong>abline()</strong></p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="05-Régression.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">monplot</span>(eur<span class="sc">$</span>X,eur<span class="sc">$</span>Y,eur<span class="sc">$</span>PAYS)</span>
+<span id="cb141-2"><a href="05-Régression.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(monmodel, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-153-1.svg" width="672" /></p>
+<p>On peut enfin analyser a posteriori la qualité de la régression avec <strong>plot()</strong>.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="05-Régression.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb142-2"><a href="05-Régression.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(monmodel,<span class="at">labels.id =</span> eur<span class="sc">$</span>PAYS)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-154-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="diagnostics-du-modèle" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Diagnostics du modèle</h2>
+<div id="diagnostic-1-indépendance-des-résidus" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Diagnostic 1 : Indépendance des résidus ?</h3>
+<p>L’objectif est de savoir si les résidus se répartissent régulièrement de part et d’autre de la droite de régression tout au long de celle-ci. Si c’est bien le cas le graphique residuals Vs Fitted généré par <strong>plot(monmodel,1)</strong> devrait donner une droite horizontale :</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="05-Régression.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(monmodel,<span class="dv">1</span>,<span class="at">labels.id =</span> eur<span class="sc">$</span>PAYS)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-155-1.svg" width="672" /></p>
+<p>On peut tester statistiquement l’indépendance des résidus à l’aide du <strong>test de Durbin-Watson</strong> qui mesure si deux valeurs successives ont des résidus proches. L’indépendance des résidus est rejetée si p-value &lt; 0.05</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="05-Régression.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">durbinWatsonTest</span>(monmodel)</span>
+<span id="cb144-2"><a href="05-Régression.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  lag Autocorrelation D-W Statistic p-value</span></span>
+<span id="cb144-3"><a href="05-Régression.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    1     -0.03883526      1.455678   0.204</span></span>
+<span id="cb144-4"><a href="05-Régression.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Alternative hypothesis: rho != 0</span></span></code></pre></div>
+<p>Ici on trouve p-value &gt; 0.05 donc les résidus sont indépendants.</p>
+</div>
+<div id="diagnostic-2-normalité-des-résidus" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Diagnostic 2 : Normalité des résidus ?</h3>
+<p>L’objectif est de savoir si les résidus ont une distribution normale Si c’est bien le cas le graphique généré par <strong>plot(monmodel,2)</strong> devrait donner une droite oblique :</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="05-Régression.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(monmodel,<span class="dv">2</span>,<span class="at">labels.id =</span> eur<span class="sc">$</span>PAYS)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-157-1.svg" width="672" /></p>
+<p>On peut tester statistiquement la normalité des résidus à l’aide du <strong>test de Shapiro-Wilk</strong>. Les résidus sont normaux si p-value &gt; 0.05</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="05-Régression.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(monmodel<span class="sc">$</span>residuals)</span>
+<span id="cb146-2"><a href="05-Régression.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb146-3"><a href="05-Régression.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Shapiro-Wilk normality test</span></span>
+<span id="cb146-4"><a href="05-Régression.html#cb146-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb146-5"><a href="05-Régression.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  monmodel$residuals</span></span>
+<span id="cb146-6"><a href="05-Régression.html#cb146-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; W = 0.81605, p-value = 0.0004263</span></span></code></pre></div>
+<p>Ici on trouve une p-value très clairement inférieure à 0.05 donc <strong>la distribution des résidus n’est pas gaussienne</strong>.</p>
+</div>
+<div id="diagnostic-3-homogénéité-des-résidus" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Diagnostic 3 : Homogénéité des résidus ?</h3>
+<p>L’objectif est de savoir si la variance des résidus est constante, c’est-à-dire si il s’écarte environ de la même distance tout au long de la droite . Si c’est bien le cas le graphique généré par <strong>plot(monmodel,3)</strong> devrait donner une droite horizontale</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="05-Régression.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(monmodel,<span class="dv">3</span>,<span class="at">labels.id =</span> eur<span class="sc">$</span>PAYS)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-159-1.svg" width="672" /></p>
+<p>On peut tester statistiquement l’homogénéité des résidus à l’aide du <strong>test de Breush-Pagan</strong>. L’hypothèse d’homogénéité est rejetée si la p-value est inférieure à 0.05.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="05-Régression.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncvTest</span>(monmodel)</span>
+<span id="cb148-2"><a href="05-Régression.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Non-constant Variance Score Test </span></span>
+<span id="cb148-3"><a href="05-Régression.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Variance formula: ~ fitted.values </span></span>
+<span id="cb148-4"><a href="05-Régression.html#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Chisquare = 9.429701, Df = 1, p = 0.002135</span></span></code></pre></div>
+<p>Ici, la p-value est inférieure à 0.05 donc <strong>les résidus ne sont pas homogènes</strong>.</p>
+</div>
+<div id="diagnostic-4-absence-de-valeur-exceptionnelles" class="section level3" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Diagnostic 4 : Absence de valeur exceptionnelles ?</h3>
+<p>L’objectif est de savoir s’il existe des valeurs qui exercent une influence exceptionnelle sur les résultats de la régression. On peut reprérer ces valeurs de plusieurs manières, notamment à l’aide de la distance de Cook générée par <strong>plot(monmodel,4)</strong>.O n repère le cas particulier de l’Albanie :</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="05-Régression.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(monmodel,<span class="dv">4</span>,<span class="at">labels.id =</span> eur<span class="sc">$</span>PAYS)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-161-1.svg" width="672" /></p>
+<p>Le test statistique de <strong>Bonferroni</strong> permet de déterminer s’il existe des valeurs exceptionnelles avec une p-value &lt; 0.05.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="05-Régression.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">outlierTest</span>(monmodel, <span class="at">labels =</span> eur<span class="sc">$</span>PAYS)</span>
+<span id="cb150-2"><a href="05-Régression.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     rstudent unadjusted p-value Bonferroni p</span></span>
+<span id="cb150-3"><a href="05-Régression.html#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ALB 5.905381         6.0791e-06   0.00015198</span></span></code></pre></div>
+<p>Ici, on doit conclure qu’<strong>il existe au moins une valeur exceptionnelle</strong>, l’Albanie, susceptible de fausser les conclusions du modèle de régression.</p>
+</div>
+</div>
+<div id="améliorations-du-modèle" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Améliorations du modèle</h2>
+<div id="modèle-linéaire-r2-46" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Modèle linéaire (R2 = 46%)</h3>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="05-Régression.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot</span>(eur<span class="sc">$</span>X,eur<span class="sc">$</span>Y, <span class="at">ellipse =</span> T,<span class="at">smooth =</span> F,<span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb151-2"><a href="05-Régression.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(eur<span class="sc">$</span>X,eur<span class="sc">$</span>Y, eur<span class="sc">$</span>PAYS, <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">pos=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-163-1.svg" width="672" /></p>
+</div>
+<div id="modèle-linéaire-sans-lalbanie-r2-53" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Modèle linéaire sans l’Albanie (R2 = 53%)</h3>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="05-Régression.html#cb152-1" aria-hidden="true" tabindex="-1"></a>eur2<span class="ot">&lt;-</span>eur[eur<span class="sc">$</span>PAYS <span class="sc">!=</span><span class="st">&quot;ALB&quot;</span>,]</span>
+<span id="cb152-2"><a href="05-Régression.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot</span>(eur2<span class="sc">$</span>X,eur2<span class="sc">$</span>Y, <span class="at">ellipse =</span> T,<span class="at">smooth =</span> F,<span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb152-3"><a href="05-Régression.html#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(eur2<span class="sc">$</span>X,eur2<span class="sc">$</span>Y, eur2<span class="sc">$</span>PAYS, <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">pos=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-164-1.svg" width="672" /></p>
+</div>
+<div id="modèle-exponentiel-r2-63" class="section level3" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Modèle exponentiel (R2 = 63%)</h3>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="05-Régression.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot</span>(eur<span class="sc">$</span>X,<span class="fu">log</span>(eur<span class="sc">$</span>Y), <span class="at">ellipse =</span> T,<span class="at">smooth =</span> F,  <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb153-2"><a href="05-Régression.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(eur<span class="sc">$</span>X,<span class="fu">log</span>(eur<span class="sc">$</span>Y), eur<span class="sc">$</span>PAYS, <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">pos=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-165-1.svg" width="672" /></p>
+</div>
+<div id="modèle-puissance-r2-83" class="section level3" number="5.5.4">
+<h3><span class="header-section-number">5.5.4</span> Modèle puissance (R2 = 83%)</h3>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="05-Régression.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot</span>(<span class="fu">log</span>(eur<span class="sc">$</span>X),<span class="fu">log</span>(eur<span class="sc">$</span>Y), <span class="at">ellipse =</span> T,<span class="at">smooth =</span> F,  <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb154-2"><a href="05-Régression.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fu">log</span>(eur<span class="sc">$</span>X),<span class="fu">log</span>(eur<span class="sc">$</span>Y), eur<span class="sc">$</span>PAYS, <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">pos=</span><span class="dv">2</span>,<span class="at">cex=</span><span class="fl">0.6</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-166-1.svg" width="672" /></p>
+
+</div>
+</div>
+</div>
+<script src="js/tidyverse.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="04-Corrélation.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"instapper": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ClaudeGrasland/bivR/blob/main/05-Régression.Rmd",
+"text": "Source"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bivaR.epub", "bivaR.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

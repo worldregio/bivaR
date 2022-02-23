@@ -1,0 +1,439 @@
+# Régression
+
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/chap5_intro.jpg")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo5](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo5.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo5.Rproj` dans Rstudio.
+
+
+```{r , include=TRUE, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.height = 4.6)
+```
+
+
+## Préparation des données
+
+### Chargement du tableau principal
+
+On charge notre bon vieux fichier des pays européens en 1988
+
+```{r }
+don<-read.table(file = "resources/data/europe88/euro1988.csv",
+                sep = ";",
+                header = T)
+don$BLOC<-as.factor(don$BLOC)
+levels(don$BLOC)<-c("Capitaliste","Socialiste")
+head(don)
+```
+
+### Choix des deux variables à analyser
+
+En dehors de BLOC et PAYS, on ne garde que les deux variables PNB et TMI que l'on renomme X et Y avec **colnames()** et que l'on convertit en type numérique général. Il suffira par la suite de modifier le choix des variables X et Y pour faire d'autres analyses. 
+
+```{r}
+eur<-don[,c("PAYS","BLOC","PNB","TMI")]
+colnames(eur)<-c("PAYS","BLOC","X","Y")
+eur$X<-as.numeric(eur$X)
+eur$Y<-as.numeric(eur$Y)
+head(eur)
+```
+
+
+On prépare les titres
+
+```{r}
+# Pour la version française
+titre <- "Les pays européens en 1988"
+nomX <- "Produit National brut ($/hab)"
+nomY <- "Taux de mortalité infantile en p. 1000"
+auteur <- "Claude Grasland, Université Paris Diderot, 2020"
+```
+
+
+Comme on prévoit qu'il y aura des différences entre pays socialistes et capitalistes, on crée deux sous-tableaux
+
+```{r}
+eur_soc<-eur[eur$BLOC=="Socialiste",]
+eur_cap<-eur[eur$BLOC=="Capitaliste",]
+```
+
+
+
+
+## Forme de la relation
+
+
+### Vérification de la normalité de X et Y
+
+La régression linéaire met en relation deux variables quantitatives X et Y dont on suppose que la distribution est **normale (gaussienne)** , c'est-à-dire unimodale et symérique.
+
+```{r, echo = FALSE}
+Z<-rnorm(100000)
+hist(Z, nclass=50, main="Loi normale (moyenne = 0 et écart-type = 1) ",border ="gray80",col="lightyellow",ylab=NULL,xlab=NULL,probability = TRUE,
+     cex.axis=0.9,ylim = c(0,0.55), cex.main=0.8,cex.lab=0.8,xlim=c(-3,3))
+lines(density(Z,bw=0.2),col="red",lwd=1)
+abline(v=c(0),col="blue",lty=1,lwd=1)
+abline(v=c(-1,1),col="blue",lty=2,lwd=1)
+abline(v=c(-2,2),col="blue",lty=1,lwd=1)
+lines(c(-1,1),c(0.42,0.42))
+text(0,0.45,"67%",cex=0.7)
+lines(c(-2,2),c(0.5,0.5))
+text(0,0.52,"95%",cex=0.7)
+```
+
+
+
+On peut tester la normalité des disributions par inspection visuelle à l'aide de **hist()**
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2),mar=c(4,2,2,2))
+hist(eur$X, col="lightyellow",main=nomX,cex.main=0.7,breaks=10,probability = TRUE, xlab=NULL,cex.axis=0.5)
+lines(density(eur$X,bw=sd(eur$X)/3),col="red",lwd=1)
+hist(eur$Y, col="lightyellow",main=nomY,cex.main=0.7, breaks=10, probability=TRUE, xlab=NULL, cex.axis=0.5)
+lines(density(eur$Y,bw=sd(eur$Y)/3),col="red",lwd=1)
+```
+
+
+
+Les fonctions **qqnorm()** et **qqline()** sont plus précises ...
+
+```{r}
+qqnorm(eur$X, col="blue",ylab=nomX)
+qqline(eur$X,col="red")
+```
+
+
+
+
+Les fonctions **qqnorm()** et **qqline()** sont plus précises ...
+
+```{r}
+qqnorm(eur$Y, col="blue",ylab=nomY)
+qqline(eur$Y,col="red")
+```
+
+
+
+
+Mais la solution la plus précise est le **test de Shapiro** qui pose l'hypothèse H0 : la distribution est normale.
+
+```{r}
+shapiro.test(eur$X)
+shapiro.test(eur$Y)
+```
+
+### Visualisation de la forme de la relation
+
+On peut faire un simple plot(X,Y). Mais on peut aussi créer pour cela une **fonction personalisée** adapté à ses préférences
+
+```{r}
+monplot <- function (varX , varY,  varN )
+{ 
+  plot(varX,varY,
+     main = titre,      # titre
+     cex.main = 1,      # police du titre
+     cex = 0.6,         # taille des symboles
+     pch = 19,          # cercles pleins
+     col = "red")      # couleur des symboles
+  text(varX,varY,varN,cex=0.5,pos=3) # nom des élément
+  abline(v=mean(varX),lty=2,lwd=1,col="blue") # moyenne X
+  abline(h=mean(varY),lty=2,lwd=1,col="blue") # moyenne Y   
+  }
+```
+
+
+
+Je peux désormais utiliser ma fonction **monplot()** !
+
+```{r}
+monplot(varX = eur$X,varY = eur$Y, varN = eur$PAYS)
+```
+
+
+
+Je peux décider de ne pas afficher le label des points.
+
+```{r}
+monplot(varX = eur$X,varY = eur$Y, varN = NULL)
+```
+
+### Analyse de la corrélation 
+
+Je commence par celuler le coefficient de corrélation linéaire (r) et le pouvoir explicatif de X par rapport à Y (r2)
+
+```{r}
+cor(eur$X,eur$Y)       # coefficient de corrélation (r)
+100*cor(eur$X,eur$Y)**2    # pouvoir explicatif (r2)
+```
+
+
+
+
+Puis, je teste la significativité de la corrélation linéaire ...
+
+```{r}
+cor.test(eur$X,eur$Y)  # test de significativité (p-value)
+```
+
+
+
+... et je la compare à celle  du coefficient de corrélation de rang de Spearman
+
+```{r}
+cor.test(eur$X,eur$Y, method="spearman")  # test de significativité (p-value)
+```
+
+
+
+On peut conclure des analyses précédentes que :
+
+- il existe une relation **significative** (p-value < 0.05)
+- cette relation est **positive** (r > 0 )
+- cette relation a un **pouvoir explicatif moyen** (r2 = 45%)
+
+**Mais ...**
+
+- la relation est **monotone mais non linéaire** car le coefficient de Spearman (-0.90) est beaucoup plus fort que le coefficient de Pearson (-0.68) et également plus significatif 
+
+
+## Ajustement du modèle
+
+### Hypothèses statistiques
+
+**Conditions a priori**
+
+1. X et Y sont deux variables normales (gaussienne)
+2. il existe une corrélation significative entre X et Y (p< 0.05)
+3. X explique une part suffisamment forte de Y (r2 > 20% ) 
+4. Le nuage de point affiche une forme linéaire
+5. les points sont répartis de façon régulière le long du nuage de points 
+6. Il n'y a pas de valeurs exceptionnelles susceptibles de perturber le calcul.
+
+On charge le package **car** (companion to applied regession).
+```{r}
+library(car)
+```
+
+
+
+**Méthode des moindres carrés ordinaire (MCO)**
+
+- La droite $y_i = a.x_i + b + \epsilon_i$ qui minimise la somme des carrés des écarts entre les valeurs observées $y_i$ et les valeurs estimées $\hat{y_i}$ a pour équation :
+
+- $COV(X,Y) = \sum_{i=1}^k \sum_{j=1}^k (x_{i}-\bar{x})^2.(y_{i}-\bar{y})^2$
+- $a = COV(X,Y) / (\sigma_X)^2$
+- $b = \bar{y} - a.\bar{x}$
+
+
+
+**Analyse de la variance**
+
+- La **somme des carré des écarts totale** ($SCE_{tot}$) correspond à la variance de la variable à expliquer :
+$SCE_{tot} = \sum_{i=1}^k (y_{i}-\bar{y})^2$
+
+- La **somme des carré des écarts résiduels** ($SCE_{err}$) correspond à la somme des carrés des différences entre valeurs observées et estimées
+$SCE_{error} = \sum_{i=1}^k (y_{i}-\hat{y})^2$
+
+- Le **pouvoir explicatif** d'un modèle de régression correspond à la part de la variance de Y expliquée par X. 
+
+- $Var. expliquée = (SCE_{tot}-SCE_{res}) / SCE_{tot} = r(X,Y)^{2}$
+
+
+**Vérifications a posteriori**
+
+Un modèle de régression n'est valide que si les résidus de ce modèle $\epsilon_i = (y_i - \hat{y}_i)$ remplissent les conditions suivantes :
+
+1. **Normalité** de la distribution des résidus
+2. Absence d'**autocorrélation** des résidus
+3. **Homogénéité** de la variance des résidus
+4. Absence de valeur à fort **effet de levier**
+
+Si ces quatre conditions ne sont pas remplies, les estimations de Y en fonction de X seront entâchées d'erreur et leur intervalle de confiance ne sera pas valable.
+
+### La fonction lm()
+
+La fonction **lm()** ou lm est l'abbréviation de **linear model** permet d'effectuer la plupart des modèles de régression linéaire basés sur la méthode des moindres carrés ordinaire. Sa syntaxe est a priori très simple et renvoie les coefficients b et a du modèle de régression.
+
+```{r}
+lm(eur$Y~eur$X)
+```
+
+
+
+Mais en réalité lm() crée **une liste de résultats** que l'on a intérêt à stocker pour en examiner les composantes une à une. 
+
+```{r}
+monmodel<-lm(eur$Y~eur$X)
+str(monmodel)
+```
+
+
+
+Un résumé des résultats principaux est fourni avec **summary()** appliqué à l'objet créé par lm().
+
+```{r, eval=FALSE}
+summary(monmodel)
+```
+
+On obtient ainsi :
+
+- l'équation de la droite Y = a.X+b
+- la significativité et l'intervalle de confiance de a et b
+- le pouvoir explicatif du modèle $r(X,Y)^2$
+
+
+
+
+```{r, echo=FALSE}
+summary(monmodel)
+```
+
+
+On peut également analyser plus en détail la variance en appliquant **anova()** à l'objet créé par lm() ce qui monte la quantité de variance expliquée par X et la quantité de variance résiduelle. Le test de Fisher (Pr>F) détermine si le modèle est significatif et renvoie la même valeur que la p-value du coeff. de corrélation. 
+
+```{r}
+anova(monmodel)
+```
+
+
+
+On peut extraire de l'objet créé par lm() les **valeurs estimées** de Y et les **résidus** c'est-à-dire les erreurs d'estimation. 
+
+```{r}
+eur$Y_estim<-monmodel$fitted.values
+eur$Y_resid<-monmodel$residuals
+head(eur)
+```
+
+
+On peut tracer la droite de régression avec **abline()**
+
+```{r}
+monplot(eur$X,eur$Y,eur$PAYS)
+abline(monmodel, col="blue",lwd=2)
+```
+
+
+On peut enfin analyser a posteriori la qualité de la régression avec **plot()**.
+
+```{r}
+par(mfrow=c(2,2))
+plot(monmodel,labels.id = eur$PAYS)
+```
+
+## Diagnostics du modèle
+
+### Diagnostic 1 : Indépendance des résidus ?
+
+L'objectif est de savoir si les résidus se répartissent régulièrement de part et d'autre de la droite de régression tout au long de celle-ci. Si c'est bien le cas le graphique residuals Vs Fitted généré par **plot(monmodel,1)** devrait donner une droite horizontale :
+
+
+
+```{r}
+plot(monmodel,1,labels.id = eur$PAYS)
+```
+
+
+On peut tester statistiquement l'indépendance des résidus à l'aide du **test de Durbin-Watson** qui mesure si deux valeurs successives ont des résidus proches. L'indépendance des résidus est rejetée si p-value < 0.05
+
+```{r}
+durbinWatsonTest(monmodel)
+```
+
+Ici on trouve p-value > 0.05 donc les résidus sont indépendants. 
+
+
+
+### Diagnostic 2 : Normalité des résidus ?
+
+L'objectif est de savoir si les résidus ont une distribution normale Si c'est bien le cas le graphique généré par **plot(monmodel,2)** devrait donner une droite oblique :
+
+
+```{r}
+plot(monmodel,2,labels.id = eur$PAYS)
+```
+
+On peut tester statistiquement la normalité des résidus à l'aide du **test de Shapiro-Wilk**. Les résidus sont normaux si p-value > 0.05
+
+```{r}
+shapiro.test(monmodel$residuals)
+```
+
+Ici on trouve une p-value très clairement inférieure à 0.05 donc **la distribution des résidus n'est pas gaussienne**. 
+
+
+
+### Diagnostic 3 : Homogénéité des résidus ?
+
+L'objectif est de savoir si la variance des résidus est constante, c'est-à-dire si il s'écarte environ de la même distance tout au long de la droite . Si c'est bien le cas le graphique généré par **plot(monmodel,3)** devrait donner une droite horizontale
+
+```{r}
+plot(monmodel,3,labels.id = eur$PAYS)
+```
+
+
+On peut tester statistiquement l'homogénéité des résidus à l'aide du **test de Breush-Pagan**. L’hypothèse d’homogénéité est rejetée si la p-value est inférieure à 0.05.
+
+
+```{r}
+ncvTest(monmodel)
+```
+
+Ici, la p-value est inférieure à 0.05 donc **les résidus ne sont pas homogènes**. 
+
+
+
+### Diagnostic 4 : Absence de valeur exceptionnelles ?
+
+L'objectif est de savoir s'il existe des valeurs qui exercent une influence exceptionnelle sur les résultats de la régression. On peut reprérer ces valeurs de plusieurs manières, notamment à l'aide de la distance de Cook générée par **plot(monmodel,4)**.O n repère le cas particulier de l'Albanie :
+
+```{r}
+plot(monmodel,4,labels.id = eur$PAYS)
+```
+
+Le test statistique de **Bonferroni** permet de déterminer s'il existe des valeurs exceptionnelles avec une p-value < 0.05.
+
+```{r}
+outlierTest(monmodel, labels = eur$PAYS)
+```
+
+Ici, on doit conclure qu'**il existe au moins une valeur exceptionnelle**, l'Albanie, susceptible de fausser les conclusions du modèle de régression. 
+
+## Améliorations du modèle
+
+### Modèle linéaire (R2 = 46%)
+
+```{r}
+scatterplot(eur$X,eur$Y, ellipse = T,smooth = F,pch=19)
+text(eur$X,eur$Y, eur$PAYS, col="red",pos=2,cex=0.6)
+```
+
+### Modèle linéaire sans l'Albanie (R2 = 53%)
+
+```{r}
+eur2<-eur[eur$PAYS !="ALB",]
+scatterplot(eur2$X,eur2$Y, ellipse = T,smooth = F,pch=19)
+text(eur2$X,eur2$Y, eur2$PAYS, col="red",pos=2,cex=0.6)
+```
+
+
+
+### Modèle exponentiel (R2 = 63%)
+
+```{r}
+scatterplot(eur$X,log(eur$Y), ellipse = T,smooth = F,  pch=19)
+text(eur$X,log(eur$Y), eur$PAYS, col="red",pos=2,cex=0.6)
+```
+
+
+### Modèle puissance (R2 = 83%)
+
+```{r}
+scatterplot(log(eur$X),log(eur$Y), ellipse = T,smooth = F,  pch=19)
+text(log(eur$X),log(eur$Y), eur$PAYS, col="red",pos=2,cex=0.6)
+```
+

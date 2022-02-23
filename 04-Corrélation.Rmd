@@ -476,7 +476,7 @@ cor.test(eur$Y,eur$X, method="spearman")
 ```
 
 
-## En résumé : intensité ou significativité ?
+### En résumé : intensité ou significativité ?
 
 - Le carré du coefficient de corrélation appelé **r-square** ou **r2** permet de mesurer le pouvoir explicatif de X par rapport à Y. Il ne dépend pas du nombre d'observations.
 - le test de significativité ou **p-value** mesure la significativité de la relation c'est-à-dire le fait que la relation entre X et Y ne soit pas l'effet du hasard. Il dépend à la fois du niveau de corrélation et du nombre d'observations.
@@ -557,7 +557,7 @@ text(X,Y,eur_cap$PAYS,cex=0.6,col="red")
 
 ```
 
-## Matrice de corrélation (Supplément)
+## Matrice de corrélation
 
 ### Objectif de l'analyse
 
