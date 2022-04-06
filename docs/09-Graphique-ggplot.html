@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Partie 8 Graphiques avec ggplot2 | Introduction à la statistique bivariée et aux représentations graphiques avec R</title>
+  <meta name="description" content="Cours dispensé en M1 MECI Option Data" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Partie 8 Graphiques avec ggplot2 | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Partie 8 Graphiques avec ggplot2 | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  
+  <meta name="twitter:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+<meta name="author" content="Claude Grasland" />
+
+
+<meta name="date" content="2022-04-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="08-Graphique-Base.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/tidyverse.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">Introduction à la statistique bivariée et aux représentations graphiques avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>À propos de ce document</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#remerciements"><i class="fa fa-check"></i>Remerciements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="01-principes.html"><a href="01-principes.html"><i class="fa fa-check"></i><b>1</b> Premiers pas</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="01-principes.html"><a href="01-principes.html#opérations-arithmétiques"><i class="fa fa-check"></i><b>1.1</b> Opérations arithmétiques</a></li>
+<li class="chapter" data-level="1.2" data-path="01-principes.html"><a href="01-principes.html#les-objets-de-base-valeur-vecteur-matrice"><i class="fa fa-check"></i><b>1.2</b> Les objets de base : valeur, vecteur, matrice</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="01-principes.html"><a href="01-principes.html#eléments"><i class="fa fa-check"></i><b>1.2.1</b> Eléments</a></li>
+<li class="chapter" data-level="1.2.2" data-path="01-principes.html"><a href="01-principes.html#vecteurs-vectors"><i class="fa fa-check"></i><b>1.2.2</b> vecteurs (<em>vectors</em>)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="01-principes.html"><a href="01-principes.html#matrices-matrix"><i class="fa fa-check"></i><b>1.2.3</b> Matrices (<em>matrix</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="01-principes.html"><a href="01-principes.html#ne-pas-confondre-listes-et-vecteurs"><i class="fa fa-check"></i><b>1.3</b> Ne pas confondre listes et vecteurs !</a></li>
+<li class="chapter" data-level="1.4" data-path="01-principes.html"><a href="01-principes.html#attention-aux-types-de-variables"><i class="fa fa-check"></i><b>1.4</b> Attention aux types de variables …</a></li>
+<li class="chapter" data-level="1.5" data-path="01-principes.html"><a href="01-principes.html#types-de-tableaux-et-guerres-de-religion."><i class="fa fa-check"></i><b>1.5</b> Types de tableaux et guerres de religion.</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="01-principes.html"><a href="01-principes.html#le-type-data.frame"><i class="fa fa-check"></i><b>1.5.1</b> Le type <em>data.frame</em> :</a></li>
+<li class="chapter" data-level="1.5.2" data-path="01-principes.html"><a href="01-principes.html#le-type-tibble"><i class="fa fa-check"></i><b>1.5.2</b> Le type <em>tibble</em></a></li>
+<li class="chapter" data-level="1.5.3" data-path="01-principes.html"><a href="01-principes.html#le-type-data.table"><i class="fa fa-check"></i><b>1.5.3</b> Le type <em>data.table</em></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="01-principes.html"><a href="01-principes.html#en-résumé"><i class="fa fa-check"></i><b>1.6</b> En résumé</a></li>
+<li class="chapter" data-level="1.7" data-path="01-principes.html"><a href="01-principes.html#exercices"><i class="fa fa-check"></i><b>1.7</b> Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="02-initiation.html"><a href="02-initiation.html"><i class="fa fa-check"></i><b>2</b> Office killer</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="02-initiation.html"><a href="02-initiation.html#rstudio-et-les-projets-r"><i class="fa fa-check"></i><b>2.1</b> Rstudio et les projets R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="02-initiation.html"><a href="02-initiation.html#lancement-de-r-studio"><i class="fa fa-check"></i><b>2.1.1</b> Lancement de R studio</a></li>
+<li class="chapter" data-level="2.1.2" data-path="02-initiation.html"><a href="02-initiation.html#création-dun-projet"><i class="fa fa-check"></i><b>2.1.2</b> Création d’un projet</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="02-initiation.html"><a href="02-initiation.html#programme-r-excel-killer"><i class="fa fa-check"></i><b>2.2</b> Programme R : Excel killer ?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="02-initiation.html"><a href="02-initiation.html#round-1.-saisie-des-données-et-affichage-du-tableau"><i class="fa fa-check"></i><b>2.2.1</b> Round 1. Saisie des données et affichage du tableau</a></li>
+<li class="chapter" data-level="2.2.2" data-path="02-initiation.html"><a href="02-initiation.html#round-2.-affichage-de-la-carte"><i class="fa fa-check"></i><b>2.2.2</b> Round 2. Affichage de la carte</a></li>
+<li class="chapter" data-level="2.2.3" data-path="02-initiation.html"><a href="02-initiation.html#round-3.-calcul-de-la-station-la-plus-accessible-à-vol-doiseau-distance-euclidienne"><i class="fa fa-check"></i><b>2.2.3</b> Round 3. Calcul de la station la plus accessible à vol d’oiseau (distance euclidienne)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="02-initiation.html"><a href="02-initiation.html#round-4.-calcul-de-la-station-la-plus-accessible-par-la-route-distance-de-manhattan"><i class="fa fa-check"></i><b>2.2.4</b> Round 4. Calcul de la station la plus accessible par la route (distance de Manhattan)</a></li>
+<li class="chapter" data-level="2.2.5" data-path="02-initiation.html"><a href="02-initiation.html#round-5.-localisation-du-dépôt-de-carburant"><i class="fa fa-check"></i><b>2.2.5</b> Round 5. Localisation du dépôt de carburant</a></li>
+<li class="chapter" data-level="2.2.6" data-path="02-initiation.html"><a href="02-initiation.html#round-6.-localisation-de-la-caserne-de-pompiers"><i class="fa fa-check"></i><b>2.2.6</b> Round 6. Localisation de la caserne de pompiers</a></li>
+<li class="chapter" data-level="2.2.7" data-path="02-initiation.html"><a href="02-initiation.html#round-7.-visualisation-des-deux-points-sur-la-carte"><i class="fa fa-check"></i><b>2.2.7</b> Round 7. Visualisation des deux points sur la carte</a></li>
+<li class="chapter" data-level="2.2.8" data-path="02-initiation.html"><a href="02-initiation.html#dernier-round.-refaire-toute-lanalyse-avec-une-station-de-plus"><i class="fa fa-check"></i><b>2.2.8</b> Dernier round. Refaire toute l’analyse avec une station de plus</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="02-initiation.html"><a href="02-initiation.html#document-rmd-word-killer"><i class="fa fa-check"></i><b>2.3</b> Document Rmd : Word killer ?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="02-initiation.html"><a href="02-initiation.html#chargement-des-données"><i class="fa fa-check"></i><b>2.3.1</b> Chargement des données</a></li>
+<li class="chapter" data-level="2.3.2" data-path="02-initiation.html"><a href="02-initiation.html#contour-de-rennes"><i class="fa fa-check"></i><b>2.3.2</b> Contour de Rennes</a></li>
+<li class="chapter" data-level="2.3.3" data-path="02-initiation.html"><a href="02-initiation.html#distribution-de-la-population"><i class="fa fa-check"></i><b>2.3.3</b> Distribution de la population</a></li>
+<li class="chapter" data-level="2.3.4" data-path="02-initiation.html"><a href="02-initiation.html#distribution-des-équipements"><i class="fa fa-check"></i><b>2.3.4</b> Distribution des équipements</a></li>
+<li class="chapter" data-level="2.3.5" data-path="02-initiation.html"><a href="02-initiation.html#synthèse"><i class="fa fa-check"></i><b>2.3.5</b> Synthèse</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="02-initiation.html"><a href="02-initiation.html#diapos-rmd-power-point-killer"><i class="fa fa-check"></i><b>2.4</b> Diapos Rmd : Power Point killer</a></li>
+<li class="chapter" data-level="2.5" data-path="02-initiation.html"><a href="02-initiation.html#en-résumé-1"><i class="fa fa-check"></i><b>2.5</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03-R-Base.html"><a href="03-R-Base.html"><i class="fa fa-check"></i><b>3</b> R-Base</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#tableaux"><i class="fa fa-check"></i><b>3.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="03-R-Base.html"><a href="03-R-Base.html#importation"><i class="fa fa-check"></i><b>3.1.1</b> Importation</a></li>
+<li class="chapter" data-level="3.1.2" data-path="03-R-Base.html"><a href="03-R-Base.html#transformations"><i class="fa fa-check"></i><b>3.1.2</b> Transformations</a></li>
+<li class="chapter" data-level="3.1.3" data-path="03-R-Base.html"><a href="03-R-Base.html#extractions"><i class="fa fa-check"></i><b>3.1.3</b> Extractions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-i-var.-quali."><i class="fa fa-check"></i><b>3.2</b> Exploration I (<em>var. quali.</em>)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="03-R-Base.html"><a href="03-R-Base.html#sélection-et-recodage"><i class="fa fa-check"></i><b>3.2.1</b> Sélection et recodage</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03-R-Base.html"><a href="03-R-Base.html#table-de-dénombrement"><i class="fa fa-check"></i><b>3.2.2</b> Table de dénombrement</a></li>
+<li class="chapter" data-level="3.2.3" data-path="03-R-Base.html"><a href="03-R-Base.html#graphique-avec-plot"><i class="fa fa-check"></i><b>3.2.3</b> Graphique avec plot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-ii-var.-quanti"><i class="fa fa-check"></i><b>3.3</b> Exploration II (<em>var. quanti</em>)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#résumés-numériques"><i class="fa fa-check"></i><b>3.3.1</b> Résumés numériques</a></li>
+<li class="chapter" data-level="3.3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#dénombrement"><i class="fa fa-check"></i><b>3.3.2</b> Dénombrement</a></li>
+<li class="chapter" data-level="3.3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#boîte-à-moustaches"><i class="fa fa-check"></i><b>3.3.3</b> Boîte à moustaches</a></li>
+<li class="chapter" data-level="3.3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#histogramme"><i class="fa fa-check"></i><b>3.3.4</b> Histogramme</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-iii-2-variables"><i class="fa fa-check"></i><b>3.4</b> Exploration III (<em>2 variables</em>)</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-qualitatives"><i class="fa fa-check"></i><b>3.4.1</b> Deux variables qualitatives</a></li>
+<li class="chapter" data-level="3.4.2" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-quantitatives"><i class="fa fa-check"></i><b>3.4.2</b> Deux variables quantitatives</a></li>
+<li class="chapter" data-level="3.4.3" data-path="03-R-Base.html"><a href="03-R-Base.html#une-quantitative-et-une-qualitative"><i class="fa fa-check"></i><b>3.4.3</b> Une quantitative et une qualitative</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="03-R-Base.html"><a href="03-R-Base.html#en-résumé-2"><i class="fa fa-check"></i><b>3.5</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04-Corrélation.html"><a href="04-Corrélation.html"><i class="fa fa-check"></i><b>4</b> Corrélation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#préparation-des-données"><i class="fa fa-check"></i><b>4.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#chargement-du-tableau-principal"><i class="fa fa-check"></i><b>4.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#choix-des-deux-variables-à-analyser"><i class="fa fa-check"></i><b>4.1.2</b> Choix des deux variables à analyser</a></li>
+<li class="chapter" data-level="4.1.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-malin"><i class="fa fa-check"></i><b>4.1.3</b> On est malin …</a></li>
+<li class="chapter" data-level="4.1.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-paresseux"><i class="fa fa-check"></i><b>4.1.4</b> On est paresseux …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exploration-visuelle"><i class="fa fa-check"></i><b>4.2</b> Exploration visuelle</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-avec-plotxy"><i class="fa fa-check"></i><b>4.2.1</b> Visualisation avec plot(X,Y)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#identification-des-points-avec-cor-text"><i class="fa fa-check"></i><b>4.2.2</b> Identification des points avec <strong>cor</strong> + <strong>text(…)</strong></a></li>
+<li class="chapter" data-level="4.2.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#ajout-de-lignes-horizontales-ou-verticales-avec-cor-abline"><i class="fa fa-check"></i><b>4.2.3</b> Ajout de lignes horizontales ou verticales avec <strong>cor()</strong> + <strong>abline(…)</strong></a></li>
+<li class="chapter" data-level="4.2.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#au-delà-de-r-base"><i class="fa fa-check"></i><b>4.2.4</b> Au delà de R-Base …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#coefficients-de-corrélation"><i class="fa fa-check"></i><b>4.3</b> Coefficients de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#définition"><i class="fa fa-check"></i><b>4.3.1</b> Définition</a></li>
+<li class="chapter" data-level="4.3.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor"><i class="fa fa-check"></i><b>4.3.2</b> La fonction <strong>cor()</strong></a></li>
+<li class="chapter" data-level="4.3.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor.test"><i class="fa fa-check"></i><b>4.3.3</b> La fonction cor.test()</a></li>
+<li class="chapter" data-level="4.3.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#en-résumé-intensité-ou-significativité"><i class="fa fa-check"></i><b>4.3.4</b> En résumé : intensité ou significativité ?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4</b> Matrice de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#objectif-de-lanalyse"><i class="fa fa-check"></i><b>4.4.1</b> Objectif de l’analyse</a></li>
+<li class="chapter" data-level="4.4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-des-résultats"><i class="fa fa-check"></i><b>4.4.2</b> Utilisation des résultats</a></li>
+<li class="chapter" data-level="4.4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-dune-matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4.3</b> Visualisation d’une matrice de corrélation</a></li>
+<li class="chapter" data-level="4.4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exemple-création-dun-tableau-quantitatif"><i class="fa fa-check"></i><b>4.4.4</b> Exemple : création d’un tableau quantitatif</a></li>
+<li class="chapter" data-level="4.4.5" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-psych"><i class="fa fa-check"></i><b>4.4.5</b> Utilisation du package psych</a></li>
+<li class="chapter" data-level="4.4.6" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-factominer"><i class="fa fa-check"></i><b>4.4.6</b> Utilisation du package factoMineR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-Régression.html"><a href="05-Régression.html"><i class="fa fa-check"></i><b>5</b> Régression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05-Régression.html"><a href="05-Régression.html#préparation-des-données-1"><i class="fa fa-check"></i><b>5.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="05-Régression.html"><a href="05-Régression.html#chargement-du-tableau-principal-1"><i class="fa fa-check"></i><b>5.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="5.1.2" data-path="05-Régression.html"><a href="05-Régression.html#choix-des-deux-variables-à-analyser-1"><i class="fa fa-check"></i><b>5.1.2</b> Choix des deux variables à analyser</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="05-Régression.html"><a href="05-Régression.html#forme-de-la-relation"><i class="fa fa-check"></i><b>5.2</b> Forme de la relation</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="05-Régression.html"><a href="05-Régression.html#vérification-de-la-normalité-de-x-et-y"><i class="fa fa-check"></i><b>5.2.1</b> Vérification de la normalité de X et Y</a></li>
+<li class="chapter" data-level="5.2.2" data-path="05-Régression.html"><a href="05-Régression.html#visualisation-de-la-forme-de-la-relation"><i class="fa fa-check"></i><b>5.2.2</b> Visualisation de la forme de la relation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="05-Régression.html"><a href="05-Régression.html#analyse-de-la-corrélation"><i class="fa fa-check"></i><b>5.2.3</b> Analyse de la corrélation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="05-Régression.html"><a href="05-Régression.html#ajustement-du-modèle"><i class="fa fa-check"></i><b>5.3</b> Ajustement du modèle</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="05-Régression.html"><a href="05-Régression.html#hypothèses-statistiques"><i class="fa fa-check"></i><b>5.3.1</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="5.3.2" data-path="05-Régression.html"><a href="05-Régression.html#la-fonction-lm"><i class="fa fa-check"></i><b>5.3.2</b> La fonction lm()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostics-du-modèle"><i class="fa fa-check"></i><b>5.4</b> Diagnostics du modèle</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-1-indépendance-des-résidus"><i class="fa fa-check"></i><b>5.4.1</b> Diagnostic 1 : Indépendance des résidus ?</a></li>
+<li class="chapter" data-level="5.4.2" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-2-normalité-des-résidus"><i class="fa fa-check"></i><b>5.4.2</b> Diagnostic 2 : Normalité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.3" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-3-homogénéité-des-résidus"><i class="fa fa-check"></i><b>5.4.3</b> Diagnostic 3 : Homogénéité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-4-absence-de-valeur-exceptionnelles"><i class="fa fa-check"></i><b>5.4.4</b> Diagnostic 4 : Absence de valeur exceptionnelles ?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="05-Régression.html"><a href="05-Régression.html#améliorations-du-modèle"><i class="fa fa-check"></i><b>5.5</b> Améliorations du modèle</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-r2-46"><i class="fa fa-check"></i><b>5.5.1</b> Modèle linéaire (R2 = 46%)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-sans-lalbanie-r2-53"><i class="fa fa-check"></i><b>5.5.2</b> Modèle linéaire sans l’Albanie (R2 = 53%)</a></li>
+<li class="chapter" data-level="5.5.3" data-path="05-Régression.html"><a href="05-Régression.html#modèle-exponentiel-r2-63"><i class="fa fa-check"></i><b>5.5.3</b> Modèle exponentiel (R2 = 63%)</a></li>
+<li class="chapter" data-level="5.5.4" data-path="05-Régression.html"><a href="05-Régression.html#modèle-puissance-r2-83"><i class="fa fa-check"></i><b>5.5.4</b> Modèle puissance (R2 = 83%)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="06-Anova.html"><a href="06-Anova.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="06-Anova.html"><a href="06-Anova.html#préparation-des-données-2"><i class="fa fa-check"></i><b>6.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="06-Anova.html"><a href="06-Anova.html#chargement-du-fichier"><i class="fa fa-check"></i><b>6.1.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="6.1.2" data-path="06-Anova.html"><a href="06-Anova.html#contenu-du-fichier"><i class="fa fa-check"></i><b>6.1.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="6.1.3" data-path="06-Anova.html"><a href="06-Anova.html#dictionaire-des-variables"><i class="fa fa-check"></i><b>6.1.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="6.1.4" data-path="06-Anova.html"><a href="06-Anova.html#recodage-des-variables"><i class="fa fa-check"></i><b>6.1.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="6.1.5" data-path="06-Anova.html"><a href="06-Anova.html#ajout-dune-nouvelle-variable"><i class="fa fa-check"></i><b>6.1.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="6.1.6" data-path="06-Anova.html"><a href="06-Anova.html#résumé-de-lensemble-du-tableau"><i class="fa fa-check"></i><b>6.1.6</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="06-Anova.html"><a href="06-Anova.html#rappels-sur-la-régression"><i class="fa fa-check"></i><b>6.2</b> Rappels sur la régression</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="06-Anova.html"><a href="06-Anova.html#la-distribution-de-pct-est-elle-normale"><i class="fa fa-check"></i><b>6.2.1</b> La distribution de PCT est-elle normale ?</a></li>
+<li class="chapter" data-level="6.2.2" data-path="06-Anova.html"><a href="06-Anova.html#y-a-t-il-une-relation-entre-le-prix-du-repas-et-le-pourboire"><i class="fa fa-check"></i><b>6.2.2</b> Y-a-t-il une relation entre le prix du repas et le pourboire ?</a></li>
+<li class="chapter" data-level="6.2.3" data-path="06-Anova.html"><a href="06-Anova.html#modèle-de-régression"><i class="fa fa-check"></i><b>6.2.3</b> Modèle de régression</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="06-Anova.html"><a href="06-Anova.html#test-dégalité-des-moyennes"><i class="fa fa-check"></i><b>6.3</b> Test d’égalité des moyennes</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="06-Anova.html"><a href="06-Anova.html#hypothèses"><i class="fa fa-check"></i><b>6.3.1</b> Hypothèses</a></li>
+<li class="chapter" data-level="6.3.2" data-path="06-Anova.html"><a href="06-Anova.html#visualisations"><i class="fa fa-check"></i><b>6.3.2</b> Visualisations</a></li>
+<li class="chapter" data-level="6.3.3" data-path="06-Anova.html"><a href="06-Anova.html#paramètres-principaux"><i class="fa fa-check"></i><b>6.3.3</b> Paramètres principaux</a></li>
+<li class="chapter" data-level="6.3.4" data-path="06-Anova.html"><a href="06-Anova.html#test-dégalité-des-moyennes-1"><i class="fa fa-check"></i><b>6.3.4</b> Test d’égalité des moyennes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="06-Anova.html"><a href="06-Anova.html#analyse-de-variance-1"><i class="fa fa-check"></i><b>6.4</b> Analyse de variance</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="06-Anova.html"><a href="06-Anova.html#hypothèses-1"><i class="fa fa-check"></i><b>6.4.1</b> Hypothèses</a></li>
+<li class="chapter" data-level="6.4.2" data-path="06-Anova.html"><a href="06-Anova.html#calcul-des-paramètres-principaux"><i class="fa fa-check"></i><b>6.4.2</b> Calcul des paramètres principaux</a></li>
+<li class="chapter" data-level="6.4.3" data-path="06-Anova.html"><a href="06-Anova.html#visualisation"><i class="fa fa-check"></i><b>6.4.3</b> Visualisation</a></li>
+<li class="chapter" data-level="6.4.4" data-path="06-Anova.html"><a href="06-Anova.html#modélisation-simple"><i class="fa fa-check"></i><b>6.4.4</b> Modélisation simple</a></li>
+<li class="chapter" data-level="6.4.5" data-path="06-Anova.html"><a href="06-Anova.html#modélisation-avancée"><i class="fa fa-check"></i><b>6.4.5</b> Modélisation avancée</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="06-Anova.html"><a href="06-Anova.html#annexe-les-variables-hybrides"><i class="fa fa-check"></i><b>6.5</b> Annexe : les variables hybrides</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="06-Anova.html"><a href="06-Anova.html#size-quantitative-discrète"><i class="fa fa-check"></i><b>6.5.1</b> SIZE = quantitative discrète</a></li>
+<li class="chapter" data-level="6.5.2" data-path="06-Anova.html"><a href="06-Anova.html#size-qualitative-ordinale"><i class="fa fa-check"></i><b>6.5.2</b> SIZE = qualitative ordinale</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html"><i class="fa fa-check"></i><b>7</b> Graphiques avec R-Base</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#pourquoi-sembêter-à-utiliser-les-fonctions-primitives-de-r-pour-faire-des-graphiques"><i class="fa fa-check"></i><b>7.1.1</b> Pourquoi s’em…bêter à utiliser les fonctions primitives de R pour faire des graphiques ?</a></li>
+<li class="chapter" data-level="7.1.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#trois-étapes-pour-créer-un-graphique"><i class="fa fa-check"></i><b>7.1.2</b> Trois étapes pour créer un graphique</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#préparation-des-données-3"><i class="fa fa-check"></i><b>7.2</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#chargement-du-fichier-1"><i class="fa fa-check"></i><b>7.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="7.2.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#contenu-du-fichier-1"><i class="fa fa-check"></i><b>7.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="7.2.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#dictionaire-des-variables-1"><i class="fa fa-check"></i><b>7.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="7.2.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#recodage-des-variables-1"><i class="fa fa-check"></i><b>7.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="7.2.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ajout-dune-nouvelle-variable-1"><i class="fa fa-check"></i><b>7.2.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="7.2.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#résumé-de-lensemble-du-tableau-1"><i class="fa fa-check"></i><b>7.2.6</b> Résumé de l’ensemble du tableau</a></li>
+<li class="chapter" data-level="7.2.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-par"><i class="fa fa-check"></i><b>7.2.7</b> La fonction par()</a></li>
+<li class="chapter" data-level="7.2.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#fonction-par-mfrow"><i class="fa fa-check"></i><b>7.2.8</b> fonction par() + mfrow</a></li>
+<li class="chapter" data-level="7.2.9" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#autres-paramètres-de-par"><i class="fa fa-check"></i><b>7.2.9</b> Autres paramètres de par()</a></li>
+<li class="chapter" data-level="7.2.10" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-layout"><i class="fa fa-check"></i><b>7.2.10</b> La fonction layout()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-génératrice-plot"><i class="fa fa-check"></i><b>7.3</b> La fonction génératrice plot()</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#une-super-fonction"><i class="fa fa-check"></i><b>7.3.1</b> Une super-fonction</a></li>
+<li class="chapter" data-level="7.3.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-factor"><i class="fa fa-check"></i><b>7.3.2</b> plot(X) / X de type factor</a></li>
+<li class="chapter" data-level="7.3.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-numeric"><i class="fa fa-check"></i><b>7.3.3</b> plot(X) / X de type numeric</a></li>
+<li class="chapter" data-level="7.3.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-factor"><i class="fa fa-check"></i><b>7.3.4</b> plot(X,Y) / X et Y de type factor</a></li>
+<li class="chapter" data-level="7.3.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-numerique"><i class="fa fa-check"></i><b>7.3.5</b> plot(X,Y) / X et Y de type numerique</a></li>
+<li class="chapter" data-level="7.3.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique"><i class="fa fa-check"></i><b>7.3.6</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="7.3.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique-1"><i class="fa fa-check"></i><b>7.3.7</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="7.3.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotmodel-model-lmyx"><i class="fa fa-check"></i><b>7.3.8</b> plot(model) / model = lm(Y~X)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-autres-fonctions-génératrice"><i class="fa fa-check"></i><b>7.4</b> Les autres fonctions génératrice</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-barplot"><i class="fa fa-check"></i><b>7.4.1</b> La fonction barplot()</a></li>
+<li class="chapter" data-level="7.4.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-hist-et-density"><i class="fa fa-check"></i><b>7.4.2</b> Les fonctions hist() et density()</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-complémentaires"><i class="fa fa-check"></i><b>7.5</b> Les fonctions complémentaires</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#exemple-dun-nuage-de-points-xy"><i class="fa fa-check"></i><b>7.5.1</b> Exemple d’un nuage de points (X,Y)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#conclusion"><i class="fa fa-check"></i><b>7.6</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-faire-de-beaux-graphiques-avec-r-base"><i class="fa fa-check"></i><b>7.6.1</b> On peut faire de beaux graphiques avec R-Base …</a></li>
+<li class="chapter" data-level="7.6.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-utiliser-des-packages-spécialisés"><i class="fa fa-check"></i><b>7.6.2</b> On peut utiliser des packages spécialisés</a></li>
+<li class="chapter" data-level="7.6.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggally-un-package-spécialisé-dans-la-statistique-bivariée"><i class="fa fa-check"></i><b>7.6.3</b> ggally : un package spécialisé dans la statistique bivariée</a></li>
+<li class="chapter" data-level="7.6.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggplot2-un-package-graphique-universel"><i class="fa fa-check"></i><b>7.6.4</b> ggplot2 : un package graphique universel ?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html"><i class="fa fa-check"></i><b>8</b> Graphiques avec ggplot2</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-et-tydiverse"><i class="fa fa-check"></i><b>8.1.1</b> ggplot2 et tydiverse</a></li>
+<li class="chapter" data-level="8.1.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-cheatsheet"><i class="fa fa-check"></i><b>8.1.2</b> ggplot2 cheatsheet</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#préparation-des-données-4"><i class="fa fa-check"></i><b>8.2</b> préparation des données</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#chargement-du-fichier-2"><i class="fa fa-check"></i><b>8.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="8.2.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#contenu-du-fichier-2"><i class="fa fa-check"></i><b>8.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="8.2.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#dictionaire-des-variables-2"><i class="fa fa-check"></i><b>8.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="8.2.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#recodage-des-variables-2"><i class="fa fa-check"></i><b>8.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="8.2.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#résumé-de-lensemble-du-tableau-2"><i class="fa fa-check"></i><b>8.2.5</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#principes-généraux"><i class="fa fa-check"></i><b>8.3</b> Principes généraux</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#les-différentes-étapes"><i class="fa fa-check"></i><b>8.3.1</b> Les différentes étapes</a></li>
+<li class="chapter" data-level="8.3.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-figure-à-réaliser"><i class="fa fa-check"></i><b>8.3.2</b> La figure à réaliser</a></li>
+<li class="chapter" data-level="8.3.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-construction-pas-à-pas"><i class="fa fa-check"></i><b>8.3.3</b> La construction pas à pas</a></li>
+<li class="chapter" data-level="8.3.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#comparaison-avec-r-base"><i class="fa fa-check"></i><b>8.3.4</b> Comparaison avec R-Base</a></li>
+<li class="chapter" data-level="8.3.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#attention-paramètres-aes-locaux-et-globaux"><i class="fa fa-check"></i><b>8.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-discrète"><i class="fa fa-check"></i><b>8.4</b> X discrète</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#barplot-r-base"><i class="fa fa-check"></i><b>8.4.1</b> barplot (R-base)</a></li>
+<li class="chapter" data-level="8.4.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2"><i class="fa fa-check"></i><b>8.4.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue"><i class="fa fa-check"></i><b>8.5</b> X quantitative continue</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#hist-r-base"><i class="fa fa-check"></i><b>8.5.1</b> hist (R-base)</a></li>
+<li class="chapter" data-level="8.5.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_histogram-ggplot2"><i class="fa fa-check"></i><b>8.5.2</b> geom_histogram (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-et-y-quantitatives-continues"><i class="fa fa-check"></i><b>8.6</b> X et Y quantitatives continues</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plot-r-base"><i class="fa fa-check"></i><b>8.6.1</b> plot (R-base)</a></li>
+<li class="chapter" data-level="8.6.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_point-ggplot2"><i class="fa fa-check"></i><b>8.6.2</b> geom_point (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète"><i class="fa fa-check"></i><b>8.7</b> X quantitative continue et Y discrète</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#boxplot-r-base"><i class="fa fa-check"></i><b>8.7.1</b> 6.1 boxplot (R-base)</a></li>
+<li class="chapter" data-level="8.7.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_boxplot-ggplot2"><i class="fa fa-check"></i><b>8.7.2</b> geom_boxplot (ggplot2)</a></li>
+<li class="chapter" data-level="8.7.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#beanplot-r-base-package-beanplot"><i class="fa fa-check"></i><b>8.7.3</b> beanplot (R-base + package beanplot)</a></li>
+<li class="chapter" data-level="8.7.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_violin-ggplot2"><i class="fa fa-check"></i><b>8.7.4</b> geom_violin (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#deux-variables-x-et-y-discrètes"><i class="fa fa-check"></i><b>8.8</b> Deux variables X et Y discrètes</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#mosaicplot-r-base"><i class="fa fa-check"></i><b>8.8.1</b> mosaicplot (R-base)</a></li>
+<li class="chapter" data-level="8.8.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2-1"><i class="fa fa-check"></i><b>8.8.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#conclusion-1"><i class="fa fa-check"></i><b>8.9</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="8.9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#r-base-1"><i class="fa fa-check"></i><b>8.9.1</b> R-base</a></li>
+<li class="chapter" data-level="8.9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2"><i class="fa fa-check"></i><b>8.9.2</b> ggplot2</a></li>
+<li class="chapter" data-level="8.9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#le-meilleur-des-deux-mondes"><i class="fa fa-check"></i><b>8.9.3</b> Le meilleur des deux mondes ?</a></li>
+<li class="chapter" data-level="8.9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web"><i class="fa fa-check"></i><b>8.9.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction à la statistique bivariée et aux représentations graphiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="graphiques-avec-ggplot2" class="section level1" number="8">
+<h1><span class="header-section-number">Partie 8</span> Graphiques avec ggplot2</h1>
+<p><img src="resources/figures/ggplot2.jpeg" width="870" /></p>
+<ul>
+<li><strong>Mise en place</strong> : Télécharger le <a href="https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo8.zip">dossier exo8</a> et décompressez le sur votre ordinateur. Puis ouvrez le projet R <code>exo8.Rproj</code> dans Rstudio.</li>
+</ul>
+<div id="introduction-1" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Introduction</h2>
+<div id="ggplot2-et-tydiverse" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> ggplot2 et tydiverse</h3>
+<ul>
+<li><strong>ggplot2</strong> est un package de visualisation graphique qui s’incrit dans l’écosystème plus général du <strong>tydiverse</strong> mis au point par <strong>Hadley Wickham</strong>, l’un des grands prêtres de R, responsable scientifique en chef de <strong>Rstudio</strong>.</li>
+</ul>
+<p><a href="http://hadley.nz/" class="uri">http://hadley.nz/</a></p>
+<ul>
+<li><p><strong>ggplot2</strong> est considéré actuellement comme la <strong>référence mondiale</strong> en matière de visualisation de données statistiques sous R en raison de sa puissance et de sa polyvalence.</p></li>
+<li><p>mais son usage avancé n’est pas très facile même si les principes de base sont (relativement) simples.</p></li>
+<li><p>ggplot2 peut fonctionner sans tidyverse mais il est probablement plus efficace lorsque l’on l’utilise à l’intérieur de son écosystème. En d’autres termes, l’apprentissage de ggplot2 est souvent couplé avec celui de tidyverse. Voir par exemple l’excellent cours de J. Barnier.</p></li>
+</ul>
+<hr />
+</div>
+<div id="ggplot2-cheatsheet" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> ggplot2 cheatsheet</h3>
+<ul>
+<li>Il est recommandé d’imprimer et d’avoir toujours avec soi la <strong>ggplot2 cheatsheet</strong> qui est <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;ved=2ahUKEwi62f3p4__2AhWox4UKHZbNCZ0QFnoECBwQAQ&amp;url=https%3A%2F%2Fthinkr.fr%2Fpdf%2Fggplot2-french-cheatsheet.pdf&amp;usg=AOvVaw3pLi41NLcJnklIg6maoJym">disponible en français</a>.</li>
+</ul>
+</div>
+</div>
+<div id="préparation-des-données-4" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> préparation des données</h2>
+<div id="chargement-du-fichier-2" class="section level3" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Chargement du fichier</h3>
+<p>On charge un fichier statistique appelé <em>tips.csv</em> où les séparateurs sont des points-virgules et les décimales des points.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="09-Graphique-ggplot.html#cb1-1" aria-hidden="true" tabindex="-1"></a>don<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/tips/tips.csv&quot;</span>,</span>
+<span id="cb1-2"><a href="09-Graphique-ggplot.html#cb1-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>,</span>
+<span id="cb1-3"><a href="09-Graphique-ggplot.html#cb1-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">header =</span> T)</span>
+<span id="cb1-4"><a href="09-Graphique-ggplot.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(don)</span></code></pre></div>
+<pre><code>##   IDEN TOTBILL  TIP SEX SMOKER DAY TIME SIZE
+## 1 R001   16.99 1.01   1      0   6    1    2
+## 2 R002   10.34 1.66   0      0   6    1    3
+## 3 R003   21.01 3.50   0      0   6    1    3
+## 4 R004   23.68 3.31   0      0   6    1    2
+## 5 R005   24.59 3.61   1      0   6    1    4
+## 6 R006   25.29 4.71   0      0   6    1    4</code></pre>
+</div>
+<div id="contenu-du-fichier-2" class="section level3" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Contenu du fichier</h3>
+<p>Ce dossier contient les pourboires (<em>tips</em> en anglais, d’où le nom du fichier) d’un serveur dans un restaurant américain aux débuts des années 1990. Le restaurant était dans un centre commercial. Il y avait une zone fumeurs et une zone non fumeurs.Les données indiquent le prix du repas, le pourboire, le sexe de la personne qui a payé et donné le pourboire, si c’était dans la zone fumeurs ou non, le jour où le repas a été pris, si c’était en journée ou en soirée et enfin, le nombre de convives.</p>
+<p><strong>Sources</strong> : Ces données sont disponibles dans le package R nommé rggobi et sont décrites dans l’ouvrage de Cook et Swayne intitulé <em>Interactive and Dynamic Graphics for Data Analysi</em>s. Elles font partie des données d’exemple du livre de Bryant et Smith dont la première édition est parue en 1995 dont le titre est <em>Practical Data Analysis: Case Studies in Business Statistics</em>.</p>
+</div>
+<div id="dictionaire-des-variables-2" class="section level3" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Dictionaire des variables</h3>
+<ul>
+<li><strong>IDEN</strong> : identifiant du repas</li>
+<li><strong>TOTBILL</strong> : prix du repas (en dollars des années 1990)</li>
+<li><strong>TIP</strong> : pourboire (en dollars des années 1990)</li>
+<li><strong>SEX</strong> : sexe de la personne qui a payé (0 = Homme, 1 = Femme)</li>
+<li><strong>SMOKER</strong> : la personne qui a payé est non-fumeur (O) ou fumeur (1)</li>
+<li><strong>DAY</strong> : jour de la semaine (1 = dimanche, 2 = lundi, 3 = mardi, …)</li>
+<li><strong>TIME</strong> : repas pris en journée (0) ou le soir (1)</li>
+<li><strong>SIZE</strong> : nombre de convives</li>
+</ul>
+<hr />
+</div>
+<div id="recodage-des-variables-2" class="section level3" number="8.2.4">
+<h3><span class="header-section-number">8.2.4</span> Recodage des variables</h3>
+<p>Le type de plusieurs variables est incorrect. On transforme les codes numériques en facteur et on recode les niveaux en français :</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="09-Graphique-ggplot.html#cb3-1" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>IDEN<span class="ot">&lt;-</span><span class="fu">as.character</span>(don<span class="sc">$</span>IDEN)</span>
+<span id="cb3-2"><a href="09-Graphique-ggplot.html#cb3-2" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>SEX<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>SEX)</span>
+<span id="cb3-3"><a href="09-Graphique-ggplot.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>SEX)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Homme&quot;</span>,<span class="st">&quot;Femme&quot;</span>)</span>
+<span id="cb3-4"><a href="09-Graphique-ggplot.html#cb3-4" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>SMOKER<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>SMOKER)</span>
+<span id="cb3-5"><a href="09-Graphique-ggplot.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>SMOKER)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Non fumeur&quot;</span>, <span class="st">&quot;Fumeur&quot;</span>)</span>
+<span id="cb3-6"><a href="09-Graphique-ggplot.html#cb3-6" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>DAY<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>DAY)</span>
+<span id="cb3-7"><a href="09-Graphique-ggplot.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>DAY)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Mercredi&quot;</span>,<span class="st">&quot;Jeudi&quot;</span>,<span class="st">&quot;Vendredi&quot;</span>,<span class="st">&quot;Samedi&quot;</span>)</span>
+<span id="cb3-8"><a href="09-Graphique-ggplot.html#cb3-8" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>TIME<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>TIME)</span>
+<span id="cb3-9"><a href="09-Graphique-ggplot.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>TIME)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Journée&quot;</span>,<span class="st">&quot;Soirée&quot;</span>)</span>
+<span id="cb3-10"><a href="09-Graphique-ggplot.html#cb3-10" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>PCT<span class="ot">&lt;-</span><span class="dv">100</span><span class="sc">*</span>don<span class="sc">$</span>TIP<span class="sc">/</span>don<span class="sc">$</span>TOTBILL</span></code></pre></div>
+</div>
+<div id="résumé-de-lensemble-du-tableau-2" class="section level3" number="8.2.5">
+<h3><span class="header-section-number">8.2.5</span> Résumé de l’ensemble du tableau</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="09-Graphique-ggplot.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(don)</span></code></pre></div>
+<pre><code>##      IDEN              TOTBILL           TIP            SEX     
+##  Length:244         Min.   : 3.07   Min.   : 1.000   Homme:157  
+##  Class :character   1st Qu.:13.35   1st Qu.: 2.000   Femme: 87  
+##  Mode  :character   Median :17.80   Median : 2.900              
+##                     Mean   :19.79   Mean   : 2.998              
+##                     3rd Qu.:24.13   3rd Qu.: 3.562              
+##                     Max.   :50.81   Max.   :10.000              
+##         SMOKER          DAY          TIME          SIZE           PCT        
+##  Non fumeur:151   Mercredi:62   Journée: 68   Min.   :1.00   Min.   : 3.564  
+##  Fumeur    : 93   Jeudi   :19   Soirée :176   1st Qu.:2.00   1st Qu.:12.913  
+##                   Vendredi:87                 Median :2.00   Median :15.477  
+##                   Samedi  :76                 Mean   :2.57   Mean   :16.080  
+##                                               3rd Qu.:3.00   3rd Qu.:19.148  
+##                                               Max.   :6.00   Max.   :71.034</code></pre>
+</div>
+</div>
+<div id="principes-généraux" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Principes généraux</h2>
+<p>On commence par charger le package <code>ggplot2</code> qui est une partie de l’univers <code>tidyverse</code> mais que l’on peut utiliser indépendamment du reste de l’empire d’Hadley Wickham…</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="09-Graphique-ggplot.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div id="les-différentes-étapes" class="section level3" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Les différentes étapes</h3>
+<ul>
+<li>la commande <strong>ggplot</strong>(<em>data</em>) initie la création du graphique.</li>
+<li>la commande <strong>aes()</strong> qui est l’abrévation de <em>aesthetics</em> définit les paramètres généraux de l’ensemble du graphique et comporte en général
+<ul>
+<li><strong>x =</strong> variable liée à l’axe horizontal</li>
+<li><strong>y=</strong> variable liée à l’axe vertical</li>
+<li><strong>colour=</strong> : variable définissant des groupes / couleur</li>
+<li><strong>shape=</strong> : variable définissant des groupes / forme</li>
+</ul></li>
+<li>la commande <strong>geom_xxx</strong> crée un graphique de type xxx</li>
+<li>les commandes additionnelles <strong>scale_xxx</strong> précisent les axes</li>
+<li>la commande additionelle <strong>facet_xxx</strong> partitionne la figure en plusieurs</li>
+<li>la commande <strong>theme_xxx</strong> retouche l’ensemble des paramètres de couleur, police, épaisseur</li>
+</ul>
+<p>N.B. Toutes les étapes ci-dessus ne sont pas obligatoires.</p>
+</div>
+<div id="la-figure-à-réaliser" class="section level3" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> La figure à réaliser</h3>
+<p>Comment réaliser la figure ci-dessous ?</p>
+<p><img src="bivaR_files/figure-html/exo1-1.svg" width="672" /></p>
+</div>
+<div id="la-construction-pas-à-pas" class="section level3" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> La construction pas à pas</h3>
+<p>On définit le tableau de données avec <code>ggplot()</code> et les variables principales avec <code>aes()</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="09-Graphique-ggplot.html#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="09-Graphique-ggplot.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> TOTBILL) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="09-Graphique-ggplot.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> TIP) </span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-6-1.svg" width="672" /></p>
+<p>On ajoute le type principal du graphique avec la commande <code>geom_point()</code></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="09-Graphique-ggplot.html#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="09-Graphique-ggplot.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> TOTBILL) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="09-Graphique-ggplot.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> TIP) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="09-Graphique-ggplot.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-7-1.svg" width="672" /></p>
+<p>On retouche les axes horizontaux et verticaux en les passant en logarithme et en leur donnant un titre.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="09-Graphique-ggplot.html#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="09-Graphique-ggplot.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> TOTBILL) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="09-Graphique-ggplot.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> TIP) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="09-Graphique-ggplot.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-5"><a href="09-Graphique-ggplot.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix du repas en $&quot;</span>)<span class="sc">+</span></span>
+<span id="cb9-6"><a href="09-Graphique-ggplot.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Montant du pourboire en $&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-8-1.svg" width="672" /></p>
+<p>On segmente le graphique en facettes selon une ou plusieurs variables avec <code>facet_wrap()</code>. Du coup, on retire ces variables de l’esthétique générale :</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="09-Graphique-ggplot.html#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="09-Graphique-ggplot.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> TOTBILL) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="09-Graphique-ggplot.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> TIP) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="09-Graphique-ggplot.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-5"><a href="09-Graphique-ggplot.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix du repas en $&quot;</span>)<span class="sc">+</span></span>
+<span id="cb10-6"><a href="09-Graphique-ggplot.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Montant du pourboire en $&quot;</span>)<span class="sc">+</span></span>
+<span id="cb10-7"><a href="09-Graphique-ggplot.html#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(SEX,SMOKER))</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-9-1.svg" width="672" /></p>
+<p>On ajoute dans chaque facette une droite de tendance et son intervalle de confiance avec <code>geom_smooth()</code>. On précise <em>method=“lm”</em> pour avoir une droite et non pas une courbe</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="09-Graphique-ggplot.html#cb11-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="09-Graphique-ggplot.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> TOTBILL) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="09-Graphique-ggplot.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> TIP) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="09-Graphique-ggplot.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-5"><a href="09-Graphique-ggplot.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix du repas en $&quot;</span>)<span class="sc">+</span></span>
+<span id="cb11-6"><a href="09-Graphique-ggplot.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Montant du pourboire en $&quot;</span>)<span class="sc">+</span></span>
+<span id="cb11-7"><a href="09-Graphique-ggplot.html#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(SEX,SMOKER))<span class="sc">+</span></span>
+<span id="cb11-8"><a href="09-Graphique-ggplot.html#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-10-1.svg" width="672" /></p>
+<p>Onajoute un titre principal avec <code>ggtitle()</code> et on retouche l’ensemble de l’apparence avec <code>theme_light()</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="09-Graphique-ggplot.html#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="09-Graphique-ggplot.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> TOTBILL) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="09-Graphique-ggplot.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> TIP) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="09-Graphique-ggplot.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-5"><a href="09-Graphique-ggplot.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix du repas en $&quot;</span>)<span class="sc">+</span></span>
+<span id="cb12-6"><a href="09-Graphique-ggplot.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Montant du pourboire en $&quot;</span>)<span class="sc">+</span></span>
+<span id="cb12-7"><a href="09-Graphique-ggplot.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(SEX,SMOKER))<span class="sc">+</span></span>
+<span id="cb12-8"><a href="09-Graphique-ggplot.html#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="09-Graphique-ggplot.html#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&quot;Relation entre prix du repas et pourboire / sexe et tabagisme&quot;</span>,</span>
+<span id="cb12-10"><a href="09-Graphique-ggplot.html#cb12-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">&quot;Source : Briant &amp; Smith 1995 &quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-11"><a href="09-Graphique-ggplot.html#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-11-1.svg" width="672" /></p>
+</div>
+<div id="comparaison-avec-r-base" class="section level3" number="8.3.4">
+<h3><span class="header-section-number">8.3.4</span> Comparaison avec R-Base</h3>
+<ul>
+<li><p>La principale différence réside dans la <strong>construction séquentielle</strong> de la figure avec l’opérateur <strong>+</strong>. A tout moment on peut sauvegarder la figure au cours d’une des étapes décrites dans l’exemple. On parle de <strong>pipeline</strong> pour ce type de programme que l’on retrouve dans la manipulation de données avec <strong>tidyverse</strong> et <strong>dplyr</strong>.</p></li>
+<li><p>La seconde différence réside dans la <strong>production rapide</strong> d’une figure de qualité graphique acceptable sans avoir besoin de spécifier les paramètres <strong>par()</strong> de R-Base.</p></li>
+<li><p>Au total, ggplot2 s’impose actuellement comme un <strong>standard mondial</strong> autour duquel se greffent d’autres applications. Par exemple, on peut rendre interactif un graphique ggplot() en le couplant avec <strong>plotly()</strong>.</p></li>
+<li><p>Mais … ggplot2 est <strong>beaucoup moins simple</strong> qu’il n’y paraît de prime abord. Et on peut facilement s’arracher les cheveux sur certaines commandes !</p></li>
+</ul>
+</div>
+<div id="attention-paramètres-aes-locaux-et-globaux" class="section level3" number="8.3.5">
+<h3><span class="header-section-number">8.3.5</span> Attention ! Paramètres aes() locaux et globaux</h3>
+<p>Une des plus grandes difficultés que l’on rencontre dans ggplot() est <strong>la manipulation du paramètre aes()</strong> qui peut renvoyer :</p>
+<ul>
+<li>soit à des <strong>paramètres globaux</strong> s’ils apparaissent dans le ggplot initial ou dans des lignes de codes isolées</li>
+<li>soit à des <strong>paramètres locaux</strong>, s’ils apparaissent à l’intérieur d’une fonction geom().</li>
+</ul>
+<p>Deux exemples rapides pour bien comprendre</p>
+<ul>
+<li><strong>SEX est un paramètre global</strong> : dans ce cas il s’applique à toutes les commandes qui suivent. Il y aura donc <strong>deux</strong> droites de régression générées par geom_smooth</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="09-Graphique-ggplot.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x =</span> TOTBILL, <span class="at">y =</span> TIP, <span class="at">color =</span> SEX)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="09-Graphique-ggplot.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a href="09-Graphique-ggplot.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
+<ul>
+<li><strong>SEX est un paramètre local de geom_point()</strong> : dans ce cas il n’aura pas d’effet sur geom_smooth() qui va générer <strong>une</strong> seule droite de régression.</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="09-Graphique-ggplot.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x =</span> TOTBILL, <span class="at">y =</span> TIP)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="09-Graphique-ggplot.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>SEX)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="09-Graphique-ggplot.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-13-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="x-discrète" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> X discrète</h2>
+<div id="barplot-r-base" class="section level3" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> barplot (R-base)</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="09-Graphique-ggplot.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(don<span class="sc">$</span>SMOKER), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb15-2"><a href="09-Graphique-ggplot.html#cb15-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Salle de repas&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-14-1.svg" width="672" /></p>
+</div>
+<div id="geom_bar-ggplot2" class="section level3" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> geom_bar (ggplot2)</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="09-Graphique-ggplot.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot</span></span>
+<span id="cb16-2"><a href="09-Graphique-ggplot.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="09-Graphique-ggplot.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span>SMOKER) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="09-Graphique-ggplot.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>))<span class="sc">+</span></span>
+<span id="cb16-5"><a href="09-Graphique-ggplot.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Salle de repas&quot;</span>)<span class="sc">+</span></span>
+<span id="cb16-6"><a href="09-Graphique-ggplot.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-15-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="x-quantitative-continue" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> X quantitative continue</h2>
+<div id="hist-r-base" class="section level3" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> hist (R-base)</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="09-Graphique-ggplot.html#cb17-1" aria-hidden="true" tabindex="-1"></a>don2<span class="ot">&lt;-</span>don[don<span class="sc">$</span>PCT<span class="sc">&lt;</span><span class="dv">30</span>,]</span>
+<span id="cb17-2"><a href="09-Graphique-ggplot.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don2<span class="sc">$</span>PCT,<span class="at">breaks =</span> <span class="dv">15</span>,</span>
+<span id="cb17-3"><a href="09-Graphique-ggplot.html#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb17-4"><a href="09-Graphique-ggplot.html#cb17-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb17-5"><a href="09-Graphique-ggplot.html#cb17-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Pourboire (%)&quot;</span>,</span>
+<span id="cb17-6"><a href="09-Graphique-ggplot.html#cb17-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Nombre de clients&quot;</span>,</span>
+<span id="cb17-7"><a href="09-Graphique-ggplot.html#cb17-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Les clients sont-ils généreux ?&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-16-1.svg" width="672" /></p>
+</div>
+<div id="geom_histogram-ggplot2" class="section level3" number="8.5.2">
+<h3><span class="header-section-number">8.5.2</span> geom_histogram (ggplot2)</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="09-Graphique-ggplot.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On démarre par une ligne de tidyverse ...</span></span>
+<span id="cb18-2"><a href="09-Graphique-ggplot.html#cb18-2" aria-hidden="true" tabindex="-1"></a>don <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(PCT<span class="sc">&lt;</span><span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="09-Graphique-ggplot.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  ... en on embraye sur ggplot2 </span></span>
+<span id="cb18-4"><a href="09-Graphique-ggplot.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb18-5"><a href="09-Graphique-ggplot.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span>PCT) <span class="sc">+</span> </span>
+<span id="cb18-6"><a href="09-Graphique-ggplot.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Appel de la fonction principale  </span></span>
+<span id="cb18-7"><a href="09-Graphique-ggplot.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>( <span class="at">bins =</span> <span class="dv">15</span>,     </span>
+<span id="cb18-8"><a href="09-Graphique-ggplot.html#cb18-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb18-9"><a href="09-Graphique-ggplot.html#cb18-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">&quot;blue&quot;</span> </span>
+<span id="cb18-10"><a href="09-Graphique-ggplot.html#cb18-10" aria-hidden="true" tabindex="-1"></a>                 ) <span class="sc">+</span>   </span>
+<span id="cb18-11"><a href="09-Graphique-ggplot.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Retouche de l&#39;échelle</span></span>
+<span id="cb18-12"><a href="09-Graphique-ggplot.html#cb18-12" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_x_continuous</span>( <span class="at">name =</span> <span class="st">&quot;Pourboires en %&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb18-13"><a href="09-Graphique-ggplot.html#cb18-13" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Nombre de clients&quot;</span>)<span class="sc">+</span></span>
+<span id="cb18-14"><a href="09-Graphique-ggplot.html#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du titre </span></span>
+<span id="cb18-15"><a href="09-Graphique-ggplot.html#cb18-15" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggtitle</span>(<span class="st">&quot;Les clients sont-ils généreux ?&quot;</span>) </span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-17-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="x-et-y-quantitatives-continues" class="section level2" number="8.6">
+<h2><span class="header-section-number">8.6</span> X et Y quantitatives continues</h2>
+<div id="plot-r-base" class="section level3" number="8.6.1">
+<h3><span class="header-section-number">8.6.1</span> plot (R-base)</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="09-Graphique-ggplot.html#cb19-1" aria-hidden="true" tabindex="-1"></a>don2<span class="ot">&lt;-</span>don[don<span class="sc">$</span>PCT<span class="sc">&lt;</span><span class="dv">30</span>,]</span>
+<span id="cb19-2"><a href="09-Graphique-ggplot.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> don2<span class="sc">$</span>TOTBILL,</span>
+<span id="cb19-3"><a href="09-Graphique-ggplot.html#cb19-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> don2<span class="sc">$</span>PCT, </span>
+<span id="cb19-4"><a href="09-Graphique-ggplot.html#cb19-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">0</span>, </span>
+<span id="cb19-5"><a href="09-Graphique-ggplot.html#cb19-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Prix du repas&quot;</span>,</span>
+<span id="cb19-6"><a href="09-Graphique-ggplot.html#cb19-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Pourboire (%)&quot;</span>,</span>
+<span id="cb19-7"><a href="09-Graphique-ggplot.html#cb19-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span> <span class="st">&quot;Plus c&#39;est cher moins on est généreux !&quot;</span>)</span>
+<span id="cb19-8"><a href="09-Graphique-ggplot.html#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x=</span>don2<span class="sc">$</span>TOTBILL, </span>
+<span id="cb19-9"><a href="09-Graphique-ggplot.html#cb19-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span>don2<span class="sc">$</span>PCT, </span>
+<span id="cb19-10"><a href="09-Graphique-ggplot.html#cb19-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span>don2<span class="sc">$</span>SEX, </span>
+<span id="cb19-11"><a href="09-Graphique-ggplot.html#cb19-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex=</span><span class="fu">sqrt</span>(don2<span class="sc">$</span>SIZE), </span>
+<span id="cb19-12"><a href="09-Graphique-ggplot.html#cb19-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb19-13"><a href="09-Graphique-ggplot.html#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(don2<span class="sc">$</span>PCT<span class="sc">~</span>don2<span class="sc">$</span>TOTBILL), </span>
+<span id="cb19-14"><a href="09-Graphique-ggplot.html#cb19-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb19-15"><a href="09-Graphique-ggplot.html#cb19-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-18-1.svg" width="672" /></p>
+</div>
+<div id="geom_point-ggplot2" class="section level3" number="8.6.2">
+<h3><span class="header-section-number">8.6.2</span> geom_point (ggplot2)</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="09-Graphique-ggplot.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On filtre avec tidyverse ...</span></span>
+<span id="cb20-2"><a href="09-Graphique-ggplot.html#cb20-2" aria-hidden="true" tabindex="-1"></a>don <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(PCT<span class="sc">&lt;</span><span class="dv">30</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="09-Graphique-ggplot.html#cb20-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-4"><a href="09-Graphique-ggplot.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  On définit les paramètres globaux </span></span>
+<span id="cb20-5"><a href="09-Graphique-ggplot.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span>TOTBILL, <span class="at">y=</span>PCT)) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="09-Graphique-ggplot.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-7"><a href="09-Graphique-ggplot.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># On trace les points avec </span></span>
+<span id="cb20-8"><a href="09-Graphique-ggplot.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># des paramètres locaux</span></span>
+<span id="cb20-9"><a href="09-Graphique-ggplot.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>SEX, </span>
+<span id="cb20-10"><a href="09-Graphique-ggplot.html#cb20-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">size =</span> SIZE)) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="09-Graphique-ggplot.html#cb20-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-12"><a href="09-Graphique-ggplot.html#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># On ajoute la droite de régression</span></span>
+<span id="cb20-13"><a href="09-Graphique-ggplot.html#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb20-14"><a href="09-Graphique-ggplot.html#cb20-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-15"><a href="09-Graphique-ggplot.html#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb20-16"><a href="09-Graphique-ggplot.html#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;Prix du repas&quot;</span>) <span class="sc">+</span></span>
+<span id="cb20-17"><a href="09-Graphique-ggplot.html#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;Pourboire en %&quot;</span>) <span class="sc">+</span></span>
+<span id="cb20-18"><a href="09-Graphique-ggplot.html#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Plus c&#39;est cher moins on est généreux !&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="x-quantitative-continue-et-y-discrète" class="section level2" number="8.7">
+<h2><span class="header-section-number">8.7</span> X quantitative continue et Y discrète</h2>
+<div id="boxplot-r-base" class="section level3" number="8.7.1">
+<h3><span class="header-section-number">8.7.1</span> 6.1 boxplot (R-base)</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="09-Graphique-ggplot.html#cb21-1" aria-hidden="true" tabindex="-1"></a>don2<span class="ot">&lt;-</span>don[(don<span class="sc">$</span>PCT <span class="sc">&lt;</span> <span class="dv">30</span>),]</span>
+<span id="cb21-2"><a href="09-Graphique-ggplot.html#cb21-2" aria-hidden="true" tabindex="-1"></a>don2<span class="sc">$</span>SIZE<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don2<span class="sc">$</span>SIZE)</span>
+<span id="cb21-3"><a href="09-Graphique-ggplot.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#levels(don2$SIZE)&lt;-c(&quot;1 ou 2&quot;, &quot;1 ou 2&quot;, &quot;3 ou 4&quot;, &quot;3 ou 4&quot;, &quot;5 ou 6&quot;, &quot;5 ou 6&quot;)</span></span>
+<span id="cb21-4"><a href="09-Graphique-ggplot.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don2<span class="sc">$</span>PCT<span class="sc">~</span>don2<span class="sc">$</span>SIZE, </span>
+<span id="cb21-5"><a href="09-Graphique-ggplot.html#cb21-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="fu">rainbow</span>(<span class="at">n=</span><span class="dv">12</span>, <span class="at">alpha=</span><span class="fl">0.5</span>),</span>
+<span id="cb21-6"><a href="09-Graphique-ggplot.html#cb21-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Nombre de personnes&quot;</span>,</span>
+<span id="cb21-7"><a href="09-Graphique-ggplot.html#cb21-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Pourboire (%)&quot;</span>,</span>
+<span id="cb21-8"><a href="09-Graphique-ggplot.html#cb21-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Plus on est de fous, moins on est généreux !&quot;</span>,)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-20-1.svg" width="672" /></p>
+</div>
+<div id="geom_boxplot-ggplot2" class="section level3" number="8.7.2">
+<h3><span class="header-section-number">8.7.2</span> geom_boxplot (ggplot2)</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="09-Graphique-ggplot.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On filtre le tableau et on change SIZE en factor</span></span>
+<span id="cb22-2"><a href="09-Graphique-ggplot.html#cb22-2" aria-hidden="true" tabindex="-1"></a>don <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(PCT <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="09-Graphique-ggplot.html#cb22-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">SIZE =</span> <span class="fu">as.factor</span>(SIZE)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="09-Graphique-ggplot.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-5"><a href="09-Graphique-ggplot.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
+<span id="cb22-6"><a href="09-Graphique-ggplot.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> SIZE,<span class="at">y =</span> PCT)) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="09-Graphique-ggplot.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-8"><a href="09-Graphique-ggplot.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># On ajoute la boxplot</span></span>
+<span id="cb22-9"><a href="09-Graphique-ggplot.html#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span> SIZE)) <span class="sc">+</span></span>
+<span id="cb22-10"><a href="09-Graphique-ggplot.html#cb22-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-11"><a href="09-Graphique-ggplot.html#cb22-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-12"><a href="09-Graphique-ggplot.html#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb22-13"><a href="09-Graphique-ggplot.html#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Nombre de personnes&quot;</span>) <span class="sc">+</span></span>
+<span id="cb22-14"><a href="09-Graphique-ggplot.html#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;Pourboire en %&quot;</span>) <span class="sc">+</span></span>
+<span id="cb22-15"><a href="09-Graphique-ggplot.html#cb22-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Plus on est de fous, moins on est généreux !&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-21-1.svg" width="672" /></p>
+</div>
+<div id="beanplot-r-base-package-beanplot" class="section level3" number="8.7.3">
+<h3><span class="header-section-number">8.7.3</span> beanplot (R-base + package beanplot)</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="09-Graphique-ggplot.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="st">&quot;black&quot;</span>,<span class="at">fg=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.lab =</span><span class="st">&quot;white&quot;</span>, <span class="at">col.axis =</span><span class="st">&quot;white&quot;</span>,<span class="at">col.main=</span><span class="st">&quot;white&quot;</span> )</span>
+<span id="cb23-2"><a href="09-Graphique-ggplot.html#cb23-2" aria-hidden="true" tabindex="-1"></a>don2<span class="ot">&lt;-</span>don[(don<span class="sc">$</span>PCT <span class="sc">&lt;</span> <span class="dv">30</span>),]</span>
+<span id="cb23-3"><a href="09-Graphique-ggplot.html#cb23-3" aria-hidden="true" tabindex="-1"></a>don2<span class="sc">$</span>SIZE<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don2<span class="sc">$</span>SIZE)</span>
+<span id="cb23-4"><a href="09-Graphique-ggplot.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#levels(don2$SIZE)&lt;-c(&quot;1 ou 2&quot;, &quot;1 ou 2&quot;, &quot;3 ou 4&quot;, &quot;3 ou 4&quot;, &quot;5 ou 6&quot;, &quot;5 ou 6&quot;)</span></span>
+<span id="cb23-5"><a href="09-Graphique-ggplot.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(beanplot)</span>
+<span id="cb23-6"><a href="09-Graphique-ggplot.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">beanplot</span>(don2<span class="sc">$</span>PCT<span class="sc">~</span>don2<span class="sc">$</span>SIZE, </span>
+<span id="cb23-7"><a href="09-Graphique-ggplot.html#cb23-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;red&quot;</span>),</span>
+<span id="cb23-8"><a href="09-Graphique-ggplot.html#cb23-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Nombre de personnes&quot;</span>,</span>
+<span id="cb23-9"><a href="09-Graphique-ggplot.html#cb23-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Pourboire (%)&quot;</span>, </span>
+<span id="cb23-10"><a href="09-Graphique-ggplot.html#cb23-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Plus on est de fous, moins on est généreux !&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-22-1.svg" width="672" /></p>
+</div>
+<div id="geom_violin-ggplot2" class="section level3" number="8.7.4">
+<h3><span class="header-section-number">8.7.4</span> geom_violin (ggplot2)</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="09-Graphique-ggplot.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On filtre le tableau et on change SIZE en factor</span></span>
+<span id="cb24-2"><a href="09-Graphique-ggplot.html#cb24-2" aria-hidden="true" tabindex="-1"></a>don <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(PCT <span class="sc">&lt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="09-Graphique-ggplot.html#cb24-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">SIZE =</span> <span class="fu">as.factor</span>(SIZE)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="09-Graphique-ggplot.html#cb24-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-5"><a href="09-Graphique-ggplot.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
+<span id="cb24-6"><a href="09-Graphique-ggplot.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> SIZE,<span class="at">y =</span> PCT)) <span class="sc">+</span></span>
+<span id="cb24-7"><a href="09-Graphique-ggplot.html#cb24-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-8"><a href="09-Graphique-ggplot.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># On ajoute la géométrie </span></span>
+<span id="cb24-9"><a href="09-Graphique-ggplot.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">fill=</span> SIZE)) <span class="sc">+</span></span>
+<span id="cb24-10"><a href="09-Graphique-ggplot.html#cb24-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-11"><a href="09-Graphique-ggplot.html#cb24-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-12"><a href="09-Graphique-ggplot.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb24-13"><a href="09-Graphique-ggplot.html#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Nombre de personnes&quot;</span>) <span class="sc">+</span></span>
+<span id="cb24-14"><a href="09-Graphique-ggplot.html#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;Pourboire en %&quot;</span>) <span class="sc">+</span></span>
+<span id="cb24-15"><a href="09-Graphique-ggplot.html#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Plus on est de fous, moins on est généreux !&quot;</span>)<span class="sc">+</span></span>
+<span id="cb24-16"><a href="09-Graphique-ggplot.html#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="09-Graphique-ggplot.html#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="co"># On passe en thème &quot;dark&quot;</span></span>
+<span id="cb24-18"><a href="09-Graphique-ggplot.html#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dark</span>()</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-23-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="deux-variables-x-et-y-discrètes" class="section level2" number="8.8">
+<h2><span class="header-section-number">8.8</span> Deux variables X et Y discrètes</h2>
+<div id="mosaicplot-r-base" class="section level3" number="8.8.1">
+<h3><span class="header-section-number">8.8.1</span> mosaicplot (R-base)</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="09-Graphique-ggplot.html#cb25-1" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>SIZE<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>SIZE)</span>
+<span id="cb25-2"><a href="09-Graphique-ggplot.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(don<span class="sc">$</span>SEX<span class="sc">~</span>don<span class="sc">$</span>SIZE, </span>
+<span id="cb25-3"><a href="09-Graphique-ggplot.html#cb25-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="fu">terrain.colors</span>(<span class="at">n=</span><span class="dv">7</span>, <span class="at">alpha=</span><span class="fl">0.5</span>),</span>
+<span id="cb25-4"><a href="09-Graphique-ggplot.html#cb25-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Genre de la personne qui a payé&quot;</span>,</span>
+<span id="cb25-5"><a href="09-Graphique-ggplot.html#cb25-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Nombre de convives&quot;</span>,</span>
+<span id="cb25-6"><a href="09-Graphique-ggplot.html#cb25-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Plus il y a de monde, plus ce sont les hommes qui payent&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-24-1.svg" width="672" /></p>
+</div>
+<div id="geom_bar-ggplot2-1" class="section level3" number="8.8.2">
+<h3><span class="header-section-number">8.8.2</span> geom_bar (ggplot2)</h3>
+<p>Solution simple mais pas terrible !</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="09-Graphique-ggplot.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On filtre le tableau et on change SIZE en factor</span></span>
+<span id="cb26-2"><a href="09-Graphique-ggplot.html#cb26-2" aria-hidden="true" tabindex="-1"></a>don <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">SIZE =</span> <span class="fu">as.factor</span>(SIZE)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="09-Graphique-ggplot.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-4"><a href="09-Graphique-ggplot.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
+<span id="cb26-5"><a href="09-Graphique-ggplot.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> SEX, <span class="at">fill =</span> SIZE)) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="09-Graphique-ggplot.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-7"><a href="09-Graphique-ggplot.html#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="09-Graphique-ggplot.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># On ajoute geom_bar</span></span>
+<span id="cb26-9"><a href="09-Graphique-ggplot.html#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb26-10"><a href="09-Graphique-ggplot.html#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="09-Graphique-ggplot.html#cb26-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb26-12"><a href="09-Graphique-ggplot.html#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb26-13"><a href="09-Graphique-ggplot.html#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Genre de la personne qui a payé&quot;</span>) <span class="sc">+</span></span>
+<span id="cb26-14"><a href="09-Graphique-ggplot.html#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Plus il y a de monde, plus ce sont les hommes qui payent&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-25-1.svg" width="672" /></p>
+<p>solution juste … mais très complexe</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="09-Graphique-ggplot.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On crée un tableau de contingence </span></span>
+<span id="cb27-2"><a href="09-Graphique-ggplot.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># avec pourcentages en colonne avec</span></span>
+<span id="cb27-3"><a href="09-Graphique-ggplot.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># du code tidyverse</span></span>
+<span id="cb27-4"><a href="09-Graphique-ggplot.html#cb27-4" aria-hidden="true" tabindex="-1"></a>don <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">SIZE =</span> <span class="fu">as.factor</span>(SIZE)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="09-Graphique-ggplot.html#cb27-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(SEX, SIZE) <span class="sc">%&gt;%</span></span>
+<span id="cb27-6"><a href="09-Graphique-ggplot.html#cb27-6" aria-hidden="true" tabindex="-1"></a>          <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb27-7"><a href="09-Graphique-ggplot.html#cb27-7" aria-hidden="true" tabindex="-1"></a>          <span class="fu">mutate</span>(<span class="at">cut.count =</span> <span class="fu">sum</span>(count),</span>
+<span id="cb27-8"><a href="09-Graphique-ggplot.html#cb27-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">prop =</span> count<span class="sc">/</span><span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-9"><a href="09-Graphique-ggplot.html#cb27-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb27-10"><a href="09-Graphique-ggplot.html#cb27-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-11"><a href="09-Graphique-ggplot.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
+<span id="cb27-12"><a href="09-Graphique-ggplot.html#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SEX, </span>
+<span id="cb27-13"><a href="09-Graphique-ggplot.html#cb27-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> prop,</span>
+<span id="cb27-14"><a href="09-Graphique-ggplot.html#cb27-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">width =</span> cut.count,</span>
+<span id="cb27-15"><a href="09-Graphique-ggplot.html#cb27-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> SIZE)) <span class="sc">+</span></span>
+<span id="cb27-16"><a href="09-Graphique-ggplot.html#cb27-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-17"><a href="09-Graphique-ggplot.html#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co"># On lance le geom_bar avec plein d&#39;options</span></span>
+<span id="cb27-18"><a href="09-Graphique-ggplot.html#cb27-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>,</span>
+<span id="cb27-19"><a href="09-Graphique-ggplot.html#cb27-19" aria-hidden="true" tabindex="-1"></a>           <span class="at">position =</span> <span class="st">&quot;fill&quot;</span>, </span>
+<span id="cb27-20"><a href="09-Graphique-ggplot.html#cb27-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-21"><a href="09-Graphique-ggplot.html#cb27-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span>SEX, </span>
+<span id="cb27-22"><a href="09-Graphique-ggplot.html#cb27-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">scales =</span> <span class="st">&quot;free_x&quot;</span>, </span>
+<span id="cb27-23"><a href="09-Graphique-ggplot.html#cb27-23" aria-hidden="true" tabindex="-1"></a>             <span class="at">space =</span> <span class="st">&quot;free_x&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-24"><a href="09-Graphique-ggplot.html#cb27-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;RdYlGn&quot;</span>,</span>
+<span id="cb27-25"><a href="09-Graphique-ggplot.html#cb27-25" aria-hidden="true" tabindex="-1"></a>                    <span class="at">direction=</span><span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb27-26"><a href="09-Graphique-ggplot.html#cb27-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb27-27"><a href="09-Graphique-ggplot.html#cb27-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-28"><a href="09-Graphique-ggplot.html#cb27-28" aria-hidden="true" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb27-29"><a href="09-Graphique-ggplot.html#cb27-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Genre de la personne qui a payé&quot;</span>) <span class="sc">+</span></span>
+<span id="cb27-30"><a href="09-Graphique-ggplot.html#cb27-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Plus il y a de monde, plus ce sont les hommes qui payent&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-26-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="09-Graphique-ggplot.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OUF !!! (R-base est + simple !)</span></span></code></pre></div>
+</div>
+</div>
+<div id="conclusion-1" class="section level2" number="8.9">
+<h2><span class="header-section-number">8.9</span> Conclusion</h2>
+<div id="r-base-1" class="section level3" number="8.9.1">
+<h3><span class="header-section-number">8.9.1</span> R-base</h3>
+<ul>
+<li>simple d’utilisation</li>
+<li>peut être amélioré par des packages spécialisés</li>
+<li>permet de créer ses propres fonctions</li>
+<li>n’impose pas d’apprendre tidyverse</li>
+</ul>
+</div>
+<div id="ggplot2" class="section level3" number="8.9.2">
+<h3><span class="header-section-number">8.9.2</span> ggplot2</h3>
+<ul>
+<li>standard mondial du graphisme … actuellement</li>
+<li>compatible avec la religion du tidyverse</li>
+<li>rédaction séquentielle très efficace</li>
+<li>mais apprentissage difficile (plusieurs semaines …)</li>
+</ul>
+</div>
+<div id="le-meilleur-des-deux-mondes" class="section level3" number="8.9.3">
+<h3><span class="header-section-number">8.9.3</span> Le meilleur des deux mondes ?</h3>
+<ul>
+<li>ne pas hésiter à combiner les deux</li>
+<li>exportation facile des résultats dans les deux cas (pdf, jpeg, png, …)</li>
+</ul>
+</div>
+<div id="plotly-un-challenger-sérieux-de-ggplot-pour-le-web" class="section level3" number="8.9.4">
+<h3><span class="header-section-number">8.9.4</span> plotly, un challenger sérieux de ggplot pour le web</h3>
+<ul>
+<li>plotly crée des graphiques interactifs au format .html</li>
+<li>plotly peut convertir des documents ggplot</li>
+<li>plotly a une syntaxe proche de ggplot mais avec des fonctionnalités en plus</li>
+<li>plotly est multilangage (R, Python, …)</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="09-Graphique-ggplot.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># création et sockage de la figure ggplot</span></span>
+<span id="cb29-2"><a href="09-Graphique-ggplot.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  toto <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x =</span> TOTBILL, <span class="at">y =</span> TIP) )<span class="sc">+</span></span>
+<span id="cb29-3"><a href="09-Graphique-ggplot.html#cb29-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_point</span> (<span class="fu">aes</span>(<span class="at">colour =</span> SEX, <span class="at">shape =</span> SMOKER)) <span class="sc">+</span></span>
+<span id="cb29-4"><a href="09-Graphique-ggplot.html#cb29-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix du repas en $&quot;</span>) <span class="sc">+</span></span>
+<span id="cb29-5"><a href="09-Graphique-ggplot.html#cb29-5" aria-hidden="true" tabindex="-1"></a>          <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Montant du pourboire en $&quot;</span>) <span class="sc">+</span></span>
+<span id="cb29-6"><a href="09-Graphique-ggplot.html#cb29-6" aria-hidden="true" tabindex="-1"></a>          <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) </span>
+<span id="cb29-7"><a href="09-Graphique-ggplot.html#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="09-Graphique-ggplot.html#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># conversion en plotly</span></span>
+<span id="cb29-9"><a href="09-Graphique-ggplot.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb29-10"><a href="09-Graphique-ggplot.html#cb29-10" aria-hidden="true" tabindex="-1"></a>   titi <span class="ot">&lt;-</span><span class="fu">ggplotly</span>(toto)</span>
+<span id="cb29-11"><a href="09-Graphique-ggplot.html#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="09-Graphique-ggplot.html#cb29-12" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb29-13"><a href="09-Graphique-ggplot.html#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co"># affichage</span></span>
+<span id="cb29-14"><a href="09-Graphique-ggplot.html#cb29-14" aria-hidden="true" tabindex="-1"></a>   titi</span></code></pre></div>
+<div id="htmlwidget-b8756772548ca7b0fceb" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b8756772548ca7b0fceb">{"x":{"data":[{"x":[1.01452053875792,1.32242605240595,1.37438169805088,1.4029488293444,0.94299959336604,1.42942926438179,1.17724783625562,1.16967443405881,1.01157044359728,1.18808437371494,1.26552533521907,1.33405144034689,1.21192108430851,1.31492005599242,1.25333800532611,1.59571661994342,1.29710365014926,1.25066391946324,1.12613140726198,1.1034616220947,1.33645973384853,0.980003371583746,1.26363606858811,1.24993175663419,1.38129562300383,1.21245396104028,1.27160930137883,1.49512788124293,1.20520436394814,1.24204423936955,1.14426277376199,0.985875357308394,1.48287358360875,1.26221370547642,1.34693946269899,1.51054501020661,1.45560611258187,1.25623653320592,1.0982975364947,0.997386384397313,1.40756084948636,1.28981183911762,1.68367729881869,1.24526583945746,1.30276370847298,1.3059958827708,1.07990446766672,1.02160271602824,1.4345689040342,1.35717225772303,1.23779499327392,1.22167499707077,1.20357677497797,1.11494441571258,1.26197619139781,1.39287274540208,1.32551566336315,1.35198945543563,1.09551804232315,1.2610248339924,1.14612803567824,1.58058287681437,1.37930551775058,1.47610671684019,1.06781451116184,1.15411952551585,1.2027606873932,0.9304395947667,1.3583156400822,1.28057837036808,1.53529412004277,1.61479179195642,0.990338854787601,0.875639937004168,1.14829409743475,1.11826472608948,1.23704079137919,1.39005149645899,1.29600666931367,1.68277664631443,1.21722065564452,1.33243845991561,1.10243370568134,1.14019367857863,1.38952046584638,1.31722734917642,1.50119624202709,1.31576049066573,0.878521795501206,1.68421679513888,1.31069331234336,1.123198075032,1.06483221973857,1.03221570329798,1.00302947055362,1.46284703583167,1.25090769970086],"y":[0.220108088040055,0.544068044350276,0.519827993775719,0.673020907128896,0.301029995663981,0.494154594018443,0.292256071356476,0.509202522331103,0.232996110392154,0.195899652409234,0.477121254719662,0.593286067020457,0.569373909615046,0.525044807036845,0.61066016308988,0.879669205632054,0.502427119984433,0.369215857410143,0.301029995663981,0.301029995663981,0.633468455579587,0.161368002234975,0.397940008672038,0.514547752660286,0.556302500767287,0.301029995663981,0.363611979892144,0.698970004336019,0.350248018334163,0.404833716619938,0.48572142648158,0.12057393120585,0.7481880270062,0.477121254719662,0.698970004336019,0.778151250383644,0.311753861055754,0.477121254719662,0.397940008672038,0.193124598354462,0.637489729512511,0.545307116465824,0.828015064223977,0.421603926869831,0.4983105537896,0.303196057420489,0.294466226161593,0.0969100130080564,0.602059991327962,0.477121254719662,0.432969290874406,0.531478917042255,0.307496037913213,0.301029995663981,0.602059991327962,0.76715586608218,0.477121254719662,0.544068044350276,0.176091259055681,0.575187844927661,0.477121254719662,0.602059991327962,0.406540180433955,0.705007959333336,0.363611979892144,0.397940008672038,0.301029995663981,0.170261715394957,0.338456493604605,0.176091259055681,0.826074802700826,0.698970004336019,0.238046103128795,0.301029995663981,0.397940008672038,0.301029995663981,0.437750562820388,0.301029995663981,0.301029995663981,0.698970004336019,0.301029995663981,0.544068044350276,0.397940008672038,0.301029995663981,0.541579243946581,0.350248018334163,0.653212513775344,0.698970004336019,0.15836249209525,0.954242509439325,0.477121254719662,0.434568904034199,0.530199698203082,0.167317334748176,0.0969100130080564,0.77232170672292,0.243038048686294],"text":["SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 10.34<br />TIP:  1.66","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 21.01<br />TIP:  3.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 23.68<br />TIP:  3.31","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 25.29<br />TIP:  4.71","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL:  8.77<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 26.88<br />TIP:  3.12","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 15.04<br />TIP:  1.96","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 14.78<br />TIP:  3.23","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 10.27<br />TIP:  1.71","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 15.42<br />TIP:  1.57","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 18.43<br />TIP:  3.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 21.58<br />TIP:  3.92","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 16.29<br />TIP:  3.71","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 20.65<br />TIP:  3.35","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 17.92<br />TIP:  4.08","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 39.42<br />TIP:  7.58","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 19.82<br />TIP:  3.18","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 17.81<br />TIP:  2.34","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 13.37<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 12.69<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 21.70<br />TIP:  4.30","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL:  9.55<br />TIP:  1.45","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 18.35<br />TIP:  2.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 17.78<br />TIP:  3.27","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 24.06<br />TIP:  3.60","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 16.31<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 18.69<br />TIP:  2.31","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 31.27<br />TIP:  5.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 16.04<br />TIP:  2.24","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 17.46<br />TIP:  2.54","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 13.94<br />TIP:  3.06","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL:  9.68<br />TIP:  1.32","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 30.40<br />TIP:  5.60","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 18.29<br />TIP:  3.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 22.23<br />TIP:  5.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 32.40<br />TIP:  6.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 28.55<br />TIP:  2.05","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 18.04<br />TIP:  3.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 12.54<br />TIP:  2.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL:  9.94<br />TIP:  1.56","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 25.56<br />TIP:  4.34","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 19.49<br />TIP:  3.51","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 48.27<br />TIP:  6.73","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 17.59<br />TIP:  2.64","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 20.08<br />TIP:  3.15","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 20.23<br />TIP:  2.01","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 12.02<br />TIP:  1.97","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 10.51<br />TIP:  1.25","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 27.20<br />TIP:  4.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 22.76<br />TIP:  3.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 17.29<br />TIP:  2.71","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 16.66<br />TIP:  3.40","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 15.98<br />TIP:  2.03","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 13.03<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 18.28<br />TIP:  4.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 24.71<br />TIP:  5.85","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 21.16<br />TIP:  3.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 22.49<br />TIP:  3.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 12.46<br />TIP:  1.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 18.24<br />TIP:  3.76","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 14.00<br />TIP:  3.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 38.07<br />TIP:  4.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 23.95<br />TIP:  2.55","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 29.93<br />TIP:  5.07","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 11.69<br />TIP:  2.31","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 14.26<br />TIP:  2.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 15.95<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL:  8.52<br />TIP:  1.48","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 22.82<br />TIP:  2.18","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 19.08<br />TIP:  1.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 34.30<br />TIP:  6.70","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 41.19<br />TIP:  5.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL:  9.78<br />TIP:  1.73","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL:  7.51<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 14.07<br />TIP:  2.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 13.13<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 17.26<br />TIP:  2.74","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 24.55<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 19.77<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 48.17<br />TIP:  5.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 16.49<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 21.50<br />TIP:  3.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 12.66<br />TIP:  2.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 13.81<br />TIP:  2.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 24.52<br />TIP:  3.48","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 20.76<br />TIP:  2.24","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 31.71<br />TIP:  4.50","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 20.69<br />TIP:  5.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL:  7.56<br />TIP:  1.44","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 48.33<br />TIP:  9.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 20.45<br />TIP:  3.00","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 13.28<br />TIP:  2.72","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 11.61<br />TIP:  3.39","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 10.77<br />TIP:  1.47","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 10.07<br />TIP:  1.25","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 29.03<br />TIP:  5.92","SEX: Homme<br />SMOKER: Non fumeur<br />TOTBILL: 17.82<br />TIP:  1.75"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"(Homme,Non fumeur)","legendgroup":"(Homme,Non fumeur)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.5798978696031,1.05076631123304,1.30728204703335,1.14019367857863,1.04218159451577,1.26221370547642,1.17638069224327,1.25333800532611,1.28869626059026,1.51428204786038,1.46194849520376,1.60390183173167,1.43584436598444,1.08026562733984,1.32242605240595,1.18639121569549,1.31154195840119,1.40157284567645,1.20411998265592,1.7059491949103,1.19893186993221,0.860338006570994,1.50310943667137,1.22582599146189,1.51719589794997,1.25261034056737,1.16076856186113,1.53945249154946,1.53970323894783,1.36791473879375,1.65657729139611,1.36492603378998,1.60799085854717,1.48372989900002,1.36361197989214,1.19562294358694,1.45392959205773,1.18977095634687,1.21958452621425,1.01452053875792,1.13065534902203,1.27207378750001,1.31238894937059,1.42471833733157,1.58804749698608,1.38506977633193,1.47798897625089,1.41313205043487,1.44947839918736,1.0640834359636,0.888740960682893,1.08493357493672,0.933487287848705,1.12775251583297,1.38039216005703,1.19562294358694,1.19117145572856,1.10037054511756,1.51627088272934,1.35545152012652],"y":[0.477121254719662,0.24551266781415,0.506505032404872,0.301029995663981,0.296665190261531,0.575187844927661,0.320146286111054,0.488550716500444,0.477121254719662,0.698970004336019,0.477121254719662,0.674861140737812,0.602059991327962,0.176091259055681,0.477121254719662,0.214843848047698,0.608526033577194,0.632457292184724,0.301029995663981,1,0.499687082618404,0.711807229041191,0.502427119984433,0.602059991327962,0.492760389026837,0.301029995663981,0.301029995663981,0.550228353055094,0.565847818673518,0.752048447819439,0.544068044350276,0.812913356642856,0.477121254719662,0.301029995663981,0.602059991327962,0.176091259055681,0.40823996531185,0.305351369446624,0.602059991327962,0.301029995663981,0.301029995663981,0.602059991327962,0.602059991327962,0.532754378992498,0.477121254719662,0.307496037913213,0.301029995663981,0.712649701627211,0.477121254719662,0.176091259055681,0.15836249209525,0.342422680822206,0.28330122870355,0.198657086954423,0.301029995663981,0.477121254719662,0.477121254719662,0,0.0681858617461616,0.301029995663981],"text":["SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 38.01<br />TIP:  3.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 11.24<br />TIP:  1.76","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 20.29<br />TIP:  3.21","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 13.81<br />TIP:  2.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 11.02<br />TIP:  1.98","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 18.29<br />TIP:  3.76","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 15.01<br />TIP:  2.09","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 17.92<br />TIP:  3.08","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 19.44<br />TIP:  3.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 32.68<br />TIP:  5.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 28.97<br />TIP:  3.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 40.17<br />TIP:  4.73","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 27.28<br />TIP:  4.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 12.03<br />TIP:  1.50","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 21.01<br />TIP:  3.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 15.36<br />TIP:  1.64","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 20.49<br />TIP:  4.06","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 25.21<br />TIP:  4.29","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 16.00<br />TIP:  2.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 50.81<br />TIP: 10.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 15.81<br />TIP:  3.16","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL:  7.25<br />TIP:  5.15","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 31.85<br />TIP:  3.18","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 16.82<br />TIP:  4.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 32.90<br />TIP:  3.11","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 17.89<br />TIP:  2.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 14.48<br />TIP:  2.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 34.63<br />TIP:  3.55","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 34.65<br />TIP:  3.68","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 23.33<br />TIP:  5.65","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 45.35<br />TIP:  3.50","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 23.17<br />TIP:  6.50","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 40.55<br />TIP:  3.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 30.46<br />TIP:  2.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 23.10<br />TIP:  4.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 15.69<br />TIP:  1.50","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 28.44<br />TIP:  2.56","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 15.48<br />TIP:  2.02","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 16.58<br />TIP:  4.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 10.34<br />TIP:  2.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 13.51<br />TIP:  2.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 18.71<br />TIP:  4.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 20.53<br />TIP:  4.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 26.59<br />TIP:  3.41","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 38.73<br />TIP:  3.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 24.27<br />TIP:  2.03","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 30.06<br />TIP:  2.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 25.89<br />TIP:  5.16","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 28.15<br />TIP:  3.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 11.59<br />TIP:  1.50","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL:  7.74<br />TIP:  1.44","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 12.16<br />TIP:  2.20","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL:  8.58<br />TIP:  1.92","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 13.42<br />TIP:  1.58","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 24.01<br />TIP:  2.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 15.69<br />TIP:  3.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 15.53<br />TIP:  3.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 12.60<br />TIP:  1.00","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 32.83<br />TIP:  1.17","SEX: Homme<br />SMOKER: Fumeur<br />TOTBILL: 22.67<br />TIP:  2.00"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.66929133858268,"symbol":"triangle-up","line":{"width":1.88976377952756,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"(Homme,Fumeur)","legendgroup":"(Homme,Fumeur)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1.23019337886905,1.39075852873872,1.5472823079633,1.17114115102838,1.01410032151962,1.22968184231768,1.30728204703335,1.1978316933289,1.29336255471145,1.17782497186468,1.31576049066573,1.22865695810894,1.01241537476243,1.54170402328429,1.42176840120692,1.21616590228599,1.23223352111473,1.16820274684263,1.00302947055362,1.54195347445824,1.35698140099313,1.32056168019524,0.860338006570994,1.41010207664286,1.23829706787539,1.02734960777476,1.09447112864164,1.38165648258579,1.12775251583297,1.09621458534641,1.47421626407626,1.16196661636407,1.05614226205905,1.30685374869301,1.04805317311561,1.0884904701824,1.26150077319828,0.929929560084588,1.01410032151962,1.15075643986031,1.11925588927794,1.24229290498293,1.43216726944259,1.21563756343506,0.921686475483602,1.27044590801796,1.07445071895459,1.47494433546539,1.39794000867204,1.12678057701201,1.20978301484851,1.20357677497797,1.55424680816611,1.27369558793009],"y":[0.00432137378264258,0.557507201905658,0.698970004336019,0.480006942957151,0.222716471147583,0.544068044350276,0.439332693830263,0.348304863048161,0.477121254719662,0.477121254719662,0.389166084364532,0.487138375477186,0.414973347970818,0.716003343634799,0.176091259055681,0.392696953259666,0.477121254719662,0.342422680822206,0.262451089730429,0.713490543093943,0.511883360978874,0.61066016308988,0,0.602059991327962,0.544068044350276,0.176091259055681,0.255272505103306,0.465382851448418,0.225309281725863,0.401400540781544,0.6232492903979,0.301029995663981,0.301029995663981,0.45178643552429,0.176091259055681,0.301029995663981,0.511883360978874,0.0969100130080564,0.301029995663981,0.301029995663981,0.439332693830263,0.544068044350276,0.698970004336019,0.361727836017593,0.176091259055681,0.133538908370218,0.212187604403958,0.710963118995276,0.574031267727719,0.416640507338281,0.301029995663981,0.477121254719662,0.669316880566112,0.477121254719662],"text":["SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 16.99<br />TIP:  1.01","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 24.59<br />TIP:  3.61","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 35.26<br />TIP:  5.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 14.83<br />TIP:  3.02","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 10.33<br />TIP:  1.67","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 16.97<br />TIP:  3.50","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 20.29<br />TIP:  2.75","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 15.77<br />TIP:  2.23","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 19.65<br />TIP:  3.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 15.06<br />TIP:  3.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 20.69<br />TIP:  2.45","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 16.93<br />TIP:  3.07","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 10.29<br />TIP:  2.60","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 34.81<br />TIP:  5.20","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 26.41<br />TIP:  1.50","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 16.45<br />TIP:  2.47","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 17.07<br />TIP:  3.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 14.73<br />TIP:  2.20","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 10.07<br />TIP:  1.83","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 34.83<br />TIP:  5.17","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 22.75<br />TIP:  3.25","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 20.92<br />TIP:  4.08","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL:  7.25<br />TIP:  1.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 25.71<br />TIP:  4.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 17.31<br />TIP:  3.50","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 10.65<br />TIP:  1.50","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 12.43<br />TIP:  1.80","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 24.08<br />TIP:  2.92","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 13.42<br />TIP:  1.68","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 12.48<br />TIP:  2.52","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 29.80<br />TIP:  4.20","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 14.52<br />TIP:  2.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 11.38<br />TIP:  2.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 20.27<br />TIP:  2.83","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 11.17<br />TIP:  1.50","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 12.26<br />TIP:  2.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 18.26<br />TIP:  3.25","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL:  8.51<br />TIP:  1.25","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 10.33<br />TIP:  2.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 14.15<br />TIP:  2.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 13.16<br />TIP:  2.75","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 17.47<br />TIP:  3.50","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 27.05<br />TIP:  5.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 16.43<br />TIP:  2.30","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL:  8.35<br />TIP:  1.50","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 18.64<br />TIP:  1.36","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 11.87<br />TIP:  1.63","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 29.85<br />TIP:  5.14","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 25.00<br />TIP:  3.75","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 13.39<br />TIP:  2.61","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 16.21<br />TIP:  2.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 15.98<br />TIP:  3.00","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 35.83<br />TIP:  4.67","SEX: Femme<br />SMOKER: Non fumeur<br />TOTBILL: 18.78<br />TIP:  3.00"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"(Femme,Non fumeur)","legendgroup":"(Femme,Non fumeur)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.487138375477186,1.4291060083327,1.40277706961035,0.75966784468963,1.21272015441784,1.05499586152914,1.18695633546541,1.64640372622307,1.35063560825895,1.15563963375978,1.24328614608345,1.02489596010748,1.0265332645233,0.982271233039568,1.32014628611105,1.25887662937213,1.29688447553855,1.63457802285389,1.11394335230684,1.10516942799933,1.11394335230684,1.2148438480477,1.21669359916975,1.10585067438514,1.12287092286444,1.44978684698577,1.11058971029925,1.47914324797861,1.12775251583297,1.21138755293686,1.00389116623691,1.34478512263266,1.43424945239648],"y":[0,0.496929648073215,0.698970004336019,0,0.633468455579587,0.397940008672038,0.477121254719662,0.397940008672038,0.541579243946581,0.602059991327962,0.477121254719662,0.20682587603185,0.301029995663981,0.602059991327962,0.544068044350276,0.544068044350276,0.622214022966295,0.698970004336019,0.301029995663981,0.303196057420489,0.301029995663981,0.397940008672038,0.509202522331103,0.348304863048161,0.397940008672038,0.812913356642856,0.0413926851582251,0.489958479424835,0.541579243946581,0.397940008672038,0.301029995663981,0.459392487759231,0.301029995663981],"text":["SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL:  3.07<br />TIP:  1.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 26.86<br />TIP:  3.14","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 25.28<br />TIP:  5.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL:  5.75<br />TIP:  1.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 16.32<br />TIP:  4.30","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 11.35<br />TIP:  2.50","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 15.38<br />TIP:  3.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 44.30<br />TIP:  2.50","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 22.42<br />TIP:  3.48","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 14.31<br />TIP:  4.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 17.51<br />TIP:  3.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 10.59<br />TIP:  1.61","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 10.63<br />TIP:  2.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL:  9.60<br />TIP:  4.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 20.90<br />TIP:  3.50","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 18.15<br />TIP:  3.50","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 19.81<br />TIP:  4.19","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 43.11<br />TIP:  5.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 13.00<br />TIP:  2.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 12.74<br />TIP:  2.01","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 13.00<br />TIP:  2.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 16.40<br />TIP:  2.50","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 16.47<br />TIP:  3.23","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 12.76<br />TIP:  2.23","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 13.27<br />TIP:  2.50","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 28.17<br />TIP:  6.50","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 12.90<br />TIP:  1.10","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 30.14<br />TIP:  3.09","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 13.42<br />TIP:  3.48","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 16.27<br />TIP:  2.50","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 10.09<br />TIP:  2.00","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 22.12<br />TIP:  2.88","SEX: Femme<br />SMOKER: Fumeur<br />TOTBILL: 27.18<br />TIP:  2.00"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.66929133858268,"symbol":"triangle-up","line":{"width":1.88976377952756,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"(Femme,Fumeur)","legendgroup":"(Femme,Fumeur)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.487138375477186,0.502566360533302,0.517994345589417,0.533422330645532,0.548850315701648,0.564278300757763,0.579706285813878,0.595134270869994,0.610562255926109,0.625990240982224,0.64141822603834,0.656846211094455,0.67227419615057,0.687702181206685,0.703130166262801,0.718558151318916,0.733986136375031,0.749414121431147,0.764842106487262,0.780270091543377,0.795698076599493,0.811126061655608,0.826554046711723,0.841982031767838,0.857410016823954,0.872838001880069,0.888265986936184,0.9036939719923,0.919121957048415,0.93454994210453,0.949977927160646,0.965405912216761,0.980833897272876,0.996261882328991,1.01168986738511,1.02711785244122,1.04254583749734,1.05797382255345,1.07340180760957,1.08882979266568,1.1042577777218,1.11968576277791,1.13511374783403,1.15054173289014,1.16596971794626,1.18139770300238,1.19682568805849,1.21225367311461,1.22768165817072,1.24310964322684,1.25853762828295,1.27396561333907,1.28939359839518,1.3048215834513,1.32024956850741,1.33567755356353,1.35110553861964,1.36653352367576,1.38196150873187,1.39738949378799,1.4128174788441,1.42824546390022,1.44367344895634,1.45910143401245,1.47452941906857,1.48995740412468,1.5053853891808,1.52081337423691,1.53624135929303,1.55166934434914,1.56709732940526,1.58252531446137,1.59795329951749,1.6133812845736,1.62880926962972,1.64423725468583,1.65966523974195,1.67509322479806,1.69052120985418,1.7059491949103],"y":[-0.0833573545982051,-0.0729378118511101,-0.062518269104015,-0.0520987263569199,-0.0416791836098248,-0.0312596408627297,-0.0208400981156346,-0.0104205553685395,-1.01262144441838e-06,0.0104185301256506,0.0208380728727457,0.0312576156198409,0.0416771583669359,0.052096701114031,0.062516243861126,0.0729357866082212,0.0833553293553163,0.0937748721024114,0.104194414849506,0.114613957596602,0.125033500343697,0.135453043090792,0.145872585837887,0.156292128584982,0.166711671332077,0.177131214079172,0.187550756826267,0.197970299573362,0.208389842320457,0.218809385067552,0.229228927814648,0.239648470561743,0.250068013308838,0.260487556055933,0.270907098803028,0.281326641550123,0.291746184297218,0.302165727044313,0.312585269791408,0.323004812538503,0.333424355285598,0.343843898032694,0.354263440779789,0.364682983526884,0.375102526273979,0.385522069021074,0.395941611768169,0.406361154515264,0.416780697262359,0.427200240009454,0.437619782756549,0.448039325503644,0.458458868250739,0.468878410997835,0.47929795374493,0.489717496492025,0.50013703923912,0.510556581986215,0.52097612473331,0.531395667480405,0.5418152102275,0.552234752974595,0.56265429572169,0.573073838468785,0.583493381215881,0.593912923962976,0.604332466710071,0.614752009457166,0.625171552204261,0.635591094951356,0.646010637698451,0.656430180445546,0.666849723192641,0.677269265939736,0.687688808686831,0.698108351433926,0.708527894181022,0.718947436928117,0.729366979675212,0.739786522422307],"text":["TOTBILL: 0.4871384<br />TIP: -8.335735e-02","TOTBILL: 0.5025664<br />TIP: -7.293781e-02","TOTBILL: 0.5179943<br />TIP: -6.251827e-02","TOTBILL: 0.5334223<br />TIP: -5.209873e-02","TOTBILL: 0.5488503<br />TIP: -4.167918e-02","TOTBILL: 0.5642783<br />TIP: -3.125964e-02","TOTBILL: 0.5797063<br />TIP: -2.084010e-02","TOTBILL: 0.5951343<br />TIP: -1.042056e-02","TOTBILL: 0.6105623<br />TIP: -1.012621e-06","TOTBILL: 0.6259902<br />TIP:  1.041853e-02","TOTBILL: 0.6414182<br />TIP:  2.083807e-02","TOTBILL: 0.6568462<br />TIP:  3.125762e-02","TOTBILL: 0.6722742<br />TIP:  4.167716e-02","TOTBILL: 0.6877022<br />TIP:  5.209670e-02","TOTBILL: 0.7031302<br />TIP:  6.251624e-02","TOTBILL: 0.7185582<br />TIP:  7.293579e-02","TOTBILL: 0.7339861<br />TIP:  8.335533e-02","TOTBILL: 0.7494141<br />TIP:  9.377487e-02","TOTBILL: 0.7648421<br />TIP:  1.041944e-01","TOTBILL: 0.7802701<br />TIP:  1.146140e-01","TOTBILL: 0.7956981<br />TIP:  1.250335e-01","TOTBILL: 0.8111261<br />TIP:  1.354530e-01","TOTBILL: 0.8265540<br />TIP:  1.458726e-01","TOTBILL: 0.8419820<br />TIP:  1.562921e-01","TOTBILL: 0.8574100<br />TIP:  1.667117e-01","TOTBILL: 0.8728380<br />TIP:  1.771312e-01","TOTBILL: 0.8882660<br />TIP:  1.875508e-01","TOTBILL: 0.9036940<br />TIP:  1.979703e-01","TOTBILL: 0.9191220<br />TIP:  2.083898e-01","TOTBILL: 0.9345499<br />TIP:  2.188094e-01","TOTBILL: 0.9499779<br />TIP:  2.292289e-01","TOTBILL: 0.9654059<br />TIP:  2.396485e-01","TOTBILL: 0.9808339<br />TIP:  2.500680e-01","TOTBILL: 0.9962619<br />TIP:  2.604876e-01","TOTBILL: 1.0116899<br />TIP:  2.709071e-01","TOTBILL: 1.0271179<br />TIP:  2.813266e-01","TOTBILL: 1.0425458<br />TIP:  2.917462e-01","TOTBILL: 1.0579738<br />TIP:  3.021657e-01","TOTBILL: 1.0734018<br />TIP:  3.125853e-01","TOTBILL: 1.0888298<br />TIP:  3.230048e-01","TOTBILL: 1.1042578<br />TIP:  3.334244e-01","TOTBILL: 1.1196858<br />TIP:  3.438439e-01","TOTBILL: 1.1351137<br />TIP:  3.542634e-01","TOTBILL: 1.1505417<br />TIP:  3.646830e-01","TOTBILL: 1.1659697<br />TIP:  3.751025e-01","TOTBILL: 1.1813977<br />TIP:  3.855221e-01","TOTBILL: 1.1968257<br />TIP:  3.959416e-01","TOTBILL: 1.2122537<br />TIP:  4.063612e-01","TOTBILL: 1.2276817<br />TIP:  4.167807e-01","TOTBILL: 1.2431096<br />TIP:  4.272002e-01","TOTBILL: 1.2585376<br />TIP:  4.376198e-01","TOTBILL: 1.2739656<br />TIP:  4.480393e-01","TOTBILL: 1.2893936<br />TIP:  4.584589e-01","TOTBILL: 1.3048216<br />TIP:  4.688784e-01","TOTBILL: 1.3202496<br />TIP:  4.792980e-01","TOTBILL: 1.3356776<br />TIP:  4.897175e-01","TOTBILL: 1.3511055<br />TIP:  5.001370e-01","TOTBILL: 1.3665335<br />TIP:  5.105566e-01","TOTBILL: 1.3819615<br />TIP:  5.209761e-01","TOTBILL: 1.3973895<br />TIP:  5.313957e-01","TOTBILL: 1.4128175<br />TIP:  5.418152e-01","TOTBILL: 1.4282455<br />TIP:  5.522348e-01","TOTBILL: 1.4436734<br />TIP:  5.626543e-01","TOTBILL: 1.4591014<br />TIP:  5.730738e-01","TOTBILL: 1.4745294<br />TIP:  5.834934e-01","TOTBILL: 1.4899574<br />TIP:  5.939129e-01","TOTBILL: 1.5053854<br />TIP:  6.043325e-01","TOTBILL: 1.5208134<br />TIP:  6.147520e-01","TOTBILL: 1.5362414<br />TIP:  6.251716e-01","TOTBILL: 1.5516693<br />TIP:  6.355911e-01","TOTBILL: 1.5670973<br />TIP:  6.460106e-01","TOTBILL: 1.5825253<br />TIP:  6.564302e-01","TOTBILL: 1.5979533<br />TIP:  6.668497e-01","TOTBILL: 1.6133813<br />TIP:  6.772693e-01","TOTBILL: 1.6288093<br />TIP:  6.876888e-01","TOTBILL: 1.6442373<br />TIP:  6.981084e-01","TOTBILL: 1.6596652<br />TIP:  7.085279e-01","TOTBILL: 1.6750932<br />TIP:  7.189474e-01","TOTBILL: 1.6905212<br />TIP:  7.293670e-01","TOTBILL: 1.7059492<br />TIP:  7.397865e-01"],"type":"scatter","mode":"lines","name":"fitted values","line":{"width":3.77952755905512,"color":"rgba(51,102,255,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[0.487138375477186,0.502566360533302,0.517994345589417,0.533422330645532,0.548850315701648,0.564278300757763,0.579706285813878,0.595134270869994,0.610562255926109,0.625990240982224,0.64141822603834,0.656846211094455,0.67227419615057,0.687702181206685,0.703130166262801,0.718558151318916,0.733986136375031,0.749414121431147,0.764842106487262,0.780270091543377,0.795698076599493,0.811126061655608,0.826554046711723,0.841982031767838,0.857410016823954,0.872838001880069,0.888265986936184,0.9036939719923,0.919121957048415,0.93454994210453,0.949977927160646,0.965405912216761,0.980833897272876,0.996261882328991,1.01168986738511,1.02711785244122,1.04254583749734,1.05797382255345,1.07340180760957,1.08882979266568,1.1042577777218,1.11968576277791,1.13511374783403,1.15054173289014,1.16596971794626,1.18139770300238,1.19682568805849,1.21225367311461,1.22768165817072,1.24310964322684,1.25853762828295,1.27396561333907,1.28939359839518,1.3048215834513,1.32024956850741,1.33567755356353,1.35110553861964,1.36653352367576,1.38196150873187,1.39738949378799,1.4128174788441,1.42824546390022,1.44367344895634,1.45910143401245,1.47452941906857,1.48995740412468,1.5053853891808,1.52081337423691,1.53624135929303,1.55166934434914,1.56709732940526,1.58252531446137,1.59795329951749,1.6133812845736,1.62880926962972,1.64423725468583,1.65966523974195,1.67509322479806,1.69052120985418,1.7059491949103,1.7059491949103,1.7059491949103,1.69052120985418,1.67509322479806,1.65966523974195,1.64423725468583,1.62880926962972,1.6133812845736,1.59795329951749,1.58252531446137,1.56709732940526,1.55166934434914,1.53624135929303,1.52081337423691,1.5053853891808,1.48995740412468,1.47452941906857,1.45910143401245,1.44367344895634,1.42824546390022,1.4128174788441,1.39738949378799,1.38196150873187,1.36653352367576,1.35110553861964,1.33567755356353,1.32024956850741,1.3048215834513,1.28939359839518,1.27396561333907,1.25853762828295,1.24310964322684,1.22768165817072,1.21225367311461,1.19682568805849,1.18139770300238,1.16596971794626,1.15054173289014,1.13511374783403,1.11968576277791,1.1042577777218,1.08882979266568,1.07340180760957,1.05797382255345,1.04254583749734,1.02711785244122,1.01168986738511,0.996261882328991,0.980833897272876,0.965405912216761,0.949977927160646,0.93454994210453,0.919121957048415,0.9036939719923,0.888265986936184,0.872838001880069,0.857410016823954,0.841982031767838,0.826554046711723,0.811126061655608,0.795698076599493,0.780270091543377,0.764842106487262,0.749414121431147,0.733986136375031,0.718558151318916,0.703130166262801,0.687702181206685,0.67227419615057,0.656846211094455,0.64141822603834,0.625990240982224,0.610562255926109,0.595134270869994,0.579706285813878,0.564278300757763,0.548850315701648,0.533422330645532,0.517994345589417,0.502566360533302,0.487138375477186,0.487138375477186],"y":[-0.156409698631101,-0.144608446144473,-0.132808893369457,-0.121011142419181,-0.109215303603137,-0.0974214962498347,-0.0856298496283351,-0.073840503982449,-0.0620536116935587,-0.0502693385905795,-0.0384878654285773,-0.0267093895610944,-0.0149341268354065,-0.00316231374486331,0.00860579012170509,0.02036989928664,0.0321296991911077,0.0438848425390251,0.0556349451010523,0.0673795808888829,0.0791182765940237,0.0908505051663804,0.102575678385798,0.11429313825389,0.126002147003639,0.137701875490191,0.149391389688153,0.161069634979096,0.172735417869685,0.18438738473879,0.196023997177,0.207643503463355,0.219243905737216,0.230822922491617,0.24237794617412,0.25390599598438,0.265403666477904,0.276867073420457,0.288291799607036,0.299672845190714,0.311004589556719,0.322280774913407,0.333494525298296,0.344638417924271,0.355704625397397,0.366685145308904,0.377572125663253,0.388358278831655,0.399037353882363,0.40960461202914,0.420057231630845,0.430394567971604,0.440618214591577,0.450731853034737,0.460740922809725,0.470652176755592,0.480473198706944,0.490211950738697,0.499876394758254,0.509474208182647,0.519012593299471,0.528498167540085,0.537936916699769,0.547334192946031,0.556694741961975,0.566022747047347,0.575321881414194,0.584595362787919,0.593846006626276,0.60307627584555,0.612288326011554,0.6214840456402,0.630665091669592,0.639832920399815,0.648988814312024,0.658133905219676,0.667269194201961,0.676395568742472,0.68551381745725,0.694624642753259,0.694624642753259,0.784948402091355,0.773220141893174,0.761499305113761,0.749786594160083,0.738082797648177,0.726388803061639,0.714705611479657,0.70303435471569,0.691376315250893,0.679732949385349,0.668105914057162,0.656497097782246,0.644908656126413,0.633343052005947,0.621803100878604,0.610292020469786,0.59881348399154,0.587371674743612,0.575971338409105,0.564617827155529,0.553317126778163,0.542075854708366,0.530901213233733,0.519800879771296,0.508782816228458,0.497854984680135,0.487024968960933,0.476299521909902,0.465684083035685,0.455182333882253,0.444795867989769,0.434524040642356,0.424364030198873,0.414311097873085,0.404358992733243,0.39450042715056,0.384727549129496,0.375032356261281,0.36540702115198,0.355844121014477,0.346336779886293,0.336878739975781,0.327464380668169,0.318088702116532,0.308747287115866,0.299436251431936,0.290152189620248,0.280892120880459,0.27165343766013,0.262433858452295,0.253231385396315,0.24404426677123,0.234870964167629,0.225710123964382,0.216560552668153,0.207421195660515,0.198291118916074,0.189169493289976,0.180055581015203,0.17094872409337,0.16184833430432,0.152753884597961,0.143664901665798,0.134580959519525,0.125501673929802,0.116426697600547,0.107355715972925,0.0982884435692783,0.0892246208007761,0.0801640111740688,0.0711063988418807,0.0620515864506699,0.05299939324537,0.0439496533970658,0.0349022145243753,0.0258569363834877,0.0168136897053413,0.00777235516142655,-0.00126717755774738,-0.0103050105653092,-0.156409698631101],"text":["TOTBILL: 0.4871384<br />TIP: -8.335735e-02","TOTBILL: 0.5025664<br />TIP: -7.293781e-02","TOTBILL: 0.5179943<br />TIP: -6.251827e-02","TOTBILL: 0.5334223<br />TIP: -5.209873e-02","TOTBILL: 0.5488503<br />TIP: -4.167918e-02","TOTBILL: 0.5642783<br />TIP: -3.125964e-02","TOTBILL: 0.5797063<br />TIP: -2.084010e-02","TOTBILL: 0.5951343<br />TIP: -1.042056e-02","TOTBILL: 0.6105623<br />TIP: -1.012621e-06","TOTBILL: 0.6259902<br />TIP:  1.041853e-02","TOTBILL: 0.6414182<br />TIP:  2.083807e-02","TOTBILL: 0.6568462<br />TIP:  3.125762e-02","TOTBILL: 0.6722742<br />TIP:  4.167716e-02","TOTBILL: 0.6877022<br />TIP:  5.209670e-02","TOTBILL: 0.7031302<br />TIP:  6.251624e-02","TOTBILL: 0.7185582<br />TIP:  7.293579e-02","TOTBILL: 0.7339861<br />TIP:  8.335533e-02","TOTBILL: 0.7494141<br />TIP:  9.377487e-02","TOTBILL: 0.7648421<br />TIP:  1.041944e-01","TOTBILL: 0.7802701<br />TIP:  1.146140e-01","TOTBILL: 0.7956981<br />TIP:  1.250335e-01","TOTBILL: 0.8111261<br />TIP:  1.354530e-01","TOTBILL: 0.8265540<br />TIP:  1.458726e-01","TOTBILL: 0.8419820<br />TIP:  1.562921e-01","TOTBILL: 0.8574100<br />TIP:  1.667117e-01","TOTBILL: 0.8728380<br />TIP:  1.771312e-01","TOTBILL: 0.8882660<br />TIP:  1.875508e-01","TOTBILL: 0.9036940<br />TIP:  1.979703e-01","TOTBILL: 0.9191220<br />TIP:  2.083898e-01","TOTBILL: 0.9345499<br />TIP:  2.188094e-01","TOTBILL: 0.9499779<br />TIP:  2.292289e-01","TOTBILL: 0.9654059<br />TIP:  2.396485e-01","TOTBILL: 0.9808339<br />TIP:  2.500680e-01","TOTBILL: 0.9962619<br />TIP:  2.604876e-01","TOTBILL: 1.0116899<br />TIP:  2.709071e-01","TOTBILL: 1.0271179<br />TIP:  2.813266e-01","TOTBILL: 1.0425458<br />TIP:  2.917462e-01","TOTBILL: 1.0579738<br />TIP:  3.021657e-01","TOTBILL: 1.0734018<br />TIP:  3.125853e-01","TOTBILL: 1.0888298<br />TIP:  3.230048e-01","TOTBILL: 1.1042578<br />TIP:  3.334244e-01","TOTBILL: 1.1196858<br />TIP:  3.438439e-01","TOTBILL: 1.1351137<br />TIP:  3.542634e-01","TOTBILL: 1.1505417<br />TIP:  3.646830e-01","TOTBILL: 1.1659697<br />TIP:  3.751025e-01","TOTBILL: 1.1813977<br />TIP:  3.855221e-01","TOTBILL: 1.1968257<br />TIP:  3.959416e-01","TOTBILL: 1.2122537<br />TIP:  4.063612e-01","TOTBILL: 1.2276817<br />TIP:  4.167807e-01","TOTBILL: 1.2431096<br />TIP:  4.272002e-01","TOTBILL: 1.2585376<br />TIP:  4.376198e-01","TOTBILL: 1.2739656<br />TIP:  4.480393e-01","TOTBILL: 1.2893936<br />TIP:  4.584589e-01","TOTBILL: 1.3048216<br />TIP:  4.688784e-01","TOTBILL: 1.3202496<br />TIP:  4.792980e-01","TOTBILL: 1.3356776<br />TIP:  4.897175e-01","TOTBILL: 1.3511055<br />TIP:  5.001370e-01","TOTBILL: 1.3665335<br />TIP:  5.105566e-01","TOTBILL: 1.3819615<br />TIP:  5.209761e-01","TOTBILL: 1.3973895<br />TIP:  5.313957e-01","TOTBILL: 1.4128175<br />TIP:  5.418152e-01","TOTBILL: 1.4282455<br />TIP:  5.522348e-01","TOTBILL: 1.4436734<br />TIP:  5.626543e-01","TOTBILL: 1.4591014<br />TIP:  5.730738e-01","TOTBILL: 1.4745294<br />TIP:  5.834934e-01","TOTBILL: 1.4899574<br />TIP:  5.939129e-01","TOTBILL: 1.5053854<br />TIP:  6.043325e-01","TOTBILL: 1.5208134<br />TIP:  6.147520e-01","TOTBILL: 1.5362414<br />TIP:  6.251716e-01","TOTBILL: 1.5516693<br />TIP:  6.355911e-01","TOTBILL: 1.5670973<br />TIP:  6.460106e-01","TOTBILL: 1.5825253<br />TIP:  6.564302e-01","TOTBILL: 1.5979533<br />TIP:  6.668497e-01","TOTBILL: 1.6133813<br />TIP:  6.772693e-01","TOTBILL: 1.6288093<br />TIP:  6.876888e-01","TOTBILL: 1.6442373<br />TIP:  6.981084e-01","TOTBILL: 1.6596652<br />TIP:  7.085279e-01","TOTBILL: 1.6750932<br />TIP:  7.189474e-01","TOTBILL: 1.6905212<br />TIP:  7.293670e-01","TOTBILL: 1.7059492<br />TIP:  7.397865e-01","TOTBILL: 1.7059492<br />TIP:  7.397865e-01","TOTBILL: 1.7059492<br />TIP:  7.397865e-01","TOTBILL: 1.6905212<br />TIP:  7.293670e-01","TOTBILL: 1.6750932<br />TIP:  7.189474e-01","TOTBILL: 1.6596652<br />TIP:  7.085279e-01","TOTBILL: 1.6442373<br />TIP:  6.981084e-01","TOTBILL: 1.6288093<br />TIP:  6.876888e-01","TOTBILL: 1.6133813<br />TIP:  6.772693e-01","TOTBILL: 1.5979533<br />TIP:  6.668497e-01","TOTBILL: 1.5825253<br />TIP:  6.564302e-01","TOTBILL: 1.5670973<br />TIP:  6.460106e-01","TOTBILL: 1.5516693<br />TIP:  6.355911e-01","TOTBILL: 1.5362414<br />TIP:  6.251716e-01","TOTBILL: 1.5208134<br />TIP:  6.147520e-01","TOTBILL: 1.5053854<br />TIP:  6.043325e-01","TOTBILL: 1.4899574<br />TIP:  5.939129e-01","TOTBILL: 1.4745294<br />TIP:  5.834934e-01","TOTBILL: 1.4591014<br />TIP:  5.730738e-01","TOTBILL: 1.4436734<br />TIP:  5.626543e-01","TOTBILL: 1.4282455<br />TIP:  5.522348e-01","TOTBILL: 1.4128175<br />TIP:  5.418152e-01","TOTBILL: 1.3973895<br />TIP:  5.313957e-01","TOTBILL: 1.3819615<br />TIP:  5.209761e-01","TOTBILL: 1.3665335<br />TIP:  5.105566e-01","TOTBILL: 1.3511055<br />TIP:  5.001370e-01","TOTBILL: 1.3356776<br />TIP:  4.897175e-01","TOTBILL: 1.3202496<br />TIP:  4.792980e-01","TOTBILL: 1.3048216<br />TIP:  4.688784e-01","TOTBILL: 1.2893936<br />TIP:  4.584589e-01","TOTBILL: 1.2739656<br />TIP:  4.480393e-01","TOTBILL: 1.2585376<br />TIP:  4.376198e-01","TOTBILL: 1.2431096<br />TIP:  4.272002e-01","TOTBILL: 1.2276817<br />TIP:  4.167807e-01","TOTBILL: 1.2122537<br />TIP:  4.063612e-01","TOTBILL: 1.1968257<br />TIP:  3.959416e-01","TOTBILL: 1.1813977<br />TIP:  3.855221e-01","TOTBILL: 1.1659697<br />TIP:  3.751025e-01","TOTBILL: 1.1505417<br />TIP:  3.646830e-01","TOTBILL: 1.1351137<br />TIP:  3.542634e-01","TOTBILL: 1.1196858<br />TIP:  3.438439e-01","TOTBILL: 1.1042578<br />TIP:  3.334244e-01","TOTBILL: 1.0888298<br />TIP:  3.230048e-01","TOTBILL: 1.0734018<br />TIP:  3.125853e-01","TOTBILL: 1.0579738<br />TIP:  3.021657e-01","TOTBILL: 1.0425458<br />TIP:  2.917462e-01","TOTBILL: 1.0271179<br />TIP:  2.813266e-01","TOTBILL: 1.0116899<br />TIP:  2.709071e-01","TOTBILL: 0.9962619<br />TIP:  2.604876e-01","TOTBILL: 0.9808339<br />TIP:  2.500680e-01","TOTBILL: 0.9654059<br />TIP:  2.396485e-01","TOTBILL: 0.9499779<br />TIP:  2.292289e-01","TOTBILL: 0.9345499<br />TIP:  2.188094e-01","TOTBILL: 0.9191220<br />TIP:  2.083898e-01","TOTBILL: 0.9036940<br />TIP:  1.979703e-01","TOTBILL: 0.8882660<br />TIP:  1.875508e-01","TOTBILL: 0.8728380<br />TIP:  1.771312e-01","TOTBILL: 0.8574100<br />TIP:  1.667117e-01","TOTBILL: 0.8419820<br />TIP:  1.562921e-01","TOTBILL: 0.8265540<br />TIP:  1.458726e-01","TOTBILL: 0.8111261<br />TIP:  1.354530e-01","TOTBILL: 0.7956981<br />TIP:  1.250335e-01","TOTBILL: 0.7802701<br />TIP:  1.146140e-01","TOTBILL: 0.7648421<br />TIP:  1.041944e-01","TOTBILL: 0.7494141<br />TIP:  9.377487e-02","TOTBILL: 0.7339861<br />TIP:  8.335533e-02","TOTBILL: 0.7185582<br />TIP:  7.293579e-02","TOTBILL: 0.7031302<br />TIP:  6.251624e-02","TOTBILL: 0.6877022<br />TIP:  5.209670e-02","TOTBILL: 0.6722742<br />TIP:  4.167716e-02","TOTBILL: 0.6568462<br />TIP:  3.125762e-02","TOTBILL: 0.6414182<br />TIP:  2.083807e-02","TOTBILL: 0.6259902<br />TIP:  1.041853e-02","TOTBILL: 0.6105623<br />TIP: -1.012621e-06","TOTBILL: 0.5951343<br />TIP: -1.042056e-02","TOTBILL: 0.5797063<br />TIP: -2.084010e-02","TOTBILL: 0.5642783<br />TIP: -3.125964e-02","TOTBILL: 0.5488503<br />TIP: -4.167918e-02","TOTBILL: 0.5334223<br />TIP: -5.209873e-02","TOTBILL: 0.5179943<br />TIP: -6.251827e-02","TOTBILL: 0.5025664<br />TIP: -7.293781e-02","TOTBILL: 0.4871384<br />TIP: -8.335735e-02","TOTBILL: 0.4871384<br />TIP: -8.335735e-02"],"type":"scatter","mode":"lines","line":{"width":3.77952755905512,"color":"transparent","dash":"solid"},"fill":"toself","fillcolor":"rgba(153,153,153,0.4)","hoveron":"points","hoverinfo":"x+y","showlegend":false,"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":26.2283105022831,"r":7.30593607305936,"b":40.1826484018265,"l":37.2602739726027},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.426197834505531,1.76688973588195],"tickmode":"array","ticktext":["3","10","30"],"tickvals":[0.477121254719662,1,1.47712125471966],"categoryorder":"array","categoryarray":["3","10","30"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Prix du repas en $","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.214230183562656,1.05782048493156],"tickmode":"array","ticktext":["1","3","10"],"tickvals":[2.77555756156289e-17,0.477121254719662,1],"categoryorder":"array","categoryarray":["1","3","10"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Montant du pourboire en $","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.826771653543307},"annotations":[{"text":"SEX<br />SMOKER","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"c656d26272f":{"colour":{},"shape":{},"x":{},"y":{},"type":"scatter"},"c6563d6b6a4":{"x":{},"y":{}}},"cur_data":"c656d26272f","visdat":{"c656d26272f":["function (y) ","x"],"c6563d6b6a4":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+
+</div>
+</div>
+</div>
+<script src="js/tidyverse.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="08-Graphique-Base.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"instapper": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ClaudeGrasland/bivR/blob/main/09-Graphique-ggplot.Rmd",
+"text": "Source"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bivaR.epub", "bivaR.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

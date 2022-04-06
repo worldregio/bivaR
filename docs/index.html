@@ -24,7 +24,7 @@
 <meta name="author" content="Claude Grasland" />
 
 
-<meta name="date" content="2022-04-01" />
+<meta name="date" content="2022-04-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,13 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.2.2/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -375,6 +382,64 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="7.6.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggplot2-un-package-graphique-universel"><i class="fa fa-check"></i><b>7.6.4</b> ggplot2 : un package graphique universel ?</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html"><i class="fa fa-check"></i><b>8</b> Graphiques avec ggplot2</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-et-tydiverse"><i class="fa fa-check"></i><b>8.1.1</b> ggplot2 et tydiverse</a></li>
+<li class="chapter" data-level="8.1.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-cheatsheet"><i class="fa fa-check"></i><b>8.1.2</b> ggplot2 cheatsheet</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#préparation-des-données-4"><i class="fa fa-check"></i><b>8.2</b> préparation des données</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#chargement-du-fichier-2"><i class="fa fa-check"></i><b>8.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="8.2.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#contenu-du-fichier-2"><i class="fa fa-check"></i><b>8.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="8.2.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#dictionaire-des-variables-2"><i class="fa fa-check"></i><b>8.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="8.2.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#recodage-des-variables-2"><i class="fa fa-check"></i><b>8.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="8.2.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#résumé-de-lensemble-du-tableau-2"><i class="fa fa-check"></i><b>8.2.5</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#principes-généraux"><i class="fa fa-check"></i><b>8.3</b> Principes généraux</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#les-différentes-étapes"><i class="fa fa-check"></i><b>8.3.1</b> Les différentes étapes</a></li>
+<li class="chapter" data-level="8.3.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-figure-à-réaliser"><i class="fa fa-check"></i><b>8.3.2</b> La figure à réaliser</a></li>
+<li class="chapter" data-level="8.3.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-construction-pas-à-pas"><i class="fa fa-check"></i><b>8.3.3</b> La construction pas à pas</a></li>
+<li class="chapter" data-level="8.3.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#comparaison-avec-r-base"><i class="fa fa-check"></i><b>8.3.4</b> Comparaison avec R-Base</a></li>
+<li class="chapter" data-level="8.3.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#attention-paramètres-aes-locaux-et-globaux"><i class="fa fa-check"></i><b>8.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-discrète"><i class="fa fa-check"></i><b>8.4</b> X discrète</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#barplot-r-base"><i class="fa fa-check"></i><b>8.4.1</b> barplot (R-base)</a></li>
+<li class="chapter" data-level="8.4.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2"><i class="fa fa-check"></i><b>8.4.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue"><i class="fa fa-check"></i><b>8.5</b> X quantitative continue</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#hist-r-base"><i class="fa fa-check"></i><b>8.5.1</b> hist (R-base)</a></li>
+<li class="chapter" data-level="8.5.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_histogram-ggplot2"><i class="fa fa-check"></i><b>8.5.2</b> geom_histogram (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-et-y-quantitatives-continues"><i class="fa fa-check"></i><b>8.6</b> X et Y quantitatives continues</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plot-r-base"><i class="fa fa-check"></i><b>8.6.1</b> plot (R-base)</a></li>
+<li class="chapter" data-level="8.6.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_point-ggplot2"><i class="fa fa-check"></i><b>8.6.2</b> geom_point (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète"><i class="fa fa-check"></i><b>8.7</b> X quantitative continue et Y discrète</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#boxplot-r-base"><i class="fa fa-check"></i><b>8.7.1</b> 6.1 boxplot (R-base)</a></li>
+<li class="chapter" data-level="8.7.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_boxplot-ggplot2"><i class="fa fa-check"></i><b>8.7.2</b> geom_boxplot (ggplot2)</a></li>
+<li class="chapter" data-level="8.7.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#beanplot-r-base-package-beanplot"><i class="fa fa-check"></i><b>8.7.3</b> beanplot (R-base + package beanplot)</a></li>
+<li class="chapter" data-level="8.7.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_violin-ggplot2"><i class="fa fa-check"></i><b>8.7.4</b> geom_violin (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#deux-variables-x-et-y-discrètes"><i class="fa fa-check"></i><b>8.8</b> Deux variables X et Y discrètes</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#mosaicplot-r-base"><i class="fa fa-check"></i><b>8.8.1</b> mosaicplot (R-base)</a></li>
+<li class="chapter" data-level="8.8.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2-1"><i class="fa fa-check"></i><b>8.8.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#conclusion-1"><i class="fa fa-check"></i><b>8.9</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="8.9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#r-base-1"><i class="fa fa-check"></i><b>8.9.1</b> R-base</a></li>
+<li class="chapter" data-level="8.9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2"><i class="fa fa-check"></i><b>8.9.2</b> ggplot2</a></li>
+<li class="chapter" data-level="8.9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#le-meilleur-des-deux-mondes"><i class="fa fa-check"></i><b>8.9.3</b> Le meilleur des deux mondes ?</a></li>
+<li class="chapter" data-level="8.9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web"><i class="fa fa-check"></i><b>8.9.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
+</ul></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -395,7 +460,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="header">
 <h1 class="title">Introduction à la statistique bivariée et aux représentations graphiques avec R</h1>
 <p class="author"><em>Claude Grasland</em></p>
-<p class="date"><em>2022-04-01</em></p>
+<p class="date"><em>2022-04-06</em></p>
 </div>
 <div id="à-propos-de-ce-document" class="section level1 unnumbered">
 <h1>À propos de ce document</h1>
