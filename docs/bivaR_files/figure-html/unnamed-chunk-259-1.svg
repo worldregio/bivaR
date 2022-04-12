@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='504.00pt' height='360.00pt' viewBox='0 0 504.00 360.00'>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='360.00pt' height='288.00pt' viewBox='0 0 360.00 288.00'>
 <defs>
   <style type='text/css'><![CDATA[
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
@@ -13,32 +13,31 @@
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
 <defs>
-  <clipPath id='cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA='>
-    <rect x='0.00' y='0.00' width='504.00' height='360.00' />
+  <clipPath id='cpMC4wMHwzNjAuMDB8MC4wMHwyODguMDA='>
+    <rect x='0.00' y='0.00' width='360.00' height='288.00' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<rect x='74.40' y='59.04' width='174.55' height='225.27' style='stroke-width: 0.75; fill: #0000FF;' />
-<rect x='283.85' y='145.57' width='174.55' height='138.74' style='stroke-width: 0.75; fill: #FF0000;' />
-<text x='161.67' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='62.70px' lengthAdjust='spacingAndGlyphs'>Non fumeur</text>
-<text x='371.13' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='41.34px' lengthAdjust='spacingAndGlyphs'>Fumeur</text>
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='76.72px' lengthAdjust='spacingAndGlyphs'>Salle de repas</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='35.34px' lengthAdjust='spacingAndGlyphs'>effectif</text>
-<line x1='59.04' y1='284.31' x2='59.04' y2='75.45' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='284.31' x2='51.84' y2='284.31' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='254.47' x2='51.84' y2='254.47' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='224.63' x2='51.84' y2='224.63' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='194.80' x2='51.84' y2='194.80' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='164.96' x2='51.84' y2='164.96' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='135.12' x2='51.84' y2='135.12' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='105.29' x2='51.84' y2='105.29' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='75.45' x2='51.84' y2='75.45' style='stroke-width: 0.75;' />
-<text transform='translate(41.76,284.31) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text transform='translate(41.76,254.47) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>20</text>
-<text transform='translate(41.76,224.63) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>40</text>
-<text transform='translate(41.76,194.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>60</text>
-<text transform='translate(41.76,164.96) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>80</text>
-<text transform='translate(41.76,135.12) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>100</text>
-<text transform='translate(41.76,75.45) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>140</text>
+<g clip-path='url(#cpMC4wMHwzNjAuMDB8MC4wMHwyODguMDA=)'>
+<rect x='69.07' y='183.60' width='113.94' height='29.42' style='stroke-width: 0.75; fill: #4D4D4D;' />
+<rect x='69.07' y='173.79' width='113.94' height='9.81' style='stroke-width: 0.75; fill: #969696;' />
+<rect x='69.07' y='115.92' width='113.94' height='57.87' style='stroke-width: 0.75; fill: #C3C3C3;' />
+<rect x='69.07' y='59.04' width='113.94' height='56.88' style='stroke-width: 0.75; fill: #E6E6E6;' />
+<rect x='205.79' y='181.64' width='113.94' height='31.38' style='stroke-width: 0.75; fill: #4D4D4D;' />
+<rect x='205.79' y='172.81' width='113.94' height='8.83' style='stroke-width: 0.75; fill: #969696;' />
+<rect x='205.79' y='145.35' width='113.94' height='27.46' style='stroke-width: 0.75; fill: #C3C3C3;' />
+<rect x='205.79' y='127.69' width='113.94' height='17.65' style='stroke-width: 0.75; fill: #E6E6E6;' />
+<text x='126.04' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='42.00px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text x='262.76' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text x='194.40' y='269.28' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='53.37px' lengthAdjust='spacingAndGlyphs'>fréquence</text>
+<text transform='translate(12.96,136.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='98.05px' lengthAdjust='spacingAndGlyphs'>jour de la semaine</text>
+<line x1='59.04' y1='213.02' x2='59.04' y2='65.91' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='213.02' x2='51.84' y2='213.02' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='163.98' x2='51.84' y2='163.98' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='114.94' x2='51.84' y2='114.94' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='65.91' x2='51.84' y2='65.91' style='stroke-width: 0.75;' />
+<text transform='translate(41.76,213.02) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text transform='translate(41.76,163.98) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>50</text>
+<text transform='translate(41.76,114.94) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text transform='translate(41.76,65.91) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>150</text>
 </g>
 </svg>

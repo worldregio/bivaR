@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Partie 7 Graphiques avec R-Base | Introduction à la statistique bivariée et aux représentations graphiques avec R</title>
+  <title>Partie 8 Graphiques avec R-Base | Introduction à la statistique bivariée et aux représentations graphiques avec R</title>
   <meta name="description" content="Cours dispensé en M1 MECI Option Data" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Partie 7 Graphiques avec R-Base | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  <meta property="og:title" content="Partie 8 Graphiques avec R-Base | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Partie 7 Graphiques avec R-Base | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  <meta name="twitter:title" content="Partie 8 Graphiques avec R-Base | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
   
   <meta name="twitter:description" content="Cours dispensé en M1 MECI Option Data" />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Claude Grasland" />
 
 
-<meta name="date" content="2022-04-06" />
+<meta name="date" content="2022-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="06-Anova.html"/>
+<link rel="prev" href="07-Tabcont.html"/>
 <link rel="next" href="09-Graphique-ggplot.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -334,110 +334,152 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="6.5.2" data-path="06-Anova.html"><a href="06-Anova.html#size-qualitative-ordinale"><i class="fa fa-check"></i><b>6.5.2</b> SIZE = qualitative ordinale</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html"><i class="fa fa-check"></i><b>7</b> Graphiques avec R-Base</a>
+<li class="chapter" data-level="7" data-path="07-Tabcont.html"><a href="07-Tabcont.html"><i class="fa fa-check"></i><b>7</b> Analyse d’enquêtes</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a>
+<li class="chapter" data-level="7.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#préparation-des-données-3"><i class="fa fa-check"></i><b>7.2</b> Préparation des données</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#pourquoi-sembêter-à-utiliser-les-fonctions-primitives-de-r-pour-faire-des-graphiques"><i class="fa fa-check"></i><b>7.1.1</b> Pourquoi s’em…bêter à utiliser les fonctions primitives de R pour faire des graphiques ?</a></li>
-<li class="chapter" data-level="7.1.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#trois-étapes-pour-créer-un-graphique"><i class="fa fa-check"></i><b>7.1.2</b> Trois étapes pour créer un graphique</a></li>
+<li class="chapter" data-level="7.2.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#importation-du-fichier-au-format-.rds"><i class="fa fa-check"></i><b>7.2.1</b> Importation du fichier au format .RDS</a></li>
+<li class="chapter" data-level="7.2.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#simplifiée-des-variables"><i class="fa fa-check"></i><b>7.2.2</b> (simplifiée) des variables</a></li>
+<li class="chapter" data-level="7.2.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#résumé-des-variables-tri-à-plat"><i class="fa fa-check"></i><b>7.2.3</b> Résumé des variables (tri à plat)</a></li>
+<li class="chapter" data-level="7.2.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#tailles-des-échantillons-par-pays-et-par-date"><i class="fa fa-check"></i><b>7.2.4</b> Tailles des échantillons par pays et par date</a></li>
+<li class="chapter" data-level="7.2.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sélection-dun-échantillon"><i class="fa fa-check"></i><b>7.2.5</b> Sélection d’un échantillon</a></li>
+<li class="chapter" data-level="7.2.6" data-path="07-Tabcont.html"><a href="07-Tabcont.html#recodage-des-modalités"><i class="fa fa-check"></i><b>7.2.6</b> Recodage des modalités</a></li>
+<li class="chapter" data-level="7.2.7" data-path="07-Tabcont.html"><a href="07-Tabcont.html#découpage-de-variables-quantitatives-en-classes"><i class="fa fa-check"></i><b>7.2.7</b> Découpage de variables quantitatives en classes</a></li>
+<li class="chapter" data-level="7.2.8" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sélection"><i class="fa fa-check"></i><b>7.2.8</b> Sélection</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#préparation-des-données-3"><i class="fa fa-check"></i><b>7.2</b> Préparation des données</a>
+<li class="chapter" data-level="7.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa"><i class="fa fa-check"></i><b>7.3</b> Opinion USA</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#chargement-du-fichier-1"><i class="fa fa-check"></i><b>7.2.1</b> Chargement du fichier</a></li>
-<li class="chapter" data-level="7.2.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#contenu-du-fichier-1"><i class="fa fa-check"></i><b>7.2.2</b> Contenu du fichier</a></li>
-<li class="chapter" data-level="7.2.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#dictionaire-des-variables-1"><i class="fa fa-check"></i><b>7.2.3</b> Dictionaire des variables</a></li>
-<li class="chapter" data-level="7.2.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#recodage-des-variables-1"><i class="fa fa-check"></i><b>7.2.4</b> Recodage des variables</a></li>
-<li class="chapter" data-level="7.2.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ajout-dune-nouvelle-variable-1"><i class="fa fa-check"></i><b>7.2.5</b> Ajout d’une nouvelle variable</a></li>
-<li class="chapter" data-level="7.2.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#résumé-de-lensemble-du-tableau-1"><i class="fa fa-check"></i><b>7.2.6</b> Résumé de l’ensemble du tableau</a></li>
-<li class="chapter" data-level="7.2.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-par"><i class="fa fa-check"></i><b>7.2.7</b> La fonction par()</a></li>
-<li class="chapter" data-level="7.2.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#fonction-par-mfrow"><i class="fa fa-check"></i><b>7.2.8</b> fonction par() + mfrow</a></li>
-<li class="chapter" data-level="7.2.9" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#autres-paramètres-de-par"><i class="fa fa-check"></i><b>7.2.9</b> Autres paramètres de par()</a></li>
-<li class="chapter" data-level="7.2.10" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-layout"><i class="fa fa-check"></i><b>7.2.10</b> La fonction layout()</a></li>
+<li class="chapter" data-level="7.3.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#la-fonction-table"><i class="fa fa-check"></i><b>7.3.1</b> la fonction table()</a></li>
+<li class="chapter" data-level="7.3.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#visualisation-avec-plot-ou-barplot"><i class="fa fa-check"></i><b>7.3.2</b> Visualisation avec plot ou barplot</a></li>
+<li class="chapter" data-level="7.3.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#recodage"><i class="fa fa-check"></i><b>7.3.3</b> Recodage</a></li>
+<li class="chapter" data-level="7.3.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#calcul-de-lintervalle-de-confiance"><i class="fa fa-check"></i><b>7.3.4</b> Calcul de l’intervalle de confiance</a></li>
+<li class="chapter" data-level="7.3.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#prise-en-compte-de-la-variable-de-redressement."><i class="fa fa-check"></i><b>7.3.5</b> Prise en compte de la variable de redressement.</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-génératrice-plot"><i class="fa fa-check"></i><b>7.3</b> La fonction génératrice plot()</a>
+<li class="chapter" data-level="7.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-sexe"><i class="fa fa-check"></i><b>7.4</b> Opinion USA / Sexe</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#une-super-fonction"><i class="fa fa-check"></i><b>7.3.1</b> Une super-fonction</a></li>
-<li class="chapter" data-level="7.3.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-factor"><i class="fa fa-check"></i><b>7.3.2</b> plot(X) / X de type factor</a></li>
-<li class="chapter" data-level="7.3.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-numeric"><i class="fa fa-check"></i><b>7.3.3</b> plot(X) / X de type numeric</a></li>
-<li class="chapter" data-level="7.3.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-factor"><i class="fa fa-check"></i><b>7.3.4</b> plot(X,Y) / X et Y de type factor</a></li>
-<li class="chapter" data-level="7.3.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-numerique"><i class="fa fa-check"></i><b>7.3.5</b> plot(X,Y) / X et Y de type numerique</a></li>
-<li class="chapter" data-level="7.3.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique"><i class="fa fa-check"></i><b>7.3.6</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
-<li class="chapter" data-level="7.3.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique-1"><i class="fa fa-check"></i><b>7.3.7</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
-<li class="chapter" data-level="7.3.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotmodel-model-lmyx"><i class="fa fa-check"></i><b>7.3.8</b> plot(model) / model = lm(Y~X)</a></li>
+<li class="chapter" data-level="7.4.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#tableau-de-contingence"><i class="fa fa-check"></i><b>7.4.1</b> tableau de contingence</a></li>
+<li class="chapter" data-level="7.4.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#pourcentages"><i class="fa fa-check"></i><b>7.4.2</b> Pourcentages</a></li>
+<li class="chapter" data-level="7.4.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#première-visualisation"><i class="fa fa-check"></i><b>7.4.3</b> Première visualisation</a></li>
+<li class="chapter" data-level="7.4.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#test-du-chi-2"><i class="fa fa-check"></i><b>7.4.4</b> test du chi-2</a></li>
+<li class="chapter" data-level="7.4.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#analyse-des-résidus"><i class="fa fa-check"></i><b>7.4.5</b> Analyse des résidus</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-autres-fonctions-génératrice"><i class="fa fa-check"></i><b>7.4</b> Les autres fonctions génératrice</a>
+<li class="chapter" data-level="7.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-âge"><i class="fa fa-check"></i><b>7.5</b> Opinion USA / Âge</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-barplot"><i class="fa fa-check"></i><b>7.4.1</b> La fonction barplot()</a></li>
-<li class="chapter" data-level="7.4.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-hist-et-density"><i class="fa fa-check"></i><b>7.4.2</b> Les fonctions hist() et density()</a></li>
+<li class="chapter" data-level="7.5.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#effet-de-génération"><i class="fa fa-check"></i><b>7.5.1</b> Effet de génération</a></li>
+<li class="chapter" data-level="7.5.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#effet-dâge"><i class="fa fa-check"></i><b>7.5.2</b> Effet d’âge</a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-complémentaires"><i class="fa fa-check"></i><b>7.5</b> Les fonctions complémentaires</a>
+<li class="chapter" data-level="7.6" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-age-sexe"><i class="fa fa-check"></i><b>7.6</b> Opinion USA / Age &amp; Sexe</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#exemple-dun-nuage-de-points-xy"><i class="fa fa-check"></i><b>7.5.1</b> Exemple d’un nuage de points (X,Y)</a></li>
-</ul></li>
-<li class="chapter" data-level="7.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#conclusion"><i class="fa fa-check"></i><b>7.6</b> Conclusion</a>
-<ul>
-<li class="chapter" data-level="7.6.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-faire-de-beaux-graphiques-avec-r-base"><i class="fa fa-check"></i><b>7.6.1</b> On peut faire de beaux graphiques avec R-Base …</a></li>
-<li class="chapter" data-level="7.6.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-utiliser-des-packages-spécialisés"><i class="fa fa-check"></i><b>7.6.2</b> On peut utiliser des packages spécialisés</a></li>
-<li class="chapter" data-level="7.6.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggally-un-package-spécialisé-dans-la-statistique-bivariée"><i class="fa fa-check"></i><b>7.6.3</b> ggally : un package spécialisé dans la statistique bivariée</a></li>
-<li class="chapter" data-level="7.6.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggplot2-un-package-graphique-universel"><i class="fa fa-check"></i><b>7.6.4</b> ggplot2 : un package graphique universel ?</a></li>
+<li class="chapter" data-level="7.6.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sous-échantillon-des-hommes"><i class="fa fa-check"></i><b>7.6.1</b> Sous-échantillon des hommes</a></li>
+<li class="chapter" data-level="7.6.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sous-échantillon-des-femmes"><i class="fa fa-check"></i><b>7.6.2</b> Sous-échantillon des femmes</a></li>
+<li class="chapter" data-level="7.6.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#régression-logistique"><i class="fa fa-check"></i><b>7.6.3</b> Régression logistique</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html"><i class="fa fa-check"></i><b>8</b> Graphiques avec ggplot2</a>
+<li class="chapter" data-level="8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html"><i class="fa fa-check"></i><b>8</b> Graphiques avec R-Base</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
+<li class="chapter" data-level="8.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-et-tydiverse"><i class="fa fa-check"></i><b>8.1.1</b> ggplot2 et tydiverse</a></li>
-<li class="chapter" data-level="8.1.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-cheatsheet"><i class="fa fa-check"></i><b>8.1.2</b> ggplot2 cheatsheet</a></li>
+<li class="chapter" data-level="8.1.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#pourquoi-sembêter-à-utiliser-les-fonctions-primitives-de-r-pour-faire-des-graphiques"><i class="fa fa-check"></i><b>8.1.1</b> Pourquoi s’em…bêter à utiliser les fonctions primitives de R pour faire des graphiques ?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#trois-étapes-pour-créer-un-graphique"><i class="fa fa-check"></i><b>8.1.2</b> Trois étapes pour créer un graphique</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#préparation-des-données-4"><i class="fa fa-check"></i><b>8.2</b> préparation des données</a>
+<li class="chapter" data-level="8.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#préparation-des-données-4"><i class="fa fa-check"></i><b>8.2</b> Préparation des données</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#chargement-du-fichier-2"><i class="fa fa-check"></i><b>8.2.1</b> Chargement du fichier</a></li>
-<li class="chapter" data-level="8.2.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#contenu-du-fichier-2"><i class="fa fa-check"></i><b>8.2.2</b> Contenu du fichier</a></li>
-<li class="chapter" data-level="8.2.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#dictionaire-des-variables-2"><i class="fa fa-check"></i><b>8.2.3</b> Dictionaire des variables</a></li>
-<li class="chapter" data-level="8.2.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#recodage-des-variables-2"><i class="fa fa-check"></i><b>8.2.4</b> Recodage des variables</a></li>
-<li class="chapter" data-level="8.2.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#résumé-de-lensemble-du-tableau-2"><i class="fa fa-check"></i><b>8.2.5</b> Résumé de l’ensemble du tableau</a></li>
+<li class="chapter" data-level="8.2.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#chargement-du-fichier-1"><i class="fa fa-check"></i><b>8.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="8.2.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#contenu-du-fichier-1"><i class="fa fa-check"></i><b>8.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="8.2.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#dictionaire-des-variables-1"><i class="fa fa-check"></i><b>8.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="8.2.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#recodage-des-variables-1"><i class="fa fa-check"></i><b>8.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="8.2.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ajout-dune-nouvelle-variable-1"><i class="fa fa-check"></i><b>8.2.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="8.2.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#résumé-de-lensemble-du-tableau-1"><i class="fa fa-check"></i><b>8.2.6</b> Résumé de l’ensemble du tableau</a></li>
+<li class="chapter" data-level="8.2.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-par"><i class="fa fa-check"></i><b>8.2.7</b> La fonction par()</a></li>
+<li class="chapter" data-level="8.2.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#fonction-par-mfrow"><i class="fa fa-check"></i><b>8.2.8</b> fonction par() + mfrow</a></li>
+<li class="chapter" data-level="8.2.9" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#autres-paramètres-de-par"><i class="fa fa-check"></i><b>8.2.9</b> Autres paramètres de par()</a></li>
+<li class="chapter" data-level="8.2.10" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-layout"><i class="fa fa-check"></i><b>8.2.10</b> La fonction layout()</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#principes-généraux"><i class="fa fa-check"></i><b>8.3</b> Principes généraux</a>
+<li class="chapter" data-level="8.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-génératrice-plot"><i class="fa fa-check"></i><b>8.3</b> La fonction génératrice plot()</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#les-différentes-étapes"><i class="fa fa-check"></i><b>8.3.1</b> Les différentes étapes</a></li>
-<li class="chapter" data-level="8.3.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-figure-à-réaliser"><i class="fa fa-check"></i><b>8.3.2</b> La figure à réaliser</a></li>
-<li class="chapter" data-level="8.3.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-construction-pas-à-pas"><i class="fa fa-check"></i><b>8.3.3</b> La construction pas à pas</a></li>
-<li class="chapter" data-level="8.3.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#comparaison-avec-r-base"><i class="fa fa-check"></i><b>8.3.4</b> Comparaison avec R-Base</a></li>
-<li class="chapter" data-level="8.3.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#attention-paramètres-aes-locaux-et-globaux"><i class="fa fa-check"></i><b>8.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+<li class="chapter" data-level="8.3.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#une-super-fonction"><i class="fa fa-check"></i><b>8.3.1</b> Une super-fonction</a></li>
+<li class="chapter" data-level="8.3.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-factor"><i class="fa fa-check"></i><b>8.3.2</b> plot(X) / X de type factor</a></li>
+<li class="chapter" data-level="8.3.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-numeric"><i class="fa fa-check"></i><b>8.3.3</b> plot(X) / X de type numeric</a></li>
+<li class="chapter" data-level="8.3.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-factor"><i class="fa fa-check"></i><b>8.3.4</b> plot(X,Y) / X et Y de type factor</a></li>
+<li class="chapter" data-level="8.3.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-numerique"><i class="fa fa-check"></i><b>8.3.5</b> plot(X,Y) / X et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique"><i class="fa fa-check"></i><b>8.3.6</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique-1"><i class="fa fa-check"></i><b>8.3.7</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotmodel-model-lmyx"><i class="fa fa-check"></i><b>8.3.8</b> plot(model) / model = lm(Y~X)</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-discrète"><i class="fa fa-check"></i><b>8.4</b> X discrète</a>
+<li class="chapter" data-level="8.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-autres-fonctions-génératrice"><i class="fa fa-check"></i><b>8.4</b> Les autres fonctions génératrice</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#barplot-r-base"><i class="fa fa-check"></i><b>8.4.1</b> barplot (R-base)</a></li>
-<li class="chapter" data-level="8.4.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2"><i class="fa fa-check"></i><b>8.4.2</b> geom_bar (ggplot2)</a></li>
+<li class="chapter" data-level="8.4.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-barplot"><i class="fa fa-check"></i><b>8.4.1</b> La fonction barplot()</a></li>
+<li class="chapter" data-level="8.4.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-hist-et-density"><i class="fa fa-check"></i><b>8.4.2</b> Les fonctions hist() et density()</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue"><i class="fa fa-check"></i><b>8.5</b> X quantitative continue</a>
+<li class="chapter" data-level="8.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-complémentaires"><i class="fa fa-check"></i><b>8.5</b> Les fonctions complémentaires</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#hist-r-base"><i class="fa fa-check"></i><b>8.5.1</b> hist (R-base)</a></li>
-<li class="chapter" data-level="8.5.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_histogram-ggplot2"><i class="fa fa-check"></i><b>8.5.2</b> geom_histogram (ggplot2)</a></li>
+<li class="chapter" data-level="8.5.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#exemple-dun-nuage-de-points-xy"><i class="fa fa-check"></i><b>8.5.1</b> Exemple d’un nuage de points (X,Y)</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-et-y-quantitatives-continues"><i class="fa fa-check"></i><b>8.6</b> X et Y quantitatives continues</a>
+<li class="chapter" data-level="8.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#conclusion"><i class="fa fa-check"></i><b>8.6</b> Conclusion</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plot-r-base"><i class="fa fa-check"></i><b>8.6.1</b> plot (R-base)</a></li>
-<li class="chapter" data-level="8.6.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_point-ggplot2"><i class="fa fa-check"></i><b>8.6.2</b> geom_point (ggplot2)</a></li>
+<li class="chapter" data-level="8.6.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-faire-de-beaux-graphiques-avec-r-base"><i class="fa fa-check"></i><b>8.6.1</b> On peut faire de beaux graphiques avec R-Base …</a></li>
+<li class="chapter" data-level="8.6.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-utiliser-des-packages-spécialisés"><i class="fa fa-check"></i><b>8.6.2</b> On peut utiliser des packages spécialisés</a></li>
+<li class="chapter" data-level="8.6.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggally-un-package-spécialisé-dans-la-statistique-bivariée"><i class="fa fa-check"></i><b>8.6.3</b> ggally : un package spécialisé dans la statistique bivariée</a></li>
+<li class="chapter" data-level="8.6.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggplot2-un-package-graphique-universel"><i class="fa fa-check"></i><b>8.6.4</b> ggplot2 : un package graphique universel ?</a></li>
 </ul></li>
-<li class="chapter" data-level="8.7" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète"><i class="fa fa-check"></i><b>8.7</b> X quantitative continue et Y discrète</a>
-<ul>
-<li class="chapter" data-level="8.7.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#boxplot-r-base"><i class="fa fa-check"></i><b>8.7.1</b> 6.1 boxplot (R-base)</a></li>
-<li class="chapter" data-level="8.7.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_boxplot-ggplot2"><i class="fa fa-check"></i><b>8.7.2</b> geom_boxplot (ggplot2)</a></li>
-<li class="chapter" data-level="8.7.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#beanplot-r-base-package-beanplot"><i class="fa fa-check"></i><b>8.7.3</b> beanplot (R-base + package beanplot)</a></li>
-<li class="chapter" data-level="8.7.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_violin-ggplot2"><i class="fa fa-check"></i><b>8.7.4</b> geom_violin (ggplot2)</a></li>
 </ul></li>
-<li class="chapter" data-level="8.8" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#deux-variables-x-et-y-discrètes"><i class="fa fa-check"></i><b>8.8</b> Deux variables X et Y discrètes</a>
+<li class="chapter" data-level="9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html"><i class="fa fa-check"></i><b>9</b> Graphiques avec ggplot2</a>
 <ul>
-<li class="chapter" data-level="8.8.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#mosaicplot-r-base"><i class="fa fa-check"></i><b>8.8.1</b> mosaicplot (R-base)</a></li>
-<li class="chapter" data-level="8.8.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2-1"><i class="fa fa-check"></i><b>8.8.2</b> geom_bar (ggplot2)</a></li>
+<li class="chapter" data-level="9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-et-tydiverse"><i class="fa fa-check"></i><b>9.1.1</b> ggplot2 et tydiverse</a></li>
+<li class="chapter" data-level="9.1.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-cheatsheet"><i class="fa fa-check"></i><b>9.1.2</b> ggplot2 cheatsheet</a></li>
 </ul></li>
-<li class="chapter" data-level="8.9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#conclusion-1"><i class="fa fa-check"></i><b>8.9</b> Conclusion</a>
+<li class="chapter" data-level="9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#préparation-des-données-5"><i class="fa fa-check"></i><b>9.2</b> préparation des données</a>
 <ul>
-<li class="chapter" data-level="8.9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#r-base-1"><i class="fa fa-check"></i><b>8.9.1</b> R-base</a></li>
-<li class="chapter" data-level="8.9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2"><i class="fa fa-check"></i><b>8.9.2</b> ggplot2</a></li>
-<li class="chapter" data-level="8.9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#le-meilleur-des-deux-mondes"><i class="fa fa-check"></i><b>8.9.3</b> Le meilleur des deux mondes ?</a></li>
-<li class="chapter" data-level="8.9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web"><i class="fa fa-check"></i><b>8.9.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
+<li class="chapter" data-level="9.2.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#chargement-du-fichier-2"><i class="fa fa-check"></i><b>9.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="9.2.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#contenu-du-fichier-2"><i class="fa fa-check"></i><b>9.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="9.2.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#dictionaire-des-variables-2"><i class="fa fa-check"></i><b>9.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="9.2.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#recodage-des-variables-2"><i class="fa fa-check"></i><b>9.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="9.2.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#résumé-de-lensemble-du-tableau-2"><i class="fa fa-check"></i><b>9.2.5</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#principes-généraux"><i class="fa fa-check"></i><b>9.3</b> Principes généraux</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#les-différentes-étapes"><i class="fa fa-check"></i><b>9.3.1</b> Les différentes étapes</a></li>
+<li class="chapter" data-level="9.3.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-figure-à-réaliser"><i class="fa fa-check"></i><b>9.3.2</b> La figure à réaliser</a></li>
+<li class="chapter" data-level="9.3.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-construction-pas-à-pas"><i class="fa fa-check"></i><b>9.3.3</b> La construction pas à pas</a></li>
+<li class="chapter" data-level="9.3.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#comparaison-avec-r-base"><i class="fa fa-check"></i><b>9.3.4</b> Comparaison avec R-Base</a></li>
+<li class="chapter" data-level="9.3.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#attention-paramètres-aes-locaux-et-globaux"><i class="fa fa-check"></i><b>9.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-discrète"><i class="fa fa-check"></i><b>9.4</b> X discrète</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#barplot-r-base"><i class="fa fa-check"></i><b>9.4.1</b> barplot (R-base)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2"><i class="fa fa-check"></i><b>9.4.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue"><i class="fa fa-check"></i><b>9.5</b> X quantitative continue</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#hist-r-base"><i class="fa fa-check"></i><b>9.5.1</b> hist (R-base)</a></li>
+<li class="chapter" data-level="9.5.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_histogram-ggplot2"><i class="fa fa-check"></i><b>9.5.2</b> geom_histogram (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-et-y-quantitatives-continues"><i class="fa fa-check"></i><b>9.6</b> X et Y quantitatives continues</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plot-r-base"><i class="fa fa-check"></i><b>9.6.1</b> plot (R-base)</a></li>
+<li class="chapter" data-level="9.6.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_point-ggplot2"><i class="fa fa-check"></i><b>9.6.2</b> geom_point (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète"><i class="fa fa-check"></i><b>9.7</b> X quantitative continue et Y discrète</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#boxplot-r-base"><i class="fa fa-check"></i><b>9.7.1</b> 6.1 boxplot (R-base)</a></li>
+<li class="chapter" data-level="9.7.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_boxplot-ggplot2"><i class="fa fa-check"></i><b>9.7.2</b> geom_boxplot (ggplot2)</a></li>
+<li class="chapter" data-level="9.7.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#beanplot-r-base-package-beanplot"><i class="fa fa-check"></i><b>9.7.3</b> beanplot (R-base + package beanplot)</a></li>
+<li class="chapter" data-level="9.7.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_violin-ggplot2"><i class="fa fa-check"></i><b>9.7.4</b> geom_violin (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#deux-variables-x-et-y-discrètes"><i class="fa fa-check"></i><b>9.8</b> Deux variables X et Y discrètes</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#mosaicplot-r-base"><i class="fa fa-check"></i><b>9.8.1</b> mosaicplot (R-base)</a></li>
+<li class="chapter" data-level="9.8.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2-1"><i class="fa fa-check"></i><b>9.8.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#conclusion-1"><i class="fa fa-check"></i><b>9.9</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#r-base-1"><i class="fa fa-check"></i><b>9.9.1</b> R-base</a></li>
+<li class="chapter" data-level="9.9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2"><i class="fa fa-check"></i><b>9.9.2</b> ggplot2</a></li>
+<li class="chapter" data-level="9.9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#le-meilleur-des-deux-mondes"><i class="fa fa-check"></i><b>9.9.3</b> Le meilleur des deux mondes ?</a></li>
+<li class="chapter" data-level="9.9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web"><i class="fa fa-check"></i><b>9.9.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -457,16 +499,16 @@ code span.wa { color: #bf0303; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="graphiques-avec-r-base" class="section level1" number="7">
-<h1><span class="header-section-number">Partie 7</span> Graphiques avec R-Base</h1>
+<div id="graphiques-avec-r-base" class="section level1" number="8">
+<h1><span class="header-section-number">Partie 8</span> Graphiques avec R-Base</h1>
 <p><img src="resources/figures/chap3_intro.jpg" width="512" /></p>
 <ul>
 <li><strong>Mise en place</strong> : Télécharger le <a href="https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo8.zip">dossier exo8</a> et décompressez le sur votre ordinateur. Puis ouvrez le projet R <code>exo8.Rproj</code> dans Rstudio.</li>
 </ul>
-<div id="introduction" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Introduction</h2>
-<div id="pourquoi-sembêter-à-utiliser-les-fonctions-primitives-de-r-pour-faire-des-graphiques" class="section level3" number="7.1.1">
-<h3><span class="header-section-number">7.1.1</span> Pourquoi s’em…bêter à utiliser les fonctions primitives de R pour faire des graphiques ?</h3>
+<div id="introduction-1" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Introduction</h2>
+<div id="pourquoi-sembêter-à-utiliser-les-fonctions-primitives-de-r-pour-faire-des-graphiques" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Pourquoi s’em…bêter à utiliser les fonctions primitives de R pour faire des graphiques ?</h3>
 <p>On peut se demander si cela vaut la peine d’utiliser <strong>R-base</strong> pour faire des graphiques. En effet R propose maintenant des packages produisant facilement de très jolis graphiques statiques (<strong>ggplot2</strong>) ou dynamiques (<strong>plotly</strong>). La réponse est cependant oui car :</p>
 <ul>
 <li>il faut pouvoir relire et améliorer des programmes anciens</li>
@@ -478,8 +520,8 @@ code span.wa { color: #bf0303; } /* Warning */
 <li>c’est l’occasion d’apprendre à <strong>créer ses propres fonctions</strong> et ainsi de meiiux apprécier les qualités et les défauts de celles que l’on trouve dans les packages qu’on utilise.</li>
 </ul>
 </div>
-<div id="trois-étapes-pour-créer-un-graphique" class="section level3" number="7.1.2">
-<h3><span class="header-section-number">7.1.2</span> Trois étapes pour créer un graphique</h3>
+<div id="trois-étapes-pour-créer-un-graphique" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Trois étapes pour créer un graphique</h3>
 <p>Comme indiqué par Sophie Baillargeon dans son excellent <a href="https://stt4230.rbind.io/communication_resultats/graphiques_r/">cours de R de l’Université de Laval (Québec)</a> , un programme pour créer un graphique avec le système graphique de base en R se décompose typiquement en 3 étapes utilisant des fonctions différentes :</p>
 <ul>
 <li><strong>Etape 1 : La configuration des paramètres graphiques généraux (facultatif) :</strong>
@@ -502,30 +544,30 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul>
 </div>
 </div>
-<div id="préparation-des-données-3" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Préparation des données</h2>
-<div id="chargement-du-fichier-1" class="section level3" number="7.2.1">
-<h3><span class="header-section-number">7.2.1</span> Chargement du fichier</h3>
+<div id="préparation-des-données-4" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Préparation des données</h2>
+<div id="chargement-du-fichier-1" class="section level3" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Chargement du fichier</h3>
 <p>On charge un fichier statistique appelé <em>tips.csv</em> où les séparateurs sont des points-virgules et les décimales des points.</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="08-Graphique-Base.html#cb191-1" aria-hidden="true" tabindex="-1"></a>don<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/tips/tips.csv&quot;</span>,</span>
-<span id="cb191-2"><a href="08-Graphique-Base.html#cb191-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>,</span>
-<span id="cb191-3"><a href="08-Graphique-Base.html#cb191-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">header =</span> T)</span>
-<span id="cb191-4"><a href="08-Graphique-Base.html#cb191-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(don)</span>
-<span id="cb191-5"><a href="08-Graphique-Base.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   IDEN TOTBILL  TIP SEX SMOKER DAY TIME SIZE</span></span>
-<span id="cb191-6"><a href="08-Graphique-Base.html#cb191-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 R001   16.99 1.01   1      0   6    1    2</span></span>
-<span id="cb191-7"><a href="08-Graphique-Base.html#cb191-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 R002   10.34 1.66   0      0   6    1    3</span></span>
-<span id="cb191-8"><a href="08-Graphique-Base.html#cb191-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 R003   21.01 3.50   0      0   6    1    3</span></span>
-<span id="cb191-9"><a href="08-Graphique-Base.html#cb191-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 R004   23.68 3.31   0      0   6    1    2</span></span>
-<span id="cb191-10"><a href="08-Graphique-Base.html#cb191-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 R005   24.59 3.61   1      0   6    1    4</span></span>
-<span id="cb191-11"><a href="08-Graphique-Base.html#cb191-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 R006   25.29 4.71   0      0   6    1    4</span></span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="08-Graphique-Base.html#cb226-1" aria-hidden="true" tabindex="-1"></a>don<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/tips/tips.csv&quot;</span>,</span>
+<span id="cb226-2"><a href="08-Graphique-Base.html#cb226-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>,</span>
+<span id="cb226-3"><a href="08-Graphique-Base.html#cb226-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">header =</span> T)</span>
+<span id="cb226-4"><a href="08-Graphique-Base.html#cb226-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(don)</span>
+<span id="cb226-5"><a href="08-Graphique-Base.html#cb226-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   IDEN TOTBILL  TIP SEX SMOKER DAY TIME SIZE</span></span>
+<span id="cb226-6"><a href="08-Graphique-Base.html#cb226-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 R001   16.99 1.01   1      0   6    1    2</span></span>
+<span id="cb226-7"><a href="08-Graphique-Base.html#cb226-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 R002   10.34 1.66   0      0   6    1    3</span></span>
+<span id="cb226-8"><a href="08-Graphique-Base.html#cb226-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 R003   21.01 3.50   0      0   6    1    3</span></span>
+<span id="cb226-9"><a href="08-Graphique-Base.html#cb226-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 R004   23.68 3.31   0      0   6    1    2</span></span>
+<span id="cb226-10"><a href="08-Graphique-Base.html#cb226-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 R005   24.59 3.61   1      0   6    1    4</span></span>
+<span id="cb226-11"><a href="08-Graphique-Base.html#cb226-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 R006   25.29 4.71   0      0   6    1    4</span></span></code></pre></div>
 </div>
-<div id="contenu-du-fichier-1" class="section level3" number="7.2.2">
-<h3><span class="header-section-number">7.2.2</span> Contenu du fichier</h3>
+<div id="contenu-du-fichier-1" class="section level3" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Contenu du fichier</h3>
 <p>Ce dossier contient les pourboires (<em>tips</em> en anglais, d’où le nom du fichier) d’un serveur dans un restaurant américain aux débuts des années 1990. Le restaurant était dans un centre commercial. Il y avait une zone fumeurs et une zone non fumeurs.Les données indiquent le prix du repas, le pourboire, le sexe de la personne qui a payé et donné le pourboire, si c’était dans la zone fumeurs ou non, le jour où le repas a été pris, si c’était en journée ou en soirée et enfin, le nombre de convives.</p>
 <p><strong>Sources</strong> : Ces données sont disponibles dans le package R nommé rggobi et sont décrites dans l’ouvrage de Cook et Swayne intitulé <em>Interactive and Dynamic Graphics for Data Analysi</em>s. Elles font partie des données d’exemple du livre de Bryant et Smith dont la première édition est parue en 1995 dont le titre est <em>Practical Data Analysis: Case Studies in Business Statistics</em>.</p>
 </div>
-<div id="dictionaire-des-variables-1" class="section level3" number="7.2.3">
-<h3><span class="header-section-number">7.2.3</span> Dictionaire des variables</h3>
+<div id="dictionaire-des-variables-1" class="section level3" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Dictionaire des variables</h3>
 <ul>
 <li><strong>IDEN</strong> : identifiant du repas</li>
 <li><strong>TOTBILL</strong> : prix du repas (en dollars des années 1990)</li>
@@ -537,45 +579,45 @@ code span.wa { color: #bf0303; } /* Warning */
 <li><strong>SIZE</strong> : nombre de convives</li>
 </ul>
 </div>
-<div id="recodage-des-variables-1" class="section level3" number="7.2.4">
-<h3><span class="header-section-number">7.2.4</span> Recodage des variables</h3>
+<div id="recodage-des-variables-1" class="section level3" number="8.2.4">
+<h3><span class="header-section-number">8.2.4</span> Recodage des variables</h3>
 <p>Le type de plusieurs variables est incorrect. On transforme les codes numériques en facteur et on recode les niveaux en français :</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="08-Graphique-Base.html#cb192-1" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>IDEN<span class="ot">&lt;-</span><span class="fu">as.character</span>(don<span class="sc">$</span>IDEN)</span>
-<span id="cb192-2"><a href="08-Graphique-Base.html#cb192-2" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>SEX<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>SEX)</span>
-<span id="cb192-3"><a href="08-Graphique-Base.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>SEX)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Homme&quot;</span>,<span class="st">&quot;Femme&quot;</span>)</span>
-<span id="cb192-4"><a href="08-Graphique-Base.html#cb192-4" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>SMOKER<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>SMOKER)</span>
-<span id="cb192-5"><a href="08-Graphique-Base.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>SMOKER)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Non fumeur&quot;</span>, <span class="st">&quot;Fumeur&quot;</span>)</span>
-<span id="cb192-6"><a href="08-Graphique-Base.html#cb192-6" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>DAY<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>DAY)</span>
-<span id="cb192-7"><a href="08-Graphique-Base.html#cb192-7" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>DAY)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Mercredi&quot;</span>,<span class="st">&quot;Jeudi&quot;</span>,<span class="st">&quot;Vendredi&quot;</span>,<span class="st">&quot;Samedi&quot;</span>)</span>
-<span id="cb192-8"><a href="08-Graphique-Base.html#cb192-8" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>TIME<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>TIME)</span>
-<span id="cb192-9"><a href="08-Graphique-Base.html#cb192-9" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>TIME)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Journée&quot;</span>,<span class="st">&quot;Soirée&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="08-Graphique-Base.html#cb227-1" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>IDEN<span class="ot">&lt;-</span><span class="fu">as.character</span>(don<span class="sc">$</span>IDEN)</span>
+<span id="cb227-2"><a href="08-Graphique-Base.html#cb227-2" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>SEX<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>SEX)</span>
+<span id="cb227-3"><a href="08-Graphique-Base.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>SEX)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Homme&quot;</span>,<span class="st">&quot;Femme&quot;</span>)</span>
+<span id="cb227-4"><a href="08-Graphique-Base.html#cb227-4" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>SMOKER<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>SMOKER)</span>
+<span id="cb227-5"><a href="08-Graphique-Base.html#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>SMOKER)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Non fumeur&quot;</span>, <span class="st">&quot;Fumeur&quot;</span>)</span>
+<span id="cb227-6"><a href="08-Graphique-Base.html#cb227-6" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>DAY<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>DAY)</span>
+<span id="cb227-7"><a href="08-Graphique-Base.html#cb227-7" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>DAY)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Mercredi&quot;</span>,<span class="st">&quot;Jeudi&quot;</span>,<span class="st">&quot;Vendredi&quot;</span>,<span class="st">&quot;Samedi&quot;</span>)</span>
+<span id="cb227-8"><a href="08-Graphique-Base.html#cb227-8" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>TIME<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>TIME)</span>
+<span id="cb227-9"><a href="08-Graphique-Base.html#cb227-9" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>TIME)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Journée&quot;</span>,<span class="st">&quot;Soirée&quot;</span>)</span></code></pre></div>
 </div>
-<div id="ajout-dune-nouvelle-variable-1" class="section level3" number="7.2.5">
-<h3><span class="header-section-number">7.2.5</span> Ajout d’une nouvelle variable</h3>
+<div id="ajout-dune-nouvelle-variable-1" class="section level3" number="8.2.5">
+<h3><span class="header-section-number">8.2.5</span> Ajout d’une nouvelle variable</h3>
 <p>On crée la variable PCT qui est le rapport entre le pourboire (TIP) et le prix total (TOTBILL) du repas exprimé en pourcentage.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="08-Graphique-Base.html#cb193-1" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>PCT<span class="ot">&lt;-</span><span class="dv">100</span><span class="sc">*</span>don<span class="sc">$</span>TIP<span class="sc">/</span>don<span class="sc">$</span>TOTBILL</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="08-Graphique-Base.html#cb228-1" aria-hidden="true" tabindex="-1"></a>don<span class="sc">$</span>PCT<span class="ot">&lt;-</span><span class="dv">100</span><span class="sc">*</span>don<span class="sc">$</span>TIP<span class="sc">/</span>don<span class="sc">$</span>TOTBILL</span></code></pre></div>
 </div>
-<div id="résumé-de-lensemble-du-tableau-1" class="section level3" number="7.2.6">
-<h3><span class="header-section-number">7.2.6</span> Résumé de l’ensemble du tableau</h3>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="08-Graphique-Base.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(don)</span>
-<span id="cb194-2"><a href="08-Graphique-Base.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      IDEN              TOTBILL           TIP            SEX     </span></span>
-<span id="cb194-3"><a href="08-Graphique-Base.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Length:244         Min.   : 3.07   Min.   : 1.000   Homme:157  </span></span>
-<span id="cb194-4"><a href="08-Graphique-Base.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Class :character   1st Qu.:13.35   1st Qu.: 2.000   Femme: 87  </span></span>
-<span id="cb194-5"><a href="08-Graphique-Base.html#cb194-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Median :17.80   Median : 2.900              </span></span>
-<span id="cb194-6"><a href="08-Graphique-Base.html#cb194-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Mean   :19.79   Mean   : 2.998              </span></span>
-<span id="cb194-7"><a href="08-Graphique-Base.html#cb194-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     3rd Qu.:24.13   3rd Qu.: 3.562              </span></span>
-<span id="cb194-8"><a href="08-Graphique-Base.html#cb194-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Max.   :50.81   Max.   :10.000              </span></span>
-<span id="cb194-9"><a href="08-Graphique-Base.html#cb194-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         SMOKER          DAY          TIME          SIZE           PCT        </span></span>
-<span id="cb194-10"><a href="08-Graphique-Base.html#cb194-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Non fumeur:151   Mercredi:62   Journée: 68   Min.   :1.00   Min.   : 3.564  </span></span>
-<span id="cb194-11"><a href="08-Graphique-Base.html#cb194-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Fumeur    : 93   Jeudi   :19   Soirée :176   1st Qu.:2.00   1st Qu.:12.913  </span></span>
-<span id="cb194-12"><a href="08-Graphique-Base.html#cb194-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Vendredi:87                 Median :2.00   Median :15.477  </span></span>
-<span id="cb194-13"><a href="08-Graphique-Base.html#cb194-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Samedi  :76                 Mean   :2.57   Mean   :16.080  </span></span>
-<span id="cb194-14"><a href="08-Graphique-Base.html#cb194-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                               3rd Qu.:3.00   3rd Qu.:19.148  </span></span>
-<span id="cb194-15"><a href="08-Graphique-Base.html#cb194-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                               Max.   :6.00   Max.   :71.034</span></span></code></pre></div>
+<div id="résumé-de-lensemble-du-tableau-1" class="section level3" number="8.2.6">
+<h3><span class="header-section-number">8.2.6</span> Résumé de l’ensemble du tableau</h3>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="08-Graphique-Base.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(don)</span>
+<span id="cb229-2"><a href="08-Graphique-Base.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      IDEN              TOTBILL           TIP            SEX     </span></span>
+<span id="cb229-3"><a href="08-Graphique-Base.html#cb229-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Length:244         Min.   : 3.07   Min.   : 1.000   Homme:157  </span></span>
+<span id="cb229-4"><a href="08-Graphique-Base.html#cb229-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Class :character   1st Qu.:13.35   1st Qu.: 2.000   Femme: 87  </span></span>
+<span id="cb229-5"><a href="08-Graphique-Base.html#cb229-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Median :17.80   Median : 2.900              </span></span>
+<span id="cb229-6"><a href="08-Graphique-Base.html#cb229-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Mean   :19.79   Mean   : 2.998              </span></span>
+<span id="cb229-7"><a href="08-Graphique-Base.html#cb229-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     3rd Qu.:24.13   3rd Qu.: 3.562              </span></span>
+<span id="cb229-8"><a href="08-Graphique-Base.html#cb229-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     Max.   :50.81   Max.   :10.000              </span></span>
+<span id="cb229-9"><a href="08-Graphique-Base.html#cb229-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         SMOKER          DAY          TIME          SIZE           PCT        </span></span>
+<span id="cb229-10"><a href="08-Graphique-Base.html#cb229-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Non fumeur:151   Mercredi:62   Journée: 68   Min.   :1.00   Min.   : 3.564  </span></span>
+<span id="cb229-11"><a href="08-Graphique-Base.html#cb229-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Fumeur    : 93   Jeudi   :19   Soirée :176   1st Qu.:2.00   1st Qu.:12.913  </span></span>
+<span id="cb229-12"><a href="08-Graphique-Base.html#cb229-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Vendredi:87                 Median :2.00   Median :15.477  </span></span>
+<span id="cb229-13"><a href="08-Graphique-Base.html#cb229-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                   Samedi  :76                 Mean   :2.57   Mean   :16.080  </span></span>
+<span id="cb229-14"><a href="08-Graphique-Base.html#cb229-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                               3rd Qu.:3.00   3rd Qu.:19.148  </span></span>
+<span id="cb229-15"><a href="08-Graphique-Base.html#cb229-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                               Max.   :6.00   Max.   :71.034</span></span></code></pre></div>
 <p>##.Paramètres généraux et disposition des graphiques</p>
 </div>
-<div id="la-fonction-par" class="section level3" number="7.2.7">
-<h3><span class="header-section-number">7.2.7</span> La fonction par()</h3>
+<div id="la-fonction-par" class="section level3" number="8.2.7">
+<h3><span class="header-section-number">8.2.7</span> La fonction par()</h3>
 <p>La fonction <strong>par()</strong> ne produit pas directement de graphique mais permet de :</p>
 <ul>
 <li>définir la disposition de plusieurs graphiques</li>
@@ -584,162 +626,162 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul>
 <p>Elle se comporte donc comme une <strong>feuille de style</strong> ou un <strong>CSS</strong>. Il est de ce fait prudent de stocker les paramètres d’origine avant de les modifier.</p>
 <p><strong>Il y a 66 paramètres différents …</strong> Il est prudent de les stocker dans leur configuration d’origine avant de les modifier.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="08-Graphique-Base.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stockage des paramètres d&#39;origine</span></span>
-<span id="cb195-2"><a href="08-Graphique-Base.html#cb195-2" aria-hidden="true" tabindex="-1"></a>old<span class="ot">&lt;-</span> <span class="fu">par</span>()</span>
-<span id="cb195-3"><a href="08-Graphique-Base.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage des paramètres d&#39;origine</span></span>
-<span id="cb195-4"><a href="08-Graphique-Base.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(old)</span>
-<span id="cb195-5"><a href="08-Graphique-Base.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $xlog</span></span>
-<span id="cb195-6"><a href="08-Graphique-Base.html#cb195-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
-<span id="cb195-7"><a href="08-Graphique-Base.html#cb195-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb195-8"><a href="08-Graphique-Base.html#cb195-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ylog</span></span>
-<span id="cb195-9"><a href="08-Graphique-Base.html#cb195-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
-<span id="cb195-10"><a href="08-Graphique-Base.html#cb195-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb195-11"><a href="08-Graphique-Base.html#cb195-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $adj</span></span>
-<span id="cb195-12"><a href="08-Graphique-Base.html#cb195-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5</span></span>
-<span id="cb195-13"><a href="08-Graphique-Base.html#cb195-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb195-14"><a href="08-Graphique-Base.html#cb195-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ann</span></span>
-<span id="cb195-15"><a href="08-Graphique-Base.html#cb195-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
-<span id="cb195-16"><a href="08-Graphique-Base.html#cb195-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb195-17"><a href="08-Graphique-Base.html#cb195-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ask</span></span>
-<span id="cb195-18"><a href="08-Graphique-Base.html#cb195-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
-<span id="cb195-19"><a href="08-Graphique-Base.html#cb195-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb195-20"><a href="08-Graphique-Base.html#cb195-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $bg</span></span>
-<span id="cb195-21"><a href="08-Graphique-Base.html#cb195-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;transparent&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="08-Graphique-Base.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stockage des paramètres d&#39;origine</span></span>
+<span id="cb230-2"><a href="08-Graphique-Base.html#cb230-2" aria-hidden="true" tabindex="-1"></a>old<span class="ot">&lt;-</span> <span class="fu">par</span>()</span>
+<span id="cb230-3"><a href="08-Graphique-Base.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Affichage des paramètres d&#39;origine</span></span>
+<span id="cb230-4"><a href="08-Graphique-Base.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(old)</span>
+<span id="cb230-5"><a href="08-Graphique-Base.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $xlog</span></span>
+<span id="cb230-6"><a href="08-Graphique-Base.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
+<span id="cb230-7"><a href="08-Graphique-Base.html#cb230-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb230-8"><a href="08-Graphique-Base.html#cb230-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ylog</span></span>
+<span id="cb230-9"><a href="08-Graphique-Base.html#cb230-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
+<span id="cb230-10"><a href="08-Graphique-Base.html#cb230-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb230-11"><a href="08-Graphique-Base.html#cb230-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $adj</span></span>
+<span id="cb230-12"><a href="08-Graphique-Base.html#cb230-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.5</span></span>
+<span id="cb230-13"><a href="08-Graphique-Base.html#cb230-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb230-14"><a href="08-Graphique-Base.html#cb230-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ann</span></span>
+<span id="cb230-15"><a href="08-Graphique-Base.html#cb230-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span>
+<span id="cb230-16"><a href="08-Graphique-Base.html#cb230-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb230-17"><a href="08-Graphique-Base.html#cb230-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ask</span></span>
+<span id="cb230-18"><a href="08-Graphique-Base.html#cb230-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
+<span id="cb230-19"><a href="08-Graphique-Base.html#cb230-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb230-20"><a href="08-Graphique-Base.html#cb230-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $bg</span></span>
+<span id="cb230-21"><a href="08-Graphique-Base.html#cb230-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;transparent&quot;</span></span></code></pre></div>
 </div>
-<div id="fonction-par-mfrow" class="section level3" number="7.2.8">
-<h3><span class="header-section-number">7.2.8</span> fonction par() + mfrow</h3>
+<div id="fonction-par-mfrow" class="section level3" number="8.2.8">
+<h3><span class="header-section-number">8.2.8</span> fonction par() + mfrow</h3>
 <p>Supposons que l’on veuille disposer <strong>verticalement</strong> une boxplot et un histogramme de la variable PCT. On va utiliser l’instruction <strong>mfrow=c(2,1)</strong> pour placerles deux figures suivantes sur des lignes séparées :</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="08-Graphique-Base.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
-<span id="cb196-2"><a href="08-Graphique-Base.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT, <span class="at">main=</span><span class="st">&quot;Histogramme&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Pourboires (%)&quot;</span>)</span>
-<span id="cb196-3"><a href="08-Graphique-Base.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>PCT, <span class="at">horizontal=</span>T, <span class="at">main=</span><span class="st">&quot;Boxplot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Pourboires (%)&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-211-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="08-Graphique-Base.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb231-2"><a href="08-Graphique-Base.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT, <span class="at">main=</span><span class="st">&quot;Histogramme&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Pourboires (%)&quot;</span>)</span>
+<span id="cb231-3"><a href="08-Graphique-Base.html#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>PCT, <span class="at">horizontal=</span>T, <span class="at">main=</span><span class="st">&quot;Boxplot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Pourboires (%)&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-240-1.svg" width="672" /></p>
 <p>Si l’on préfère une disposition <strong>horizontale</strong> on modifie le paramètre mfrow :</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="08-Graphique-Base.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb197-2"><a href="08-Graphique-Base.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT, <span class="at">main=</span><span class="st">&quot;Histogramme&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Pourboires (%)&quot;</span>)</span>
-<span id="cb197-3"><a href="08-Graphique-Base.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>PCT, <span class="at">horizontal=</span>T, <span class="at">main=</span><span class="st">&quot;Boxplot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Pourboires (%)&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-212-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="08-Graphique-Base.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb232-2"><a href="08-Graphique-Base.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT, <span class="at">main=</span><span class="st">&quot;Histogramme&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Pourboires (%)&quot;</span>)</span>
+<span id="cb232-3"><a href="08-Graphique-Base.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>PCT, <span class="at">horizontal=</span>T, <span class="at">main=</span><span class="st">&quot;Boxplot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Pourboires (%)&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-241-1.svg" width="672" /></p>
 </div>
-<div id="autres-paramètres-de-par" class="section level3" number="7.2.9">
-<h3><span class="header-section-number">7.2.9</span> Autres paramètres de par()</h3>
+<div id="autres-paramètres-de-par" class="section level3" number="8.2.9">
+<h3><span class="header-section-number">8.2.9</span> Autres paramètres de par()</h3>
 <p>On peut ajouter toute une série d’autres paramètres par défaut. Par exemple, pour faire un graphique sur fonds noir (<strong>bg</strong>) à traits blancs (<strong>fg</strong>), puis régler la taille (<strong>cex</strong>) et la couleur (<strong>col</strong>) des différents textes.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="08-Graphique-Base.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
-<span id="cb198-2"><a href="08-Graphique-Base.html#cb198-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg=</span><span class="st">&quot;black&quot;</span>, <span class="at">fg=</span><span class="st">&quot;white&quot;</span>,</span>
-<span id="cb198-3"><a href="08-Graphique-Base.html#cb198-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">col.main =</span> <span class="st">&quot;gray80&quot;</span>,</span>
-<span id="cb198-4"><a href="08-Graphique-Base.html#cb198-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.lab =</span>  <span class="fl">0.8</span>, <span class="at">col.lab =</span> <span class="st">&quot;orange&quot;</span>,</span>
-<span id="cb198-5"><a href="08-Graphique-Base.html#cb198-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.axis =</span> <span class="fl">0.6</span>, <span class="at">col.axis =</span> <span class="st">&quot;red&quot;</span></span>
-<span id="cb198-6"><a href="08-Graphique-Base.html#cb198-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb198-7"><a href="08-Graphique-Base.html#cb198-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT, <span class="at">main=</span><span class="st">&quot;Histogramme&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Pourboires (%)&quot;</span>,<span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>)</span>
-<span id="cb198-8"><a href="08-Graphique-Base.html#cb198-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>PCT, <span class="at">horizontal=</span>T, <span class="at">main=</span><span class="st">&quot;Boxplot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Pourboires (%)&quot;</span>,<span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-213-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="08-Graphique-Base.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb233-2"><a href="08-Graphique-Base.html#cb233-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg=</span><span class="st">&quot;black&quot;</span>, <span class="at">fg=</span><span class="st">&quot;white&quot;</span>,</span>
+<span id="cb233-3"><a href="08-Graphique-Base.html#cb233-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">col.main =</span> <span class="st">&quot;gray80&quot;</span>,</span>
+<span id="cb233-4"><a href="08-Graphique-Base.html#cb233-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.lab =</span>  <span class="fl">0.8</span>, <span class="at">col.lab =</span> <span class="st">&quot;orange&quot;</span>,</span>
+<span id="cb233-5"><a href="08-Graphique-Base.html#cb233-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cex.axis =</span> <span class="fl">0.6</span>, <span class="at">col.axis =</span> <span class="st">&quot;red&quot;</span></span>
+<span id="cb233-6"><a href="08-Graphique-Base.html#cb233-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb233-7"><a href="08-Graphique-Base.html#cb233-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT, <span class="at">main=</span><span class="st">&quot;Histogramme&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Pourboires (%)&quot;</span>,<span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>)</span>
+<span id="cb233-8"><a href="08-Graphique-Base.html#cb233-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>PCT, <span class="at">horizontal=</span>T, <span class="at">main=</span><span class="st">&quot;Boxplot&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Pourboires (%)&quot;</span>,<span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-242-1.svg" width="672" /></p>
 </div>
-<div id="la-fonction-layout" class="section level3" number="7.2.10">
-<h3><span class="header-section-number">7.2.10</span> La fonction layout()</h3>
+<div id="la-fonction-layout" class="section level3" number="8.2.10">
+<h3><span class="header-section-number">8.2.10</span> La fonction layout()</h3>
 <p>La fonction <strong>layout()</strong> permet une gestion plus précise de la disposition de différents graphiques sur une même fenêtre que la fonction <strong>par()</strong>. Sa syntaxe semble difficile mais elle est plus simple si on crée la matrice d’allocation des figures avec <strong>rbind()</strong> ce qui permet de visualiser la position de chaque figure facilement</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="08-Graphique-Base.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Divise la figure en 2 lignes et 2 colonnes</span></span>
-<span id="cb199-2"><a href="08-Graphique-Base.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="do">## alloue la figure 1 à toute la première ligne </span></span>
-<span id="cb199-3"><a href="08-Graphique-Base.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="do">## alloue les figures 2 et 3 à la deuxième ligne</span></span>
-<span id="cb199-4"><a href="08-Graphique-Base.html#cb199-4" aria-hidden="true" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
-<span id="cb199-5"><a href="08-Graphique-Base.html#cb199-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
-<span id="cb199-6"><a href="08-Graphique-Base.html#cb199-6" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(mat)</span>
-<span id="cb199-7"><a href="08-Graphique-Base.html#cb199-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>PCT<span class="sc">~</span>don<span class="sc">$</span>SEX, <span class="at">horizontal=</span>T) <span class="co"># Figure 1</span></span>
-<span id="cb199-8"><a href="08-Graphique-Base.html#cb199-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT)                          <span class="co"># Figure 2</span></span>
-<span id="cb199-9"><a href="08-Graphique-Base.html#cb199-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>SEX)                          <span class="co"># Figure 3</span></span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-214-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="08-Graphique-Base.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Divise la figure en 2 lignes et 2 colonnes</span></span>
+<span id="cb234-2"><a href="08-Graphique-Base.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="do">## alloue la figure 1 à toute la première ligne </span></span>
+<span id="cb234-3"><a href="08-Graphique-Base.html#cb234-3" aria-hidden="true" tabindex="-1"></a><span class="do">## alloue les figures 2 et 3 à la deuxième ligne</span></span>
+<span id="cb234-4"><a href="08-Graphique-Base.html#cb234-4" aria-hidden="true" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb234-5"><a href="08-Graphique-Base.html#cb234-5" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb234-6"><a href="08-Graphique-Base.html#cb234-6" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(mat)</span>
+<span id="cb234-7"><a href="08-Graphique-Base.html#cb234-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>PCT<span class="sc">~</span>don<span class="sc">$</span>SEX, <span class="at">horizontal=</span>T) <span class="co"># Figure 1</span></span>
+<span id="cb234-8"><a href="08-Graphique-Base.html#cb234-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT)                          <span class="co"># Figure 2</span></span>
+<span id="cb234-9"><a href="08-Graphique-Base.html#cb234-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>SEX)                          <span class="co"># Figure 3</span></span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-243-1.svg" width="672" /></p>
 <p>On peut préciser la longueur et la largeur des différentes lignes et colonnes avec <strong>widths</strong> et <strong>heights</strong> . On peut visualiser le résultat de la mise en page avec <strong>layout.show()</strong></p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="08-Graphique-Base.html#cb200-1" aria-hidden="true" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
-<span id="cb200-2"><a href="08-Graphique-Base.html#cb200-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>))</span>
-<span id="cb200-3"><a href="08-Graphique-Base.html#cb200-3" aria-hidden="true" tabindex="-1"></a>nf <span class="ot">&lt;-</span> <span class="fu">layout</span>(mat, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="at">respect=</span>T)</span>
-<span id="cb200-4"><a href="08-Graphique-Base.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(nf)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-215-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="08-Graphique-Base.html#cb235-1" aria-hidden="true" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb235-2"><a href="08-Graphique-Base.html#cb235-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>))</span>
+<span id="cb235-3"><a href="08-Graphique-Base.html#cb235-3" aria-hidden="true" tabindex="-1"></a>nf <span class="ot">&lt;-</span> <span class="fu">layout</span>(mat, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="at">respect=</span>T)</span>
+<span id="cb235-4"><a href="08-Graphique-Base.html#cb235-4" aria-hidden="true" tabindex="-1"></a><span class="fu">layout.show</span>(nf)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-244-1.svg" width="672" /></p>
 <p>On peut ensuite remplir le layout avec des figures, par exemple un plot et deux boxplots</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="08-Graphique-Base.html#cb201-1" aria-hidden="true" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
-<span id="cb201-2"><a href="08-Graphique-Base.html#cb201-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>))</span>
-<span id="cb201-3"><a href="08-Graphique-Base.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb201-4"><a href="08-Graphique-Base.html#cb201-4" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(mat, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="at">respect=</span><span class="cn">TRUE</span>)</span>
-<span id="cb201-5"><a href="08-Graphique-Base.html#cb201-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>PCT,<span class="at">ann =</span> F)</span>
-<span id="cb201-6"><a href="08-Graphique-Base.html#cb201-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>PCT,<span class="at">pch=</span><span class="dv">19</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">cex=</span><span class="fl">0.6</span>,<span class="at">xlab=</span><span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span>
-<span id="cb201-7"><a href="08-Graphique-Base.html#cb201-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>TOTBILL, <span class="at">horizontal=</span>T)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-216-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="08-Graphique-Base.html#cb236-1" aria-hidden="true" tabindex="-1"></a>mat<span class="ot">&lt;-</span><span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),</span>
+<span id="cb236-2"><a href="08-Graphique-Base.html#cb236-2" aria-hidden="true" tabindex="-1"></a>           <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>))</span>
+<span id="cb236-3"><a href="08-Graphique-Base.html#cb236-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb236-4"><a href="08-Graphique-Base.html#cb236-4" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(mat, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">1</span>), <span class="at">respect=</span><span class="cn">TRUE</span>)</span>
+<span id="cb236-5"><a href="08-Graphique-Base.html#cb236-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>PCT,<span class="at">ann =</span> F)</span>
+<span id="cb236-6"><a href="08-Graphique-Base.html#cb236-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>PCT,<span class="at">pch=</span><span class="dv">19</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">cex=</span><span class="fl">0.6</span>,<span class="at">xlab=</span><span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span>
+<span id="cb236-7"><a href="08-Graphique-Base.html#cb236-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>TOTBILL, <span class="at">horizontal=</span>T)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-245-1.svg" width="672" /></p>
 </div>
 </div>
-<div id="la-fonction-génératrice-plot" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> La fonction génératrice plot()</h2>
-<div id="une-super-fonction" class="section level3" number="7.3.1">
-<h3><span class="header-section-number">7.3.1</span> Une super-fonction</h3>
+<div id="la-fonction-génératrice-plot" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> La fonction génératrice plot()</h2>
+<div id="une-super-fonction" class="section level3" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> Une super-fonction</h3>
 <p>L’instruction <strong>plot()</strong> n’est pas une fonction graphique comme les autres car elle va renvoyer des résultats différents selon les circonstances. En d’autres termes c’est un outil de <strong>programmation orienté objet</strong> qui va adapter le résultat à la nature des <strong>variables</strong> et plus généralement des <strong>objets</strong> qui lui sont fournis en entrée.</p>
 <ul>
 <li><p>Par exemple, un plot() d’une variable de <strong>type factor</strong> va donner le même résultat que <strong>barplot()</strong> appliqué à la table de dénombrement de cette variable</p></li>
 <li><p>Autre exemple, la fonction <strong>lm()</strong> génère un objet complexe (modèle de régression linéaire). Lorsque l’on effectue un plot de cet objet, on utilise en fait une fonction <strong>plot.lm()</strong> qui fournit les diagnostics de la régression.</p></li>
 </ul>
 </div>
-<div id="plotx-x-de-type-factor" class="section level3" number="7.3.2">
-<h3><span class="header-section-number">7.3.2</span> plot(X) / X de type factor</h3>
+<div id="plotx-x-de-type-factor" class="section level3" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> plot(X) / X de type factor</h3>
 <p>La fonction plot() est pratique pour visualiser une variable de <em>type factor</em> à l’aide d’un <strong>barplot()</strong>.</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="08-Graphique-Base.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb202-2"><a href="08-Graphique-Base.html#cb202-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">&lt;-</span>don<span class="sc">$</span>SEX</span>
-<span id="cb202-3"><a href="08-Graphique-Base.html#cb202-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X, <span class="at">main=</span><span class="st">&quot;plot(x=factor)&quot;</span>)</span>
-<span id="cb202-4"><a href="08-Graphique-Base.html#cb202-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(X), <span class="at">main=</span><span class="st">&quot;barplot(table(x=factor))&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-217-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="08-Graphique-Base.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb237-2"><a href="08-Graphique-Base.html#cb237-2" aria-hidden="true" tabindex="-1"></a>X<span class="ot">&lt;-</span>don<span class="sc">$</span>SEX</span>
+<span id="cb237-3"><a href="08-Graphique-Base.html#cb237-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(X, <span class="at">main=</span><span class="st">&quot;plot(x=factor)&quot;</span>)</span>
+<span id="cb237-4"><a href="08-Graphique-Base.html#cb237-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(X), <span class="at">main=</span><span class="st">&quot;barplot(table(x=factor))&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-246-1.svg" width="672" /></p>
 </div>
-<div id="plotx-x-de-type-numeric" class="section level3" number="7.3.3">
-<h3><span class="header-section-number">7.3.3</span> plot(X) / X de type numeric</h3>
+<div id="plotx-x-de-type-numeric" class="section level3" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> plot(X) / X de type numeric</h3>
 <p>Mais elle est sans intérêt pour une variable de <em>type numérique</em>, sauf si on la trie avec <strong>sort()</strong></p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="08-Graphique-Base.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb203-2"><a href="08-Graphique-Base.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TIP, <span class="at">main=</span><span class="st">&quot;Sans intérêt ...&quot;</span>)</span>
-<span id="cb203-3"><a href="08-Graphique-Base.html#cb203-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sort</span>(don<span class="sc">$</span>TIP),<span class="at">main=</span><span class="st">&quot;Un peu mieux...&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-218-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="08-Graphique-Base.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb238-2"><a href="08-Graphique-Base.html#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TIP, <span class="at">main=</span><span class="st">&quot;Sans intérêt ...&quot;</span>)</span>
+<span id="cb238-3"><a href="08-Graphique-Base.html#cb238-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sort</span>(don<span class="sc">$</span>TIP),<span class="at">main=</span><span class="st">&quot;Un peu mieux...&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-247-1.svg" width="672" /></p>
 </div>
-<div id="plotxy-x-et-y-de-type-factor" class="section level3" number="7.3.4">
-<h3><span class="header-section-number">7.3.4</span> plot(X,Y) / X et Y de type factor</h3>
+<div id="plotxy-x-et-y-de-type-factor" class="section level3" number="8.3.4">
+<h3><span class="header-section-number">8.3.4</span> plot(X,Y) / X et Y de type factor</h3>
 <p>Plot renvoie un graphique de type <strong>mosaicplot()</strong></p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="08-Graphique-Base.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">2</span>))</span>
-<span id="cb204-2"><a href="08-Graphique-Base.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>SEX,don<span class="sc">$</span>TIME)</span>
-<span id="cb204-3"><a href="08-Graphique-Base.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TIME,don<span class="sc">$</span>SEX)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-219-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="08-Graphique-Base.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">2</span>))</span>
+<span id="cb239-2"><a href="08-Graphique-Base.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>SEX,don<span class="sc">$</span>TIME)</span>
+<span id="cb239-3"><a href="08-Graphique-Base.html#cb239-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TIME,don<span class="sc">$</span>SEX)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-248-1.svg" width="672" /></p>
 </div>
-<div id="plotxy-x-et-y-de-type-numerique" class="section level3" number="7.3.5">
-<h3><span class="header-section-number">7.3.5</span> plot(X,Y) / X et Y de type numerique</h3>
+<div id="plotxy-x-et-y-de-type-numerique" class="section level3" number="8.3.5">
+<h3><span class="header-section-number">8.3.5</span> plot(X,Y) / X et Y de type numerique</h3>
 <p>Plot renvoie un graphique de type <strong>scatterplot()</strong></p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="08-Graphique-Base.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb205-2"><a href="08-Graphique-Base.html#cb205-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-220-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="08-Graphique-Base.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb240-2"><a href="08-Graphique-Base.html#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-249-1.svg" width="672" /></p>
 </div>
-<div id="plotxy-x-de-type-factor-et-y-de-type-numerique" class="section level3" number="7.3.6">
-<h3><span class="header-section-number">7.3.6</span> plot(X,Y) / X de type factor et Y de type numerique</h3>
+<div id="plotxy-x-de-type-factor-et-y-de-type-numerique" class="section level3" number="8.3.6">
+<h3><span class="header-section-number">8.3.6</span> plot(X,Y) / X de type factor et Y de type numerique</h3>
 <p>Plot renvoie un graphique de type <strong>boxplot()</strong> si le factor est en premier,</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="08-Graphique-Base.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb206-2"><a href="08-Graphique-Base.html#cb206-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>SEX,don<span class="sc">$</span>TIP, <span class="at">horizontal=</span>T)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-221-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="08-Graphique-Base.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb241-2"><a href="08-Graphique-Base.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>SEX,don<span class="sc">$</span>TIP, <span class="at">horizontal=</span>T)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-250-1.svg" width="672" /></p>
 </div>
-<div id="plotxy-x-de-type-factor-et-y-de-type-numerique-1" class="section level3" number="7.3.7">
-<h3><span class="header-section-number">7.3.7</span> plot(X,Y) / X de type factor et Y de type numerique</h3>
+<div id="plotxy-x-de-type-factor-et-y-de-type-numerique-1" class="section level3" number="8.3.7">
+<h3><span class="header-section-number">8.3.7</span> plot(X,Y) / X de type factor et Y de type numerique</h3>
 <p>Plot renvoie un diagramme de faible intérêt si la variable factor est en second. Il s’agit en termes statistiques d’un ensemble de <strong>diagrammes de distribution</strong> .</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="08-Graphique-Base.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TIP,don<span class="sc">$</span>SEX)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-222-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="08-Graphique-Base.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TIP,don<span class="sc">$</span>SEX)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-251-1.svg" width="672" /></p>
 </div>
-<div id="plotmodel-model-lmyx" class="section level3" number="7.3.8">
-<h3><span class="header-section-number">7.3.8</span> plot(model) / model = lm(Y~X)</h3>
+<div id="plotmodel-model-lmyx" class="section level3" number="8.3.8">
+<h3><span class="header-section-number">8.3.8</span> plot(model) / model = lm(Y~X)</h3>
 <p>L’appplication de plot à un modèle linéaire issu de <strong>lm()</strong> permet de générer 6 graphiques différents (<strong>Cf. cours sur la régression</strong>). Par défaut, R affiche les graphiques n° 1,2,3,5 (mais je préfère le n°4 …)</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="08-Graphique-Base.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb208-2"><a href="08-Graphique-Base.html#cb208-2" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">lm</span>(don<span class="sc">$</span>PCT<span class="sc">~</span>don<span class="sc">$</span>TOTBILL)</span>
-<span id="cb208-3"><a href="08-Graphique-Base.html#cb208-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-223-1.svg" width="480" /></p>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="08-Graphique-Base.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb243-2"><a href="08-Graphique-Base.html#cb243-2" aria-hidden="true" tabindex="-1"></a>model<span class="ot">&lt;-</span><span class="fu">lm</span>(don<span class="sc">$</span>PCT<span class="sc">~</span>don<span class="sc">$</span>TOTBILL)</span>
+<span id="cb243-3"><a href="08-Graphique-Base.html#cb243-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-252-1.svg" width="480" /></p>
 <p>Le graphique n°1 vérifie si les résidus sont réguliers</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="08-Graphique-Base.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model,<span class="dv">1</span>, <span class="at">main=</span> <span class="st">&quot;Absence d&#39;autocorrélation ?&quot;</span>,<span class="at">labels.id =</span> don<span class="sc">$</span>IDEN)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-224-1.svg" width="480" /></p>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="08-Graphique-Base.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model,<span class="dv">1</span>, <span class="at">main=</span> <span class="st">&quot;Absence d&#39;autocorrélation ?&quot;</span>,<span class="at">labels.id =</span> don<span class="sc">$</span>IDEN)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-253-1.svg" width="480" /></p>
 <p>Le graphique n°2 vérifie si les résidus sont distribués de façon gaussienne</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="08-Graphique-Base.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model,<span class="dv">2</span>, <span class="at">main=</span> <span class="st">&quot;Normalité ?&quot;</span>,<span class="at">labels.id =</span> don<span class="sc">$</span>IDEN)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-225-1.svg" width="480" /></p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="08-Graphique-Base.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model,<span class="dv">2</span>, <span class="at">main=</span> <span class="st">&quot;Normalité ?&quot;</span>,<span class="at">labels.id =</span> don<span class="sc">$</span>IDEN)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-254-1.svg" width="480" /></p>
 <p>Le graphique n°3 vérifie si la variance des résidus est constante</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="08-Graphique-Base.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model,<span class="dv">3</span>, <span class="at">main=</span> <span class="st">&quot;Homogénéité ?&quot;</span>,<span class="at">labels.id =</span> don<span class="sc">$</span>IDEN)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-226-1.svg" width="480" /></p>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="08-Graphique-Base.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model,<span class="dv">3</span>, <span class="at">main=</span> <span class="st">&quot;Homogénéité ?&quot;</span>,<span class="at">labels.id =</span> don<span class="sc">$</span>IDEN)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-255-1.svg" width="480" /></p>
 <p>Le graphique n°4 vérifie si des valeurs exceptionnelles existent à l’aide de la distance de Cook.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="08-Graphique-Base.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model,<span class="dv">4</span>, <span class="at">main=</span> <span class="st">&quot;Valeurs exceptionnelles ?&quot;</span>,<span class="at">labels.id =</span> don<span class="sc">$</span>IDEN)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-227-1.svg" width="480" /></p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="08-Graphique-Base.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model,<span class="dv">4</span>, <span class="at">main=</span> <span class="st">&quot;Valeurs exceptionnelles ?&quot;</span>,<span class="at">labels.id =</span> don<span class="sc">$</span>IDEN)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-256-1.svg" width="480" /></p>
 </div>
 </div>
-<div id="les-autres-fonctions-génératrice" class="section level2" number="7.4">
-<h2><span class="header-section-number">7.4</span> Les autres fonctions génératrice</h2>
+<div id="les-autres-fonctions-génératrice" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Les autres fonctions génératrice</h2>
 <p>On peut créer un graphque avec <strong>plot()</strong> mais aussi avec d’autres fonctions dont le nom se termine en général par —plot pour bien rappeler leur rôle de <strong>création</strong> du graphique.</p>
 <ul>
 <li>barplot</li>
@@ -753,138 +795,138 @@ code span.wa { color: #bf0303; } /* Warning */
 <li>curve</li>
 <li>…</li>
 </ul>
-<div id="la-fonction-barplot" class="section level3" number="7.4.1">
-<h3><span class="header-section-number">7.4.1</span> La fonction barplot()</h3>
+<div id="la-fonction-barplot" class="section level3" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> La fonction barplot()</h3>
 <p>La fonction <strong>barplot()</strong> permett de créer des <strong>diagrammes en barres</strong> qui résultent en général du dénombrement d’une ou deux variable qualitative à l’aide des fonctions <strong>table()</strong> ou <strong>xtabs()</strong>.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="08-Graphique-Base.html#cb213-1" aria-hidden="true" tabindex="-1"></a>mytable <span class="ot">&lt;-</span> <span class="fu">table</span>(don<span class="sc">$</span>DAY)</span>
-<span id="cb213-2"><a href="08-Graphique-Base.html#cb213-2" aria-hidden="true" tabindex="-1"></a>mytable</span>
-<span id="cb213-3"><a href="08-Graphique-Base.html#cb213-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb213-4"><a href="08-Graphique-Base.html#cb213-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mercredi    Jeudi Vendredi   Samedi </span></span>
-<span id="cb213-5"><a href="08-Graphique-Base.html#cb213-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       62       19       87       76</span></span>
-<span id="cb213-6"><a href="08-Graphique-Base.html#cb213-6" aria-hidden="true" tabindex="-1"></a>myxtabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span>don<span class="sc">$</span>DAY)</span>
-<span id="cb213-7"><a href="08-Graphique-Base.html#cb213-7" aria-hidden="true" tabindex="-1"></a>myxtabs</span>
-<span id="cb213-8"><a href="08-Graphique-Base.html#cb213-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; don$DAY</span></span>
-<span id="cb213-9"><a href="08-Graphique-Base.html#cb213-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mercredi    Jeudi Vendredi   Samedi </span></span>
-<span id="cb213-10"><a href="08-Graphique-Base.html#cb213-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       62       19       87       76</span></span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="08-Graphique-Base.html#cb248-1" aria-hidden="true" tabindex="-1"></a>mytable <span class="ot">&lt;-</span> <span class="fu">table</span>(don<span class="sc">$</span>DAY)</span>
+<span id="cb248-2"><a href="08-Graphique-Base.html#cb248-2" aria-hidden="true" tabindex="-1"></a>mytable</span>
+<span id="cb248-3"><a href="08-Graphique-Base.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb248-4"><a href="08-Graphique-Base.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mercredi    Jeudi Vendredi   Samedi </span></span>
+<span id="cb248-5"><a href="08-Graphique-Base.html#cb248-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       62       19       87       76</span></span>
+<span id="cb248-6"><a href="08-Graphique-Base.html#cb248-6" aria-hidden="true" tabindex="-1"></a>myxtabs <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span>don<span class="sc">$</span>DAY)</span>
+<span id="cb248-7"><a href="08-Graphique-Base.html#cb248-7" aria-hidden="true" tabindex="-1"></a>myxtabs</span>
+<span id="cb248-8"><a href="08-Graphique-Base.html#cb248-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; don$DAY</span></span>
+<span id="cb248-9"><a href="08-Graphique-Base.html#cb248-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mercredi    Jeudi Vendredi   Samedi </span></span>
+<span id="cb248-10"><a href="08-Graphique-Base.html#cb248-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       62       19       87       76</span></span></code></pre></div>
 <p>Cas d’une table à une seule variable :</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="08-Graphique-Base.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">table</span>(don<span class="sc">$</span>DAY), </span>
-<span id="cb214-2"><a href="08-Graphique-Base.html#cb214-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;fréquence&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;jour de la semaine&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-229-1.svg" width="480" /></p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="08-Graphique-Base.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">table</span>(don<span class="sc">$</span>DAY), </span>
+<span id="cb249-2"><a href="08-Graphique-Base.html#cb249-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;fréquence&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;jour de la semaine&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-258-1.svg" width="480" /></p>
 <p>Cas d’une table à une deux variables :</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="08-Graphique-Base.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">table</span>(don<span class="sc">$</span>DAY,don<span class="sc">$</span>SEX), </span>
-<span id="cb215-2"><a href="08-Graphique-Base.html#cb215-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;fréquence&quot;</span>,  <span class="at">ylab =</span> <span class="st">&quot;jour de la semaine&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-230-1.svg" width="480" /></p>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="08-Graphique-Base.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">table</span>(don<span class="sc">$</span>DAY,don<span class="sc">$</span>SEX), </span>
+<span id="cb250-2"><a href="08-Graphique-Base.html#cb250-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;fréquence&quot;</span>,  <span class="at">ylab =</span> <span class="st">&quot;jour de la semaine&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-259-1.svg" width="480" /></p>
 <p>Exemple de figure complète avec toute une série de paramètres optionnels placés soit dans barplot(), soit dans par()</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="08-Graphique-Base.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">cex.lab =</span> <span class="fl">0.8</span>, <span class="at">cex.axis =</span><span class="fl">0.8</span>, <span class="at">cex.sub=</span><span class="fl">0.6</span>)</span>
-<span id="cb216-2"><a href="08-Graphique-Base.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">table</span>(don<span class="sc">$</span>DAY,don<span class="sc">$</span>SEX),</span>
-<span id="cb216-3"><a href="08-Graphique-Base.html#cb216-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">horiz =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb216-4"><a href="08-Graphique-Base.html#cb216-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="at">n=</span><span class="dv">4</span>,<span class="at">alpha =</span> <span class="fl">0.5</span>),</span>
-<span id="cb216-5"><a href="08-Graphique-Base.html#cb216-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend=</span><span class="cn">TRUE</span>,</span>
-<span id="cb216-6"><a href="08-Graphique-Base.html#cb216-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;fréquence&quot;</span>, </span>
-<span id="cb216-7"><a href="08-Graphique-Base.html#cb216-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;jour de la semaine&quot;</span>, </span>
-<span id="cb216-8"><a href="08-Graphique-Base.html#cb216-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Qui paye le repas ?&quot;</span>, </span>
-<span id="cb216-9"><a href="08-Graphique-Base.html#cb216-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">sub =</span>  <span class="st">&quot;Source : Pourboires de 244 repas dans un restaurant américains au début des années 1990 (Bryant &amp; Smith, 1995)&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-231-1.svg" width="480" /></p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="08-Graphique-Base.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">cex.lab =</span> <span class="fl">0.8</span>, <span class="at">cex.axis =</span><span class="fl">0.8</span>, <span class="at">cex.sub=</span><span class="fl">0.6</span>)</span>
+<span id="cb251-2"><a href="08-Graphique-Base.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">table</span>(don<span class="sc">$</span>DAY,don<span class="sc">$</span>SEX),</span>
+<span id="cb251-3"><a href="08-Graphique-Base.html#cb251-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">horiz =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb251-4"><a href="08-Graphique-Base.html#cb251-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="at">n=</span><span class="dv">4</span>,<span class="at">alpha =</span> <span class="fl">0.5</span>),</span>
+<span id="cb251-5"><a href="08-Graphique-Base.html#cb251-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend=</span><span class="cn">TRUE</span>,</span>
+<span id="cb251-6"><a href="08-Graphique-Base.html#cb251-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;fréquence&quot;</span>, </span>
+<span id="cb251-7"><a href="08-Graphique-Base.html#cb251-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;jour de la semaine&quot;</span>, </span>
+<span id="cb251-8"><a href="08-Graphique-Base.html#cb251-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Qui paye le repas ?&quot;</span>, </span>
+<span id="cb251-9"><a href="08-Graphique-Base.html#cb251-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">sub =</span>  <span class="st">&quot;Source : Pourboires de 244 repas dans un restaurant américains au début des années 1990 (Bryant &amp; Smith, 1995)&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-260-1.svg" width="480" /></p>
 <p>On remarque que les hommes paient plus souvent le repas que les femmes le vendredi et surtout le samedi …</p>
 </div>
-<div id="les-fonctions-hist-et-density" class="section level3" number="7.4.2">
-<h3><span class="header-section-number">7.4.2</span> Les fonctions hist() et density()</h3>
+<div id="les-fonctions-hist-et-density" class="section level3" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> Les fonctions hist() et density()</h3>
 <p>On présente ensemble ces trois fonctions qui sont très complémentaires puisqu’elles permettent l’une et l’autre de créer un histogramme <strong>hist()</strong> et de lui adjoindre avec <strong>lines()</strong> une courbe lissée générée par <strong>density()</strong>. La syntaxe minimale est la suivante :</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="08-Graphique-Base.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT, <span class="at">probability =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb217-2"><a href="08-Graphique-Base.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(don<span class="sc">$</span>PCT))</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-232-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="08-Graphique-Base.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT, <span class="at">probability =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb252-2"><a href="08-Graphique-Base.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(don<span class="sc">$</span>PCT))</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-261-1.svg" width="672" /></p>
 <p>On peut ensuite préciser les paramètres des trois fonctions façon plus ou moins complexes</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="08-Graphique-Base.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">cex.lab =</span> <span class="fl">0.8</span>, <span class="at">cex.axis =</span><span class="fl">0.8</span>, <span class="at">cex.sub=</span><span class="fl">0.6</span>,</span>
-<span id="cb218-2"><a href="08-Graphique-Base.html#cb218-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg=</span><span class="st">&quot;black&quot;</span>,<span class="at">fg=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.lab=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.axis=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.main=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb218-3"><a href="08-Graphique-Base.html#cb218-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT, </span>
-<span id="cb218-4"><a href="08-Graphique-Base.html#cb218-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb218-5"><a href="08-Graphique-Base.html#cb218-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">quantile</span>(don<span class="sc">$</span>PCT,<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span>,<span class="fl">0.4</span>,<span class="fl">0.5</span>,<span class="fl">0.6</span>,<span class="fl">0.7</span>,<span class="fl">0.8</span>,<span class="fl">0.9</span>,<span class="dv">1</span>)), </span>
-<span id="cb218-6"><a href="08-Graphique-Base.html#cb218-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">terrain.colors</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">alpha=</span><span class="fl">0.8</span>), </span>
-<span id="cb218-7"><a href="08-Graphique-Base.html#cb218-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Pourboires en %&quot;</span>, </span>
-<span id="cb218-8"><a href="08-Graphique-Base.html#cb218-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Densité de probabilité&quot;</span>,</span>
-<span id="cb218-9"><a href="08-Graphique-Base.html#cb218-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Histogramme des pourboires par déciles&quot;</span>,</span>
-<span id="cb218-10"><a href="08-Graphique-Base.html#cb218-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span>  <span class="st">&quot;Source : Pourboires de 244 repas dans un restaurant américains au début des années 1990 (Bryant &amp; Smith, 1995)&quot;</span>,</span>
-<span id="cb218-11"><a href="08-Graphique-Base.html#cb218-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">30</span>)</span>
-<span id="cb218-12"><a href="08-Graphique-Base.html#cb218-12" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb218-13"><a href="08-Graphique-Base.html#cb218-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(don<span class="sc">$</span>PCT,<span class="at">bw=</span><span class="dv">2</span>), <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-233-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="08-Graphique-Base.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">cex.lab =</span> <span class="fl">0.8</span>, <span class="at">cex.axis =</span><span class="fl">0.8</span>, <span class="at">cex.sub=</span><span class="fl">0.6</span>,</span>
+<span id="cb253-2"><a href="08-Graphique-Base.html#cb253-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg=</span><span class="st">&quot;black&quot;</span>,<span class="at">fg=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.lab=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.axis=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.main=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb253-3"><a href="08-Graphique-Base.html#cb253-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>PCT, </span>
+<span id="cb253-4"><a href="08-Graphique-Base.html#cb253-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb253-5"><a href="08-Graphique-Base.html#cb253-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">quantile</span>(don<span class="sc">$</span>PCT,<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span>,<span class="fl">0.4</span>,<span class="fl">0.5</span>,<span class="fl">0.6</span>,<span class="fl">0.7</span>,<span class="fl">0.8</span>,<span class="fl">0.9</span>,<span class="dv">1</span>)), </span>
+<span id="cb253-6"><a href="08-Graphique-Base.html#cb253-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">terrain.colors</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">alpha=</span><span class="fl">0.8</span>), </span>
+<span id="cb253-7"><a href="08-Graphique-Base.html#cb253-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Pourboires en %&quot;</span>, </span>
+<span id="cb253-8"><a href="08-Graphique-Base.html#cb253-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Densité de probabilité&quot;</span>,</span>
+<span id="cb253-9"><a href="08-Graphique-Base.html#cb253-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Histogramme des pourboires par déciles&quot;</span>,</span>
+<span id="cb253-10"><a href="08-Graphique-Base.html#cb253-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span>  <span class="st">&quot;Source : Pourboires de 244 repas dans un restaurant américains au début des années 1990 (Bryant &amp; Smith, 1995)&quot;</span>,</span>
+<span id="cb253-11"><a href="08-Graphique-Base.html#cb253-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">30</span>)</span>
+<span id="cb253-12"><a href="08-Graphique-Base.html#cb253-12" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb253-13"><a href="08-Graphique-Base.html#cb253-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(don<span class="sc">$</span>PCT,<span class="at">bw=</span><span class="dv">2</span>), <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-262-1.svg" width="672" /></p>
 <p>Et si on doit faire plusieurs figures, on peut créer sa fonction :</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="08-Graphique-Base.html#cb219-1" aria-hidden="true" tabindex="-1"></a>monhist<span class="ot">&lt;-</span><span class="cf">function</span>(var, <span class="at">nomvar=</span><span class="st">&quot;variable&quot;</span>) </span>
-<span id="cb219-2"><a href="08-Graphique-Base.html#cb219-2" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb219-3"><a href="08-Graphique-Base.html#cb219-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">cex.lab =</span> <span class="fl">0.8</span>, <span class="at">cex.axis =</span><span class="fl">0.8</span>, <span class="at">cex.sub=</span><span class="fl">0.6</span>,</span>
-<span id="cb219-4"><a href="08-Graphique-Base.html#cb219-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg=</span><span class="st">&quot;black&quot;</span>,<span class="at">fg=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.lab=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.axis=</span><span class="st">&quot;white&quot;</span>,</span>
-<span id="cb219-5"><a href="08-Graphique-Base.html#cb219-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.main=</span><span class="st">&quot;white&quot;</span>, <span class="at">col.sub=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb219-6"><a href="08-Graphique-Base.html#cb219-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(var, </span>
-<span id="cb219-7"><a href="08-Graphique-Base.html#cb219-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb219-8"><a href="08-Graphique-Base.html#cb219-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">unique</span>(<span class="fu">quantile</span>(var,<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span>,<span class="fl">0.4</span>,<span class="fl">0.5</span>,<span class="fl">0.6</span>,<span class="fl">0.7</span>,<span class="fl">0.8</span>,<span class="fl">0.9</span>,<span class="dv">1</span>))), </span>
-<span id="cb219-9"><a href="08-Graphique-Base.html#cb219-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">terrain.colors</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">alpha=</span><span class="fl">0.8</span>), </span>
-<span id="cb219-10"><a href="08-Graphique-Base.html#cb219-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> nomvar, </span>
-<span id="cb219-11"><a href="08-Graphique-Base.html#cb219-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Densité de probabilité&quot;</span>,</span>
-<span id="cb219-12"><a href="08-Graphique-Base.html#cb219-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span> <span class="st">&quot;Mon bel histogramme par déciles ...&quot;</span></span>
-<span id="cb219-13"><a href="08-Graphique-Base.html#cb219-13" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb219-14"><a href="08-Graphique-Base.html#cb219-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(var), <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb219-15"><a href="08-Graphique-Base.html#cb219-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="08-Graphique-Base.html#cb254-1" aria-hidden="true" tabindex="-1"></a>monhist<span class="ot">&lt;-</span><span class="cf">function</span>(var, <span class="at">nomvar=</span><span class="st">&quot;variable&quot;</span>) </span>
+<span id="cb254-2"><a href="08-Graphique-Base.html#cb254-2" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb254-3"><a href="08-Graphique-Base.html#cb254-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">cex.main =</span> <span class="dv">1</span>, <span class="at">cex.lab =</span> <span class="fl">0.8</span>, <span class="at">cex.axis =</span><span class="fl">0.8</span>, <span class="at">cex.sub=</span><span class="fl">0.6</span>,</span>
+<span id="cb254-4"><a href="08-Graphique-Base.html#cb254-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bg=</span><span class="st">&quot;black&quot;</span>,<span class="at">fg=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.lab=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.axis=</span><span class="st">&quot;white&quot;</span>,</span>
+<span id="cb254-5"><a href="08-Graphique-Base.html#cb254-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.main=</span><span class="st">&quot;white&quot;</span>, <span class="at">col.sub=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb254-6"><a href="08-Graphique-Base.html#cb254-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(var, </span>
+<span id="cb254-7"><a href="08-Graphique-Base.html#cb254-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb254-8"><a href="08-Graphique-Base.html#cb254-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">unique</span>(<span class="fu">quantile</span>(var,<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span>,<span class="fl">0.4</span>,<span class="fl">0.5</span>,<span class="fl">0.6</span>,<span class="fl">0.7</span>,<span class="fl">0.8</span>,<span class="fl">0.9</span>,<span class="dv">1</span>))), </span>
+<span id="cb254-9"><a href="08-Graphique-Base.html#cb254-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">terrain.colors</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">alpha=</span><span class="fl">0.8</span>), </span>
+<span id="cb254-10"><a href="08-Graphique-Base.html#cb254-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> nomvar, </span>
+<span id="cb254-11"><a href="08-Graphique-Base.html#cb254-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Densité de probabilité&quot;</span>,</span>
+<span id="cb254-12"><a href="08-Graphique-Base.html#cb254-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span> <span class="st">&quot;Mon bel histogramme par déciles ...&quot;</span></span>
+<span id="cb254-13"><a href="08-Graphique-Base.html#cb254-13" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb254-14"><a href="08-Graphique-Base.html#cb254-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(var), <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb254-15"><a href="08-Graphique-Base.html#cb254-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Application de la fonction au prix du repas</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="08-Graphique-Base.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">monhist</span>(don<span class="sc">$</span>TOTBILL,<span class="st">&quot;Prix du repas (en $)&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-235-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="08-Graphique-Base.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="fu">monhist</span>(don<span class="sc">$</span>TOTBILL,<span class="st">&quot;Prix du repas (en $)&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-264-1.svg" width="672" /></p>
 <p>Application de la fonction aumontant du pourboire</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="08-Graphique-Base.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">monhist</span>(don<span class="sc">$</span>TIP,<span class="st">&quot;Montant du pourboire (en $)&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-236-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="08-Graphique-Base.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">monhist</span>(don<span class="sc">$</span>TIP,<span class="st">&quot;Montant du pourboire (en $)&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-265-1.svg" width="672" /></p>
 </div>
 </div>
-<div id="les-fonctions-complémentaires" class="section level2" number="7.5">
-<h2><span class="header-section-number">7.5</span> Les fonctions complémentaires</h2>
+<div id="les-fonctions-complémentaires" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> Les fonctions complémentaires</h2>
 <p>Il s’agit de fonctions qui ne peuvent pas s’executer seules mais ne peuvent être lancées qu’après l’execution d’une fonction graphique principale comme plot(), barplot(), hist(), …</p>
 <p>Nous en avons déjà vu un exemple avec la fonction <strong>lines()</strong> qui s’execute après la fonction <strong>hist()</strong> mais ne peut fonctionner seule. Le programme ci-dessous renverra un message d’erreur</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="08-Graphique-Base.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(don<span class="sc">$</span>PCT), <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>) <span class="co"># ne marchera pas</span></span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="08-Graphique-Base.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(don<span class="sc">$</span>PCT), <span class="at">col=</span><span class="st">&quot;red&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>) <span class="co"># ne marchera pas</span></span></code></pre></div>
 <p><strong>Error in plot.xy(xy.coords(x, y), type = type, …) : plot.new has not been called yet</strong></p>
-<div id="exemple-dun-nuage-de-points-xy" class="section level3" number="7.5.1">
-<h3><span class="header-section-number">7.5.1</span> Exemple d’un nuage de points (X,Y)</h3>
+<div id="exemple-dun-nuage-de-points-xy" class="section level3" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Exemple d’un nuage de points (X,Y)</h3>
 <p>On va prendre comme exemple l’ajout de fonctions graphiques complémentaires à un nuage de point :</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="08-Graphique-Base.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">xlab =</span> <span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-238-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="08-Graphique-Base.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">xlab =</span> <span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-267-1.svg" width="672" /></p>
 <p>On neutralise l’affichage des points générés par <strong>plot()</strong> et on les trace avec la fonction <strong>points()</strong> en précisant leur taille (nombre de repas) et leur couleur (hommes ou femmes) et en ajoutant une légende avec <strong>legend()</strong></p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="08-Graphique-Base.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="dv">0</span>,<span class="at">xlab =</span> <span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span>
-<span id="cb224-2"><a href="08-Graphique-Base.html#cb224-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="fu">sqrt</span>(don<span class="sc">$</span>SIZE)<span class="sc">/</span><span class="dv">2</span>, <span class="at">col=</span>don<span class="sc">$</span>SEX, <span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb224-3"><a href="08-Graphique-Base.html#cb224-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;Hommes&quot;</span>,<span class="st">&quot;Femmes&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-239-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="08-Graphique-Base.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="dv">0</span>,<span class="at">xlab =</span> <span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span>
+<span id="cb259-2"><a href="08-Graphique-Base.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="fu">sqrt</span>(don<span class="sc">$</span>SIZE)<span class="sc">/</span><span class="dv">2</span>, <span class="at">col=</span>don<span class="sc">$</span>SEX, <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb259-3"><a href="08-Graphique-Base.html#cb259-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;Hommes&quot;</span>,<span class="st">&quot;Femmes&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-268-1.svg" width="672" /></p>
 <p>On ajoute ensuite une grille avec <strong>grid()</strong> et des droites correspondant à la moyenne de X et à celle de Y avec <strong>abline(v= …)</strong> et <strong>abline(h= …)</strong></p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="08-Graphique-Base.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="dv">0</span>,<span class="at">xlab =</span> <span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span>
-<span id="cb225-2"><a href="08-Graphique-Base.html#cb225-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="fu">sqrt</span>(don<span class="sc">$</span>SIZE)<span class="sc">/</span><span class="dv">2</span>, <span class="at">col=</span>don<span class="sc">$</span>SEX, <span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb225-3"><a href="08-Graphique-Base.html#cb225-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;Hommes&quot;</span>,<span class="st">&quot;Femmes&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
-<span id="cb225-4"><a href="08-Graphique-Base.html#cb225-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
-<span id="cb225-5"><a href="08-Graphique-Base.html#cb225-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(don<span class="sc">$</span>TOTBILL), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb225-6"><a href="08-Graphique-Base.html#cb225-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(don<span class="sc">$</span>TIP), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-240-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="08-Graphique-Base.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="dv">0</span>,<span class="at">xlab =</span> <span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span>
+<span id="cb260-2"><a href="08-Graphique-Base.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="fu">sqrt</span>(don<span class="sc">$</span>SIZE)<span class="sc">/</span><span class="dv">2</span>, <span class="at">col=</span>don<span class="sc">$</span>SEX, <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb260-3"><a href="08-Graphique-Base.html#cb260-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;Hommes&quot;</span>,<span class="st">&quot;Femmes&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
+<span id="cb260-4"><a href="08-Graphique-Base.html#cb260-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
+<span id="cb260-5"><a href="08-Graphique-Base.html#cb260-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(don<span class="sc">$</span>TOTBILL), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb260-6"><a href="08-Graphique-Base.html#cb260-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(don<span class="sc">$</span>TIP), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-269-1.svg" width="672" /></p>
 <p>On ajoute ensuite une droite de régression avec <strong>abline(model)</strong></p>
 <p>`</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="08-Graphique-Base.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="dv">0</span>,<span class="at">xlab =</span> <span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span>
-<span id="cb226-2"><a href="08-Graphique-Base.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="fu">sqrt</span>(don<span class="sc">$</span>SIZE)<span class="sc">/</span><span class="dv">2</span>, <span class="at">col=</span>don<span class="sc">$</span>SEX, <span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb226-3"><a href="08-Graphique-Base.html#cb226-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;Hommes&quot;</span>,<span class="st">&quot;Femmes&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
-<span id="cb226-4"><a href="08-Graphique-Base.html#cb226-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
-<span id="cb226-5"><a href="08-Graphique-Base.html#cb226-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(don<span class="sc">$</span>TOTBILL), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb226-6"><a href="08-Graphique-Base.html#cb226-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(don<span class="sc">$</span>TIP), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb226-7"><a href="08-Graphique-Base.html#cb226-7" aria-hidden="true" tabindex="-1"></a>maregression <span class="ot">&lt;-</span> <span class="fu">lm</span>(don<span class="sc">$</span>TIP<span class="sc">~</span>don<span class="sc">$</span>TOTBILL)</span>
-<span id="cb226-8"><a href="08-Graphique-Base.html#cb226-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(maregression,<span class="at">lty=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">3</span>,<span class="at">col=</span><span class="st">&quot;brown&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-241-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="08-Graphique-Base.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="dv">0</span>,<span class="at">xlab =</span> <span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span>
+<span id="cb261-2"><a href="08-Graphique-Base.html#cb261-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="fu">sqrt</span>(don<span class="sc">$</span>SIZE)<span class="sc">/</span><span class="dv">2</span>, <span class="at">col=</span>don<span class="sc">$</span>SEX, <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb261-3"><a href="08-Graphique-Base.html#cb261-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;Hommes&quot;</span>,<span class="st">&quot;Femmes&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
+<span id="cb261-4"><a href="08-Graphique-Base.html#cb261-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
+<span id="cb261-5"><a href="08-Graphique-Base.html#cb261-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(don<span class="sc">$</span>TOTBILL), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb261-6"><a href="08-Graphique-Base.html#cb261-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(don<span class="sc">$</span>TIP), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb261-7"><a href="08-Graphique-Base.html#cb261-7" aria-hidden="true" tabindex="-1"></a>maregression <span class="ot">&lt;-</span> <span class="fu">lm</span>(don<span class="sc">$</span>TIP<span class="sc">~</span>don<span class="sc">$</span>TOTBILL)</span>
+<span id="cb261-8"><a href="08-Graphique-Base.html#cb261-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(maregression,<span class="at">lty=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">3</span>,<span class="at">col=</span><span class="st">&quot;brown&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-270-1.svg" width="672" /></p>
 <p>On peut aussi ajouter un texte à l’emplacement de son choix avec <strong>text()</strong>. Par exemple, repérer les individus à très forts résidus</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="08-Graphique-Base.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="dv">0</span>,<span class="at">xlab =</span> <span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span>
-<span id="cb227-2"><a href="08-Graphique-Base.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="fu">sqrt</span>(don<span class="sc">$</span>SIZE)<span class="sc">/</span><span class="dv">2</span>, <span class="at">col=</span>don<span class="sc">$</span>SEX, <span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb227-3"><a href="08-Graphique-Base.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;Hommes&quot;</span>,<span class="st">&quot;Femmes&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
-<span id="cb227-4"><a href="08-Graphique-Base.html#cb227-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
-<span id="cb227-5"><a href="08-Graphique-Base.html#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(don<span class="sc">$</span>TOTBILL), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb227-6"><a href="08-Graphique-Base.html#cb227-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(don<span class="sc">$</span>TIP), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb227-7"><a href="08-Graphique-Base.html#cb227-7" aria-hidden="true" tabindex="-1"></a>maregression <span class="ot">&lt;-</span> <span class="fu">lm</span>(don<span class="sc">$</span>TIP<span class="sc">~</span>don<span class="sc">$</span>TOTBILL)</span>
-<span id="cb227-8"><a href="08-Graphique-Base.html#cb227-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(maregression,<span class="at">lty=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">3</span>,<span class="at">col=</span><span class="st">&quot;brown&quot;</span>)</span>
-<span id="cb227-9"><a href="08-Graphique-Base.html#cb227-9" aria-hidden="true" tabindex="-1"></a>don2<span class="ot">&lt;-</span>don[<span class="fu">abs</span>(maregression<span class="sc">$</span>residuals)<span class="sc">&gt;</span><span class="dv">2</span>,]</span>
-<span id="cb227-10"><a href="08-Graphique-Base.html#cb227-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(don2<span class="sc">$</span>TOTBILL,don2<span class="sc">$</span>TIP,don2<span class="sc">$</span>IDEN,<span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">pos =</span> <span class="dv">1</span>, <span class="at">col=</span><span class="st">&quot;gray30&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-242-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="08-Graphique-Base.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="dv">0</span>,<span class="at">xlab =</span> <span class="st">&quot;Prix du repas&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Pourboire&quot;</span>)</span>
+<span id="cb262-2"><a href="08-Graphique-Base.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP, <span class="at">cex=</span><span class="fu">sqrt</span>(don<span class="sc">$</span>SIZE)<span class="sc">/</span><span class="dv">2</span>, <span class="at">col=</span>don<span class="sc">$</span>SEX, <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb262-3"><a href="08-Graphique-Base.html#cb262-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;Hommes&quot;</span>,<span class="st">&quot;Femmes&quot;</span>), <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="dv">1</span>)</span>
+<span id="cb262-4"><a href="08-Graphique-Base.html#cb262-4" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span>
+<span id="cb262-5"><a href="08-Graphique-Base.html#cb262-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(don<span class="sc">$</span>TOTBILL), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb262-6"><a href="08-Graphique-Base.html#cb262-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(don<span class="sc">$</span>TIP), <span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb262-7"><a href="08-Graphique-Base.html#cb262-7" aria-hidden="true" tabindex="-1"></a>maregression <span class="ot">&lt;-</span> <span class="fu">lm</span>(don<span class="sc">$</span>TIP<span class="sc">~</span>don<span class="sc">$</span>TOTBILL)</span>
+<span id="cb262-8"><a href="08-Graphique-Base.html#cb262-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(maregression,<span class="at">lty=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">3</span>,<span class="at">col=</span><span class="st">&quot;brown&quot;</span>)</span>
+<span id="cb262-9"><a href="08-Graphique-Base.html#cb262-9" aria-hidden="true" tabindex="-1"></a>don2<span class="ot">&lt;-</span>don[<span class="fu">abs</span>(maregression<span class="sc">$</span>residuals)<span class="sc">&gt;</span><span class="dv">2</span>,]</span>
+<span id="cb262-10"><a href="08-Graphique-Base.html#cb262-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(don2<span class="sc">$</span>TOTBILL,don2<span class="sc">$</span>TIP,don2<span class="sc">$</span>IDEN,<span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">pos =</span> <span class="dv">1</span>, <span class="at">col=</span><span class="st">&quot;gray30&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-271-1.svg" width="672" /></p>
 </div>
 </div>
-<div id="conclusion" class="section level2" number="7.6">
-<h2><span class="header-section-number">7.6</span> Conclusion</h2>
-<div id="on-peut-faire-de-beaux-graphiques-avec-r-base" class="section level3" number="7.6.1">
-<h3><span class="header-section-number">7.6.1</span> On peut faire de beaux graphiques avec R-Base …</h3>
+<div id="conclusion" class="section level2" number="8.6">
+<h2><span class="header-section-number">8.6</span> Conclusion</h2>
+<div id="on-peut-faire-de-beaux-graphiques-avec-r-base" class="section level3" number="8.6.1">
+<h3><span class="header-section-number">8.6.1</span> On peut faire de beaux graphiques avec R-Base …</h3>
 <p>Pour cela il faut bien comprendre les trois étapes :</p>
 <ul>
 <li>Fixer les paramètres graphiques généraux avec <strong>par()</strong> ou <strong>layout()</strong></li>
@@ -896,36 +938,35 @@ code span.wa { color: #bf0303; } /* Warning */
 <li>créer ses propres fonctions en suivant l’exemple de <strong>monhist()</strong></li>
 </ul>
 </div>
-<div id="on-peut-utiliser-des-packages-spécialisés" class="section level3" number="7.6.2">
-<h3><span class="header-section-number">7.6.2</span> On peut utiliser des packages spécialisés</h3>
+<div id="on-peut-utiliser-des-packages-spécialisés" class="section level3" number="8.6.2">
+<h3><span class="header-section-number">8.6.2</span> On peut utiliser des packages spécialisés</h3>
 <p>Plusieurs <strong>packages</strong> réalisées à partir des primitives graphiques de R-Base sont spécialisés dans la réalisation d’analyses bivariées et adaptés au type des variables.</p>
 <ul>
 <li><strong>car</strong> : pour croiser deux variables quantitatives</li>
 </ul>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="08-Graphique-Base.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb228-2"><a href="08-Graphique-Base.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-243-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="08-Graphique-Base.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb263-2"><a href="08-Graphique-Base.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot</span>(don<span class="sc">$</span>TOTBILL,don<span class="sc">$</span>TIP)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-272-1.svg" width="672" /></p>
 <ul>
 <li><strong>vcd</strong> : pour croiser deux variables qualitatives</li>
 </ul>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="08-Graphique-Base.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
-<span id="cb229-2"><a href="08-Graphique-Base.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Loading required package: grid</span></span>
-<span id="cb229-3"><a href="08-Graphique-Base.html#cb229-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(don<span class="sc">$</span>SEX<span class="sc">~</span>don<span class="sc">$</span>DAY,<span class="at">shade=</span>T)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-244-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="08-Graphique-Base.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
+<span id="cb264-2"><a href="08-Graphique-Base.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(don<span class="sc">$</span>SEX<span class="sc">~</span>don<span class="sc">$</span>DAY,<span class="at">shade=</span>T)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-273-1.svg" width="672" /></p>
 <ul>
 <li><strong>beanplot</strong> : pour croiser une variable qualitative et une variable quantitative</li>
 </ul>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="08-Graphique-Base.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(beanplot)</span>
-<span id="cb230-2"><a href="08-Graphique-Base.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">beanplot</span>(don<span class="sc">$</span>PCT<span class="sc">~</span>don<span class="sc">$</span>DAY,<span class="at">shade=</span>T)</span>
-<span id="cb230-3"><a href="08-Graphique-Base.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; log=&quot;y&quot; selected</span></span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-245-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="08-Graphique-Base.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(beanplot)</span>
+<span id="cb265-2"><a href="08-Graphique-Base.html#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">beanplot</span>(don<span class="sc">$</span>PCT<span class="sc">~</span>don<span class="sc">$</span>DAY,<span class="at">shade=</span>T)</span>
+<span id="cb265-3"><a href="08-Graphique-Base.html#cb265-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; log=&quot;y&quot; selected</span></span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-274-1.svg" width="672" /></p>
 </div>
-<div id="ggally-un-package-spécialisé-dans-la-statistique-bivariée" class="section level3" number="7.6.3">
-<h3><span class="header-section-number">7.6.3</span> ggally : un package spécialisé dans la statistique bivariée</h3>
+<div id="ggally-un-package-spécialisé-dans-la-statistique-bivariée" class="section level3" number="8.6.3">
+<h3><span class="header-section-number">8.6.3</span> ggally : un package spécialisé dans la statistique bivariée</h3>
 <p>Le récent package <strong>ggally</strong> est spécialisé dans l’analyse des relations statistiques entre deux variables. Il reprend plusieurs autres packages (notamment ggplot2) pour offrir une solution intégrée avec une syntaxe simple et intuitive.</p>
 </div>
-<div id="ggplot2-un-package-graphique-universel" class="section level3" number="7.6.4">
-<h3><span class="header-section-number">7.6.4</span> ggplot2 : un package graphique universel ?</h3>
+<div id="ggplot2-un-package-graphique-universel" class="section level3" number="8.6.4">
+<h3><span class="header-section-number">8.6.4</span> ggplot2 : un package graphique universel ?</h3>
 <p>Fruit des travaux d’Hadley Wickham et de l’équipe de développement de R-Studio, le package <strong>ggplot2</strong> est un élément central de l’univers <strong>tidyverse</strong>, au point de faire désormais partie des “standards” de l’apprentissage de R.</p>
 <p>Mais sa connaissance approfondie est longue et pas toujours intuitive malgré les efforts de ses auteurs. A la longue, les paramètres de base des graphiques ggplot2 peuvent apparaître lassants et il faut donc bien approfondir sa connaissance pour réaliser des figures originales au niveau du style. Sinon c’est un peu le “fast food” de la visualisation : universel mais manquant de goût et d’originalité…</p>
 
@@ -938,7 +979,7 @@ code span.wa { color: #bf0303; } /* Warning */
           </div>
         </div>
       </div>
-<a href="06-Anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="07-Tabcont.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="09-Graphique-ggplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

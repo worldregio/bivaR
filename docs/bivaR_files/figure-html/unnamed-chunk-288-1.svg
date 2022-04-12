@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='504.00pt' height='360.00pt' viewBox='0 0 504.00 360.00'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA='>
+    <rect x='0.00' y='0.00' width='504.00' height='360.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
+<rect x='74.40' y='59.04' width='174.55' height='225.27' style='stroke-width: 0.75; fill: #0000FF;' />
+<rect x='283.85' y='145.57' width='174.55' height='138.74' style='stroke-width: 0.75; fill: #FF0000;' />
+<text x='161.67' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='62.70px' lengthAdjust='spacingAndGlyphs'>Non fumeur</text>
+<text x='371.13' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='41.34px' lengthAdjust='spacingAndGlyphs'>Fumeur</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='76.72px' lengthAdjust='spacingAndGlyphs'>Salle de repas</text>
+<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='35.34px' lengthAdjust='spacingAndGlyphs'>effectif</text>
+<line x1='59.04' y1='284.31' x2='59.04' y2='75.45' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='284.31' x2='51.84' y2='284.31' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='254.47' x2='51.84' y2='254.47' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='224.63' x2='51.84' y2='224.63' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='194.80' x2='51.84' y2='194.80' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='164.96' x2='51.84' y2='164.96' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='135.12' x2='51.84' y2='135.12' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='105.29' x2='51.84' y2='105.29' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='75.45' x2='51.84' y2='75.45' style='stroke-width: 0.75;' />
+<text transform='translate(41.76,284.31) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text transform='translate(41.76,254.47) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>20</text>
+<text transform='translate(41.76,224.63) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>40</text>
+<text transform='translate(41.76,194.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>60</text>
+<text transform='translate(41.76,164.96) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>80</text>
+<text transform='translate(41.76,135.12) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text transform='translate(41.76,75.45) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>140</text>
+</g>
+</svg>
