@@ -18,17 +18,15 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: Arial;' textLength='393.47px' lengthAdjust='spacingAndGlyphs'>Plus il y a de monde, plus ce sont les hommes qui payent</text>
-<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='174.79px' lengthAdjust='spacingAndGlyphs'>Genre de la personne qui a payé</text>
-<text transform='translate(41.76,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='109.38px' lengthAdjust='spacingAndGlyphs'>Nombre de convives</text>
-<text x='197.18' y='64.69' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='27.68px' lengthAdjust='spacingAndGlyphs'>Homme</text>
-<text x='387.73' y='64.69' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='26.81px' lengthAdjust='spacingAndGlyphs'>Femme</text>
-<text transform='translate(67.61,71.04) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='4.40px' lengthAdjust='spacingAndGlyphs'>1</text>
-<text transform='translate(67.62,136.42) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='4.40px' lengthAdjust='spacingAndGlyphs'>2</text>
-<text transform='translate(67.55,215.98) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='4.40px' lengthAdjust='spacingAndGlyphs'>3</text>
-<text transform='translate(67.62,252.37) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='4.40px' lengthAdjust='spacingAndGlyphs'>4</text>
-<text transform='translate(67.51,276.41) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='4.40px' lengthAdjust='spacingAndGlyphs'>5</text>
-<text transform='translate(67.55,284.42) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='4.40px' lengthAdjust='spacingAndGlyphs'>6</text>
+<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: Arial;' textLength='216.93px' lengthAdjust='spacingAndGlyphs'>Opinion sur les USA selon l'âge</text>
+<text x='266.40' y='326.88' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='368.86px' lengthAdjust='spacingAndGlyphs'>Source : Pew Research Center, Global Attitude Survey, 2017, France</text>
+<text x='116.55' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.18px' lengthAdjust='spacingAndGlyphs'>18-36 ans</text>
+<text x='193.23' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.18px' lengthAdjust='spacingAndGlyphs'>37-49 ans</text>
+<text x='266.90' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.18px' lengthAdjust='spacingAndGlyphs'>50-59 ans</text>
+<text x='343.05' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.18px' lengthAdjust='spacingAndGlyphs'>60-68 ans</text>
+<text x='419.02' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.62px' lengthAdjust='spacingAndGlyphs'>69-94-ans</text>
+<text transform='translate(67.62,132.20) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.17px' lengthAdjust='spacingAndGlyphs'>Favorable</text>
+<text transform='translate(67.68,241.96) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='42.65px' lengthAdjust='spacingAndGlyphs'>Défavorable</text>
 </g>
 <defs>
   <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
@@ -36,17 +34,15 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
-<polygon points='79.38,71.66 314.98,71.66 314.98,70.43 79.38,70.43 ' style='stroke-width: 0.75; fill: #00A600; fill-opacity: 0.50;' />
-<polygon points='79.38,196.87 314.98,196.87 314.98,75.97 79.38,75.97 ' style='stroke-width: 0.75; fill: #63C600; fill-opacity: 0.50;' />
-<polygon points='79.38,230.79 314.98,230.79 314.98,201.18 79.38,201.18 ' style='stroke-width: 0.75; fill: #E6E600; fill-opacity: 0.50;' />
-<polygon points='79.38,269.64 314.98,269.64 314.98,235.09 79.38,235.09 ' style='stroke-width: 0.75; fill: #E9BD3A; fill-opacity: 0.50;' />
-<polygon points='79.38,278.88 314.98,278.88 314.98,273.94 79.38,273.94 ' style='stroke-width: 0.75; fill: #ECB176; fill-opacity: 0.50;' />
-<polygon points='79.38,285.65 314.98,285.65 314.98,283.18 79.38,283.18 ' style='stroke-width: 0.75; fill: #EFC2B3; fill-opacity: 0.50;' />
-<polygon points='322.45,77.11 453.00,77.11 453.00,70.43 322.45,70.43 ' style='stroke-width: 0.75; fill: #00A600; fill-opacity: 0.50;' />
-<polygon points='322.45,210.54 453.00,210.54 453.00,81.41 322.45,81.41 ' style='stroke-width: 0.75; fill: #63C600; fill-opacity: 0.50;' />
-<polygon points='322.45,246.02 453.00,246.02 453.00,214.85 322.45,214.85 ' style='stroke-width: 0.75; fill: #E6E600; fill-opacity: 0.50;' />
-<polygon points='322.45,270.36 453.00,270.36 453.00,250.32 322.45,250.32 ' style='stroke-width: 0.75; fill: #E9BD3A; fill-opacity: 0.50;' />
-<polygon points='322.45,276.89 453.00,276.89 453.00,274.67 322.45,274.67 ' style='stroke-width: 0.75; fill: #ECB176; fill-opacity: 0.50;' />
-<polygon points='322.45,285.65 453.00,285.65 453.00,281.20 322.45,281.20 ' style='stroke-width: 0.75; fill: #EFC2B3; fill-opacity: 0.50;' />
+<polygon points='79.38,193.96 153.72,193.96 153.72,70.43 79.38,70.43 ' style='stroke-width: 0.75; fill: #FFFFE0;' />
+<polygon points='79.38,285.65 153.72,285.65 153.72,198.27 79.38,198.27 ' style='stroke-width: 0.75; fill: #ADD8E6;' />
+<polygon points='161.19,163.65 225.27,163.65 225.27,70.43 161.19,70.43 ' style='stroke-width: 0.75; fill: #FFFFE0;' />
+<polygon points='161.19,285.65 225.27,285.65 225.27,167.95 161.19,167.95 ' style='stroke-width: 0.75; fill: #ADD8E6;' />
+<polygon points='232.74,162.23 301.06,162.23 301.06,70.43 232.74,70.43 ' style='stroke-width: 0.75; fill: #FFFFE0;' />
+<polygon points='232.74,285.65 301.06,285.65 301.06,166.53 232.74,166.53 ' style='stroke-width: 0.75; fill: #ADD8E6;' />
+<polygon points='308.53,151.55 377.56,151.55 377.56,70.43 308.53,70.43 ' style='stroke-width: 0.75; fill: #FFFFE0;' />
+<polygon points='308.53,285.65 377.56,285.65 377.56,155.85 308.53,155.85 ' style='stroke-width: 0.75; fill: #ADD8E6;' />
+<polygon points='385.04,142.93 453.00,142.93 453.00,70.43 385.04,70.43 ' style='stroke-width: 0.75; fill: #FFFFE0;' />
+<polygon points='385.04,285.65 453.00,285.65 453.00,147.23 385.04,147.23 ' style='stroke-width: 0.75; fill: #ADD8E6;' />
 </g>
 </svg>

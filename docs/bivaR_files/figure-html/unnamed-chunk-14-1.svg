@@ -18,27 +18,39 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<rect x='74.40' y='59.04' width='174.55' height='225.27' style='stroke-width: 0.75; fill: #0000FF;' />
-<rect x='283.85' y='145.57' width='174.55' height='138.74' style='stroke-width: 0.75; fill: #FF0000;' />
-<text x='161.67' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='62.70px' lengthAdjust='spacingAndGlyphs'>Non fumeur</text>
-<text x='371.13' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='41.34px' lengthAdjust='spacingAndGlyphs'>Fumeur</text>
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='76.72px' lengthAdjust='spacingAndGlyphs'>Salle de repas</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='35.34px' lengthAdjust='spacingAndGlyphs'>effectif</text>
-<line x1='59.04' y1='284.31' x2='59.04' y2='75.45' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='284.31' x2='51.84' y2='284.31' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='254.47' x2='51.84' y2='254.47' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='224.63' x2='51.84' y2='224.63' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='194.80' x2='51.84' y2='194.80' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='164.96' x2='51.84' y2='164.96' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='135.12' x2='51.84' y2='135.12' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='105.29' x2='51.84' y2='105.29' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='75.45' x2='51.84' y2='75.45' style='stroke-width: 0.75;' />
-<text transform='translate(41.76,284.31) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text transform='translate(41.76,254.47) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>20</text>
-<text transform='translate(41.76,224.63) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>40</text>
-<text transform='translate(41.76,194.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>60</text>
-<text transform='translate(41.76,164.96) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>80</text>
-<text transform='translate(41.76,135.12) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>100</text>
-<text transform='translate(41.76,75.45) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>140</text>
+</g>
+<defs>
+  <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
+    <rect x='59.04' y='59.04' width='414.72' height='227.52' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
+<text transform='translate(430.52,286.79) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='70.72px' lengthAdjust='spacingAndGlyphs'>Standardized</text>
+<text transform='translate(444.92,286.79) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='56.02px' lengthAdjust='spacingAndGlyphs'>Residuals:</text>
+<polygon points='421.88,204.29 446.09,204.29 446.09,185.83 421.88,185.83 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FF0000;' />
+<polygon points='421.88,181.21 446.09,181.21 446.09,162.75 421.88,162.75 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FF8080;' />
+<polygon points='421.88,158.13 446.09,158.13 446.09,139.67 421.88,139.67 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FFFFFF;' />
+<polygon points='421.88,135.05 446.09,135.05 446.09,116.59 421.88,116.59 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
+<polygon points='421.88,111.97 446.09,111.97 446.09,93.51 421.88,93.51 ' style='stroke-width: 0.75; fill: #8080FF;' />
+<polygon points='421.88,88.89 446.09,88.89 446.09,70.43 421.88,70.43 ' style='stroke-width: 0.75; fill: #0000FF;' />
+</g>
+<g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
+<text transform='translate(459.20,195.06) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='11.65px' lengthAdjust='spacingAndGlyphs'>&lt;-4</text>
+<text transform='translate(459.24,171.98) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='16.26px' lengthAdjust='spacingAndGlyphs'>-4:-2</text>
+<text transform='translate(459.16,148.90) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='13.63px' lengthAdjust='spacingAndGlyphs'>-2:0</text>
+<text transform='translate(459.16,125.82) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='10.99px' lengthAdjust='spacingAndGlyphs'>0:2</text>
+<text transform='translate(459.24,102.74) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='10.99px' lengthAdjust='spacingAndGlyphs'>2:4</text>
+<text transform='translate(459.20,79.66) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='9.01px' lengthAdjust='spacingAndGlyphs'>&gt;4</text>
+<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: Arial;' textLength='51.98px' lengthAdjust='spacingAndGlyphs'>tabcont</text>
+<text x='149.69' y='64.69' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='27.68px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text x='308.45' y='64.69' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='26.81px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text transform='translate(66.65,123.86) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.17px' lengthAdjust='spacingAndGlyphs'>Favorable</text>
+<text transform='translate(66.71,233.62) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='42.65px' lengthAdjust='spacingAndGlyphs'>Défavorable</text>
+</g>
+<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
+<polygon points='75.99,177.28 223.38,177.28 223.38,70.43 75.99,70.43 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
+<polygon points='75.99,285.65 223.38,285.65 223.38,181.59 75.99,181.59 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FFFFFF;' />
+<polygon points='229.61,164.59 387.29,164.59 387.29,70.43 229.61,70.43 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FFFFFF;' />
+<polygon points='229.61,285.65 387.29,285.65 387.29,168.90 229.61,168.90 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
 </g>
 </svg>

@@ -1,0 +1,405 @@
+# Analyse d'enquêtes
+
+
+```{r, echo = FALSE}
+library(knitr)
+library(questionr)
+knitr::include_graphics("resources/figures/chap7_intro.gif")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo7](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo7.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo6.Rproj` dans Rstudio.
+
+
+
+
+
+## Introduction
+
+On propose ici une démarche simplifiée de l'analyse d'enquête utilisant les fonctions R-base et quelques fonctions supplémentaires issues du package **questionR** qui permettent de simplifier l'écriture des programmes. Les explications détaillées se trouvent dans le très beau site web analyse-R auquel ont notamment contribué Julien Barnier et Joseph Larmarange. 
+
+
+https://larmarange.github.io/analyse-R/
+
+ce programme suffit pour des analyses simples de questionnaires. Mais pour des analyses plus avancées, il faudra utiliser des packages plus avancés comme **survey**.
+
+##  Préparation des données
+
+### Importation du fichier au format .RDS
+
+
+```{r}
+don<-readRDS("resources/data/pew/Pew_2007_2017.Rdata")
+str(don)
+```
+
+###  (simplifiée) des variables
+
+Les données sont issues de deux vagues de la *Global attitude Survey* réalisée par le Pew Research Center en 2007 et 2017. Nous avons conservé uniquement des variables communes aux deux enquêtes et posées de façon identique.
+
+- survey      : date d'enquête (2007 ou 2017)
+- country     : lieu d'enquête (pays présents aux deux dates)
+- sex         : sexe de l'individu
+- age         : âge de l'individu   
+- today       : état d'esprit du jour (typique, très bon, très mauvais)
+- use_internet: usage d'internet 
+- opi_USA     : opinion sur les USA
+- opi_CHN     : opinion sur la Chine
+- opi_RUS     : opinion sur la Russie
+- weight      : poids de l'individu pour les redressements
+
+
+
+
+### Résumé des variables (tri à plat)
+
+```{r}
+summary(don)
+```
+
+### Tailles des échantillons par pays et par date
+
+On examine la taille des échantillons collectés dans les différents pays
+
+```{r}
+table(don$country,don$survey)
+```
+
+
+### Sélection d'un échantillon
+
+On décide par exemple d'analyser l'échantillon des réponses françaises en 2017 : 
+
+```{r}
+fra17<-don[don$country =="France" & don$survey=="Spring2017",]
+source <- "Source : Pew Research Center, Global Attitude Survey, 2017, France"
+summary(fra17)
+```
+
+### Recodage des modalités
+
+Si l'on souhaite rendre un rapport en français, on va recoder les modalités des variables qui nous intéressent et en profiter pour déclarer manquantes les valeurs correspondant à des non-réponses ou des refus de répondre.
+
+```{r}
+
+levels(fra17$sex)<-c("Homme","Femme")
+levels(fra17$today)<-c("Typique","Très Bon","Très Mauvais",NA,NA)
+levels(fra17$use_internet)<-c("Oui","Non",NA,NA)
+levels(fra17$opi_USA)<-c("Trés Fav.","Fav.","Défav.","Très Déf.",NA,NA)
+levels(fra17$opi_RUS)<-c("Trés Fav.","Fav.","Défav.","Très Déf.",NA,NA)
+levels(fra17$opi_CHN)<-c("Trés Fav.","Fav.","Défav.","Très Déf.",NA,NA)
+
+```
+
+### Découpage de variables quantitatives en classes
+
+
+On peut transformer la variable quantitative âge en variable qualitative (factor) à l'aide de la fonction *cut()*. La question va évidemment être de décider : 
+
+- combien on fait de classes ?
+- selon quels seuils ?
+- avec quels noms ? 
+
+On peut décider de créer cinq classesd'âge  à l'aide des quintiles de la distribution :
+
+```{r}
+fra17$age5<-cut(fra17$age, breaks = quantile(fra17$age,c(0,0.2,0.4,0.6,0.8, 1)), include.lowest = T)
+levels(fra17$age5) <-c("18-36 ans","37-49 ans","50-59 ans","60-68 ans","69-94-ans")
+```
+
+Mais on peut aussi décider qu'on veut travailler sur les générations en choisissant les dates de 1949, 1969 et 1989
+
+```{r}
+fra17$gen<-2017-fra17$age
+fra17$gen4<-cut(fra17$gen, breaks=c(min(fra17$gen), 1949, 1969, 1989, max(fra17$gen)), include.lowest = T)
+levels(fra17$gen4)<-c(" 1950< ","1950-69","1970-89","> 1990")
+```
+
+
+
+### Sélection
+
+On ne garde que les variable qui nous intéressent pour l'analyse. 
+
+```{r}
+sel<-fra17[,c("sex","age5","gen4","opi_USA","weight")]
+summary(sel)
+```
+
+
+
+
+## Opinion USA
+
+
+### la fonction table()
+
+Le dénombrement des modalités d'une variable se fait généralement avec la fonction `table()` qui permet de croiser une ou plusieurs variables. Ci-dessous on donne des exemples de croisement à une, deux ou trois variables
+
+```{r}
+t1<-table(sel$opi_USA)
+kable(t1)
+t2<-table(sel$opi_USA,sel$sex)
+kable(t2)
+t3<-table(sel$opi_USA,sel$sex,sel$gen4)
+kable(t3)
+```
+
+
+### Visualisation avec plot ou barplot
+
+Les objets de type table à une ou deux dimensions s'affichent facilement avec barplot()
+
+
+```{r}
+barplot(t1, main="Opinion sur les USA")
+barplot(t2, main = "Opinion sur les USA et Sexe")
+```
+
+
+### Recodage
+
+On peut regrouper des modalités entre elle en leur donnant le même nom et en éliminer d'autres en leur donnant la modalité NA. 
+
+```{r}
+sel$opi_USA2<-sel$opi_USA
+levels(sel$opi_USA2)
+levels(sel$opi_USA2)<-c("Favorable","Favorable","Défavorable","Défavorable",NA,NA)
+
+t<-table(sel$opi_USA2)
+t
+prop.table(t)
+barplot(100*t/sum(t))
+```
+
+
+A ce stade, on a certes établi le fait qu'il y a une proportion plus grande d'opinion défavorables (56%) que favorables (44%) mais il faut établir un intervalle de confiance pour savoir si cela est simplement dû au biais d'écdhantillonage.
+
+### Calcul de l'intervalle de confiance
+
+On va conduire un test pour trancher entre trois possibilités :
+
+- opinion majoritairement favorable aux USA
+- opinion majoritairement défavorable aux USA
+- opinion partagée sans majorité claire
+
+On se fixe un intervalle de confiance de 95% (risque d'erreur de 5%) 
+
+
+On se reportera pour plus de détails à :
+
+https://larmarange.github.io/analyse-R/intervalles-de-confiance.html
+
+```{r}
+prop.test(t)
+```
+
+Il semble donc que l'on puisse conclure que **les français sont majoritairement défavorables aux USA** puisque la proportion d'opinion favorbales est de 44% avec un intervalle de confiance compris entre 40.9 et 47.3 d'opinion favorable (pour un risque d'erreur p<0.05)
+
+### Prise en compte de la variable de redressement.
+
+On a toutefois oublié de tenir compte de la variable de redressement (*poids*) qui tient compte du fit que l'échantillonage obtenu comportait des sur et sous-représentations de certaines cétégories de population. Du coup, il faut réécrire l'ensemble du programme en utilisant l'instruction **wtd.table** du package **questionr**.
+
+```{r}
+t<-wtd.table(sel$opi_USA2, weights=sel$weight)
+t
+prop.table(t)
+prop.test(t)
+```
+
+On voit que la proportion d'opinion favorable est plus élevée après redressement (47.6%) ce qui du coup modifie l'intervalle de confiance (44.4% à 50.7%) et ne permet plus d'exclure l'hypothèse que l'opinion favorable soit en fait majoritaire. On concluera donc que **L'opinion des français sur les USA en 2017 est partagée**. 
+
+
+
+##  Opinion USA / Sexe
+
+On choisit d'analyser la relation entre l'avis sur les USA  et le sexe et on pose H0 : il n'y a pas de relation entre les deux variables. 
+
+
+### tableau de contingence
+
+On commence par recoder les deux variables puis par créer le tableau de contingence pondéré par la variable de pondération. On l'affiche en ajoutant les sommes en ligne et en colonnes avec *addmargins()*
+
+```{r}
+levels(sel$sex) <- c("Homme","Femme")
+tabcont<-wtd.table(sel$sex,sel$opi_USA2, weights = sel$weight)
+tabcont
+addmargins(tabcont)
+```
+
+
+
+### Pourcentages
+
+
+On peut calculer trois tableaux de pourcentage différents à l'aide des fonctions **lprop**, **cprop** et **prop** du package *questionr*.  On se contentera d'afficher le tableau des % en lignes pusique c'est celui qui donne la répartition des avis défavorables eyt favorables pour chaque sexe. 
+
+```{r}
+lprop(tabcont)
+```
+- Commentaire :  On constate que les femmes sont a priori moins favorables aux USA (44.6%)  que les hommes (50.7%) mais il est difficile d'affirmer à ce stade que la relation est significative.
+
+
+
+
+
+### Première visualisation
+
+Onpeut visualiser notre table avec plot()
+
+
+```{r}
+plot(tabcont, col=c("lightyellow","lightblue"), 
+ #    main=titre, 
+     sub=source, 
+     )
+```
+
+### test du chi-2
+
+On réalise le test du chi-2 avec la fonction **chisq.test()** qui crée un objet complexe qui rappelle celui qui est créé par **lm()** pour la régression.
+
+```{r}
+toto<-chisq.test(tabcont)
+toto
+```
+Ici, la relation est presque significative (p = 0.07). On ne peut pas rejeter H0 avec un risque d'erreur inférerieur à 5% mais on pourrait le faire pour un risque d'erreur de 10%. 
+
+### Analyse des résidus
+
+Lorsque la relation est significative, l'analyse des résidus permet de voir quelles sont les cases présentent des anomalies significatives. On peut pour cela imprimer quatre tableaux correspondant aux valeurs observées, aux valeurs attendues, aux écarts entre les deux (résidus bruts) et à un test sur les écarts les plus significatifs (résidus standardisés). 
+
+ce que l'on peut aussi faire graphiquement 
+
+```{r}
+kable(toto$observed,caption = "Valeurs observées")
+kable(toto$expected,  caption = "Valeurs attendues")
+kable(tabcont-toto$expected, caption = "Résidus bruts")
+kable(toto$stdres, caption= "Résidus standardisés")
+```
+
+
+On peut aussi visualiser graphiquement les résidus standardisés avec avec `mosaicplot()` et l'option *shade=T*. Seules les cases ayant des résidus standardisés supérieures à +2 ou inférieurs à -2 seront colorées, ce qui revient à visualiser uniquement les anomalies significatives avec un risque d'erreur p< 0.05. 
+
+```{r}
+mosaicplot(tabcont,shade=T)
+```
+
+
+
+
+
+## Opinion USA / Âge
+
+Supposons qu'on veuille analyser la relation entre l'opinion sur les USA et l'effet des classes d'âge ou des génération. Les deux variables age5 et gen4 sont issuesde la même variable mais elle n'ont pas le même sens d'un point de vue thématique
+
+### Effet de génération 
+
+```{r}
+tabcont<-wtd.table(sel$gen4,sel$opi_USA2, weights=sel$poids)
+round(addmargins(tabcont),1)
+lprop(tabcont)
+plot(tabcont, col=c("lightyellow","lightblue"), 
+     main="Opinion sur les USA selon la génération", 
+     sub=source, 
+     )
+```
+
+On remarque que l'opinion sur les USA semble de plus en plus positive au fur et à mesure des générations. Mais il faut tester pour voir si cet effet est significatif. 
+
+
+```{r}
+titi<-chisq.test(tabcont)
+titi
+```
+
+On obtient donc une relation très significative (Chi-2 = 26.9 , degrés de liberté =3, p < 0.001) entre la génération des personnes et leur opinion sur les USA. L'étude des résidus standardisés montre que cette relation est liée au fait que les générations récentes sont beaucoup plus favorables aux USA que les générations anciennes.  On peut visualiser la relation avec la fonction mosaicplot(shaded=T)
+
+
+```{r}
+mosaicplot(tabcont, shade = T)
+```
+
+### Effet d'âge 
+
+Aurions nous tiré les mêmes conclusions en prenant un âge en 5 classes ? 
+
+
+```{r}
+tabcont<-wtd.table(sel$age5,sel$opi_USA2, weights=sel$poids)
+round(addmargins(tabcont),1)
+lprop(tabcont)
+plot(tabcont, col=c("lightyellow","lightblue"), 
+     main="Opinion sur les USA selon l'âge", 
+     sub=source, 
+     )
+```
+
+
+
+```{r}
+titi<-chisq.test(tabcont)
+titi
+
+```
+
+On voit que la relation serait tout aussi significative et montrerait une variation continue de l'avius sur les USA avec l'âge, mais avec une opposition particulière des moins de 36 ans et des plus de 68 ans.
+
+```{r}
+mosaicplot(tabcont, shade = T)
+```
+
+
+
+## Opinion USA / Age & Sexe
+
+On va se limiter au cas où l'on veut étudier la relation entre X et Y toutes choses égales quant à l'effet d'une troisième variable Z qui sert de **variable de contrôle**.
+
+Par exemple, on veut savoir s'il existe un lien entre l'âge (X) et l'avis sur les USA (Y)  demeure valable aussi bien pour les hommes que pour les femmes (Z). 
+
+
+### Sous-échantillon des hommes
+
+
+
+```{r}
+hom<-sel[sel$sex=="Homme",]
+tabcont<-wtd.table(hom$age5,hom$opi_USA2)
+round(addmargins(tabcont),0)
+lprop(tabcont)
+chisq.test(tabcont)
+```
+
+Dans le sous échantillon des 492 hommes, on n'observe pas de relation significative  entre l'avis sur les USA et l'âge (Chi-2 = 7.6  pour 4 degré de liberté, p > 0.10) 
+
+### Sous-échantillon des femmes
+
+
+
+```{r}
+fem<-sel[sel$sex=="Femme",]
+tabcont<-wtd.table(fem$age5,fem$opi_USA2)
+round(addmargins(tabcont),0)
+lprop(tabcont)
+chisq.test(tabcont)
+```
+
+Dans le sous échantillon des 479 femmes, on observe en revanche une relation très significative  entre l'avis sur les USA et l'âge (Chi-2 = 23.3  pour 4 degré de liberté, p < 0.001) 
+
+
+
+### Régression logistique 
+
+La suite logique des analyses bivariées de variables qualitatives est la **régression logistique** qui permet de modéliser une variable qualitative binaire (Y) par un ensemble dr'autres variables qualitatives ou quantitatives (X1, X2, X3, ...). Par exemple, on peut se demander si le fait d'être favorable ou très favorable aux USA (Y) dépend simultanément du sexe (X1) et de l'âge (X2).
+
+
+```{r}
+sel$opi_USA_fav<-sel$opi_USA2=="Favorable"
+toto<-glm(sel$opi_USA_fav ~  sel$sex + sel$age5 , family = "binomial")
+anova(toto,test = "Chisq")
+summary(toto)
+```
+
+Au bout du compte, l'effet principal demeure bien celui de l'âge. L'effet du sexe devient non significatif lorsque l'onb contrôle l'âge (p>0.05). Les femmes sont moins favorables aux USA mais cet effet s'explique en partie au moins par leur plus grande longévité.
+
+

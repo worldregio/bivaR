@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Partie 7 Analyse d’enquêtes | Introduction à la statistique bivariée et aux représentations graphiques avec R</title>
+  <meta name="description" content="Cours dispensé en M1 MECI Option Data" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Partie 7 Analyse d’enquêtes | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Partie 7 Analyse d’enquêtes | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  
+  <meta name="twitter:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+<meta name="author" content="Claude Grasland" />
+
+
+<meta name="date" content="2022-04-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="06-Anova.html"/>
+<link rel="next" href="08-Graphique-Base.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/tidyverse.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">Introduction à la statistique bivariée et aux représentations graphiques avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>À propos de ce document</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#remerciements"><i class="fa fa-check"></i>Remerciements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="01-principes.html"><a href="01-principes.html"><i class="fa fa-check"></i><b>1</b> Premiers pas</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="01-principes.html"><a href="01-principes.html#opérations-arithmétiques"><i class="fa fa-check"></i><b>1.1</b> Opérations arithmétiques</a></li>
+<li class="chapter" data-level="1.2" data-path="01-principes.html"><a href="01-principes.html#les-objets-de-base-valeur-vecteur-matrice"><i class="fa fa-check"></i><b>1.2</b> Les objets de base : valeur, vecteur, matrice</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="01-principes.html"><a href="01-principes.html#eléments"><i class="fa fa-check"></i><b>1.2.1</b> Eléments</a></li>
+<li class="chapter" data-level="1.2.2" data-path="01-principes.html"><a href="01-principes.html#vecteurs-vectors"><i class="fa fa-check"></i><b>1.2.2</b> vecteurs (<em>vectors</em>)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="01-principes.html"><a href="01-principes.html#matrices-matrix"><i class="fa fa-check"></i><b>1.2.3</b> Matrices (<em>matrix</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="01-principes.html"><a href="01-principes.html#ne-pas-confondre-listes-et-vecteurs"><i class="fa fa-check"></i><b>1.3</b> Ne pas confondre listes et vecteurs !</a></li>
+<li class="chapter" data-level="1.4" data-path="01-principes.html"><a href="01-principes.html#attention-aux-types-de-variables"><i class="fa fa-check"></i><b>1.4</b> Attention aux types de variables …</a></li>
+<li class="chapter" data-level="1.5" data-path="01-principes.html"><a href="01-principes.html#types-de-tableaux-et-guerres-de-religion."><i class="fa fa-check"></i><b>1.5</b> Types de tableaux et guerres de religion.</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="01-principes.html"><a href="01-principes.html#le-type-data.frame"><i class="fa fa-check"></i><b>1.5.1</b> Le type <em>data.frame</em> :</a></li>
+<li class="chapter" data-level="1.5.2" data-path="01-principes.html"><a href="01-principes.html#le-type-tibble"><i class="fa fa-check"></i><b>1.5.2</b> Le type <em>tibble</em></a></li>
+<li class="chapter" data-level="1.5.3" data-path="01-principes.html"><a href="01-principes.html#le-type-data.table"><i class="fa fa-check"></i><b>1.5.3</b> Le type <em>data.table</em></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="01-principes.html"><a href="01-principes.html#en-résumé"><i class="fa fa-check"></i><b>1.6</b> En résumé</a></li>
+<li class="chapter" data-level="1.7" data-path="01-principes.html"><a href="01-principes.html#exercices"><i class="fa fa-check"></i><b>1.7</b> Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="02-initiation.html"><a href="02-initiation.html"><i class="fa fa-check"></i><b>2</b> Office killer</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="02-initiation.html"><a href="02-initiation.html#rstudio-et-les-projets-r"><i class="fa fa-check"></i><b>2.1</b> Rstudio et les projets R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="02-initiation.html"><a href="02-initiation.html#lancement-de-r-studio"><i class="fa fa-check"></i><b>2.1.1</b> Lancement de R studio</a></li>
+<li class="chapter" data-level="2.1.2" data-path="02-initiation.html"><a href="02-initiation.html#création-dun-projet"><i class="fa fa-check"></i><b>2.1.2</b> Création d’un projet</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="02-initiation.html"><a href="02-initiation.html#programme-r-excel-killer"><i class="fa fa-check"></i><b>2.2</b> Programme R : Excel killer ?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="02-initiation.html"><a href="02-initiation.html#round-1.-saisie-des-données-et-affichage-du-tableau"><i class="fa fa-check"></i><b>2.2.1</b> Round 1. Saisie des données et affichage du tableau</a></li>
+<li class="chapter" data-level="2.2.2" data-path="02-initiation.html"><a href="02-initiation.html#round-2.-affichage-de-la-carte"><i class="fa fa-check"></i><b>2.2.2</b> Round 2. Affichage de la carte</a></li>
+<li class="chapter" data-level="2.2.3" data-path="02-initiation.html"><a href="02-initiation.html#round-3.-calcul-de-la-station-la-plus-accessible-à-vol-doiseau-distance-euclidienne"><i class="fa fa-check"></i><b>2.2.3</b> Round 3. Calcul de la station la plus accessible à vol d’oiseau (distance euclidienne)</a></li>
+<li class="chapter" data-level="2.2.4" data-path="02-initiation.html"><a href="02-initiation.html#round-4.-calcul-de-la-station-la-plus-accessible-par-la-route-distance-de-manhattan"><i class="fa fa-check"></i><b>2.2.4</b> Round 4. Calcul de la station la plus accessible par la route (distance de Manhattan)</a></li>
+<li class="chapter" data-level="2.2.5" data-path="02-initiation.html"><a href="02-initiation.html#round-5.-localisation-du-dépôt-de-carburant"><i class="fa fa-check"></i><b>2.2.5</b> Round 5. Localisation du dépôt de carburant</a></li>
+<li class="chapter" data-level="2.2.6" data-path="02-initiation.html"><a href="02-initiation.html#round-6.-localisation-de-la-caserne-de-pompiers"><i class="fa fa-check"></i><b>2.2.6</b> Round 6. Localisation de la caserne de pompiers</a></li>
+<li class="chapter" data-level="2.2.7" data-path="02-initiation.html"><a href="02-initiation.html#round-7.-visualisation-des-deux-points-sur-la-carte"><i class="fa fa-check"></i><b>2.2.7</b> Round 7. Visualisation des deux points sur la carte</a></li>
+<li class="chapter" data-level="2.2.8" data-path="02-initiation.html"><a href="02-initiation.html#dernier-round.-refaire-toute-lanalyse-avec-une-station-de-plus"><i class="fa fa-check"></i><b>2.2.8</b> Dernier round. Refaire toute l’analyse avec une station de plus</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="02-initiation.html"><a href="02-initiation.html#document-rmd-word-killer"><i class="fa fa-check"></i><b>2.3</b> Document Rmd : Word killer ?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="02-initiation.html"><a href="02-initiation.html#chargement-des-données"><i class="fa fa-check"></i><b>2.3.1</b> Chargement des données</a></li>
+<li class="chapter" data-level="2.3.2" data-path="02-initiation.html"><a href="02-initiation.html#contour-de-rennes"><i class="fa fa-check"></i><b>2.3.2</b> Contour de Rennes</a></li>
+<li class="chapter" data-level="2.3.3" data-path="02-initiation.html"><a href="02-initiation.html#distribution-de-la-population"><i class="fa fa-check"></i><b>2.3.3</b> Distribution de la population</a></li>
+<li class="chapter" data-level="2.3.4" data-path="02-initiation.html"><a href="02-initiation.html#distribution-des-équipements"><i class="fa fa-check"></i><b>2.3.4</b> Distribution des équipements</a></li>
+<li class="chapter" data-level="2.3.5" data-path="02-initiation.html"><a href="02-initiation.html#synthèse"><i class="fa fa-check"></i><b>2.3.5</b> Synthèse</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="02-initiation.html"><a href="02-initiation.html#diapos-rmd-power-point-killer"><i class="fa fa-check"></i><b>2.4</b> Diapos Rmd : Power Point killer</a></li>
+<li class="chapter" data-level="2.5" data-path="02-initiation.html"><a href="02-initiation.html#en-résumé-1"><i class="fa fa-check"></i><b>2.5</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03-R-Base.html"><a href="03-R-Base.html"><i class="fa fa-check"></i><b>3</b> R-Base</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#tableaux"><i class="fa fa-check"></i><b>3.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="03-R-Base.html"><a href="03-R-Base.html#importation"><i class="fa fa-check"></i><b>3.1.1</b> Importation</a></li>
+<li class="chapter" data-level="3.1.2" data-path="03-R-Base.html"><a href="03-R-Base.html#transformations"><i class="fa fa-check"></i><b>3.1.2</b> Transformations</a></li>
+<li class="chapter" data-level="3.1.3" data-path="03-R-Base.html"><a href="03-R-Base.html#extractions"><i class="fa fa-check"></i><b>3.1.3</b> Extractions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-i-var.-quali."><i class="fa fa-check"></i><b>3.2</b> Exploration I (<em>var. quali.</em>)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="03-R-Base.html"><a href="03-R-Base.html#sélection-et-recodage"><i class="fa fa-check"></i><b>3.2.1</b> Sélection et recodage</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03-R-Base.html"><a href="03-R-Base.html#table-de-dénombrement"><i class="fa fa-check"></i><b>3.2.2</b> Table de dénombrement</a></li>
+<li class="chapter" data-level="3.2.3" data-path="03-R-Base.html"><a href="03-R-Base.html#graphique-avec-plot"><i class="fa fa-check"></i><b>3.2.3</b> Graphique avec plot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-ii-var.-quanti"><i class="fa fa-check"></i><b>3.3</b> Exploration II (<em>var. quanti</em>)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#résumés-numériques"><i class="fa fa-check"></i><b>3.3.1</b> Résumés numériques</a></li>
+<li class="chapter" data-level="3.3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#dénombrement"><i class="fa fa-check"></i><b>3.3.2</b> Dénombrement</a></li>
+<li class="chapter" data-level="3.3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#boîte-à-moustaches"><i class="fa fa-check"></i><b>3.3.3</b> Boîte à moustaches</a></li>
+<li class="chapter" data-level="3.3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#histogramme"><i class="fa fa-check"></i><b>3.3.4</b> Histogramme</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-iii-2-variables"><i class="fa fa-check"></i><b>3.4</b> Exploration III (<em>2 variables</em>)</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-qualitatives"><i class="fa fa-check"></i><b>3.4.1</b> Deux variables qualitatives</a></li>
+<li class="chapter" data-level="3.4.2" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-quantitatives"><i class="fa fa-check"></i><b>3.4.2</b> Deux variables quantitatives</a></li>
+<li class="chapter" data-level="3.4.3" data-path="03-R-Base.html"><a href="03-R-Base.html#une-quantitative-et-une-qualitative"><i class="fa fa-check"></i><b>3.4.3</b> Une quantitative et une qualitative</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="03-R-Base.html"><a href="03-R-Base.html#en-résumé-2"><i class="fa fa-check"></i><b>3.5</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="04-Corrélation.html"><a href="04-Corrélation.html"><i class="fa fa-check"></i><b>4</b> Corrélation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#préparation-des-données"><i class="fa fa-check"></i><b>4.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#chargement-du-tableau-principal"><i class="fa fa-check"></i><b>4.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#choix-des-deux-variables-à-analyser"><i class="fa fa-check"></i><b>4.1.2</b> Choix des deux variables à analyser</a></li>
+<li class="chapter" data-level="4.1.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-malin"><i class="fa fa-check"></i><b>4.1.3</b> On est malin …</a></li>
+<li class="chapter" data-level="4.1.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-paresseux"><i class="fa fa-check"></i><b>4.1.4</b> On est paresseux …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exploration-visuelle"><i class="fa fa-check"></i><b>4.2</b> Exploration visuelle</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-avec-plotxy"><i class="fa fa-check"></i><b>4.2.1</b> Visualisation avec plot(X,Y)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#identification-des-points-avec-cor-text"><i class="fa fa-check"></i><b>4.2.2</b> Identification des points avec <strong>cor</strong> + <strong>text(…)</strong></a></li>
+<li class="chapter" data-level="4.2.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#ajout-de-lignes-horizontales-ou-verticales-avec-cor-abline"><i class="fa fa-check"></i><b>4.2.3</b> Ajout de lignes horizontales ou verticales avec <strong>cor()</strong> + <strong>abline(…)</strong></a></li>
+<li class="chapter" data-level="4.2.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#au-delà-de-r-base"><i class="fa fa-check"></i><b>4.2.4</b> Au delà de R-Base …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#coefficients-de-corrélation"><i class="fa fa-check"></i><b>4.3</b> Coefficients de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#définition"><i class="fa fa-check"></i><b>4.3.1</b> Définition</a></li>
+<li class="chapter" data-level="4.3.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor"><i class="fa fa-check"></i><b>4.3.2</b> La fonction <strong>cor()</strong></a></li>
+<li class="chapter" data-level="4.3.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor.test"><i class="fa fa-check"></i><b>4.3.3</b> La fonction cor.test()</a></li>
+<li class="chapter" data-level="4.3.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#en-résumé-intensité-ou-significativité"><i class="fa fa-check"></i><b>4.3.4</b> En résumé : intensité ou significativité ?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4</b> Matrice de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#objectif-de-lanalyse"><i class="fa fa-check"></i><b>4.4.1</b> Objectif de l’analyse</a></li>
+<li class="chapter" data-level="4.4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-des-résultats"><i class="fa fa-check"></i><b>4.4.2</b> Utilisation des résultats</a></li>
+<li class="chapter" data-level="4.4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-dune-matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4.3</b> Visualisation d’une matrice de corrélation</a></li>
+<li class="chapter" data-level="4.4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exemple-création-dun-tableau-quantitatif"><i class="fa fa-check"></i><b>4.4.4</b> Exemple : création d’un tableau quantitatif</a></li>
+<li class="chapter" data-level="4.4.5" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-psych"><i class="fa fa-check"></i><b>4.4.5</b> Utilisation du package psych</a></li>
+<li class="chapter" data-level="4.4.6" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-factominer"><i class="fa fa-check"></i><b>4.4.6</b> Utilisation du package factoMineR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-Régression.html"><a href="05-Régression.html"><i class="fa fa-check"></i><b>5</b> Régression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05-Régression.html"><a href="05-Régression.html#préparation-des-données-1"><i class="fa fa-check"></i><b>5.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="05-Régression.html"><a href="05-Régression.html#chargement-du-tableau-principal-1"><i class="fa fa-check"></i><b>5.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="5.1.2" data-path="05-Régression.html"><a href="05-Régression.html#choix-des-deux-variables-à-analyser-1"><i class="fa fa-check"></i><b>5.1.2</b> Choix des deux variables à analyser</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="05-Régression.html"><a href="05-Régression.html#forme-de-la-relation"><i class="fa fa-check"></i><b>5.2</b> Forme de la relation</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="05-Régression.html"><a href="05-Régression.html#vérification-de-la-normalité-de-x-et-y"><i class="fa fa-check"></i><b>5.2.1</b> Vérification de la normalité de X et Y</a></li>
+<li class="chapter" data-level="5.2.2" data-path="05-Régression.html"><a href="05-Régression.html#visualisation-de-la-forme-de-la-relation"><i class="fa fa-check"></i><b>5.2.2</b> Visualisation de la forme de la relation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="05-Régression.html"><a href="05-Régression.html#analyse-de-la-corrélation"><i class="fa fa-check"></i><b>5.2.3</b> Analyse de la corrélation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="05-Régression.html"><a href="05-Régression.html#ajustement-du-modèle"><i class="fa fa-check"></i><b>5.3</b> Ajustement du modèle</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="05-Régression.html"><a href="05-Régression.html#hypothèses-statistiques"><i class="fa fa-check"></i><b>5.3.1</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="5.3.2" data-path="05-Régression.html"><a href="05-Régression.html#la-fonction-lm"><i class="fa fa-check"></i><b>5.3.2</b> La fonction lm()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostics-du-modèle"><i class="fa fa-check"></i><b>5.4</b> Diagnostics du modèle</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-1-indépendance-des-résidus"><i class="fa fa-check"></i><b>5.4.1</b> Diagnostic 1 : Indépendance des résidus ?</a></li>
+<li class="chapter" data-level="5.4.2" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-2-normalité-des-résidus"><i class="fa fa-check"></i><b>5.4.2</b> Diagnostic 2 : Normalité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.3" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-3-homogénéité-des-résidus"><i class="fa fa-check"></i><b>5.4.3</b> Diagnostic 3 : Homogénéité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-4-absence-de-valeur-exceptionnelles"><i class="fa fa-check"></i><b>5.4.4</b> Diagnostic 4 : Absence de valeur exceptionnelles ?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="05-Régression.html"><a href="05-Régression.html#améliorations-du-modèle"><i class="fa fa-check"></i><b>5.5</b> Améliorations du modèle</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-r2-46"><i class="fa fa-check"></i><b>5.5.1</b> Modèle linéaire (R2 = 46%)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-sans-lalbanie-r2-53"><i class="fa fa-check"></i><b>5.5.2</b> Modèle linéaire sans l’Albanie (R2 = 53%)</a></li>
+<li class="chapter" data-level="5.5.3" data-path="05-Régression.html"><a href="05-Régression.html#modèle-exponentiel-r2-63"><i class="fa fa-check"></i><b>5.5.3</b> Modèle exponentiel (R2 = 63%)</a></li>
+<li class="chapter" data-level="5.5.4" data-path="05-Régression.html"><a href="05-Régression.html#modèle-puissance-r2-83"><i class="fa fa-check"></i><b>5.5.4</b> Modèle puissance (R2 = 83%)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="06-Anova.html"><a href="06-Anova.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="06-Anova.html"><a href="06-Anova.html#préparation-des-données-2"><i class="fa fa-check"></i><b>6.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="06-Anova.html"><a href="06-Anova.html#chargement-du-fichier"><i class="fa fa-check"></i><b>6.1.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="6.1.2" data-path="06-Anova.html"><a href="06-Anova.html#contenu-du-fichier"><i class="fa fa-check"></i><b>6.1.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="6.1.3" data-path="06-Anova.html"><a href="06-Anova.html#dictionaire-des-variables"><i class="fa fa-check"></i><b>6.1.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="6.1.4" data-path="06-Anova.html"><a href="06-Anova.html#recodage-des-variables"><i class="fa fa-check"></i><b>6.1.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="6.1.5" data-path="06-Anova.html"><a href="06-Anova.html#ajout-dune-nouvelle-variable"><i class="fa fa-check"></i><b>6.1.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="6.1.6" data-path="06-Anova.html"><a href="06-Anova.html#résumé-de-lensemble-du-tableau"><i class="fa fa-check"></i><b>6.1.6</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="06-Anova.html"><a href="06-Anova.html#rappels-sur-la-régression"><i class="fa fa-check"></i><b>6.2</b> Rappels sur la régression</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="06-Anova.html"><a href="06-Anova.html#la-distribution-de-pct-est-elle-normale"><i class="fa fa-check"></i><b>6.2.1</b> La distribution de PCT est-elle normale ?</a></li>
+<li class="chapter" data-level="6.2.2" data-path="06-Anova.html"><a href="06-Anova.html#y-a-t-il-une-relation-entre-le-prix-du-repas-et-le-pourboire"><i class="fa fa-check"></i><b>6.2.2</b> Y-a-t-il une relation entre le prix du repas et le pourboire ?</a></li>
+<li class="chapter" data-level="6.2.3" data-path="06-Anova.html"><a href="06-Anova.html#modèle-de-régression"><i class="fa fa-check"></i><b>6.2.3</b> Modèle de régression</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="06-Anova.html"><a href="06-Anova.html#test-dégalité-des-moyennes"><i class="fa fa-check"></i><b>6.3</b> Test d’égalité des moyennes</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="06-Anova.html"><a href="06-Anova.html#hypothèses"><i class="fa fa-check"></i><b>6.3.1</b> Hypothèses</a></li>
+<li class="chapter" data-level="6.3.2" data-path="06-Anova.html"><a href="06-Anova.html#visualisations"><i class="fa fa-check"></i><b>6.3.2</b> Visualisations</a></li>
+<li class="chapter" data-level="6.3.3" data-path="06-Anova.html"><a href="06-Anova.html#paramètres-principaux"><i class="fa fa-check"></i><b>6.3.3</b> Paramètres principaux</a></li>
+<li class="chapter" data-level="6.3.4" data-path="06-Anova.html"><a href="06-Anova.html#test-dégalité-des-moyennes-1"><i class="fa fa-check"></i><b>6.3.4</b> Test d’égalité des moyennes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="06-Anova.html"><a href="06-Anova.html#analyse-de-variance-1"><i class="fa fa-check"></i><b>6.4</b> Analyse de variance</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="06-Anova.html"><a href="06-Anova.html#hypothèses-1"><i class="fa fa-check"></i><b>6.4.1</b> Hypothèses</a></li>
+<li class="chapter" data-level="6.4.2" data-path="06-Anova.html"><a href="06-Anova.html#calcul-des-paramètres-principaux"><i class="fa fa-check"></i><b>6.4.2</b> Calcul des paramètres principaux</a></li>
+<li class="chapter" data-level="6.4.3" data-path="06-Anova.html"><a href="06-Anova.html#visualisation"><i class="fa fa-check"></i><b>6.4.3</b> Visualisation</a></li>
+<li class="chapter" data-level="6.4.4" data-path="06-Anova.html"><a href="06-Anova.html#modélisation-simple"><i class="fa fa-check"></i><b>6.4.4</b> Modélisation simple</a></li>
+<li class="chapter" data-level="6.4.5" data-path="06-Anova.html"><a href="06-Anova.html#modélisation-avancée"><i class="fa fa-check"></i><b>6.4.5</b> Modélisation avancée</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="06-Anova.html"><a href="06-Anova.html#annexe-les-variables-hybrides"><i class="fa fa-check"></i><b>6.5</b> Annexe : les variables hybrides</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="06-Anova.html"><a href="06-Anova.html#size-quantitative-discrète"><i class="fa fa-check"></i><b>6.5.1</b> SIZE = quantitative discrète</a></li>
+<li class="chapter" data-level="6.5.2" data-path="06-Anova.html"><a href="06-Anova.html#size-qualitative-ordinale"><i class="fa fa-check"></i><b>6.5.2</b> SIZE = qualitative ordinale</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="07-Tabcont.html"><a href="07-Tabcont.html"><i class="fa fa-check"></i><b>7</b> Analyse d’enquêtes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#préparation-des-données-3"><i class="fa fa-check"></i><b>7.2</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#importation-du-fichier-au-format-.rds"><i class="fa fa-check"></i><b>7.2.1</b> Importation du fichier au format .RDS</a></li>
+<li class="chapter" data-level="7.2.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#simplifiée-des-variables"><i class="fa fa-check"></i><b>7.2.2</b> (simplifiée) des variables</a></li>
+<li class="chapter" data-level="7.2.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#résumé-des-variables-tri-à-plat"><i class="fa fa-check"></i><b>7.2.3</b> Résumé des variables (tri à plat)</a></li>
+<li class="chapter" data-level="7.2.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#tailles-des-échantillons-par-pays-et-par-date"><i class="fa fa-check"></i><b>7.2.4</b> Tailles des échantillons par pays et par date</a></li>
+<li class="chapter" data-level="7.2.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sélection-dun-échantillon"><i class="fa fa-check"></i><b>7.2.5</b> Sélection d’un échantillon</a></li>
+<li class="chapter" data-level="7.2.6" data-path="07-Tabcont.html"><a href="07-Tabcont.html#recodage-des-modalités"><i class="fa fa-check"></i><b>7.2.6</b> Recodage des modalités</a></li>
+<li class="chapter" data-level="7.2.7" data-path="07-Tabcont.html"><a href="07-Tabcont.html#découpage-de-variables-quantitatives-en-classes"><i class="fa fa-check"></i><b>7.2.7</b> Découpage de variables quantitatives en classes</a></li>
+<li class="chapter" data-level="7.2.8" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sélection"><i class="fa fa-check"></i><b>7.2.8</b> Sélection</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa"><i class="fa fa-check"></i><b>7.3</b> Opinion USA</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#la-fonction-table"><i class="fa fa-check"></i><b>7.3.1</b> la fonction table()</a></li>
+<li class="chapter" data-level="7.3.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#visualisation-avec-plot-ou-barplot"><i class="fa fa-check"></i><b>7.3.2</b> Visualisation avec plot ou barplot</a></li>
+<li class="chapter" data-level="7.3.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#recodage"><i class="fa fa-check"></i><b>7.3.3</b> Recodage</a></li>
+<li class="chapter" data-level="7.3.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#calcul-de-lintervalle-de-confiance"><i class="fa fa-check"></i><b>7.3.4</b> Calcul de l’intervalle de confiance</a></li>
+<li class="chapter" data-level="7.3.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#prise-en-compte-de-la-variable-de-redressement."><i class="fa fa-check"></i><b>7.3.5</b> Prise en compte de la variable de redressement.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-sexe"><i class="fa fa-check"></i><b>7.4</b> Opinion USA / Sexe</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#tableau-de-contingence"><i class="fa fa-check"></i><b>7.4.1</b> tableau de contingence</a></li>
+<li class="chapter" data-level="7.4.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#pourcentages"><i class="fa fa-check"></i><b>7.4.2</b> Pourcentages</a></li>
+<li class="chapter" data-level="7.4.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#première-visualisation"><i class="fa fa-check"></i><b>7.4.3</b> Première visualisation</a></li>
+<li class="chapter" data-level="7.4.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#test-du-chi-2"><i class="fa fa-check"></i><b>7.4.4</b> test du chi-2</a></li>
+<li class="chapter" data-level="7.4.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#analyse-des-résidus"><i class="fa fa-check"></i><b>7.4.5</b> Analyse des résidus</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-âge"><i class="fa fa-check"></i><b>7.5</b> Opinion USA / Âge</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#effet-de-génération"><i class="fa fa-check"></i><b>7.5.1</b> Effet de génération</a></li>
+<li class="chapter" data-level="7.5.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#effet-dâge"><i class="fa fa-check"></i><b>7.5.2</b> Effet d’âge</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-age-sexe"><i class="fa fa-check"></i><b>7.6</b> Opinion USA / Age &amp; Sexe</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sous-échantillon-des-hommes"><i class="fa fa-check"></i><b>7.6.1</b> Sous-échantillon des hommes</a></li>
+<li class="chapter" data-level="7.6.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sous-échantillon-des-femmes"><i class="fa fa-check"></i><b>7.6.2</b> Sous-échantillon des femmes</a></li>
+<li class="chapter" data-level="7.6.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#régression-logistique"><i class="fa fa-check"></i><b>7.6.3</b> Régression logistique</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html"><i class="fa fa-check"></i><b>8</b> Graphiques avec R-Base</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#pourquoi-sembêter-à-utiliser-les-fonctions-primitives-de-r-pour-faire-des-graphiques"><i class="fa fa-check"></i><b>8.1.1</b> Pourquoi s’em…bêter à utiliser les fonctions primitives de R pour faire des graphiques ?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#trois-étapes-pour-créer-un-graphique"><i class="fa fa-check"></i><b>8.1.2</b> Trois étapes pour créer un graphique</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#préparation-des-données-4"><i class="fa fa-check"></i><b>8.2</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#chargement-du-fichier-1"><i class="fa fa-check"></i><b>8.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="8.2.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#contenu-du-fichier-1"><i class="fa fa-check"></i><b>8.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="8.2.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#dictionaire-des-variables-1"><i class="fa fa-check"></i><b>8.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="8.2.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#recodage-des-variables-1"><i class="fa fa-check"></i><b>8.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="8.2.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ajout-dune-nouvelle-variable-1"><i class="fa fa-check"></i><b>8.2.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="8.2.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#résumé-de-lensemble-du-tableau-1"><i class="fa fa-check"></i><b>8.2.6</b> Résumé de l’ensemble du tableau</a></li>
+<li class="chapter" data-level="8.2.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-par"><i class="fa fa-check"></i><b>8.2.7</b> La fonction par()</a></li>
+<li class="chapter" data-level="8.2.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#fonction-par-mfrow"><i class="fa fa-check"></i><b>8.2.8</b> fonction par() + mfrow</a></li>
+<li class="chapter" data-level="8.2.9" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#autres-paramètres-de-par"><i class="fa fa-check"></i><b>8.2.9</b> Autres paramètres de par()</a></li>
+<li class="chapter" data-level="8.2.10" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-layout"><i class="fa fa-check"></i><b>8.2.10</b> La fonction layout()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-génératrice-plot"><i class="fa fa-check"></i><b>8.3</b> La fonction génératrice plot()</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#une-super-fonction"><i class="fa fa-check"></i><b>8.3.1</b> Une super-fonction</a></li>
+<li class="chapter" data-level="8.3.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-factor"><i class="fa fa-check"></i><b>8.3.2</b> plot(X) / X de type factor</a></li>
+<li class="chapter" data-level="8.3.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-numeric"><i class="fa fa-check"></i><b>8.3.3</b> plot(X) / X de type numeric</a></li>
+<li class="chapter" data-level="8.3.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-factor"><i class="fa fa-check"></i><b>8.3.4</b> plot(X,Y) / X et Y de type factor</a></li>
+<li class="chapter" data-level="8.3.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-numerique"><i class="fa fa-check"></i><b>8.3.5</b> plot(X,Y) / X et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique"><i class="fa fa-check"></i><b>8.3.6</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique-1"><i class="fa fa-check"></i><b>8.3.7</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotmodel-model-lmyx"><i class="fa fa-check"></i><b>8.3.8</b> plot(model) / model = lm(Y~X)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-autres-fonctions-génératrice"><i class="fa fa-check"></i><b>8.4</b> Les autres fonctions génératrice</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-barplot"><i class="fa fa-check"></i><b>8.4.1</b> La fonction barplot()</a></li>
+<li class="chapter" data-level="8.4.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-hist-et-density"><i class="fa fa-check"></i><b>8.4.2</b> Les fonctions hist() et density()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-complémentaires"><i class="fa fa-check"></i><b>8.5</b> Les fonctions complémentaires</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#exemple-dun-nuage-de-points-xy"><i class="fa fa-check"></i><b>8.5.1</b> Exemple d’un nuage de points (X,Y)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#conclusion"><i class="fa fa-check"></i><b>8.6</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-faire-de-beaux-graphiques-avec-r-base"><i class="fa fa-check"></i><b>8.6.1</b> On peut faire de beaux graphiques avec R-Base …</a></li>
+<li class="chapter" data-level="8.6.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-utiliser-des-packages-spécialisés"><i class="fa fa-check"></i><b>8.6.2</b> On peut utiliser des packages spécialisés</a></li>
+<li class="chapter" data-level="8.6.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggally-un-package-spécialisé-dans-la-statistique-bivariée"><i class="fa fa-check"></i><b>8.6.3</b> ggally : un package spécialisé dans la statistique bivariée</a></li>
+<li class="chapter" data-level="8.6.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggplot2-un-package-graphique-universel"><i class="fa fa-check"></i><b>8.6.4</b> ggplot2 : un package graphique universel ?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html"><i class="fa fa-check"></i><b>9</b> Graphiques avec ggplot2</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-et-tydiverse"><i class="fa fa-check"></i><b>9.1.1</b> ggplot2 et tydiverse</a></li>
+<li class="chapter" data-level="9.1.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-cheatsheet"><i class="fa fa-check"></i><b>9.1.2</b> ggplot2 cheatsheet</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#préparation-des-données-5"><i class="fa fa-check"></i><b>9.2</b> préparation des données</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#chargement-du-fichier-2"><i class="fa fa-check"></i><b>9.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="9.2.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#contenu-du-fichier-2"><i class="fa fa-check"></i><b>9.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="9.2.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#dictionaire-des-variables-2"><i class="fa fa-check"></i><b>9.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="9.2.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#recodage-des-variables-2"><i class="fa fa-check"></i><b>9.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="9.2.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#résumé-de-lensemble-du-tableau-2"><i class="fa fa-check"></i><b>9.2.5</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#principes-généraux"><i class="fa fa-check"></i><b>9.3</b> Principes généraux</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#les-différentes-étapes"><i class="fa fa-check"></i><b>9.3.1</b> Les différentes étapes</a></li>
+<li class="chapter" data-level="9.3.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-figure-à-réaliser"><i class="fa fa-check"></i><b>9.3.2</b> La figure à réaliser</a></li>
+<li class="chapter" data-level="9.3.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-construction-pas-à-pas"><i class="fa fa-check"></i><b>9.3.3</b> La construction pas à pas</a></li>
+<li class="chapter" data-level="9.3.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#comparaison-avec-r-base"><i class="fa fa-check"></i><b>9.3.4</b> Comparaison avec R-Base</a></li>
+<li class="chapter" data-level="9.3.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#attention-paramètres-aes-locaux-et-globaux"><i class="fa fa-check"></i><b>9.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-discrète"><i class="fa fa-check"></i><b>9.4</b> X discrète</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#barplot-r-base"><i class="fa fa-check"></i><b>9.4.1</b> barplot (R-base)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2"><i class="fa fa-check"></i><b>9.4.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue"><i class="fa fa-check"></i><b>9.5</b> X quantitative continue</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#hist-r-base"><i class="fa fa-check"></i><b>9.5.1</b> hist (R-base)</a></li>
+<li class="chapter" data-level="9.5.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_histogram-ggplot2"><i class="fa fa-check"></i><b>9.5.2</b> geom_histogram (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-et-y-quantitatives-continues"><i class="fa fa-check"></i><b>9.6</b> X et Y quantitatives continues</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plot-r-base"><i class="fa fa-check"></i><b>9.6.1</b> plot (R-base)</a></li>
+<li class="chapter" data-level="9.6.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_point-ggplot2"><i class="fa fa-check"></i><b>9.6.2</b> geom_point (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète"><i class="fa fa-check"></i><b>9.7</b> X quantitative continue et Y discrète</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#boxplot-r-base"><i class="fa fa-check"></i><b>9.7.1</b> 6.1 boxplot (R-base)</a></li>
+<li class="chapter" data-level="9.7.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_boxplot-ggplot2"><i class="fa fa-check"></i><b>9.7.2</b> geom_boxplot (ggplot2)</a></li>
+<li class="chapter" data-level="9.7.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#beanplot-r-base-package-beanplot"><i class="fa fa-check"></i><b>9.7.3</b> beanplot (R-base + package beanplot)</a></li>
+<li class="chapter" data-level="9.7.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_violin-ggplot2"><i class="fa fa-check"></i><b>9.7.4</b> geom_violin (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#deux-variables-x-et-y-discrètes"><i class="fa fa-check"></i><b>9.8</b> Deux variables X et Y discrètes</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#mosaicplot-r-base"><i class="fa fa-check"></i><b>9.8.1</b> mosaicplot (R-base)</a></li>
+<li class="chapter" data-level="9.8.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2-1"><i class="fa fa-check"></i><b>9.8.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#conclusion-1"><i class="fa fa-check"></i><b>9.9</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#r-base-1"><i class="fa fa-check"></i><b>9.9.1</b> R-base</a></li>
+<li class="chapter" data-level="9.9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2"><i class="fa fa-check"></i><b>9.9.2</b> ggplot2</a></li>
+<li class="chapter" data-level="9.9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#le-meilleur-des-deux-mondes"><i class="fa fa-check"></i><b>9.9.3</b> Le meilleur des deux mondes ?</a></li>
+<li class="chapter" data-level="9.9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web"><i class="fa fa-check"></i><b>9.9.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction à la statistique bivariée et aux représentations graphiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analyse-denquêtes" class="section level1" number="7">
+<h1><span class="header-section-number">Partie 7</span> Analyse d’enquêtes</h1>
+<p><img src="resources/figures/chap7_intro.gif" /><!-- --></p>
+<ul>
+<li><strong>Mise en place</strong> : Télécharger le <a href="https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo7.zip">dossier exo7</a> et décompressez le sur votre ordinateur. Puis ouvrez le projet R <code>exo6.Rproj</code> dans Rstudio.</li>
+</ul>
+<div id="introduction" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Introduction</h2>
+<p>On propose ici une démarche simplifiée de l’analyse d’enquête utilisant les fonctions R-base et quelques fonctions supplémentaires issues du package <strong>questionR</strong> qui permettent de simplifier l’écriture des programmes. Les explications détaillées se trouvent dans le très beau site web analyse-R auquel ont notamment contribué Julien Barnier et Joseph Larmarange.</p>
+<p><a href="https://larmarange.github.io/analyse-R/" class="uri">https://larmarange.github.io/analyse-R/</a></p>
+<p>ce programme suffit pour des analyses simples de questionnaires. Mais pour des analyses plus avancées, il faudra utiliser des packages plus avancés comme <strong>survey</strong>.</p>
+</div>
+<div id="préparation-des-données-3" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Préparation des données</h2>
+<div id="importation-du-fichier-au-format-.rds" class="section level3" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Importation du fichier au format .RDS</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="07-Tabcont.html#cb1-1" aria-hidden="true" tabindex="-1"></a>don<span class="ot">&lt;-</span><span class="fu">readRDS</span>(<span class="st">&quot;resources/data/pew/Pew_2007_2017.Rdata&quot;</span>)</span>
+<span id="cb1-2"><a href="07-Tabcont.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(don)</span></code></pre></div>
+<pre><code>## tibble [62,060 × 10] (S3: tbl_df/tbl/data.frame)
+##  $ survey      : Factor w/ 2 levels &quot;Spring2007&quot;,&quot;Spring2017&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ country     : Factor w/ 30 levels &quot;Argentina&quot;,&quot;Brazil&quot;,..: 5 5 5 5 5 5 5 5 5 5 ...
+##  $ sex         : Factor w/ 2 levels &quot;Male&quot;,&quot;Female&quot;: 1 2 1 1 2 1 1 1 1 2 ...
+##  $ age         : num [1:62060] 50 79 43 74 78 36 42 61 21 41 ...
+##  $ today       : Factor w/ 5 levels &quot;1.Typical&quot;,&quot;2.Particularly good&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ use_internet: Factor w/ 4 levels &quot;1.Yes&quot;,&quot;2.No&quot;,..: 1 2 1 2 2 1 1 2 1 1 ...
+##  $ opi_USA     : Factor w/ 6 levels &quot;1.Very favorable&quot;,..: 3 2 3 1 2 1 2 2 2 2 ...
+##  $ opi_CHN     : Factor w/ 6 levels &quot;1.Very favorable&quot;,..: 3 2 3 3 3 2 2 3 2 2 ...
+##  $ opi_RUS     : Factor w/ 6 levels &quot;1.Very favorable&quot;,..: 3 2 2 3 3 2 2 3 3 2 ...
+##  $ weight      : num [1:62060] 1.009 0.954 0.996 0.989 0.982 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Weighting factor&quot;
+##   ..- attr(*, &quot;format.spss&quot;)= chr &quot;F9.6&quot;
+##   ..- attr(*, &quot;display_width&quot;)= int 10</code></pre>
+</div>
+<div id="simplifiée-des-variables" class="section level3" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> (simplifiée) des variables</h3>
+<p>Les données sont issues de deux vagues de la <em>Global attitude Survey</em> réalisée par le Pew Research Center en 2007 et 2017. Nous avons conservé uniquement des variables communes aux deux enquêtes et posées de façon identique.</p>
+<ul>
+<li>survey : date d’enquête (2007 ou 2017)</li>
+<li>country : lieu d’enquête (pays présents aux deux dates)</li>
+<li>sex : sexe de l’individu</li>
+<li>age : âge de l’individu<br />
+</li>
+<li>today : état d’esprit du jour (typique, très bon, très mauvais)</li>
+<li>use_internet: usage d’internet</li>
+<li>opi_USA : opinion sur les USA</li>
+<li>opi_CHN : opinion sur la Chine</li>
+<li>opi_RUS : opinion sur la Russie</li>
+<li>weight : poids de l’individu pour les redressements</li>
+</ul>
+</div>
+<div id="résumé-des-variables-tri-à-plat" class="section level3" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Résumé des variables (tri à plat)</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="07-Tabcont.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(don)</span></code></pre></div>
+<pre><code>##         survey               country          sex             age       
+##  Spring2007:28061   India        : 4499   Male  :30125   Min.   :18.00  
+##  Spring2017:33999   United States: 3472   Female:31935   1st Qu.:28.00  
+##                     Lebanon      : 2552                  Median :40.00  
+##                     Jordan       : 2548                  Mean   :42.59  
+##                     South Africa : 2295                  3rd Qu.:55.00  
+##                     Nigeria      : 2202                  Max.   :97.00  
+##                     (Other)      :44492                                 
+##                  today             use_internet  
+##  1.Typical          :36554   1.Yes       :32385  
+##  2.Particularly good:20216   2.No        :25892  
+##  3.Particularly bad : 4775   3.Don&#39;t know:  232  
+##  4.Don&#39;t know       :  419   4.Refused   :   69  
+##  5.Refused          :   96   NA&#39;s        : 3482  
+##                                                  
+##                                                  
+##                    opi_USA                        opi_CHN     
+##  1.Very favorable      :10081   1.Very favorable      : 8002  
+##  2.Somewhat favorable  :21725   2.Somewhat favorable  :21860  
+##  3.Somewhat unfavorable:14502   3.Somewhat unfavorable:15097  
+##  4.Very unfavorable    :10629   4.Very unfavorable    : 8402  
+##  5.Don&#39;t know          : 4718   5.Don&#39;t know          : 8183  
+##  6.Refused             :  405   6.Refused             :  516  
+##                                                               
+##                    opi_RUS          weight        
+##  1.Very favorable      : 5650   Min.   : 0.02301  
+##  2.Somewhat favorable  :18105   1st Qu.: 0.65138  
+##  3.Somewhat unfavorable:16806   Median : 1.00000  
+##  4.Very unfavorable    :10144   Mean   : 1.00032  
+##  5.Don&#39;t know          :10719   3rd Qu.: 1.11834  
+##  6.Refused             :  636   Max.   :18.74950  
+## </code></pre>
+</div>
+<div id="tailles-des-échantillons-par-pays-et-par-date" class="section level3" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> Tailles des échantillons par pays et par date</h3>
+<p>On examine la taille des échantillons collectés dans les différents pays</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="07-Tabcont.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(don<span class="sc">$</span>country,don<span class="sc">$</span>survey)</span></code></pre></div>
+<pre><code>##                 
+##                  Spring2007 Spring2017
+##   Argentina             800       1012
+##   Brazil               1000       1007
+##   Canada                982       1000
+##   Chile                 800        987
+##   France               1004        996
+##   Germany              1000        995
+##   Ghana                 707       1129
+##   India                2040       2459
+##   Indonesia             995        996
+##   Israel                887       1050
+##   Italy                 501        899
+##   Japan                 762       1009
+##   Jordan               1000       1548
+##   Kenya                 997       1117
+##   Lebanon              1000       1552
+##   Mexico                828       1000
+##   Nigeria              1092       1110
+##   Peru                  800        998
+##   Poland                504       1142
+##   Russia                991       1002
+##   Senegal               700       1083
+##   South Africa         1000       1295
+##   South Korea           718       1010
+##   Spain                 500        995
+##   Sweden                996        996
+##   Tanzania              702       1061
+##   Turkey                971       1050
+##   United Kingdom        982       1028
+##   United States        1999       1473
+##   Venezuela             803       1000</code></pre>
+</div>
+<div id="sélection-dun-échantillon" class="section level3" number="7.2.5">
+<h3><span class="header-section-number">7.2.5</span> Sélection d’un échantillon</h3>
+<p>On décide par exemple d’analyser l’échantillon des réponses françaises en 2017 :</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="07-Tabcont.html#cb7-1" aria-hidden="true" tabindex="-1"></a>fra17<span class="ot">&lt;-</span>don[don<span class="sc">$</span>country <span class="sc">==</span><span class="st">&quot;France&quot;</span> <span class="sc">&amp;</span> don<span class="sc">$</span>survey<span class="sc">==</span><span class="st">&quot;Spring2017&quot;</span>,]</span>
+<span id="cb7-2"><a href="07-Tabcont.html#cb7-2" aria-hidden="true" tabindex="-1"></a>source <span class="ot">&lt;-</span> <span class="st">&quot;Source : Pew Research Center, Global Attitude Survey, 2017, France&quot;</span></span>
+<span id="cb7-3"><a href="07-Tabcont.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fra17)</span></code></pre></div>
+<pre><code>##         survey         country        sex           age       
+##  Spring2007:  0   France   :996   Male  :502   Min.   :18.00  
+##  Spring2017:996   Argentina:  0   Female:494   1st Qu.:40.00  
+##                   Brazil   :  0                Median :54.00  
+##                   Canada   :  0                Mean   :52.55  
+##                   Chile    :  0                3rd Qu.:66.00  
+##                   Germany  :  0                Max.   :94.00  
+##                   (Other)  :  0                               
+##                  today           use_internet                   opi_USA   
+##  1.Typical          :685   1.Yes       :868   1.Very favorable      : 45  
+##  2.Particularly good:245   2.No        :127   2.Somewhat favorable  :383  
+##  3.Particularly bad : 54   3.Don&#39;t know:  1   3.Somewhat unfavorable:353  
+##  4.Don&#39;t know       : 12   4.Refused   :  0   4.Very unfavorable    :190  
+##  5.Refused          :  0                      5.Don&#39;t know          : 25  
+##                                               6.Refused             :  0  
+##                                                                           
+##                    opi_CHN                      opi_RUS        weight      
+##  1.Very favorable      : 47   1.Very favorable      : 40   Min.   :0.1830  
+##  2.Somewhat favorable  :360   2.Somewhat favorable  :309   1st Qu.:0.3459  
+##  3.Somewhat unfavorable:381   3.Somewhat unfavorable:385   Median :0.6281  
+##  4.Very unfavorable    :168   4.Very unfavorable    :241   Mean   :0.9987  
+##  5.Don&#39;t know          : 40   5.Don&#39;t know          : 21   3rd Qu.:1.1900  
+##  6.Refused             :  0   6.Refused             :  0   Max.   :4.1079  
+## </code></pre>
+</div>
+<div id="recodage-des-modalités" class="section level3" number="7.2.6">
+<h3><span class="header-section-number">7.2.6</span> Recodage des modalités</h3>
+<p>Si l’on souhaite rendre un rapport en français, on va recoder les modalités des variables qui nous intéressent et en profiter pour déclarer manquantes les valeurs correspondant à des non-réponses ou des refus de répondre.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="07-Tabcont.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fra17<span class="sc">$</span>sex)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Homme&quot;</span>,<span class="st">&quot;Femme&quot;</span>)</span>
+<span id="cb9-2"><a href="07-Tabcont.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fra17<span class="sc">$</span>today)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Typique&quot;</span>,<span class="st">&quot;Très Bon&quot;</span>,<span class="st">&quot;Très Mauvais&quot;</span>,<span class="cn">NA</span>,<span class="cn">NA</span>)</span>
+<span id="cb9-3"><a href="07-Tabcont.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fra17<span class="sc">$</span>use_internet)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Oui&quot;</span>,<span class="st">&quot;Non&quot;</span>,<span class="cn">NA</span>,<span class="cn">NA</span>)</span>
+<span id="cb9-4"><a href="07-Tabcont.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fra17<span class="sc">$</span>opi_USA)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Trés Fav.&quot;</span>,<span class="st">&quot;Fav.&quot;</span>,<span class="st">&quot;Défav.&quot;</span>,<span class="st">&quot;Très Déf.&quot;</span>,<span class="cn">NA</span>,<span class="cn">NA</span>)</span>
+<span id="cb9-5"><a href="07-Tabcont.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fra17<span class="sc">$</span>opi_RUS)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Trés Fav.&quot;</span>,<span class="st">&quot;Fav.&quot;</span>,<span class="st">&quot;Défav.&quot;</span>,<span class="st">&quot;Très Déf.&quot;</span>,<span class="cn">NA</span>,<span class="cn">NA</span>)</span>
+<span id="cb9-6"><a href="07-Tabcont.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fra17<span class="sc">$</span>opi_CHN)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Trés Fav.&quot;</span>,<span class="st">&quot;Fav.&quot;</span>,<span class="st">&quot;Défav.&quot;</span>,<span class="st">&quot;Très Déf.&quot;</span>,<span class="cn">NA</span>,<span class="cn">NA</span>)</span></code></pre></div>
+</div>
+<div id="découpage-de-variables-quantitatives-en-classes" class="section level3" number="7.2.7">
+<h3><span class="header-section-number">7.2.7</span> Découpage de variables quantitatives en classes</h3>
+<p>On peut transformer la variable quantitative âge en variable qualitative (factor) à l’aide de la fonction <em>cut()</em>. La question va évidemment être de décider :</p>
+<ul>
+<li>combien on fait de classes ?</li>
+<li>selon quels seuils ?</li>
+<li>avec quels noms ?</li>
+</ul>
+<p>On peut décider de créer cinq classesd’âge à l’aide des quintiles de la distribution :</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="07-Tabcont.html#cb10-1" aria-hidden="true" tabindex="-1"></a>fra17<span class="sc">$</span>age5<span class="ot">&lt;-</span><span class="fu">cut</span>(fra17<span class="sc">$</span>age, <span class="at">breaks =</span> <span class="fu">quantile</span>(fra17<span class="sc">$</span>age,<span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="fl">0.4</span>,<span class="fl">0.6</span>,<span class="fl">0.8</span>, <span class="dv">1</span>)), <span class="at">include.lowest =</span> T)</span>
+<span id="cb10-2"><a href="07-Tabcont.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fra17<span class="sc">$</span>age5) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;18-36 ans&quot;</span>,<span class="st">&quot;37-49 ans&quot;</span>,<span class="st">&quot;50-59 ans&quot;</span>,<span class="st">&quot;60-68 ans&quot;</span>,<span class="st">&quot;69-94-ans&quot;</span>)</span></code></pre></div>
+<p>Mais on peut aussi décider qu’on veut travailler sur les générations en choisissant les dates de 1949, 1969 et 1989</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="07-Tabcont.html#cb11-1" aria-hidden="true" tabindex="-1"></a>fra17<span class="sc">$</span>gen<span class="ot">&lt;-</span><span class="dv">2017</span><span class="sc">-</span>fra17<span class="sc">$</span>age</span>
+<span id="cb11-2"><a href="07-Tabcont.html#cb11-2" aria-hidden="true" tabindex="-1"></a>fra17<span class="sc">$</span>gen4<span class="ot">&lt;-</span><span class="fu">cut</span>(fra17<span class="sc">$</span>gen, <span class="at">breaks=</span><span class="fu">c</span>(<span class="fu">min</span>(fra17<span class="sc">$</span>gen), <span class="dv">1949</span>, <span class="dv">1969</span>, <span class="dv">1989</span>, <span class="fu">max</span>(fra17<span class="sc">$</span>gen)), <span class="at">include.lowest =</span> T)</span>
+<span id="cb11-3"><a href="07-Tabcont.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(fra17<span class="sc">$</span>gen4)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot; 1950&lt; &quot;</span>,<span class="st">&quot;1950-69&quot;</span>,<span class="st">&quot;1970-89&quot;</span>,<span class="st">&quot;&gt; 1990&quot;</span>)</span></code></pre></div>
+</div>
+<div id="sélection" class="section level3" number="7.2.8">
+<h3><span class="header-section-number">7.2.8</span> Sélection</h3>
+<p>On ne garde que les variable qui nous intéressent pour l’analyse.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="07-Tabcont.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sel<span class="ot">&lt;-</span>fra17[,<span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>,<span class="st">&quot;age5&quot;</span>,<span class="st">&quot;gen4&quot;</span>,<span class="st">&quot;opi_USA&quot;</span>,<span class="st">&quot;weight&quot;</span>)]</span>
+<span id="cb12-2"><a href="07-Tabcont.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sel)</span></code></pre></div>
+<pre><code>##     sex             age5          gen4          opi_USA        weight      
+##  Homme:502   18-36 ans:212    1950&lt; :218   Trés Fav.: 45   Min.   :0.1830  
+##  Femme:494   37-49 ans:187   1950-69:407   Fav.     :383   1st Qu.:0.3459  
+##              50-59 ans:199   1970-89:264   Défav.   :353   Median :0.6281  
+##              60-68 ans:203   &gt; 1990 :107   Très Déf.:190   Mean   :0.9987  
+##              69-94-ans:195                 NA&#39;s     : 25   3rd Qu.:1.1900  
+##                                                            Max.   :4.1079</code></pre>
+</div>
+</div>
+<div id="opinion-usa" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Opinion USA</h2>
+<div id="la-fonction-table" class="section level3" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> la fonction table()</h3>
+<p>Le dénombrement des modalités d’une variable se fait généralement avec la fonction <code>table()</code> qui permet de croiser une ou plusieurs variables. Ci-dessous on donne des exemples de croisement à une, deux ou trois variables</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="07-Tabcont.html#cb14-1" aria-hidden="true" tabindex="-1"></a>t1<span class="ot">&lt;-</span><span class="fu">table</span>(sel<span class="sc">$</span>opi_USA)</span>
+<span id="cb14-2"><a href="07-Tabcont.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(t1)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Trés Fav.</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Fav.</td>
+<td align="right">383</td>
+</tr>
+<tr class="odd">
+<td align="left">Défav.</td>
+<td align="right">353</td>
+</tr>
+<tr class="even">
+<td align="left">Très Déf.</td>
+<td align="right">190</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="07-Tabcont.html#cb15-1" aria-hidden="true" tabindex="-1"></a>t2<span class="ot">&lt;-</span><span class="fu">table</span>(sel<span class="sc">$</span>opi_USA,sel<span class="sc">$</span>sex)</span>
+<span id="cb15-2"><a href="07-Tabcont.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(t2)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Homme</th>
+<th align="right">Femme</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Trés Fav.</td>
+<td align="right">27</td>
+<td align="right">18</td>
+</tr>
+<tr class="even">
+<td align="left">Fav.</td>
+<td align="right">204</td>
+<td align="right">179</td>
+</tr>
+<tr class="odd">
+<td align="left">Défav.</td>
+<td align="right">164</td>
+<td align="right">189</td>
+</tr>
+<tr class="even">
+<td align="left">Très Déf.</td>
+<td align="right">97</td>
+<td align="right">93</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="07-Tabcont.html#cb16-1" aria-hidden="true" tabindex="-1"></a>t3<span class="ot">&lt;-</span><span class="fu">table</span>(sel<span class="sc">$</span>opi_USA,sel<span class="sc">$</span>sex,sel<span class="sc">$</span>gen4)</span>
+<span id="cb16-2"><a href="07-Tabcont.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(t3)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="left">Var2</th>
+<th align="left">Var3</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Trés Fav.</td>
+<td align="left">Homme</td>
+<td align="left">1950&lt;</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">Fav.</td>
+<td align="left">Homme</td>
+<td align="left">1950&lt;</td>
+<td align="right">39</td>
+</tr>
+<tr class="odd">
+<td align="left">Défav.</td>
+<td align="left">Homme</td>
+<td align="left">1950&lt;</td>
+<td align="right">37</td>
+</tr>
+<tr class="even">
+<td align="left">Très Déf.</td>
+<td align="left">Homme</td>
+<td align="left">1950&lt;</td>
+<td align="right">31</td>
+</tr>
+<tr class="odd">
+<td align="left">Trés Fav.</td>
+<td align="left">Femme</td>
+<td align="left">1950&lt;</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Fav.</td>
+<td align="left">Femme</td>
+<td align="left">1950&lt;</td>
+<td align="right">26</td>
+</tr>
+<tr class="odd">
+<td align="left">Défav.</td>
+<td align="left">Femme</td>
+<td align="left">1950&lt;</td>
+<td align="right">41</td>
+</tr>
+<tr class="even">
+<td align="left">Très Déf.</td>
+<td align="left">Femme</td>
+<td align="left">1950&lt;</td>
+<td align="right">31</td>
+</tr>
+<tr class="odd">
+<td align="left">Trés Fav.</td>
+<td align="left">Homme</td>
+<td align="left">1950-69</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="left">Fav.</td>
+<td align="left">Homme</td>
+<td align="left">1950-69</td>
+<td align="right">78</td>
+</tr>
+<tr class="odd">
+<td align="left">Défav.</td>
+<td align="left">Homme</td>
+<td align="left">1950-69</td>
+<td align="right">71</td>
+</tr>
+<tr class="even">
+<td align="left">Très Déf.</td>
+<td align="left">Homme</td>
+<td align="left">1950-69</td>
+<td align="right">33</td>
+</tr>
+<tr class="odd">
+<td align="left">Trés Fav.</td>
+<td align="left">Femme</td>
+<td align="left">1950-69</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">Fav.</td>
+<td align="left">Femme</td>
+<td align="left">1950-69</td>
+<td align="right">73</td>
+</tr>
+<tr class="odd">
+<td align="left">Défav.</td>
+<td align="left">Femme</td>
+<td align="left">1950-69</td>
+<td align="right">82</td>
+</tr>
+<tr class="even">
+<td align="left">Très Déf.</td>
+<td align="left">Femme</td>
+<td align="left">1950-69</td>
+<td align="right">43</td>
+</tr>
+<tr class="odd">
+<td align="left">Trés Fav.</td>
+<td align="left">Homme</td>
+<td align="left">1970-89</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="left">Fav.</td>
+<td align="left">Homme</td>
+<td align="left">1970-89</td>
+<td align="right">57</td>
+</tr>
+<tr class="odd">
+<td align="left">Défav.</td>
+<td align="left">Homme</td>
+<td align="left">1970-89</td>
+<td align="right">40</td>
+</tr>
+<tr class="even">
+<td align="left">Très Déf.</td>
+<td align="left">Homme</td>
+<td align="left">1970-89</td>
+<td align="right">25</td>
+</tr>
+<tr class="odd">
+<td align="left">Trés Fav.</td>
+<td align="left">Femme</td>
+<td align="left">1970-89</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="left">Fav.</td>
+<td align="left">Femme</td>
+<td align="left">1970-89</td>
+<td align="right">51</td>
+</tr>
+<tr class="odd">
+<td align="left">Défav.</td>
+<td align="left">Femme</td>
+<td align="left">1970-89</td>
+<td align="right">55</td>
+</tr>
+<tr class="even">
+<td align="left">Très Déf.</td>
+<td align="left">Femme</td>
+<td align="left">1970-89</td>
+<td align="right">15</td>
+</tr>
+<tr class="odd">
+<td align="left">Trés Fav.</td>
+<td align="left">Homme</td>
+<td align="left">&gt; 1990</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="left">Fav.</td>
+<td align="left">Homme</td>
+<td align="left">&gt; 1990</td>
+<td align="right">30</td>
+</tr>
+<tr class="odd">
+<td align="left">Défav.</td>
+<td align="left">Homme</td>
+<td align="left">&gt; 1990</td>
+<td align="right">16</td>
+</tr>
+<tr class="even">
+<td align="left">Très Déf.</td>
+<td align="left">Homme</td>
+<td align="left">&gt; 1990</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">Trés Fav.</td>
+<td align="left">Femme</td>
+<td align="left">&gt; 1990</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">Fav.</td>
+<td align="left">Femme</td>
+<td align="left">&gt; 1990</td>
+<td align="right">29</td>
+</tr>
+<tr class="odd">
+<td align="left">Défav.</td>
+<td align="left">Femme</td>
+<td align="left">&gt; 1990</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">Très Déf.</td>
+<td align="left">Femme</td>
+<td align="left">&gt; 1990</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="visualisation-avec-plot-ou-barplot" class="section level3" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Visualisation avec plot ou barplot</h3>
+<p>Les objets de type table à une ou deux dimensions s’affichent facilement avec barplot()</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="07-Tabcont.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(t1, <span class="at">main=</span><span class="st">&quot;Opinion sur les USA&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-11-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="07-Tabcont.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(t2, <span class="at">main =</span> <span class="st">&quot;Opinion sur les USA et Sexe&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-11-2.svg" width="672" /></p>
+</div>
+<div id="recodage" class="section level3" number="7.3.3">
+<h3><span class="header-section-number">7.3.3</span> Recodage</h3>
+<p>On peut regrouper des modalités entre elle en leur donnant le même nom et en éliminer d’autres en leur donnant la modalité NA.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="07-Tabcont.html#cb19-1" aria-hidden="true" tabindex="-1"></a>sel<span class="sc">$</span>opi_USA2<span class="ot">&lt;-</span>sel<span class="sc">$</span>opi_USA</span>
+<span id="cb19-2"><a href="07-Tabcont.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sel<span class="sc">$</span>opi_USA2)</span></code></pre></div>
+<pre><code>## [1] &quot;Trés Fav.&quot; &quot;Fav.&quot;      &quot;Défav.&quot;    &quot;Très Déf.&quot;</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="07-Tabcont.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sel<span class="sc">$</span>opi_USA2)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Favorable&quot;</span>,<span class="st">&quot;Favorable&quot;</span>,<span class="st">&quot;Défavorable&quot;</span>,<span class="st">&quot;Défavorable&quot;</span>,<span class="cn">NA</span>,<span class="cn">NA</span>)</span>
+<span id="cb21-2"><a href="07-Tabcont.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="07-Tabcont.html#cb21-3" aria-hidden="true" tabindex="-1"></a>t<span class="ot">&lt;-</span><span class="fu">table</span>(sel<span class="sc">$</span>opi_USA2)</span>
+<span id="cb21-4"><a href="07-Tabcont.html#cb21-4" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div>
+<pre><code>## 
+##   Favorable Défavorable 
+##         428         543</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="07-Tabcont.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(t)</span></code></pre></div>
+<pre><code>## 
+##   Favorable Défavorable 
+##   0.4407827   0.5592173</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="07-Tabcont.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="dv">100</span><span class="sc">*</span>t<span class="sc">/</span><span class="fu">sum</span>(t))</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
+<p>A ce stade, on a certes établi le fait qu’il y a une proportion plus grande d’opinion défavorables (56%) que favorables (44%) mais il faut établir un intervalle de confiance pour savoir si cela est simplement dû au biais d’écdhantillonage.</p>
+</div>
+<div id="calcul-de-lintervalle-de-confiance" class="section level3" number="7.3.4">
+<h3><span class="header-section-number">7.3.4</span> Calcul de l’intervalle de confiance</h3>
+<p>On va conduire un test pour trancher entre trois possibilités :</p>
+<ul>
+<li>opinion majoritairement favorable aux USA</li>
+<li>opinion majoritairement défavorable aux USA</li>
+<li>opinion partagée sans majorité claire</li>
+</ul>
+<p>On se fixe un intervalle de confiance de 95% (risque d’erreur de 5%)</p>
+<p>On se reportera pour plus de détails à :</p>
+<p><a href="https://larmarange.github.io/analyse-R/intervalles-de-confiance.html" class="uri">https://larmarange.github.io/analyse-R/intervalles-de-confiance.html</a></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="07-Tabcont.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(t)</span></code></pre></div>
+<pre><code>## 
+##  1-sample proportions test with continuity correction
+## 
+## data:  t, null probability 0.5
+## X-squared = 13.384, df = 1, p-value = 0.0002538
+## alternative hypothesis: true p is not equal to 0.5
+## 95 percent confidence interval:
+##  0.4093399 0.4726998
+## sample estimates:
+##         p 
+## 0.4407827</code></pre>
+<p>Il semble donc que l’on puisse conclure que <strong>les français sont majoritairement défavorables aux USA</strong> puisque la proportion d’opinion favorbales est de 44% avec un intervalle de confiance compris entre 40.9 et 47.3 d’opinion favorable (pour un risque d’erreur p&lt;0.05)</p>
+</div>
+<div id="prise-en-compte-de-la-variable-de-redressement." class="section level3" number="7.3.5">
+<h3><span class="header-section-number">7.3.5</span> Prise en compte de la variable de redressement.</h3>
+<p>On a toutefois oublié de tenir compte de la variable de redressement (<em>poids</em>) qui tient compte du fit que l’échantillonage obtenu comportait des sur et sous-représentations de certaines cétégories de population. Du coup, il faut réécrire l’ensemble du programme en utilisant l’instruction <strong>wtd.table</strong> du package <strong>questionr</strong>.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="07-Tabcont.html#cb28-1" aria-hidden="true" tabindex="-1"></a>t<span class="ot">&lt;-</span><span class="fu">wtd.table</span>(sel<span class="sc">$</span>opi_USA2, <span class="at">weights=</span>sel<span class="sc">$</span>weight)</span>
+<span id="cb28-2"><a href="07-Tabcont.html#cb28-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div>
+<pre><code>##   Favorable Défavorable 
+##    462.4494    510.0442</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="07-Tabcont.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(t)</span></code></pre></div>
+<pre><code>##   Favorable Défavorable 
+##   0.4755295   0.5244705</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="07-Tabcont.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(t)</span></code></pre></div>
+<pre><code>## 
+##  1-sample proportions test with continuity correction
+## 
+## data:  t, null probability 0.5
+## X-squared = 2.2325, df = 1, p-value = 0.1351
+## alternative hypothesis: true p is not equal to 0.5
+## 95 percent confidence interval:
+##  0.4437896 0.5074651
+## sample estimates:
+##         p 
+## 0.4755295</code></pre>
+<p>On voit que la proportion d’opinion favorable est plus élevée après redressement (47.6%) ce qui du coup modifie l’intervalle de confiance (44.4% à 50.7%) et ne permet plus d’exclure l’hypothèse que l’opinion favorable soit en fait majoritaire. On concluera donc que <strong>L’opinion des français sur les USA en 2017 est partagée</strong>.</p>
+</div>
+</div>
+<div id="opinion-usa-sexe" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Opinion USA / Sexe</h2>
+<p>On choisit d’analyser la relation entre l’avis sur les USA et le sexe et on pose H0 : il n’y a pas de relation entre les deux variables.</p>
+<div id="tableau-de-contingence" class="section level3" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> tableau de contingence</h3>
+<p>On commence par recoder les deux variables puis par créer le tableau de contingence pondéré par la variable de pondération. On l’affiche en ajoutant les sommes en ligne et en colonnes avec <em>addmargins()</em></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="07-Tabcont.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sel<span class="sc">$</span>sex) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Homme&quot;</span>,<span class="st">&quot;Femme&quot;</span>)</span>
+<span id="cb34-2"><a href="07-Tabcont.html#cb34-2" aria-hidden="true" tabindex="-1"></a>tabcont<span class="ot">&lt;-</span><span class="fu">wtd.table</span>(sel<span class="sc">$</span>sex,sel<span class="sc">$</span>opi_USA2, <span class="at">weights =</span> sel<span class="sc">$</span>weight)</span>
+<span id="cb34-3"><a href="07-Tabcont.html#cb34-3" aria-hidden="true" tabindex="-1"></a>tabcont</span></code></pre></div>
+<pre><code>##       Favorable Défavorable
+## Homme  238.0424    231.8120
+## Femme  224.4070    278.2321</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="07-Tabcont.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(tabcont)</span></code></pre></div>
+<pre><code>##       Favorable Défavorable      Sum
+## Homme  238.0424    231.8120 469.8544
+## Femme  224.4070    278.2321 502.6391
+## Sum    462.4494    510.0442 972.4936</code></pre>
+</div>
+<div id="pourcentages" class="section level3" number="7.4.2">
+<h3><span class="header-section-number">7.4.2</span> Pourcentages</h3>
+<p>On peut calculer trois tableaux de pourcentage différents à l’aide des fonctions <strong>lprop</strong>, <strong>cprop</strong> et <strong>prop</strong> du package <em>questionr</em>. On se contentera d’afficher le tableau des % en lignes pusique c’est celui qui donne la répartition des avis défavorables eyt favorables pour chaque sexe.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="07-Tabcont.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lprop</span>(tabcont)</span></code></pre></div>
+<pre><code>##          Favorable Défavorable Total
+## Homme     50.7      49.3       100.0
+## Femme     44.6      55.4       100.0
+## Ensemble  47.6      52.4       100.0</code></pre>
+<ul>
+<li>Commentaire : On constate que les femmes sont a priori moins favorables aux USA (44.6%) que les hommes (50.7%) mais il est difficile d’affirmer à ce stade que la relation est significative.</li>
+</ul>
+</div>
+<div id="première-visualisation" class="section level3" number="7.4.3">
+<h3><span class="header-section-number">7.4.3</span> Première visualisation</h3>
+<p>Onpeut visualiser notre table avec plot()</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="07-Tabcont.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tabcont, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;lightblue&quot;</span>), </span>
+<span id="cb40-2"><a href="07-Tabcont.html#cb40-2" aria-hidden="true" tabindex="-1"></a> <span class="co">#    main=titre, </span></span>
+<span id="cb40-3"><a href="07-Tabcont.html#cb40-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub=</span>source, </span>
+<span id="cb40-4"><a href="07-Tabcont.html#cb40-4" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-17-1.svg" width="672" /></p>
+</div>
+<div id="test-du-chi-2" class="section level3" number="7.4.4">
+<h3><span class="header-section-number">7.4.4</span> test du chi-2</h3>
+<p>On réalise le test du chi-2 avec la fonction <strong>chisq.test()</strong> qui crée un objet complexe qui rappelle celui qui est créé par <strong>lm()</strong> pour la régression.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="07-Tabcont.html#cb41-1" aria-hidden="true" tabindex="-1"></a>toto<span class="ot">&lt;-</span><span class="fu">chisq.test</span>(tabcont)</span>
+<span id="cb41-2"><a href="07-Tabcont.html#cb41-2" aria-hidden="true" tabindex="-1"></a>toto</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  tabcont
+## X-squared = 3.2885, df = 1, p-value = 0.06977</code></pre>
+<p>Ici, la relation est presque significative (p = 0.07). On ne peut pas rejeter H0 avec un risque d’erreur inférerieur à 5% mais on pourrait le faire pour un risque d’erreur de 10%.</p>
+</div>
+<div id="analyse-des-résidus" class="section level3" number="7.4.5">
+<h3><span class="header-section-number">7.4.5</span> Analyse des résidus</h3>
+<p>Lorsque la relation est significative, l’analyse des résidus permet de voir quelles sont les cases présentent des anomalies significatives. On peut pour cela imprimer quatre tableaux correspondant aux valeurs observées, aux valeurs attendues, aux écarts entre les deux (résidus bruts) et à un test sur les écarts les plus significatifs (résidus standardisés).</p>
+<p>ce que l’on peut aussi faire graphiquement</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="07-Tabcont.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(toto<span class="sc">$</span>observed,<span class="at">caption =</span> <span class="st">&quot;Valeurs observées&quot;</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-19">Table 7.1: </span>Valeurs observées</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Homme</td>
+<td align="right">238.0424</td>
+<td align="right">231.8120</td>
+</tr>
+<tr class="even">
+<td align="left">Femme</td>
+<td align="right">224.4070</td>
+<td align="right">278.2321</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="07-Tabcont.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(toto<span class="sc">$</span>expected,  <span class="at">caption =</span> <span class="st">&quot;Valeurs attendues&quot;</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-19">Table 7.1: </span>Valeurs attendues</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Homme</td>
+<td align="right">223.4296</td>
+<td align="right">246.4248</td>
+</tr>
+<tr class="even">
+<td align="left">Femme</td>
+<td align="right">239.0198</td>
+<td align="right">263.6194</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="07-Tabcont.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(tabcont<span class="sc">-</span>toto<span class="sc">$</span>expected, <span class="at">caption =</span> <span class="st">&quot;Résidus bruts&quot;</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-19">Table 7.1: </span>Résidus bruts</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Homme</td>
+<td align="right">14.61274</td>
+<td align="right">-14.61274</td>
+</tr>
+<tr class="even">
+<td align="left">Femme</td>
+<td align="right">-14.61274</td>
+<td align="right">14.61274</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="07-Tabcont.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(toto<span class="sc">$</span>stdres, <span class="at">caption=</span> <span class="st">&quot;Résidus standardisés&quot;</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-19">Table 7.1: </span>Résidus standardisés</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Homme</td>
+<td align="right">1.877656</td>
+<td align="right">-1.877656</td>
+</tr>
+<tr class="even">
+<td align="left">Femme</td>
+<td align="right">-1.877656</td>
+<td align="right">1.877656</td>
+</tr>
+</tbody>
+</table>
+<p>On peut aussi visualiser graphiquement les résidus standardisés avec avec <code>mosaicplot()</code> et l’option <em>shade=T</em>. Seules les cases ayant des résidus standardisés supérieures à +2 ou inférieurs à -2 seront colorées, ce qui revient à visualiser uniquement les anomalies significatives avec un risque d’erreur p&lt; 0.05.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="07-Tabcont.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(tabcont,<span class="at">shade=</span>T)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-20-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="opinion-usa-âge" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Opinion USA / Âge</h2>
+<p>Supposons qu’on veuille analyser la relation entre l’opinion sur les USA et l’effet des classes d’âge ou des génération. Les deux variables age5 et gen4 sont issuesde la même variable mais elle n’ont pas le même sens d’un point de vue thématique</p>
+<div id="effet-de-génération" class="section level3" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> Effet de génération</h3>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="07-Tabcont.html#cb48-1" aria-hidden="true" tabindex="-1"></a>tabcont<span class="ot">&lt;-</span><span class="fu">wtd.table</span>(sel<span class="sc">$</span>gen4,sel<span class="sc">$</span>opi_USA2, <span class="at">weights=</span>sel<span class="sc">$</span>poids)</span></code></pre></div>
+<pre><code>## Warning: Unknown or uninitialised column: `poids`.</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="07-Tabcont.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">addmargins</span>(tabcont),<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##         Favorable Défavorable Sum
+##  1950&lt;         72         140 212
+## 1950-69       167         229 396
+## 1970-89       121         135 256
+## &gt; 1990         68          39 107
+## Sum           428         543 971</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="07-Tabcont.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lprop</span>(tabcont)</span></code></pre></div>
+<pre><code>##          Favorable Défavorable Total
+##  1950&lt;    34.0      66.0       100.0
+## 1950-69   42.2      57.8       100.0
+## 1970-89   47.3      52.7       100.0
+## &gt; 1990    63.6      36.4       100.0
+## Ensemble  44.1      55.9       100.0</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="07-Tabcont.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tabcont, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;lightblue&quot;</span>), </span>
+<span id="cb54-2"><a href="07-Tabcont.html#cb54-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Opinion sur les USA selon la génération&quot;</span>, </span>
+<span id="cb54-3"><a href="07-Tabcont.html#cb54-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub=</span>source, </span>
+<span id="cb54-4"><a href="07-Tabcont.html#cb54-4" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-21-1.svg" width="672" /></p>
+<p>On remarque que l’opinion sur les USA semble de plus en plus positive au fur et à mesure des générations. Mais il faut tester pour voir si cet effet est significatif.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="07-Tabcont.html#cb55-1" aria-hidden="true" tabindex="-1"></a>titi<span class="ot">&lt;-</span><span class="fu">chisq.test</span>(tabcont)</span>
+<span id="cb55-2"><a href="07-Tabcont.html#cb55-2" aria-hidden="true" tabindex="-1"></a>titi</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tabcont
+## X-squared = 26.901, df = 3, p-value = 6.175e-06</code></pre>
+<p>On obtient donc une relation très significative (Chi-2 = 26.9 , degrés de liberté =3, p &lt; 0.001) entre la génération des personnes et leur opinion sur les USA. L’étude des résidus standardisés montre que cette relation est liée au fait que les générations récentes sont beaucoup plus favorables aux USA que les générations anciennes. On peut visualiser la relation avec la fonction mosaicplot(shaded=T)</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="07-Tabcont.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(tabcont, <span class="at">shade =</span> T)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-23-1.svg" width="672" /></p>
+</div>
+<div id="effet-dâge" class="section level3" number="7.5.2">
+<h3><span class="header-section-number">7.5.2</span> Effet d’âge</h3>
+<p>Aurions nous tiré les mêmes conclusions en prenant un âge en 5 classes ?</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="07-Tabcont.html#cb58-1" aria-hidden="true" tabindex="-1"></a>tabcont<span class="ot">&lt;-</span><span class="fu">wtd.table</span>(sel<span class="sc">$</span>age5,sel<span class="sc">$</span>opi_USA2, <span class="at">weights=</span>sel<span class="sc">$</span>poids)</span></code></pre></div>
+<pre><code>## Warning: Unknown or uninitialised column: `poids`.</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="07-Tabcont.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">addmargins</span>(tabcont),<span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##           Favorable Défavorable Sum
+## 18-36 ans       123          87 210
+## 37-49 ans        80         101 181
+## 50-59 ans        84         109 193
+## 60-68 ans        75         120 195
+## 69-94-ans        66         126 192
+## Sum             428         543 971</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="07-Tabcont.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lprop</span>(tabcont)</span></code></pre></div>
+<pre><code>##           Favorable Défavorable Total
+## 18-36 ans  58.6      41.4       100.0
+## 37-49 ans  44.2      55.8       100.0
+## 50-59 ans  43.5      56.5       100.0
+## 60-68 ans  38.5      61.5       100.0
+## 69-94-ans  34.4      65.6       100.0
+## Ensemble   44.1      55.9       100.0</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="07-Tabcont.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tabcont, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;lightblue&quot;</span>), </span>
+<span id="cb64-2"><a href="07-Tabcont.html#cb64-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Opinion sur les USA selon l&#39;âge&quot;</span>, </span>
+<span id="cb64-3"><a href="07-Tabcont.html#cb64-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub=</span>source, </span>
+<span id="cb64-4"><a href="07-Tabcont.html#cb64-4" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-24-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="07-Tabcont.html#cb65-1" aria-hidden="true" tabindex="-1"></a>titi<span class="ot">&lt;-</span><span class="fu">chisq.test</span>(tabcont)</span>
+<span id="cb65-2"><a href="07-Tabcont.html#cb65-2" aria-hidden="true" tabindex="-1"></a>titi</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tabcont
+## X-squared = 27.75, df = 4, p-value = 1.402e-05</code></pre>
+<p>On voit que la relation serait tout aussi significative et montrerait une variation continue de l’avius sur les USA avec l’âge, mais avec une opposition particulière des moins de 36 ans et des plus de 68 ans.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="07-Tabcont.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(tabcont, <span class="at">shade =</span> T)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-26-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="opinion-usa-age-sexe" class="section level2" number="7.6">
+<h2><span class="header-section-number">7.6</span> Opinion USA / Age &amp; Sexe</h2>
+<p>On va se limiter au cas où l’on veut étudier la relation entre X et Y toutes choses égales quant à l’effet d’une troisième variable Z qui sert de <strong>variable de contrôle</strong>.</p>
+<p>Par exemple, on veut savoir s’il existe un lien entre l’âge (X) et l’avis sur les USA (Y) demeure valable aussi bien pour les hommes que pour les femmes (Z).</p>
+<div id="sous-échantillon-des-hommes" class="section level3" number="7.6.1">
+<h3><span class="header-section-number">7.6.1</span> Sous-échantillon des hommes</h3>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="07-Tabcont.html#cb68-1" aria-hidden="true" tabindex="-1"></a>hom<span class="ot">&lt;-</span>sel[sel<span class="sc">$</span>sex<span class="sc">==</span><span class="st">&quot;Homme&quot;</span>,]</span>
+<span id="cb68-2"><a href="07-Tabcont.html#cb68-2" aria-hidden="true" tabindex="-1"></a>tabcont<span class="ot">&lt;-</span><span class="fu">wtd.table</span>(hom<span class="sc">$</span>age5,hom<span class="sc">$</span>opi_USA2)</span>
+<span id="cb68-3"><a href="07-Tabcont.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">addmargins</span>(tabcont),<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>##           Favorable Défavorable Sum
+## 18-36 ans        65          49 114
+## 37-49 ans        46          49  95
+## 50-59 ans        39          46  85
+## 60-68 ans        40          58  98
+## 69-94-ans        41          59 100
+## Sum             231         261 492</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="07-Tabcont.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lprop</span>(tabcont)</span></code></pre></div>
+<pre><code>##           Favorable Défavorable Total
+## 18-36 ans  57.0      43.0       100.0
+## 37-49 ans  48.4      51.6       100.0
+## 50-59 ans  45.9      54.1       100.0
+## 60-68 ans  40.8      59.2       100.0
+## 69-94-ans  41.0      59.0       100.0
+## Ensemble   47.0      53.0       100.0</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="07-Tabcont.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tabcont)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tabcont
+## X-squared = 7.6622, df = 4, p-value = 0.1048</code></pre>
+<p>Dans le sous échantillon des 492 hommes, on n’observe pas de relation significative entre l’avis sur les USA et l’âge (Chi-2 = 7.6 pour 4 degré de liberté, p &gt; 0.10)</p>
+</div>
+<div id="sous-échantillon-des-femmes" class="section level3" number="7.6.2">
+<h3><span class="header-section-number">7.6.2</span> Sous-échantillon des femmes</h3>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="07-Tabcont.html#cb74-1" aria-hidden="true" tabindex="-1"></a>fem<span class="ot">&lt;-</span>sel[sel<span class="sc">$</span>sex<span class="sc">==</span><span class="st">&quot;Femme&quot;</span>,]</span>
+<span id="cb74-2"><a href="07-Tabcont.html#cb74-2" aria-hidden="true" tabindex="-1"></a>tabcont<span class="ot">&lt;-</span><span class="fu">wtd.table</span>(fem<span class="sc">$</span>age5,fem<span class="sc">$</span>opi_USA2)</span>
+<span id="cb74-3"><a href="07-Tabcont.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">addmargins</span>(tabcont),<span class="dv">0</span>)</span></code></pre></div>
+<pre><code>##           Favorable Défavorable Sum
+## 18-36 ans        58          38  96
+## 37-49 ans        34          52  86
+## 50-59 ans        45          63 108
+## 60-68 ans        35          62  97
+## 69-94-ans        25          67  92
+## Sum             197         282 479</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="07-Tabcont.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lprop</span>(tabcont)</span></code></pre></div>
+<pre><code>##           Favorable Défavorable Total
+## 18-36 ans  60.4      39.6       100.0
+## 37-49 ans  39.5      60.5       100.0
+## 50-59 ans  41.7      58.3       100.0
+## 60-68 ans  36.1      63.9       100.0
+## 69-94-ans  27.2      72.8       100.0
+## Ensemble   41.1      58.9       100.0</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="07-Tabcont.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tabcont)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tabcont
+## X-squared = 23.273, df = 4, p-value = 0.0001117</code></pre>
+<p>Dans le sous échantillon des 479 femmes, on observe en revanche une relation très significative entre l’avis sur les USA et l’âge (Chi-2 = 23.3 pour 4 degré de liberté, p &lt; 0.001)</p>
+</div>
+<div id="régression-logistique" class="section level3" number="7.6.3">
+<h3><span class="header-section-number">7.6.3</span> Régression logistique</h3>
+<p>La suite logique des analyses bivariées de variables qualitatives est la <strong>régression logistique</strong> qui permet de modéliser une variable qualitative binaire (Y) par un ensemble dr’autres variables qualitatives ou quantitatives (X1, X2, X3, …). Par exemple, on peut se demander si le fait d’être favorable ou très favorable aux USA (Y) dépend simultanément du sexe (X1) et de l’âge (X2).</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="07-Tabcont.html#cb80-1" aria-hidden="true" tabindex="-1"></a>sel<span class="sc">$</span>opi_USA_fav<span class="ot">&lt;-</span>sel<span class="sc">$</span>opi_USA2<span class="sc">==</span><span class="st">&quot;Favorable&quot;</span></span>
+<span id="cb80-2"><a href="07-Tabcont.html#cb80-2" aria-hidden="true" tabindex="-1"></a>toto<span class="ot">&lt;-</span><span class="fu">glm</span>(sel<span class="sc">$</span>opi_USA_fav <span class="sc">~</span>  sel<span class="sc">$</span>sex <span class="sc">+</span> sel<span class="sc">$</span>age5 , <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb80-3"><a href="07-Tabcont.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(toto,<span class="at">test =</span> <span class="st">&quot;Chisq&quot;</span>)</span></code></pre></div>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model: binomial, link: logit
+## 
+## Response: sel$opi_USA_fav
+## 
+## Terms added sequentially (first to last)
+## 
+## 
+##          Df Deviance Resid. Df Resid. Dev  Pr(&gt;Chi)    
+## NULL                       970     1332.4              
+## sel$sex   1   3.3421       969     1329.1   0.06753 .  
+## sel$age5  4  27.4485       965     1301.7 1.613e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="07-Tabcont.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(toto)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = sel$opi_USA_fav ~ sel$sex + sel$age5, family = &quot;binomial&quot;)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.3742  -1.0296  -0.8733   1.2347   1.5158  
+## 
+## Coefficients:
+##                   Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)         0.4517     0.1532   2.949  0.00319 ** 
+## sel$sexFemme       -0.2281     0.1317  -1.732  0.08328 .  
+## sel$age537-49 ans  -0.5771     0.2053  -2.811  0.00494 ** 
+## sel$age550-59 ans  -0.5853     0.2024  -2.892  0.00383 ** 
+## sel$age560-68 ans  -0.8097     0.2035  -3.978 6.94e-05 ***
+## sel$age569-94-ans  -0.9910     0.2070  -4.788 1.69e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1332.4  on 970  degrees of freedom
+## Residual deviance: 1301.6  on 965  degrees of freedom
+##   (25 observations deleted due to missingness)
+## AIC: 1313.6
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p>Au bout du compte, l’effet principal demeure bien celui de l’âge. L’effet du sexe devient non significatif lorsque l’onb contrôle l’âge (p&gt;0.05). Les femmes sont moins favorables aux USA mais cet effet s’explique en partie au moins par leur plus grande longévité.</p>
+
+</div>
+</div>
+</div>
+<script src="js/tidyverse.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="06-Anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="08-Graphique-Base.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"instapper": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ClaudeGrasland/bivR/blob/main/07-Tabcont.Rmd",
+"text": "Source"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bivaR.epub", "bivaR.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
