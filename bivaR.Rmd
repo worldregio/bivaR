@@ -1,0 +1,4774 @@
+--- 
+title: "Introduction à la statistique bivariée et aux représentations graphiques avec R"
+author: "Claude Grasland"
+date: "`r Sys.Date()`"
+documentclass: book
+link-citations: yes
+description: "Cours dispensé en M1 MECI Option Data"
+site: bookdown::bookdown_site
+always_allow_html: yes
+---
+
+```{r setup, include = FALSE, cache = FALSE}
+library(knitr)
+library(tidyverse)
+
+knitr::opts_chunk$set(
+    cache = TRUE,
+    echo = TRUE,
+    comment = "#>",
+    collapse = TRUE
+)
+
+options(max.print = 200)
+```
+
+
+
+# À propos de ce document {-}
+
+
+Ce document *n'est pas* une introduction aux méthodes statistiques d'analyse de données.
+
+Il est basé sur `r R.Version()[["version.string"]]`.
+
+Ce document est régulièrement corrigé et mis à jour. La version de référence est disponible en ligne à l'adresse :
+
+- [https://github.com/ClaudeGrasland/bivaR](https://github.com/ClaudeGrasland/bivaR)
+
+Le code source est disponible [sur GitHub](https://github.com/ClaudeGrasland/bivaR).
+
+Pour toute suggestion ou correction, il est possible de me contacter [par mail](mailto:claude.grasland@parisgeo.cnrs.fr)
+
+
+## Remerciements {-}
+
+Ce document est généré par l' extension [bookdown](https://bookdown.org/) de [Yihui Xie](https://yihui.name/), complétée par les ajouts de Julien Barnier (css, javascript, ...) dans son [Introduction à R et au Tidyverse](https://github.com/juba/tidyverse)
+
+## Licence {-}
+
+Ce document est mis à disposition selon les termes de la [Licence Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+![Licence Creative Commons](resources/icons/license_cc.png)
+
+
+
+
+<!--chapter:end:index.Rmd-->
+
+
+# Premiers pas 
+
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/chap1_intro.jpg")
+```
+
+- **Mise en place** : Télécharger le [dossier exo1](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo1.zip) et décompressez le sur votre ordinateur. Placez le dossier exo1 comme sous-dossier de votre dossier de cours. Puis ouvrez le programme R `exo1.R` 
+
+
+
+## Opérations arithmétiques
+
+Nous allons commencer par passer quelques commandes arithmétiques simples. Il suffit de les taper dans la console de R pour qu'elles s'executent automatiquement. 
+
+
+```{r func}
+8+2
+
+8-2
+
+8*2
+
+8/2
+
+8**2
+
+8**(1/2)
+
+log(10)
+
+log10(10)
+
+sqrt(10)
+
+sin(pi)
+
+cos(pi)
+
+tan(pi)
+```
+
+
+## Les objets de base : valeur, vecteur, matrice
+
+Les objets élémentéires de R apparaissent dans la fenêtre environnement sous la rubrique `Values`
+
+### Eléments
+
+Un élément est unique et constitue la brique de base de tous les objets suivants. On peut aussi l'interpréter comme un vecteur de longueur 1 ou une matrice de dimension 1x1. 
+
+```{r elem numeric}
+x<-8
+y<-2
+
+x+y
+x*y
+x**y
+
+```
+Les éléments se combinent différemment selon leur type. Par exemple, des éléments de type caractère (*character*) peuvent être assemblés avec l'instruction `paste()` ou découpez avec l'instruction `substr()` :
+
+```{r elem charact}
+x<-"Bonjour"
+y<- "tout le monde"
+z<- "!"
+paste(x,y,z)
+substr(x,1,3)
+```
+Quant aux éléments logiques (*logical*) nous verrons qu'ils peuvent se combiner avec des opérateurs comme `&`  quii signifie *ET* ou bien `|` qui signifie *OU*.
+
+```{r elem logic}
+x<-TRUE
+y<-FALSE
+
+x & y
+x | y 
+```
+
+
+### vecteurs (*vectors*)
+
+Un vecteur est un ensemble d'éléments **de même type** que l'on a concaténés à l'aide de l'instruction `c()`. On peut ensuite les aditionner, les multiplier ou les combiner avec des éléments.
+
+
+```{r vecteurs }
+x <- c(1,2,4,8,16)
+y <- 4
+x+y
+x*y
+x**y
+```
+On remarque dans l'exemple ci-dessus que R n'a pas de problème pour combiner des vecteurs de tailles différentes. 
+
+
+### Matrices (*matrix*)
+
+Une matrice est un ensemble de vecteurs **de même longueur et de même  type**. On peut donc construire une matrice en concaténant des vecteurs verticalement avec `cbind()`ou horizontalement avec `rbind()`. 
+
+```{r matrices }
+
+# deux vecteurs
+x1 <- c(1,2,4,8,16)
+x2 <- c(5,10,15,20,25)
+
+# matrice en colonnes
+m1 <- cbind(x1,x2)
+m1
+
+# matrice en lignes
+m2 <- rbind(x1,x2)
+m2
+
+# piège !
+m3 <- c(x1,x2)
+m3
+is.matrix(m3)
+```
+
+```{block, type='rmdimportant'}
+Si on assemble deux vecteurs à l'aide de la commande `c()`on obtient un vecteur et pas une matrice.
+```
+
+
+## Ne pas confondre listes et vecteurs !
+
+R utilise des types plus complexes d'objets qui lui sont propres et qui sont en général des listes ou des listes de listes.
+
+- liste simple
+- liste de liste
+- listes de vecteur = data.frame
+- ...
+
+```{block, type='rmdimportant'}
+Les `vecteurs` regroupent des `éléments de même type` tandis que les `listes` regroupent des `éléments ou des objets de type quelconque`. Le type liste est donc beaucoup plus général, mais aussi plus difficile d'emploi. 
+
+On peut comparer une liste à un *panier de course* dans lequel on mélange des choux, des carottes, des navets, une boîte de douze oeufs, un paquet de croquettes pour chiens, etc...
+```
+
+
+```{r listvec}
+# Format vecteur
+prenom <- c("Ali", "Amine",
+    "Anne","Marc","Zayneb")
+sexe <- c("H","H","F","H","F")
+age  <- c(21,22,24,18,25)
+
+
+# Format liste
+Ali <- list("H",21)
+Amine <- list("F",22)
+Anne <- list("F",28)
+Marc <- list ("H",18)
+Zayneb <- list("F",25)
+
+# Ne pas confondre !
+Ali <- c("H",21)
+Ali
+Ali <- list("H",21)
+Ali
+```
+
+
+
+## Attention aux types de variables ...
+
+Chaque valeur, vecteur ou matrice appartient à un seul type de données. Il est important de ne pas les confondre, sous peine d'obtenir des résultats ... douteux. On se limitera ici aux principaux types, d'autres étant vus ultérieurement dans l'année :
+
+- *numeric* : type général (entier, réels, ...)
+- *logique* : type booleen (TRUE/FALSE)
+- *date* : année, mois, jour,n heure, minutes, secondes, ...
+- *character* : texte quelconque
+- *factor* : variable catégorielle (codage d'enquêtes ...)
+
+La commande `str()` permet de vérifier le type d'un vecteur (ou d'une matrice) et d'en afficher la dimension. 
+
+```{r typevar}
+# Format charactère
+prenom <- c("Ali", "Amine","Anne",
+            "Marc","Zayneb")
+str(prenom)
+
+# Format logique
+likeR <- c(TRUE,FALSE, TRUE,
+           FALSE, FALSE)
+str(likeR)
+# Format Factor
+sexe <- c(1,1,2,1,2)
+sexe<-as.factor(sexe)
+levels(sexe) <-c("Homme","Femme")
+str(sexe)
+
+# Format numerique
+age  <- c(21,22,24,18,25)
+str(age)
+
+# Format date
+nais<-c("1999-10-28","1998-10-13",
+ "1996-10-15","2002-02-07","1995-06-18")
+nais<-as.Date(nais)
+str(nais)
+```
+
+
+
+## Types de tableaux et guerres de religion.
+
+R est un langage qui a beaucouop évolué au cours du temps, suscitant l'apparition de nouveaux types d'objets mieux adapéts à certaines fonctions. Du coup, il existe plusieurs format de tableaux de données, plus ou moins compatibles entre eux.
+
+On notera que dans la fenêtre environnement, les tableaux apparaissent dans la sous-fenêtre `data` et non plus dans la sous-fenêtre `values` comme c'était le cas pour les éléments, vecteurs ou matrices.
+
+
+### Le type  *data.frame* :
+
+C'est le type d'origine correspondant à ce qu'on appelle le langage **R-Base**. Il se présente en pratique comme une `liste de vecteurs` qui peuvent être de types différents mais qui sont de même longueur. 
+
+```{r dataframe}
+# Création d'un data.frame
+tab1<-data.frame(prenom,nais,
+                age,sexe,likeR)
+str(tab1)
+```
+
+
+
+
+### Le type *tibble*
+
+c'est un type créé par Hadley Wickham pour développer la suite de fonctions **Tidyverse** ou **ggplot**
+
+```{r tibble}
+# Création d'un tibble
+library(tidyr, quiet=T)
+tab2<-tibble(prenom,nais,
+            age,sexe,likeR)
+str(tab2)
+
+```
+
+### Le type *data.table*
+
+C'est un type récent créé pour traiter les tableaux de très grande taille à l'aide du package ... **data.table**
+
+
+```{r datatable}
+
+# Création d'un data.table
+library(data.table, quiet=T)
+tab3<-data.table(prenom,nais,
+                age,sexe,likeR)
+str(tab3)
+```
+
+
+
+
+## En résumé
+
+
+```{block, type='rmdnote'}
+R est un langage de programmation multifonction qui évolue depuis maintenant plus de 30 ans et auquel s'ajoutent continuellement de nouveaux packages. A la différence de SPSS, il n'est pas spécialisé uniquement en statistique, même si le coeur du logiciel est bien centré sur la statistique. Pour progresser rapidement en R il est indispensable :
+
+- de prêter une grande attention aux types de `variables et de tableaux.`
+- de ne pas chercher à utiliser trop vite de nouveaux packages tant que l'on n'a pas acquis une pratique suffisante du `R-Base`. 
+- de consulter la `documentation` et les `forums de discussion` en cas de difficulté.
+
+```
+
+## Exercices
+
+
+**Exercice 1**
+
+Construire le vecteur `x` suivant :
+
+```{r echo=FALSE}
+x <- c("Paris", "Londres","Tokyo","New York")
+x
+```
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+x <- c("Paris", "Londres","Tokyo","New York")
+```
+</div>
+\fi
+
+Construire le vecteur `y` suivant :
+
+```{r echo=FALSE}
+y <- c("France", "Royaume-Uni","Japon","USA")
+y
+```
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+y <- c("France", "Royaume-Uni","Japon","USA")
+```
+</div>
+\fi
+
+
+Construire le vecteur `z` suivant :
+
+```{r echo=FALSE}
+z <- c(10.2, 14.6,42.8,23.9)
+z
+```
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+z <- c(10.2, 14.6,42.8,23.9)
+```
+</div>
+\fi
+
+
+Construire la matrice `m1` 
+
+```{r echo=FALSE}
+m1<-rbind(x,y)
+m1
+```
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+m1<-rbind(x,y)
+```
+</div>
+\fi
+
+
+
+
+Construire le data.frame `df` 
+
+```{r echo=FALSE}
+df<-data.frame(y,x,z)
+df
+```
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+df<-data.frame(y,x,z)
+```
+</div>
+\fi
+
+
+
+**Exercice 2 (d'après J.Barnier)**
+
+On a demandé à 4 ménages le revenu des deux conjoints, et le nombre de personnes du ménage :
+
+```{r eval=FALSE}
+conjoint1 <- c(1200, 1180, 1750, 2100)
+conjoint2 <- c(1450, 1870, 1690, 0)
+nb_personnes <- c(4, 2, 3, 2)
+```
+
+Calculer le revenu total de chaque ménage, puis diviser par le nombre de personnes pour obtenir le revenu par personne de chaque ménage.
+
+\iffalse
+<div class="solution-exo">
+```{r eval=FALSE}
+revenu_total <- conjoint1 + conjoint2
+revenu_total / nb_personnes
+```
+</div>
+\fi
+
+
+<!--chapter:end:01-principes.Rmd-->
+
+
+# Office killer
+
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/chap2_intro.png")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo2](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo2.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo2.Rproj` dans Rstudio.
+
+
+Le but de ce chapitre est de montrer le plus tôt possible aux étudiants les possibilités de R et de son environnement R-Studio en ce qui concerne la production de documents ou de présentations dans le cadre d'une démarche reproductible. L'apprentissage précoce de **Rmarkdown** nous semble en effet indispensable, ne serait-ce que pour que les étudiants apprennent à prendre en cours des notes mélangeant les exemples de code R et les explications données en cours ou en TD.
+
+Mais le but véritable est de convaincre tout ou partie des étudiants qu'ils peuvent remplacer à terme les logiciels de bureautique des suites office par un environnement de travail plus intégré et plus performant... à condition d'oublier la souris pour revenir au clavier !
+
+> Real mensch never clcik !
+
+
+
+
+
+## Rstudio et les projets R
+
+>- Au commencement, les dieux de la statistique créèrent le langage R.
+>- Mais l'interface était vide et vague, 
+>- les ténèbres couvraient les lignes de code
+>- R-Studio dit : Que le projet soit et le projet fut. 
+
+
+
+Si l'on veut s'épargner bien des désagréments dans l'apprentissage de R, il faut prendre dès le départ de bonnes habitudes. Parmi celles-ci, l'une des plus importantes est le fait d'inscrire toujours son travail dans le cadre d'un **projet R** c'est-à-dire - en simplifiant beaucoup - un **répertoire de travail** contenant l'ensemble des données, programmes, résultats... que l'on pourra par la suite compresser, archiver et transmettre à quelqu'un d'autre. 
+
+### Lancement de R studio
+
+Sauf à être complètement masochiste, on n'utilise jamais **R** directement mais on lance d'abord l'interface **R-Studio** qui facilite conisdérablement l'ensemble des opérations et offre une gamme considérable de services. Il ne faut toutefois pas confondre les deux et il serait par exemple ridicule d'indiquer sur un CV en vue d'un emploi de statisticien que l'on sait utiliser R-studio en oubliant de préciser que l'on maîtrise R. 
+
+
+### Création d'un projet 
+
+Pour créer un projet on utilise le menus déroulant *File/new project/ ...* et on définit un dossier de notre ordinateur (existant ou à créer) qui contiendra le projet. Une fois l'opération effectuée, on pourra constater que ce dossier contient un fichier *xxx.Rproj* ou xxx est en principe le nom du dossier dans lequel vous avez stocké le projet.
+
+Ce fichier contient toute une série d'informations dont nous ne parlerons pas dans ce cours d'initiation mais qui, pour faire simple, définissent un ensemble de réglages du logiciel et de préférences de l'utilisateur. 
+
+Si vous fermez Rstudio (faites-le !) il vous suffira pour reprendre votre travail là où vous vous étiez arrêté :
+
+- de lancer R-studio et de cliquer sur *File/open project/...* suivi du nom du fichier xxx.Rproj
+- ou plus simplement encore de double cliquer sur le fichier xxx.Rproj ce qui lancera automatiquement Rstudio
+
+Le dossier contenant votre projet R peut être organisé à votre convenance. Certains mettent tout les fichier pêle-mêle dans le dossier. D'autres préfèrent créer des sous-dossiers contenant des données, des programmes, des résultats, des figures. Vous déciderez à l'usage de ce qui vous convient le mieux, mais le point important est que **tout ce qui entre ou sort de vos programmes R doit être de préférence stocké dans le répertoire du projet**. 
+
+```{r, echo = FALSE}
+knitr::include_graphics("resources/figures/monprojet.png")
+```
+
+
+## Programme R : Excel killer ?
+
+>- C'est pourquoi tu quittera Word et Excel, et t'attachera à R studio,
+>- et vous deviendrez une seule chair. 
+
+
+
+La fonction initiale d'un langage de programmation comme R est ... de créer des **programmes** c'est-à-dire des ensembles d'instruction permettant d'accomplir une tâche à l'intérieur d'une chaîne de production. Dans le cas d'un logiciel spécialisé dans l'analyse statistique, il s'agira donc de partir de données (statistiques, géographiques, textuelles, ...) pour aboutir à des résultats prenant la forme de tableaux, cartes ou graphiques. Il ne s'agit donc en somme que d'une étape du travail de recherche où le principal avantage de R est d'**automatiser une tâche** et de faciliter sa **reproduction ultérieure** avec en arrière plan un objectif de **productivité** puisque l'ordinateur réalise en quelques millisecondes des tâches qui prendraient des heures avec un logiciel click-bouton de type Excel. 
+
+
+```{r, echo = FALSE}
+knitr::include_graphics("resources/figures/ProgrammeR.png")
+```
+
+Prenons un exemple simple de problème facile à résoudre avec R mais plus compliqué avec des logiciels click-boutons. Il s'agit d'un exemple pédagogique tiré d'un [très vieux cours d'analyse spatiale](!http://grasland.script.univ-paris-diderot.fr/go303/ch1/ch1.htm) portant sur les semis de point et les localisations optimales.
+
+On considère une carte papier permettant de localiser 5 station services à l'intérieur d'une ville à plan en damier. Chaque station livre chacune la même quantité de carburant par semaine aux clients. On souhaite répondre aux questions suivantes :
+
+1. Comment saisir les données dans une fichier numérique ?
+2. Comment reproduire la carte papier sous forme d'un graphique ?
+3. Comment calculer la dsitance à vol d'oiseau entre toutes les stations ?
+4. Comment calculer la dsitance routière entre toutes les stations ?
+5. Où localiser un dépôt de carburant permettant d'alimenter les cinq stations en minimisant la distance moyenne de livraison (critère d'efficacite)
+6. Où localiser une caserne de pompier qui doit pouvoir intervenir rapidement sur toute les stations et qui doit minimiser la distance maximale à la station la plus éloignée (critère d'équité).
+7. Comment visualiser ces deux localisations sur la carte des stations ?
+8. Comment reproduire ces tâches rapidement s'il y a des ajouts ou suppressions de stations
+
+```{r echo=FALSE}
+knitr::include_graphics("resources/figures/access.png")
+```
+
+On constitue deux équipes d'étudiants, certains utilisant un programme R et d'autres Excel. On se propose de voir qui ira le plus vite sur chacune des 8 tâches proposées. 
+
+
+### Round 1. Saisie des données et affichage du tableau
+
+On crée un programme R avec *File/New File/R Script* puis on l'enregistre avec *File/Save/ ...* suivi du nom du programme.
+
+```{r}
+# Saisie des variables
+CODE <- c("A","B","C","D","E")
+X <- c(10,20,40,50,180)
+Y <- c(40,60,40,60,50)
+
+# Regroupement dans un tableau
+coo <- data.frame(X,Y)
+
+# Ajout du nom des lignes
+row.names(coo) <- CODE
+
+# Affichage du tableau
+coo
+```
+Normalement, les étudiants qui utilisent un tableur ont du aller plus vite et Excel mène sur R par 1-0
+
+
+### Round 2. Affichage de la carte
+
+Vous devez essayez de reproduire l'image correspondant au problème posé 
+
+```{r carte001,}
+plot(X,Y, 
+     col="red", 
+     pch=20, 
+     xlim=c(0,180),
+     ylim=c(0,90),
+     asp = 1)
+text(X,Y,
+     labels = CODE, 
+     pos = 2)
+
+```
+La création d'un graphique est à première vue plus facile avec un logiciel click-bouton. L'avantage est très clairement pour Excel qui mène désormais 2 à 0.
+
+### Round 3. Calcul de la station la plus accessible à vol d'oiseau (distance euclidienne)
+
+Vous devez calculer une matrice de **distance euclidienne** entre toutes les stations et trouver la plus accessible.
+
+```{r}
+
+# calcul la matrice de distance euclidienne
+mat<-dist(coo, upper = T, method = "euclidean")
+mat
+
+# distance moyenne
+apply(as.matrix(mat),1,mean)
+```
+Là, je parie que les utilisateurs d'Excel ont eu un peu plus de mal ... En tous les cas, Excel ne mèneplus que par 2 à 1
+
+
+### Round 4. Calcul de la station la plus accessible par la route (distance de Manhattan)
+
+Vous devez calculer une matrice de distance de Manhattan entre toutes les stations et trouver la plus accessible.
+
+```{r}
+
+# calcul la matrice de distance de Manhattan
+mat<-dist(coo,upper = T, method = "manhattan")
+mat
+
+# distance moyenne de Manhattan
+apply(as.matrix(mat),1,mean)
+```
+
+Je reconnais que c'est unpeu facile, mais à nouveau R l'emporte ce qui fait désormais match nul 2-2
+
+
+### Round 5. Localisation du dépôt de carburant
+
+Dans le cas particulier de la distance de Manhattan, le calcul du point le plus proche de tous les autres s'obtient facilement en calculant le point médian dont les coordonnées correspondent à la médiane de X et la médiane de Y.
+
+```{r}
+medX <- median(X)
+medX
+medY <- median(Y)
+medY
+
+```
+
+A priori, le calcul est aussi facile dans R et dans Excel : match nul 3-3
+
+
+### Round 6. Localisation de la caserne de pompiers
+
+Dans le cas particulier de la distance de Manhattan, le calcul du point minimisant la distance maximale s'obtient en trouvant le centre du diamètre minimal en X et en Y. Il s'agit de la localisation la plus **équitable** où le plus défavorisé est le moins défavorisé possible. 
+
+```{r}
+equX <- (max(X)+min(X))/2
+equX
+equY <- (max(Y)+min(Y))/2
+equY
+
+
+```
+
+A priori, le calcul est toujours aussi facile dans R et dans Excel : match nul 4-4
+
+
+### Round 7. Visualisation des deux points sur la carte
+
+On va placer en bleu le point médian et en vert le point le plus équitable. Dans le cas de R on peut recopier les lignes de code du graphique du round n°2 ce qui gagne désormais du temps :
+
+```{r carte002}
+# Programme antérieur
+plot(X,Y, 
+     col="red", 
+     pch=20, 
+     xlim=c(0,180),
+     ylim=c(0,90),
+     asp = 1)
+text(X,Y,
+     labels = CODE, 
+     pos = 2)
+
+# Ajout du dépôt de carburant
+points(medX, medY, col="blue", pch=3)
+text(medX,medY, "dépot",pos=1)
+
+# Ajout du point médian
+points(equX, equY, col="green", pch=3)
+text(equX,equY, "caserne",pos=1)
+
+
+
+```
+
+Le résultat du match est incertain mais R n'est plus désavantagé puisqu'on peut recycler les lignes de code précédentes pour le graphique de base. Disons 5-5 même s'il y a de fortes chances que R l'emporte.
+
+
+### Dernier round. Refaire toute l'analyse avec une station de plus
+
+Deux stations  F(100,20) et G(150,30) ont été ajoutées. Il faut refaire la carte finale. Cela ne pose aucun problème dans R puisqu'il suffit de modifier l'entrée des données  et récupérer des bouts de programme
+
+```{r carte003}
+# (1) Saisie des variables
+CODE <- c("A","B","C","D","E","F","G")
+X <- c(10,20,40,50,180,100,150)
+Y <- c(40,60,40,60,50,20,30)
+coo <- data.frame(X,Y)
+row.names(coo) <- CODE
+
+
+# (2) calcul des points centraux
+medX <- median(X)
+medY <- median(Y)
+equX <- (max(X)+min(X))/2
+equY <- (max(Y)+min(Y))/2
+
+
+# (3) Graphique
+plot(X,Y, 
+     col="red", 
+     pch=20, 
+     xlim=c(0,180),
+     ylim=c(0,90),
+     asp = 1)
+text(X,Y,
+     labels = CODE, 
+     pos = 2)
+
+# Ajout du dépôt de carburant
+points(medX, medY, col="blue", pch=3)
+text(medX,medY, "Dépôt",pos=1)
+
+# Ajout du point médian
+points(equX, equY, col="green", pch=3)
+text(equX,equY, "Caserne",pos=1)
+
+
+```
+
+Excel n'a aucune chance d'aller plus vite et R remporte le match par KO !
+
+
+## Document Rmd : Word killer ?
+
+
+>- R-Studio dit : « Faisons une interface de rédaction adaptée à notre travail, 
+>- Que l'utilisateur puissent y insérer les tableaux, les graphiques, les cartes, les références bibliographiques, et tous les écrits qui les commentent. »
+
+
+Nous venons de voir comment une bonne pratique de R peut conduire progressivement à abandonner l'usage des tableurs (Excel, Open Office) sauf peut-être pour l'étape de saisie des données. Dès lors qu'il s'agit de réaliser des graphiques ou des calculs statistiques complexes, la rédaction d'un programme se révèle beaucoup plus intéressante même si elle impose un coût initial d'apprentissage.
+
+Mais une bonne pratique de R ou plus précisément des documents  R markdown peut vous conduire beaucoup plus loin et vous amener à abandonner également votre logiciel de traitement de texte (Word) et votre outil de présentation (Power Point). Le coût d'apprentissage est naturellement un peu plus élevé mais les bénéfices sont à la mesure de l'investissement.
+
+Comme le montre la figure ci-dessous, un document R markdown est en quelques sorte un mélange entre des lignes de code R qui executent des tâches et des lignes de texte où sont expliqués les calculs et commentés les résultats obtenus. En d'autres termes, un document R markdown vous permet de rédiger un article de recherche complet, une présentation à une conférence, un syllabus de cours, dans un seul environnement logiciel (R studio). 
+
+Nul besoin de ciseau et de colle pour aller chercher tel tableau ici, tel figure là-bas ou telle carte ailleurs. Tous ces éléments sont intégrs au fur et à mesure de la rédaction ce qui facilite considérablement la concentration. Et surtout - on l'a déjà vu pour le programme R - le document peut facilement être reproduit ou mise à jour sans être obligé de réplique des dizaines de click de souris.   
+
+
+```{r echo=FALSE}
+knitr::include_graphics("resources/figures/DocumentRmd.png")
+```
+Nous allons illustrer l'usage de R markdown en rédigeant une courte note sur la distribution de la population et de certains commerces et services à Rennes. L'exemple est repris du [Manuel d'analyse spatiale publié par l'INSEE en 2018 ](https://www.insee.fr/fr/information/3635442) et plus précisement de son [chapitre 4. Les configurations de points](https://www.insee.fr/fr/statistiques/fichier/3635442/imet131-h-chapitre-4.pdf) 
+
+Comme nous avons pris la perspective de n'employer aucun package R au cours de cette formation initiale, les données ont été légèrement modifiées, notamment pour le tracé de la carte des contours de la ville de Rennes.
+
+
+### Chargement des données
+
+Nous disposons de trois fichiers qui comportent chacun des coordonnées de localisation utilisant la même projection Lambert et que l'on pourra de ce fait superposer. Après les avoir chargés et décrits, on en propose une première visualisation à l'aide des fonctions graphiques de base de R.
+
+
+### Contour de Rennes
+
+On charge le fichier avec `read.table()` puis on affiche ses premières lignes avec `head()`et on regarde sa taille avec `dim()`
+
+```{r}
+map <- read.table(file = "resources/data/rennes/map.csv",
+                  header = T,
+                  sep = ";")
+head(map,2)
+dim(map)
+```
+On affiche le contour avec les instructions `plot()` et `lines()`. On doit impérativement ajouter le paramètre *asp = 1* dans plot() pour imposer une échelle identique sur l'axe vertical et l'axe horizontal. 
+
+```{r}
+plot(map$x,map$y, col="red", asp = 1)
+lines(map$x,map$y, col="blue")
+```
+
+### Distribution de la population
+
+On charge le fichier de population de la même manière et on constate qu'il comporte une troisième colonne indiquant la population localisée en chaque point. En fait, il s'agit d'une grille de population qui localise les habitants sur une maille de ??? m 
+
+```{r}
+pop <- read.table(file = "resources/data/rennes/popu.csv",
+                  header = T,
+                  sep = ";")
+head(pop,2)
+dim(pop)
+```
+On procède à une première cartographie qui ne tient pas compte de l'effectif de population mais indique juste les cases occupées et inoccupées, ce qui permet de donner une vision générale de l'occuparion du sol et du peuplement de Rennes et de l'espace environnant. 
+
+```{r}
+plot(pop$x,pop$y, col="red", asp = 1,pch=22, cex=0.01)
+lines(map$x,map$y, col="black")
+
+```
+
+### Distribution des équipements
+
+L'INSEE a extrait du fichier de la Base Publique des Equipements quatre types de localisations correspondant aux écoles, aux médecins, aux pharmacies et aux commerces de vêtements. On notera l'ajout du paramètre *encoding="UTF-8"* qui permet de lire sans erreur les caractères accentués et d'éviter par exemple que "Vêtements" devienne "VÃªtements".
+
+```{r}
+bpe <- read.table(file = "resources/data/rennes/bpe.csv",
+                  header = T,
+                  sep = ";",
+                  encoding="UTF-8")
+head(bpe,2)
+dim(bpe)
+```
+
+
+On utilise l'instruction `table()`pour dénombrer l'effectif de chaque équipement :
+
+```{r}
+table(bpe$equ)
+```
+
+Puis on visualise après avoir attribué une couleur à chaque équipement. On crée pour cela une nouvelle variable :
+
+```{r}
+bpe$couleur<-as.factor(bpe$equ)
+levels(bpe$couleur)
+levels(bpe$couleur)<-c("blue","green","orange","red")
+bpe$couleur<-as.character(bpe$couleur)
+table(bpe$couleur)
+```
+
+
+### Synthèse 
+
+On peut désormais assembler nos trois couches : 
+
+```{r}
+plot(pop$x,pop$y, col="gray", asp = 1,pch=22, cex=0.01)
+lines(map$x,map$y, col="black")
+points(bpe$x,bpe$y,bg=bpe$couleur, pch=21, cex=0.8)
+```
+
+Il est facile de procéder à un zoom en ajoutant des paramètres *xlim* et *ylim* dans la fonction plot() qui précise l'espace d'étude. 
+
+```{r}
+plot(pop$x,
+     pop$y, 
+     col="gray", 
+     asp = 1,
+     pch=22, 
+     cex=0.1,
+     xlim = c(351000,353000),
+     ylim = c(6788500,6790500))
+
+lines(map$x,
+      map$y, 
+      col="black")
+
+points(bpe$x,
+       bpe$y,
+       bg=bpe$couleur, 
+       pch=21, 
+       cex=0.8)
+```
+
+
+OK, notre carte n'a pas de légende (c'est possible mais vraiment compliqué en R-Base) mais on appréciera le fait d'avoir pu la réaliser en ne se servant que de quelques fonctions élémentaires de R comme 
+
+
+## Diapos Rmd : Power Point killer
+
+Lorsque l'on crée un fichier Markdown, on peut décider qu'il ne s'agit pas d'un document mais d'une présentation et opter pour l'un des deux modes par défaut appelés `slidy` et `ioslides`.
+
+```{r, echo = FALSE}
+knitr::include_graphics("resources/figures/RmdDiapo.png")
+```
+
+On peut ensuite créer un diaporama en donnant un titre général et en séparant chaque diapo par un titre de niveau 2 correspondant à des lignes débutant par `##` comme dans l'exemple ci-dessous :
+
+```{r, echo = FALSE}
+knitr::include_graphics("resources/figures/diapo_prog.png")
+```
+
+Il ne reste plus qu'à compiler le programme avec l'icône `Knit` (pelotte de laine) pour générer un document .html en forme de dipositives. 
+
+```{r, echo = FALSE, fig.width=3}
+knitr::include_graphics("resources/figures/diapo1.png")
+knitr::include_graphics("resources/figures/diapo2.png")
+knitr::include_graphics("resources/figures/diapo3.png")
+```
+
+
+
+## En résumé
+
+
+```{block, type='rmdnote'}
+R est un `Excel killer` mais aussi un `Word killer` voire un `Power point killer`...  Adopter R peut nuire gravement à vos habitudes antérieures de travail.
+
+```
+
+
+
+
+
+<!--chapter:end:02-initiation.Rmd-->
+
+
+# R-Base
+
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/chap3_intro.jpg")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo3](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo3.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo3.Rproj` dans Rstudio.
+
+L'idée pédagogique est d'apprendre directement aux étudiants à programmer en R markdown plutôt qu'en R. Pourquoi ? Parce qu'ainsi ils vont simultanément :
+
+- taper du code R qu'ils ignorent
+- écrire sous ce code les explications du point de vue informatique
+- observer les résultats statistiques
+- interpréter ces résultats d'un point de vue statistique
+
+Cela n'a l'air de rien, mais en procédant ainsi les étudiants apprennent à produire à la fois leurs notes de cours en R, leurs notes de cours en statistiques et ... le langage Rmarkdown pour rédiger leurs futurs travaux.
+
+Bref, si tout a bien marché, l'étudiant n'aura même pas besoin de consulter le présent document, si ce n'est pour vérifier que son programme donne les mêmes résultats ...
+
+
+Les deux exercices qui suivent utilisent volontairement les fonctions de base du langage R (on dit que l'on *programme en R-base*) à l'exclusion de tout *package* c'est-à-dire de tout outil graphique ou statistique mis au point ultérieurement. 
+
+Par comparaison avec le jeu de lego, cela revient à effectuer des constructions avec la boîte de base. A première vue cela peut sembler frustrant. Mais en réalité cela ne bride en rien l'imagination et permet d'apprendre plein de choses sans être distrait ...
+
+
+
+
+1. **La manipulation des tableaux de données** : c'est-à-dire à la fois l'importation, le recodage éventuel des variables et la correction de leur type, la sélection de lignes ou de colonnes pour créer des sous-tableaux.
+2. **L'exploration statistique univariée** : c'est-à-dire le calcul de résumés simples d'une variable à l'aide de paramètres statistiques (valeurs centrales, dispersion) et la production de graphiques élémentaires. 
+
+Pour rendre l'apprentissage moins austère, nous avons choisi un tableau de données original qui présente les principales caractéristiques de 25 pays européens en 1989, à la veille de la chute du Mur de Berlin. Pour ceux qui ne connaissent pas cette période ancienne, voici une petite carte :
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/iron-curtain.jpg")
+```
+
+Plutôt que de se contenter apprendre par coeur des commandes R (ce qu'il faudra faire, évidemment), les étudiants seront amenés à construire un véritable rapport sur la situation économique, démographique et sociale de l'Europe en 1989, ce qui les amènera à renforcer leur pratique du R markdown. Par ailleurs, on organisera un débat entre les étudiants qui seront placés en deux groupes rivaux chargés de défendre respectivement les pays socialistes et lespays capitalistes. A chaque groupe de montrer que son système politique est le meilleur ...
+
+
+## Tableaux
+
+### Importation
+
+#### Localisation des fichiers
+
+- La commande `getwd()` permet de connaître la position du répertoire courant. Si vous avez ouvert un projet (ce qui est vivement recommandé) la localisation est l'emplacement du fichier .Rproj.
+
+```{r}
+getwd() 
+```
+
+
+- La commande `list.files()` permet d'examiner le contenu du répertoire courant
+
+```{r}
+list.files()
+```
+
+
+
+#### Chargement d'un fichier texte
+
+- Avec la souris
+
+Cliquer sur les menus déroulants **File/Import Dataset/From text (base)** puis suivre le menu
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/img001.jpeg")
+```
+
+
+
+
+- Avec des lignes de code
+
+On utilise par exemple la fonction `read.table()` en précisant les paramètres utiles :
+
+```{r}
+euro1988 <- read.table(file = "resources/data/europe88/euro1988.csv", # nom du fichier et chemin d'accès
+                  sep = ";",                     # séparateur (ici, des points-virgule)
+                  header = TRUE,                 # ligne d'en-tête avec le nom des variables
+                  encoding="UTF-8")              # encodage adapté au français
+```
+
+
+
+#### Dimensions d'un tableau
+
+- La fonction `dim()` fournit les dimensions d'un tableau
+
+```{r}
+dim(euro1988)
+```
+
+- La fonction `class()` fournit le type d'un tableau
+
+```{r}
+class(euro1988)
+```
+
+
+#### Visualisation du contenu d'un tableau
+
+- Premières lignes avec `head()`
+
+```{r}
+head(euro1988)         # Affiche par défaut les 6 premières lignes
+```
+
+- Dernières lignes avec `tail()`
+
+```{r}
+tail(euro1988,2)         # Affiche les 2 dernières lignes
+```
+
+
+
+#### Verification des variables
+
+- Vérifie le type avec `str()`
+
+```{r}
+str(euro1988)
+```
+
+
+- Recode avec les fonctions `as.xxx()`
+
+```{r}
+euro1988$BLOC<-as.factor(euro1988$PAYS)
+str(euro1988)
+```
+
+
+#### Résume  du tableau
+
+La fonction `summary()` donne un aperçu général des variables
+
+```{r}
+summary(euro1988)
+```
+
+
+
+### Transformations
+
+
+#### Copie intégrale 
+
+Elle s'effectue avec l'opérateur  `<-`
+
+```{r}
+tab<-euro1988
+dim(tab)
+head(tab,2)
+tail(tab,2)
+```
+
+
+#### Sélection de lignes
+
+On utilise la syntaxe `tab2<-tab[conditions , ]` avec  les opérateurs logiques suivants
+
+---
+- **==** : est égal à
+- **!=** : est différent de 
+- **> ** : est strictement supérieur à 
+- **< ** : est strictement inférieur à 
+- **>=** : est supérieur ou égal à 
+- **<=** : est inférieur ou égal à  
+- **&**  : ET (vrai si les deux conditions sont vérifiées)
+- **|**  : OU inclusif (vrai si l'une des conditions est vérifiée)
+- **xor** : OU exclusif (vrai si une seule des conditions est vérifiée)
+---
+
+
+- Exemple de sélection des pays socialistes
+
+```{r}
+tabsoc<-euro1988[euro1988$BLOC=="Soc",]
+tabsoc
+```
+
+- Exemple de sélection des pays non socialistes
+
+```{r}
+tabcap<-euro1988[euro1988$BLOC!="Soc",]
+tabcap
+```
+
+
+- Exemple de sélection des pays de plus 10 millions d'habitant
+
+```{r}
+tabbig<-euro1988[euro1988$POP>20,]
+tabbig
+```
+
+
+- Exemple de sélection des pays socialistes de plus 20 millions d'habitant (on mélange deux conditions avec l'opérateur `&`)
+
+```{r}
+tabsocbig<-euro1988[euro1988$BLOC=="Soc" & euro1988$POP>20,]
+tabsocbig
+```
+
+
+#### Sélection de colonnes
+
+On utilise la syntaxe `tab2<-tab[  ,  liste ]` avec différentes  syntaxes pour les listes de variables :
+
+
+- Sélection nominale
+
+```{r}
+tab<-euro1988[,c("PAYS", "BLOC", "PNB", "TMI","POP")]
+head(tab,2)
+```
+
+- Sélection de positions 
+
+```{r}
+tab<-euro1988[,c(1:4, 13)]
+head(tab,2)
+```
+
+
+#### Sélection simultanée de lignes et colonnes
+
+On utilise la syntaxe `tab2<-tab[ conditions ,  liste]` 
+
+- Exemple : PNB et BLOC des pays de moins de 5 millions d'habitant
+
+```{r}
+tab<-euro1988[euro1988$POP<5, c("PAYS","BLOC","POP","PNB")]
+tab
+```
+
+
+
+### Extractions
+
+#### Extraction d'une Variable = Vecteur
+
+- Solution n°1 : utilisation de l'opérateur `$`
+
+```{r}
+myvar<-euro1988$POP
+str(myvar)
+mean(myvar)
+```
+
+-Solution n°2 : utilisation de  `[ , ]`
+
+```{r}
+myvar<-euro1988[,13]
+str(myvar)
+mean(myvar)
+```
+
+
+
+#### Création d'une matrice 
+
+On sélectionne les lignes et les colonnes puis on convertit en matrice avec l'instruction `as.matrix()`. Attention, les variables doivent être de même type (toutes numériques ou toutes caractère ou ...), sinon R effectue une conversion forcée. 
+
+-  **Exemple 1 : création d'une matrice de corrélation**
+
+On commence par extraire trois variables du tableau pour en faire une matrice :
+
+```{r}
+mymat<-euro1988[,c("PNB","TMI","FEC")]
+row.names(mymat)<-euro1988$PAYS  # facultatif : donne le nom des lignes
+str(mymat)
+mymat<-as.matrix(mymat)
+str(mymat)
+```
+
+
+Puis on applique la fonction `cor()` à cette matrice pour en faire une matrice de corrélation ; 
+
+```{r}
+mycor<-cor(mymat)
+mycor
+str(mycor)
+```
+
+
+
+- **Exemple 2 : Création d'une matrice de distance**
+
+On commence par extraire les coordonnées (X,Y) sous forme de matrice
+
+```{r}
+matcoo<-as.matrix(euro1988[,c("X","Y")])
+row.names(matcoo)<-euro1988$PAYS  # facultatif : donne le nom des lignes
+str(matcoo)
+head(matcoo)
+```
+
+
+Puis on transforme ces coordonnées en distance à l'aide de la fonction `dist()`
+
+```{r}
+matdis<-as.matrix(dist(matcoo))
+str(matdis)
+matdis[1:10,1:5]
+```
+
+
+Et on calcule le pays le plus proche de tous les autres à l'aide de la fonction `apply()` (qu'on verra ultérieurement dans un autre chapitre)
+
+```{r}
+mean(matdis)
+access<-apply(matdis, FUN=mean,1)
+access<-access[order(access)]
+round(access,0)
+```
+
+
+
+## Exploration I (*var. quali.*)
+
+### Sélection et recodage
+
+Les variables qualitatives nominales ou *factor* sont des objets composés d'une liste de numéros et d'une liste d'étiquettes. 
+
+```{r quali1}
+# Chargement du tableau de données
+don <- read.table(file = "resources/data/europe88/euro1988.csv", # nom du fichier et chemin d'accès
+                  sep = ";",                     # séparateur (ici, des points-virgule)
+                  header = TRUE,                 # ligne d'en-tête avec le nom des variables
+                  encoding="UTF-8")              # encodage adapté au français
+
+# Extraction de la variable
+X<-don$BLOC
+X
+
+# Vérification du type
+str(X)
+```
+
+Si la variable chargée est de type *character* il faut la transformer avec `as.factor()` et repérer les niveaux disponibles avec `levels()`
+
+```{r}
+X<-as.factor(X)
+class(X)
+levels(X)
+```
+
+On peut remplacer les niveaux en utilisant l'instruction `levels() `à nouveau, mais suivie d'un vecteur de charactères indiquant les changements de nom. 
+
+```{r quali2}
+
+levels(X)<-c("Capitaliste",
+             "Socialiste")
+X
+str(X)
+```
+
+On peut transformer une variable quantitative en facteur avec la fonction `cut()`
+
+```{r quali3}
+Y<-cut(don$POP, breaks=c(0,10,30,100))
+Y
+str(Y)
+
+```
+
+
+
+On peut ensuite recoder les classes avec `levels()`
+
+```{r quali4}
+levels(Y)<-c("Petit","Moyen","Grand")
+Y
+str(Y)
+```
+
+
+### Table de dénombrement
+
+Pour dénomber une variable qualitative, on utilise l'instruction `table()` qui crée un objet particulier qui n'est ni un *data.frame*, ni une *matrix*.
+
+```{r table}
+tab<-table(X)
+tab
+str(tab)
+```
+
+
+On peut créer des tables à 2, 3 ou 4 dimensions
+
+```{r table2}
+tab2<-table(X,Y)
+tab2
+str(tab2)
+```
+
+
+Un objet de type *table* peut être manipulé par des fonctions spéciales comme `addmargins()` quii rajoute des sommes en ligne (et en colonne si la table est de dimension 2)
+
+```{r table3}
+addmargins(tab)
+addmargins(tab2)
+```
+
+```{block, type='rmdimportant'}
+Les objets de type  `table` sont souvent la source de crises de nerf de la part des étudiants qui les confondent avec des objets de type `vecteur`, `matrice` ou `data.frame`. Il existe des fonctions de conversion d'un type vers un autre mais leur emploi n'est pas très simple. 
+
+On retiendra donc dans l'immédiat que les résultats de l'instruction `table`sont des **objets transitoires** qui servent uniquement à afficher des résultats ou produire des graphiques à l'aide des instructions `plot()` ou `barplot()`.
+```
+
+
+
+
+### Graphique avec plot()
+
+La fonction `plot()` s'applique à la plupart de objets R. Elle produit des résultats différents selon le type d'objet qu'elle a identifié. Si on l'applique à un vecteur de type factor on obtient un **diagramme en bâtons** (à ne pas confondre avec un histogramme) 
+
+```{r plot}
+plot(X)
+```
+
+
+On peut améliorer le graphique en lui ajoutant des *paramètres* c'est-à-dire des instructions séparées par des virgules. Le retour à la ligne après chaque paramètre n'est pas obligatoire mais il est recommandé car il rend le code plus clair. 
+
+```{r, plot2}
+plot(X,
+     col=c("blue","red"), 
+     main= "Europe en 1988",
+     xlab = "Type politique", 
+     ylab = "Nombre de pays")
+```
+
+
+
+
+
+
+
+## Exploration II (*var. quanti*)
+
+### Résumés numériques
+
+
+Une variable numérique peut faire l'objet d'un ensemble de résumés statistiques à l'aide de fonctions élémentaires
+
+- `min()`   : minimum
+- `max()`   : maximum
+- `mean()`  : moyenne
+- `sd()`    : écart-type (en anglais : *standard deviation*, soit *sd* en abrégé)
+- `sum()`   : somme
+
+
+
+```{r}
+X <- don$FEC
+min(X)
+max(X)
+mean(X)
+sd(X)
+```
+
+Pour calculer les quantiles on peut utiliser la fonction `quantile()` en paramétrant la valeur de fréquence cumulée ascendante
+
+- **quantile(X,0)**     : minimum
+- **quantile(X,0.10)**  : D1 (premier décile)
+- **quantile(X,0.25)**  : Q1 (premier quartile)
+- **quantile(X,0.5)**   : Q2 (médiane)
+- **quantile(X,0.75)**  : Q3 (troisième quartile)
+- **quantile(X,0.90)**  : D9 (dernier décile)
+- **quantile(X,1)**     : maximum
+
+
+
+```{r}
+X<-don$FEC
+quantile(X,0.5)
+sel<-c(0,0.25,0.5,0.75,1)
+quantile(X,sel)
+sel<-c(0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1)
+quantile(X,sel)
+```
+
+Il peut arriver qu'une fonction soit manquante dans R, comme par exemple le coefficient de variation. Dans ce cas, on peut faire le calcul par des lignes de code ou **créer sa propre fonction** avec l'instruction `function()`. La fonction qui est stockée en mémoire apparaît dans la fenêtre *Environnement*. Lorsqu'on a créé plusieurs fonctions, on peut en faire un programme R qu'on charge en mémoire au début de chaque session. A plus long terme, on peut en faire un **package** qu'on partagera avec les autres utilisateurs de R. 
+
+A titre d'exemple, nous créons une fonction `cv()` qui calcule le rapport entre l'écart-type et la moyenne d'une distribution : 
+
+```{r}
+# lignes de code
+X <- don$FEC
+sd(X)/mean(X)
+
+# fonction
+cv<-function(var) {sd(var)/mean(var)}
+cv(X)
+```
+
+### Dénombrement
+
+Une variable quantitative peut être discrétisée avec `cut()`. Elle devient alors un facteur qu'on peut dénomber avec `table()` puis visualiseer avec `plot()` sous la forme de *diagramme en bâtons*.
+
+
+
+```{r}
+X<-cut(don$FEC, c(1,1.5,2,2.5,3,3.5))
+str(X)
+table(X)
+```
+
+
+
+
+```{r}
+plot(X, col=c("green","yellow","orange","red","brown"),
+     main = "Fécondité en Europe en 1988", xlab = "classes")
+```
+
+
+### Boîte à moustaches
+
+La fonction `boxplot()` permet de visualiser une distribution sous forme de boîte à moustache où l'on repère facilement :
+
+- la médiane
+- les quartiles Q1 et Q3
+- le minimum et le maximum
+- les valeurs extrêmes situées à une distance supéreiure à 1.5 x (Q3-Q1) de la médiane
+
+
+La syntaxe de base est la suivante : 
+
+```{r}
+X<-don$FEC
+boxplot(X)
+```
+
+Mais on peut améliorer la figure avec quelques paramètres de plus
+
+```{r}
+boxplot(X,horizontal = TRUE, col = "gray80",
+        main = "Fécondité des pays européens en 1988",
+        xlab = "nb. enfants par femme")
+```
+
+Et on peut retirer les valeurs exceptionnelles avec le paramètre `outline=FALSE`
+
+```{r}
+boxplot(X,horizontal = TRUE, col = "gray80",
+        main = "Fécondité des pays européens en 1988",
+        xlab = "nb. enfants par femme",
+        outline = FALSE)
+```
+
+### Histogramme
+
+Dans le cas d'une variable **quantitative continue**, la visualisation la plus logique est l'histogramme que l'on peut tracer avec la fonction `hist()`. Celle-ci comporte de nombreux paramètres que l'on peut visualiser dans la **fenêtre Help** qui se trouve en bas à gauche de R-studio : 
+
+
+
+Comme d'hebitude, on peut appliquer la syntaxe la plus simple : 
+
+
+```{r}
+X<-don$FEC
+hist(X)
+```
+
+On peut ensuite améliorer avec l'ajout de titres et un choix précis de classes. Dans le cas de la fécondité, il est par exemple important d'utiliser le seuil de 2.1 enfants par femme qui correspond au renouvellement des générations. On remarque que si les classes sont d'amplitudes inégales R utilise la densité de probabilité (rapport entre effectif et amplitude de la classe) et non plus l'effectif ce qui est statistiquement correct (et que ne fait pas Excel ...).
+
+
+
+```{r}
+hist(X, 
+     breaks = c(1.2, 1.5, 1.8, 2.1, 2.4, 3.3), 
+     col=c("blue", "lightblue","lightyellow","orange","red"),
+     main = "Fécondité des pays européens en 1988",
+     ylab = "Densité de probabilité", 
+     xlab = "Nombre d'enfants par femme",
+     xlim=c(1,3.5))
+```
+
+On peut également ajouter une courbe lissée de la distribution avec les fonctions `lines() et `density()`en indiquant la portée du lissage à l'aide du paramètre `bw`(*band width*) qui est exprimé dans l'unité de mesure de X
+
+```{r}
+hist(X, 
+     breaks = c(1.2, 1.5, 1.8, 2.1, 2.4, 3.3),
+     col=c("blue", "lightblue","green","yellow","orange"),
+     main = "Fécondité des pays européens en 1988",
+     ylab = "Densité de probabilité", 
+     xlab = "Nombre d'enfants par femme",
+     xlim=c(1,3.5))
+lines(density(X,bw=0.3),col="red",lwd=2)
+```
+
+##  Exploration III (*2 variables*)
+
+Nous verrons en détail dans les chapitres suivants comment croiser deux variables d'un point de vue statistiques. Mais on peut déjà indiquer brièvement comment les visualiser rapidement à l'aide de trois exemples
+
+### Deux variables qualitatives
+
+- Tableau de contingence
+
+```{r}
+X <- don$BLOC
+levels(X)<-c("Capitalise","Socialiste")
+Y<-cut(don$POP, breaks=c(0,10,30,100))
+levels(Y) <- c("petit","moyen","grand")
+tab<-table(X,Y)
+addmargins(tab)
+```
+
+- Graphique
+
+```{r}
+plot(tab, col=c("yellow","orange","brown"))
+```
+
+- Test (Chi-2)
+
+```{r}
+test<-chisq.test(X,Y)
+test
+```
+
+
+### Deux variables quantitatives
+
+- Paramètres principaux
+
+```{r}
+Y <- don$TMI
+X<-don$PNB
+summary(X)
+summary(Y)
+```
+
+- Graphique
+
+```{r}
+plot(X,Y, xlab="PNB par habitant",ylab="Mortalité infantile")
+text(X,Y,don$PAYS,pos = 4,cex=0.6)
+```
+
+- Test (Pearson)
+
+
+```{r}
+cor.test(Y,X)
+```
+
+
+
+### Une quantitative et une qualitative
+
+- Graphique
+
+```{r}
+Y <- don$TMI
+X <- as.factor(don$BLOC)
+levels(X)<-c("Capitalise","Socialiste")
+plot(X,Y, 
+     col=c("blue","red"),
+     xlab ="Mortalité infantile",
+     ylab = "Bloc politique",
+     horizontal=T)
+```
+- Test (Fischer)
+
+```{r}
+mod<-aov(Y~X)
+summary(mod)
+```
+
+
+
+
+## En résumé
+
+
+```{block, type='rmdnote'}
+Nous avons survolé les principales `fonctions élémentaires` de R-Base pour montrer qu'il est facile et surtout rapide de les employer en lieu et place d'un tableur comme Excel ou d'un logiciel de statistique click-bouton. 
+Il reste encore beaucoup à apprendre mais à ce stade il est important de bien consolider les acquis et de `connaître par coeur le nom des principales fonctions de base` qui ont été présentées au cours de ce chapitre. 
+```
+
+
+
+
+
+<!--chapter:end:03-R-Base.Rmd-->
+
+# Corrélation
+
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/chap4_intro.jpg")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo4](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo4.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo4.Rproj` dans Rstudio.
+
+
+## Préparation des données
+
+### Chargement du tableau principal
+
+On charge notre bon vieux fichier des pays européens en 1988
+
+```{r load}
+don<-read.table(file = "resources/data/europe88/euro1988.csv",
+                sep = ";",
+                header = T)
+don$BLOC<-as.factor(don$BLOC)
+levels(don$BLOC)<-c("Capitaliste","Socialiste")
+head(don)
+```
+
+### Choix des deux variables à analyser
+
+En dehors de BLOC et PAYS, on ne garde que deux variables que l'on renomme X et Y avec **colnames()** et que l'on convertit en type numérique général. Il suffira par la suite de modifier le choix des variables X et Y pour faire d'autres analyses. 
+
+```{r}
+eur<-don[,c("PAYS","BLOC","URB","TMI")]
+colnames(eur)<-c("PAYS","BLOC","X","Y")
+eur$X<-as.numeric(eur$X)
+eur$Y<-as.numeric(eur$Y)
+head(eur)
+```
+
+### On est malin ...
+
+Mais comme on ne sait plus ce que sont X et Y, on le précise avec des chaînes de caractères qu'on pourra utiliser dans les graphiques. Et on peut préparer une version multilangue ...
+
+```{r}
+# Pour la version française
+fr_titre <- "Les pays européens en 1988"
+fr_nomX <- "Taux d'urbanisation en %"
+fr_nomY <- "Taux de mortalité infantile en p. 1000"
+fr_auteur <- "Claude Grasland, Université Paris Diderot, 2020"
+```
+
+```{r}
+# Pour la version arabe
+ar_titre <- "البلدان الأوروبية في عام 1988"
+ar_nomX <-  "معدل التحضر في المائة"
+ar_nomY <- "معدل وفيات الرضع في عام 1000"
+ar_auteur <- "كلود غراسلاند، جامعة باريس ديدرو، 2020"
+```
+
+
+```{r}
+# Pour la version anglaise
+en_titre <- "European countries in 1988"
+en_nomX <- "Urbanisation rate %"
+en_nomY <- "Infant mortality rate p. 1000"
+en_auteur <- "Claude Grasland, University Paris Diderot, 2020"
+```
+
+
+```{r}
+# Pour la version russe
+ru_titre <- "Европейские страны в 1988 году"
+ru_nomX <- "Уровень урбанизации в %"
+ru_nomY <- "Коэффициент младенческой смертности в 1000 году"
+ru_auteur <- "Клод Грассленд, Парижский университет Дидро, 2020"
+```
+
+### On est paresseux ...
+
+Comme on prévoit qu'il y aura des différences entre pays socialistes et capitalistes, on crée deux sous-tableaux
+
+```{r}
+eur_soc<-eur[eur$BLOC=="Socialiste",]
+eur_cap<-eur[eur$BLOC=="Capitaliste",]
+```
+
+
+## Exploration visuelle
+
+### Visualisation avec plot(X,Y)
+
+La manière la plus simple d'analyser la relation entre X et Y est d'utiliser un simple plot
+
+```{r}
+plot(eur$X,eur$Y)
+```
+
+
+La fonction plot() comporte de nombreux paramètres permettant d'améliorer le graphique et de l'habiller. Voici un exemple d'habillage en français
+
+```{r, eval}
+plot(eur$X,eur$Y,
+     main = fr_titre,   # titre
+     cex.main = 1,      # police du titre
+     sub = fr_auteur,   # sous-titre
+     cex.sub = 0.6,     # police du sous-titre
+     xlab = fr_nomX,    # nom de l'axe X
+     xlim = c(20,100),   # intervalle de l'axe X
+     ylab = fr_nomY,    # nom de l'axe Y
+     ylim = c(0,50),    # intervalle de l'axe Y
+     cex.axis = 0.8,    # police des gradations d'axes
+     cex.lab = 0.8,     # police des noms d'axes
+     cex = 0.6,         # taille des symboles
+     col = "blue")       # couleur des symboles
+```
+
+
+
+
+
+Ou en anglais: il suffit de changer le nom des variables relatives aux titres.
+
+```{r}
+plot(eur$X,eur$Y,
+     main = en_titre,   # titre
+     cex.main = 1,      # police du titre
+     sub = en_auteur,   # sous-titre
+     cex.sub = 0.5,     # police du sous-titre
+     xlab = en_nomX,    # nom de l'axe X
+     xlim = c(20,100),   # intervalle de l'axe X
+     ylab = en_nomY,    # nom de l'axe Y
+     ylim = c(0,50),    # intervalle de l'axe Y
+     cex.axis = 0.7,    # police des gradations d'axes
+     cex.lab = 0.7,     # police des noms d'axes
+     cex = 0.6,         # taille des symboles
+     col = "blue")       # couleur des symboles
+```
+
+
+
+
+
+
+
+
+
+
+
+### Identification des points avec **cor** +  **text(...)** 
+
+On peut ajouter au graphique généré par **plot(X,Y)** une couche de labels avec **text(X,Y,Code)**. On précise la position avec **pos =**, la taille de police avex **cex =** et la couleur avec **col =**.
+
+```{r}
+plot(x = eur$X,
+     y = eur$Y,
+     cex=0.5,
+     col= "blue",
+     ylim =c(0,50))
+text(x = eur$X,
+     y = eur$Y,
+     label = eur$PAYS,
+     cex = 0.7,
+     pos=3,
+     col = "blue")
+```
+
+
+
+### Ajout de lignes horizontales ou verticales avec **cor()** +  **abline(...)**
+
+On peut rajouter à un graphique des lignes horizontales ou verticales avec abline en précisant leur position avec **h=** ou **v=**, leur épaisseur avec **lwd = **, leur style avec **lty=** et leur couleur avec **col=**
+
+
+
+
+```{r}
+plot(eur$X,eur$Y,
+     main = fr_titre,   # titre
+     cex.main = 1,      # police du titre
+     sub = fr_auteur,   # sous-titre
+     cex.sub = 0.6,     # police du sous-titre
+     xlab = fr_nomX,    # nom de l'axe X
+     xlim = c(20,100),   # intervalle de l'axe X
+     ylab = fr_nomY,    # nom de l'axe Y
+     ylim = c(0,50),    # intervalle de l'axe Y
+     cex.axis = 0.8,    # police des gradations d'axes
+     cex.lab = 0.8,     # police des noms d'axes
+     cex = 0.6,         # taille des symboles
+     col = "blue")       # couleur des symboles
+
+# Ajout d'une ligne horizontale  correspondant à la moyenne de Y
+abline(h=mean(eur$Y),col="red",lwd = 1, lty = 2)
+# Ajout d'une ligne verticlae  correspondant à la moyenne de X
+abline(v=mean(eur$X),col="red",lwd = 1, lty = 2)
+
+text(x = eur$X,
+     y = eur$Y,
+     label = eur$PAYS,
+     cex = 0.6,
+     pos=3,
+     col = "blue")
+
+```
+
+
+
+La fonction **abline()** peut servir aussi à tracer la droite de régression Y=aX+b produite par la fonction **lm()**
+
+```{r, echo = TRUE}
+plot(eur$X,eur$Y)
+maregression = lm(eur$Y~eur$X)
+abline(maregression,col="red")
+```
+
+### Au delà de R-Base ...
+
+Il existe des packages spécialisés permettant de faire des graphiques plus sophistiqués. Mais on les apprendra ultérieuement. Juste un exemple :
+
+```{r, message=FALSE}
+library(car)
+scatterplot(eur$X,eur$Y)
+```
+
+
+
+## Coefficients de corrélation
+
+### Définition
+
+#### Relation linéaire/monotone/complexe
+
+
+- il existe une **relation linéaire** entre deux variables quantitatives X et Y si l'on peut prédire leurs valeurs respectives par les fonctions **Y = a1.X + b1** et **X = a2.X = b2**
+
+- il existe une **relation monotone** entre deux variables quantitatives X et Y si l'on peut prédire les valeurs Y en fonction de celle de X far une **fonction Y=f(X)** qui est **strictement croissante** ou **strictement décroissante**.
+
+- il existe une **relation complexe** entre deux variables quantitatives X et Y si l'on peut prédire les valeurs Y en fonction de celle de X par une **fonction Y=f(X)** qui comporte au moins un point minimum ou maximum de changement de pente (**annulation de la dérivée première**)
+
+
+
+```{r, echo=FALSE}
+par(mfrow=c(1,3),mar=c(4,4,2,2))
+X<-c(1,2,3,4,5,6,7,8,9)
+Y1<-c(4,8,12,16,20,24,28,32,36)
+plot(X,Y1, xlim=c(0,10),ylim=c(0,40),main="rel. linéaire",col="red")
+
+Y2<-c(4,5,7,10,14,19,25,32,40)
+plot(X,Y2, xlim=c(0,10),ylim=c(0,40), main="rel. monotone",col="red")
+Y3<-c(40,20,10,5,2.5,5,10,20,40)
+plot(X,Y3, xlim=c(0,10),ylim=c(0,40),main="rel. complexe", col="red")
+
+```
+
+#### Relation positive/négative/nulle
+
+- Une relation linéaire ou monotone est **positive** si à un accroissement de X correspond un accroissement de Y
+
+- Une relation linéaire ou monotone est **négative** si à un accroissement de X correspond une diminution de Y
+
+- une relation est **nulle** si une variation de X n'entraine pas de variation de Y
+
+
+
+```{r, echo=FALSE}
+par(mfrow=c(1,3),mar=c(4,4,2,2))
+X<-c(1,2,3,4,5,6,7,8,9)
+Y1<-c(2,8,10,18,14,24,25,27,33)
+plot(X,Y1, xlim=c(0,10),ylim=c(0,40),main="rel. positive",col="red")
+abline(lm(Y1~X),col="blue")
+Y2<-c(33, 27, 25, 24, 14, 18, 10, 8, 2)
+plot(X,Y2, xlim=c(0,10),ylim=c(0,40), main="rel. négative",col="red")
+abline(lm(Y2~X),col="blue")
+Y3<-c(26,18, 15, 25, 21,18, 24, 28,16)
+plot(X,Y3, xlim=c(0,10),ylim=c(0,40),main="rel. nulle", col="red")
+abline(lm(Y3~X),col="blue")
+
+```
+
+
+#### Relation forte/faible/nulle
+
+- Une relation linéaire  est **forte** si une valeur de X permet de prédire la valeur de Y avec une faible marge d'erreur.
+
+- Une relation linéaire ou monotone est **faible** si une valeur de X permet de prédire la valeur de Y avec une forte marge d'erreur.
+
+- une relation linéaire est **nulle** si une valeur de X ne permet aucunement de prédire la valeur de Y
+
+
+
+```{r, echo=FALSE}
+library(car)
+par(mfrow=c(1,3),mar=c(4,4,2,2))
+X<-runif(n=100)*10
+Y<-3*X+2
+Y1 = Y+runif(n=100, min=-2,max=+2)
+plot(X,Y1,xlim=c(0,10),ylim=c(0,40),main="rel.forte",col="red")
+abline(lm(Y1~X),col="blue")
+Y2 = Y+runif(n=100, min=-10,max=+10)
+plot(X,Y2,xlim=c(0,10),ylim=c(0,40),main="rel.faible",col="red")
+abline(lm(Y2~X),col="blue")
+Y3 = runif(n=100, min=10,max=30)
+plot(X,Y3,xlim=c(0,10),ylim=c(0,40),main="rel.nulle",col="red")
+abline(lm(Y3~X),col="blue")
+```
+
+#### Relation significative/non siginificative
+
+- Une relation linéaire est **significative** si l'effectif permettant de la mettre en évidence est suffisamment grand pour qu'on puisse exclure qu'elle soit l'effet du hasard.
+
+- Une relation linéaire ou monotone est **non significative** si l'effectif permettant de la mettre en évidence n'est pas suffisamment grand pour qu'on puisse exclure qu'elle soit l'effet du hasard.
+
+- On considère traditionnellement qu'une relation est significative s'il y a **moins de 5% de chances** qu'elle soit l'effet du hasard (**p-value < 0.05**).
+
+
+
+```{r, echo=FALSE}
+library(car)
+par(mfrow=c(1,3),mar=c(4,4,2,2))
+X<-runif(n=4)*10
+Y<-3*X+10
+Y1 = Y+runif(n=4, min=-5,max=+5)
+plot(X,Y1,xlim=c(0,10),ylim=c(0,40),main="rel.non signif.",col="red")
+abline(lm(Y1~X),col="blue")
+
+
+X<-runif(n=10)*10
+Y<-3*X+10
+Y2 = Y+runif(n=10, min=-15,max=+15)
+plot(X,Y2,xlim=c(0,10),ylim=c(0,40),main="rel.signif.",col="red")
+abline(lm(Y2~X),col="blue")
+
+X<-runif(n=100)*10
+Y<-3*X+10
+Y3 = Y+runif(n=20, min=-20,max=+20)
+plot(X,Y3,xlim=c(0,10),ylim=c(0,40),main="rel.très signif.",col="red")
+abline(lm(Y3~X),col="blue")
+
+
+```
+
+### La fonction **cor()** 
+
+- La fonction **cor()** permet de mesurer le coefficient de corrélation  de deux variable X et Y.
+- Elle permet de détecter les **relations linéaires** en choisissant le paramètre (par défaut) **method = pearson**  
+- Elle permet de détecter **les relations non linéaires** en choisissant le paramètre **method = spearman** qui mesure l'existence d'une **relation monotone** entre les rangs de X et Y
+
+
+- La syntaxe de la fonction **cor()** est très simple et permet de calculer trois types de corrélation. La méthode par défaut est **pearson** c'est-à-dire le coefficient de corrélation linéaire
+
+```{r}
+cor(eur$X,eur$Y)
+cor(eur$X,eur$Y, method = "spearman")
+cor(eur$X,eur$Y, method = "kendall")
+
+
+```
+
+ **cor()** permet de savoir si la relation est linéaire ou monotone
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2),mar=c(4,4,2,2))
+X<-c(1,2,3,4,5,6,7,8,9)
+Y<-c(4,8,12,16,20,24,28,32,36)
+pears<-cor(X,Y,method = "pearson")
+spear<-cor(X,Y,method = "spearman")
+titre<-paste("Pears= ", round(pears,digits = 2)," / Spear=", round(spear,digits=2))
+plot(X,Y, main = titre, col="red",cex.main=0.9)
+abline(lm(Y~X),col="blue")
+
+X<-c(1,2,3,4,5,6,7,8,9)
+Y<-c(1,2,4,8,16,32,64,128,254)
+pears<-cor(X,Y,method = "pearson")
+spear<-cor(X,Y,method = "spearman")
+titre<-paste("Pears= ", round(pears,digits = 2)," / Spear=", round(spear,digits=2))
+plot(X,Y, main = titre, col="red",cex.main=0.9)
+abline(lm(Y~X),col="blue")
+```
+
+
+**cor()** permet de repérer l'effet d'une valeur exceptionnelle
+
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2),mar=c(4,4,2,2))
+
+X<-c(1,2,3,4,5,6,7,8,50)
+Y<-c(10,9,8,7,6,5,4,3,50)
+pears<-cor(X,Y,method = "pearson")
+spear<-cor(X,Y,method = "spearman")
+titre<-paste("Pears= ", round(pears,digits = 2)," / Spear=", round(spear,digits=2))
+plot(X,Y, main = titre, col="red",cex.main=0.9)
+abline(lm(Y~X),col="blue")
+
+
+rankX<-rank(X)
+rankY<-rank(Y)
+pears<-cor(rankX,rankY,method = "pearson")
+spear<-cor(rankX,rankY,method = "spearman")
+titre<-paste("Pears=", round(pears,digits = 2)," / Spear=", round(spear,digits=2))
+plot(rankX,rankY, main = titre, col="red", cex.main=0.9)
+abline(lm(rankY~rankX),col="blue")
+```
+
+ **cor()** permet de savoir si la relation est positive ou négative
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2),mar=c(4,4,2,2))
+X<-c(1,2,3,4,5,6,7,8,9)
+Y<-c(2,8,10,18,14,24,25,27,33)
+pears<-cor(X,Y,method = "pearson")
+spear<-cor(X,Y,method = "spearman")
+titre<-paste("Pears= ", round(pears,digits = 2)," / Spear=", round(spear,digits=2))
+plot(X,Y, main = titre, col="red",cex.main=0.9)
+abline(lm(Y~X),col="blue")
+
+X<-c(1,2,3,4,5,6,7,8,9)
+Y<-c(33, 27, 25, 24, 14, 18, 10, 8, 2)
+pears<-cor(X,Y,method = "pearson")
+spear<-cor(X,Y,method = "spearman")
+titre<-paste("Pears= ", round(pears,digits = 2)," / Spear=", round(spear,digits=2))
+plot(X,Y, main = titre, col="red",cex.main=0.9)
+abline(lm(Y~X),col="blue")
+```
+
+**cor()** permet de avoir si la relation est forte ou faible
+
+```{r, echo=FALSE}
+
+par(mfrow=c(1,3),mar=c(4,4,2,0))
+
+X<-runif(n=100)*10
+Y<-3*X+2
+Y = Y+runif(n=100, min=-2,max=+2)
+pears<-cor(X,Y,method = "pearson")
+spear<-cor(X,Y,method = "spearman")
+titre<-paste("Pears= ", round(pears,digits = 2)," / Spear=", round(spear,digits=2))
+plot(X,Y, main = titre, col="red",cex.main=0.9)
+abline(lm(Y~X),col="blue")
+
+X<-runif(n=100)*10
+Y<-3*X+2
+Y = Y+runif(n=100, min=-10,max=+10)
+pears<-cor(X,Y,method = "pearson")
+spear<-cor(X,Y,method = "spearman")
+titre<-paste("Pears= ", round(pears,digits = 2)," / Spear=", round(spear,digits=2))
+plot(X,Y, main = titre, col="red",cex.main=0.9)
+abline(lm(Y~X),col="blue")
+
+X<-runif(n=100)*10
+Y<-3*X+2
+Y = Y+runif(n=100, min=-30,max=+30)
+pears<-cor(X,Y,method = "pearson")
+spear<-cor(X,Y,method = "spearman")
+titre<-paste("Pears= ", round(pears,digits = 2)," / Spear=", round(spear,digits=2))
+plot(X,Y, main = titre, col="red",cex.main=0.9)
+abline(lm(Y~X),col="blue")
+```
+
+### La fonction cor.test() 
+
+- la fonction **cor()** permet de savoir si une relation est forte ou faible, positive ou négative, linéaire ou non linéaire. Mais **cor()** ne permet pas de savoir si une relation est significative ou pas.
+- C'est la fonction **cor.test()** qui permet de **tester la significativité d'une relation** en fournissant un **intervalle de confiance du coefficient de corrélation** et une probabilité de rejet de H0 : il n'y a pas de relation appelée en anglais la **p-value**.
+
+- p-value > 0.10 : relation non significative
+- 0.10 > p-value > 0.05 : relation presque significative
+- p-value < 0.05 : relation significative
+- p-value < 0.01 : relation très significative
+
+Même syntaxe que cor() :
+
+```{r}
+cor.test(eur$Y,eur$X)
+
+
+cor.test(eur$Y,eur$X, method="spearman")
+```
+
+
+### En résumé : intensité ou significativité ?
+
+- Le carré du coefficient de corrélation appelé **r-square** ou **r2** permet de mesurer le pouvoir explicatif de X par rapport à Y. Il ne dépend pas du nombre d'observations.
+- le test de significativité ou **p-value** mesure la significativité de la relation c'est-à-dire le fait que la relation entre X et Y ne soit pas l'effet du hasard. Il dépend à la fois du niveau de corrélation et du nombre d'observations.
+
+
+- A gauche : une relation forte mais non significative
+- A droite : une relation faible mais très significative
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2),mar=c(4,4,2,2))
+
+X <- c(1,4,5,7,10)
+Y <-c(29,32,24,12,14)
+t<-cor.test(X,Y)
+titre<-paste("r2 = ",round(100*(cor(X,Y)**2),2), "% / p-value = ",round(t$p.value,4), sep="")
+plot(X,Y,main=titre,cex.main=0.8,col="red")
+abline(lm(Y~X),col="blue")
+
+
+
+
+X<-runif(n=100)*10
+Y<- -3*X+50
+Y = Y+runif(n=100, min=-20,max=+20)
+t<-cor.test(X,Y)
+titre<-paste("r2 = ",round(100*(cor(X,Y)**2),2), "% / p-value = ",round(t$p.value,4), sep="")
+plot(X,Y,main=titre,cex.main=0.8,col="red")
+abline(lm(Y~X),col="blue")
+
+
+
+```
+
+
+
+Analysez le  diagramme suivant : 
+
+```{r, echo=FALSE}
+par(mfrow=c(1,1),mar=c(4,4,3,2))
+X <- eur$X
+Y <- eur$Y
+t<-cor.test(X,Y)
+titre<-paste("r2 = ",round(100*(cor(X,Y)**2),2), "% / p-value = ",round(t$p.value,4), sep="")
+plot(X,Y,main=titre,cex.main=0.8,col="red",sub="pays socialistes",cex.sub=0.7,xlab=fr_nomX,ylab=fr_nomY,cex.lab=0.7,cex.axis=0.7,cex=0)
+
+abline(lm(Y~X),col="blue")
+text(X,Y,eur$PAYS,cex=0.6,col="red")
+
+
+
+```
+
+
+Analysez les deux diagrammes suivants : 
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2),mar=c(4,4,3,2))
+X <- eur_soc$X
+Y <- eur_soc$Y
+t<-cor.test(X,Y)
+titre<-paste("r2 = ",round(100*(cor(X,Y)**2),2), "% / p-value = ",round(t$p.value,4), sep="")
+plot(X,Y,main=titre,cex.main=0.8,col="red",sub="pays socialistes",cex.sub=0.7,xlab=fr_nomX,ylab=fr_nomY,cex.lab=0.7,cex.axis=0.7,cex=0)
+
+abline(lm(Y~X),col="blue")
+text(X,Y,eur_soc$PAYS,cex=0.6,col="red")
+
+
+
+X <- eur_cap$X
+Y <- eur_cap$Y
+t<-cor.test(X,Y)
+titre<-paste("r2 = ",round(100*(cor(X,Y)**2),2), "% / p-value = ",round(t$p.value,4), sep="")
+plot(X,Y,main=titre,cex.main=0.8,col="red", sub = "pays capitalistes",cex.sub=0.7, xlab=fr_nomX,ylab=fr_nomY,cex.lab=0.7,cex.axis=0.7,cex=0)
+abline(lm(Y~X),col="blue")
+text(X,Y,eur_cap$PAYS,cex=0.6,col="red")
+
+
+
+```
+
+## Matrice de corrélation
+
+### Objectif de l'analyse
+
+- Soit un ensemble de variables quantitatives continues **$(X_1...X_i...X_k)$** décrivant les **mêmes individus**.
+
+- On se propose de construire la matrice **$R_{ij}[1...i...k ; 1...j...k]$** indiquant pour chaque paire de variable $ij$ leur **coefficient de corrélation** (linéaire ou de rang)
+
+- Puis de construire la matrice **$p_{ij}[1...i...k ; 1...j...k]$** indiquant pour chaque paire de variable $ij$ la probabilité H0 d'absence de relation, c'est-à-dire le degré de **significativité** de la corrélation. 
+
+### Utilisation des résultats
+
+1. Mettre en évidence des **groupes de variables significativement corrélées entre elles**, que ce soit de façon positive ou négative. 
+
+2. Préparer la réalisation d'une **analyse en composantes principales** qui regroupera les variables corrélées entre elles en facteurs.
+
+3. Identifier des variables non redondantes pour construire un modèle de **régression multiple**.
+
+4. Indentifier des variables fortement corrélées pouvant servir de proxy pour estimer des **valeurs manquantes** dans un tableau
+
+### Visualisation d'une matrice de corrélation
+
+_ Sous la forme de **tableaux** montrant si possible à la fois les coefficients de corrélation et les seuils de significativité.
+
+- Sous la forme de **graphes** montrant de façon visuelle l'intesité, le signe et la significativité des relations.
+
+- Sous la forme de **plans factoriels** résultant d'une analyse en composantes principales.
+
+Chacun de ces objectifs supposant en général l'emploi de packages spécialisés.
+
+### Exemple : création d'un tableau quantitatif
+
+On ne sélectionne que des variables quantitatives et on ajoute les noms des pays en attribut des lignes.
+
+```{r}
+tab<-don[,c("PNB","TMI","ESP","URB","NAT","MOR","FEC")]
+row.names(tab)<-don$PAYS
+head(tab,3)
+```
+
+
+On calcule la corrélation
+
+```{r}
+resul<-cor(tab)
+str(resul)
+```
+
+
+
+On affiche la matrice de corrélation en arrondissant les valeurs
+
+```{r}
+round(resul,3)
+```
+
+### Utilisation du  package psych
+
+La fonction *cor.test()* de Rbase ne permet pas de calculer les corrélations pour toute une matrice. Aussi on charge le package **psych** qui dispose d'une fonction *corr.test()* beaucoup plus puissante qui crée plusieurs matrices de résultats
+
+```{r}
+library(psych)
+results<-psych::corr.test(tab)
+names(results)
+```
+
+
+On retrouve la matrice des coefficiences de corrélation 
+
+```{r}
+round(results$r,3)
+```
+
+
+Mais aussi la matrice des tests de significativité
+
+```{r}
+round(results$p,3)
+```
+
+
+On peut aussi faire une jolie matrice colorée avec des tests de signficativité sous forme d'étoiles
+
+```{r}
+corPlot(tab, stars=TRUE, diag=FALSE)
+```
+
+### Utilisation du package factoMineR
+
+Si on veut voir les axes factoriels d'une analyse en composante principales on utilise la fonction *PCA()* de **FactoMineR**
+
+```{r}
+library(FactoMineR)
+monacp<-PCA(tab, graph=FALSE)
+```
+
+On pourra ensuite visualiser la corrélation des variables avec les principaux axes factoriels et les coordonnées des individus sur ceux-ci.
+
+#### Corrélation des variables avec les axes factoriels
+
+```{r}
+plot.PCA(monacp,choix = "varcor")
+```
+
+#### Coordonnées des individus sur les axes factoriels
+
+
+```{r}
+plot.PCA(monacp,choix = "ind",)
+```
+
+
+
+
+
+
+
+
+<!--chapter:end:04-Corrélation.Rmd-->
+
+# Régression
+
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/chap5_intro.jpg")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo5](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo5.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo5.Rproj` dans Rstudio.
+
+
+```{r , include=TRUE, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.height = 4.6)
+```
+
+
+## Préparation des données
+
+### Chargement du tableau principal
+
+On charge notre bon vieux fichier des pays européens en 1988
+
+```{r }
+don<-read.table(file = "resources/data/europe88/euro1988.csv",
+                sep = ";",
+                header = T)
+don$BLOC<-as.factor(don$BLOC)
+levels(don$BLOC)<-c("Capitaliste","Socialiste")
+head(don)
+```
+
+### Choix des deux variables à analyser
+
+En dehors de BLOC et PAYS, on ne garde que les deux variables PNB et TMI que l'on renomme X et Y avec **colnames()** et que l'on convertit en type numérique général. Il suffira par la suite de modifier le choix des variables X et Y pour faire d'autres analyses. 
+
+```{r}
+eur<-don[,c("PAYS","BLOC","PNB","TMI")]
+colnames(eur)<-c("PAYS","BLOC","X","Y")
+eur$X<-as.numeric(eur$X)
+eur$Y<-as.numeric(eur$Y)
+head(eur)
+```
+
+
+On prépare les titres
+
+```{r}
+# Pour la version française
+titre <- "Les pays européens en 1988"
+nomX <- "Produit National brut ($/hab)"
+nomY <- "Taux de mortalité infantile en p. 1000"
+auteur <- "Claude Grasland, Université Paris Diderot, 2020"
+```
+
+
+Comme on prévoit qu'il y aura des différences entre pays socialistes et capitalistes, on crée deux sous-tableaux
+
+```{r}
+eur_soc<-eur[eur$BLOC=="Socialiste",]
+eur_cap<-eur[eur$BLOC=="Capitaliste",]
+```
+
+
+
+
+## Forme de la relation
+
+
+### Vérification de la normalité de X et Y
+
+La régression linéaire met en relation deux variables quantitatives X et Y dont on suppose que la distribution est **normale (gaussienne)** , c'est-à-dire unimodale et symérique.
+
+```{r, echo = FALSE}
+Z<-rnorm(100000)
+hist(Z, nclass=50, main="Loi normale (moyenne = 0 et écart-type = 1) ",border ="gray80",col="lightyellow",ylab=NULL,xlab=NULL,probability = TRUE,
+     cex.axis=0.9,ylim = c(0,0.55), cex.main=0.8,cex.lab=0.8,xlim=c(-3,3))
+lines(density(Z,bw=0.2),col="red",lwd=1)
+abline(v=c(0),col="blue",lty=1,lwd=1)
+abline(v=c(-1,1),col="blue",lty=2,lwd=1)
+abline(v=c(-2,2),col="blue",lty=1,lwd=1)
+lines(c(-1,1),c(0.42,0.42))
+text(0,0.45,"67%",cex=0.7)
+lines(c(-2,2),c(0.5,0.5))
+text(0,0.52,"95%",cex=0.7)
+```
+
+
+
+On peut tester la normalité des disributions par inspection visuelle à l'aide de **hist()**
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2),mar=c(4,2,2,2))
+hist(eur$X, col="lightyellow",main=nomX,cex.main=0.7,breaks=10,probability = TRUE, xlab=NULL,cex.axis=0.5)
+lines(density(eur$X,bw=sd(eur$X)/3),col="red",lwd=1)
+hist(eur$Y, col="lightyellow",main=nomY,cex.main=0.7, breaks=10, probability=TRUE, xlab=NULL, cex.axis=0.5)
+lines(density(eur$Y,bw=sd(eur$Y)/3),col="red",lwd=1)
+```
+
+
+
+Les fonctions **qqnorm()** et **qqline()** sont plus précises ...
+
+```{r}
+qqnorm(eur$X, col="blue",ylab=nomX)
+qqline(eur$X,col="red")
+```
+
+
+
+
+Les fonctions **qqnorm()** et **qqline()** sont plus précises ...
+
+```{r}
+qqnorm(eur$Y, col="blue",ylab=nomY)
+qqline(eur$Y,col="red")
+```
+
+
+
+
+Mais la solution la plus précise est le **test de Shapiro** qui pose l'hypothèse H0 : la distribution est normale.
+
+```{r}
+shapiro.test(eur$X)
+shapiro.test(eur$Y)
+```
+
+### Visualisation de la forme de la relation
+
+On peut faire un simple plot(X,Y). Mais on peut aussi créer pour cela une **fonction personalisée** adapté à ses préférences
+
+```{r}
+monplot <- function (varX , varY,  varN )
+{ 
+  plot(varX,varY,
+     main = titre,      # titre
+     cex.main = 1,      # police du titre
+     cex = 0.6,         # taille des symboles
+     pch = 19,          # cercles pleins
+     col = "red")      # couleur des symboles
+  text(varX,varY,varN,cex=0.5,pos=3) # nom des élément
+  abline(v=mean(varX),lty=2,lwd=1,col="blue") # moyenne X
+  abline(h=mean(varY),lty=2,lwd=1,col="blue") # moyenne Y   
+  }
+```
+
+
+
+Je peux désormais utiliser ma fonction **monplot()** !
+
+```{r}
+monplot(varX = eur$X,varY = eur$Y, varN = eur$PAYS)
+```
+
+
+
+Je peux décider de ne pas afficher le label des points.
+
+```{r}
+monplot(varX = eur$X,varY = eur$Y, varN = NULL)
+```
+
+### Analyse de la corrélation 
+
+Je commence par celuler le coefficient de corrélation linéaire (r) et le pouvoir explicatif de X par rapport à Y (r2)
+
+```{r}
+cor(eur$X,eur$Y)       # coefficient de corrélation (r)
+100*cor(eur$X,eur$Y)**2    # pouvoir explicatif (r2)
+```
+
+
+
+
+Puis, je teste la significativité de la corrélation linéaire ...
+
+```{r}
+cor.test(eur$X,eur$Y)  # test de significativité (p-value)
+```
+
+
+
+... et je la compare à celle  du coefficient de corrélation de rang de Spearman
+
+```{r}
+cor.test(eur$X,eur$Y, method="spearman")  # test de significativité (p-value)
+```
+
+
+
+On peut conclure des analyses précédentes que :
+
+- il existe une relation **significative** (p-value < 0.05)
+- cette relation est **positive** (r > 0 )
+- cette relation a un **pouvoir explicatif moyen** (r2 = 45%)
+
+**Mais ...**
+
+- la relation est **monotone mais non linéaire** car le coefficient de Spearman (-0.90) est beaucoup plus fort que le coefficient de Pearson (-0.68) et également plus significatif 
+
+
+## Ajustement du modèle
+
+### Hypothèses statistiques
+
+**Conditions a priori**
+
+1. X et Y sont deux variables normales (gaussienne)
+2. il existe une corrélation significative entre X et Y (p< 0.05)
+3. X explique une part suffisamment forte de Y (r2 > 20% ) 
+4. Le nuage de point affiche une forme linéaire
+5. les points sont répartis de façon régulière le long du nuage de points 
+6. Il n'y a pas de valeurs exceptionnelles susceptibles de perturber le calcul.
+
+On charge le package **car** (companion to applied regession).
+```{r}
+library(car)
+```
+
+
+
+**Méthode des moindres carrés ordinaire (MCO)**
+
+- La droite $y_i = a.x_i + b + \epsilon_i$ qui minimise la somme des carrés des écarts entre les valeurs observées $y_i$ et les valeurs estimées $\hat{y_i}$ a pour équation :
+
+- $COV(X,Y) = \sum_{i=1}^k \sum_{j=1}^k (x_{i}-\bar{x})^2.(y_{i}-\bar{y})^2$
+- $a = COV(X,Y) / (\sigma_X)^2$
+- $b = \bar{y} - a.\bar{x}$
+
+
+
+**Analyse de la variance**
+
+- La **somme des carré des écarts totale** ($SCE_{tot}$) correspond à la variance de la variable à expliquer :
+$SCE_{tot} = \sum_{i=1}^k (y_{i}-\bar{y})^2$
+
+- La **somme des carré des écarts résiduels** ($SCE_{err}$) correspond à la somme des carrés des différences entre valeurs observées et estimées
+$SCE_{error} = \sum_{i=1}^k (y_{i}-\hat{y})^2$
+
+- Le **pouvoir explicatif** d'un modèle de régression correspond à la part de la variance de Y expliquée par X. 
+
+- $Var. expliquée = (SCE_{tot}-SCE_{res}) / SCE_{tot} = r(X,Y)^{2}$
+
+
+**Vérifications a posteriori**
+
+Un modèle de régression n'est valide que si les résidus de ce modèle $\epsilon_i = (y_i - \hat{y}_i)$ remplissent les conditions suivantes :
+
+1. **Normalité** de la distribution des résidus
+2. Absence d'**autocorrélation** des résidus
+3. **Homogénéité** de la variance des résidus
+4. Absence de valeur à fort **effet de levier**
+
+Si ces quatre conditions ne sont pas remplies, les estimations de Y en fonction de X seront entâchées d'erreur et leur intervalle de confiance ne sera pas valable.
+
+### La fonction lm()
+
+La fonction **lm()** ou lm est l'abbréviation de **linear model** permet d'effectuer la plupart des modèles de régression linéaire basés sur la méthode des moindres carrés ordinaire. Sa syntaxe est a priori très simple et renvoie les coefficients b et a du modèle de régression.
+
+```{r}
+lm(eur$Y~eur$X)
+```
+
+
+
+Mais en réalité lm() crée **une liste de résultats** que l'on a intérêt à stocker pour en examiner les composantes une à une. 
+
+```{r}
+monmodel<-lm(eur$Y~eur$X)
+str(monmodel)
+```
+
+
+
+Un résumé des résultats principaux est fourni avec **summary()** appliqué à l'objet créé par lm().
+
+```{r, eval=FALSE}
+summary(monmodel)
+```
+
+On obtient ainsi :
+
+- l'équation de la droite Y = a.X+b
+- la significativité et l'intervalle de confiance de a et b
+- le pouvoir explicatif du modèle $r(X,Y)^2$
+
+
+
+
+```{r, echo=FALSE}
+summary(monmodel)
+```
+
+
+On peut également analyser plus en détail la variance en appliquant **anova()** à l'objet créé par lm() ce qui monte la quantité de variance expliquée par X et la quantité de variance résiduelle. Le test de Fisher (Pr>F) détermine si le modèle est significatif et renvoie la même valeur que la p-value du coeff. de corrélation. 
+
+```{r}
+anova(monmodel)
+```
+
+
+
+On peut extraire de l'objet créé par lm() les **valeurs estimées** de Y et les **résidus** c'est-à-dire les erreurs d'estimation. 
+
+```{r}
+eur$Y_estim<-monmodel$fitted.values
+eur$Y_resid<-monmodel$residuals
+head(eur)
+```
+
+
+On peut tracer la droite de régression avec **abline()**
+
+```{r}
+monplot(eur$X,eur$Y,eur$PAYS)
+abline(monmodel, col="blue",lwd=2)
+```
+
+
+On peut enfin analyser a posteriori la qualité de la régression avec **plot()**.
+
+```{r}
+par(mfrow=c(2,2))
+plot(monmodel,labels.id = eur$PAYS)
+```
+
+## Diagnostics du modèle
+
+### Diagnostic 1 : Indépendance des résidus ?
+
+L'objectif est de savoir si les résidus se répartissent régulièrement de part et d'autre de la droite de régression tout au long de celle-ci. Si c'est bien le cas le graphique residuals Vs Fitted généré par **plot(monmodel,1)** devrait donner une droite horizontale :
+
+
+
+```{r}
+plot(monmodel,1,labels.id = eur$PAYS)
+```
+
+
+On peut tester statistiquement l'indépendance des résidus à l'aide du **test de Durbin-Watson** qui mesure si deux valeurs successives ont des résidus proches. L'indépendance des résidus est rejetée si p-value < 0.05
+
+```{r}
+durbinWatsonTest(monmodel)
+```
+
+Ici on trouve p-value > 0.05 donc les résidus sont indépendants. 
+
+
+
+### Diagnostic 2 : Normalité des résidus ?
+
+L'objectif est de savoir si les résidus ont une distribution normale Si c'est bien le cas le graphique généré par **plot(monmodel,2)** devrait donner une droite oblique :
+
+
+```{r}
+plot(monmodel,2,labels.id = eur$PAYS)
+```
+
+On peut tester statistiquement la normalité des résidus à l'aide du **test de Shapiro-Wilk**. Les résidus sont normaux si p-value > 0.05
+
+```{r}
+shapiro.test(monmodel$residuals)
+```
+
+Ici on trouve une p-value très clairement inférieure à 0.05 donc **la distribution des résidus n'est pas gaussienne**. 
+
+
+
+### Diagnostic 3 : Homogénéité des résidus ?
+
+L'objectif est de savoir si la variance des résidus est constante, c'est-à-dire si il s'écarte environ de la même distance tout au long de la droite . Si c'est bien le cas le graphique généré par **plot(monmodel,3)** devrait donner une droite horizontale
+
+```{r}
+plot(monmodel,3,labels.id = eur$PAYS)
+```
+
+
+On peut tester statistiquement l'homogénéité des résidus à l'aide du **test de Breush-Pagan**. L’hypothèse d’homogénéité est rejetée si la p-value est inférieure à 0.05.
+
+
+```{r}
+ncvTest(monmodel)
+```
+
+Ici, la p-value est inférieure à 0.05 donc **les résidus ne sont pas homogènes**. 
+
+
+
+### Diagnostic 4 : Absence de valeur exceptionnelles ?
+
+L'objectif est de savoir s'il existe des valeurs qui exercent une influence exceptionnelle sur les résultats de la régression. On peut reprérer ces valeurs de plusieurs manières, notamment à l'aide de la distance de Cook générée par **plot(monmodel,4)**.O n repère le cas particulier de l'Albanie :
+
+```{r}
+plot(monmodel,4,labels.id = eur$PAYS)
+```
+
+Le test statistique de **Bonferroni** permet de déterminer s'il existe des valeurs exceptionnelles avec une p-value < 0.05.
+
+```{r}
+outlierTest(monmodel, labels = eur$PAYS)
+```
+
+Ici, on doit conclure qu'**il existe au moins une valeur exceptionnelle**, l'Albanie, susceptible de fausser les conclusions du modèle de régression. 
+
+## Améliorations du modèle
+
+### Modèle linéaire (R2 = 46%)
+
+```{r}
+scatterplot(eur$X,eur$Y, ellipse = T,smooth = F,pch=19)
+text(eur$X,eur$Y, eur$PAYS, col="red",pos=2,cex=0.6)
+```
+
+### Modèle linéaire sans l'Albanie (R2 = 53%)
+
+```{r}
+eur2<-eur[eur$PAYS !="ALB",]
+scatterplot(eur2$X,eur2$Y, ellipse = T,smooth = F,pch=19)
+text(eur2$X,eur2$Y, eur2$PAYS, col="red",pos=2,cex=0.6)
+```
+
+
+
+### Modèle exponentiel (R2 = 63%)
+
+```{r}
+scatterplot(eur$X,log(eur$Y), ellipse = T,smooth = F,  pch=19)
+text(eur$X,log(eur$Y), eur$PAYS, col="red",pos=2,cex=0.6)
+```
+
+
+### Modèle puissance (R2 = 83%)
+
+```{r}
+scatterplot(log(eur$X),log(eur$Y), ellipse = T,smooth = F,  pch=19)
+text(log(eur$X),log(eur$Y), eur$PAYS, col="red",pos=2,cex=0.6)
+```
+
+
+<!--chapter:end:05-Régression.Rmd-->
+
+# Analyse de variance
+
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/chap6_intro.jpg")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo6](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo6.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo6.Rproj` dans Rstudio.
+
+
+```{r , include=TRUE, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.height = 4.6)
+```
+
+
+
+## Préparation des données
+
+### Chargement du fichier
+
+On charge un fichier statistique appelé *tips.csv* où les séparateurs sont des points-virgules et les décimales des points.
+
+```{r }
+don<-read.table(file = "resources/data/tips/tips.csv",
+                sep = ";",
+                header = T)
+head(don)
+```
+
+### Contenu du fichier
+
+Ce dossier contient les pourboires (*tips* en anglais, d'où le nom du fichier) d'un serveur dans un restaurant américain aux débuts des années 1990. Le restaurant était dans un centre commercial. Il y avait une zone fumeurs et une zone non fumeurs.Les données indiquent le prix du repas, le pourboire, le sexe de la personne qui a payé et donné le pourboire, si c'était dans la zone fumeurs ou non, le jour où le repas a été pris, si c'était en journée ou en soirée et enfin, le nombre de convives. 
+
+**Sources** : Ces données sont disponibles dans le package R nommé rggobi et sont décrites dans l'ouvrage de Cook et Swayne intitulé *Interactive and Dynamic Graphics for Data Analysi*s. Elles font partie des données d'exemple du livre de Bryant et Smith dont la première édition est parue en 1995 dont le titre est *Practical Data Analysis: Case Studies in Business Statistics*. 
+
+### Dictionaire des variables
+
+- **IDEN**    : identifiant du repas
+- **TOTBILL** : prix du repas (en dollars des années 1990)
+- **TIP** : pourboire (en dollars des années 1990)
+- **SEX** : sexe de la personne qui a payé (0 = Homme, 1 = Femme)
+- **SMOKER** : la personne qui a payé est non-fumeur (O) ou fumeur (1)
+- **DAY** : jour de la semaine (1 = dimanche, 2 = lundi, 3 = mardi, ...)
+- **TIME** : repas pris en journée (0) ou le soir (1)
+- **SIZE** : nombre de convives 
+
+### Recodage des variables 
+
+Le type de plusieurs variables est incorrect. On transforme les codes numériques en facteur et on recode les niveaux en français : 
+
+```{r}
+don$IDEN<-as.character(don$IDEN)
+don$SEX<-as.factor(don$SEX)
+levels(don$SEX)<-c("Homme","Femme")
+don$SMOKER<-as.factor(don$SMOKER)
+levels(don$SMOKER)<-c("Non fumeur", "Fumeur")
+don$DAY<-as.factor(don$DAY)
+levels(don$DAY)<-c("Mercredi","Jeudi","Vendredi","Samedi")
+don$TIME<-as.factor(don$TIME)
+levels(don$TIME)<-c("Journée","Soirée")
+```
+
+
+### Ajout d'une nouvelle variable
+
+On crée la variable PCT qui est le rapport entre le pourboire (TIP) et le prix total (TOTBILL) du repas exprimé en pourcentage.
+
+```{r}
+don$PCT<-100*don$TIP/don$TOTBILL
+```
+
+
+### Résumé de l'ensemble du tableau
+
+```{r}
+summary(don)
+```
+
+## Rappels sur la régression
+
+
+### La distribution de PCT est-elle normale ?
+
+```{r}
+hist(don$PCT, breaks = 10,col="lightyellow",probability = TRUE)
+lines(density(don$PCT,bw=3),col="red",lwd=1)
+```
+
+La distribution semble normale . Mais est-ce l'avis du test de Shapiro ?
+
+```{r}
+shapiro.test(don$PCT)
+```
+
+
+Que nous apprend la boxplot ?
+
+```{r}
+boxplot(don$PCT, col="lightyellow",horizontal = T)
+```
+
+
+La distribution devient presque parfaitement gaussienne si on retire les 4 valeurs exceptionnelles !
+
+```{r}
+don2<-don[don$PCT<30,]
+shapiro.test(don2$PCT)
+```
+
+
+```{r}
+hist(don2$PCT, breaks = 10,col="lightyellow",probability = TRUE)
+lines(density(don2$PCT,bw=3),col="red",lwd=1)
+```
+
+
+
+### Y-a-t-il une relation entre le prix du repas et le pourboire ?
+
+On fait le graphique ...
+
+```{r}
+plot(don2$TOTBILL,don2$TIP)
+
+```
+
+Puis on teste le coefficient de Pearson et celui de Sperman
+
+```{r}
+cor.test(don2$TIP,don2$TOTBILL)
+
+cor.test(don2$TIP,don2$TOTBILL, method="spearman")
+```
+
+
+### Modèle de régression
+
+On calcule le modèle de régression
+
+```{r}
+mareg<-lm(don2$TIP~don2$TOTBILL)
+```
+
+
+```{r,fig.height=4}
+plot(don2$TOTBILL,don2$TIP, xlab="Repas ($)",ylab = "Pourboire ($)",pch=19,cex=0.5)
+abline(mareg,col="red",lwd=1)
+```
+
+
+
+## Test d'égalité des moyennes
+
+### Hypothèses
+
+On considère une variable **Y quantitative continue** définie sur une population de réféence P  et une variable **X qualitative à deux modalités** divisant P en deux sous population P1 et P2. 
+
+Soit par exemple la variable Y = PCT et la variable X = SEX. On peut se demander si les femmes sont plus généreuses que les hommes, les hommes sont plus généreux que les femmes, les hommes sont différents des femmes, etc...
+
+
+```{r}
+
+Y<-don2$PCT
+nomY <-"Pourboire relatif (%)"
+
+X<-don2$SEX
+nomX <- "Sexe du client"
+
+#X<-don2$SMOKER
+#nomX<- "Tabagisme"
+
+#X<-don2$TIME
+#nomX<- "Moment de la journée"
+
+
+```
+
+### Visualisations
+
+Le plus simple est d'utiliser  **boxplot()** en version de base ...
+
+```{r}
+
+boxplot(Y~X)
+```
+
+
+
+... ou améliorée
+
+```{r}
+
+boxplot(Y~X,horizontal=T, xlab = nomY, ylab=nomX, col="gray80")
+```
+
+
+
+On peut aussi utiliser le package **beanplot()** en version simple ...
+
+```{r}
+library(beanplot)
+beanplot(Y~X)
+```
+
+... ou améliorée : 
+
+
+```{r}
+library(beanplot)
+beanplot(Y~X,horizontal=T, xlab = nomY, ylab=nomX,col = "gray80")
+```
+
+
+### Paramètres principaux 
+
+On détermine la moyenne et l'écart-type de chaque échantillon avec la fonction tapply() couplée avec les fonctions mean(), sd() ou summary()
+
+
+```{r}
+tapply(Y,X, mean)
+tapply(Y,X,sd)
+tapply(Y,X, summary)
+```
+
+
+### Test d'égalité des moyennes 
+
+Si la distribution est gaussienne on utilise le test de Student :
+
+```{r}
+t.test(Y~X)
+```
+
+
+Si ce n'est pas le cas et s'il y a des valeurs exceptionnelles on préfèrera le test de Wilcoxon basé sur les rangs des valeurs (comme le coefficient de corrélation de Spearman)
+
+```{r}
+wilcox.test(Y~X)
+```
+
+Lorsque les deux tests divergent dans leur conclusions, il y a certainement un problème de violation de l'hypothèse gaussienne. Dans ce cas, il faut sans doute transformer Y ou retirer des valeurs exceptionnelles (Cf.cours sur la corrélation et la régression)
+
+
+## Analyse de variance 
+
+### Hypothèses
+
+On considère une variable **Y quantitative continue** définie sur une population de réféence P  et une variable **X qualitative à k  modalités** divisant P en k sous population P1...Pk. 
+
+Soit par exemple la variable Y = PCT et la variable X = DAY. On peut se demander si la générosité des pourboires varie en fonction des jours de la semaine (mercredi, jeudi, vendredi ou samedi). On fera toutefois attention au fait que l'échantillon n'est pas très équilibré
+
+```{r}
+table(don2$DAY)
+```
+
+### Calcul des paramètres principaux 
+
+On va calculer les paramètres principaux de chacune des quatre sous population à l'aide de **la superfonction tapply()** dont la syntaxe est la suivante
+
+tapply(*variable à analyser, variable de partition  , function*)
+
+La fonction **tapply()** s'applique sur les tableaux (*data.frame*). Il y a des fonctions équvalentes pour les listes, les matrices, etc...
+
+```{r}
+moy<-tapply(X = don2$PCT, INDEX = don2$DAY, FUN = mean)
+moy
+ect<-tapply(don2$PCT, don2$DAY, sd)
+ect
+100*ect/moy
+```
+
+
+```{r}
+tapply(don2$PCT, don2$DAY, summary)
+```
+
+
+### Visualisation
+
+On utilise comme précédemment boxplot() : 
+
+
+```{r}
+boxplot(don2$PCT~don2$DAY, col="gray80")
+```
+
+
+
+Ou bien beanplot() : 
+
+```{r}
+library(beanplot)
+beanplot(don2$PCT~don2$DAY,col = "gray80")
+```
+
+
+### Modélisation simple
+
+La solution la plus simple est d'utiliser la fonction **lm()** que l'on a déjà vu pour la régression.
+
+```{r}
+monmodel<-lm(don2$PCT~don2$DAY)
+summary(monmodel)
+```
+
+
+On peut ensuite appliquer une analyse de variance avec **anova()**  sur le modèle pour mesurer la variance totale et la variance résiduelle ainsi que la significativité de la relation. 
+
+```{r}
+anova(monmodel)
+```
+
+
+Et on peut effectuer quelques diagnostics sur les résidus : 
+
+```{r}
+par(mfrow = c(2,2))
+plot(monmodel,c(1,2,3,4))
+```
+
+
+
+
+### Modélisation avancée
+
+D'un point de vue statistique, l'analyse de variance à un facteur fait appel à des modèles et des hhypothèses plus sophistiqués que le modèle de base présenté ici et comporte de nombreux tests. On se reportera donc ave profit aux trois cours en lignes de Claire Della Vedova pour une approche plus poussée
+
+https://statistique-et-logiciel-r.com/anova-a-un-facteur-partie-1/
+
+https://statistique-et-logiciel-r.com/anova-a-un-facteur-partie-2-la-pratique/
+
+https://statistique-et-logiciel-r.com/anova-a-un-facteur-quand-les-hypotheses-ne-sont-pas-satisfaites/
+
+
+
+## Annexe : les variables hybrides
+
+
+Le nombre de convives (SIZE) n'est ni une variable quantitative continue, ni une variable qualitative de type catégorielle. On peut donc l'appréhender de deux points de vue différents sur le plan statistique
+
+- variable **quantitative discrète** : ce qui permet d'utiliser un modèle de régression linéaire.
+
+- variable **qualitative ordinale** : ce qui permet d'utiliser un modèle d'analyse de variance.
+
+### SIZE = quantitative discrète
+
+```{r}
+hist(don$SIZE, breaks=6, col="gray80")
+```
+
+
+
+```{r}
+modreg<-lm(don2$PCT~don2$SIZE)
+summary(modreg)
+```
+
+
+```{r}
+plot(don2$SIZE,don2$PCT, col="blue", pch=19, cex=0.7)
+abline(modreg, col="red")
+```
+
+### SIZE = qualitative ordinale
+
+On recode les catégories trop rares ...
+
+```{r}
+don2$SIZE2<-as.factor(don2$SIZE)
+levels(don2$SIZE2)<-c("1-2","1-2","3+","3+","3+","3+")
+summary(don2$SIZE2)
+plot(don2$SIZE2)
+```
+
+
+
+```{r}
+tapply(don2$PCT, don2$SIZE2, mean)
+tapply(don2$PCT, don2$SIZE2, sd)
+```
+
+
+
+```{r}
+beanplot(don2$PCT~don2$SIZE2)
+
+```
+
+
+
+```{r}
+modvar<-lm(don2$PCT~don2$SIZE2)
+summary(modvar)
+```
+
+
+
+
+
+<!--chapter:end:06-Anova.Rmd-->
+
+# Analyse d'enquêtes
+
+
+```{r, echo = FALSE}
+library(knitr)
+library(questionr)
+knitr::include_graphics("resources/figures/chap7_intro.gif")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo7](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo7.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo6.Rproj` dans Rstudio.
+
+
+
+
+
+## Introduction
+
+On propose ici une démarche simplifiée de l'analyse d'enquête utilisant les fonctions R-base et quelques fonctions supplémentaires issues du package **questionR** qui permettent de simplifier l'écriture des programmes. Les explications détaillées se trouvent dans le très beau site web analyse-R auquel ont notamment contribué Julien Barnier et Joseph Larmarange. 
+
+
+https://larmarange.github.io/analyse-R/
+
+ce programme suffit pour des analyses simples de questionnaires. Mais pour des analyses plus avancées, il faudra utiliser des packages plus avancés comme **survey**.
+
+##  Préparation des données
+
+### Importation du fichier au format .RDS
+
+
+```{r}
+don<-readRDS("resources/data/pew/Pew_2007_2017.Rdata")
+str(don)
+```
+
+###  (simplifiée) des variables
+
+Les données sont issues de deux vagues de la *Global attitude Survey* réalisée par le Pew Research Center en 2007 et 2017. Nous avons conservé uniquement des variables communes aux deux enquêtes et posées de façon identique.
+
+- survey      : date d'enquête (2007 ou 2017)
+- country     : lieu d'enquête (pays présents aux deux dates)
+- sex         : sexe de l'individu
+- age         : âge de l'individu   
+- today       : état d'esprit du jour (typique, très bon, très mauvais)
+- use_internet: usage d'internet 
+- opi_USA     : opinion sur les USA
+- opi_CHN     : opinion sur la Chine
+- opi_RUS     : opinion sur la Russie
+- weight      : poids de l'individu pour les redressements
+
+
+
+
+### Résumé des variables (tri à plat)
+
+```{r}
+summary(don)
+```
+
+### Tailles des échantillons par pays et par date
+
+On examine la taille des échantillons collectés dans les différents pays
+
+```{r}
+table(don$country,don$survey)
+```
+
+
+### Sélection d'un échantillon
+
+On décide par exemple d'analyser l'échantillon des réponses françaises en 2017 : 
+
+```{r}
+fra17<-don[don$country =="France" & don$survey=="Spring2017",]
+source <- "Source : Pew Research Center, Global Attitude Survey, 2017, France"
+summary(fra17)
+```
+
+### Recodage des modalités
+
+Si l'on souhaite rendre un rapport en français, on va recoder les modalités des variables qui nous intéressent et en profiter pour déclarer manquantes les valeurs correspondant à des non-réponses ou des refus de répondre.
+
+```{r}
+
+levels(fra17$sex)<-c("Homme","Femme")
+levels(fra17$today)<-c("Typique","Très Bon","Très Mauvais",NA,NA)
+levels(fra17$use_internet)<-c("Oui","Non",NA,NA)
+levels(fra17$opi_USA)<-c("Trés Fav.","Fav.","Défav.","Très Déf.",NA,NA)
+levels(fra17$opi_RUS)<-c("Trés Fav.","Fav.","Défav.","Très Déf.",NA,NA)
+levels(fra17$opi_CHN)<-c("Trés Fav.","Fav.","Défav.","Très Déf.",NA,NA)
+
+```
+
+### Découpage de variables quantitatives en classes
+
+
+On peut transformer la variable quantitative âge en variable qualitative (factor) à l'aide de la fonction *cut()*. La question va évidemment être de décider : 
+
+- combien on fait de classes ?
+- selon quels seuils ?
+- avec quels noms ? 
+
+On peut décider de créer cinq classesd'âge  à l'aide des quintiles de la distribution :
+
+```{r}
+fra17$age5<-cut(fra17$age, breaks = quantile(fra17$age,c(0,0.2,0.4,0.6,0.8, 1)), include.lowest = T)
+levels(fra17$age5) <-c("18-36 ans","37-49 ans","50-59 ans","60-68 ans","69-94-ans")
+```
+
+Mais on peut aussi décider qu'on veut travailler sur les générations en choisissant les dates de 1949, 1969 et 1989
+
+```{r}
+fra17$gen<-2017-fra17$age
+fra17$gen4<-cut(fra17$gen, breaks=c(min(fra17$gen), 1949, 1969, 1989, max(fra17$gen)), include.lowest = T)
+levels(fra17$gen4)<-c(" 1950< ","1950-69","1970-89","> 1990")
+```
+
+
+
+### Sélection
+
+On ne garde que les variable qui nous intéressent pour l'analyse. 
+
+```{r}
+sel<-fra17[,c("sex","age5","gen4","opi_USA","weight")]
+summary(sel)
+```
+
+
+
+
+## Opinion USA
+
+
+### la fonction table()
+
+Le dénombrement des modalités d'une variable se fait généralement avec la fonction `table()` qui permet de croiser une ou plusieurs variables. Ci-dessous on donne des exemples de croisement à une, deux ou trois variables
+
+```{r}
+t1<-table(sel$opi_USA)
+kable(t1)
+t2<-table(sel$opi_USA,sel$sex)
+kable(t2)
+t3<-table(sel$opi_USA,sel$sex,sel$gen4)
+kable(t3)
+```
+
+
+### Visualisation avec plot ou barplot
+
+Les objets de type table à une ou deux dimensions s'affichent facilement avec barplot()
+
+
+```{r}
+barplot(t1, main="Opinion sur les USA")
+barplot(t2, main = "Opinion sur les USA et Sexe")
+```
+
+
+### Recodage
+
+On peut regrouper des modalités entre elle en leur donnant le même nom et en éliminer d'autres en leur donnant la modalité NA. 
+
+```{r}
+sel$opi_USA2<-sel$opi_USA
+levels(sel$opi_USA2)
+levels(sel$opi_USA2)<-c("Favorable","Favorable","Défavorable","Défavorable",NA,NA)
+
+t<-table(sel$opi_USA2)
+t
+prop.table(t)
+barplot(100*t/sum(t))
+```
+
+
+A ce stade, on a certes établi le fait qu'il y a une proportion plus grande d'opinion défavorables (56%) que favorables (44%) mais il faut établir un intervalle de confiance pour savoir si cela est simplement dû au biais d'écdhantillonage.
+
+### Calcul de l'intervalle de confiance
+
+On va conduire un test pour trancher entre trois possibilités :
+
+- opinion majoritairement favorable aux USA
+- opinion majoritairement défavorable aux USA
+- opinion partagée sans majorité claire
+
+On se fixe un intervalle de confiance de 95% (risque d'erreur de 5%) 
+
+
+On se reportera pour plus de détails à :
+
+https://larmarange.github.io/analyse-R/intervalles-de-confiance.html
+
+```{r}
+prop.test(t)
+```
+
+Il semble donc que l'on puisse conclure que **les français sont majoritairement défavorables aux USA** puisque la proportion d'opinion favorbales est de 44% avec un intervalle de confiance compris entre 40.9 et 47.3 d'opinion favorable (pour un risque d'erreur p<0.05)
+
+### Prise en compte de la variable de redressement.
+
+On a toutefois oublié de tenir compte de la variable de redressement (*poids*) qui tient compte du fit que l'échantillonage obtenu comportait des sur et sous-représentations de certaines cétégories de population. Du coup, il faut réécrire l'ensemble du programme en utilisant l'instruction **wtd.table** du package **questionr**.
+
+```{r}
+t<-wtd.table(sel$opi_USA2, weights=sel$weight)
+t
+prop.table(t)
+prop.test(t)
+```
+
+On voit que la proportion d'opinion favorable est plus élevée après redressement (47.6%) ce qui du coup modifie l'intervalle de confiance (44.4% à 50.7%) et ne permet plus d'exclure l'hypothèse que l'opinion favorable soit en fait majoritaire. On concluera donc que **L'opinion des français sur les USA en 2017 est partagée**. 
+
+
+
+##  Opinion USA / Sexe
+
+On choisit d'analyser la relation entre l'avis sur les USA  et le sexe et on pose H0 : il n'y a pas de relation entre les deux variables. 
+
+
+### tableau de contingence
+
+On commence par recoder les deux variables puis par créer le tableau de contingence pondéré par la variable de pondération. On l'affiche en ajoutant les sommes en ligne et en colonnes avec *addmargins()*
+
+```{r}
+levels(sel$sex) <- c("Homme","Femme")
+tabcont<-wtd.table(sel$sex,sel$opi_USA2, weights = sel$weight)
+tabcont
+addmargins(tabcont)
+```
+
+
+
+### Pourcentages
+
+
+On peut calculer trois tableaux de pourcentage différents à l'aide des fonctions **lprop**, **cprop** et **prop** du package *questionr*.  On se contentera d'afficher le tableau des % en lignes pusique c'est celui qui donne la répartition des avis défavorables eyt favorables pour chaque sexe. 
+
+```{r}
+lprop(tabcont)
+```
+- Commentaire :  On constate que les femmes sont a priori moins favorables aux USA (44.6%)  que les hommes (50.7%) mais il est difficile d'affirmer à ce stade que la relation est significative.
+
+
+
+
+
+### Première visualisation
+
+Onpeut visualiser notre table avec plot()
+
+
+```{r}
+plot(tabcont, col=c("lightyellow","lightblue"), 
+ #    main=titre, 
+     sub=source, 
+     )
+```
+
+### test du chi-2
+
+On réalise le test du chi-2 avec la fonction **chisq.test()** qui crée un objet complexe qui rappelle celui qui est créé par **lm()** pour la régression.
+
+```{r}
+toto<-chisq.test(tabcont)
+toto
+```
+Ici, la relation est presque significative (p = 0.07). On ne peut pas rejeter H0 avec un risque d'erreur inférerieur à 5% mais on pourrait le faire pour un risque d'erreur de 10%. 
+
+### Analyse des résidus
+
+Lorsque la relation est significative, l'analyse des résidus permet de voir quelles sont les cases présentent des anomalies significatives. On peut pour cela imprimer quatre tableaux correspondant aux valeurs observées, aux valeurs attendues, aux écarts entre les deux (résidus bruts) et à un test sur les écarts les plus significatifs (résidus standardisés). 
+
+ce que l'on peut aussi faire graphiquement 
+
+```{r}
+kable(toto$observed,caption = "Valeurs observées")
+kable(toto$expected,  caption = "Valeurs attendues")
+kable(tabcont-toto$expected, caption = "Résidus bruts")
+kable(toto$stdres, caption= "Résidus standardisés")
+```
+
+
+On peut aussi visualiser graphiquement les résidus standardisés avec avec `mosaicplot()` et l'option *shade=T*. Seules les cases ayant des résidus standardisés supérieures à +2 ou inférieurs à -2 seront colorées, ce qui revient à visualiser uniquement les anomalies significatives avec un risque d'erreur p< 0.05. 
+
+```{r}
+mosaicplot(tabcont,shade=T)
+```
+
+
+
+
+
+## Opinion USA / Âge
+
+Supposons qu'on veuille analyser la relation entre l'opinion sur les USA et l'effet des classes d'âge ou des génération. Les deux variables age5 et gen4 sont issuesde la même variable mais elle n'ont pas le même sens d'un point de vue thématique
+
+### Effet de génération 
+
+```{r}
+tabcont<-wtd.table(sel$gen4,sel$opi_USA2, weights=sel$poids)
+round(addmargins(tabcont),1)
+lprop(tabcont)
+plot(tabcont, col=c("lightyellow","lightblue"), 
+     main="Opinion sur les USA selon la génération", 
+     sub=source, 
+     )
+```
+
+On remarque que l'opinion sur les USA semble de plus en plus positive au fur et à mesure des générations. Mais il faut tester pour voir si cet effet est significatif. 
+
+
+```{r}
+titi<-chisq.test(tabcont)
+titi
+```
+
+On obtient donc une relation très significative (Chi-2 = 26.9 , degrés de liberté =3, p < 0.001) entre la génération des personnes et leur opinion sur les USA. L'étude des résidus standardisés montre que cette relation est liée au fait que les générations récentes sont beaucoup plus favorables aux USA que les générations anciennes.  On peut visualiser la relation avec la fonction mosaicplot(shaded=T)
+
+
+```{r}
+mosaicplot(tabcont, shade = T)
+```
+
+### Effet d'âge 
+
+Aurions nous tiré les mêmes conclusions en prenant un âge en 5 classes ? 
+
+
+```{r}
+tabcont<-wtd.table(sel$age5,sel$opi_USA2, weights=sel$poids)
+round(addmargins(tabcont),1)
+lprop(tabcont)
+plot(tabcont, col=c("lightyellow","lightblue"), 
+     main="Opinion sur les USA selon l'âge", 
+     sub=source, 
+     )
+```
+
+
+
+```{r}
+titi<-chisq.test(tabcont)
+titi
+
+```
+
+On voit que la relation serait tout aussi significative et montrerait une variation continue de l'avius sur les USA avec l'âge, mais avec une opposition particulière des moins de 36 ans et des plus de 68 ans.
+
+```{r}
+mosaicplot(tabcont, shade = T)
+```
+
+
+
+## Opinion USA / Age & Sexe
+
+On va se limiter au cas où l'on veut étudier la relation entre X et Y toutes choses égales quant à l'effet d'une troisième variable Z qui sert de **variable de contrôle**.
+
+Par exemple, on veut savoir s'il existe un lien entre l'âge (X) et l'avis sur les USA (Y)  demeure valable aussi bien pour les hommes que pour les femmes (Z). 
+
+
+### Sous-échantillon des hommes
+
+
+
+```{r}
+hom<-sel[sel$sex=="Homme",]
+tabcont<-wtd.table(hom$age5,hom$opi_USA2)
+round(addmargins(tabcont),0)
+lprop(tabcont)
+chisq.test(tabcont)
+```
+
+Dans le sous échantillon des 492 hommes, on n'observe pas de relation significative  entre l'avis sur les USA et l'âge (Chi-2 = 7.6  pour 4 degré de liberté, p > 0.10) 
+
+### Sous-échantillon des femmes
+
+
+
+```{r}
+fem<-sel[sel$sex=="Femme",]
+tabcont<-wtd.table(fem$age5,fem$opi_USA2)
+round(addmargins(tabcont),0)
+lprop(tabcont)
+chisq.test(tabcont)
+```
+
+Dans le sous échantillon des 479 femmes, on observe en revanche une relation très significative  entre l'avis sur les USA et l'âge (Chi-2 = 23.3  pour 4 degré de liberté, p < 0.001) 
+
+
+
+### Régression logistique 
+
+La suite logique des analyses bivariées de variables qualitatives est la **régression logistique** qui permet de modéliser une variable qualitative binaire (Y) par un ensemble dr'autres variables qualitatives ou quantitatives (X1, X2, X3, ...). Par exemple, on peut se demander si le fait d'être favorable ou très favorable aux USA (Y) dépend simultanément du sexe (X1) et de l'âge (X2).
+
+
+```{r}
+sel$opi_USA_fav<-sel$opi_USA2=="Favorable"
+toto<-glm(sel$opi_USA_fav ~  sel$sex + sel$age5 , family = "binomial")
+anova(toto,test = "Chisq")
+summary(toto)
+```
+
+Au bout du compte, l'effet principal demeure bien celui de l'âge. L'effet du sexe devient non significatif lorsque l'onb contrôle l'âge (p>0.05). Les femmes sont moins favorables aux USA mais cet effet s'explique en partie au moins par leur plus grande longévité.
+
+
+
+<!--chapter:end:07-Tabcont.Rmd-->
+
+# Graphiques avec R-Base
+
+
+```{r, echo = FALSE}
+library(knitr)
+knitr::include_graphics("resources/figures/chap3_intro.jpg")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo8](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo8.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo8.Rproj` dans Rstudio.
+
+
+
+## Introduction
+
+### Pourquoi s'em...bêter à utiliser les fonctions primitives de R pour faire des graphiques ?
+
+On peut se demander si cela vaut la peine d'utiliser **R-base** pour faire des graphiques. En effet R propose maintenant des packages produisant facilement de très jolis graphiques statiques (**ggplot2**) ou dynamiques (**plotly**). La réponse est cependant oui car :
+
+- il faut pouvoir relire et améliorer des programmes anciens
+- les primitives graphiques de R permettent de créer ses propres applications
+- les packages ggplot2 et plotly reprennent des concepts de R-base
+
+Et la plus raison la plus importante :
+
+- c'est l'occasion d'apprendre à **créer ses propres fonctions** et ainsi de meiiux apprécier les qualités et les défauts de celles que l'on trouve dans les packages qu'on utilise.  
+
+### Trois étapes pour créer un graphique 
+
+Comme indiqué par Sophie Baillargeon dans son excellent [cours de  R de l'Université de Laval (Québec) ](https://stt4230.rbind.io/communication_resultats/graphiques_r/) , un programme pour créer un graphique avec le système graphique de base en R se décompose typiquement en 3 étapes utilisant des fonctions différentes : 
+
+
+
+- **Etape 1 :  La configuration des paramètres graphiques généraux (facultatif) :**
+    + énoncé [`par`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/par.html) ou [`layout`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/layout.html).
+    
+    
+
+- **Etape 2 :   L'initialisation d'un graphique (obligatoire) :**
+    + fonction de base : [`plot`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/plot.html) (choisit un graphique pertinent à produire selon ce qu’elle reçoit en entrée), 
+    + ou fonction pour un type spécifique graphiques :  [`pairs`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/pairs.html), [`matplot`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/matplot.html), [`pie`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/pie.html), [`barplot`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/dotchart.html), [`dotchart`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/mosaicplot.html), [`mosaicplot`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/mosaicplot.html), [`hist`](http://stat.ethz.ch/R-manual/R-devel/library/graphics/html/hist.html), [`boxplot`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/boxplot.html), [`qqnorm`](http://stat.ethz.ch/R-manual/R-devel/library/stats/html/qqnorm.html), [`qqplot`](http://stat.ethz.ch/R-manual/R-devel/library/stats/html/qqnorm.html), [`curve`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/curve.html), etc.
+    
+
+
+- **Etape 3. L'ajout séquentiel d'éléments au graphique (facultatif) :**
+    + fonctions d'ajouts à un graphique déjà initialisé :
+        + [`points`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/points.html), [`matpoints`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/matplot.html), [`lines`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/lines.html), [`matlines`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/matplot.html), [`abline`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/abline.html), [`segments`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/segments.html), [`arrows`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/arrows.html), [`rect`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/rect.html), [`polygon`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/polygon.html), [`legend`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/legend.html), [`text`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/text.html), [`mtext`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/mtext.html), [`title`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/title.html), [`axis`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/axis.html), [`box`](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/box.html), [`qqline`](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/qqnorm.html), etc.;
+        + `matplot`, `barplot`, `hist`, `boxplot`, `curve` avec l'argument `add = TRUE`.
+
+
+
+## Préparation des données
+
+### Chargement du fichier
+
+On charge un fichier statistique appelé *tips.csv* où les séparateurs sont des points-virgules et les décimales des points.
+
+```{r }
+don<-read.table(file = "resources/data/tips/tips.csv",
+                sep = ";",
+                header = T)
+head(don)
+```
+
+### Contenu du fichier
+
+Ce dossier contient les pourboires (*tips* en anglais, d'où le nom du fichier) d'un serveur dans un restaurant américain aux débuts des années 1990. Le restaurant était dans un centre commercial. Il y avait une zone fumeurs et une zone non fumeurs.Les données indiquent le prix du repas, le pourboire, le sexe de la personne qui a payé et donné le pourboire, si c'était dans la zone fumeurs ou non, le jour où le repas a été pris, si c'était en journée ou en soirée et enfin, le nombre de convives. 
+
+**Sources** : Ces données sont disponibles dans le package R nommé rggobi et sont décrites dans l'ouvrage de Cook et Swayne intitulé *Interactive and Dynamic Graphics for Data Analysi*s. Elles font partie des données d'exemple du livre de Bryant et Smith dont la première édition est parue en 1995 dont le titre est *Practical Data Analysis: Case Studies in Business Statistics*. 
+
+### Dictionaire des variables
+
+- **IDEN**    : identifiant du repas
+- **TOTBILL** : prix du repas (en dollars des années 1990)
+- **TIP** : pourboire (en dollars des années 1990)
+- **SEX** : sexe de la personne qui a payé (0 = Homme, 1 = Femme)
+- **SMOKER** : la personne qui a payé est non-fumeur (O) ou fumeur (1)
+- **DAY** : jour de la semaine (1 = dimanche, 2 = lundi, 3 = mardi, ...)
+- **TIME** : repas pris en journée (0) ou le soir (1)
+- **SIZE** : nombre de convives 
+
+### Recodage des variables 
+
+Le type de plusieurs variables est incorrect. On transforme les codes numériques en facteur et on recode les niveaux en français : 
+
+```{r}
+don$IDEN<-as.character(don$IDEN)
+don$SEX<-as.factor(don$SEX)
+levels(don$SEX)<-c("Homme","Femme")
+don$SMOKER<-as.factor(don$SMOKER)
+levels(don$SMOKER)<-c("Non fumeur", "Fumeur")
+don$DAY<-as.factor(don$DAY)
+levels(don$DAY)<-c("Mercredi","Jeudi","Vendredi","Samedi")
+don$TIME<-as.factor(don$TIME)
+levels(don$TIME)<-c("Journée","Soirée")
+```
+
+
+### Ajout d'une nouvelle variable
+
+On crée la variable PCT qui est le rapport entre le pourboire (TIP) et le prix total (TOTBILL) du repas exprimé en pourcentage.
+
+```{r}
+don$PCT<-100*don$TIP/don$TOTBILL
+```
+
+
+
+
+### Résumé de l'ensemble du tableau
+
+```{r}
+summary(don)
+```
+
+
+
+##.Paramètres généraux et disposition des graphiques
+
+
+### La fonction par()
+
+La fonction **par()** ne produit pas directement de graphique mais permet de :
+
+- définir la disposition de plusieurs graphiques
+- spécifier la largeur des marges
+- définir des paramètres généraux valables pour tous les graphiques
+
+Elle se comporte donc comme une **feuille de style** ou un **CSS**. Il est de ce fait prudent de stocker les paramètres d'origine avant de les modifier. 
+
+**Il y a 66 paramètres différents ...**  Il est prudent de les stocker dans leur configuration d'origine avant de les modifier. 
+
+```{r, echo=TRUE}
+# Stockage des paramètres d'origine
+old<- par()
+# Affichage des paramètres d'origine
+head(old)
+```
+
+
+
+
+### fonction par() + mfrow 
+
+Supposons que l'on veuille disposer **verticalement** une boxplot et un histogramme de la variable PCT. On va utiliser l'instruction **mfrow=c(2,1)** pour placerles deux figures suivantes sur des lignes séparées :
+
+```{r}
+par(mfrow=c(2,1))
+hist(don$PCT, main="Histogramme", xlab="Pourboires (%)")
+boxplot(don$PCT, horizontal=T, main="Boxplot", xlab = "Pourboires (%)")
+```
+
+
+Si l'on préfère une disposition  **horizontale** on modifie le paramètre mfrow :
+
+```{r}
+par(mfrow=c(1,2))
+hist(don$PCT, main="Histogramme", xlab="Pourboires (%)")
+boxplot(don$PCT, horizontal=T, main="Boxplot", xlab = "Pourboires (%)")
+```
+
+
+### Autres paramètres de par()
+
+On peut ajouter toute une série d'autres paramètres par défaut. Par exemple, pour faire un graphique sur fonds noir (**bg**) à traits blancs (**fg**), puis régler la taille (**cex**) et la couleur (**col**) des différents textes.
+
+```{r}
+par(mfrow = c(1,2),
+    bg="black", fg="white",
+    cex.main = 1, col.main = "gray80",
+    cex.lab =  0.8, col.lab = "orange",
+    cex.axis = 0.6, col.axis = "red"
+    )
+hist(don$PCT, main="Histogramme", xlab="Pourboires (%)",col="lightyellow")
+boxplot(don$PCT, horizontal=T, main="Boxplot", xlab = "Pourboires (%)",col="lightyellow")
+```
+
+
+
+
+### La fonction layout()
+
+La fonction **layout()** permet une gestion plus précise de la disposition de différents graphiques sur une même fenêtre que la fonction **par()**. Sa syntaxe semble difficile mais elle est plus simple si on crée la matrice d'allocation des figures avec **rbind()** ce qui permet de visualiser la position de chaque figure facilement
+
+```{r}
+## Divise la figure en 2 lignes et 2 colonnes
+## alloue la figure 1 à toute la première ligne 
+## alloue les figures 2 et 3 à la deuxième ligne
+mat<-rbind(c(1,1),
+           c(2,3))
+layout(mat)
+boxplot(don$PCT~don$SEX, horizontal=T) # Figure 1
+hist(don$PCT)                          # Figure 2
+plot(don$SEX)                          # Figure 3
+```
+
+
+On peut préciser la longueur et la largeur des différentes lignes et colonnes avec **widths** et **heights** . On peut visualiser le résultat de la mise en page avec **layout.show()** 
+
+
+```{r}
+mat<-rbind(c(1,2),
+           c(0,3))
+nf <- layout(mat, widths = c(1,4), heights = c(4,1), respect=T)
+layout.show(nf)
+```
+
+
+
+
+On peut ensuite remplir le layout avec des figures, par exemple un plot et deux boxplots
+
+```{r}
+mat<-rbind(c(1,2),
+           c(0,3))
+par(mar=c(2,2,0,0))
+layout(mat, widths = c(1,4), heights = c(4,1), respect=TRUE)
+boxplot(don$PCT,ann = F)
+plot(don$TOTBILL,don$PCT,pch=19,col="red",cex=0.6,xlab="Prix du repas",ylab="Pourboire")
+boxplot(don$TOTBILL, horizontal=T)
+```
+
+## La fonction génératrice plot()
+
+### Une super-fonction
+
+L'instruction **plot()** n'est pas une fonction graphique comme les autres car elle va renvoyer des résultats différents selon les circonstances. En d'autres termes c'est un outil de **programmation orienté objet** qui va adapter le résultat à la nature des **variables** et plus généralement des **objets** qui lui sont fournis en entrée. 
+
+- Par exemple, un plot() d'une variable de **type factor** va donner le même résultat que **barplot()** appliqué à la table de dénombrement de cette variable
+
+- Autre exemple, la fonction **lm()** génère un objet complexe (modèle de régression linéaire). Lorsque l'on effectue un plot de cet objet, on utilise en fait une fonction **plot.lm()** qui fournit les diagnostics de la régression.
+
+### plot(X)  / X de type factor
+
+La fonction plot() est pratique pour visualiser une variable de *type factor* à l'aide d'un **barplot()**.
+
+```{r}
+par(mfrow=c(1,2))
+X<-don$SEX
+plot(X, main="plot(x=factor)")
+barplot(table(X), main="barplot(table(x=factor))")
+```
+
+
+### plot(X)  / X de type numeric
+
+Mais elle est sans intérêt pour une variable de *type numérique*, sauf si on la trie avec **sort()**
+
+```{r}
+par(mfrow=c(1,2))
+plot(don$TIP, main="Sans intérêt ...")
+plot(sort(don$TIP),main="Un peu mieux...")
+```
+
+
+### plot(X,Y) / X et Y de type factor
+
+Plot renvoie un graphique de type  **mosaicplot()**
+
+```{r}
+par(mfrow=c(1,2),mar=c(2,2,0,2))
+plot(don$SEX,don$TIME)
+plot(don$TIME,don$SEX)
+```
+
+###  plot(X,Y) / X et Y de type numerique
+
+Plot renvoie un graphique de type  **scatterplot()**
+
+```{r}
+par(mfrow=c(1,1))
+plot(don$TOTBILL,don$TIP)
+```
+
+### plot(X,Y) / X de type factor et Y de type numerique
+
+Plot renvoie un graphique de type  **boxplot()** si le factor est en premier,
+
+```{r}
+par(mfrow=c(1,1))
+plot(don$SEX,don$TIP, horizontal=T)
+```
+
+
+
+### plot(X,Y) / X de type factor et Y de type numerique
+
+Plot renvoie un diagramme de faible intérêt si la variable factor est en second. Il s'agit en termes statistiques d'un ensemble de **diagrammes de distribution** .
+
+```{r}
+plot(don$TIP,don$SEX)
+
+```
+
+
+### plot(model) / model = lm(Y~X)
+
+L'appplication de plot à un modèle linéaire issu de **lm()** permet de générer 6 graphiques différents (**Cf. cours sur la régression**). Par défaut, R affiche les graphiques n° 1,2,3,5 (mais je préfère le n°4 ...)
+
+```{r, fig.height = 3.5, fig.width = 5}
+par(mfrow=c(2,2))
+model<-lm(don$PCT~don$TOTBILL)
+plot(model)
+```
+
+
+Le graphique n°1 vérifie si les résidus sont réguliers 
+
+```{r, echo=TRUE, fig.height = 3.5, fig.width = 5}
+plot(model,1, main= "Absence d'autocorrélation ?",labels.id = don$IDEN)
+```
+
+
+Le graphique n°2 vérifie si les résidus sont distribués de façon gaussienne
+
+```{r, echo=TRUE, fig.height = 3.5, fig.width = 5}
+plot(model,2, main= "Normalité ?",labels.id = don$IDEN)
+```
+
+
+Le graphique n°3 vérifie si la variance des résidus est constante
+
+```{r, echo=TRUE, fig.height = 3.5, fig.width = 5}
+plot(model,3, main= "Homogénéité ?",labels.id = don$IDEN)
+```
+
+
+Le graphique n°4 vérifie si des valeurs exceptionnelles existent à l'aide de la distance de Cook.
+
+```{r, echo=TRUE, fig.height = 3.5, fig.width = 5}
+plot(model,4, main= "Valeurs exceptionnelles ?",labels.id = don$IDEN)
+```
+
+
+## Les autres fonctions génératrice
+
+On peut créer un graphque avec **plot()** mais aussi avec d'autres fonctions dont le nom se termine en général par ---plot pour bien rappeler leur rôle de **création** du graphique.
+
+- barplot 
+- boxplot 
+- hist 
+- density 
+- pie 
+- matplot 
+- pairs 
+- mosaicplot 
+- curve
+ - ...
+ 
+### La fonction barplot()
+
+La fonction **barplot()** permett de créer des **diagrammes en barres** qui résultent en général du dénombrement d'une ou deux variable qualitative à l'aide des fonctions  **table()** ou **xtabs()**. 
+
+```{r, echo=TRUE}
+mytable <- table(don$DAY)
+mytable
+myxtabs <- xtabs(~don$DAY)
+myxtabs
+```
+
+
+
+Cas d'une table à une seule variable :
+
+```{r, echo=TRUE, fig.height = 4, fig.width = 5}
+barplot(height = table(don$DAY), 
+        xlab = "fréquence", ylab = "jour de la semaine")
+```
+
+
+Cas d'une table à une deux variables :
+
+```{r, echo=TRUE, fig.height = 4, fig.width = 5}
+barplot(height = table(don$DAY,don$SEX), 
+        xlab = "fréquence",  ylab = "jour de la semaine")
+```
+
+
+Exemple de figure complète avec toute une série de paramètres optionnels placés soit dans barplot(), soit dans par()
+
+```{r, fig.height = 4, fig.width = 5}
+par(cex.main = 1, cex.lab = 0.8, cex.axis =0.8, cex.sub=0.6)
+barplot(height = table(don$DAY,don$SEX),
+        horiz = TRUE,
+        col = rainbow(n=4,alpha = 0.5),
+        legend=TRUE,
+        ylab = "fréquence", 
+        xlab = "jour de la semaine", 
+        main = "Qui paye le repas ?", 
+        sub =  "Source : Pourboires de 244 repas dans un restaurant américains au début des années 1990 (Bryant & Smith, 1995)")
+```
+
+
+
+On remarque que les hommes paient plus souvent le repas que les femmes le vendredi et surtout le samedi ...
+
+
+
+### Les fonctions hist() et density()
+
+On présente ensemble ces trois fonctions qui sont très complémentaires puisqu'elles permettent l'une et l'autre de créer un histogramme **hist()** et de lui adjoindre avec **lines()** une courbe lissée générée par **density()**. La syntaxe minimale est la suivante :
+
+
+```{r}
+hist(don$PCT, probability = TRUE)
+lines(density(don$PCT))
+```
+
+
+
+On peut ensuite préciser les paramètres des trois fonctions façon plus ou moins complexes 
+
+```{r }
+par(cex.main = 1, cex.lab = 0.8, cex.axis =0.8, cex.sub=0.6,
+    bg="black",fg="white",col.lab="white",col.axis="white",col.main="white")
+hist(don$PCT, 
+     probability = TRUE, 
+     breaks = quantile(don$PCT,c(0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1)), 
+     col=terrain.colors(n=10,alpha=0.8), 
+     xlab = "Pourboires en %", 
+     ylab = "Densité de probabilité",
+     main = "Histogramme des pourboires par déciles",
+     sub =  "Source : Pourboires de 244 repas dans un restaurant américains au début des années 1990 (Bryant & Smith, 1995)",
+     xlim =c(0,30)
+     )
+lines(density(don$PCT,bw=2), col="red",lwd=2)
+```
+
+
+
+Et si on doit faire plusieurs figures, on peut créer sa fonction :
+
+```{r, eval=TRUE, echo=TRUE}
+monhist<-function(var, nomvar="variable") 
+  {
+  par(cex.main = 1, cex.lab = 0.8, cex.axis =0.8, cex.sub=0.6,
+    bg="black",fg="white",col.lab="white",col.axis="white",
+    col.main="white", col.sub="white")
+hist(var, 
+     probability = TRUE, 
+     breaks = unique(quantile(var,c(0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1))), 
+     col=terrain.colors(n=10,alpha=0.8), 
+     xlab = nomvar, 
+     ylab = "Densité de probabilité",
+     main= "Mon bel histogramme par déciles ..."
+     )
+lines(density(var), col="red",lwd=2)
+}
+```
+
+
+Application de la fonction au prix du repas
+
+```{r}
+monhist(don$TOTBILL,"Prix du repas (en $)")
+```
+
+Application de la fonction aumontant du pourboire
+
+```{r}
+monhist(don$TIP,"Montant du pourboire (en $)")
+```
+
+
+## Les fonctions complémentaires 
+
+Il s'agit de fonctions qui ne peuvent pas s'executer seules mais ne peuvent être lancées qu'après l'execution d'une fonction graphique principale comme plot(), barplot(), hist(), ...
+
+Nous en avons déjà vu un exemple avec la fonction **lines()** qui s'execute après la fonction **hist()** mais ne peut fonctionner seule. Le programme ci-dessous renverra un message d'erreur 
+
+```{r, eval=FALSE, echo=TRUE}
+lines(density(don$PCT), col="red",lwd=2) # ne marchera pas
+```
+
+
+**Error in plot.xy(xy.coords(x, y), type = type, ...) : plot.new has not been called yet**
+
+
+### Exemple d'un nuage de points (X,Y)
+
+On va prendre comme exemple l'ajout de fonctions graphiques complémentaires à un nuage de point :
+
+```{r}
+plot(don$TOTBILL,don$TIP, xlab = "Prix du repas",ylab="Pourboire")
+```
+
+
+
+On neutralise l'affichage des points générés par **plot()** et on les trace avec la fonction **points()** en précisant leur taille (nombre de repas) et leur couleur (hommes ou femmes) et en ajoutant une légende avec **legend()**
+
+```{r}
+plot(don$TOTBILL,don$TIP, cex=0,xlab = "Prix du repas",ylab="Pourboire")
+points(don$TOTBILL,don$TIP, cex=sqrt(don$SIZE)/2, col=don$SEX, pch=19)
+legend("topleft", c("Hommes","Femmes"), col=c("black","red"), pch=19, cex=1)
+```
+
+
+On ajoute ensuite une grille avec **grid()** et des droites correspondant à la moyenne de X et à celle de Y avec **abline(v= ...)** et **abline(h= ...)**
+
+
+
+```{r }
+plot(don$TOTBILL,don$TIP, cex=0,xlab = "Prix du repas",ylab="Pourboire")
+points(don$TOTBILL,don$TIP, cex=sqrt(don$SIZE)/2, col=don$SEX, pch=19)
+legend("topleft", c("Hommes","Femmes"), col=c("black","red"), pch=19, cex=1)
+grid()
+abline(v=mean(don$TOTBILL), lty=2,lwd=2,col="blue")
+abline(h=mean(don$TIP), lty=2,lwd=2,col="blue")
+```
+
+
+
+On ajoute ensuite une droite de régression avec **abline(model)**
+
+`
+
+```{r}
+plot(don$TOTBILL,don$TIP, cex=0,xlab = "Prix du repas",ylab="Pourboire")
+points(don$TOTBILL,don$TIP, cex=sqrt(don$SIZE)/2, col=don$SEX, pch=19)
+legend("topleft", c("Hommes","Femmes"), col=c("black","red"), pch=19, cex=1)
+grid()
+abline(v=mean(don$TOTBILL), lty=2,lwd=2,col="blue")
+abline(h=mean(don$TIP), lty=2,lwd=2,col="blue")
+maregression <- lm(don$TIP~don$TOTBILL)
+abline(maregression,lty=1,lwd=3,col="brown")
+```
+
+
+On peut aussi ajouter un texte à l'emplacement de son choix avec **text()**. Par exemple, repérer les individus à très forts résidus
+
+
+```{r}
+plot(don$TOTBILL,don$TIP, cex=0,xlab = "Prix du repas",ylab="Pourboire")
+points(don$TOTBILL,don$TIP, cex=sqrt(don$SIZE)/2, col=don$SEX, pch=19)
+legend("topleft", c("Hommes","Femmes"), col=c("black","red"), pch=19, cex=1)
+grid()
+abline(v=mean(don$TOTBILL), lty=2,lwd=2,col="blue")
+abline(h=mean(don$TIP), lty=2,lwd=2,col="blue")
+maregression <- lm(don$TIP~don$TOTBILL)
+abline(maregression,lty=1,lwd=3,col="brown")
+don2<-don[abs(maregression$residuals)>2,]
+text(don2$TOTBILL,don2$TIP,don2$IDEN,cex = 0.5, pos = 1, col="gray30")
+```
+
+
+## Conclusion
+
+### On peut faire de beaux graphiques avec R-Base ...
+
+Pour cela il faut bien comprendre les trois étapes : 
+
+- Fixer les paramètres graphiques généraux avec **par()** ou **layout()**
+- Utiliser une fonction génératrice comme **plot()**, **barplot()**, ou **hist()**
+- Ajouter des fonctions complémentaires comme **lines()**, **points()**, **text()**, **abline()**, ...
+
+Et si on ne veut pas refaire toujours les mêmes codes :
+
+- créer ses propres fonctions en suivant l'exemple de **monhist()**
+
+### On peut utiliser des packages spécialisés
+
+Plusieurs **packages** réalisées à partir des primitives graphiques de R-Base sont spécialisés dans la réalisation d'analyses bivariées et adaptés au type des variables.
+
+- **car** : pour croiser deux variables quantitatives
+
+```{r}
+library(car)
+scatterplot(don$TOTBILL,don$TIP)
+```
+
+- **vcd** : pour croiser deux variables qualitatives
+
+
+```{r}
+library(vcd)
+mosaicplot(don$SEX~don$DAY,shade=T)
+```
+
+- **beanplot** : pour croiser une variable qualitative et une variable quantitative
+
+```{r}
+library(beanplot)
+beanplot(don$PCT~don$DAY,shade=T)
+```
+
+### ggally : un package spécialisé dans la statistique bivariée
+
+Le récent package **ggally** est spécialisé dans l'analyse des relations statistiques entre deux variables. Il reprend plusieurs autres packages (notamment ggplot2) pour offrir une solution intégrée avec une syntaxe simple et intuitive.
+
+
+### ggplot2 : un package graphique universel ?
+
+Fruit des travaux d'Hadley Wickham et de l'équipe de développement de R-Studio, le package **ggplot2** est un élément central de l'univers **tidyverse**, au point de faire désormais partie des "standards" de l'apprentissage de R. 
+
+Mais sa connaissance approfondie est longue et pas toujours intuitive malgré les efforts de ses auteurs. A la longue, les paramètres de base des graphiques ggplot2 peuvent apparaître lassants et il faut donc bien approfondir sa connaissance pour réaliser des figures originales au niveau du style. Sinon c'est un peu le "fast food" de la visualisation : universel mais manquant de goût et d'originalité...
+
+
+
+
+
+<!--chapter:end:08-Graphique-Base.Rmd-->
+
+# Graphiques avec ggplot2
+
+
+```{r, echo = FALSE, warning=F,message=F}
+knitr::opts_chunk$set(echo = TRUE,warning=F,message = F)
+library(knitr)
+library(ggplot2,quiet=T)
+library(dplyr,quiet=T)
+knitr::include_graphics("resources/figures/ggplot2.jpeg")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo8](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo8.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo8.Rproj` dans Rstudio.
+
+
+
+## Introduction
+
+
+### ggplot2 et tydiverse
+
+- **ggplot2** est un package de visualisation graphique qui s'incrit dans l'écosystème plus général du **tydiverse** mis au point par **Hadley Wickham**, l'un des grands prêtres de R, responsable scientifique en chef de **Rstudio**.
+
+http://hadley.nz/
+
+- **ggplot2** est considéré actuellement comme la **référence mondiale** en matière de visualisation de données statistiques sous R en raison de sa puissance et de sa polyvalence.
+
+- mais son usage avancé n'est pas très facile même si les principes de base sont (relativement) simples. 
+
+- ggplot2 peut fonctionner sans tidyverse mais il est probablement plus efficace lorsque l'on l'utilise à l'intérieur de son écosystème. En d'autres termes, l'apprentissage de ggplot2 est souvent couplé avec celui de tidyverse. Voir par exemple l'excellent cours de J. Barnier.
+
+---
+
+### ggplot2 cheatsheet
+
+- Il est recommandé d'imprimer et d'avoir toujours avec soi la **ggplot2 cheatsheet** qui est [disponible en français](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwi62f3p4__2AhWox4UKHZbNCZ0QFnoECBwQAQ&url=https%3A%2F%2Fthinkr.fr%2Fpdf%2Fggplot2-french-cheatsheet.pdf&usg=AOvVaw3pLi41NLcJnklIg6maoJym). 
+
+
+
+
+
+## préparation des données
+
+
+### Chargement du fichier
+
+On charge un fichier statistique appelé *tips.csv* où les séparateurs sont des points-virgules et les décimales des points.
+
+```{r }
+don<-read.table(file = "resources/data/tips/tips.csv",
+                sep = ";",
+                header = T)
+head(don)
+```
+
+
+
+### Contenu du fichier
+
+Ce dossier contient les pourboires (*tips* en anglais, d'où le nom du fichier) d'un serveur dans un restaurant américain aux débuts des années 1990. Le restaurant était dans un centre commercial. Il y avait une zone fumeurs et une zone non fumeurs.Les données indiquent le prix du repas, le pourboire, le sexe de la personne qui a payé et donné le pourboire, si c'était dans la zone fumeurs ou non, le jour où le repas a été pris, si c'était en journée ou en soirée et enfin, le nombre de convives. 
+
+**Sources** : Ces données sont disponibles dans le package R nommé rggobi et sont décrites dans l'ouvrage de Cook et Swayne intitulé *Interactive and Dynamic Graphics for Data Analysi*s. Elles font partie des données d'exemple du livre de Bryant et Smith dont la première édition est parue en 1995 dont le titre est *Practical Data Analysis: Case Studies in Business Statistics*. 
+
+
+
+### Dictionaire des variables
+
+- **IDEN**    : identifiant du repas
+- **TOTBILL** : prix du repas (en dollars des années 1990)
+- **TIP** : pourboire (en dollars des années 1990)
+- **SEX** : sexe de la personne qui a payé (0 = Homme, 1 = Femme)
+- **SMOKER** : la personne qui a payé est non-fumeur (O) ou fumeur (1)
+- **DAY** : jour de la semaine (1 = dimanche, 2 = lundi, 3 = mardi, ...)
+- **TIME** : repas pris en journée (0) ou le soir (1)
+- **SIZE** : nombre de convives 
+
+---
+
+### Recodage des variables 
+
+Le type de plusieurs variables est incorrect. On transforme les codes numériques en facteur et on recode les niveaux en français : 
+
+```{r}
+don$IDEN<-as.character(don$IDEN)
+don$SEX<-as.factor(don$SEX)
+levels(don$SEX)<-c("Homme","Femme")
+don$SMOKER<-as.factor(don$SMOKER)
+levels(don$SMOKER)<-c("Non fumeur", "Fumeur")
+don$DAY<-as.factor(don$DAY)
+levels(don$DAY)<-c("Mercredi","Jeudi","Vendredi","Samedi")
+don$TIME<-as.factor(don$TIME)
+levels(don$TIME)<-c("Journée","Soirée")
+don$PCT<-100*don$TIP/don$TOTBILL
+```
+
+
+
+
+### Résumé de l'ensemble du tableau
+
+```{r}
+summary(don)
+```
+
+
+
+
+## Principes généraux
+
+On commence par charger le package `ggplot2` qui est une partie de l'univers `tidyverse` mais que l'on peut utiliser indépendamment du reste de l'empire d'Hadley Wickham...
+
+```{r}
+library(ggplot2)
+```
+
+
+### Les différentes étapes
+
+- la commande **ggplot**(*data*) initie la création du graphique.
+- la commande **aes()** qui est l'abrévation de *aesthetics* définit les paramètres généraux de l'ensemble du graphique et comporte en général 
+  + **x =** variable liée à l'axe horizontal
+  + **y=**  variable liée à l'axe vertical
+  + **colour=** : variable définissant des groupes /  couleur
+  + **shape=** : variable définissant des groupes /  forme
+- la commande **geom_xxx** crée un graphique de type xxx 
+- les commandes additionnelles **scale_xxx** précisent les axes
+- la commande additionelle **facet_xxx** partitionne la figure en plusieurs
+- la commande **theme_xxx** retouche l'ensemble des paramètres de couleur, police, épaisseur
+
+N.B. Toutes les étapes ci-dessus ne sont pas obligatoires. 
+
+
+
+### La figure à réaliser
+
+Comment réaliser la figure ci-dessous ?
+
+```{r exo1, include = TRUE, echo=FALSE}
+
+  ggplot(don) +
+  aes(x = TOTBILL) +
+  aes(y = TIP) +
+  geom_point() +
+  scale_x_log10(name="Prix du repas en $")+
+  scale_y_log10(name="Montant du pourboire en $")+
+  facet_wrap(vars(SEX,SMOKER))+
+  geom_smooth(method="lm") +
+  ggtitle(label = "Relation entre prix du repas et pourboire / sexe et tabagisme",
+          subtitle = "Source : Briant & Smith 1995 ") +
+  theme_light()
+
+
+```
+
+### La construction pas à pas 
+
+
+
+On définit le tableau de données avec `ggplot()` et les variables principales avec `aes()`
+
+```{r }
+
+  ggplot(don) +
+  aes(x = TOTBILL) +
+  aes(y = TIP) 
+
+```
+
+
+On ajoute le type principal du graphique avec la commande `geom_point()`
+
+```{r }
+
+  ggplot(don) +
+  aes(x = TOTBILL) +
+  aes(y = TIP) +
+  geom_point() 
+```
+
+
+
+On retouche les axes horizontaux et verticaux en les passant en logarithme et en leur donnant un titre. 
+
+```{r }
+
+  ggplot(don) +
+  aes(x = TOTBILL) +
+  aes(y = TIP) +
+  geom_point() +
+  scale_x_log10(name="Prix du repas en $")+
+  scale_y_log10(name="Montant du pourboire en $")
+ 
+
+```
+
+On segmente le graphique en facettes selon une ou plusieurs variables avec `facet_wrap()`. Du coup, on retire ces variables de l'esthétique générale : 
+
+```{r }
+
+  ggplot(don) +
+  aes(x = TOTBILL) +
+  aes(y = TIP) +
+  geom_point() +
+  scale_x_log10(name="Prix du repas en $")+
+  scale_y_log10(name="Montant du pourboire en $")+
+  facet_wrap(vars(SEX,SMOKER))
+
+
+```
+
+On ajoute dans chaque facette une droite de tendance et son intervalle de confiance avec `geom_smooth()`. On précise *method="lm"* pour avoir une droite et non pas une courbe
+
+```{r }
+
+  ggplot(don) +
+  aes(x = TOTBILL) +
+  aes(y = TIP) +
+  geom_point() +
+  scale_x_log10(name="Prix du repas en $")+
+  scale_y_log10(name="Montant du pourboire en $")+
+  facet_wrap(vars(SEX,SMOKER))+
+  geom_smooth(method="lm") 
+
+
+```
+
+Onajoute un titre principal avec `ggtitle()` et on retouche l'ensemble de l'apparence avec `theme_light()`.
+
+```{r }
+
+  ggplot(don) +
+  aes(x = TOTBILL) +
+  aes(y = TIP) +
+  geom_point() +
+  scale_x_log10(name="Prix du repas en $")+
+  scale_y_log10(name="Montant du pourboire en $")+
+  facet_wrap(vars(SEX,SMOKER))+
+  geom_smooth(method="lm") +
+  ggtitle(label = "Relation entre prix du repas et pourboire / sexe et tabagisme",
+          subtitle = "Source : Briant & Smith 1995 ") +
+  theme_light()
+
+```
+
+### Comparaison avec R-Base
+
+- La principale différence réside dans la **construction séquentielle** de la figure avec l'opérateur **+**. A tout moment on peut sauvegarder la figure au cours d'une des étapes décrites dans l'exemple. On parle de **pipeline** pour ce type de programme que l'on retrouve dans la manipulation de données avec **tidyverse** et **dplyr**.
+
+- La seconde différence réside dans la **production rapide** d'une figure de qualité graphique acceptable sans avoir besoin de spécifier les paramètres **par()** de R-Base. 
+
+- Au total, ggplot2 s'impose actuellement comme un **standard mondial** autour duquel se greffent d'autres applications. Par exemple, on peut rendre interactif un graphique ggplot() en le couplant avec **plotly()**.
+
+- Mais ... ggplot2 est **beaucoup moins simple** qu'il n'y paraît de prime abord. Et on peut facilement s'arracher les cheveux sur certaines commandes !
+
+
+
+### Attention ! Paramètres aes() locaux et globaux
+
+Une des plus grandes difficultés que l'on rencontre dans ggplot() est **la manipulation du paramètre aes()** qui peut renvoyer :  
+
+- soit à des **paramètres globaux** s'ils apparaissent dans le ggplot initial ou dans des lignes de codes isolées
+- soit à des **paramètres locaux**, s'ils apparaissent à l'intérieur d'une fonction geom().
+
+Deux exemples rapides pour bien comprendre 
+
+
+- **SEX est un paramètre global** : dans ce cas il s'applique à toutes les commandes qui suivent. Il y aura donc **deux** droites de régression générées par geom_smooth
+
+```{r}
+ggplot(don, aes(x = TOTBILL, y = TIP, color = SEX)) +
+geom_point() +
+geom_smooth(method="lm")
+```
+
+
+- **SEX est un paramètre local de geom_point()** : dans ce cas il n'aura pas d'effet sur geom_smooth() qui va générer **une** seule droite de régression.
+
+```{r, echo=TRUE}
+ggplot(don, aes(x = TOTBILL, y = TIP)) +
+geom_point(aes(color=SEX)) +
+geom_smooth(method="lm")
+```
+
+
+## X discrète
+
+
+### barplot (R-base)
+
+
+```{r }
+barplot(table(don$SMOKER), col = c("blue", "red"),
+        xlab="Salle de repas", ylab = "effectif")
+```
+
+### geom_bar (ggplot2)
+
+
+```{r }
+# ggplot
+ggplot(don) +
+  aes(x =SMOKER) +
+  geom_bar(fill = c("blue","red"))+
+  scale_x_discrete(name="Salle de repas")+
+  scale_y_continuous(name="effectif")
+
+
+```
+
+
+
+
+
+
+## X quantitative continue
+
+
+### hist (R-base)
+
+
+
+```{r }
+don2<-don[don$PCT<30,]
+hist(don2$PCT,breaks = 15,
+     col = "lightyellow",
+     border = "blue",
+     xlab="Pourboire (%)",
+     ylab = "Nombre de clients",
+     main = "Les clients sont-ils généreux ?")
+```
+
+
+
+
+
+### geom_histogram (ggplot2)
+
+```{r }
+# On démarre par une ligne de tidyverse ...
+don %>%  filter(PCT<30) %>%
+#  ... en on embraye sur ggplot2 
+  ggplot() +
+  aes(x =PCT) + 
+# Appel de la fonction principale  
+  geom_histogram( bins = 15,     
+                 fill="lightyellow",
+                 col="blue" 
+                 ) +   
+# Retouche de l'échelle
+ scale_x_continuous( name = "Pourboires en %") + 
+ scale_y_continuous(name = "Nombre de clients")+
+# Ajout du titre 
+ ggtitle("Les clients sont-ils généreux ?") 
+
+
+```
+
+
+
+
+
+## X et Y quantitatives continues
+
+
+### plot (R-base)
+
+
+
+```{r }
+don2<-don[don$PCT<30,]
+plot(x = don2$TOTBILL,
+     y = don2$PCT, 
+     cex=0, 
+     xlab="Prix du repas",
+     ylab="Pourboire (%)",
+     main= "Plus c'est cher moins on est généreux !")
+points(x=don2$TOTBILL, 
+       y=don2$PCT, 
+       col=don2$SEX, 
+       cex=sqrt(don2$SIZE), 
+       pch=19)
+abline(lm(don2$PCT~don2$TOTBILL), 
+       col="blue",
+       lwd=3)
+
+```
+
+
+
+
+
+### geom_point (ggplot2)
+
+```{r }
+# On filtre avec tidyverse ...
+don %>%  filter(PCT<30) %>%
+  
+#  On définit les paramètres globaux 
+  ggplot(aes(x =TOTBILL, y=PCT)) +
+  
+# On trace les points avec 
+# des paramètres locaux
+  geom_point(aes(color=SEX, 
+                 size = SIZE)) +
+  
+# On ajoute la droite de régression
+  geom_smooth(method = "lm") +
+  
+# On ajoute les titres
+  scale_x_continuous(name="Prix du repas") +
+  scale_y_continuous(name="Pourboire en %") +
+  ggtitle("Plus c'est cher moins on est généreux !")
+
+```
+
+
+
+
+
+
+
+## X quantitative continue et Y discrète
+
+
+### 6.1 boxplot (R-base)
+
+
+```{r }
+don2<-don[(don$PCT < 30),]
+don2$SIZE<-as.factor(don2$SIZE)
+#levels(don2$SIZE)<-c("1 ou 2", "1 ou 2", "3 ou 4", "3 ou 4", "5 ou 6", "5 ou 6")
+boxplot(don2$PCT~don2$SIZE, 
+      col=rainbow(n=12, alpha=0.5),
+       xlab="Nombre de personnes",
+       ylab="Pourboire (%)",
+      main= "Plus on est de fous, moins on est généreux !",)
+
+```
+
+
+
+### geom_boxplot (ggplot2)
+
+
+
+```{r }
+# On filtre le tableau et on change SIZE en factor
+don %>%  filter(PCT < 30) %>% 
+         mutate(SIZE = as.factor(SIZE)) %>%
+  
+# On définit les paramètres principaux
+ggplot(aes(x= SIZE,y = PCT)) +
+  
+# On ajoute la boxplot
+geom_boxplot(aes(fill= SIZE)) +
+  
+  
+# On ajoute les titres
+  scale_x_discrete(name="Nombre de personnes") +
+  scale_y_continuous(name="Pourboire en %") +
+  ggtitle("Plus on est de fous, moins on est généreux !")
+
+```
+
+
+
+
+### beanplot (R-base + package beanplot)
+
+
+```{r }
+par(bg="black",fg="white",col.lab ="white", col.axis ="white",col.main="white" )
+don2<-don[(don$PCT < 30),]
+don2$SIZE<-as.factor(don2$SIZE)
+#levels(don2$SIZE)<-c("1 ou 2", "1 ou 2", "3 ou 4", "3 ou 4", "5 ou 6", "5 ou 6")
+library(beanplot)
+beanplot(don2$PCT~don2$SIZE, 
+         col=c("lightyellow","red"),
+       xlab="Nombre de personnes",
+       ylab="Pourboire (%)", 
+      main= "Plus on est de fous, moins on est généreux !")
+
+```
+
+
+
+### geom_violin (ggplot2)
+
+
+
+```{r }
+# On filtre le tableau et on change SIZE en factor
+don %>%  filter(PCT < 30) %>% 
+         mutate(SIZE = as.factor(SIZE)) %>%
+  
+# On définit les paramètres principaux
+ggplot(aes(x= SIZE,y = PCT)) +
+  
+# On ajoute la géométrie 
+geom_violin(aes(fill= SIZE)) +
+  
+  
+# On ajoute les titres
+  scale_x_discrete(name="Nombre de personnes") +
+  scale_y_continuous(name="Pourboire en %") +
+  ggtitle("Plus on est de fous, moins on est généreux !")+
+
+# On passe en thème "dark"
+  theme_dark()
+
+
+```
+
+
+
+
+
+
+## Deux variables X et Y discrètes 
+
+
+
+### mosaicplot (R-base)
+
+
+
+```{r}
+don$SIZE<-as.factor(don$SIZE)
+mosaicplot(don$SEX~don$SIZE, 
+      col=terrain.colors(n=7, alpha=0.5),
+       xlab="Genre de la personne qui a payé",
+       ylab="Nombre de convives",
+      main= "Plus il y a de monde, plus ce sont les hommes qui payent")
+
+```
+
+
+
+
+
+### geom_bar (ggplot2) 
+
+Solution simple mais pas terrible !
+
+```{r}
+# On filtre le tableau et on change SIZE en factor
+don %>% mutate(SIZE = as.factor(SIZE)) %>%
+  
+# On définit les paramètres principaux
+ggplot(aes(x= SEX, fill = SIZE)) +
+  
+
+# On ajoute geom_bar
+geom_bar() +
+
+  
+# On ajoute les titres
+  scale_x_discrete(name="Genre de la personne qui a payé") +
+  ggtitle("Plus il y a de monde, plus ce sont les hommes qui payent")
+
+
+```
+
+
+
+
+ solution juste ... mais très complexe
+
+```{r }
+# On crée un tableau de contingence 
+# avec pourcentages en colonne avec
+# du code tidyverse
+don %>% mutate(SIZE = as.factor(SIZE)) %>%
+        group_by(SEX, SIZE) %>%
+          summarise(count = n()) %>%
+          mutate(cut.count = sum(count),
+          prop = count/sum(count)) %>%
+        ungroup() %>%
+  
+# On définit les paramètres principaux
+ggplot(aes(x = SEX, 
+           y = prop,
+           width = cut.count,
+           fill = SIZE)) +
+  
+# On lance le geom_bar avec plein d'options
+  geom_bar(stat = "identity",
+           position = "fill", 
+           colour = "black") +
+  facet_grid(~SEX, 
+             scales = "free_x", 
+             space = "free_x") +
+  scale_fill_brewer(palette = "RdYlGn",
+                    direction=-1) +
+  theme_void() +
+  
+# On ajoute les titres
+  scale_x_discrete(name="Genre de la personne qui a payé") +
+  ggtitle("Plus il y a de monde, plus ce sont les hommes qui payent")
+
+# OUF !!! (R-base est + simple !)
+
+
+
+```
+
+
+## Conclusion 
+
+
+### R-base
+- simple d'utilisation 
+- peut être amélioré par des packages spécialisés
+- permet de créer ses propres fonctions
+- n'impose pas d'apprendre tidyverse
+
+### ggplot2
+- standard mondial du graphisme ... actuellement
+- compatible avec la religion du tidyverse
+- rédaction séquentielle très efficace
+- mais apprentissage difficile (plusieurs semaines ...)
+
+### Le meilleur des deux mondes ?
+- ne pas hésiter à combiner les deux
+- exportation facile des résultats dans les deux cas (pdf, jpeg, png, ...)
+
+### plotly, un challenger sérieux de ggplot pour le web
+- plotly crée des graphiques interactifs au format .html
+- plotly peut convertir des documents ggplot
+- plotly a une syntaxe proche de ggplot mais avec des fonctionnalités en plus
+- plotly est multilangage (R, Python, ...)
+
+
+
+```{r}
+# création et sockage de la figure ggplot
+  toto <- ggplot(don, aes(x = TOTBILL, y = TIP) )+
+          geom_point (aes(colour = SEX, shape = SMOKER)) +
+          scale_x_log10(name="Prix du repas en $") +
+          scale_y_log10(name="Montant du pourboire en $") +
+          geom_smooth(method="lm") 
+
+  # conversion en plotly
+library(plotly)
+   titi <-ggplotly(toto)
+
+   
+# affichage
+   titi
+```
+
+
+
+
+
+
+
+
+
+<!--chapter:end:09-Graphique-ggplot.Rmd-->
+

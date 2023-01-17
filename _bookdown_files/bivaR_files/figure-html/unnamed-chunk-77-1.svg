@@ -18,32 +18,37 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<rect x='74.40' y='163.01' width='66.21' height='121.30' style='stroke-width: 0.75; fill: #00FF00;' />
-<rect x='153.85' y='59.04' width='66.21' height='225.27' style='stroke-width: 0.75; fill: #FFFF00;' />
-<rect x='233.30' y='214.99' width='66.21' height='69.31' style='stroke-width: 0.75; fill: #FFA500;' />
-<rect x='312.74' y='284.31' width='66.21' height='0.00' style='stroke-width: 0.75; fill: #FF0000;' />
-<rect x='392.19' y='266.98' width='66.21' height='17.33' style='stroke-width: 0.75; fill: #A52A2A;' />
-<text x='107.50' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='34.02px' lengthAdjust='spacingAndGlyphs'>(1,1.5]</text>
-<text x='186.95' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='34.02px' lengthAdjust='spacingAndGlyphs'>(1.5,2]</text>
-<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='34.02px' lengthAdjust='spacingAndGlyphs'>(2,2.5]</text>
-<text x='345.85' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='34.02px' lengthAdjust='spacingAndGlyphs'>(2.5,3]</text>
-<text x='425.30' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='34.02px' lengthAdjust='spacingAndGlyphs'>(3,3.5]</text>
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: Arial;' textLength='199.16px' lengthAdjust='spacingAndGlyphs'>Fécondité en Europe en 1988</text>
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='40.00px' lengthAdjust='spacingAndGlyphs'>classes</text>
-<line x1='59.04' y1='284.31' x2='59.04' y2='76.37' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='284.31' x2='51.84' y2='284.31' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='249.65' x2='51.84' y2='249.65' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='214.99' x2='51.84' y2='214.99' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='180.34' x2='51.84' y2='180.34' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='145.68' x2='51.84' y2='145.68' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='111.02' x2='51.84' y2='111.02' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='76.37' x2='51.84' y2='76.37' style='stroke-width: 0.75;' />
-<text transform='translate(41.76,284.31) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text transform='translate(41.76,249.65) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>2</text>
-<text transform='translate(41.76,214.99) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>4</text>
-<text transform='translate(41.76,180.34) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>6</text>
-<text transform='translate(41.76,145.68) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>8</text>
-<text transform='translate(41.76,111.02) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>10</text>
-<text transform='translate(41.76,76.37) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>12</text>
+</g>
+<defs>
+  <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
+    <rect x='59.04' y='59.04' width='414.72' height='227.52' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
+<polygon points='112.80,214.93 112.80,130.67 304.80,130.67 304.80,214.93 ' style='stroke-width: 0.75; stroke: none; fill: #CCCCCC;' />
+<line x1='189.60' y1='214.93' x2='189.60' y2='130.67' style='stroke-width: 2.25; stroke-linecap: butt;' />
+<line x1='74.40' y1='172.80' x2='112.80' y2='172.80' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00;' />
+<line x1='458.40' y1='172.80' x2='304.80' y2='172.80' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00;' />
+<line x1='74.40' y1='193.87' x2='74.40' y2='151.73' style='stroke-width: 0.75;' />
+<line x1='458.40' y1='193.87' x2='458.40' y2='151.73' style='stroke-width: 0.75;' />
+<polyline points='112.80,214.93 112.80,130.67 304.80,130.67 304.80,214.93 112.80,214.93 ' style='stroke-width: 0.75;' />
+</g>
+<g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
+<line x1='74.40' y1='286.56' x2='458.40' y2='286.56' style='stroke-width: 0.75;' />
+<line x1='74.40' y1='286.56' x2='74.40' y2='293.76' style='stroke-width: 0.75;' />
+<line x1='151.20' y1='286.56' x2='151.20' y2='293.76' style='stroke-width: 0.75;' />
+<line x1='228.00' y1='286.56' x2='228.00' y2='293.76' style='stroke-width: 0.75;' />
+<line x1='304.80' y1='286.56' x2='304.80' y2='293.76' style='stroke-width: 0.75;' />
+<line x1='381.60' y1='286.56' x2='381.60' y2='293.76' style='stroke-width: 0.75;' />
+<line x1='458.40' y1='286.56' x2='458.40' y2='293.76' style='stroke-width: 0.75;' />
+<text x='74.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>1.4</text>
+<text x='151.20' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>1.6</text>
+<text x='228.00' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>1.8</text>
+<text x='304.80' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>2.0</text>
+<text x='381.60' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>2.2</text>
+<text x='458.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>2.4</text>
+<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: Arial;' textLength='267.18px' lengthAdjust='spacingAndGlyphs'>Fécondité des pays européens en 1988</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='120.06px' lengthAdjust='spacingAndGlyphs'>nb. enfants par femme</text>
+<polyline points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 59.04,286.56 ' style='stroke-width: 0.75;' />
 </g>
 </svg>
