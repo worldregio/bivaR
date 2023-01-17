@@ -115,7 +115,7 @@ Normalement, les étudiants qui utilisent un tableur ont du aller plus vite et E
 
 Vous devez essayez de reproduire l'image correspondant au problème posé 
 
-```{r}
+```{r carte001,}
 plot(X,Y, 
      col="red", 
      pch=20, 
@@ -197,7 +197,7 @@ A priori, le calcul est toujours aussi facile dans R et dans Excel : match nul 4
 
 On va placer en bleu le point médian et en vert le point le plus équitable. Dans le cas de R on peut recopier les lignes de code du graphique du round n°2 ce qui gagne désormais du temps :
 
-```{r}
+```{r carte002}
 # Programme antérieur
 plot(X,Y, 
      col="red", 
@@ -228,7 +228,7 @@ Le résultat du match est incertain mais R n'est plus désavantagé puisqu'on pe
 
 Deux stations  F(100,20) et G(150,30) ont été ajoutées. Il faut refaire la carte finale. Cela ne pose aucun problème dans R puisqu'il suffit de modifier l'entrée des données  et récupérer des bouts de programme
 
-```{r}
+```{r carte003}
 # (1) Saisie des variables
 CODE <- c("A","B","C","D","E","F","G")
 X <- c(10,20,40,50,180,100,150)

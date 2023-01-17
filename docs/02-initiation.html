@@ -591,7 +591,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <span id="cb3-7"><a href="02-initiation.html#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(X,Y,</span>
 <span id="cb3-8"><a href="02-initiation.html#cb3-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> CODE, </span>
 <span id="cb3-9"><a href="02-initiation.html#cb3-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">pos =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-6-1.svg" width="672" />
+<p><img src="bivaR_files/figure-html/carte001-1.svg" width="672" />
 La création d’un graphique est à première vue plus facile avec un logiciel click-bouton. L’avantage est très clairement pour Excel qui mène désormais 2 à 0.</p>
 </div>
 <div id="round-3.-calcul-de-la-station-la-plus-accessible-à-vol-doiseau-distance-euclidienne" class="section level3" number="2.2.3">
@@ -673,7 +673,7 @@ La création d’un graphique est à première vue plus facile avec un logiciel 
 <span id="cb20-16"><a href="02-initiation.html#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du point médian</span></span>
 <span id="cb20-17"><a href="02-initiation.html#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(equX, equY, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">pch=</span><span class="dv">3</span>)</span>
 <span id="cb20-18"><a href="02-initiation.html#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(equX,equY, <span class="st">&quot;caserne&quot;</span>,<span class="at">pos=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-11-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/carte002-1.svg" width="672" /></p>
 <p>Le résultat du match est incertain mais R n’est plus désavantagé puisqu’on peut recycler les lignes de code précédentes pour le graphique de base. Disons 5-5 même s’il y a de fortes chances que R l’emporte.</p>
 </div>
 <div id="dernier-round.-refaire-toute-lanalyse-avec-une-station-de-plus" class="section level3" number="2.2.8">
@@ -712,7 +712,7 @@ La création d’un graphique est à première vue plus facile avec un logiciel 
 <span id="cb21-31"><a href="02-initiation.html#cb21-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajout du point médian</span></span>
 <span id="cb21-32"><a href="02-initiation.html#cb21-32" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(equX, equY, <span class="at">col=</span><span class="st">&quot;green&quot;</span>, <span class="at">pch=</span><span class="dv">3</span>)</span>
 <span id="cb21-33"><a href="02-initiation.html#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(equX,equY, <span class="st">&quot;Caserne&quot;</span>,<span class="at">pos=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/carte003-1.svg" width="672" /></p>
 <p>Excel n’a aucune chance d’aller plus vite et R remporte le match par KO !</p>
 </div>
 </div>
@@ -750,7 +750,7 @@ Nous allons illustrer l’usage de R markdown en rédigeant une courte note sur 
 <p>On affiche le contour avec les instructions <code>plot()</code> et <code>lines()</code>. On doit impérativement ajouter le paramètre <em>asp = 1</em> dans plot() pour imposer une échelle identique sur l’axe vertical et l’axe horizontal.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="02-initiation.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>)</span>
 <span id="cb26-2"><a href="02-initiation.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-15-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
 </div>
 <div id="distribution-de-la-population" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Distribution de la population</h3>
@@ -767,7 +767,7 @@ Nous allons illustrer l’usage de R markdown en rédigeant une courte note sur 
 <p>On procède à une première cartographie qui ne tient pas compte de l’effectif de population mais indique juste les cases occupées et inoccupées, ce qui permet de donner une vision générale de l’occuparion du sol et du peuplement de Rennes et de l’espace environnant.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="02-initiation.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop<span class="sc">$</span>x,pop<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>,<span class="at">pch=</span><span class="dv">22</span>, <span class="at">cex=</span><span class="fl">0.01</span>)</span>
 <span id="cb31-2"><a href="02-initiation.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-17-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-14-1.svg" width="672" /></p>
 </div>
 <div id="distribution-des-équipements" class="section level3" number="2.3.4">
 <h3><span class="header-section-number">2.3.4</span> Distribution des équipements</h3>
@@ -804,7 +804,7 @@ Nous allons illustrer l’usage de R markdown en rédigeant une courte note sur 
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="02-initiation.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop<span class="sc">$</span>x,pop<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;gray&quot;</span>, <span class="at">asp =</span> <span class="dv">1</span>,<span class="at">pch=</span><span class="dv">22</span>, <span class="at">cex=</span><span class="fl">0.01</span>)</span>
 <span id="cb42-2"><a href="02-initiation.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(map<span class="sc">$</span>x,map<span class="sc">$</span>y, <span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span>
 <span id="cb42-3"><a href="02-initiation.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(bpe<span class="sc">$</span>x,bpe<span class="sc">$</span>y,<span class="at">bg=</span>bpe<span class="sc">$</span>couleur, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-21-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-18-1.svg" width="672" /></p>
 <p>Il est facile de procéder à un zoom en ajoutant des paramètres <em>xlim</em> et <em>ylim</em> dans la fonction plot() qui précise l’espace d’étude.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="02-initiation.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pop<span class="sc">$</span>x,</span>
 <span id="cb43-2"><a href="02-initiation.html#cb43-2" aria-hidden="true" tabindex="-1"></a>     pop<span class="sc">$</span>y, </span>
@@ -824,7 +824,7 @@ Nous allons illustrer l’usage de R markdown en rédigeant une courte note sur 
 <span id="cb43-16"><a href="02-initiation.html#cb43-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">bg=</span>bpe<span class="sc">$</span>couleur, </span>
 <span id="cb43-17"><a href="02-initiation.html#cb43-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">21</span>, </span>
 <span id="cb43-18"><a href="02-initiation.html#cb43-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-22-1.svg" width="672" /></p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-19-1.svg" width="672" /></p>
 <p>OK, notre carte n’a pas de légende (c’est possible mais vraiment compliqué en R-Base) mais on appréciera le fait d’avoir pu la réaliser en ne se servant que de quelques fonctions élémentaires de R comme</p>
 </div>
 </div>
