@@ -9,6 +9,9 @@
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   ]]></style>
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
@@ -18,6 +21,19 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
+<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='331.19px' lengthAdjust='spacingAndGlyphs'>Ventes de logements à Sucy-en-Brie (2014-2021)</text>
+<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.70px' lengthAdjust='spacingAndGlyphs'>Année</text>
+<text transform='translate(41.76,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='96.06px' lengthAdjust='spacingAndGlyphs'>Type de logement</text>
+<text x='98.24' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2014</text>
+<text x='139.90' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2015</text>
+<text x='178.55' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2016</text>
+<text x='223.74' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2017</text>
+<text x='280.99' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2018</text>
+<text x='339.75' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2019</text>
+<text x='388.71' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2020</text>
+<text x='433.64' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2021</text>
+<text transform='translate(66.86,149.17) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='45.28px' lengthAdjust='spacingAndGlyphs'>Appartement</text>
+<text transform='translate(67.61,258.93) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='25.50px' lengthAdjust='spacingAndGlyphs'>Maison</text>
 </g>
 <defs>
   <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
@@ -25,41 +41,21 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
-<text transform='translate(430.52,286.79) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='70.72px' lengthAdjust='spacingAndGlyphs'>Standardized</text>
-<text transform='translate(444.92,286.79) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='56.02px' lengthAdjust='spacingAndGlyphs'>Residuals:</text>
-<polygon points='421.88,204.29 446.09,204.29 446.09,185.83 421.88,185.83 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FF0000;' />
-<polygon points='421.88,181.21 446.09,181.21 446.09,162.75 421.88,162.75 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FF8080;' />
-<polygon points='421.88,158.13 446.09,158.13 446.09,139.67 421.88,139.67 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FFFFFF;' />
-<polygon points='421.88,135.05 446.09,135.05 446.09,116.59 421.88,116.59 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
-<polygon points='421.88,111.97 446.09,111.97 446.09,93.51 421.88,93.51 ' style='stroke-width: 0.75; fill: #8080FF;' />
-<polygon points='421.88,88.89 446.09,88.89 446.09,70.43 421.88,70.43 ' style='stroke-width: 0.75; fill: #0000FF;' />
-</g>
-<g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<text transform='translate(459.20,195.06) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='11.65px' lengthAdjust='spacingAndGlyphs'>&lt;-4</text>
-<text transform='translate(459.24,171.98) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='16.26px' lengthAdjust='spacingAndGlyphs'>-4:-2</text>
-<text transform='translate(459.16,148.90) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='13.63px' lengthAdjust='spacingAndGlyphs'>-2:0</text>
-<text transform='translate(459.16,125.82) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='10.99px' lengthAdjust='spacingAndGlyphs'>0:2</text>
-<text transform='translate(459.24,102.74) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='10.99px' lengthAdjust='spacingAndGlyphs'>2:4</text>
-<text transform='translate(459.20,79.66) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='9.01px' lengthAdjust='spacingAndGlyphs'>&gt;4</text>
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: Arial;' textLength='51.98px' lengthAdjust='spacingAndGlyphs'>tabcont</text>
-<text x='106.96' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.18px' lengthAdjust='spacingAndGlyphs'>18-36 ans</text>
-<text x='170.85' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.18px' lengthAdjust='spacingAndGlyphs'>37-49 ans</text>
-<text x='232.23' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.18px' lengthAdjust='spacingAndGlyphs'>50-59 ans</text>
-<text x='295.67' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.18px' lengthAdjust='spacingAndGlyphs'>60-68 ans</text>
-<text x='358.97' y='64.62' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.62px' lengthAdjust='spacingAndGlyphs'>69-94-ans</text>
-<text transform='translate(66.65,132.20) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.17px' lengthAdjust='spacingAndGlyphs'>Favorable</text>
-<text transform='translate(66.71,241.96) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='42.65px' lengthAdjust='spacingAndGlyphs'>Défavorable</text>
-</g>
-<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
-<polygon points='75.99,193.96 137.93,193.96 137.93,70.43 75.99,70.43 ' style='stroke-width: 0.75; fill: #8080FF;' />
-<polygon points='75.99,285.65 137.93,285.65 137.93,198.27 75.99,198.27 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FF8080;' />
-<polygon points='144.15,163.65 197.54,163.65 197.54,70.43 144.15,70.43 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
-<polygon points='144.15,285.65 197.54,285.65 197.54,167.95 144.15,167.95 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FFFFFF;' />
-<polygon points='203.77,162.23 260.69,162.23 260.69,70.43 203.77,70.43 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FFFFFF;' />
-<polygon points='203.77,285.65 260.69,285.65 260.69,166.53 203.77,166.53 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
-<polygon points='266.92,151.55 324.43,151.55 324.43,70.43 266.92,70.43 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FFFFFF;' />
-<polygon points='266.92,285.65 324.43,285.65 324.43,155.85 266.92,155.85 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
-<polygon points='330.66,142.93 387.29,142.93 387.29,70.43 330.66,70.43 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FF8080;' />
-<polygon points='330.66,285.65 387.29,285.65 387.29,147.23 330.66,147.23 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
+<polygon points='79.38,227.91 117.09,227.91 117.09,70.43 79.38,70.43 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='79.38,285.65 117.09,285.65 117.09,232.22 79.38,232.22 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='124.57,212.19 155.24,212.19 155.24,70.43 124.57,70.43 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='124.57,285.65 155.24,285.65 155.24,216.50 124.57,216.50 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='162.71,217.73 194.39,217.73 194.39,70.43 162.71,70.43 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='162.71,285.65 194.39,285.65 194.39,222.04 162.71,222.04 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='201.86,259.53 245.61,259.53 245.61,70.43 201.86,70.43 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='201.86,285.65 245.61,285.65 245.61,263.83 201.86,263.83 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='253.08,245.24 308.90,245.24 308.90,70.43 253.08,70.43 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='253.08,285.65 308.90,285.65 308.90,249.55 253.08,249.55 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='316.37,260.93 363.14,260.93 363.14,70.43 316.37,70.43 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='316.37,285.65 363.14,285.65 363.14,265.24 316.37,265.24 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='370.61,237.40 406.81,237.40 406.81,70.43 370.61,70.43 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='370.61,285.65 406.81,285.65 406.81,241.71 370.61,241.71 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='414.28,234.78 453.00,234.78 453.00,70.43 414.28,70.43 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='414.28,285.65 453.00,285.65 453.00,239.08 414.28,239.08 ' style='stroke-width: 0.75; fill: #FFA500;' />
 </g>
 </svg>

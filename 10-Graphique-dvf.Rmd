@@ -1,0 +1,591 @@
+# Graphiques : applications
+
+
+```{r, echo = FALSE, warning=F,message=F}
+knitr::opts_chunk$set(echo = TRUE,warning=F,message = F)
+library(knitr)
+library(ggplot2,quiet=T)
+library(dplyr,quiet=T)
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo_dvf](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo_dvf.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo.Rproj` dans Rstudio.
+
+
+
+## Introduction
+
+## préparation des données
+
+
+### Chargement du fichier
+
+On charge un fichier sauvegardé au format .RDS appelé *dvfclean_V2.RDS* 
+
+```{r }
+don<-readRDS("resources/data/dvf/data/dvfclean_V2.RDS")
+head(don)
+```
+
+
+
+### Contenu du fichier
+
+Ce dossier est une version simplifiée des *Demandes de Valeurs Foncières* et contient un échantillon des ventes de maisons  ou d'appartements effectués dans les départements de Paris et Petite Couronne au cours des années 2014 à 2021. On n'a retenu que les ventes simples correspondant à une seule maison ou à un seul appartement. 
+
+**Sources** : Ces données sont disponibles sur le site opendatasoft sous l'appellation ["Demandes de valeurs foncières géoloalisées"](https://public.opendatasoft.com/explore/dataset/buildingref-france-demande-de-valeurs-foncieres-geolocalisee-millesime/information/)
+
+
+
+### Dictionaire des variables
+
+- **id**    : identifiant de la transaction
+- **ann** : année de la transcation
+- **code** : code INSEE de la commune où a eu lieu la transaction
+- **nom** : code de la commune où a eu lieu la transaction
+- **type** : type de bien vendu (maison ou appartement)
+- **surf** : surface habitable du logement
+- **nbp** : nombre de pièces du logement
+- **prix** : prix de vente du bien
+- **prixm2** : prix de vente au m2 (déduit de prix et surf)
+- **dep** : département de vente du bien (déduit de code)
+
+### Type des variables
+
+On passe la variable dep en factor et on change le nom des labels. Puis on crée une autre variable opposant Paris et la petite couronne
+
+```{r}
+don$dep<-as.factor(don$dep)
+levels(don$dep) <- c("Paris","Hauts-de-Seine","Seine-Saint-Denis","Val-de-Marne")
+don$loc <-don$dep
+levels(don$loc) <- c("Paris","PC","PC","PC")
+```
+
+### Résumé de l'ensemble du tableau
+
+```{r}
+summary(don)
+```
+
+### Nettoyage des données
+
+On retire les valeurs exceptionnelles présentes dans le fichier, lées à des erreurs ou des ventes multiples. 
+
+```{r}
+don<- don[don$prixm2 >1000,]
+don<- don[don$prixm2 <15000,]
+don<- don[don$nbp >0,]
+don<- don[don$nbp <10,]
+don<- don[don$surf >9,]
+don<- don[don$surf <300,]
+
+```
+
+
+
+
+### Extraction d'une commune
+
+On décide d'extraire une commune, par exemple Sucy-en-Brie dont le code INSEE est 94071
+
+```{r}
+sel<-don[don$code=="94071",]
+```
+
+
+
+
+## Principes généraux
+
+On commence par charger le package `ggplot2` qui est une partie de l'univers `tidyverse` mais que l'on peut utiliser indépendamment du reste de l'empire d'Hadley Wickham...
+
+```{r}
+library(ggplot2)
+```
+
+
+### Les différentes étapes
+
+- la commande **ggplot**(*data*) initie la création du graphique.
+- la commande **aes()** qui est l'abrévation de *aesthetics* définit les paramètres généraux de l'ensemble du graphique et comporte en général 
+  + **x =** variable liée à l'axe horizontal
+  + **y=**  variable liée à l'axe vertical
+  + **colour=** : variable définissant des groupes /  couleur
+  + **shape=** : variable définissant des groupes /  forme
+- la commande **geom_xxx** crée un graphique de type xxx 
+- les commandes additionnelles **scale_xxx** précisent les axes
+- la commande additionelle **facet_xxx** partitionne la figure en plusieurs
+- la commande **theme_xxx** retouche l'ensemble des paramètres de couleur, police, épaisseur
+
+N.B. Toutes les étapes ci-dessus ne sont pas obligatoires. 
+
+
+
+### La figure à réaliser
+
+Comment réaliser la figure ci-dessous ?
+
+```{r exo1bis, include = TRUE, echo=FALSE}
+
+  ggplot(sel) +
+  aes(x = surf) +
+  aes(y = prix) +
+  geom_point() +
+  scale_x_log10(name="Surface du logement")+
+  scale_y_log10(name="Prix de vente")+
+  facet_wrap(vars(type),ncol= 2)+
+  geom_smooth(method="lm") +
+  ggtitle(label = "Relation entre prix et surface des logements",
+          subtitle = "Source : DVF ") +
+  theme_light()
+
+
+```
+
+### La construction pas à pas 
+
+
+
+On définit le tableau de données avec `ggplot()` et les variables principales avec `aes()`
+
+```{r }
+
+  ggplot(sel) +
+  aes(x = surf) +
+  aes(y = prix) +
+  aes(col = type)
+
+```
+
+
+On ajoute le type principal du graphique avec la commande `geom_point()`
+
+```{r }
+
+  ggplot(sel) +
+  aes(x = surf) +
+  aes(y = prix) +
+  geom_point() 
+```
+
+
+
+On retouche les axes horizontaux et verticaux en les passant en logarithme et en leur donnant un titre. 
+
+```{r }
+
+  ggplot(sel) +
+  aes(x = surf) +
+  aes(y = prix) +
+  geom_point() +
+  scale_x_log10(name="Surface du logement")+
+  scale_y_log10(name="Prix de vente")
+
+ 
+
+```
+
+On segmente le graphique en facettes selon une ou plusieurs variables avec `facet_wrap()`. Du coup, on retire ces variables de l'esthétique générale : 
+
+```{r }
+
+  ggplot(sel) +
+  aes(x = surf) +
+  aes(y = prix) +
+  geom_point() +
+  scale_x_log10(name="Surface du logement")+
+  scale_y_log10(name="Prix de vente")+
+  facet_wrap(vars(type),ncol= 2)
+
+
+```
+
+On ajoute dans chaque facette une droite de tendance et son intervalle de confiance avec `geom_smooth()`. On précise *method="lm"* pour avoir une droite et non pas une courbe
+
+```{r }
+
+  ggplot(sel) +
+  aes(x = surf) +
+  aes(y = prix) +
+  geom_point() +
+  scale_x_log10(name="Surface du logement")+
+  scale_y_log10(name="Prix de vente")+
+  facet_wrap(vars(type),ncol= 2)+
+  geom_smooth(method="lm") 
+
+
+```
+
+Onajoute un titre principal avec `ggtitle()` et on retouche l'ensemble de l'apparence avec `theme_light()`.
+
+```{r }
+
+  ggplot(sel) +
+  aes(x = surf) +
+  aes(y = prix) +
+  geom_point() +
+  scale_x_log10(name="Surface du logement")+
+  scale_y_log10(name="Prix de vente")+
+  facet_wrap(vars(type),ncol= 2)+
+  geom_smooth(method="lm") +
+  ggtitle(label = "Relation entre prix et surface des logements",
+          subtitle = "Source : DVF ") +
+  theme_light()
+
+```
+
+### Comparaison avec R-Base
+
+- La principale différence réside dans la **construction séquentielle** de la figure avec l'opérateur **+**. A tout moment on peut sauvegarder la figure au cours d'une des étapes décrites dans l'exemple. On parle de **pipeline** pour ce type de programme que l'on retrouve dans la manipulation de données avec **tidyverse** et **dplyr**.
+
+- La seconde différence réside dans la **production rapide** d'une figure de qualité graphique acceptable sans avoir besoin de spécifier les paramètres **par()** de R-Base. 
+
+- Au total, ggplot2 s'impose actuellement comme un **standard mondial** autour duquel se greffent d'autres applications. Par exemple, on peut rendre interactif un graphique ggplot() en le couplant avec **plotly()**.
+
+- Mais ... ggplot2 est **beaucoup moins simple** qu'il n'y paraît de prime abord. Et on peut facilement s'arracher les cheveux sur certaines commandes !
+
+
+
+### Attention ! Paramètres aes() locaux et globaux
+
+Une des plus grandes difficultés que l'on rencontre dans ggplot() est **la manipulation du paramètre aes()** qui peut renvoyer :  
+
+- soit à des **paramètres globaux** s'ils apparaissent dans le ggplot initial ou dans des lignes de codes isolées
+- soit à des **paramètres locaux**, s'ils apparaissent à l'intérieur d'une fonction geom().
+
+Deux exemples rapides pour bien comprendre 
+
+
+- **type est un paramètre global** : dans ce cas il s'applique à toutes les commandes qui suivent. Il y aura donc **deux** droites de régression générées par geom_smooth
+
+```{r}
+ggplot(sel, aes(x = surf, y = prix, color = type)) +
+geom_point() +
+geom_smooth(method="lm")
+```
+
+
+- **type est un paramètre local de geom_point()** : dans ce cas il n'aura pas d'effet sur geom_smooth() qui va générer **une** seule droite de régression.
+
+```{r, echo=TRUE}
+ggplot(sel, aes(x = surf, y = prix)) +
+geom_point(aes(color=type)) +
+geom_smooth(method="lm")
+```
+
+
+## X discrète
+
+
+### barplot (R-base)
+
+
+```{r }
+barplot(table(sel$type), col = c("blue", "red"),
+        xlab="Type de logement", ylab = "effectif")
+```
+
+### geom_bar (ggplot2)
+
+
+```{r }
+# ggplot
+ggplot(sel) +
+  aes(x =type) +
+  geom_bar(fill = c("blue","red"))+
+  scale_x_discrete(name="Type de logement")+
+  scale_y_continuous(name="effectif")
+
+
+```
+
+
+
+
+
+
+## X quantitative continue
+
+
+### hist (R-base)
+
+
+
+```{r }
+sel2<-sel[sel$type=="Maison",]
+hist(sel2$prix,breaks = 15,
+     col = "lightyellow",
+     border = "blue",
+     xlab="Prix de vente",
+     ylab = "Nombre de ventes",
+     main = "Ventes de maison à Sucy en Brie (2014-2021")
+```
+
+
+
+
+
+### geom_histogram (ggplot2)
+
+```{r }
+# On démarre par une ligne de tidyverse ...
+sel %>%  filter(type=="Maison") %>%
+#  ... en on embraye sur ggplot2 
+  ggplot() +
+  aes(x =prix) + 
+# Appel de la fonction principale  
+  geom_histogram( bins = 15,     
+                 fill="lightyellow",
+                 col="blue" 
+                 ) +   
+# Retouche de l'échelle
+ scale_x_continuous( name = "Prix de vente") + 
+ scale_y_continuous(name = "Nombre de ventes")+
+# Ajout du titre 
+ ggtitle("Ventes de maison à Sucy-en-Brie (2014-2021)") 
+
+
+```
+
+
+
+
+
+## X et Y quantitatives continues
+
+
+### plot (R-base)
+
+
+
+```{r }
+
+plot(x = sel$surf,
+     y = sel$prix, 
+     cex=0, 
+     xlab="Surface",
+     ylab="Prix de vente",
+     main= "Ventes de maison à Sucy-en-Brie (2014-2021)")
+points(x = sel$surf,
+       y = sel$prix, 
+       col=sel$type, 
+       cex=sqrt(sel$nbp), 
+       pch=19)
+abline(lm(sel$prix~sel$surf), 
+       col="blue",
+       lwd=3)
+
+```
+
+
+
+
+
+### geom_point (ggplot2)
+
+```{r }
+
+#  On définit les paramètres globaux 
+  ggplot(sel, aes(x =surf, y=prix)) +
+  
+# On trace les points avec 
+# des paramètres locaux
+  geom_point(aes(color=type, 
+                 size = nbp)) +
+  
+# On ajoute la droite de régression
+  geom_smooth(method = "lm") +
+  
+# On ajoute les titres
+  scale_x_continuous(name="surface") +
+  scale_y_continuous(name="prix de vente") +
+  ggtitle("Ventes de maison à Sucy-en-Brie (2014-2021)")
+
+```
+
+
+
+
+
+
+
+## X quantitative continue et Y discrète
+
+
+### 6.1 boxplot (R-base)
+
+
+```{r }
+sel2<-sel[(don$type=="Maison"),]
+sel2$SIZE<-as.factor(sel2$nbp)
+#levels(don2$SIZE)<-c("1 ou 2", "1 ou 2", "3 ou 4", "3 ou 4", "5 ou 6", "5 ou 6")
+boxplot(sel2$prix~sel2$SIZE, 
+      col=rainbow(n=12, alpha=0.5),
+       xlab="Nombre de pièces",
+       ylab="Prix",
+      main= "Ventes de maison à Sucy-en-Brie (2014-2021)")
+
+```
+
+
+
+### geom_boxplot (ggplot2)
+
+
+
+```{r }
+# On filtre le tableau et on change SIZE en factor
+sel %>%  filter(type=="Maison") %>% 
+         mutate(SIZE = as.factor(nbp)) %>%
+  
+# On définit les paramètres principaux
+ggplot(aes(x= SIZE,y = prix)) +
+  
+# On ajoute la boxplot
+geom_boxplot(aes(fill= SIZE)) +
+  
+  
+# On ajoute les titres
+  scale_x_discrete(name="Nombre de pièces") +
+  scale_y_continuous(name="Prix de vente") +
+  ggtitle("Ventes de maison à Sucy-en-Brie (2014-2021)")
+
+```
+
+
+
+
+### beanplot (R-base + package beanplot)
+
+
+```{r }
+par(bg="black",fg="white",col.lab ="white", col.axis ="white",col.main="white" )
+sel2<-sel[(don$type=="Maison"),]
+sel2$SIZE<-as.factor(sel2$nbp)
+#levels(don2$SIZE)<-c("1 ou 2", "1 ou 2", "3 ou 4", "3 ou 4", "5 ou 6", "5 ou 6")
+library(beanplot)
+
+
+beanplot(sel2$prix~sel2$SIZE, 
+         col=c("lightyellow","red"),
+       xlab="Nombre de pièces",
+       ylab="Prix",
+      main= "Ventes de maison à Sucy-en-Brie (2014-2021)")
+
+```
+
+
+
+### geom_violin (ggplot2)
+
+
+
+```{r }
+# On filtre le tableau et on change SIZE en factor
+sel %>%  filter(type=="Maison") %>% 
+         mutate(SIZE = as.factor(nbp)) %>%
+  
+# On définit les paramètres principaux
+ggplot(aes(x= SIZE,y = prix)) +
+  
+# On ajoute la géométrie 
+geom_violin(aes(fill= SIZE)) +
+  
+# On ajoute les titres
+  scale_x_discrete(name="Nombre de pièces") +
+  scale_y_continuous(name="Prix de vente") +
+  ggtitle("Ventes de maison à Sucy-en-Brie (2014-2021)") +
+
+# On passe en thème "dark"
+  theme_dark()
+
+
+```
+
+
+
+
+
+
+## Deux variables X et Y discrètes 
+
+
+
+### mosaicplot (R-base)
+
+
+
+```{r}
+
+mosaicplot(sel$ann~sel$type, 
+      col=c("yellow","orange"),
+       xlab="Année",
+       ylab="Type de logement",
+      main= "Ventes de logements à Sucy-en-Brie (2014-2021)")
+
+```
+
+
+
+
+
+### geom_bar (ggplot2) 
+
+
+```{r}
+
+  
+# On définit les paramètres principaux
+ggplot(sel,aes(x= ann, fill = type)) +
+  
+
+# On ajoute geom_bar
+geom_bar() +
+
+  
+# On ajoute les titres
+  scale_x_discrete(name="Année") +
+  ggtitle("Ventes de logements à Sucy-en-Brie (2014-2021)")
+
+
+```
+
+
+
+
+
+
+## Conclusion 
+
+
+### R-base
+- simple d'utilisation 
+- peut être amélioré par des packages spécialisés
+- permet de créer ses propres fonctions
+- n'impose pas d'apprendre tidyverse
+
+### ggplot2
+- standard mondial du graphisme ... actuellement
+- compatible avec la religion du tidyverse
+- rédaction séquentielle très efficace
+- mais apprentissage difficile (plusieurs semaines ...)
+
+### Le meilleur des deux mondes ?
+- ne pas hésiter à combiner les deux
+- exportation facile des résultats dans les deux cas (pdf, jpeg, png, ...)
+
+### plotly, un challenger sérieux de ggplot pour le web
+- plotly crée des graphiques interactifs au format .html
+- plotly peut convertir des documents ggplot
+- plotly a une syntaxe proche de ggplot mais avec des fonctionnalités en plus
+- plotly est multilangage (R, Python, ...)
+
+
+
+
+
+
+
+
+
+
