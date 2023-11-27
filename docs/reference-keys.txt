@@ -260,6 +260,7 @@ la-figure-à-réaliser-1
 la-construction-pas-à-pas-1
 comparaison-avec-r-base-1
 attention-paramètres-aes-locaux-et-globaux-1
+comparaison-r-base-ggplot2
 x-discrète-1
 barplot-r-base-1
 geom_bar-ggplot2-2

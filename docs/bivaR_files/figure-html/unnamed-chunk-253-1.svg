@@ -298,11 +298,11 @@
 <text transform='translate(41.76,134.01) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>0.2</text>
 <text transform='translate(41.76,93.89) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>0.4</text>
 <polygon points='59.04,178.56 329.76,178.56 329.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
-<text x='194.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='175.99px' lengthAdjust='spacingAndGlyphs'>Valeurs exceptionnelles ?</text>
-<text x='194.40' y='233.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='69.38px' lengthAdjust='spacingAndGlyphs'>Obs. number</text>
-<text transform='translate(12.96,118.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='84.36px' lengthAdjust='spacingAndGlyphs'>Cook's distance</text>
-<text x='194.40' y='247.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='159.99px' lengthAdjust='spacingAndGlyphs'>lm(don$PCT ~ don$TOTBILL)</text>
-<text x='194.40' y='52.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='84.36px' lengthAdjust='spacingAndGlyphs'>Cook's distance</text>
+<text x='194.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='176.78px' lengthAdjust='spacingAndGlyphs'>Valeurs exceptionnelles ?</text>
+<text x='194.40' y='233.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='69.36px' lengthAdjust='spacingAndGlyphs'>Obs. number</text>
+<text transform='translate(12.96,118.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='84.33px' lengthAdjust='spacingAndGlyphs'>Cook's distance</text>
+<text x='194.40' y='247.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='160.40px' lengthAdjust='spacingAndGlyphs'>lm(don$PCT ~ don$TOTBILL)</text>
+<text x='194.40' y='52.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='84.33px' lengthAdjust='spacingAndGlyphs'>Cook's distance</text>
 <text x='246.49' y='67.59' text-anchor='middle' style='font-size: 9.00px; font-family: "Arial";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>R173</text>
 <text x='244.43' y='149.18' text-anchor='middle' style='font-size: 9.00px; font-family: "Arial";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>R171</text>
 <text x='252.68' y='154.76' text-anchor='middle' style='font-size: 9.00px; font-family: "Arial";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>R179</text>

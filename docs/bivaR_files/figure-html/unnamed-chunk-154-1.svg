@@ -80,17 +80,17 @@
 <text transform='translate(41.76,111.69) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>3</text>
 <text transform='translate(41.76,72.61) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>4</text>
 <polygon points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='113.40px' lengthAdjust='spacingAndGlyphs'>Theoretical Quantiles</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='122.09px' lengthAdjust='spacingAndGlyphs'>Standardized residuals</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='113.38px' lengthAdjust='spacingAndGlyphs'>Theoretical Quantiles</text>
+<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='122.07px' lengthAdjust='spacingAndGlyphs'>Standardized residuals</text>
 </g>
 <g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
 <line x1='59.04' y1='271.66' x2='473.76' y2='199.92' style='stroke-width: 0.75; stroke: #7F7F7F; stroke-dasharray: 1.00,3.00;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<text x='266.40' y='355.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='98.17px' lengthAdjust='spacingAndGlyphs'>lm(eur$Y ~ eur$X)</text>
-<text x='266.40' y='52.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='78.71px' lengthAdjust='spacingAndGlyphs'>Q-Q Residuals</text>
-<text x='454.80' y='84.31' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='17.01px' lengthAdjust='spacingAndGlyphs'>ALB</text>
+<text x='266.40' y='355.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='98.37px' lengthAdjust='spacingAndGlyphs'>lm(eur$Y ~ eur$X)</text>
+<text x='266.40' y='52.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='78.68px' lengthAdjust='spacingAndGlyphs'>Q-Q Residuals</text>
+<text x='454.80' y='84.32' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='17.01px' lengthAdjust='spacingAndGlyphs'>ALB</text>
 <text x='408.15' y='176.47' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='19.50px' lengthAdjust='spacingAndGlyphs'>YUG</text>
-<text x='78.00' y='280.28' style='font-size: 9.00px; font-family: "Arial";' textLength='19.50px' lengthAdjust='spacingAndGlyphs'>DDR</text>
+<text x='78.00' y='280.29' style='font-size: 9.00px; font-family: "Arial";' textLength='19.50px' lengthAdjust='spacingAndGlyphs'>DDR</text>
 </g>
 </svg>

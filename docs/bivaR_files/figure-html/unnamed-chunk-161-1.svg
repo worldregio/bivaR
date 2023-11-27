@@ -146,9 +146,9 @@
 <circle cx='247.67' cy='223.39' r='3.36' style='stroke-width: 0.75; stroke: #0000FF; fill: #0000FF;' />
 <text x='269.26' y='240.73' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>AUT</text>
 <text x='250.25' y='247.10' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.59px' lengthAdjust='spacingAndGlyphs'>BEL</text>
-<text x='79.17' y='196.13' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>BGR</text>
+<text x='79.17' y='196.14' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>BGR</text>
 <text x='454.60' y='277.89' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>CHE</text>
-<text x='107.68' y='202.50' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.78px' lengthAdjust='spacingAndGlyphs'>CSK</text>
+<text x='107.68' y='202.51' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.78px' lengthAdjust='spacingAndGlyphs'>CSK</text>
 <text x='119.56' y='252.41' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>DDR</text>
 <text x='316.78' y='258.78' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>DEU</text>
 <text x='331.04' y='260.90' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>DNK</text>
@@ -158,15 +158,15 @@
 <text x='243.12' y='249.22' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>GBR</text>
 <text x='119.56' y='219.49' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>GRC</text>
 <text x='79.17' y='148.35' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>HUN</text>
-<text x='152.83' y='257.71' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>IRL</text>
-<text x='236.00' y='242.85' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='10.65px' lengthAdjust='spacingAndGlyphs'>ITA</text>
-<text x='423.71' y='244.97' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.98px' lengthAdjust='spacingAndGlyphs'>LUX</text>
-<text x='269.26' y='268.33' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>NLD</text>
+<text x='152.83' y='257.72' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>IRL</text>
+<text x='236.00' y='242.85' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>ITA</text>
+<text x='423.71' y='244.98' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.98px' lengthAdjust='spacingAndGlyphs'>LUX</text>
+<text x='269.26' y='268.34' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>NLD</text>
 <text x='399.95' y='259.84' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>NOR</text>
 <text x='81.55' y='164.28' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>POL</text>
-<text x='83.92' y='182.33' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.25px' lengthAdjust='spacingAndGlyphs'>PRT</text>
-<text x='60.16' y='78.27' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>ROU</text>
-<text x='345.30' y='287.44' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='16.37px' lengthAdjust='spacingAndGlyphs'>SWE</text>
-<text x='86.30' y='62.34' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>YUG</text>
+<text x='83.92' y='182.33' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>PRT</text>
+<text x='60.16' y='78.28' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>ROU</text>
+<text x='345.30' y='287.45' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='16.37px' lengthAdjust='spacingAndGlyphs'>SWE</text>
+<text x='86.30' y='62.35' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>YUG</text>
 </g>
 </svg>

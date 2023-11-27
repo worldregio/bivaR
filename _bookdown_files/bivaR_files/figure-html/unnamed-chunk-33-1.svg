@@ -30,10 +30,10 @@
 <line x1='59.04' y1='148.81' x2='51.84' y2='148.81' style='stroke-width: 0.75; stroke: #FFFFFF;' />
 <line x1='59.04' y1='121.01' x2='51.84' y2='121.01' style='stroke-width: 0.75; stroke: #FFFFFF;' />
 <line x1='59.04' y1='93.21' x2='51.84' y2='93.21' style='stroke-width: 0.75; stroke: #FFFFFF;' />
-<text transform='translate(41.76,277.92) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='33.71px' lengthAdjust='spacingAndGlyphs'>2e+04</text>
-<text transform='translate(41.76,213.37) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='33.71px' lengthAdjust='spacingAndGlyphs'>1e+05</text>
-<text transform='translate(41.76,148.81) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='33.71px' lengthAdjust='spacingAndGlyphs'>5e+05</text>
-<text transform='translate(41.76,93.21) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='33.71px' lengthAdjust='spacingAndGlyphs'>2e+06</text>
+<text transform='translate(41.76,277.92) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='33.70px' lengthAdjust='spacingAndGlyphs'>2e+04</text>
+<text transform='translate(41.76,213.37) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='33.70px' lengthAdjust='spacingAndGlyphs'>1e+05</text>
+<text transform='translate(41.76,148.81) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='33.70px' lengthAdjust='spacingAndGlyphs'>5e+05</text>
+<text transform='translate(41.76,93.21) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='33.70px' lengthAdjust='spacingAndGlyphs'>2e+06</text>
 <line x1='91.85' y1='286.56' x2='440.95' y2='286.56' style='stroke-width: 0.75; stroke: #FFFFFF;' />
 <line x1='91.85' y1='286.56' x2='91.85' y2='293.76' style='stroke-width: 0.75; stroke: #FFFFFF;' />
 <line x1='126.76' y1='286.56' x2='126.76' y2='293.76' style='stroke-width: 0.75; stroke: #FFFFFF;' />
@@ -56,7 +56,7 @@
 <text x='336.22' y='312.48' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>8</text>
 <text x='371.13' y='312.48' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>9</text>
 <text x='406.04' y='312.48' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>10</text>
-<text x='440.95' y='312.48' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='12.46px' lengthAdjust='spacingAndGlyphs'>11</text>
+<text x='440.95' y='312.48' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>11</text>
 </g>
 <defs>
   <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
@@ -2101,8 +2101,8 @@
 <line x1='438.21' y1='117.55' x2='443.68' y2='117.55' style='stroke-width: 0.75; stroke: #FF0000;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<text x='266.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold;fill: #FFFFFF; font-family: "Arial";' textLength='315.98px' lengthAdjust='spacingAndGlyphs'>Ventes de logements à Saint-Maur (2017-2021)</text>
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='97.40px' lengthAdjust='spacingAndGlyphs'>Nombre de pièces</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='20.67px' lengthAdjust='spacingAndGlyphs'>Prix</text>
+<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold;fill: #FFFFFF; font-family: "Arial";' textLength='316.77px' lengthAdjust='spacingAndGlyphs'>Ventes de logements à Saint-Maur (2017-2021)</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='97.38px' lengthAdjust='spacingAndGlyphs'>Nombre de pièces</text>
+<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='20.66px' lengthAdjust='spacingAndGlyphs'>Prix</text>
 </g>
 </svg>

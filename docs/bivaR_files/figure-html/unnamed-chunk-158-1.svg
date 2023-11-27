@@ -80,10 +80,10 @@
 <text transform='translate(41.76,103.20) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>0.8</text>
 <text transform='translate(41.76,59.46) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='16.68px' lengthAdjust='spacingAndGlyphs'>1.0</text>
 <polygon points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='69.38px' lengthAdjust='spacingAndGlyphs'>Obs. number</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='84.36px' lengthAdjust='spacingAndGlyphs'>Cook's distance</text>
-<text x='266.40' y='355.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='98.17px' lengthAdjust='spacingAndGlyphs'>lm(eur$Y ~ eur$X)</text>
-<text x='266.40' y='52.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='84.36px' lengthAdjust='spacingAndGlyphs'>Cook's distance</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='69.36px' lengthAdjust='spacingAndGlyphs'>Obs. number</text>
+<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='84.33px' lengthAdjust='spacingAndGlyphs'>Cook's distance</text>
+<text x='266.40' y='355.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='98.37px' lengthAdjust='spacingAndGlyphs'>lm(eur$Y ~ eur$X)</text>
+<text x='266.40' y='52.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='84.33px' lengthAdjust='spacingAndGlyphs'>Cook's distance</text>
 <text x='74.40' y='78.56' text-anchor='middle' style='font-size: 9.00px; font-family: "Arial";' textLength='17.01px' lengthAdjust='spacingAndGlyphs'>ALB</text>
 <text x='346.40' y='251.67' text-anchor='middle' style='font-size: 9.00px; font-family: "Arial";' textLength='17.51px' lengthAdjust='spacingAndGlyphs'>LUX</text>
 <text x='458.40' y='255.56' text-anchor='middle' style='font-size: 9.00px; font-family: "Arial";' textLength='19.50px' lengthAdjust='spacingAndGlyphs'>YUG</text>

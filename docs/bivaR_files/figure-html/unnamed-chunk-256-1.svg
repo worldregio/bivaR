@@ -29,10 +29,10 @@
 <rect x='205.79' y='172.81' width='113.94' height='8.83' style='stroke-width: 0.75; fill: #969696;' />
 <rect x='205.79' y='145.35' width='113.94' height='27.46' style='stroke-width: 0.75; fill: #C3C3C3;' />
 <rect x='205.79' y='127.69' width='113.94' height='17.65' style='stroke-width: 0.75; fill: #E6E6E6;' />
-<text x='126.04' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.02px' lengthAdjust='spacingAndGlyphs'>Homme</text>
-<text x='262.76' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.68px' lengthAdjust='spacingAndGlyphs'>Femme</text>
-<text x='194.40' y='269.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='53.38px' lengthAdjust='spacingAndGlyphs'>fréquence</text>
-<text transform='translate(12.96,136.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='98.06px' lengthAdjust='spacingAndGlyphs'>jour de la semaine</text>
+<text x='126.04' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.00px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text x='262.76' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text x='194.40' y='269.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='53.37px' lengthAdjust='spacingAndGlyphs'>fréquence</text>
+<text transform='translate(12.96,136.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='98.05px' lengthAdjust='spacingAndGlyphs'>jour de la semaine</text>
 <line x1='59.04' y1='213.02' x2='59.04' y2='65.91' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='213.02' x2='51.84' y2='213.02' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='163.98' x2='51.84' y2='163.98' style='stroke-width: 0.75;' />

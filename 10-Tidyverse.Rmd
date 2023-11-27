@@ -110,6 +110,7 @@ Nous allons passer rapidement en revue quelques commandes de base de *dplyr* à 
 
 ```{r}
 library(dplyr)
+knitr::include_graphics("resources/figures/dplyr.jpg")
 ```
 
 
@@ -253,6 +254,7 @@ On commence par charger le package `ggplot2` qui est une partie de l'univers `ti
 
 ```{r}
 library(ggplot2)
+knitr::include_graphics("resources/figures/ggplot2.jpeg")
 ```
 
 
@@ -443,10 +445,13 @@ geom_smooth(method="lm")
 ```
 
 
-## X discrète
+
+## Comparaison R-Base / Ggplot2
+
+### X discrète
 
 
-### barplot (R-base)
+#### barplot (R-base)
 
 
 ```{r }
@@ -454,7 +459,7 @@ barplot(table(sel$type), col = c("blue", "red"),
         xlab="Type de logement", ylab = "effectif")
 ```
 
-### geom_bar (ggplot2)
+#### geom_bar (ggplot2)
 
 
 ```{r }
@@ -473,10 +478,10 @@ ggplot(sel) +
 
 
 
-## X quantitative continue
+### X quantitative continue
 
 
-### hist (R-base)
+#### hist (R-base)
 
 
 
@@ -494,7 +499,7 @@ hist(sel2$prix,breaks = 15,
 
 
 
-### geom_histogram (ggplot2)
+#### geom_histogram (ggplot2)
 
 ```{r }
 # On démarre par une ligne de tidyverse ...
@@ -520,10 +525,10 @@ sel %>%  filter(type=="Maison") %>%
 
 
 
-## X et Y quantitatives continues
+### X et Y quantitatives continues
 
 
-### plot (R-base)
+#### plot (R-base)
 
 
 
@@ -550,7 +555,7 @@ abline(lm(sel$prix~sel$sup),
 
 
 
-### geom_point (ggplot2)
+#### geom_point (ggplot2)
 
 ```{r }
 
@@ -578,10 +583,10 @@ abline(lm(sel$prix~sel$sup),
 
 
 
-## X quantitative continue et Y discrète
+### X quantitative continue et Y discrète
 
 
-### 6.1 boxplot (R-base)
+####  boxplot (R-base)
 
 
 ```{r }
@@ -598,7 +603,7 @@ boxplot(sel2$prix~sel2$SIZE,
 
 
 
-### geom_boxplot (ggplot2)
+#### geom_boxplot (ggplot2)
 
 
 
@@ -624,7 +629,7 @@ geom_boxplot(aes(fill= SIZE)) +
 
 
 
-### beanplot (R-base + package beanplot)
+#### beanplot (R-base + package beanplot)
 
 
 ```{r }
@@ -645,7 +650,7 @@ beanplot(sel2$prix~sel2$SIZE,
 
 
 
-### geom_violin (ggplot2)
+#### geom_violin (ggplot2)
 
 
 
@@ -676,11 +681,11 @@ geom_violin(aes(fill= SIZE)) +
 
 
 
-## Deux variables X et Y discrètes 
+### Deux variables X et Y discrètes 
 
 
 
-### mosaicplot (R-base)
+#### mosaicplot (R-base)
 
 
 
@@ -698,7 +703,7 @@ mosaicplot(sel$periode~sel$type,
 
 
 
-### geom_bar (ggplot2) 
+#### geom_bar (ggplot2) 
 
 
 ```{r}

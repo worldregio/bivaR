@@ -31,17 +31,17 @@
 <rect x='179.52' y='64.80' width='30.73' height='65.45' style='stroke-width: 0.75; fill: #8000FF; fill-opacity: 0.50;' />
 <text transform='translate(41.76,176.07) rotate(-90)' text-anchor='middle' style='font-size: 9.60px; font-family: "Arial";' textLength='33.58px' lengthAdjust='spacingAndGlyphs'>Homme</text>
 <text transform='translate(41.76,97.53) rotate(-90)' text-anchor='middle' style='font-size: 9.60px; font-family: "Arial";' textLength='32.52px' lengthAdjust='spacingAndGlyphs'>Femme</text>
-<rect x='239.86' y='66.24' width='82.70' height='72.00' style='stroke-width: 0.75;' />
-<rect x='250.66' y='77.04' width='8.64' height='7.20' style='stroke-width: 0.75; fill: #FF0000; fill-opacity: 0.50;' />
-<rect x='250.66' y='91.44' width='8.64' height='7.20' style='stroke-width: 0.75; fill: #80FF00; fill-opacity: 0.50;' />
-<rect x='250.66' y='105.84' width='8.64' height='7.20' style='stroke-width: 0.75; fill: #00FFFF; fill-opacity: 0.50;' />
-<rect x='250.66' y='120.24' width='8.64' height='7.20' style='stroke-width: 0.75; fill: #8000FF; fill-opacity: 0.50;' />
-<text x='270.10' y='84.94' style='font-size: 12.00px; font-family: "Arial";' textLength='46.68px' lengthAdjust='spacingAndGlyphs'>Mercredi</text>
-<text x='270.10' y='99.34' style='font-size: 12.00px; font-family: "Arial";' textLength='28.69px' lengthAdjust='spacingAndGlyphs'>Jeudi</text>
-<text x='270.10' y='113.74' style='font-size: 12.00px; font-family: "Arial";' textLength='47.38px' lengthAdjust='spacingAndGlyphs'>Vendredi</text>
-<text x='270.10' y='128.14' style='font-size: 12.00px; font-family: "Arial";' textLength='40.69px' lengthAdjust='spacingAndGlyphs'>Samedi</text>
-<text x='194.40' y='33.82' text-anchor='middle' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='110.05px' lengthAdjust='spacingAndGlyphs'>Qui paye le repas ?</text>
-<text x='194.40' y='283.68' text-anchor='middle' style='font-size: 7.20px; font-family: "Arial";' textLength='367.81px' lengthAdjust='spacingAndGlyphs'>Source : Pourboires de 244 repas dans un restaurant américains au début des années 1990 (Bryant &amp; Smith, 1995)</text>
+<rect x='238.88' y='66.24' width='83.68' height='72.00' style='stroke-width: 0.75; fill: #FFFFFF;' />
+<rect x='249.68' y='77.04' width='8.64' height='7.20' style='stroke-width: 0.75; fill: #FF0000; fill-opacity: 0.50;' />
+<rect x='249.68' y='91.44' width='8.64' height='7.20' style='stroke-width: 0.75; fill: #80FF00; fill-opacity: 0.50;' />
+<rect x='249.68' y='105.84' width='8.64' height='7.20' style='stroke-width: 0.75; fill: #00FFFF; fill-opacity: 0.50;' />
+<rect x='249.68' y='120.24' width='8.64' height='7.20' style='stroke-width: 0.75; fill: #8000FF; fill-opacity: 0.50;' />
+<text x='269.12' y='84.95' style='font-size: 12.00px; font-family: "Arial";' textLength='46.67px' lengthAdjust='spacingAndGlyphs'>Mercredi</text>
+<text x='269.12' y='99.35' style='font-size: 12.00px; font-family: "Arial";' textLength='28.68px' lengthAdjust='spacingAndGlyphs'>Jeudi</text>
+<text x='269.12' y='113.75' style='font-size: 12.00px; font-family: "Arial";' textLength='48.04px' lengthAdjust='spacingAndGlyphs'>Vendredi</text>
+<text x='269.12' y='128.15' style='font-size: 12.00px; font-family: "Arial";' textLength='40.69px' lengthAdjust='spacingAndGlyphs'>Samedi</text>
+<text x='194.40' y='33.84' text-anchor='middle' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='110.05px' lengthAdjust='spacingAndGlyphs'>Qui paye le repas ?</text>
+<text x='194.40' y='283.68' text-anchor='middle' style='font-size: 7.20px; font-family: "Arial";' textLength='367.83px' lengthAdjust='spacingAndGlyphs'>Source : Pourboires de 244 repas dans un restaurant américains au début des années 1990 (Bryant &amp; Smith, 1995)</text>
 <text x='194.40' y='269.28' text-anchor='middle' style='font-size: 9.60px; font-family: "Arial";' textLength='78.39px' lengthAdjust='spacingAndGlyphs'>jour de la semaine</text>
 <text transform='translate(12.96,136.80) rotate(-90)' text-anchor='middle' style='font-size: 9.60px; font-family: "Arial";' textLength='42.67px' lengthAdjust='spacingAndGlyphs'>fréquence</text>
 <line x1='61.72' y1='214.56' x2='317.81' y2='214.56' style='stroke-width: 0.75;' />

@@ -48,8 +48,8 @@
 <text transform='translate(41.76,98.24) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>20</text>
 <text transform='translate(41.76,68.54) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>25</text>
 <polygon points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='68.04px' lengthAdjust='spacingAndGlyphs'>Fitted values</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='52.70px' lengthAdjust='spacingAndGlyphs'>Residuals</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='68.03px' lengthAdjust='spacingAndGlyphs'>Fitted values</text>
+<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='52.69px' lengthAdjust='spacingAndGlyphs'>Residuals</text>
 </g>
 <defs>
   <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
@@ -85,11 +85,11 @@
 <polyline points='74.40,186.16 103.42,193.35 125.75,198.76 177.10,210.89 190.49,214.07 199.42,216.22 203.89,217.31 246.31,226.77 248.54,227.26 248.54,227.26 266.40,230.82 273.10,232.29 279.80,233.53 357.93,245.80 364.63,245.41 389.19,241.28 389.19,241.28 400.35,238.23 420.45,231.40 422.68,230.55 424.91,229.69 427.14,228.81 427.14,228.81 445.00,221.29 458.40,215.16 ' style='stroke-width: 0.75; stroke: #DF536B;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<text x='266.40' y='355.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='98.17px' lengthAdjust='spacingAndGlyphs'>lm(eur$Y ~ eur$X)</text>
-<text x='266.40' y='52.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='101.39px' lengthAdjust='spacingAndGlyphs'>Residuals vs Fitted</text>
-<text x='454.80' y='84.14' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='17.01px' lengthAdjust='spacingAndGlyphs'>ALB</text>
+<text x='266.40' y='355.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='98.37px' lengthAdjust='spacingAndGlyphs'>lm(eur$Y ~ eur$X)</text>
+<text x='266.40' y='52.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='101.36px' lengthAdjust='spacingAndGlyphs'>Residuals vs Fitted</text>
+<text x='454.80' y='84.15' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='17.01px' lengthAdjust='spacingAndGlyphs'>ALB</text>
 <text x='416.85' y='168.08' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='19.50px' lengthAdjust='spacingAndGlyphs'>YUG</text>
-<text x='385.59' y='268.62' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='19.50px' lengthAdjust='spacingAndGlyphs'>DDR</text>
+<text x='385.59' y='268.63' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='19.50px' lengthAdjust='spacingAndGlyphs'>DDR</text>
 </g>
 <g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
 <line x1='59.04' y1='217.06' x2='473.76' y2='217.06' style='stroke-width: 0.75; stroke: #BEBEBE; stroke-dasharray: 1.00,3.00;' />

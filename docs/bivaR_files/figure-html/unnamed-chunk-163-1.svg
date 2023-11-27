@@ -153,30 +153,30 @@
 <polyline points='578.70,307.88 576.93,300.75 571.61,292.19 562.85,282.34 550.77,271.34 535.56,259.37 517.44,246.60 496.69,233.23 473.62,219.46 448.59,205.49 421.97,191.55 394.17,177.84 365.61,164.57 336.72,151.95 307.94,140.15 279.71,129.37 252.45,119.76 226.58,111.47 202.48,104.63 180.53,99.34 161.06,95.67 144.36,93.70 130.69,93.44 120.25,94.89 113.20,98.05 109.65,102.86 109.65,109.24 113.20,117.10 120.25,126.32 130.69,136.77 144.36,148.27 161.06,160.67 180.53,173.76 202.48,187.36 226.58,201.25 252.45,215.23 279.71,229.08 307.94,242.60 336.72,255.57 365.61,267.81 394.17,279.12 421.97,289.33 448.59,298.30 473.62,305.88 496.69,311.96 517.44,316.44 535.56,319.27 550.77,320.39 562.85,319.79 571.61,317.48 576.93,313.49 578.70,307.88 ' style='stroke-width: 0.75; stroke: #0000FF;' />
 <polygon points='578.70,307.88 576.93,300.75 571.61,292.19 562.85,282.34 550.77,271.34 535.56,259.37 517.44,246.60 496.69,233.23 473.62,219.46 448.59,205.49 421.97,191.55 394.17,177.84 365.61,164.57 336.72,151.95 307.94,140.15 279.71,129.37 252.45,119.76 226.58,111.47 202.48,104.63 180.53,99.34 161.06,95.67 144.36,93.70 130.69,93.44 120.25,94.89 113.20,98.05 109.65,102.86 109.65,109.24 113.20,117.10 120.25,126.32 130.69,136.77 144.36,148.27 161.06,160.67 180.53,173.76 202.48,187.36 226.58,201.25 252.45,215.23 279.71,229.08 307.94,242.60 336.72,255.57 365.61,267.81 394.17,279.12 421.97,289.33 448.59,298.30 473.62,305.88 496.69,311.96 517.44,316.44 535.56,319.27 550.77,320.39 562.85,319.79 571.61,317.48 576.93,313.49 578.70,307.88 ' style='stroke-width: 0.75; stroke: none; fill: #0000FF; fill-opacity: 0.20;' />
 <circle cx='343.95' cy='206.87' r='3.36' style='stroke-width: 0.75; stroke: #0000FF; fill: #0000FF;' />
-<text x='60.16' y='62.34' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.59px' lengthAdjust='spacingAndGlyphs'>ALB</text>
-<text x='387.51' y='223.67' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>AUT</text>
+<text x='60.16' y='62.35' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.59px' lengthAdjust='spacingAndGlyphs'>ALB</text>
+<text x='387.51' y='223.68' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>AUT</text>
 <text x='377.81' y='230.45' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.59px' lengthAdjust='spacingAndGlyphs'>BEL</text>
-<text x='200.25' y='185.06' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>BGR</text>
+<text x='200.25' y='185.07' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>BGR</text>
 <text x='454.60' y='270.55' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>CHE</text>
-<text x='254.93' y='189.83' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.78px' lengthAdjust='spacingAndGlyphs'>CSK</text>
-<text x='271.83' y='236.42' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>DDR</text>
+<text x='254.93' y='189.84' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.78px' lengthAdjust='spacingAndGlyphs'>CSK</text>
+<text x='271.83' y='236.43' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>DDR</text>
 <text x='408.72' y='244.04' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>DEU</text>
-<text x='414.40' y='246.69' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>DNK</text>
+<text x='414.40' y='246.70' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>DNK</text>
 <text x='302.11' y='238.91' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.39px' lengthAdjust='spacingAndGlyphs'>ESP</text>
 <text x='410.65' y='288.51' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='11.58px' lengthAdjust='spacingAndGlyphs'>FIN</text>
-<text x='388.67' y='252.20' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>FRA</text>
-<text x='373.95' y='232.80' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>GBR</text>
-<text x='271.83' y='203.64' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>GRC</text>
-<text x='200.25' y='154.55' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>HUN</text>
-<text x='309.16' y='242.73' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>IRL</text>
-<text x='369.96' y='225.89' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='10.65px' lengthAdjust='spacingAndGlyphs'>ITA</text>
+<text x='388.67' y='252.21' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>FRA</text>
+<text x='373.95' y='232.81' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>GBR</text>
+<text x='271.83' y='203.65' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>GRC</text>
+<text x='200.25' y='154.56' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>HUN</text>
+<text x='309.16' y='242.74' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>IRL</text>
+<text x='369.96' y='225.89' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>ITA</text>
 <text x='445.78' y='228.15' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.98px' lengthAdjust='spacingAndGlyphs'>LUX</text>
 <text x='387.51' y='256.52' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>NLD</text>
 <text x='438.50' y='245.36' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>NOR</text>
-<text x='205.92' y='163.83' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>POL</text>
-<text x='211.34' y='175.37' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.25px' lengthAdjust='spacingAndGlyphs'>PRT</text>
-<text x='140.81' y='120.89' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>ROU</text>
+<text x='205.92' y='163.84' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>POL</text>
+<text x='211.34' y='175.38' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>PRT</text>
+<text x='140.81' y='120.90' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>ROU</text>
 <text x='419.81' y='286.58' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='16.37px' lengthAdjust='spacingAndGlyphs'>SWE</text>
-<text x='216.51' y='114.46' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>YUG</text>
+<text x='216.51' y='114.47' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>YUG</text>
 </g>
 </svg>

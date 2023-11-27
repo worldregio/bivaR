@@ -200,7 +200,7 @@
 <text x='336.22' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>8</text>
 <text x='371.13' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>9</text>
 <text x='406.04' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>10</text>
-<text x='440.95' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='12.46px' lengthAdjust='spacingAndGlyphs'>11</text>
+<text x='440.95' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>11</text>
 <line x1='59.04' y1='280.67' x2='59.04' y2='69.14' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='280.67' x2='51.84' y2='280.67' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='238.37' x2='51.84' y2='238.37' style='stroke-width: 0.75;' />
@@ -212,9 +212,9 @@
 <text transform='translate(41.76,238.37) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.05px' lengthAdjust='spacingAndGlyphs'>500000</text>
 <text transform='translate(41.76,153.75) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='46.72px' lengthAdjust='spacingAndGlyphs'>1500000</text>
 <text transform='translate(41.76,69.14) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='46.72px' lengthAdjust='spacingAndGlyphs'>2500000</text>
-<text x='266.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='315.98px' lengthAdjust='spacingAndGlyphs'>Ventes de logements à Saint-Maur (2017-2021)</text>
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='97.40px' lengthAdjust='spacingAndGlyphs'>Nombre de pièces</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.67px' lengthAdjust='spacingAndGlyphs'>Prix</text>
+<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='316.77px' lengthAdjust='spacingAndGlyphs'>Ventes de logements à Saint-Maur (2017-2021)</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='97.38px' lengthAdjust='spacingAndGlyphs'>Nombre de pièces</text>
+<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.66px' lengthAdjust='spacingAndGlyphs'>Prix</text>
 <polygon points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
 </g>
 </svg>
