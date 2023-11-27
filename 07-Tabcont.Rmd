@@ -1,3 +1,5 @@
+# (PART) VARIABLES CATEGORIELLES {-}
+
 # Analyse d'enquêtes
 
 

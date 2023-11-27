@@ -155,6 +155,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#remerciements"><i class="fa fa-check"></i>Remerciements</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
 </ul></li>
+<li class="part"><span><b>I DEBUTER EN R</b></span></li>
 <li class="chapter" data-level="1" data-path="01-principes.html"><a href="01-principes.html"><i class="fa fa-check"></i><b>1</b> Premiers pas</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="01-principes.html"><a href="01-principes.html#opérations-arithmétiques"><i class="fa fa-check"></i><b>1.1</b> Opérations arithmétiques</a></li>
@@ -233,6 +234,7 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="03-R-Base.html"><a href="03-R-Base.html#en-résumé-2"><i class="fa fa-check"></i><b>3.5</b> En résumé</a></li>
 </ul></li>
+<li class="part"><span><b>II VARIABLES QUANTITATIVES</b></span></li>
 <li class="chapter" data-level="4" data-path="04-Corrélation.html"><a href="04-Corrélation.html"><i class="fa fa-check"></i><b>4</b> Corrélation</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#préparation-des-données"><i class="fa fa-check"></i><b>4.1</b> Préparation des données</a>
@@ -337,6 +339,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="6.5.2" data-path="06-Anova.html"><a href="06-Anova.html#size-qualitative-ordinale"><i class="fa fa-check"></i><b>6.5.2</b> SIZE = qualitative ordinale</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>III VARIABLES CATEGORIELLES</b></span></li>
 <li class="chapter" data-level="7" data-path="07-Tabcont.html"><a href="07-Tabcont.html"><i class="fa fa-check"></i><b>7</b> Analyse d’enquêtes</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
@@ -379,6 +382,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="7.6.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#régression-logistique"><i class="fa fa-check"></i><b>7.6.3</b> Régression logistique</a></li>
 </ul></li>
 </ul></li>
+<li class="part"><span><b>IV GRAPHIQUES &amp; TABLEAUX</b></span></li>
 <li class="chapter" data-level="8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html"><i class="fa fa-check"></i><b>8</b> Graphiques avec R-Base</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
@@ -571,22 +575,22 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="chargement-du-fichier-3" class="section level3 hasAnchor" number="10.2.1">
 <h3><span class="header-section-number">10.2.1</span> Chargement du fichier<a href="10-Graphique-dvf.html#chargement-du-fichier-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On charge un fichier sauvegardé au format .RDS appelé <em>dvfclean_V2.RDS</em></p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="10-Graphique-dvf.html#cb293-1" tabindex="-1"></a>don<span class="ot">&lt;-</span><span class="fu">readRDS</span>(<span class="st">&quot;resources/data/dvf/data/dvfclean_V2.RDS&quot;</span>)</span>
-<span id="cb293-2"><a href="10-Graphique-dvf.html#cb293-2" tabindex="-1"></a><span class="fu">head</span>(don)</span>
-<span id="cb293-3"><a href="10-Graphique-dvf.html#cb293-3" tabindex="-1"></a><span class="co">#&gt;             id  ann  code             nom        type surf nbp   prix   prixm2</span></span>
-<span id="cb293-4"><a href="10-Graphique-dvf.html#cb293-4" tabindex="-1"></a><span class="co">#&gt; 1 2019-1425669 2019 93046    Livry-Gargan Appartement   58   3 271000 4672.414</span></span>
-<span id="cb293-5"><a href="10-Graphique-dvf.html#cb293-5" tabindex="-1"></a><span class="co">#&gt; 2 2019-1425771 2019 93046    Livry-Gargan Appartement   38   2 149000 3921.053</span></span>
-<span id="cb293-6"><a href="10-Graphique-dvf.html#cb293-6" tabindex="-1"></a><span class="co">#&gt; 3 2019-1425824 2019 93078      Villepinte Appartement   77   5 205000 2662.338</span></span>
-<span id="cb293-7"><a href="10-Graphique-dvf.html#cb293-7" tabindex="-1"></a><span class="co">#&gt; 4 2019-1426009 2019 93071          Sevran Appartement  102   4 158000 1549.020</span></span>
-<span id="cb293-8"><a href="10-Graphique-dvf.html#cb293-8" tabindex="-1"></a><span class="co">#&gt; 5 2019-1426069 2019 93071          Sevran Appartement   20   1 100680 5034.000</span></span>
-<span id="cb293-9"><a href="10-Graphique-dvf.html#cb293-9" tabindex="-1"></a><span class="co">#&gt; 6 2019-1426161 2019 93007 Le Blanc-Mesnil Appartement   45   2 219000 4866.667</span></span>
-<span id="cb293-10"><a href="10-Graphique-dvf.html#cb293-10" tabindex="-1"></a><span class="co">#&gt;   dep</span></span>
-<span id="cb293-11"><a href="10-Graphique-dvf.html#cb293-11" tabindex="-1"></a><span class="co">#&gt; 1  93</span></span>
-<span id="cb293-12"><a href="10-Graphique-dvf.html#cb293-12" tabindex="-1"></a><span class="co">#&gt; 2  93</span></span>
-<span id="cb293-13"><a href="10-Graphique-dvf.html#cb293-13" tabindex="-1"></a><span class="co">#&gt; 3  93</span></span>
-<span id="cb293-14"><a href="10-Graphique-dvf.html#cb293-14" tabindex="-1"></a><span class="co">#&gt; 4  93</span></span>
-<span id="cb293-15"><a href="10-Graphique-dvf.html#cb293-15" tabindex="-1"></a><span class="co">#&gt; 5  93</span></span>
-<span id="cb293-16"><a href="10-Graphique-dvf.html#cb293-16" tabindex="-1"></a><span class="co">#&gt; 6  93</span></span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="10-Graphique-dvf.html#cb294-1" tabindex="-1"></a>don<span class="ot">&lt;-</span><span class="fu">readRDS</span>(<span class="st">&quot;resources/data/dvf/data/dvfclean_V2.RDS&quot;</span>)</span>
+<span id="cb294-2"><a href="10-Graphique-dvf.html#cb294-2" tabindex="-1"></a><span class="fu">head</span>(don)</span>
+<span id="cb294-3"><a href="10-Graphique-dvf.html#cb294-3" tabindex="-1"></a><span class="co">#&gt;             id  ann  code             nom        type surf nbp   prix   prixm2</span></span>
+<span id="cb294-4"><a href="10-Graphique-dvf.html#cb294-4" tabindex="-1"></a><span class="co">#&gt; 1 2019-1425669 2019 93046    Livry-Gargan Appartement   58   3 271000 4672.414</span></span>
+<span id="cb294-5"><a href="10-Graphique-dvf.html#cb294-5" tabindex="-1"></a><span class="co">#&gt; 2 2019-1425771 2019 93046    Livry-Gargan Appartement   38   2 149000 3921.053</span></span>
+<span id="cb294-6"><a href="10-Graphique-dvf.html#cb294-6" tabindex="-1"></a><span class="co">#&gt; 3 2019-1425824 2019 93078      Villepinte Appartement   77   5 205000 2662.338</span></span>
+<span id="cb294-7"><a href="10-Graphique-dvf.html#cb294-7" tabindex="-1"></a><span class="co">#&gt; 4 2019-1426009 2019 93071          Sevran Appartement  102   4 158000 1549.020</span></span>
+<span id="cb294-8"><a href="10-Graphique-dvf.html#cb294-8" tabindex="-1"></a><span class="co">#&gt; 5 2019-1426069 2019 93071          Sevran Appartement   20   1 100680 5034.000</span></span>
+<span id="cb294-9"><a href="10-Graphique-dvf.html#cb294-9" tabindex="-1"></a><span class="co">#&gt; 6 2019-1426161 2019 93007 Le Blanc-Mesnil Appartement   45   2 219000 4866.667</span></span>
+<span id="cb294-10"><a href="10-Graphique-dvf.html#cb294-10" tabindex="-1"></a><span class="co">#&gt;   dep</span></span>
+<span id="cb294-11"><a href="10-Graphique-dvf.html#cb294-11" tabindex="-1"></a><span class="co">#&gt; 1  93</span></span>
+<span id="cb294-12"><a href="10-Graphique-dvf.html#cb294-12" tabindex="-1"></a><span class="co">#&gt; 2  93</span></span>
+<span id="cb294-13"><a href="10-Graphique-dvf.html#cb294-13" tabindex="-1"></a><span class="co">#&gt; 3  93</span></span>
+<span id="cb294-14"><a href="10-Graphique-dvf.html#cb294-14" tabindex="-1"></a><span class="co">#&gt; 4  93</span></span>
+<span id="cb294-15"><a href="10-Graphique-dvf.html#cb294-15" tabindex="-1"></a><span class="co">#&gt; 5  93</span></span>
+<span id="cb294-16"><a href="10-Graphique-dvf.html#cb294-16" tabindex="-1"></a><span class="co">#&gt; 6  93</span></span></code></pre></div>
 </div>
 <div id="contenu-du-fichier-3" class="section level3 hasAnchor" number="10.2.2">
 <h3><span class="header-section-number">10.2.2</span> Contenu du fichier<a href="10-Graphique-dvf.html#contenu-du-fichier-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -611,56 +615,56 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="type-des-variables" class="section level3 hasAnchor" number="10.2.4">
 <h3><span class="header-section-number">10.2.4</span> Type des variables<a href="10-Graphique-dvf.html#type-des-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On passe la variable dep en factor et on change le nom des labels. Puis on crée une autre variable opposant Paris et la petite couronne</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="10-Graphique-dvf.html#cb294-1" tabindex="-1"></a>don<span class="sc">$</span>dep<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>dep)</span>
-<span id="cb294-2"><a href="10-Graphique-dvf.html#cb294-2" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>dep) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Paris&quot;</span>,<span class="st">&quot;Hauts-de-Seine&quot;</span>,<span class="st">&quot;Seine-Saint-Denis&quot;</span>,<span class="st">&quot;Val-de-Marne&quot;</span>)</span>
-<span id="cb294-3"><a href="10-Graphique-dvf.html#cb294-3" tabindex="-1"></a>don<span class="sc">$</span>loc <span class="ot">&lt;-</span>don<span class="sc">$</span>dep</span>
-<span id="cb294-4"><a href="10-Graphique-dvf.html#cb294-4" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>loc) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Paris&quot;</span>,<span class="st">&quot;PC&quot;</span>,<span class="st">&quot;PC&quot;</span>,<span class="st">&quot;PC&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="10-Graphique-dvf.html#cb295-1" tabindex="-1"></a>don<span class="sc">$</span>dep<span class="ot">&lt;-</span><span class="fu">as.factor</span>(don<span class="sc">$</span>dep)</span>
+<span id="cb295-2"><a href="10-Graphique-dvf.html#cb295-2" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>dep) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Paris&quot;</span>,<span class="st">&quot;Hauts-de-Seine&quot;</span>,<span class="st">&quot;Seine-Saint-Denis&quot;</span>,<span class="st">&quot;Val-de-Marne&quot;</span>)</span>
+<span id="cb295-3"><a href="10-Graphique-dvf.html#cb295-3" tabindex="-1"></a>don<span class="sc">$</span>loc <span class="ot">&lt;-</span>don<span class="sc">$</span>dep</span>
+<span id="cb295-4"><a href="10-Graphique-dvf.html#cb295-4" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>loc) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Paris&quot;</span>,<span class="st">&quot;PC&quot;</span>,<span class="st">&quot;PC&quot;</span>,<span class="st">&quot;PC&quot;</span>)</span></code></pre></div>
 </div>
 <div id="résumé-de-lensemble-du-tableau-3" class="section level3 hasAnchor" number="10.2.5">
 <h3><span class="header-section-number">10.2.5</span> Résumé de l’ensemble du tableau<a href="10-Graphique-dvf.html#résumé-de-lensemble-du-tableau-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="10-Graphique-dvf.html#cb295-1" tabindex="-1"></a><span class="fu">summary</span>(don)</span>
-<span id="cb295-2"><a href="10-Graphique-dvf.html#cb295-2" tabindex="-1"></a><span class="co">#&gt;       id                ann                code               nom           </span></span>
-<span id="cb295-3"><a href="10-Graphique-dvf.html#cb295-3" tabindex="-1"></a><span class="co">#&gt;  Length:301011      Length:301011      Length:301011      Length:301011     </span></span>
-<span id="cb295-4"><a href="10-Graphique-dvf.html#cb295-4" tabindex="-1"></a><span class="co">#&gt;  Class :character   Class :character   Class :character   Class :character  </span></span>
-<span id="cb295-5"><a href="10-Graphique-dvf.html#cb295-5" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Mode  :character   Mode  :character   Mode  :character  </span></span>
-<span id="cb295-6"><a href="10-Graphique-dvf.html#cb295-6" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
-<span id="cb295-7"><a href="10-Graphique-dvf.html#cb295-7" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
-<span id="cb295-8"><a href="10-Graphique-dvf.html#cb295-8" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
-<span id="cb295-9"><a href="10-Graphique-dvf.html#cb295-9" tabindex="-1"></a><span class="co">#&gt;           type             surf             nbp             prix         </span></span>
-<span id="cb295-10"><a href="10-Graphique-dvf.html#cb295-10" tabindex="-1"></a><span class="co">#&gt;  Appartement:290394   Min.   : 10.00   Min.   :0.000   Min.   :     400  </span></span>
-<span id="cb295-11"><a href="10-Graphique-dvf.html#cb295-11" tabindex="-1"></a><span class="co">#&gt;  Maison     : 10617   1st Qu.: 29.00   1st Qu.:1.000   1st Qu.:  175000  </span></span>
-<span id="cb295-12"><a href="10-Graphique-dvf.html#cb295-12" tabindex="-1"></a><span class="co">#&gt;                       Median : 45.00   Median :2.000   Median :  265000  </span></span>
-<span id="cb295-13"><a href="10-Graphique-dvf.html#cb295-13" tabindex="-1"></a><span class="co">#&gt;                       Mean   : 49.47   Mean   :2.357   Mean   :  453790  </span></span>
-<span id="cb295-14"><a href="10-Graphique-dvf.html#cb295-14" tabindex="-1"></a><span class="co">#&gt;                       3rd Qu.: 65.00   3rd Qu.:3.000   3rd Qu.:  425000  </span></span>
-<span id="cb295-15"><a href="10-Graphique-dvf.html#cb295-15" tabindex="-1"></a><span class="co">#&gt;                       Max.   :159.00   Max.   :6.000   Max.   :21141232  </span></span>
-<span id="cb295-16"><a href="10-Graphique-dvf.html#cb295-16" tabindex="-1"></a><span class="co">#&gt;      prixm2                         dep            loc        </span></span>
-<span id="cb295-17"><a href="10-Graphique-dvf.html#cb295-17" tabindex="-1"></a><span class="co">#&gt;  Min.   :    35.83   Paris            :121919   Paris:121919  </span></span>
-<span id="cb295-18"><a href="10-Graphique-dvf.html#cb295-18" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:  4279.48   Hauts-de-Seine   : 66444   PC   :179092  </span></span>
-<span id="cb295-19"><a href="10-Graphique-dvf.html#cb295-19" tabindex="-1"></a><span class="co">#&gt;  Median :  6578.95   Seine-Saint-Denis: 58114                 </span></span>
-<span id="cb295-20"><a href="10-Graphique-dvf.html#cb295-20" tabindex="-1"></a><span class="co">#&gt;  Mean   :  9792.01   Val-de-Marne     : 54534                 </span></span>
-<span id="cb295-21"><a href="10-Graphique-dvf.html#cb295-21" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:  9651.16                                            </span></span>
-<span id="cb295-22"><a href="10-Graphique-dvf.html#cb295-22" tabindex="-1"></a><span class="co">#&gt;  Max.   :197852.71</span></span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="10-Graphique-dvf.html#cb296-1" tabindex="-1"></a><span class="fu">summary</span>(don)</span>
+<span id="cb296-2"><a href="10-Graphique-dvf.html#cb296-2" tabindex="-1"></a><span class="co">#&gt;       id                ann                code               nom           </span></span>
+<span id="cb296-3"><a href="10-Graphique-dvf.html#cb296-3" tabindex="-1"></a><span class="co">#&gt;  Length:301011      Length:301011      Length:301011      Length:301011     </span></span>
+<span id="cb296-4"><a href="10-Graphique-dvf.html#cb296-4" tabindex="-1"></a><span class="co">#&gt;  Class :character   Class :character   Class :character   Class :character  </span></span>
+<span id="cb296-5"><a href="10-Graphique-dvf.html#cb296-5" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Mode  :character   Mode  :character   Mode  :character  </span></span>
+<span id="cb296-6"><a href="10-Graphique-dvf.html#cb296-6" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb296-7"><a href="10-Graphique-dvf.html#cb296-7" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb296-8"><a href="10-Graphique-dvf.html#cb296-8" tabindex="-1"></a><span class="co">#&gt;                                                                             </span></span>
+<span id="cb296-9"><a href="10-Graphique-dvf.html#cb296-9" tabindex="-1"></a><span class="co">#&gt;           type             surf             nbp             prix         </span></span>
+<span id="cb296-10"><a href="10-Graphique-dvf.html#cb296-10" tabindex="-1"></a><span class="co">#&gt;  Appartement:290394   Min.   : 10.00   Min.   :0.000   Min.   :     400  </span></span>
+<span id="cb296-11"><a href="10-Graphique-dvf.html#cb296-11" tabindex="-1"></a><span class="co">#&gt;  Maison     : 10617   1st Qu.: 29.00   1st Qu.:1.000   1st Qu.:  175000  </span></span>
+<span id="cb296-12"><a href="10-Graphique-dvf.html#cb296-12" tabindex="-1"></a><span class="co">#&gt;                       Median : 45.00   Median :2.000   Median :  265000  </span></span>
+<span id="cb296-13"><a href="10-Graphique-dvf.html#cb296-13" tabindex="-1"></a><span class="co">#&gt;                       Mean   : 49.47   Mean   :2.357   Mean   :  453790  </span></span>
+<span id="cb296-14"><a href="10-Graphique-dvf.html#cb296-14" tabindex="-1"></a><span class="co">#&gt;                       3rd Qu.: 65.00   3rd Qu.:3.000   3rd Qu.:  425000  </span></span>
+<span id="cb296-15"><a href="10-Graphique-dvf.html#cb296-15" tabindex="-1"></a><span class="co">#&gt;                       Max.   :159.00   Max.   :6.000   Max.   :21141232  </span></span>
+<span id="cb296-16"><a href="10-Graphique-dvf.html#cb296-16" tabindex="-1"></a><span class="co">#&gt;      prixm2                         dep            loc        </span></span>
+<span id="cb296-17"><a href="10-Graphique-dvf.html#cb296-17" tabindex="-1"></a><span class="co">#&gt;  Min.   :    35.83   Paris            :121919   Paris:121919  </span></span>
+<span id="cb296-18"><a href="10-Graphique-dvf.html#cb296-18" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:  4279.48   Hauts-de-Seine   : 66444   PC   :179092  </span></span>
+<span id="cb296-19"><a href="10-Graphique-dvf.html#cb296-19" tabindex="-1"></a><span class="co">#&gt;  Median :  6578.95   Seine-Saint-Denis: 58114                 </span></span>
+<span id="cb296-20"><a href="10-Graphique-dvf.html#cb296-20" tabindex="-1"></a><span class="co">#&gt;  Mean   :  9792.01   Val-de-Marne     : 54534                 </span></span>
+<span id="cb296-21"><a href="10-Graphique-dvf.html#cb296-21" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:  9651.16                                            </span></span>
+<span id="cb296-22"><a href="10-Graphique-dvf.html#cb296-22" tabindex="-1"></a><span class="co">#&gt;  Max.   :197852.71</span></span></code></pre></div>
 </div>
 <div id="nettoyage-des-données" class="section level3 hasAnchor" number="10.2.6">
 <h3><span class="header-section-number">10.2.6</span> Nettoyage des données<a href="10-Graphique-dvf.html#nettoyage-des-données" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On retire les valeurs exceptionnelles présentes dans le fichier, lées à des erreurs ou des ventes multiples.</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="10-Graphique-dvf.html#cb296-1" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>prixm2 <span class="sc">&gt;</span><span class="dv">1000</span>,]</span>
-<span id="cb296-2"><a href="10-Graphique-dvf.html#cb296-2" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>prixm2 <span class="sc">&lt;</span><span class="dv">15000</span>,]</span>
-<span id="cb296-3"><a href="10-Graphique-dvf.html#cb296-3" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>nbp <span class="sc">&gt;</span><span class="dv">0</span>,]</span>
-<span id="cb296-4"><a href="10-Graphique-dvf.html#cb296-4" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>nbp <span class="sc">&lt;</span><span class="dv">10</span>,]</span>
-<span id="cb296-5"><a href="10-Graphique-dvf.html#cb296-5" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>surf <span class="sc">&gt;</span><span class="dv">9</span>,]</span>
-<span id="cb296-6"><a href="10-Graphique-dvf.html#cb296-6" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>surf <span class="sc">&lt;</span><span class="dv">300</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="10-Graphique-dvf.html#cb297-1" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>prixm2 <span class="sc">&gt;</span><span class="dv">1000</span>,]</span>
+<span id="cb297-2"><a href="10-Graphique-dvf.html#cb297-2" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>prixm2 <span class="sc">&lt;</span><span class="dv">15000</span>,]</span>
+<span id="cb297-3"><a href="10-Graphique-dvf.html#cb297-3" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>nbp <span class="sc">&gt;</span><span class="dv">0</span>,]</span>
+<span id="cb297-4"><a href="10-Graphique-dvf.html#cb297-4" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>nbp <span class="sc">&lt;</span><span class="dv">10</span>,]</span>
+<span id="cb297-5"><a href="10-Graphique-dvf.html#cb297-5" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>surf <span class="sc">&gt;</span><span class="dv">9</span>,]</span>
+<span id="cb297-6"><a href="10-Graphique-dvf.html#cb297-6" tabindex="-1"></a>don<span class="ot">&lt;-</span> don[don<span class="sc">$</span>surf <span class="sc">&lt;</span><span class="dv">300</span>,]</span></code></pre></div>
 </div>
 <div id="extraction-dune-commune" class="section level3 hasAnchor" number="10.2.7">
 <h3><span class="header-section-number">10.2.7</span> Extraction d’une commune<a href="10-Graphique-dvf.html#extraction-dune-commune" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On décide d’extraire une commune, par exemple Sucy-en-Brie dont le code INSEE est 94071</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="10-Graphique-dvf.html#cb297-1" tabindex="-1"></a>sel<span class="ot">&lt;-</span>don[don<span class="sc">$</span>code<span class="sc">==</span><span class="st">&quot;94071&quot;</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="10-Graphique-dvf.html#cb298-1" tabindex="-1"></a>sel<span class="ot">&lt;-</span>don[don<span class="sc">$</span>code<span class="sc">==</span><span class="st">&quot;94071&quot;</span>,]</span></code></pre></div>
 </div>
 </div>
 <div id="principes-généraux-1" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Principes généraux<a href="10-Graphique-dvf.html#principes-généraux-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>On commence par charger le package <code>ggplot2</code> qui est une partie de l’univers <code>tidyverse</code> mais que l’on peut utiliser indépendamment du reste de l’empire d’Hadley Wickham…</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="10-Graphique-dvf.html#cb298-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="10-Graphique-dvf.html#cb299-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <div id="les-différentes-étapes-1" class="section level3 hasAnchor" number="10.3.1">
 <h3><span class="header-section-number">10.3.1</span> Les différentes étapes<a href="10-Graphique-dvf.html#les-différentes-étapes-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
@@ -682,55 +686,35 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="la-figure-à-réaliser-1" class="section level3 hasAnchor" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> La figure à réaliser<a href="10-Graphique-dvf.html#la-figure-à-réaliser-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Comment réaliser la figure ci-dessous ?</p>
+<pre><code>#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="bivaR_files/figure-html/exo1bis-1.svg" width="672" /></p>
 </div>
 <div id="la-construction-pas-à-pas-1" class="section level3 hasAnchor" number="10.3.3">
 <h3><span class="header-section-number">10.3.3</span> La construction pas à pas<a href="10-Graphique-dvf.html#la-construction-pas-à-pas-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On définit le tableau de données avec <code>ggplot()</code> et les variables principales avec <code>aes()</code></p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="10-Graphique-dvf.html#cb299-1" tabindex="-1"></a></span>
-<span id="cb299-2"><a href="10-Graphique-dvf.html#cb299-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(sel) <span class="sc">+</span></span>
-<span id="cb299-3"><a href="10-Graphique-dvf.html#cb299-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> surf) <span class="sc">+</span></span>
-<span id="cb299-4"><a href="10-Graphique-dvf.html#cb299-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> prix) <span class="sc">+</span></span>
-<span id="cb299-5"><a href="10-Graphique-dvf.html#cb299-5" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">col =</span> type)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-306-1.svg" width="672" /></p>
-<p>On ajoute le type principal du graphique avec la commande <code>geom_point()</code></p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="10-Graphique-dvf.html#cb300-1" tabindex="-1"></a></span>
-<span id="cb300-2"><a href="10-Graphique-dvf.html#cb300-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(sel) <span class="sc">+</span></span>
-<span id="cb300-3"><a href="10-Graphique-dvf.html#cb300-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> surf) <span class="sc">+</span></span>
-<span id="cb300-4"><a href="10-Graphique-dvf.html#cb300-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> prix) <span class="sc">+</span></span>
-<span id="cb300-5"><a href="10-Graphique-dvf.html#cb300-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-307-1.svg" width="672" /></p>
-<p>On retouche les axes horizontaux et verticaux en les passant en logarithme et en leur donnant un titre.</p>
 <div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="10-Graphique-dvf.html#cb301-1" tabindex="-1"></a></span>
 <span id="cb301-2"><a href="10-Graphique-dvf.html#cb301-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(sel) <span class="sc">+</span></span>
 <span id="cb301-3"><a href="10-Graphique-dvf.html#cb301-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> surf) <span class="sc">+</span></span>
 <span id="cb301-4"><a href="10-Graphique-dvf.html#cb301-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> prix) <span class="sc">+</span></span>
-<span id="cb301-5"><a href="10-Graphique-dvf.html#cb301-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb301-6"><a href="10-Graphique-dvf.html#cb301-6" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Surface du logement&quot;</span>)<span class="sc">+</span></span>
-<span id="cb301-7"><a href="10-Graphique-dvf.html#cb301-7" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-308-1.svg" width="672" /></p>
-<p>On segmente le graphique en facettes selon une ou plusieurs variables avec <code>facet_wrap()</code>. Du coup, on retire ces variables de l’esthétique générale :</p>
+<span id="cb301-5"><a href="10-Graphique-dvf.html#cb301-5" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">col =</span> type)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-306-1.svg" width="672" /></p>
+<p>On ajoute le type principal du graphique avec la commande <code>geom_point()</code></p>
 <div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="10-Graphique-dvf.html#cb302-1" tabindex="-1"></a></span>
 <span id="cb302-2"><a href="10-Graphique-dvf.html#cb302-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(sel) <span class="sc">+</span></span>
 <span id="cb302-3"><a href="10-Graphique-dvf.html#cb302-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> surf) <span class="sc">+</span></span>
 <span id="cb302-4"><a href="10-Graphique-dvf.html#cb302-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> prix) <span class="sc">+</span></span>
-<span id="cb302-5"><a href="10-Graphique-dvf.html#cb302-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb302-6"><a href="10-Graphique-dvf.html#cb302-6" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Surface du logement&quot;</span>)<span class="sc">+</span></span>
-<span id="cb302-7"><a href="10-Graphique-dvf.html#cb302-7" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>)<span class="sc">+</span></span>
-<span id="cb302-8"><a href="10-Graphique-dvf.html#cb302-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(type),<span class="at">ncol=</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-309-1.svg" width="672" /></p>
-<p>On ajoute dans chaque facette une droite de tendance et son intervalle de confiance avec <code>geom_smooth()</code>. On précise <em>method=“lm”</em> pour avoir une droite et non pas une courbe</p>
+<span id="cb302-5"><a href="10-Graphique-dvf.html#cb302-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-307-1.svg" width="672" /></p>
+<p>On retouche les axes horizontaux et verticaux en les passant en logarithme et en leur donnant un titre.</p>
 <div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="10-Graphique-dvf.html#cb303-1" tabindex="-1"></a></span>
 <span id="cb303-2"><a href="10-Graphique-dvf.html#cb303-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(sel) <span class="sc">+</span></span>
 <span id="cb303-3"><a href="10-Graphique-dvf.html#cb303-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> surf) <span class="sc">+</span></span>
 <span id="cb303-4"><a href="10-Graphique-dvf.html#cb303-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> prix) <span class="sc">+</span></span>
 <span id="cb303-5"><a href="10-Graphique-dvf.html#cb303-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb303-6"><a href="10-Graphique-dvf.html#cb303-6" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Surface du logement&quot;</span>)<span class="sc">+</span></span>
-<span id="cb303-7"><a href="10-Graphique-dvf.html#cb303-7" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>)<span class="sc">+</span></span>
-<span id="cb303-8"><a href="10-Graphique-dvf.html#cb303-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(type),<span class="at">ncol=</span> <span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb303-9"><a href="10-Graphique-dvf.html#cb303-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) </span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-310-1.svg" width="672" /></p>
-<p>Onajoute un titre principal avec <code>ggtitle()</code> et on retouche l’ensemble de l’apparence avec <code>theme_light()</code>.</p>
+<span id="cb303-7"><a href="10-Graphique-dvf.html#cb303-7" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-308-1.svg" width="672" /></p>
+<p>On segmente le graphique en facettes selon une ou plusieurs variables avec <code>facet_wrap()</code>. Du coup, on retire ces variables de l’esthétique générale :</p>
 <div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="10-Graphique-dvf.html#cb304-1" tabindex="-1"></a></span>
 <span id="cb304-2"><a href="10-Graphique-dvf.html#cb304-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(sel) <span class="sc">+</span></span>
 <span id="cb304-3"><a href="10-Graphique-dvf.html#cb304-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> surf) <span class="sc">+</span></span>
@@ -738,11 +722,34 @@ code span.wa { color: #bf0303; } /* Warning */
 <span id="cb304-5"><a href="10-Graphique-dvf.html#cb304-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb304-6"><a href="10-Graphique-dvf.html#cb304-6" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Surface du logement&quot;</span>)<span class="sc">+</span></span>
 <span id="cb304-7"><a href="10-Graphique-dvf.html#cb304-7" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>)<span class="sc">+</span></span>
-<span id="cb304-8"><a href="10-Graphique-dvf.html#cb304-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(type),<span class="at">ncol=</span> <span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb304-9"><a href="10-Graphique-dvf.html#cb304-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb304-10"><a href="10-Graphique-dvf.html#cb304-10" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&quot;Relation entre prix et surface des logements&quot;</span>,</span>
-<span id="cb304-11"><a href="10-Graphique-dvf.html#cb304-11" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">&quot;Source : DVF &quot;</span>) <span class="sc">+</span></span>
-<span id="cb304-12"><a href="10-Graphique-dvf.html#cb304-12" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span></code></pre></div>
+<span id="cb304-8"><a href="10-Graphique-dvf.html#cb304-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(type),<span class="at">ncol=</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-309-1.svg" width="672" /></p>
+<p>On ajoute dans chaque facette une droite de tendance et son intervalle de confiance avec <code>geom_smooth()</code>. On précise <em>method=“lm”</em> pour avoir une droite et non pas une courbe</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="10-Graphique-dvf.html#cb305-1" tabindex="-1"></a></span>
+<span id="cb305-2"><a href="10-Graphique-dvf.html#cb305-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(sel) <span class="sc">+</span></span>
+<span id="cb305-3"><a href="10-Graphique-dvf.html#cb305-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> surf) <span class="sc">+</span></span>
+<span id="cb305-4"><a href="10-Graphique-dvf.html#cb305-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> prix) <span class="sc">+</span></span>
+<span id="cb305-5"><a href="10-Graphique-dvf.html#cb305-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb305-6"><a href="10-Graphique-dvf.html#cb305-6" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Surface du logement&quot;</span>)<span class="sc">+</span></span>
+<span id="cb305-7"><a href="10-Graphique-dvf.html#cb305-7" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>)<span class="sc">+</span></span>
+<span id="cb305-8"><a href="10-Graphique-dvf.html#cb305-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(type),<span class="at">ncol=</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb305-9"><a href="10-Graphique-dvf.html#cb305-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) </span>
+<span id="cb305-10"><a href="10-Graphique-dvf.html#cb305-10" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</span></span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-310-1.svg" width="672" /></p>
+<p>Onajoute un titre principal avec <code>ggtitle()</code> et on retouche l’ensemble de l’apparence avec <code>theme_light()</code>.</p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="10-Graphique-dvf.html#cb306-1" tabindex="-1"></a></span>
+<span id="cb306-2"><a href="10-Graphique-dvf.html#cb306-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(sel) <span class="sc">+</span></span>
+<span id="cb306-3"><a href="10-Graphique-dvf.html#cb306-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> surf) <span class="sc">+</span></span>
+<span id="cb306-4"><a href="10-Graphique-dvf.html#cb306-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> prix) <span class="sc">+</span></span>
+<span id="cb306-5"><a href="10-Graphique-dvf.html#cb306-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb306-6"><a href="10-Graphique-dvf.html#cb306-6" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">name=</span><span class="st">&quot;Surface du logement&quot;</span>)<span class="sc">+</span></span>
+<span id="cb306-7"><a href="10-Graphique-dvf.html#cb306-7" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>)<span class="sc">+</span></span>
+<span id="cb306-8"><a href="10-Graphique-dvf.html#cb306-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(type),<span class="at">ncol=</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb306-9"><a href="10-Graphique-dvf.html#cb306-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb306-10"><a href="10-Graphique-dvf.html#cb306-10" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&quot;Relation entre prix et surface des logements&quot;</span>,</span>
+<span id="cb306-11"><a href="10-Graphique-dvf.html#cb306-11" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">&quot;Source : DVF &quot;</span>) <span class="sc">+</span></span>
+<span id="cb306-12"><a href="10-Graphique-dvf.html#cb306-12" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb306-13"><a href="10-Graphique-dvf.html#cb306-13" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-311-1.svg" width="672" /></p>
 </div>
 <div id="comparaison-avec-r-base-1" class="section level3 hasAnchor" number="10.3.4">
@@ -765,16 +772,18 @@ code span.wa { color: #bf0303; } /* Warning */
 <ul>
 <li><strong>type est un paramètre global</strong> : dans ce cas il s’applique à toutes les commandes qui suivent. Il y aura donc <strong>deux</strong> droites de régression générées par geom_smooth</li>
 </ul>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="10-Graphique-dvf.html#cb305-1" tabindex="-1"></a><span class="fu">ggplot</span>(sel, <span class="fu">aes</span>(<span class="at">x =</span> surf, <span class="at">y =</span> prix, <span class="at">color =</span> type)) <span class="sc">+</span></span>
-<span id="cb305-2"><a href="10-Graphique-dvf.html#cb305-2" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb305-3"><a href="10-Graphique-dvf.html#cb305-3" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="10-Graphique-dvf.html#cb307-1" tabindex="-1"></a><span class="fu">ggplot</span>(sel, <span class="fu">aes</span>(<span class="at">x =</span> surf, <span class="at">y =</span> prix, <span class="at">color =</span> type)) <span class="sc">+</span></span>
+<span id="cb307-2"><a href="10-Graphique-dvf.html#cb307-2" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb307-3"><a href="10-Graphique-dvf.html#cb307-3" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb307-4"><a href="10-Graphique-dvf.html#cb307-4" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-312-1.svg" width="672" /></p>
 <ul>
 <li><strong>type est un paramètre local de geom_point()</strong> : dans ce cas il n’aura pas d’effet sur geom_smooth() qui va générer <strong>une</strong> seule droite de régression.</li>
 </ul>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="10-Graphique-dvf.html#cb306-1" tabindex="-1"></a><span class="fu">ggplot</span>(sel, <span class="fu">aes</span>(<span class="at">x =</span> surf, <span class="at">y =</span> prix)) <span class="sc">+</span></span>
-<span id="cb306-2"><a href="10-Graphique-dvf.html#cb306-2" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>type)) <span class="sc">+</span></span>
-<span id="cb306-3"><a href="10-Graphique-dvf.html#cb306-3" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="10-Graphique-dvf.html#cb308-1" tabindex="-1"></a><span class="fu">ggplot</span>(sel, <span class="fu">aes</span>(<span class="at">x =</span> surf, <span class="at">y =</span> prix)) <span class="sc">+</span></span>
+<span id="cb308-2"><a href="10-Graphique-dvf.html#cb308-2" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>type)) <span class="sc">+</span></span>
+<span id="cb308-3"><a href="10-Graphique-dvf.html#cb308-3" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb308-4"><a href="10-Graphique-dvf.html#cb308-4" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-313-1.svg" width="672" /></p>
 </div>
 </div>
@@ -782,18 +791,18 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">10.4</span> X discrète<a href="10-Graphique-dvf.html#x-discrète-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="barplot-r-base-1" class="section level3 hasAnchor" number="10.4.1">
 <h3><span class="header-section-number">10.4.1</span> barplot (R-base)<a href="10-Graphique-dvf.html#barplot-r-base-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="10-Graphique-dvf.html#cb307-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(sel<span class="sc">$</span>type), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb307-2"><a href="10-Graphique-dvf.html#cb307-2" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Type de logement&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="10-Graphique-dvf.html#cb309-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(sel<span class="sc">$</span>type), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb309-2"><a href="10-Graphique-dvf.html#cb309-2" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Type de logement&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-314-1.svg" width="672" /></p>
 </div>
 <div id="geom_bar-ggplot2-2" class="section level3 hasAnchor" number="10.4.2">
 <h3><span class="header-section-number">10.4.2</span> geom_bar (ggplot2)<a href="10-Graphique-dvf.html#geom_bar-ggplot2-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="10-Graphique-dvf.html#cb308-1" tabindex="-1"></a><span class="co"># ggplot</span></span>
-<span id="cb308-2"><a href="10-Graphique-dvf.html#cb308-2" tabindex="-1"></a><span class="fu">ggplot</span>(sel) <span class="sc">+</span></span>
-<span id="cb308-3"><a href="10-Graphique-dvf.html#cb308-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span>type) <span class="sc">+</span></span>
-<span id="cb308-4"><a href="10-Graphique-dvf.html#cb308-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>))<span class="sc">+</span></span>
-<span id="cb308-5"><a href="10-Graphique-dvf.html#cb308-5" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Type de logement&quot;</span>)<span class="sc">+</span></span>
-<span id="cb308-6"><a href="10-Graphique-dvf.html#cb308-6" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="10-Graphique-dvf.html#cb310-1" tabindex="-1"></a><span class="co"># ggplot</span></span>
+<span id="cb310-2"><a href="10-Graphique-dvf.html#cb310-2" tabindex="-1"></a><span class="fu">ggplot</span>(sel) <span class="sc">+</span></span>
+<span id="cb310-3"><a href="10-Graphique-dvf.html#cb310-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span>type) <span class="sc">+</span></span>
+<span id="cb310-4"><a href="10-Graphique-dvf.html#cb310-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>))<span class="sc">+</span></span>
+<span id="cb310-5"><a href="10-Graphique-dvf.html#cb310-5" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Type de logement&quot;</span>)<span class="sc">+</span></span>
+<span id="cb310-6"><a href="10-Graphique-dvf.html#cb310-6" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-315-1.svg" width="672" /></p>
 </div>
 </div>
@@ -801,32 +810,32 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">10.5</span> X quantitative continue<a href="10-Graphique-dvf.html#x-quantitative-continue-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="hist-r-base-1" class="section level3 hasAnchor" number="10.5.1">
 <h3><span class="header-section-number">10.5.1</span> hist (R-base)<a href="10-Graphique-dvf.html#hist-r-base-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="10-Graphique-dvf.html#cb309-1" tabindex="-1"></a>sel2<span class="ot">&lt;-</span>sel[sel<span class="sc">$</span>type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>,]</span>
-<span id="cb309-2"><a href="10-Graphique-dvf.html#cb309-2" tabindex="-1"></a><span class="fu">hist</span>(sel2<span class="sc">$</span>prix,<span class="at">breaks =</span> <span class="dv">15</span>,</span>
-<span id="cb309-3"><a href="10-Graphique-dvf.html#cb309-3" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb309-4"><a href="10-Graphique-dvf.html#cb309-4" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb309-5"><a href="10-Graphique-dvf.html#cb309-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Prix de vente&quot;</span>,</span>
-<span id="cb309-6"><a href="10-Graphique-dvf.html#cb309-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Nombre de ventes&quot;</span>,</span>
-<span id="cb309-7"><a href="10-Graphique-dvf.html#cb309-7" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Ventes de maison à Sucy en Brie (2014-2021&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="10-Graphique-dvf.html#cb311-1" tabindex="-1"></a>sel2<span class="ot">&lt;-</span>sel[sel<span class="sc">$</span>type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>,]</span>
+<span id="cb311-2"><a href="10-Graphique-dvf.html#cb311-2" tabindex="-1"></a><span class="fu">hist</span>(sel2<span class="sc">$</span>prix,<span class="at">breaks =</span> <span class="dv">15</span>,</span>
+<span id="cb311-3"><a href="10-Graphique-dvf.html#cb311-3" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb311-4"><a href="10-Graphique-dvf.html#cb311-4" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb311-5"><a href="10-Graphique-dvf.html#cb311-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Prix de vente&quot;</span>,</span>
+<span id="cb311-6"><a href="10-Graphique-dvf.html#cb311-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Nombre de ventes&quot;</span>,</span>
+<span id="cb311-7"><a href="10-Graphique-dvf.html#cb311-7" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Ventes de maison à Sucy en Brie (2014-2021&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-316-1.svg" width="672" /></p>
 </div>
 <div id="geom_histogram-ggplot2-1" class="section level3 hasAnchor" number="10.5.2">
 <h3><span class="header-section-number">10.5.2</span> geom_histogram (ggplot2)<a href="10-Graphique-dvf.html#geom_histogram-ggplot2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="10-Graphique-dvf.html#cb310-1" tabindex="-1"></a><span class="co"># On démarre par une ligne de tidyverse ...</span></span>
-<span id="cb310-2"><a href="10-Graphique-dvf.html#cb310-2" tabindex="-1"></a>sel <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb310-3"><a href="10-Graphique-dvf.html#cb310-3" tabindex="-1"></a><span class="co">#  ... en on embraye sur ggplot2 </span></span>
-<span id="cb310-4"><a href="10-Graphique-dvf.html#cb310-4" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb310-5"><a href="10-Graphique-dvf.html#cb310-5" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span>prix) <span class="sc">+</span> </span>
-<span id="cb310-6"><a href="10-Graphique-dvf.html#cb310-6" tabindex="-1"></a><span class="co"># Appel de la fonction principale  </span></span>
-<span id="cb310-7"><a href="10-Graphique-dvf.html#cb310-7" tabindex="-1"></a>  <span class="fu">geom_histogram</span>( <span class="at">bins =</span> <span class="dv">15</span>,     </span>
-<span id="cb310-8"><a href="10-Graphique-dvf.html#cb310-8" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb310-9"><a href="10-Graphique-dvf.html#cb310-9" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">&quot;blue&quot;</span> </span>
-<span id="cb310-10"><a href="10-Graphique-dvf.html#cb310-10" tabindex="-1"></a>                 ) <span class="sc">+</span>   </span>
-<span id="cb310-11"><a href="10-Graphique-dvf.html#cb310-11" tabindex="-1"></a><span class="co"># Retouche de l&#39;échelle</span></span>
-<span id="cb310-12"><a href="10-Graphique-dvf.html#cb310-12" tabindex="-1"></a> <span class="fu">scale_x_continuous</span>( <span class="at">name =</span> <span class="st">&quot;Prix de vente&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb310-13"><a href="10-Graphique-dvf.html#cb310-13" tabindex="-1"></a> <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Nombre de ventes&quot;</span>)<span class="sc">+</span></span>
-<span id="cb310-14"><a href="10-Graphique-dvf.html#cb310-14" tabindex="-1"></a><span class="co"># Ajout du titre </span></span>
-<span id="cb310-15"><a href="10-Graphique-dvf.html#cb310-15" tabindex="-1"></a> <span class="fu">ggtitle</span>(<span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="10-Graphique-dvf.html#cb312-1" tabindex="-1"></a><span class="co"># On démarre par une ligne de tidyverse ...</span></span>
+<span id="cb312-2"><a href="10-Graphique-dvf.html#cb312-2" tabindex="-1"></a>sel <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb312-3"><a href="10-Graphique-dvf.html#cb312-3" tabindex="-1"></a><span class="co">#  ... en on embraye sur ggplot2 </span></span>
+<span id="cb312-4"><a href="10-Graphique-dvf.html#cb312-4" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb312-5"><a href="10-Graphique-dvf.html#cb312-5" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span>prix) <span class="sc">+</span> </span>
+<span id="cb312-6"><a href="10-Graphique-dvf.html#cb312-6" tabindex="-1"></a><span class="co"># Appel de la fonction principale  </span></span>
+<span id="cb312-7"><a href="10-Graphique-dvf.html#cb312-7" tabindex="-1"></a>  <span class="fu">geom_histogram</span>( <span class="at">bins =</span> <span class="dv">15</span>,     </span>
+<span id="cb312-8"><a href="10-Graphique-dvf.html#cb312-8" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb312-9"><a href="10-Graphique-dvf.html#cb312-9" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">&quot;blue&quot;</span> </span>
+<span id="cb312-10"><a href="10-Graphique-dvf.html#cb312-10" tabindex="-1"></a>                 ) <span class="sc">+</span>   </span>
+<span id="cb312-11"><a href="10-Graphique-dvf.html#cb312-11" tabindex="-1"></a><span class="co"># Retouche de l&#39;échelle</span></span>
+<span id="cb312-12"><a href="10-Graphique-dvf.html#cb312-12" tabindex="-1"></a> <span class="fu">scale_x_continuous</span>( <span class="at">name =</span> <span class="st">&quot;Prix de vente&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb312-13"><a href="10-Graphique-dvf.html#cb312-13" tabindex="-1"></a> <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Nombre de ventes&quot;</span>)<span class="sc">+</span></span>
+<span id="cb312-14"><a href="10-Graphique-dvf.html#cb312-14" tabindex="-1"></a><span class="co"># Ajout du titre </span></span>
+<span id="cb312-15"><a href="10-Graphique-dvf.html#cb312-15" tabindex="-1"></a> <span class="fu">ggtitle</span>(<span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>) </span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-317-1.svg" width="672" /></p>
 </div>
 </div>
@@ -834,41 +843,42 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">10.6</span> X et Y quantitatives continues<a href="10-Graphique-dvf.html#x-et-y-quantitatives-continues-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="plot-r-base-1" class="section level3 hasAnchor" number="10.6.1">
 <h3><span class="header-section-number">10.6.1</span> plot (R-base)<a href="10-Graphique-dvf.html#plot-r-base-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="10-Graphique-dvf.html#cb311-1" tabindex="-1"></a></span>
-<span id="cb311-2"><a href="10-Graphique-dvf.html#cb311-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> sel<span class="sc">$</span>surf,</span>
-<span id="cb311-3"><a href="10-Graphique-dvf.html#cb311-3" tabindex="-1"></a>     <span class="at">y =</span> sel<span class="sc">$</span>prix, </span>
-<span id="cb311-4"><a href="10-Graphique-dvf.html#cb311-4" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">0</span>, </span>
-<span id="cb311-5"><a href="10-Graphique-dvf.html#cb311-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Surface&quot;</span>,</span>
-<span id="cb311-6"><a href="10-Graphique-dvf.html#cb311-6" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Prix de vente&quot;</span>,</span>
-<span id="cb311-7"><a href="10-Graphique-dvf.html#cb311-7" tabindex="-1"></a>     <span class="at">main=</span> <span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>)</span>
-<span id="cb311-8"><a href="10-Graphique-dvf.html#cb311-8" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> sel<span class="sc">$</span>surf,</span>
-<span id="cb311-9"><a href="10-Graphique-dvf.html#cb311-9" tabindex="-1"></a>       <span class="at">y =</span> sel<span class="sc">$</span>prix, </span>
-<span id="cb311-10"><a href="10-Graphique-dvf.html#cb311-10" tabindex="-1"></a>       <span class="at">col=</span>sel<span class="sc">$</span>type, </span>
-<span id="cb311-11"><a href="10-Graphique-dvf.html#cb311-11" tabindex="-1"></a>       <span class="at">cex=</span><span class="fu">sqrt</span>(sel<span class="sc">$</span>nbp), </span>
-<span id="cb311-12"><a href="10-Graphique-dvf.html#cb311-12" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">19</span>)</span>
-<span id="cb311-13"><a href="10-Graphique-dvf.html#cb311-13" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(sel<span class="sc">$</span>prix<span class="sc">~</span>sel<span class="sc">$</span>surf), </span>
-<span id="cb311-14"><a href="10-Graphique-dvf.html#cb311-14" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb311-15"><a href="10-Graphique-dvf.html#cb311-15" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="10-Graphique-dvf.html#cb313-1" tabindex="-1"></a></span>
+<span id="cb313-2"><a href="10-Graphique-dvf.html#cb313-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> sel<span class="sc">$</span>surf,</span>
+<span id="cb313-3"><a href="10-Graphique-dvf.html#cb313-3" tabindex="-1"></a>     <span class="at">y =</span> sel<span class="sc">$</span>prix, </span>
+<span id="cb313-4"><a href="10-Graphique-dvf.html#cb313-4" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">0</span>, </span>
+<span id="cb313-5"><a href="10-Graphique-dvf.html#cb313-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Surface&quot;</span>,</span>
+<span id="cb313-6"><a href="10-Graphique-dvf.html#cb313-6" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Prix de vente&quot;</span>,</span>
+<span id="cb313-7"><a href="10-Graphique-dvf.html#cb313-7" tabindex="-1"></a>     <span class="at">main=</span> <span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>)</span>
+<span id="cb313-8"><a href="10-Graphique-dvf.html#cb313-8" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> sel<span class="sc">$</span>surf,</span>
+<span id="cb313-9"><a href="10-Graphique-dvf.html#cb313-9" tabindex="-1"></a>       <span class="at">y =</span> sel<span class="sc">$</span>prix, </span>
+<span id="cb313-10"><a href="10-Graphique-dvf.html#cb313-10" tabindex="-1"></a>       <span class="at">col=</span>sel<span class="sc">$</span>type, </span>
+<span id="cb313-11"><a href="10-Graphique-dvf.html#cb313-11" tabindex="-1"></a>       <span class="at">cex=</span><span class="fu">sqrt</span>(sel<span class="sc">$</span>nbp), </span>
+<span id="cb313-12"><a href="10-Graphique-dvf.html#cb313-12" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">19</span>)</span>
+<span id="cb313-13"><a href="10-Graphique-dvf.html#cb313-13" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(sel<span class="sc">$</span>prix<span class="sc">~</span>sel<span class="sc">$</span>surf), </span>
+<span id="cb313-14"><a href="10-Graphique-dvf.html#cb313-14" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb313-15"><a href="10-Graphique-dvf.html#cb313-15" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-318-1.svg" width="672" /></p>
 </div>
 <div id="geom_point-ggplot2-1" class="section level3 hasAnchor" number="10.6.2">
 <h3><span class="header-section-number">10.6.2</span> geom_point (ggplot2)<a href="10-Graphique-dvf.html#geom_point-ggplot2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="10-Graphique-dvf.html#cb312-1" tabindex="-1"></a></span>
-<span id="cb312-2"><a href="10-Graphique-dvf.html#cb312-2" tabindex="-1"></a><span class="co">#  On définit les paramètres globaux </span></span>
-<span id="cb312-3"><a href="10-Graphique-dvf.html#cb312-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(sel, <span class="fu">aes</span>(<span class="at">x =</span>surf, <span class="at">y=</span>prix)) <span class="sc">+</span></span>
-<span id="cb312-4"><a href="10-Graphique-dvf.html#cb312-4" tabindex="-1"></a>  </span>
-<span id="cb312-5"><a href="10-Graphique-dvf.html#cb312-5" tabindex="-1"></a><span class="co"># On trace les points avec </span></span>
-<span id="cb312-6"><a href="10-Graphique-dvf.html#cb312-6" tabindex="-1"></a><span class="co"># des paramètres locaux</span></span>
-<span id="cb312-7"><a href="10-Graphique-dvf.html#cb312-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>type, </span>
-<span id="cb312-8"><a href="10-Graphique-dvf.html#cb312-8" tabindex="-1"></a>                 <span class="at">size =</span> nbp)) <span class="sc">+</span></span>
-<span id="cb312-9"><a href="10-Graphique-dvf.html#cb312-9" tabindex="-1"></a>  </span>
-<span id="cb312-10"><a href="10-Graphique-dvf.html#cb312-10" tabindex="-1"></a><span class="co"># On ajoute la droite de régression</span></span>
-<span id="cb312-11"><a href="10-Graphique-dvf.html#cb312-11" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb312-12"><a href="10-Graphique-dvf.html#cb312-12" tabindex="-1"></a>  </span>
-<span id="cb312-13"><a href="10-Graphique-dvf.html#cb312-13" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
-<span id="cb312-14"><a href="10-Graphique-dvf.html#cb312-14" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;surface&quot;</span>) <span class="sc">+</span></span>
-<span id="cb312-15"><a href="10-Graphique-dvf.html#cb312-15" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;prix de vente&quot;</span>) <span class="sc">+</span></span>
-<span id="cb312-16"><a href="10-Graphique-dvf.html#cb312-16" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="10-Graphique-dvf.html#cb314-1" tabindex="-1"></a></span>
+<span id="cb314-2"><a href="10-Graphique-dvf.html#cb314-2" tabindex="-1"></a><span class="co">#  On définit les paramètres globaux </span></span>
+<span id="cb314-3"><a href="10-Graphique-dvf.html#cb314-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(sel, <span class="fu">aes</span>(<span class="at">x =</span>surf, <span class="at">y=</span>prix)) <span class="sc">+</span></span>
+<span id="cb314-4"><a href="10-Graphique-dvf.html#cb314-4" tabindex="-1"></a>  </span>
+<span id="cb314-5"><a href="10-Graphique-dvf.html#cb314-5" tabindex="-1"></a><span class="co"># On trace les points avec </span></span>
+<span id="cb314-6"><a href="10-Graphique-dvf.html#cb314-6" tabindex="-1"></a><span class="co"># des paramètres locaux</span></span>
+<span id="cb314-7"><a href="10-Graphique-dvf.html#cb314-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>type, </span>
+<span id="cb314-8"><a href="10-Graphique-dvf.html#cb314-8" tabindex="-1"></a>                 <span class="at">size =</span> nbp)) <span class="sc">+</span></span>
+<span id="cb314-9"><a href="10-Graphique-dvf.html#cb314-9" tabindex="-1"></a>  </span>
+<span id="cb314-10"><a href="10-Graphique-dvf.html#cb314-10" tabindex="-1"></a><span class="co"># On ajoute la droite de régression</span></span>
+<span id="cb314-11"><a href="10-Graphique-dvf.html#cb314-11" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb314-12"><a href="10-Graphique-dvf.html#cb314-12" tabindex="-1"></a>  </span>
+<span id="cb314-13"><a href="10-Graphique-dvf.html#cb314-13" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb314-14"><a href="10-Graphique-dvf.html#cb314-14" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;surface&quot;</span>) <span class="sc">+</span></span>
+<span id="cb314-15"><a href="10-Graphique-dvf.html#cb314-15" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;prix de vente&quot;</span>) <span class="sc">+</span></span>
+<span id="cb314-16"><a href="10-Graphique-dvf.html#cb314-16" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>)</span>
+<span id="cb314-17"><a href="10-Graphique-dvf.html#cb314-17" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-319-1.svg" width="672" /></p>
 </div>
 </div>
@@ -876,53 +886,18 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">10.7</span> X quantitative continue et Y discrète<a href="10-Graphique-dvf.html#x-quantitative-continue-et-y-discrète-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="boxplot-r-base-1" class="section level3 hasAnchor" number="10.7.1">
 <h3><span class="header-section-number">10.7.1</span> 6.1 boxplot (R-base)<a href="10-Graphique-dvf.html#boxplot-r-base-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="10-Graphique-dvf.html#cb313-1" tabindex="-1"></a>sel2<span class="ot">&lt;-</span>sel[(don<span class="sc">$</span>type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>),]</span>
-<span id="cb313-2"><a href="10-Graphique-dvf.html#cb313-2" tabindex="-1"></a>sel2<span class="sc">$</span>SIZE<span class="ot">&lt;-</span><span class="fu">as.factor</span>(sel2<span class="sc">$</span>nbp)</span>
-<span id="cb313-3"><a href="10-Graphique-dvf.html#cb313-3" tabindex="-1"></a><span class="co">#levels(don2$SIZE)&lt;-c(&quot;1 ou 2&quot;, &quot;1 ou 2&quot;, &quot;3 ou 4&quot;, &quot;3 ou 4&quot;, &quot;5 ou 6&quot;, &quot;5 ou 6&quot;)</span></span>
-<span id="cb313-4"><a href="10-Graphique-dvf.html#cb313-4" tabindex="-1"></a><span class="fu">boxplot</span>(sel2<span class="sc">$</span>prix<span class="sc">~</span>sel2<span class="sc">$</span>SIZE, </span>
-<span id="cb313-5"><a href="10-Graphique-dvf.html#cb313-5" tabindex="-1"></a>      <span class="at">col=</span><span class="fu">rainbow</span>(<span class="at">n=</span><span class="dv">12</span>, <span class="at">alpha=</span><span class="fl">0.5</span>),</span>
-<span id="cb313-6"><a href="10-Graphique-dvf.html#cb313-6" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Nombre de pièces&quot;</span>,</span>
-<span id="cb313-7"><a href="10-Graphique-dvf.html#cb313-7" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Prix&quot;</span>,</span>
-<span id="cb313-8"><a href="10-Graphique-dvf.html#cb313-8" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="10-Graphique-dvf.html#cb315-1" tabindex="-1"></a>sel2<span class="ot">&lt;-</span>sel[(don<span class="sc">$</span>type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>),]</span>
+<span id="cb315-2"><a href="10-Graphique-dvf.html#cb315-2" tabindex="-1"></a>sel2<span class="sc">$</span>SIZE<span class="ot">&lt;-</span><span class="fu">as.factor</span>(sel2<span class="sc">$</span>nbp)</span>
+<span id="cb315-3"><a href="10-Graphique-dvf.html#cb315-3" tabindex="-1"></a><span class="co">#levels(don2$SIZE)&lt;-c(&quot;1 ou 2&quot;, &quot;1 ou 2&quot;, &quot;3 ou 4&quot;, &quot;3 ou 4&quot;, &quot;5 ou 6&quot;, &quot;5 ou 6&quot;)</span></span>
+<span id="cb315-4"><a href="10-Graphique-dvf.html#cb315-4" tabindex="-1"></a><span class="fu">boxplot</span>(sel2<span class="sc">$</span>prix<span class="sc">~</span>sel2<span class="sc">$</span>SIZE, </span>
+<span id="cb315-5"><a href="10-Graphique-dvf.html#cb315-5" tabindex="-1"></a>      <span class="at">col=</span><span class="fu">rainbow</span>(<span class="at">n=</span><span class="dv">12</span>, <span class="at">alpha=</span><span class="fl">0.5</span>),</span>
+<span id="cb315-6"><a href="10-Graphique-dvf.html#cb315-6" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Nombre de pièces&quot;</span>,</span>
+<span id="cb315-7"><a href="10-Graphique-dvf.html#cb315-7" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Prix&quot;</span>,</span>
+<span id="cb315-8"><a href="10-Graphique-dvf.html#cb315-8" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-320-1.svg" width="672" /></p>
 </div>
 <div id="geom_boxplot-ggplot2-1" class="section level3 hasAnchor" number="10.7.2">
 <h3><span class="header-section-number">10.7.2</span> geom_boxplot (ggplot2)<a href="10-Graphique-dvf.html#geom_boxplot-ggplot2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="10-Graphique-dvf.html#cb314-1" tabindex="-1"></a><span class="co"># On filtre le tableau et on change SIZE en factor</span></span>
-<span id="cb314-2"><a href="10-Graphique-dvf.html#cb314-2" tabindex="-1"></a>sel <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb314-3"><a href="10-Graphique-dvf.html#cb314-3" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">SIZE =</span> <span class="fu">as.factor</span>(nbp)) <span class="sc">%&gt;%</span></span>
-<span id="cb314-4"><a href="10-Graphique-dvf.html#cb314-4" tabindex="-1"></a>  </span>
-<span id="cb314-5"><a href="10-Graphique-dvf.html#cb314-5" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
-<span id="cb314-6"><a href="10-Graphique-dvf.html#cb314-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> SIZE,<span class="at">y =</span> prix)) <span class="sc">+</span></span>
-<span id="cb314-7"><a href="10-Graphique-dvf.html#cb314-7" tabindex="-1"></a>  </span>
-<span id="cb314-8"><a href="10-Graphique-dvf.html#cb314-8" tabindex="-1"></a><span class="co"># On ajoute la boxplot</span></span>
-<span id="cb314-9"><a href="10-Graphique-dvf.html#cb314-9" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span> SIZE)) <span class="sc">+</span></span>
-<span id="cb314-10"><a href="10-Graphique-dvf.html#cb314-10" tabindex="-1"></a>  </span>
-<span id="cb314-11"><a href="10-Graphique-dvf.html#cb314-11" tabindex="-1"></a>  </span>
-<span id="cb314-12"><a href="10-Graphique-dvf.html#cb314-12" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
-<span id="cb314-13"><a href="10-Graphique-dvf.html#cb314-13" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Nombre de pièces&quot;</span>) <span class="sc">+</span></span>
-<span id="cb314-14"><a href="10-Graphique-dvf.html#cb314-14" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>) <span class="sc">+</span></span>
-<span id="cb314-15"><a href="10-Graphique-dvf.html#cb314-15" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-321-1.svg" width="672" /></p>
-</div>
-<div id="beanplot-r-base-package-beanplot-1" class="section level3 hasAnchor" number="10.7.3">
-<h3><span class="header-section-number">10.7.3</span> beanplot (R-base + package beanplot)<a href="10-Graphique-dvf.html#beanplot-r-base-package-beanplot-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="10-Graphique-dvf.html#cb315-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="st">&quot;black&quot;</span>,<span class="at">fg=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.lab =</span><span class="st">&quot;white&quot;</span>, <span class="at">col.axis =</span><span class="st">&quot;white&quot;</span>,<span class="at">col.main=</span><span class="st">&quot;white&quot;</span> )</span>
-<span id="cb315-2"><a href="10-Graphique-dvf.html#cb315-2" tabindex="-1"></a>sel2<span class="ot">&lt;-</span>sel[(don<span class="sc">$</span>type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>),]</span>
-<span id="cb315-3"><a href="10-Graphique-dvf.html#cb315-3" tabindex="-1"></a>sel2<span class="sc">$</span>SIZE<span class="ot">&lt;-</span><span class="fu">as.factor</span>(sel2<span class="sc">$</span>nbp)</span>
-<span id="cb315-4"><a href="10-Graphique-dvf.html#cb315-4" tabindex="-1"></a><span class="co">#levels(don2$SIZE)&lt;-c(&quot;1 ou 2&quot;, &quot;1 ou 2&quot;, &quot;3 ou 4&quot;, &quot;3 ou 4&quot;, &quot;5 ou 6&quot;, &quot;5 ou 6&quot;)</span></span>
-<span id="cb315-5"><a href="10-Graphique-dvf.html#cb315-5" tabindex="-1"></a><span class="fu">library</span>(beanplot)</span>
-<span id="cb315-6"><a href="10-Graphique-dvf.html#cb315-6" tabindex="-1"></a></span>
-<span id="cb315-7"><a href="10-Graphique-dvf.html#cb315-7" tabindex="-1"></a></span>
-<span id="cb315-8"><a href="10-Graphique-dvf.html#cb315-8" tabindex="-1"></a><span class="fu">beanplot</span>(sel2<span class="sc">$</span>prix<span class="sc">~</span>sel2<span class="sc">$</span>SIZE, </span>
-<span id="cb315-9"><a href="10-Graphique-dvf.html#cb315-9" tabindex="-1"></a>         <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;red&quot;</span>),</span>
-<span id="cb315-10"><a href="10-Graphique-dvf.html#cb315-10" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Nombre de pièces&quot;</span>,</span>
-<span id="cb315-11"><a href="10-Graphique-dvf.html#cb315-11" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Prix&quot;</span>,</span>
-<span id="cb315-12"><a href="10-Graphique-dvf.html#cb315-12" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-322-1.svg" width="672" /></p>
-</div>
-<div id="geom_violin-ggplot2-1" class="section level3 hasAnchor" number="10.7.4">
-<h3><span class="header-section-number">10.7.4</span> geom_violin (ggplot2)<a href="10-Graphique-dvf.html#geom_violin-ggplot2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="10-Graphique-dvf.html#cb316-1" tabindex="-1"></a><span class="co"># On filtre le tableau et on change SIZE en factor</span></span>
 <span id="cb316-2"><a href="10-Graphique-dvf.html#cb316-2" tabindex="-1"></a>sel <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb316-3"><a href="10-Graphique-dvf.html#cb316-3" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">SIZE =</span> <span class="fu">as.factor</span>(nbp)) <span class="sc">%&gt;%</span></span>
@@ -930,16 +905,52 @@ code span.wa { color: #bf0303; } /* Warning */
 <span id="cb316-5"><a href="10-Graphique-dvf.html#cb316-5" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
 <span id="cb316-6"><a href="10-Graphique-dvf.html#cb316-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> SIZE,<span class="at">y =</span> prix)) <span class="sc">+</span></span>
 <span id="cb316-7"><a href="10-Graphique-dvf.html#cb316-7" tabindex="-1"></a>  </span>
-<span id="cb316-8"><a href="10-Graphique-dvf.html#cb316-8" tabindex="-1"></a><span class="co"># On ajoute la géométrie </span></span>
-<span id="cb316-9"><a href="10-Graphique-dvf.html#cb316-9" tabindex="-1"></a><span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">fill=</span> SIZE)) <span class="sc">+</span></span>
+<span id="cb316-8"><a href="10-Graphique-dvf.html#cb316-8" tabindex="-1"></a><span class="co"># On ajoute la boxplot</span></span>
+<span id="cb316-9"><a href="10-Graphique-dvf.html#cb316-9" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span> SIZE)) <span class="sc">+</span></span>
 <span id="cb316-10"><a href="10-Graphique-dvf.html#cb316-10" tabindex="-1"></a>  </span>
-<span id="cb316-11"><a href="10-Graphique-dvf.html#cb316-11" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
-<span id="cb316-12"><a href="10-Graphique-dvf.html#cb316-12" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Nombre de pièces&quot;</span>) <span class="sc">+</span></span>
-<span id="cb316-13"><a href="10-Graphique-dvf.html#cb316-13" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>) <span class="sc">+</span></span>
-<span id="cb316-14"><a href="10-Graphique-dvf.html#cb316-14" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb316-15"><a href="10-Graphique-dvf.html#cb316-15" tabindex="-1"></a></span>
-<span id="cb316-16"><a href="10-Graphique-dvf.html#cb316-16" tabindex="-1"></a><span class="co"># On passe en thème &quot;dark&quot;</span></span>
-<span id="cb316-17"><a href="10-Graphique-dvf.html#cb316-17" tabindex="-1"></a>  <span class="fu">theme_dark</span>()</span></code></pre></div>
+<span id="cb316-11"><a href="10-Graphique-dvf.html#cb316-11" tabindex="-1"></a>  </span>
+<span id="cb316-12"><a href="10-Graphique-dvf.html#cb316-12" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb316-13"><a href="10-Graphique-dvf.html#cb316-13" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Nombre de pièces&quot;</span>) <span class="sc">+</span></span>
+<span id="cb316-14"><a href="10-Graphique-dvf.html#cb316-14" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>) <span class="sc">+</span></span>
+<span id="cb316-15"><a href="10-Graphique-dvf.html#cb316-15" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-321-1.svg" width="672" /></p>
+</div>
+<div id="beanplot-r-base-package-beanplot-1" class="section level3 hasAnchor" number="10.7.3">
+<h3><span class="header-section-number">10.7.3</span> beanplot (R-base + package beanplot)<a href="10-Graphique-dvf.html#beanplot-r-base-package-beanplot-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="10-Graphique-dvf.html#cb317-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="st">&quot;black&quot;</span>,<span class="at">fg=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.lab =</span><span class="st">&quot;white&quot;</span>, <span class="at">col.axis =</span><span class="st">&quot;white&quot;</span>,<span class="at">col.main=</span><span class="st">&quot;white&quot;</span> )</span>
+<span id="cb317-2"><a href="10-Graphique-dvf.html#cb317-2" tabindex="-1"></a>sel2<span class="ot">&lt;-</span>sel[(don<span class="sc">$</span>type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>),]</span>
+<span id="cb317-3"><a href="10-Graphique-dvf.html#cb317-3" tabindex="-1"></a>sel2<span class="sc">$</span>SIZE<span class="ot">&lt;-</span><span class="fu">as.factor</span>(sel2<span class="sc">$</span>nbp)</span>
+<span id="cb317-4"><a href="10-Graphique-dvf.html#cb317-4" tabindex="-1"></a><span class="co">#levels(don2$SIZE)&lt;-c(&quot;1 ou 2&quot;, &quot;1 ou 2&quot;, &quot;3 ou 4&quot;, &quot;3 ou 4&quot;, &quot;5 ou 6&quot;, &quot;5 ou 6&quot;)</span></span>
+<span id="cb317-5"><a href="10-Graphique-dvf.html#cb317-5" tabindex="-1"></a><span class="fu">library</span>(beanplot)</span>
+<span id="cb317-6"><a href="10-Graphique-dvf.html#cb317-6" tabindex="-1"></a></span>
+<span id="cb317-7"><a href="10-Graphique-dvf.html#cb317-7" tabindex="-1"></a></span>
+<span id="cb317-8"><a href="10-Graphique-dvf.html#cb317-8" tabindex="-1"></a><span class="fu">beanplot</span>(sel2<span class="sc">$</span>prix<span class="sc">~</span>sel2<span class="sc">$</span>SIZE, </span>
+<span id="cb317-9"><a href="10-Graphique-dvf.html#cb317-9" tabindex="-1"></a>         <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;red&quot;</span>),</span>
+<span id="cb317-10"><a href="10-Graphique-dvf.html#cb317-10" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Nombre de pièces&quot;</span>,</span>
+<span id="cb317-11"><a href="10-Graphique-dvf.html#cb317-11" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Prix&quot;</span>,</span>
+<span id="cb317-12"><a href="10-Graphique-dvf.html#cb317-12" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>)</span>
+<span id="cb317-13"><a href="10-Graphique-dvf.html#cb317-13" tabindex="-1"></a><span class="co">#&gt; log=&quot;y&quot; selected</span></span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-322-1.svg" width="672" /></p>
+</div>
+<div id="geom_violin-ggplot2-1" class="section level3 hasAnchor" number="10.7.4">
+<h3><span class="header-section-number">10.7.4</span> geom_violin (ggplot2)<a href="10-Graphique-dvf.html#geom_violin-ggplot2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="10-Graphique-dvf.html#cb318-1" tabindex="-1"></a><span class="co"># On filtre le tableau et on change SIZE en factor</span></span>
+<span id="cb318-2"><a href="10-Graphique-dvf.html#cb318-2" tabindex="-1"></a>sel <span class="sc">%&gt;%</span>  <span class="fu">filter</span>(type<span class="sc">==</span><span class="st">&quot;Maison&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb318-3"><a href="10-Graphique-dvf.html#cb318-3" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">SIZE =</span> <span class="fu">as.factor</span>(nbp)) <span class="sc">%&gt;%</span></span>
+<span id="cb318-4"><a href="10-Graphique-dvf.html#cb318-4" tabindex="-1"></a>  </span>
+<span id="cb318-5"><a href="10-Graphique-dvf.html#cb318-5" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
+<span id="cb318-6"><a href="10-Graphique-dvf.html#cb318-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> SIZE,<span class="at">y =</span> prix)) <span class="sc">+</span></span>
+<span id="cb318-7"><a href="10-Graphique-dvf.html#cb318-7" tabindex="-1"></a>  </span>
+<span id="cb318-8"><a href="10-Graphique-dvf.html#cb318-8" tabindex="-1"></a><span class="co"># On ajoute la géométrie </span></span>
+<span id="cb318-9"><a href="10-Graphique-dvf.html#cb318-9" tabindex="-1"></a><span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">fill=</span> SIZE)) <span class="sc">+</span></span>
+<span id="cb318-10"><a href="10-Graphique-dvf.html#cb318-10" tabindex="-1"></a>  </span>
+<span id="cb318-11"><a href="10-Graphique-dvf.html#cb318-11" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb318-12"><a href="10-Graphique-dvf.html#cb318-12" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Nombre de pièces&quot;</span>) <span class="sc">+</span></span>
+<span id="cb318-13"><a href="10-Graphique-dvf.html#cb318-13" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;Prix de vente&quot;</span>) <span class="sc">+</span></span>
+<span id="cb318-14"><a href="10-Graphique-dvf.html#cb318-14" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Ventes de maison à Sucy-en-Brie (2014-2021)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb318-15"><a href="10-Graphique-dvf.html#cb318-15" tabindex="-1"></a></span>
+<span id="cb318-16"><a href="10-Graphique-dvf.html#cb318-16" tabindex="-1"></a><span class="co"># On passe en thème &quot;dark&quot;</span></span>
+<span id="cb318-17"><a href="10-Graphique-dvf.html#cb318-17" tabindex="-1"></a>  <span class="fu">theme_dark</span>()</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-323-1.svg" width="672" /></p>
 </div>
 </div>
@@ -947,29 +958,29 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">10.8</span> Deux variables X et Y discrètes<a href="10-Graphique-dvf.html#deux-variables-x-et-y-discrètes-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="mosaicplot-r-base-1" class="section level3 hasAnchor" number="10.8.1">
 <h3><span class="header-section-number">10.8.1</span> mosaicplot (R-base)<a href="10-Graphique-dvf.html#mosaicplot-r-base-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="10-Graphique-dvf.html#cb317-1" tabindex="-1"></a></span>
-<span id="cb317-2"><a href="10-Graphique-dvf.html#cb317-2" tabindex="-1"></a><span class="fu">mosaicplot</span>(sel<span class="sc">$</span>ann<span class="sc">~</span>sel<span class="sc">$</span>type, </span>
-<span id="cb317-3"><a href="10-Graphique-dvf.html#cb317-3" tabindex="-1"></a>      <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;orange&quot;</span>),</span>
-<span id="cb317-4"><a href="10-Graphique-dvf.html#cb317-4" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Année&quot;</span>,</span>
-<span id="cb317-5"><a href="10-Graphique-dvf.html#cb317-5" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Type de logement&quot;</span>,</span>
-<span id="cb317-6"><a href="10-Graphique-dvf.html#cb317-6" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Ventes de logements à Sucy-en-Brie (2014-2021)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="10-Graphique-dvf.html#cb319-1" tabindex="-1"></a></span>
+<span id="cb319-2"><a href="10-Graphique-dvf.html#cb319-2" tabindex="-1"></a><span class="fu">mosaicplot</span>(sel<span class="sc">$</span>ann<span class="sc">~</span>sel<span class="sc">$</span>type, </span>
+<span id="cb319-3"><a href="10-Graphique-dvf.html#cb319-3" tabindex="-1"></a>      <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;orange&quot;</span>),</span>
+<span id="cb319-4"><a href="10-Graphique-dvf.html#cb319-4" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Année&quot;</span>,</span>
+<span id="cb319-5"><a href="10-Graphique-dvf.html#cb319-5" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Type de logement&quot;</span>,</span>
+<span id="cb319-6"><a href="10-Graphique-dvf.html#cb319-6" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Ventes de logements à Sucy-en-Brie (2014-2021)&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-324-1.svg" width="672" /></p>
 </div>
 <div id="geom_bar-ggplot2-3" class="section level3 hasAnchor" number="10.8.2">
 <h3><span class="header-section-number">10.8.2</span> geom_bar (ggplot2)<a href="10-Graphique-dvf.html#geom_bar-ggplot2-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="10-Graphique-dvf.html#cb318-1" tabindex="-1"></a></span>
-<span id="cb318-2"><a href="10-Graphique-dvf.html#cb318-2" tabindex="-1"></a>  </span>
-<span id="cb318-3"><a href="10-Graphique-dvf.html#cb318-3" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
-<span id="cb318-4"><a href="10-Graphique-dvf.html#cb318-4" tabindex="-1"></a><span class="fu">ggplot</span>(sel,<span class="fu">aes</span>(<span class="at">x=</span> ann, <span class="at">fill =</span> type)) <span class="sc">+</span></span>
-<span id="cb318-5"><a href="10-Graphique-dvf.html#cb318-5" tabindex="-1"></a>  </span>
-<span id="cb318-6"><a href="10-Graphique-dvf.html#cb318-6" tabindex="-1"></a></span>
-<span id="cb318-7"><a href="10-Graphique-dvf.html#cb318-7" tabindex="-1"></a><span class="co"># On ajoute geom_bar</span></span>
-<span id="cb318-8"><a href="10-Graphique-dvf.html#cb318-8" tabindex="-1"></a><span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb318-9"><a href="10-Graphique-dvf.html#cb318-9" tabindex="-1"></a></span>
-<span id="cb318-10"><a href="10-Graphique-dvf.html#cb318-10" tabindex="-1"></a>  </span>
-<span id="cb318-11"><a href="10-Graphique-dvf.html#cb318-11" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
-<span id="cb318-12"><a href="10-Graphique-dvf.html#cb318-12" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Année&quot;</span>) <span class="sc">+</span></span>
-<span id="cb318-13"><a href="10-Graphique-dvf.html#cb318-13" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Ventes de logements à Sucy-en-Brie (2014-2021)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="10-Graphique-dvf.html#cb320-1" tabindex="-1"></a></span>
+<span id="cb320-2"><a href="10-Graphique-dvf.html#cb320-2" tabindex="-1"></a>  </span>
+<span id="cb320-3"><a href="10-Graphique-dvf.html#cb320-3" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
+<span id="cb320-4"><a href="10-Graphique-dvf.html#cb320-4" tabindex="-1"></a><span class="fu">ggplot</span>(sel,<span class="fu">aes</span>(<span class="at">x=</span> ann, <span class="at">fill =</span> type)) <span class="sc">+</span></span>
+<span id="cb320-5"><a href="10-Graphique-dvf.html#cb320-5" tabindex="-1"></a>  </span>
+<span id="cb320-6"><a href="10-Graphique-dvf.html#cb320-6" tabindex="-1"></a></span>
+<span id="cb320-7"><a href="10-Graphique-dvf.html#cb320-7" tabindex="-1"></a><span class="co"># On ajoute geom_bar</span></span>
+<span id="cb320-8"><a href="10-Graphique-dvf.html#cb320-8" tabindex="-1"></a><span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb320-9"><a href="10-Graphique-dvf.html#cb320-9" tabindex="-1"></a></span>
+<span id="cb320-10"><a href="10-Graphique-dvf.html#cb320-10" tabindex="-1"></a>  </span>
+<span id="cb320-11"><a href="10-Graphique-dvf.html#cb320-11" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb320-12"><a href="10-Graphique-dvf.html#cb320-12" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Année&quot;</span>) <span class="sc">+</span></span>
+<span id="cb320-13"><a href="10-Graphique-dvf.html#cb320-13" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Ventes de logements à Sucy-en-Brie (2014-2021)&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-325-1.svg" width="672" /></p>
 </div>
 </div>
