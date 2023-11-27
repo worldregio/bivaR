@@ -25,12 +25,12 @@
 <rect x='134.46' y='179.39' width='54.49' height='33.63' style='stroke-width: 0.75; fill: #BEBEBE;' />
 <rect x='199.85' y='59.04' width='54.49' height='153.98' style='stroke-width: 0.75; fill: #BEBEBE;' />
 <rect x='265.24' y='78.51' width='54.49' height='134.51' style='stroke-width: 0.75; fill: #BEBEBE;' />
-<text x='96.31' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='46.67px' lengthAdjust='spacingAndGlyphs'>Mercredi</text>
-<text x='161.70' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='28.68px' lengthAdjust='spacingAndGlyphs'>Jeudi</text>
-<text x='227.10' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='48.04px' lengthAdjust='spacingAndGlyphs'>Vendredi</text>
+<text x='96.31' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='46.68px' lengthAdjust='spacingAndGlyphs'>Mercredi</text>
+<text x='161.70' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='28.69px' lengthAdjust='spacingAndGlyphs'>Jeudi</text>
+<text x='227.10' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='47.38px' lengthAdjust='spacingAndGlyphs'>Vendredi</text>
 <text x='292.49' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.69px' lengthAdjust='spacingAndGlyphs'>Samedi</text>
-<text x='194.40' y='269.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='53.37px' lengthAdjust='spacingAndGlyphs'>fréquence</text>
-<text transform='translate(12.96,136.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='98.05px' lengthAdjust='spacingAndGlyphs'>jour de la semaine</text>
+<text x='194.40' y='269.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='53.38px' lengthAdjust='spacingAndGlyphs'>fréquence</text>
+<text transform='translate(12.96,136.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='98.06px' lengthAdjust='spacingAndGlyphs'>jour de la semaine</text>
 <line x1='59.04' y1='213.02' x2='59.04' y2='71.43' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='213.02' x2='51.84' y2='213.02' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='177.62' x2='51.84' y2='177.62' style='stroke-width: 0.75;' />

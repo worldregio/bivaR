@@ -304,16 +304,16 @@
 <text transform='translate(41.76,100.22) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>6</text>
 <text transform='translate(41.76,81.45) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>8</text>
 <polygon points='59.04,178.56 329.76,178.56 329.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
-<text x='194.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='79.17px' lengthAdjust='spacingAndGlyphs'>Normalité ?</text>
-<text x='194.40' y='233.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='113.38px' lengthAdjust='spacingAndGlyphs'>Theoretical Quantiles</text>
-<text transform='translate(12.96,118.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='122.07px' lengthAdjust='spacingAndGlyphs'>Standardized residuals</text>
+<text x='194.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='79.17px' lengthAdjust='spacingAndGlyphs'>Normalité ?</text>
+<text x='194.40' y='233.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='113.40px' lengthAdjust='spacingAndGlyphs'>Theoretical Quantiles</text>
+<text transform='translate(12.96,118.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='122.09px' lengthAdjust='spacingAndGlyphs'>Standardized residuals</text>
 </g>
 <g clip-path='url(#cpNTkuMDR8MzI5Ljc2fDU5LjA0fDE3OC41Ng==)'>
 <line x1='59.04' y1='178.92' x2='329.76' y2='135.58' style='stroke-width: 0.75; stroke: #7F7F7F; stroke-dasharray: 1.00,3.00;' />
 </g>
 <g clip-path='url(#cpMC4wMHwzNjAuMDB8MC4wMHwyNTIuMDA=)'>
-<text x='194.40' y='247.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='160.40px' lengthAdjust='spacingAndGlyphs'>lm(don$PCT ~ don$TOTBILL)</text>
-<text x='194.40' y='52.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='78.68px' lengthAdjust='spacingAndGlyphs'>Q-Q Residuals</text>
+<text x='194.40' y='247.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='159.99px' lengthAdjust='spacingAndGlyphs'>lm(don$PCT ~ don$TOTBILL)</text>
+<text x='194.40' y='52.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='78.71px' lengthAdjust='spacingAndGlyphs'>Q-Q Residuals</text>
 <text x='316.13' y='73.34' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>R173</text>
 <text x='300.11' y='120.65' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>R179</text>
 <text x='291.98' y='137.83' text-anchor='end' style='font-size: 9.00px; font-family: "Arial";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>R184</text>

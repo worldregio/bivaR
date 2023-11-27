@@ -44,7 +44,7 @@
 <text transform='translate(41.76,107.29) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>8</text>
 <text transform='translate(41.76,66.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>10</text>
 <polygon points='59.04,257.76 473.76,257.76 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
-<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='70.70px' lengthAdjust='spacingAndGlyphs'>Prix du repas</text>
+<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='70.71px' lengthAdjust='spacingAndGlyphs'>Prix du repas</text>
 <text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='52.03px' lengthAdjust='spacingAndGlyphs'>Pourboire</text>
 </g>
 <defs>
@@ -297,11 +297,11 @@
 <circle cx='232.05' cy='229.96' r='1.91' style='stroke-width: 0.75; fill: #000000;' />
 <circle cx='193.04' cy='235.07' r='1.91' style='stroke-width: 0.75; fill: #000000;' />
 <circle cx='200.76' cy='209.51' r='1.91' style='stroke-width: 0.75; stroke: #DF536B; fill: #DF536B;' />
-<rect x='59.04' y='59.04' width='75.00' height='43.20' style='stroke-width: 0.75; fill: #FFFFFF;' />
+<rect x='59.04' y='59.04' width='75.00' height='43.20' style='stroke-width: 0.75;' />
 <circle cx='69.84' cy='73.44' r='2.70' style='stroke-width: 0.75; fill: #000000;' />
 <circle cx='69.84' cy='87.84' r='2.70' style='stroke-width: 0.75; stroke: #FF0000; fill: #FF0000;' />
-<text x='80.64' y='77.75' style='font-size: 12.00px; font-family: "Arial";' textLength='48.00px' lengthAdjust='spacingAndGlyphs'>Hommes</text>
-<text x='80.64' y='92.15' style='font-size: 12.00px; font-family: "Arial";' textLength='46.66px' lengthAdjust='spacingAndGlyphs'>Femmes</text>
+<text x='80.64' y='77.74' style='font-size: 12.00px; font-family: "Arial";' textLength='48.02px' lengthAdjust='spacingAndGlyphs'>Hommes</text>
+<text x='80.64' y='92.14' style='font-size: 12.00px; font-family: "Arial";' textLength='46.68px' lengthAdjust='spacingAndGlyphs'>Femmes</text>
 <line x1='130.14' y1='257.76' x2='130.14' y2='59.04' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />
 <line x1='210.58' y1='257.76' x2='210.58' y2='59.04' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />
 <line x1='291.01' y1='257.76' x2='291.01' y2='59.04' style='stroke-width: 0.75; stroke: #D3D3D3; stroke-dasharray: 1.00,3.00;' />

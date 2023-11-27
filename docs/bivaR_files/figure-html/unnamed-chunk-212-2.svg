@@ -29,9 +29,9 @@
 <rect x='283.85' y='177.01' width='174.55' height='71.58' style='stroke-width: 0.75; fill: #969696;' />
 <rect x='283.85' y='101.43' width='174.55' height='75.58' style='stroke-width: 0.75; fill: #C3C3C3;' />
 <rect x='283.85' y='64.24' width='174.55' height='37.19' style='stroke-width: 0.75; fill: #E6E6E6;' />
-<text x='161.67' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.00px' lengthAdjust='spacingAndGlyphs'>Homme</text>
-<text x='371.13' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>Femme</text>
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='193.55px' lengthAdjust='spacingAndGlyphs'>Opinion sur les USA et Sexe</text>
+<text x='161.67' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.02px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text x='371.13' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.68px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text x='266.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='193.02px' lengthAdjust='spacingAndGlyphs'>Opinion sur les USA et Sexe</text>
 <line x1='59.04' y1='255.79' x2='59.04' y2='95.83' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='255.79' x2='51.84' y2='255.79' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='215.80' x2='51.84' y2='215.80' style='stroke-width: 0.75;' />

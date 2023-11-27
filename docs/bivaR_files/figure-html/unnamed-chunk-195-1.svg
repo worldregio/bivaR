@@ -21,9 +21,9 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='159.12px' lengthAdjust='spacingAndGlyphs'>Histogram of don$SIZE</text>
+<text x='266.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='159.12px' lengthAdjust='spacingAndGlyphs'>Histogram of don$SIZE</text>
 <text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='53.37px' lengthAdjust='spacingAndGlyphs'>don$SIZE</text>
-<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='56.69px' lengthAdjust='spacingAndGlyphs'>Frequency</text>
+<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='56.71px' lengthAdjust='spacingAndGlyphs'>Frequency</text>
 <line x1='74.40' y1='257.76' x2='458.40' y2='257.76' style='stroke-width: 0.75;' />
 <line x1='74.40' y1='257.76' x2='74.40' y2='264.96' style='stroke-width: 0.75;' />
 <line x1='151.20' y1='257.76' x2='151.20' y2='264.96' style='stroke-width: 0.75;' />

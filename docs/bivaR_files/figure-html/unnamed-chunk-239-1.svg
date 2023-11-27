@@ -28,8 +28,8 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHwyNTIuMDB8MC4wMHwzMzEuMjA=)'>
-<text x='140.40' y='33.84' text-anchor='middle' style='font-size: 12.00px; font-weight: bold;fill: #CCCCCC; font-family: "Arial";' textLength='76.69px' lengthAdjust='spacingAndGlyphs'>Histogramme</text>
-<text x='140.40' y='312.48' text-anchor='middle' style='font-size: 9.60px;fill: #FFA500; font-family: "Arial";' textLength='63.99px' lengthAdjust='spacingAndGlyphs'>Pourboires (%)</text>
+<text x='140.40' y='33.82' text-anchor='middle' style='font-size: 12.00px; font-weight: bold;fill: #CCCCCC; font-family: "Arial";' textLength='76.69px' lengthAdjust='spacingAndGlyphs'>Histogramme</text>
+<text x='140.40' y='312.48' text-anchor='middle' style='font-size: 9.60px;fill: #FFA500; font-family: "Arial";' textLength='63.97px' lengthAdjust='spacingAndGlyphs'>Pourboires (%)</text>
 <text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 9.60px;fill: #FFA500; font-family: "Arial";' textLength='45.32px' lengthAdjust='spacingAndGlyphs'>Frequency</text>
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
@@ -110,8 +110,8 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMjUyLjAwfDUwNC4wMHwwLjAwfDMzMS4yMA==)'>
-<text x='392.40' y='33.84' text-anchor='middle' style='font-size: 12.00px; font-weight: bold;fill: #CCCCCC; font-family: "Arial";' textLength='44.66px' lengthAdjust='spacingAndGlyphs'>Boxplot</text>
-<text x='392.40' y='312.48' text-anchor='middle' style='font-size: 9.60px;fill: #FFA500; font-family: "Arial";' textLength='63.99px' lengthAdjust='spacingAndGlyphs'>Pourboires (%)</text>
+<text x='392.40' y='33.82' text-anchor='middle' style='font-size: 12.00px; font-weight: bold;fill: #CCCCCC; font-family: "Arial";' textLength='44.66px' lengthAdjust='spacingAndGlyphs'>Boxplot</text>
+<text x='392.40' y='312.48' text-anchor='middle' style='font-size: 9.60px;fill: #FFA500; font-family: "Arial";' textLength='63.97px' lengthAdjust='spacingAndGlyphs'>Pourboires (%)</text>
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
 <polygon points='311.04,257.76 473.76,257.76 473.76,59.04 311.04,59.04 ' style='stroke-width: 0.75; stroke: #FFFFFF;' />

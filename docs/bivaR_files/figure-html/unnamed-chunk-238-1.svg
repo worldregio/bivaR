@@ -28,9 +28,9 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHwyNTIuMDB8MC4wMHwzMzEuMjA=)'>
-<text x='140.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='91.98px' lengthAdjust='spacingAndGlyphs'>Histogramme</text>
-<text x='140.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='80.03px' lengthAdjust='spacingAndGlyphs'>Pourboires (%)</text>
-<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='56.69px' lengthAdjust='spacingAndGlyphs'>Frequency</text>
+<text x='140.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='91.98px' lengthAdjust='spacingAndGlyphs'>Histogramme</text>
+<text x='140.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='80.04px' lengthAdjust='spacingAndGlyphs'>Pourboires (%)</text>
+<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='56.71px' lengthAdjust='spacingAndGlyphs'>Frequency</text>
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
 <line x1='65.07' y1='257.76' x2='215.73' y2='257.76' style='stroke-width: 0.75;' />
@@ -107,8 +107,8 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMjUyLjAwfDUwNC4wMHwwLjAwfDMzMS4yMA==)'>
-<text x='392.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='53.57px' lengthAdjust='spacingAndGlyphs'>Boxplot</text>
-<text x='392.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='80.03px' lengthAdjust='spacingAndGlyphs'>Pourboires (%)</text>
+<text x='392.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='53.57px' lengthAdjust='spacingAndGlyphs'>Boxplot</text>
+<text x='392.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='80.04px' lengthAdjust='spacingAndGlyphs'>Pourboires (%)</text>
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
 <polygon points='311.04,257.76 473.76,257.76 473.76,59.04 311.04,59.04 ' style='stroke-width: 0.75;' />

@@ -21,9 +21,9 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='155.92px' lengthAdjust='spacingAndGlyphs'>Histogram of don$PCT</text>
+<text x='266.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='155.92px' lengthAdjust='spacingAndGlyphs'>Histogram of don$PCT</text>
 <text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='50.70px' lengthAdjust='spacingAndGlyphs'>don$PCT</text>
-<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.01px' lengthAdjust='spacingAndGlyphs'>Density</text>
+<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.02px' lengthAdjust='spacingAndGlyphs'>Density</text>
 <line x1='74.40' y1='257.76' x2='458.40' y2='257.76' style='stroke-width: 0.75;' />
 <line x1='74.40' y1='257.76' x2='74.40' y2='264.96' style='stroke-width: 0.75;' />
 <line x1='170.40' y1='257.76' x2='170.40' y2='264.96' style='stroke-width: 0.75;' />

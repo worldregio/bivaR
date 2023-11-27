@@ -43,8 +43,8 @@
 <rect x='155.24' y='0.00' width='67.96' height='121.66' style='stroke-width: 0.75; fill: #E6E6E6;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
-<text x='90.12' y='328.32' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.00px' lengthAdjust='spacingAndGlyphs'>Homme</text>
-<text x='189.22' y='328.32' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text x='90.12' y='328.32' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.02px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text x='189.22' y='328.32' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.68px' lengthAdjust='spacingAndGlyphs'>Femme</text>
 <text transform='translate(11.52,182.98) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.69px' lengthAdjust='spacingAndGlyphs'>Soirée</text>
 <text transform='translate(11.52,31.78) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='43.37px' lengthAdjust='spacingAndGlyphs'>Journée</text>
 <line x1='223.20' y1='302.40' x2='223.20' y2='0.00' style='stroke-width: 0.75;' />
@@ -86,8 +86,8 @@
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
 <text x='307.36' y='328.32' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='43.37px' lengthAdjust='spacingAndGlyphs'>Journée</text>
 <text x='406.46' y='328.32' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.69px' lengthAdjust='spacingAndGlyphs'>Soirée</text>
-<text transform='translate(263.52,224.58) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>Femme</text>
-<text transform='translate(263.52,73.38) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.00px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text transform='translate(263.52,224.58) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.68px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text transform='translate(263.52,73.38) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.02px' lengthAdjust='spacingAndGlyphs'>Homme</text>
 <line x1='475.20' y1='302.40' x2='475.20' y2='0.00' style='stroke-width: 0.75;' />
 <line x1='475.20' y1='302.40' x2='482.40' y2='302.40' style='stroke-width: 0.75;' />
 <line x1='475.20' y1='241.92' x2='482.40' y2='241.92' style='stroke-width: 0.75;' />

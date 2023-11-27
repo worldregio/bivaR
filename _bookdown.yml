@@ -20,7 +20,7 @@ rmd_files: [
   "07-Tabcont.Rmd",
   "08-Graphique-Base.Rmd",
   "09-Graphique-ggplot.Rmd",
-  "10-Graphique-dvf.Rmd"
+  "10-Tidyverse.Rmd"
   
 ]
 

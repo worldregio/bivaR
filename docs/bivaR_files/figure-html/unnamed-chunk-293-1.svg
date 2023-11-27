@@ -327,8 +327,8 @@
 <line x1='421.28' y1='144.61' x2='431.52' y2='144.61' style='stroke-width: 0.75; stroke: #FF0000;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold;fill: #FFFFFF; font-family: "Arial";' textLength='305.49px' lengthAdjust='spacingAndGlyphs'>Plus on est de fous, moins on est généreux !</text>
-<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='118.74px' lengthAdjust='spacingAndGlyphs'>Nombre de personnes</text>
+<text x='266.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold;fill: #FFFFFF; font-family: "Arial";' textLength='305.49px' lengthAdjust='spacingAndGlyphs'>Plus on est de fous, moins on est généreux !</text>
+<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='118.76px' lengthAdjust='spacingAndGlyphs'>Nombre de personnes</text>
 <text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px;fill: #FFFFFF; font-family: "Arial";' textLength='74.03px' lengthAdjust='spacingAndGlyphs'>Pourboire (%)</text>
 </g>
 </svg>

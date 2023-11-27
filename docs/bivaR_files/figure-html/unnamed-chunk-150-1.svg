@@ -74,9 +74,9 @@
 <text transform='translate(41.76,141.09) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>30</text>
 <text transform='translate(41.76,84.46) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>40</text>
 <polygon points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
-<text x='266.40' y='33.84' text-anchor='middle' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='162.76px' lengthAdjust='spacingAndGlyphs'>Les pays européens en 1988</text>
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='24.67px' lengthAdjust='spacingAndGlyphs'>varX</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='24.67px' lengthAdjust='spacingAndGlyphs'>varY</text>
+<text x='266.40' y='33.82' text-anchor='middle' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='162.76px' lengthAdjust='spacingAndGlyphs'>Les pays européens en 1988</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='24.68px' lengthAdjust='spacingAndGlyphs'>varX</text>
+<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='24.68px' lengthAdjust='spacingAndGlyphs'>varY</text>
 </g>
 <g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
 <text x='74.40' y='60.27' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='11.34px' lengthAdjust='spacingAndGlyphs'>ALB</text>
@@ -89,18 +89,18 @@
 <text x='328.91' y='255.08' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='12.67px' lengthAdjust='spacingAndGlyphs'>DEU</text>
 <text x='342.31' y='256.21' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='12.67px' lengthAdjust='spacingAndGlyphs'>DNK</text>
 <text x='168.17' y='252.81' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='12.01px' lengthAdjust='spacingAndGlyphs'>ESP</text>
-<text x='333.38' y='270.93' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='9.67px' lengthAdjust='spacingAndGlyphs'>FIN</text>
+<text x='333.38' y='270.93' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='9.66px' lengthAdjust='spacingAndGlyphs'>FIN</text>
 <text x='286.49' y='258.47' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='12.00px' lengthAdjust='spacingAndGlyphs'>FRA</text>
 <text x='259.70' y='249.98' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='13.00px' lengthAdjust='spacingAndGlyphs'>GBR</text>
 <text x='143.61' y='234.12' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='13.33px' lengthAdjust='spacingAndGlyphs'>GRC</text>
 <text x='105.66' y='196.18' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='13.00px' lengthAdjust='spacingAndGlyphs'>HUN</text>
-<text x='174.87' y='254.51' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='9.34px' lengthAdjust='spacingAndGlyphs'>IRL</text>
-<text x='253.00' y='246.58' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='9.34px' lengthAdjust='spacingAndGlyphs'>ITA</text>
+<text x='174.87' y='254.51' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='9.33px' lengthAdjust='spacingAndGlyphs'>IRL</text>
+<text x='253.00' y='246.58' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='8.88px' lengthAdjust='spacingAndGlyphs'>ITA</text>
 <text x='429.38' y='247.71' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='11.67px' lengthAdjust='spacingAndGlyphs'>LUX</text>
 <text x='284.26' y='260.17' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='12.00px' lengthAdjust='spacingAndGlyphs'>NLD</text>
 <text x='407.05' y='255.64' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='13.33px' lengthAdjust='spacingAndGlyphs'>NOR</text>
 <text x='107.89' y='204.68' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='12.00px' lengthAdjust='spacingAndGlyphs'>POL</text>
-<text x='110.12' y='214.30' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='12.00px' lengthAdjust='spacingAndGlyphs'>PRT</text>
+<text x='110.12' y='214.30' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='11.89px' lengthAdjust='spacingAndGlyphs'>PRT</text>
 <text x='87.80' y='158.80' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='13.33px' lengthAdjust='spacingAndGlyphs'>ROU</text>
 <text x='355.70' y='270.37' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='13.67px' lengthAdjust='spacingAndGlyphs'>SWE</text>
 <text x='112.35' y='150.31' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='13.00px' lengthAdjust='spacingAndGlyphs'>YUG</text>

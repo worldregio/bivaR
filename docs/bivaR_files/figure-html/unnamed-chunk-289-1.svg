@@ -46,8 +46,8 @@
 <text transform='translate(41.76,96.54) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>25</text>
 <text transform='translate(41.76,60.65) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>30</text>
 <polygon points='59.04,257.76 473.76,257.76 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='270.57px' lengthAdjust='spacingAndGlyphs'>Plus c'est cher moins on est généreux !</text>
-<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='70.70px' lengthAdjust='spacingAndGlyphs'>Prix du repas</text>
+<text x='266.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='270.57px' lengthAdjust='spacingAndGlyphs'>Plus c'est cher moins on est généreux !</text>
+<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='70.71px' lengthAdjust='spacingAndGlyphs'>Prix du repas</text>
 <text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='74.03px' lengthAdjust='spacingAndGlyphs'>Pourboire (%)</text>
 </g>
 <defs>

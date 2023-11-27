@@ -71,7 +71,7 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHwyNTIuMDB8MC4wMHwzNjAuMDA=)'>
-<text x='140.40' y='18.29' text-anchor='middle' style='font-size: 10.80px; font-weight: bold; font-family: "Arial";' textLength='132.69px' lengthAdjust='spacingAndGlyphs'>Pears=  0.95  / Spear= -0.4</text>
+<text x='140.40' y='18.27' text-anchor='middle' style='font-size: 10.80px; font-weight: bold; font-family: "Arial";' textLength='132.69px' lengthAdjust='spacingAndGlyphs'>Pears=  0.95  / Spear= -0.4</text>
 <text x='140.40' y='357.12' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='8.01px' lengthAdjust='spacingAndGlyphs'>X</text>
 <text transform='translate(11.52,165.60) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='8.01px' lengthAdjust='spacingAndGlyphs'>Y</text>
 </g>
@@ -121,9 +121,9 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMjUyLjAwfDUwNC4wMHwwLjAwfDM2MC4wMA==)'>
-<text x='392.40' y='18.29' text-anchor='middle' style='font-size: 10.80px; font-weight: bold; font-family: "Arial";' textLength='127.28px' lengthAdjust='spacingAndGlyphs'>Pears= -0.4  / Spear= -0.4</text>
-<text x='392.40' y='357.12' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='31.35px' lengthAdjust='spacingAndGlyphs'>rankX</text>
-<text transform='translate(263.52,165.60) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='31.35px' lengthAdjust='spacingAndGlyphs'>rankY</text>
+<text x='392.40' y='18.27' text-anchor='middle' style='font-size: 10.80px; font-weight: bold; font-family: "Arial";' textLength='127.28px' lengthAdjust='spacingAndGlyphs'>Pears= -0.4  / Spear= -0.4</text>
+<text x='392.40' y='357.12' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='31.36px' lengthAdjust='spacingAndGlyphs'>rankX</text>
+<text transform='translate(263.52,165.60) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='31.36px' lengthAdjust='spacingAndGlyphs'>rankY</text>
 </g>
 <g clip-path='url(#cpMzA5LjYwfDQ3NS4yMHwyOC44MHwzMDIuNDA=)'>
 <line x1='309.60' y1='110.88' x2='475.20' y2='220.32' style='stroke-width: 0.75; stroke: #0000FF;' />

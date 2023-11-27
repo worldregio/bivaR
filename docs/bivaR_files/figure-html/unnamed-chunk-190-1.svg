@@ -64,9 +64,9 @@
 <line x1='218.40' y1='257.76' x2='218.40' y2='264.96' style='stroke-width: 0.75;' />
 <line x1='314.40' y1='257.76' x2='314.40' y2='264.96' style='stroke-width: 0.75;' />
 <line x1='410.40' y1='257.76' x2='410.40' y2='264.96' style='stroke-width: 0.75;' />
-<text x='122.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='46.67px' lengthAdjust='spacingAndGlyphs'>Mercredi</text>
-<text x='218.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='28.68px' lengthAdjust='spacingAndGlyphs'>Jeudi</text>
-<text x='314.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='48.04px' lengthAdjust='spacingAndGlyphs'>Vendredi</text>
+<text x='122.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='46.68px' lengthAdjust='spacingAndGlyphs'>Mercredi</text>
+<text x='218.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='28.69px' lengthAdjust='spacingAndGlyphs'>Jeudi</text>
+<text x='314.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='47.38px' lengthAdjust='spacingAndGlyphs'>Vendredi</text>
 <text x='410.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.69px' lengthAdjust='spacingAndGlyphs'>Samedi</text>
 <line x1='59.04' y1='240.09' x2='59.04' y2='60.65' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='240.09' x2='51.84' y2='240.09' style='stroke-width: 0.75;' />
@@ -81,7 +81,7 @@
 <text transform='translate(41.76,132.43) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>20</text>
 <text transform='translate(41.76,96.54) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>25</text>
 <text transform='translate(41.76,60.65) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>30</text>
-<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='58.05px' lengthAdjust='spacingAndGlyphs'>don2$DAY</text>
+<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='57.16px' lengthAdjust='spacingAndGlyphs'>don2$DAY</text>
 <text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='57.38px' lengthAdjust='spacingAndGlyphs'>don2$PCT</text>
 <polygon points='59.04,257.76 473.76,257.76 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
 </g>

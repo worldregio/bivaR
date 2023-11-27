@@ -32,11 +32,11 @@
 <rect x='147.25' y='146.76' width='68.48' height='109.03' style='stroke-width: 0.75; fill: #BEBEBE;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
-<text x='99.31' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.00px' lengthAdjust='spacingAndGlyphs'>Homme</text>
-<text x='181.49' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text x='99.31' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.02px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text x='181.49' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.68px' lengthAdjust='spacingAndGlyphs'>Femme</text>
 </g>
 <g clip-path='url(#cpMC4wMHwyNTIuMDB8MC4wMHwzMzEuMjA=)'>
-<text x='140.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='92.37px' lengthAdjust='spacingAndGlyphs'>plot(x=factor)</text>
+<text x='140.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='92.37px' lengthAdjust='spacingAndGlyphs'>plot(x=factor)</text>
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
 <line x1='59.04' y1='255.79' x2='59.04' y2='67.81' style='stroke-width: 0.75;' />
@@ -59,11 +59,11 @@
 <rect x='399.25' y='146.76' width='68.48' height='109.03' style='stroke-width: 0.75; fill: #BEBEBE;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
-<text x='351.31' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.00px' lengthAdjust='spacingAndGlyphs'>Homme</text>
-<text x='433.49' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text x='351.31' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.02px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text x='433.49' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.68px' lengthAdjust='spacingAndGlyphs'>Femme</text>
 </g>
 <g clip-path='url(#cpMjUyLjAwfDUwNC4wMHwwLjAwfDMzMS4yMA==)'>
-<text x='392.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='157.95px' lengthAdjust='spacingAndGlyphs'>barplot(table(x=factor))</text>
+<text x='392.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='157.95px' lengthAdjust='spacingAndGlyphs'>barplot(table(x=factor))</text>
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
 <line x1='311.04' y1='255.79' x2='311.04' y2='67.81' style='stroke-width: 0.75;' />

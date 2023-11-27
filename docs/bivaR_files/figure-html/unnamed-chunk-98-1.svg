@@ -80,9 +80,9 @@
 <text transform='translate(41.76,109.60) rotate(-90)' text-anchor='middle' style='font-size: 8.40px; font-family: "Arial";' textLength='9.33px' lengthAdjust='spacingAndGlyphs'>40</text>
 <text transform='translate(41.76,67.47) rotate(-90)' text-anchor='middle' style='font-size: 8.40px; font-family: "Arial";' textLength='9.33px' lengthAdjust='spacingAndGlyphs'>50</text>
 <polygon points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
-<text x='266.40' y='33.84' text-anchor='middle' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='156.72px' lengthAdjust='spacingAndGlyphs'>European countries in 1988</text>
-<text x='266.40' y='355.68' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='127.72px' lengthAdjust='spacingAndGlyphs'>Claude Grasland, University Paris Diderot, 2020</text>
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 8.40px; font-family: "Arial";' textLength='73.69px' lengthAdjust='spacingAndGlyphs'>Urbanisation rate %</text>
+<text x='266.40' y='33.82' text-anchor='middle' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='156.72px' lengthAdjust='spacingAndGlyphs'>European countries in 1988</text>
+<text x='266.40' y='355.68' text-anchor='middle' style='font-size: 6.00px; font-family: "Arial";' textLength='127.63px' lengthAdjust='spacingAndGlyphs'>Claude Grasland, University Paris Diderot, 2020</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 8.40px; font-family: "Arial";' textLength='73.68px' lengthAdjust='spacingAndGlyphs'>Urbanisation rate %</text>
 <text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 8.40px; font-family: "Arial";' textLength='102.15px' lengthAdjust='spacingAndGlyphs'>Infant mortality rate p. 1000</text>
 </g>
 </svg>

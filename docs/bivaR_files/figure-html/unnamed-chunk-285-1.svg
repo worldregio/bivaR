@@ -24,9 +24,9 @@
 <rect x='74.40' y='59.04' width='174.55' height='196.75' style='stroke-width: 0.75; fill: #0000FF;' />
 <rect x='283.85' y='134.61' width='174.55' height='121.18' style='stroke-width: 0.75; fill: #FF0000;' />
 <text x='161.67' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='62.70px' lengthAdjust='spacingAndGlyphs'>Non fumeur</text>
-<text x='371.13' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='41.34px' lengthAdjust='spacingAndGlyphs'>Fumeur</text>
+<text x='371.13' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='41.35px' lengthAdjust='spacingAndGlyphs'>Fumeur</text>
 <text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='76.72px' lengthAdjust='spacingAndGlyphs'>Salle de repas</text>
-<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='35.34px' lengthAdjust='spacingAndGlyphs'>effectif</text>
+<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='35.14px' lengthAdjust='spacingAndGlyphs'>effectif</text>
 <line x1='59.04' y1='255.79' x2='59.04' y2='73.37' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='255.79' x2='51.84' y2='255.79' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='229.73' x2='51.84' y2='229.73' style='stroke-width: 0.75;' />

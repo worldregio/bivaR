@@ -42,8 +42,8 @@
 <line x1='59.04' y1='204.40' x2='59.04' y2='112.40' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='204.40' x2='51.84' y2='204.40' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='112.40' x2='51.84' y2='112.40' style='stroke-width: 0.75;' />
-<text transform='translate(41.76,204.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.00px' lengthAdjust='spacingAndGlyphs'>Homme</text>
-<text transform='translate(41.76,112.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text transform='translate(41.76,204.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.02px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text transform='translate(41.76,112.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.68px' lengthAdjust='spacingAndGlyphs'>Femme</text>
 </g>
 <defs>
   <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI1Ny43Ng=='>
@@ -297,6 +297,6 @@
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
 <text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='106.70px' lengthAdjust='spacingAndGlyphs'>Pourboire relatif (%)</text>
-<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='75.38px' lengthAdjust='spacingAndGlyphs'>Sexe du client</text>
+<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='75.39px' lengthAdjust='spacingAndGlyphs'>Sexe du client</text>
 </g>
 </svg>

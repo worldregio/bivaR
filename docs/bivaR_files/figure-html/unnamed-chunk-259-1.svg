@@ -21,9 +21,9 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
-<text x='266.40' y='33.84' text-anchor='middle' style='font-size: 12.00px; font-weight: bold;fill: #FFFFFF; font-family: "Arial";' textLength='232.75px' lengthAdjust='spacingAndGlyphs'>Histogramme des pourboires par déciles</text>
-<text x='266.40' y='326.88' text-anchor='middle' style='font-size: 7.20px; font-family: "Arial";' textLength='367.83px' lengthAdjust='spacingAndGlyphs'>Source : Pourboires de 244 repas dans un restaurant américains au début des années 1990 (Bryant &amp; Smith, 1995)</text>
-<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 9.60px;fill: #FFFFFF; font-family: "Arial";' textLength='70.93px' lengthAdjust='spacingAndGlyphs'>Pourboires en %</text>
+<text x='266.40' y='33.82' text-anchor='middle' style='font-size: 12.00px; font-weight: bold;fill: #FFFFFF; font-family: "Arial";' textLength='232.75px' lengthAdjust='spacingAndGlyphs'>Histogramme des pourboires par déciles</text>
+<text x='266.40' y='326.88' text-anchor='middle' style='font-size: 7.20px; font-family: "Arial";' textLength='367.81px' lengthAdjust='spacingAndGlyphs'>Source : Pourboires de 244 repas dans un restaurant américains au début des années 1990 (Bryant &amp; Smith, 1995)</text>
+<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 9.60px;fill: #FFFFFF; font-family: "Arial";' textLength='70.91px' lengthAdjust='spacingAndGlyphs'>Pourboires en %</text>
 <text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 9.60px;fill: #FFFFFF; font-family: "Arial";' textLength='92.79px' lengthAdjust='spacingAndGlyphs'>Densité de probabilité</text>
 <line x1='74.40' y1='257.76' x2='458.40' y2='257.76' style='stroke-width: 0.75; stroke: #FFFFFF;' />
 <line x1='74.40' y1='257.76' x2='74.40' y2='264.96' style='stroke-width: 0.75; stroke: #FFFFFF;' />

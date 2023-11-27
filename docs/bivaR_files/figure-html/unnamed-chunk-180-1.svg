@@ -52,8 +52,8 @@
 <line x1='170.40' y1='257.76' x2='362.40' y2='257.76' style='stroke-width: 0.75;' />
 <line x1='170.40' y1='257.76' x2='170.40' y2='264.96' style='stroke-width: 0.75;' />
 <line x1='362.40' y1='257.76' x2='362.40' y2='264.96' style='stroke-width: 0.75;' />
-<text x='170.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.00px' lengthAdjust='spacingAndGlyphs'>Homme</text>
-<text x='362.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text x='170.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.02px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text x='362.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.68px' lengthAdjust='spacingAndGlyphs'>Femme</text>
 <line x1='59.04' y1='240.09' x2='59.04' y2='60.65' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='240.09' x2='51.84' y2='240.09' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='204.20' x2='51.84' y2='204.20' style='stroke-width: 0.75;' />

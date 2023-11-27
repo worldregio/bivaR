@@ -52,8 +52,8 @@
 <line x1='59.04' y1='204.40' x2='59.04' y2='112.40' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='204.40' x2='51.84' y2='204.40' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='112.40' x2='51.84' y2='112.40' style='stroke-width: 0.75;' />
-<text transform='translate(41.76,204.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.00px' lengthAdjust='spacingAndGlyphs'>Homme</text>
-<text transform='translate(41.76,112.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.67px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text transform='translate(41.76,204.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='42.02px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text transform='translate(41.76,112.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.68px' lengthAdjust='spacingAndGlyphs'>Femme</text>
 <line x1='95.91' y1='257.76' x2='470.40' y2='257.76' style='stroke-width: 0.75;' />
 <line x1='95.91' y1='257.76' x2='95.91' y2='264.96' style='stroke-width: 0.75;' />
 <line x1='170.81' y1='257.76' x2='170.81' y2='264.96' style='stroke-width: 0.75;' />
@@ -68,7 +68,7 @@
 <text x='395.50' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>25</text>
 <text x='470.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>30</text>
 <text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='106.70px' lengthAdjust='spacingAndGlyphs'>Pourboire relatif (%)</text>
-<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='75.38px' lengthAdjust='spacingAndGlyphs'>Sexe du client</text>
+<text transform='translate(12.96,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='75.39px' lengthAdjust='spacingAndGlyphs'>Sexe du client</text>
 <polygon points='59.04,257.76 473.76,257.76 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
 </g>
 </svg>

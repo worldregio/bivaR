@@ -146,30 +146,30 @@
 <polyline points='515.25,294.11 513.25,287.18 507.27,279.58 497.41,271.41 483.81,262.79 466.68,253.86 446.28,244.75 422.92,235.60 396.96,226.55 368.78,217.74 338.82,209.29 307.52,201.34 275.37,194.01 242.85,187.41 210.45,181.64 178.67,176.79 147.98,172.92 118.85,170.10 91.73,168.38 67.02,167.77 45.10,168.29 26.30,169.93 10.91,172.66 -0.84,176.45 -8.78,181.23 -12.78,186.93 -12.78,193.47 -8.78,200.75 -0.84,208.65 10.91,217.07 26.30,225.86 45.10,234.89 67.02,244.04 91.73,253.16 118.85,262.11 147.98,270.75 178.67,278.96 210.45,286.62 242.85,293.60 275.37,299.79 307.52,305.12 338.82,309.49 368.78,312.83 396.96,315.11 422.92,316.28 446.28,316.32 466.68,315.24 483.81,313.05 497.41,309.78 507.27,305.49 513.25,300.24 515.25,294.11 ' style='stroke-width: 0.75; stroke: #0000FF;' />
 <polygon points='515.25,294.11 513.25,287.18 507.27,279.58 497.41,271.41 483.81,262.79 466.68,253.86 446.28,244.75 422.92,235.60 396.96,226.55 368.78,217.74 338.82,209.29 307.52,201.34 275.37,194.01 242.85,187.41 210.45,181.64 178.67,176.79 147.98,172.92 118.85,170.10 91.73,168.38 67.02,167.77 45.10,168.29 26.30,169.93 10.91,172.66 -0.84,176.45 -8.78,181.23 -12.78,186.93 -12.78,193.47 -8.78,200.75 -0.84,208.65 10.91,217.07 26.30,225.86 45.10,234.89 67.02,244.04 91.73,253.16 118.85,262.11 147.98,270.75 178.67,278.96 210.45,286.62 242.85,293.60 275.37,299.79 307.52,305.12 338.82,309.49 368.78,312.83 396.96,315.11 422.92,316.28 446.28,316.32 466.68,315.24 483.81,313.05 497.41,309.78 507.27,305.49 513.25,300.24 515.25,294.11 ' style='stroke-width: 0.75; stroke: none; fill: #0000FF; fill-opacity: 0.20;' />
 <circle cx='250.99' cy='242.11' r='3.36' style='stroke-width: 0.75; stroke: #0000FF; fill: #0000FF;' />
-<text x='60.16' y='62.35' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.59px' lengthAdjust='spacingAndGlyphs'>ALB</text>
+<text x='60.16' y='62.34' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.59px' lengthAdjust='spacingAndGlyphs'>ALB</text>
 <text x='275.73' y='261.15' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>AUT</text>
 <text x='257.38' y='264.80' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.59px' lengthAdjust='spacingAndGlyphs'>BEL</text>
-<text x='92.27' y='235.62' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>BGR</text>
+<text x='92.27' y='235.61' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>BGR</text>
 <text x='454.60' y='282.43' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>CHE</text>
-<text x='119.78' y='239.27' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.78px' lengthAdjust='spacingAndGlyphs'>CSK</text>
+<text x='119.78' y='239.26' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.78px' lengthAdjust='spacingAndGlyphs'>CSK</text>
 <text x='131.25' y='267.84' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>DDR</text>
-<text x='321.59' y='271.49' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>DEU</text>
+<text x='321.59' y='271.48' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>DEU</text>
 <text x='335.35' y='272.70' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.18px' lengthAdjust='spacingAndGlyphs'>DNK</text>
-<text x='156.48' y='269.06' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.39px' lengthAdjust='spacingAndGlyphs'>ESP</text>
+<text x='156.48' y='269.05' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.39px' lengthAdjust='spacingAndGlyphs'>ESP</text>
 <text x='326.18' y='288.51' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='11.58px' lengthAdjust='spacingAndGlyphs'>FIN</text>
-<text x='278.02' y='275.14' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>FRA</text>
-<text x='250.50' y='266.02' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>GBR</text>
+<text x='278.02' y='275.13' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>FRA</text>
+<text x='250.50' y='266.01' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>GBR</text>
 <text x='131.25' y='248.99' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>GRC</text>
 <text x='92.27' y='208.26' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>HUN</text>
 <text x='163.36' y='270.88' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>IRL</text>
-<text x='243.62' y='262.37' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='11.18px' lengthAdjust='spacingAndGlyphs'>ITA</text>
+<text x='243.62' y='262.36' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='10.65px' lengthAdjust='spacingAndGlyphs'>ITA</text>
 <text x='424.79' y='263.58' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='13.98px' lengthAdjust='spacingAndGlyphs'>LUX</text>
-<text x='275.73' y='276.96' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>NLD</text>
-<text x='401.86' y='272.10' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>NOR</text>
-<text x='94.56' y='217.38' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>POL</text>
-<text x='96.85' y='227.71' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>PRT</text>
+<text x='275.73' y='276.95' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>NLD</text>
+<text x='401.86' y='272.09' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>NOR</text>
+<text x='94.56' y='217.37' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.38px' lengthAdjust='spacingAndGlyphs'>POL</text>
+<text x='96.85' y='227.71' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='14.25px' lengthAdjust='spacingAndGlyphs'>PRT</text>
 <text x='73.92' y='168.13' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.97px' lengthAdjust='spacingAndGlyphs'>ROU</text>
 <text x='349.11' y='287.90' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='16.37px' lengthAdjust='spacingAndGlyphs'>SWE</text>
-<text x='99.15' y='159.02' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>YUG</text>
+<text x='99.15' y='159.01' text-anchor='end' style='font-size: 7.20px;fill: #FF0000; font-family: "Arial";' textLength='15.57px' lengthAdjust='spacingAndGlyphs'>YUG</text>
 </g>
 </svg>
