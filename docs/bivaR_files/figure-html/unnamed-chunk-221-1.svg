@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='504.00pt' height='360.00pt' viewBox='0 0 504.00 360.00'>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='504.00pt' height='331.20pt' viewBox='0 0 504.00 331.20'>
 <defs>
   <style type='text/css'><![CDATA[
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
@@ -9,31 +9,51 @@
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   ]]></style>
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
 <defs>
-  <clipPath id='cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA='>
-    <rect x='0.00' y='0.00' width='504.00' height='360.00' />
+  <clipPath id='cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA='>
+    <rect x='0.00' y='0.00' width='504.00' height='331.20' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: Arial;' textLength='51.98px' lengthAdjust='spacingAndGlyphs'>tabcont</text>
-<text x='266.40' y='326.88' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='368.86px' lengthAdjust='spacingAndGlyphs'>Source : Pew Research Center, Global Attitude Survey, 2017, France</text>
-<text x='167.83' y='64.69' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='27.68px' lengthAdjust='spacingAndGlyphs'>Homme</text>
-<text x='358.38' y='64.69' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='26.81px' lengthAdjust='spacingAndGlyphs'>Femme</text>
-<text transform='translate(67.62,123.86) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='35.17px' lengthAdjust='spacingAndGlyphs'>Favorable</text>
-<text transform='translate(67.68,233.62) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: Arial;' textLength='42.65px' lengthAdjust='spacingAndGlyphs'>Défavorable</text>
+<g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
 </g>
 <defs>
-  <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
-    <rect x='59.04' y='59.04' width='414.72' height='227.52' />
+  <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI1Ny43Ng=='>
+    <rect x='59.04' y='59.04' width='414.72' height='198.72' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
-<polygon points='79.38,177.28 256.28,177.28 256.28,70.43 79.38,70.43 ' style='stroke-width: 0.75; fill: #FFFFE0;' />
-<polygon points='79.38,285.65 256.28,285.65 256.28,181.59 79.38,181.59 ' style='stroke-width: 0.75; fill: #ADD8E6;' />
-<polygon points='263.76,164.59 453.00,164.59 453.00,70.43 263.76,70.43 ' style='stroke-width: 0.75; fill: #FFFFE0;' />
-<polygon points='263.76,285.65 453.00,285.65 453.00,168.90 263.76,168.90 ' style='stroke-width: 0.75; fill: #ADD8E6;' />
+<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI1Ny43Ng==)'>
+<text transform='translate(430.52,257.96) rotate(-90)' style='font-size: 12.00px; font-family: "Arial";' textLength='70.72px' lengthAdjust='spacingAndGlyphs'>Standardized</text>
+<text transform='translate(444.92,257.96) rotate(-90)' style='font-size: 12.00px; font-family: "Arial";' textLength='56.02px' lengthAdjust='spacingAndGlyphs'>Residuals:</text>
+<polygon points='421.88,177.52 446.09,177.52 446.09,162.55 421.88,162.55 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FF0000;' />
+<polygon points='421.88,158.81 446.09,158.81 446.09,143.84 421.88,143.84 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FF8080;' />
+<polygon points='421.88,140.09 446.09,140.09 446.09,125.12 421.88,125.12 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FFFFFF;' />
+<polygon points='421.88,121.38 446.09,121.38 446.09,106.41 421.88,106.41 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
+<polygon points='421.88,102.67 446.09,102.67 446.09,87.70 421.88,87.70 ' style='stroke-width: 0.75; fill: #8080FF;' />
+<polygon points='421.88,83.96 446.09,83.96 446.09,68.99 421.88,68.99 ' style='stroke-width: 0.75; fill: #0000FF;' />
+</g>
+<g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
+<text transform='translate(459.20,170.03) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='11.65px' lengthAdjust='spacingAndGlyphs'>&lt;-4</text>
+<text transform='translate(459.24,151.32) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='16.26px' lengthAdjust='spacingAndGlyphs'>-4:-2</text>
+<text transform='translate(459.16,132.61) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='13.63px' lengthAdjust='spacingAndGlyphs'>-2:0</text>
+<text transform='translate(459.16,113.90) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='10.99px' lengthAdjust='spacingAndGlyphs'>0:2</text>
+<text transform='translate(459.24,95.18) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='10.99px' lengthAdjust='spacingAndGlyphs'>2:4</text>
+<text transform='translate(459.20,76.47) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='9.01px' lengthAdjust='spacingAndGlyphs'>&gt;4</text>
+<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='51.98px' lengthAdjust='spacingAndGlyphs'>tabcont</text>
+<text x='149.69' y='64.32' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='27.68px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text x='308.45' y='64.32' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='26.81px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text transform='translate(66.65,115.65) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='35.17px' lengthAdjust='spacingAndGlyphs'>Favorable</text>
+<text transform='translate(66.71,211.52) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='42.65px' lengthAdjust='spacingAndGlyphs'>Défavorable</text>
+</g>
+<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI1Ny43Ng==)'>
+<polygon points='75.99,162.32 223.38,162.32 223.38,68.99 75.99,68.99 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
+<polygon points='75.99,256.96 223.38,256.96 223.38,166.08 75.99,166.08 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FFFFFF;' />
+<polygon points='229.61,151.23 387.29,151.23 387.29,68.99 229.61,68.99 ' style='stroke-width: 0.75; stroke-dasharray: 4.00,4.00; fill: #FFFFFF;' />
+<polygon points='229.61,256.96 387.29,256.96 387.29,154.99 229.61,154.99 ' style='stroke-width: 0.75; fill: #FFFFFF;' />
 </g>
 </svg>

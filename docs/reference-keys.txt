@@ -1,3 +1,4 @@
+tab:unnamed-chunk-220
 premiers-pas
 opérations-arithmétiques
 les-objets-de-base-valeur-vecteur-matrice

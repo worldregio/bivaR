@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='504.00pt' height='331.20pt' viewBox='0 0 504.00 331.20'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA='>
+    <rect x='0.00' y='0.00' width='504.00' height='331.20' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzMzEuMjA=)'>
+<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='331.19px' lengthAdjust='spacingAndGlyphs'>Ventes de logements à Sucy-en-Brie (2014-2021)</text>
+<text x='266.40' y='283.68' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='34.70px' lengthAdjust='spacingAndGlyphs'>Année</text>
+<text transform='translate(41.76,158.40) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='96.06px' lengthAdjust='spacingAndGlyphs'>Type de logement</text>
+<text x='98.24' y='64.26' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2014</text>
+<text x='139.90' y='64.26' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2015</text>
+<text x='178.55' y='64.26' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2016</text>
+<text x='223.74' y='64.26' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2017</text>
+<text x='280.99' y='64.26' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2018</text>
+<text x='339.75' y='64.26' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2019</text>
+<text x='388.71' y='64.26' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2020</text>
+<text x='433.64' y='64.26' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='17.60px' lengthAdjust='spacingAndGlyphs'>2021</text>
+<text transform='translate(66.86,137.76) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='45.28px' lengthAdjust='spacingAndGlyphs'>Appartement</text>
+<text transform='translate(67.61,233.63) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='25.50px' lengthAdjust='spacingAndGlyphs'>Maison</text>
+</g>
+<defs>
+  <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI1Ny43Ng=='>
+    <rect x='59.04' y='59.04' width='414.72' height='198.72' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI1Ny43Ng==)'>
+<polygon points='79.38,206.54 117.09,206.54 117.09,68.99 79.38,68.99 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='79.38,256.96 117.09,256.96 117.09,210.30 79.38,210.30 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='124.57,192.81 155.24,192.81 155.24,68.99 124.57,68.99 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='124.57,256.96 155.24,256.96 155.24,196.56 124.57,196.56 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='162.71,197.65 194.39,197.65 194.39,68.99 162.71,68.99 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='162.71,256.96 194.39,256.96 194.39,201.41 162.71,201.41 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='201.86,234.15 245.61,234.15 245.61,68.99 201.86,68.99 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='201.86,256.96 245.61,256.96 245.61,237.91 201.86,237.91 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='253.08,221.67 308.90,221.67 308.90,68.99 253.08,68.99 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='253.08,256.96 308.90,256.96 308.90,225.43 253.08,225.43 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='316.37,235.38 363.14,235.38 363.14,68.99 316.37,68.99 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='316.37,256.96 363.14,256.96 363.14,239.14 316.37,239.14 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='370.61,214.83 406.81,214.83 406.81,68.99 370.61,68.99 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='370.61,256.96 406.81,256.96 406.81,218.59 370.61,218.59 ' style='stroke-width: 0.75; fill: #FFA500;' />
+<polygon points='414.28,212.53 453.00,212.53 453.00,68.99 414.28,68.99 ' style='stroke-width: 0.75; fill: #FFFF00;' />
+<polygon points='414.28,256.96 453.00,256.96 453.00,216.29 414.28,216.29 ' style='stroke-width: 0.75; fill: #FFA500;' />
+</g>
+</svg>

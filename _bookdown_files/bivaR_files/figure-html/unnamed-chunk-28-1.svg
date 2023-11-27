@@ -9,6 +9,9 @@
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   ]]></style>
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
@@ -68,21 +71,21 @@
 <line x1='107.13' y1='286.56' x2='107.13' y2='293.76' style='stroke-width: 0.75;' />
 <line x1='232.89' y1='286.56' x2='232.89' y2='293.76' style='stroke-width: 0.75;' />
 <line x1='358.66' y1='286.56' x2='358.66' y2='293.76' style='stroke-width: 0.75;' />
-<text x='107.13' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='40.05px' lengthAdjust='spacingAndGlyphs'>345000</text>
-<text x='232.89' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='40.05px' lengthAdjust='spacingAndGlyphs'>350000</text>
-<text x='358.66' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='40.05px' lengthAdjust='spacingAndGlyphs'>355000</text>
+<text x='107.13' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.05px' lengthAdjust='spacingAndGlyphs'>345000</text>
+<text x='232.89' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.05px' lengthAdjust='spacingAndGlyphs'>350000</text>
+<text x='358.66' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='40.05px' lengthAdjust='spacingAndGlyphs'>355000</text>
 <line x1='59.04' y1='265.13' x2='59.04' y2='63.90' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='265.13' x2='51.84' y2='265.13' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='214.82' x2='51.84' y2='214.82' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='164.52' x2='51.84' y2='164.52' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='114.21' x2='51.84' y2='114.21' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='63.90' x2='51.84' y2='63.90' style='stroke-width: 0.75;' />
-<text transform='translate(41.76,265.13) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='46.72px' lengthAdjust='spacingAndGlyphs'>6786000</text>
-<text transform='translate(41.76,164.52) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='46.72px' lengthAdjust='spacingAndGlyphs'>6790000</text>
-<text transform='translate(41.76,63.90) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='46.72px' lengthAdjust='spacingAndGlyphs'>6794000</text>
-<polyline points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 59.04,286.56 ' style='stroke-width: 0.75;' />
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='36.01px' lengthAdjust='spacingAndGlyphs'>map$x</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: Arial;' textLength='36.01px' lengthAdjust='spacingAndGlyphs'>map$y</text>
+<text transform='translate(41.76,265.13) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='46.72px' lengthAdjust='spacingAndGlyphs'>6786000</text>
+<text transform='translate(41.76,164.52) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='46.72px' lengthAdjust='spacingAndGlyphs'>6790000</text>
+<text transform='translate(41.76,63.90) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='46.72px' lengthAdjust='spacingAndGlyphs'>6794000</text>
+<polygon points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='36.01px' lengthAdjust='spacingAndGlyphs'>map$x</text>
+<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='36.01px' lengthAdjust='spacingAndGlyphs'>map$y</text>
 </g>
 <g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
 <polyline points='141.89,256.72 143.85,247.43 143.42,228.98 161.15,206.98 195.83,156.47 191.83,138.99 172.68,119.23 192.23,108.37 197.51,92.53 202.24,85.53 244.19,88.64 264.95,119.15 317.91,99.15 336.59,100.91 359.85,84.48 362.94,75.41 370.60,79.54 382.21,67.77 390.91,67.47 390.12,86.79 368.25,118.21 379.19,145.04 365.48,180.12 374.12,215.13 382.50,219.97 378.73,237.39 356.88,263.70 332.42,272.85 323.04,269.94 295.63,278.13 239.09,266.56 234.94,257.83 254.61,237.11 246.89,221.83 237.19,222.16 160.60,261.77 141.89,256.72 ' style='stroke-width: 0.75; stroke: #0000FF;' />

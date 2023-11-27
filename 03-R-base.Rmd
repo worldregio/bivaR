@@ -167,7 +167,7 @@ tail(tab,2)
 
 On utilise la syntaxe `tab2<-tab[conditions , ]` avec  les opérateurs logiques suivants
 
----
+
 - **==** : est égal à
 - **!=** : est différent de 
 - **> ** : est strictement supérieur à 
@@ -177,7 +177,7 @@ On utilise la syntaxe `tab2<-tab[conditions , ]` avec  les opérateurs logiques 
 - **&**  : ET (vrai si les deux conditions sont vérifiées)
 - **|**  : OU inclusif (vrai si l'une des conditions est vérifiée)
 - **xor** : OU exclusif (vrai si une seule des conditions est vérifiée)
----
+
 
 
 - Exemple de sélection des pays socialistes
