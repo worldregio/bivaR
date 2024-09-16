@@ -8,7 +8,7 @@ library(knitr)
 knitr::include_graphics("resources/figures/chap1_intro.jpg")
 ```
 
-- **Mise en place** : Télécharger le [dossier exo1](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo1.zip) et décompressez le sur votre ordinateur. Placez le dossier exo1 comme sous-dossier de votre dossier de cours. Puis ouvrez le programme R `exo1.R` 
+- **Mise en place** : Télécharger le [dossier exo1](https://github.com/worldregio/bivaR/raw/main/resources/exos/exo1.zip) et décompressez le sur votre ordinateur. Placez le dossier exo1 comme sous-dossier de votre dossier de cours. Puis ouvrez le programme R `exo1.R` 
 
 
 
