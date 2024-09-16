@@ -23,7 +23,7 @@
 <meta name="author" content="Claude Grasland" />
 
 
-<meta name="date" content="2023-11-27" />
+<meta name="date" content="2024-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,13 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -554,41 +547,30 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="opérations-arithmétiques" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Opérations arithmétiques<a href="01-principes.html#opérations-arithmétiques" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Nous allons commencer par passer quelques commandes arithmétiques simples. Il suffit de les taper dans la console de R pour qu’elles s’executent automatiquement.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="01-principes.html#cb1-1" tabindex="-1"></a><span class="dv">8</span><span class="sc">+</span><span class="dv">2</span></span>
-<span id="cb1-2"><a href="01-principes.html#cb1-2" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span>
-<span id="cb1-3"><a href="01-principes.html#cb1-3" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="01-principes.html#cb1-4" tabindex="-1"></a><span class="dv">8-2</span></span>
-<span id="cb1-5"><a href="01-principes.html#cb1-5" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span>
-<span id="cb1-6"><a href="01-principes.html#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="01-principes.html#cb1-7" tabindex="-1"></a><span class="dv">8</span><span class="sc">*</span><span class="dv">2</span></span>
-<span id="cb1-8"><a href="01-principes.html#cb1-8" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span>
-<span id="cb1-9"><a href="01-principes.html#cb1-9" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="01-principes.html#cb1-10" tabindex="-1"></a><span class="dv">8</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb1-11"><a href="01-principes.html#cb1-11" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span>
-<span id="cb1-12"><a href="01-principes.html#cb1-12" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="01-principes.html#cb1-13" tabindex="-1"></a><span class="dv">8</span><span class="sc">**</span><span class="dv">2</span></span>
-<span id="cb1-14"><a href="01-principes.html#cb1-14" tabindex="-1"></a><span class="co">#&gt; [1] 64</span></span>
-<span id="cb1-15"><a href="01-principes.html#cb1-15" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="01-principes.html#cb1-16" tabindex="-1"></a><span class="dv">8</span><span class="sc">**</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb1-17"><a href="01-principes.html#cb1-17" tabindex="-1"></a><span class="co">#&gt; [1] 2.828427</span></span>
-<span id="cb1-18"><a href="01-principes.html#cb1-18" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="01-principes.html#cb1-19" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span>
-<span id="cb1-20"><a href="01-principes.html#cb1-20" tabindex="-1"></a><span class="co">#&gt; [1] 2.302585</span></span>
-<span id="cb1-21"><a href="01-principes.html#cb1-21" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="01-principes.html#cb1-22" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">10</span>)</span>
-<span id="cb1-23"><a href="01-principes.html#cb1-23" tabindex="-1"></a><span class="co">#&gt; [1] 1</span></span>
-<span id="cb1-24"><a href="01-principes.html#cb1-24" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="01-principes.html#cb1-25" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">10</span>)</span>
-<span id="cb1-26"><a href="01-principes.html#cb1-26" tabindex="-1"></a><span class="co">#&gt; [1] 3.162278</span></span>
-<span id="cb1-27"><a href="01-principes.html#cb1-27" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="01-principes.html#cb1-28" tabindex="-1"></a><span class="fu">sin</span>(pi)</span>
-<span id="cb1-29"><a href="01-principes.html#cb1-29" tabindex="-1"></a><span class="co">#&gt; [1] 1.224647e-16</span></span>
-<span id="cb1-30"><a href="01-principes.html#cb1-30" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="01-principes.html#cb1-31" tabindex="-1"></a><span class="fu">cos</span>(pi)</span>
-<span id="cb1-32"><a href="01-principes.html#cb1-32" tabindex="-1"></a><span class="co">#&gt; [1] -1</span></span>
-<span id="cb1-33"><a href="01-principes.html#cb1-33" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="01-principes.html#cb1-34" tabindex="-1"></a><span class="fu">tan</span>(pi)</span>
-<span id="cb1-35"><a href="01-principes.html#cb1-35" tabindex="-1"></a><span class="co">#&gt; [1] -1.224647e-16</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="01-principes.html#cb1-1" tabindex="-1"></a><span class="dv">8</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="01-principes.html#cb3-1" tabindex="-1"></a><span class="dv">8-2</span></span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="01-principes.html#cb5-1" tabindex="-1"></a><span class="dv">8</span><span class="sc">*</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 16</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="01-principes.html#cb7-1" tabindex="-1"></a><span class="dv">8</span><span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="01-principes.html#cb9-1" tabindex="-1"></a><span class="dv">8</span><span class="sc">**</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 64</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="01-principes.html#cb11-1" tabindex="-1"></a><span class="dv">8</span><span class="sc">**</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 2.828427</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="01-principes.html#cb13-1" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 2.302585</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="01-principes.html#cb15-1" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="01-principes.html#cb17-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 3.162278</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="01-principes.html#cb19-1" tabindex="-1"></a><span class="fu">sin</span>(pi)</span></code></pre></div>
+<pre><code>## [1] 1.224647e-16</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="01-principes.html#cb21-1" tabindex="-1"></a><span class="fu">cos</span>(pi)</span></code></pre></div>
+<pre><code>## [1] -1</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="01-principes.html#cb23-1" tabindex="-1"></a><span class="fu">tan</span>(pi)</span></code></pre></div>
+<pre><code>## [1] -1.224647e-16</code></pre>
 </div>
 <div id="les-objets-de-base-valeur-vecteur-matrice" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> Les objets de base : valeur, vecteur, matrice<a href="01-principes.html#les-objets-de-base-valeur-vecteur-matrice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -596,76 +578,73 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="eléments" class="section level3 hasAnchor" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Eléments<a href="01-principes.html#eléments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un élément est unique et constitue la brique de base de tous les objets suivants. On peut aussi l’interpréter comme un vecteur de longueur 1 ou une matrice de dimension 1x1.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="01-principes.html#cb2-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="dv">8</span></span>
-<span id="cb2-2"><a href="01-principes.html#cb2-2" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="dv">2</span></span>
-<span id="cb2-3"><a href="01-principes.html#cb2-3" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="01-principes.html#cb2-4" tabindex="-1"></a>x<span class="sc">+</span>y</span>
-<span id="cb2-5"><a href="01-principes.html#cb2-5" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span>
-<span id="cb2-6"><a href="01-principes.html#cb2-6" tabindex="-1"></a>x<span class="sc">*</span>y</span>
-<span id="cb2-7"><a href="01-principes.html#cb2-7" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span>
-<span id="cb2-8"><a href="01-principes.html#cb2-8" tabindex="-1"></a>x<span class="sc">**</span>y</span>
-<span id="cb2-9"><a href="01-principes.html#cb2-9" tabindex="-1"></a><span class="co">#&gt; [1] 64</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="01-principes.html#cb25-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="dv">8</span></span>
+<span id="cb25-2"><a href="01-principes.html#cb25-2" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="dv">2</span></span>
+<span id="cb25-3"><a href="01-principes.html#cb25-3" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="01-principes.html#cb25-4" tabindex="-1"></a>x<span class="sc">+</span>y</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="01-principes.html#cb27-1" tabindex="-1"></a>x<span class="sc">*</span>y</span></code></pre></div>
+<pre><code>## [1] 16</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="01-principes.html#cb29-1" tabindex="-1"></a>x<span class="sc">**</span>y</span></code></pre></div>
+<pre><code>## [1] 64</code></pre>
 <p>Les éléments se combinent différemment selon leur type. Par exemple, des éléments de type caractère (<em>character</em>) peuvent être assemblés avec l’instruction <code>paste()</code> ou découpez avec l’instruction <code>substr()</code> :</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="01-principes.html#cb3-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="st">&quot;Bonjour&quot;</span></span>
-<span id="cb3-2"><a href="01-principes.html#cb3-2" tabindex="-1"></a>y<span class="ot">&lt;-</span> <span class="st">&quot;tout le monde&quot;</span></span>
-<span id="cb3-3"><a href="01-principes.html#cb3-3" tabindex="-1"></a>z<span class="ot">&lt;-</span> <span class="st">&quot;!&quot;</span></span>
-<span id="cb3-4"><a href="01-principes.html#cb3-4" tabindex="-1"></a><span class="fu">paste</span>(x,y,z)</span>
-<span id="cb3-5"><a href="01-principes.html#cb3-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Bonjour tout le monde !&quot;</span></span>
-<span id="cb3-6"><a href="01-principes.html#cb3-6" tabindex="-1"></a><span class="fu">substr</span>(x,<span class="dv">1</span>,<span class="dv">3</span>)</span>
-<span id="cb3-7"><a href="01-principes.html#cb3-7" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Bon&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="01-principes.html#cb31-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="st">&quot;Bonjour&quot;</span></span>
+<span id="cb31-2"><a href="01-principes.html#cb31-2" tabindex="-1"></a>y<span class="ot">&lt;-</span> <span class="st">&quot;tout le monde&quot;</span></span>
+<span id="cb31-3"><a href="01-principes.html#cb31-3" tabindex="-1"></a>z<span class="ot">&lt;-</span> <span class="st">&quot;!&quot;</span></span>
+<span id="cb31-4"><a href="01-principes.html#cb31-4" tabindex="-1"></a><span class="fu">paste</span>(x,y,z)</span></code></pre></div>
+<pre><code>## [1] &quot;Bonjour tout le monde !&quot;</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="01-principes.html#cb33-1" tabindex="-1"></a><span class="fu">substr</span>(x,<span class="dv">1</span>,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Bon&quot;</code></pre>
 <p>Quant aux éléments logiques (<em>logical</em>) nous verrons qu’ils peuvent se combiner avec des opérateurs comme <code>&amp;</code> quii signifie <em>ET</em> ou bien <code>|</code> qui signifie <em>OU</em>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="01-principes.html#cb4-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="cn">TRUE</span></span>
-<span id="cb4-2"><a href="01-principes.html#cb4-2" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="cn">FALSE</span></span>
-<span id="cb4-3"><a href="01-principes.html#cb4-3" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="01-principes.html#cb4-4" tabindex="-1"></a>x <span class="sc">&amp;</span> y</span>
-<span id="cb4-5"><a href="01-principes.html#cb4-5" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span>
-<span id="cb4-6"><a href="01-principes.html#cb4-6" tabindex="-1"></a>x <span class="sc">|</span> y </span>
-<span id="cb4-7"><a href="01-principes.html#cb4-7" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="01-principes.html#cb35-1" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="cn">TRUE</span></span>
+<span id="cb35-2"><a href="01-principes.html#cb35-2" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="cn">FALSE</span></span>
+<span id="cb35-3"><a href="01-principes.html#cb35-3" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="01-principes.html#cb35-4" tabindex="-1"></a>x <span class="sc">&amp;</span> y</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="01-principes.html#cb37-1" tabindex="-1"></a>x <span class="sc">|</span> y </span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="vecteurs-vectors" class="section level3 hasAnchor" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> vecteurs (<em>vectors</em>)<a href="01-principes.html#vecteurs-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un vecteur est un ensemble d’éléments <strong>de même type</strong> que l’on a concaténés à l’aide de l’instruction <code>c()</code>. On peut ensuite les aditionner, les multiplier ou les combiner avec des éléments.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="01-principes.html#cb5-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">16</span>)</span>
-<span id="cb5-2"><a href="01-principes.html#cb5-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb5-3"><a href="01-principes.html#cb5-3" tabindex="-1"></a>x<span class="sc">+</span>y</span>
-<span id="cb5-4"><a href="01-principes.html#cb5-4" tabindex="-1"></a><span class="co">#&gt; [1]  5  6  8 12 20</span></span>
-<span id="cb5-5"><a href="01-principes.html#cb5-5" tabindex="-1"></a>x<span class="sc">*</span>y</span>
-<span id="cb5-6"><a href="01-principes.html#cb5-6" tabindex="-1"></a><span class="co">#&gt; [1]  4  8 16 32 64</span></span>
-<span id="cb5-7"><a href="01-principes.html#cb5-7" tabindex="-1"></a>x<span class="sc">**</span>y</span>
-<span id="cb5-8"><a href="01-principes.html#cb5-8" tabindex="-1"></a><span class="co">#&gt; [1]     1    16   256  4096 65536</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="01-principes.html#cb39-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">16</span>)</span>
+<span id="cb39-2"><a href="01-principes.html#cb39-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb39-3"><a href="01-principes.html#cb39-3" tabindex="-1"></a>x<span class="sc">+</span>y</span></code></pre></div>
+<pre><code>## [1]  5  6  8 12 20</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="01-principes.html#cb41-1" tabindex="-1"></a>x<span class="sc">*</span>y</span></code></pre></div>
+<pre><code>## [1]  4  8 16 32 64</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="01-principes.html#cb43-1" tabindex="-1"></a>x<span class="sc">**</span>y</span></code></pre></div>
+<pre><code>## [1]     1    16   256  4096 65536</code></pre>
 <p>On remarque dans l’exemple ci-dessus que R n’a pas de problème pour combiner des vecteurs de tailles différentes.</p>
 </div>
 <div id="matrices-matrix" class="section level3 hasAnchor" number="1.2.3">
 <h3><span class="header-section-number">1.2.3</span> Matrices (<em>matrix</em>)<a href="01-principes.html#matrices-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Une matrice est un ensemble de vecteurs <strong>de même longueur et de même type</strong>. On peut donc construire une matrice en concaténant des vecteurs verticalement avec <code>cbind()</code>ou horizontalement avec <code>rbind()</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="01-principes.html#cb6-1" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="01-principes.html#cb6-2" tabindex="-1"></a><span class="co"># deux vecteurs</span></span>
-<span id="cb6-3"><a href="01-principes.html#cb6-3" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">16</span>)</span>
-<span id="cb6-4"><a href="01-principes.html#cb6-4" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">25</span>)</span>
-<span id="cb6-5"><a href="01-principes.html#cb6-5" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="01-principes.html#cb6-6" tabindex="-1"></a><span class="co"># matrice en colonnes</span></span>
-<span id="cb6-7"><a href="01-principes.html#cb6-7" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x1,x2)</span>
-<span id="cb6-8"><a href="01-principes.html#cb6-8" tabindex="-1"></a>m1</span>
-<span id="cb6-9"><a href="01-principes.html#cb6-9" tabindex="-1"></a><span class="co">#&gt;      x1 x2</span></span>
-<span id="cb6-10"><a href="01-principes.html#cb6-10" tabindex="-1"></a><span class="co">#&gt; [1,]  1  5</span></span>
-<span id="cb6-11"><a href="01-principes.html#cb6-11" tabindex="-1"></a><span class="co">#&gt; [2,]  2 10</span></span>
-<span id="cb6-12"><a href="01-principes.html#cb6-12" tabindex="-1"></a><span class="co">#&gt; [3,]  4 15</span></span>
-<span id="cb6-13"><a href="01-principes.html#cb6-13" tabindex="-1"></a><span class="co">#&gt; [4,]  8 20</span></span>
-<span id="cb6-14"><a href="01-principes.html#cb6-14" tabindex="-1"></a><span class="co">#&gt; [5,] 16 25</span></span>
-<span id="cb6-15"><a href="01-principes.html#cb6-15" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="01-principes.html#cb6-16" tabindex="-1"></a><span class="co"># matrice en lignes</span></span>
-<span id="cb6-17"><a href="01-principes.html#cb6-17" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(x1,x2)</span>
-<span id="cb6-18"><a href="01-principes.html#cb6-18" tabindex="-1"></a>m2</span>
-<span id="cb6-19"><a href="01-principes.html#cb6-19" tabindex="-1"></a><span class="co">#&gt;    [,1] [,2] [,3] [,4] [,5]</span></span>
-<span id="cb6-20"><a href="01-principes.html#cb6-20" tabindex="-1"></a><span class="co">#&gt; x1    1    2    4    8   16</span></span>
-<span id="cb6-21"><a href="01-principes.html#cb6-21" tabindex="-1"></a><span class="co">#&gt; x2    5   10   15   20   25</span></span>
-<span id="cb6-22"><a href="01-principes.html#cb6-22" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="01-principes.html#cb6-23" tabindex="-1"></a><span class="co"># piège !</span></span>
-<span id="cb6-24"><a href="01-principes.html#cb6-24" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">c</span>(x1,x2)</span>
-<span id="cb6-25"><a href="01-principes.html#cb6-25" tabindex="-1"></a>m3</span>
-<span id="cb6-26"><a href="01-principes.html#cb6-26" tabindex="-1"></a><span class="co">#&gt;  [1]  1  2  4  8 16  5 10 15 20 25</span></span>
-<span id="cb6-27"><a href="01-principes.html#cb6-27" tabindex="-1"></a><span class="fu">is.matrix</span>(m3)</span>
-<span id="cb6-28"><a href="01-principes.html#cb6-28" tabindex="-1"></a><span class="co">#&gt; [1] FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="01-principes.html#cb45-1" tabindex="-1"></a><span class="co"># deux vecteurs</span></span>
+<span id="cb45-2"><a href="01-principes.html#cb45-2" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">16</span>)</span>
+<span id="cb45-3"><a href="01-principes.html#cb45-3" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">25</span>)</span>
+<span id="cb45-4"><a href="01-principes.html#cb45-4" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="01-principes.html#cb45-5" tabindex="-1"></a><span class="co"># matrice en colonnes</span></span>
+<span id="cb45-6"><a href="01-principes.html#cb45-6" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(x1,x2)</span>
+<span id="cb45-7"><a href="01-principes.html#cb45-7" tabindex="-1"></a>m1</span></code></pre></div>
+<pre><code>##      x1 x2
+## [1,]  1  5
+## [2,]  2 10
+## [3,]  4 15
+## [4,]  8 20
+## [5,] 16 25</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="01-principes.html#cb47-1" tabindex="-1"></a><span class="co"># matrice en lignes</span></span>
+<span id="cb47-2"><a href="01-principes.html#cb47-2" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(x1,x2)</span>
+<span id="cb47-3"><a href="01-principes.html#cb47-3" tabindex="-1"></a>m2</span></code></pre></div>
+<pre><code>##    [,1] [,2] [,3] [,4] [,5]
+## x1    1    2    4    8   16
+## x2    5   10   15   20   25</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="01-principes.html#cb49-1" tabindex="-1"></a><span class="co"># piège !</span></span>
+<span id="cb49-2"><a href="01-principes.html#cb49-2" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">c</span>(x1,x2)</span>
+<span id="cb49-3"><a href="01-principes.html#cb49-3" tabindex="-1"></a>m3</span></code></pre></div>
+<pre><code>##  [1]  1  2  4  8 16  5 10 15 20 25</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="01-principes.html#cb51-1" tabindex="-1"></a><span class="fu">is.matrix</span>(m3)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
 <div class="rmdimportant">
 <p>
 Si on assemble deux vecteurs à l’aide de la commande
@@ -697,31 +676,31 @@ on mélange des choux, des carottes, des navets, une boîte de douze
 oeufs, un paquet de croquettes pour chiens, etc…
 </p>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="01-principes.html#cb7-1" tabindex="-1"></a><span class="co"># Format vecteur</span></span>
-<span id="cb7-2"><a href="01-principes.html#cb7-2" tabindex="-1"></a>prenom <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>, <span class="st">&quot;Amine&quot;</span>,</span>
-<span id="cb7-3"><a href="01-principes.html#cb7-3" tabindex="-1"></a>    <span class="st">&quot;Anne&quot;</span>,<span class="st">&quot;Marc&quot;</span>,<span class="st">&quot;Zayneb&quot;</span>)</span>
-<span id="cb7-4"><a href="01-principes.html#cb7-4" tabindex="-1"></a>sexe <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;H&quot;</span>,<span class="st">&quot;H&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;H&quot;</span>,<span class="st">&quot;F&quot;</span>)</span>
-<span id="cb7-5"><a href="01-principes.html#cb7-5" tabindex="-1"></a>age  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">22</span>,<span class="dv">24</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
-<span id="cb7-6"><a href="01-principes.html#cb7-6" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="01-principes.html#cb7-7" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="01-principes.html#cb7-8" tabindex="-1"></a><span class="co"># Format liste</span></span>
-<span id="cb7-9"><a href="01-principes.html#cb7-9" tabindex="-1"></a>Ali <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;H&quot;</span>,<span class="dv">21</span>)</span>
-<span id="cb7-10"><a href="01-principes.html#cb7-10" tabindex="-1"></a>Amine <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;F&quot;</span>,<span class="dv">22</span>)</span>
-<span id="cb7-11"><a href="01-principes.html#cb7-11" tabindex="-1"></a>Anne <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;F&quot;</span>,<span class="dv">28</span>)</span>
-<span id="cb7-12"><a href="01-principes.html#cb7-12" tabindex="-1"></a>Marc <span class="ot">&lt;-</span> <span class="fu">list</span> (<span class="st">&quot;H&quot;</span>,<span class="dv">18</span>)</span>
-<span id="cb7-13"><a href="01-principes.html#cb7-13" tabindex="-1"></a>Zayneb <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;F&quot;</span>,<span class="dv">25</span>)</span>
-<span id="cb7-14"><a href="01-principes.html#cb7-14" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="01-principes.html#cb7-15" tabindex="-1"></a><span class="co"># Ne pas confondre !</span></span>
-<span id="cb7-16"><a href="01-principes.html#cb7-16" tabindex="-1"></a>Ali <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;H&quot;</span>,<span class="dv">21</span>)</span>
-<span id="cb7-17"><a href="01-principes.html#cb7-17" tabindex="-1"></a>Ali</span>
-<span id="cb7-18"><a href="01-principes.html#cb7-18" tabindex="-1"></a><span class="co">#&gt; [1] &quot;H&quot;  &quot;21&quot;</span></span>
-<span id="cb7-19"><a href="01-principes.html#cb7-19" tabindex="-1"></a>Ali <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;H&quot;</span>,<span class="dv">21</span>)</span>
-<span id="cb7-20"><a href="01-principes.html#cb7-20" tabindex="-1"></a>Ali</span>
-<span id="cb7-21"><a href="01-principes.html#cb7-21" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
-<span id="cb7-22"><a href="01-principes.html#cb7-22" tabindex="-1"></a><span class="co">#&gt; [1] &quot;H&quot;</span></span>
-<span id="cb7-23"><a href="01-principes.html#cb7-23" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-24"><a href="01-principes.html#cb7-24" tabindex="-1"></a><span class="co">#&gt; [[2]]</span></span>
-<span id="cb7-25"><a href="01-principes.html#cb7-25" tabindex="-1"></a><span class="co">#&gt; [1] 21</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="01-principes.html#cb53-1" tabindex="-1"></a><span class="co"># Format vecteur</span></span>
+<span id="cb53-2"><a href="01-principes.html#cb53-2" tabindex="-1"></a>prenom <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>, <span class="st">&quot;Amine&quot;</span>,</span>
+<span id="cb53-3"><a href="01-principes.html#cb53-3" tabindex="-1"></a>    <span class="st">&quot;Anne&quot;</span>,<span class="st">&quot;Marc&quot;</span>,<span class="st">&quot;Zayneb&quot;</span>)</span>
+<span id="cb53-4"><a href="01-principes.html#cb53-4" tabindex="-1"></a>sexe <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;H&quot;</span>,<span class="st">&quot;H&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;H&quot;</span>,<span class="st">&quot;F&quot;</span>)</span>
+<span id="cb53-5"><a href="01-principes.html#cb53-5" tabindex="-1"></a>age  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">22</span>,<span class="dv">24</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
+<span id="cb53-6"><a href="01-principes.html#cb53-6" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="01-principes.html#cb53-7" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="01-principes.html#cb53-8" tabindex="-1"></a><span class="co"># Format liste</span></span>
+<span id="cb53-9"><a href="01-principes.html#cb53-9" tabindex="-1"></a>Ali <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;H&quot;</span>,<span class="dv">21</span>)</span>
+<span id="cb53-10"><a href="01-principes.html#cb53-10" tabindex="-1"></a>Amine <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;F&quot;</span>,<span class="dv">22</span>)</span>
+<span id="cb53-11"><a href="01-principes.html#cb53-11" tabindex="-1"></a>Anne <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;F&quot;</span>,<span class="dv">28</span>)</span>
+<span id="cb53-12"><a href="01-principes.html#cb53-12" tabindex="-1"></a>Marc <span class="ot">&lt;-</span> <span class="fu">list</span> (<span class="st">&quot;H&quot;</span>,<span class="dv">18</span>)</span>
+<span id="cb53-13"><a href="01-principes.html#cb53-13" tabindex="-1"></a>Zayneb <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;F&quot;</span>,<span class="dv">25</span>)</span>
+<span id="cb53-14"><a href="01-principes.html#cb53-14" tabindex="-1"></a></span>
+<span id="cb53-15"><a href="01-principes.html#cb53-15" tabindex="-1"></a><span class="co"># Ne pas confondre !</span></span>
+<span id="cb53-16"><a href="01-principes.html#cb53-16" tabindex="-1"></a>Ali <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;H&quot;</span>,<span class="dv">21</span>)</span>
+<span id="cb53-17"><a href="01-principes.html#cb53-17" tabindex="-1"></a>Ali</span></code></pre></div>
+<pre><code>## [1] &quot;H&quot;  &quot;21&quot;</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="01-principes.html#cb55-1" tabindex="-1"></a>Ali <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">&quot;H&quot;</span>,<span class="dv">21</span>)</span>
+<span id="cb55-2"><a href="01-principes.html#cb55-2" tabindex="-1"></a>Ali</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;H&quot;
+## 
+## [[2]]
+## [1] 21</code></pre>
 </div>
 <div id="attention-aux-types-de-variables" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> Attention aux types de variables …<a href="01-principes.html#attention-aux-types-de-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -734,35 +713,32 @@ oeufs, un paquet de croquettes pour chiens, etc…
 <li><em>factor</em> : variable catégorielle (codage d’enquêtes …)</li>
 </ul>
 <p>La commande <code>str()</code> permet de vérifier le type d’un vecteur (ou d’une matrice) et d’en afficher la dimension.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="01-principes.html#cb8-1" tabindex="-1"></a><span class="co"># Format charactère</span></span>
-<span id="cb8-2"><a href="01-principes.html#cb8-2" tabindex="-1"></a>prenom <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>, <span class="st">&quot;Amine&quot;</span>,<span class="st">&quot;Anne&quot;</span>,</span>
-<span id="cb8-3"><a href="01-principes.html#cb8-3" tabindex="-1"></a>            <span class="st">&quot;Marc&quot;</span>,<span class="st">&quot;Zayneb&quot;</span>)</span>
-<span id="cb8-4"><a href="01-principes.html#cb8-4" tabindex="-1"></a><span class="fu">str</span>(prenom)</span>
-<span id="cb8-5"><a href="01-principes.html#cb8-5" tabindex="-1"></a><span class="co">#&gt;  chr [1:5] &quot;Ali&quot; &quot;Amine&quot; &quot;Anne&quot; &quot;Marc&quot; &quot;Zayneb&quot;</span></span>
-<span id="cb8-6"><a href="01-principes.html#cb8-6" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="01-principes.html#cb8-7" tabindex="-1"></a><span class="co"># Format logique</span></span>
-<span id="cb8-8"><a href="01-principes.html#cb8-8" tabindex="-1"></a>likeR <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>, <span class="cn">TRUE</span>,</span>
-<span id="cb8-9"><a href="01-principes.html#cb8-9" tabindex="-1"></a>           <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
-<span id="cb8-10"><a href="01-principes.html#cb8-10" tabindex="-1"></a><span class="fu">str</span>(likeR)</span>
-<span id="cb8-11"><a href="01-principes.html#cb8-11" tabindex="-1"></a><span class="co">#&gt;  logi [1:5] TRUE FALSE TRUE FALSE FALSE</span></span>
-<span id="cb8-12"><a href="01-principes.html#cb8-12" tabindex="-1"></a><span class="co"># Format Factor</span></span>
-<span id="cb8-13"><a href="01-principes.html#cb8-13" tabindex="-1"></a>sexe <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb8-14"><a href="01-principes.html#cb8-14" tabindex="-1"></a>sexe<span class="ot">&lt;-</span><span class="fu">as.factor</span>(sexe)</span>
-<span id="cb8-15"><a href="01-principes.html#cb8-15" tabindex="-1"></a><span class="fu">levels</span>(sexe) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Homme&quot;</span>,<span class="st">&quot;Femme&quot;</span>)</span>
-<span id="cb8-16"><a href="01-principes.html#cb8-16" tabindex="-1"></a><span class="fu">str</span>(sexe)</span>
-<span id="cb8-17"><a href="01-principes.html#cb8-17" tabindex="-1"></a><span class="co">#&gt;  Factor w/ 2 levels &quot;Homme&quot;,&quot;Femme&quot;: 1 1 2 1 2</span></span>
-<span id="cb8-18"><a href="01-principes.html#cb8-18" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="01-principes.html#cb8-19" tabindex="-1"></a><span class="co"># Format numerique</span></span>
-<span id="cb8-20"><a href="01-principes.html#cb8-20" tabindex="-1"></a>age  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">22</span>,<span class="dv">24</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
-<span id="cb8-21"><a href="01-principes.html#cb8-21" tabindex="-1"></a><span class="fu">str</span>(age)</span>
-<span id="cb8-22"><a href="01-principes.html#cb8-22" tabindex="-1"></a><span class="co">#&gt;  num [1:5] 21 22 24 18 25</span></span>
-<span id="cb8-23"><a href="01-principes.html#cb8-23" tabindex="-1"></a></span>
-<span id="cb8-24"><a href="01-principes.html#cb8-24" tabindex="-1"></a><span class="co"># Format date</span></span>
-<span id="cb8-25"><a href="01-principes.html#cb8-25" tabindex="-1"></a>nais<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;1999-10-28&quot;</span>,<span class="st">&quot;1998-10-13&quot;</span>,</span>
-<span id="cb8-26"><a href="01-principes.html#cb8-26" tabindex="-1"></a> <span class="st">&quot;1996-10-15&quot;</span>,<span class="st">&quot;2002-02-07&quot;</span>,<span class="st">&quot;1995-06-18&quot;</span>)</span>
-<span id="cb8-27"><a href="01-principes.html#cb8-27" tabindex="-1"></a>nais<span class="ot">&lt;-</span><span class="fu">as.Date</span>(nais)</span>
-<span id="cb8-28"><a href="01-principes.html#cb8-28" tabindex="-1"></a><span class="fu">str</span>(nais)</span>
-<span id="cb8-29"><a href="01-principes.html#cb8-29" tabindex="-1"></a><span class="co">#&gt;  Date[1:5], format: &quot;1999-10-28&quot; &quot;1998-10-13&quot; &quot;1996-10-15&quot; &quot;2002-02-07&quot; &quot;1995-06-18&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="01-principes.html#cb57-1" tabindex="-1"></a><span class="co"># Format charactère</span></span>
+<span id="cb57-2"><a href="01-principes.html#cb57-2" tabindex="-1"></a>prenom <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ali&quot;</span>, <span class="st">&quot;Amine&quot;</span>,<span class="st">&quot;Anne&quot;</span>,</span>
+<span id="cb57-3"><a href="01-principes.html#cb57-3" tabindex="-1"></a>            <span class="st">&quot;Marc&quot;</span>,<span class="st">&quot;Zayneb&quot;</span>)</span>
+<span id="cb57-4"><a href="01-principes.html#cb57-4" tabindex="-1"></a><span class="fu">str</span>(prenom)</span></code></pre></div>
+<pre><code>##  chr [1:5] &quot;Ali&quot; &quot;Amine&quot; &quot;Anne&quot; &quot;Marc&quot; &quot;Zayneb&quot;</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="01-principes.html#cb59-1" tabindex="-1"></a><span class="co"># Format logique</span></span>
+<span id="cb59-2"><a href="01-principes.html#cb59-2" tabindex="-1"></a>likeR <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">FALSE</span>, <span class="cn">TRUE</span>,</span>
+<span id="cb59-3"><a href="01-principes.html#cb59-3" tabindex="-1"></a>           <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb59-4"><a href="01-principes.html#cb59-4" tabindex="-1"></a><span class="fu">str</span>(likeR)</span></code></pre></div>
+<pre><code>##  logi [1:5] TRUE FALSE TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="01-principes.html#cb61-1" tabindex="-1"></a><span class="co"># Format Factor</span></span>
+<span id="cb61-2"><a href="01-principes.html#cb61-2" tabindex="-1"></a>sexe <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb61-3"><a href="01-principes.html#cb61-3" tabindex="-1"></a>sexe<span class="ot">&lt;-</span><span class="fu">as.factor</span>(sexe)</span>
+<span id="cb61-4"><a href="01-principes.html#cb61-4" tabindex="-1"></a><span class="fu">levels</span>(sexe) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Homme&quot;</span>,<span class="st">&quot;Femme&quot;</span>)</span>
+<span id="cb61-5"><a href="01-principes.html#cb61-5" tabindex="-1"></a><span class="fu">str</span>(sexe)</span></code></pre></div>
+<pre><code>##  Factor w/ 2 levels &quot;Homme&quot;,&quot;Femme&quot;: 1 1 2 1 2</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="01-principes.html#cb63-1" tabindex="-1"></a><span class="co"># Format numerique</span></span>
+<span id="cb63-2"><a href="01-principes.html#cb63-2" tabindex="-1"></a>age  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">21</span>,<span class="dv">22</span>,<span class="dv">24</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
+<span id="cb63-3"><a href="01-principes.html#cb63-3" tabindex="-1"></a><span class="fu">str</span>(age)</span></code></pre></div>
+<pre><code>##  num [1:5] 21 22 24 18 25</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="01-principes.html#cb65-1" tabindex="-1"></a><span class="co"># Format date</span></span>
+<span id="cb65-2"><a href="01-principes.html#cb65-2" tabindex="-1"></a>nais<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;1999-10-28&quot;</span>,<span class="st">&quot;1998-10-13&quot;</span>,</span>
+<span id="cb65-3"><a href="01-principes.html#cb65-3" tabindex="-1"></a> <span class="st">&quot;1996-10-15&quot;</span>,<span class="st">&quot;2002-02-07&quot;</span>,<span class="st">&quot;1995-06-18&quot;</span>)</span>
+<span id="cb65-4"><a href="01-principes.html#cb65-4" tabindex="-1"></a>nais<span class="ot">&lt;-</span><span class="fu">as.Date</span>(nais)</span>
+<span id="cb65-5"><a href="01-principes.html#cb65-5" tabindex="-1"></a><span class="fu">str</span>(nais)</span></code></pre></div>
+<pre><code>##  Date[1:5], format: &quot;1999-10-28&quot; &quot;1998-10-13&quot; &quot;1996-10-15&quot; &quot;2002-02-07&quot; &quot;1995-06-18&quot;</code></pre>
 </div>
 <div id="types-de-tableaux-et-guerres-de-religion." class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> Types de tableaux et guerres de religion.<a href="01-principes.html#types-de-tableaux-et-guerres-de-religion." class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -771,60 +747,48 @@ oeufs, un paquet de croquettes pour chiens, etc…
 <div id="le-type-data.frame" class="section level3 hasAnchor" number="1.5.1">
 <h3><span class="header-section-number">1.5.1</span> Le type <em>data.frame</em> :<a href="01-principes.html#le-type-data.frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>C’est le type d’origine correspondant à ce qu’on appelle le langage <strong>R-Base</strong>. Il se présente en pratique comme une <code>liste de vecteurs</code> qui peuvent être de types différents mais qui sont de même longueur.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="01-principes.html#cb9-1" tabindex="-1"></a><span class="co"># Création d&#39;un data.frame</span></span>
-<span id="cb9-2"><a href="01-principes.html#cb9-2" tabindex="-1"></a>tab1<span class="ot">&lt;-</span><span class="fu">data.frame</span>(prenom,nais,</span>
-<span id="cb9-3"><a href="01-principes.html#cb9-3" tabindex="-1"></a>                age,sexe,likeR)</span>
-<span id="cb9-4"><a href="01-principes.html#cb9-4" tabindex="-1"></a><span class="fu">str</span>(tab1)</span>
-<span id="cb9-5"><a href="01-principes.html#cb9-5" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    5 obs. of  5 variables:</span></span>
-<span id="cb9-6"><a href="01-principes.html#cb9-6" tabindex="-1"></a><span class="co">#&gt;  $ prenom: chr  &quot;Ali&quot; &quot;Amine&quot; &quot;Anne&quot; &quot;Marc&quot; ...</span></span>
-<span id="cb9-7"><a href="01-principes.html#cb9-7" tabindex="-1"></a><span class="co">#&gt;  $ nais  : Date, format: &quot;1999-10-28&quot; &quot;1998-10-13&quot; ...</span></span>
-<span id="cb9-8"><a href="01-principes.html#cb9-8" tabindex="-1"></a><span class="co">#&gt;  $ age   : num  21 22 24 18 25</span></span>
-<span id="cb9-9"><a href="01-principes.html#cb9-9" tabindex="-1"></a><span class="co">#&gt;  $ sexe  : Factor w/ 2 levels &quot;Homme&quot;,&quot;Femme&quot;: 1 1 2 1 2</span></span>
-<span id="cb9-10"><a href="01-principes.html#cb9-10" tabindex="-1"></a><span class="co">#&gt;  $ likeR : logi  TRUE FALSE TRUE FALSE FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="01-principes.html#cb67-1" tabindex="-1"></a><span class="co"># Création d&#39;un data.frame</span></span>
+<span id="cb67-2"><a href="01-principes.html#cb67-2" tabindex="-1"></a>tab1<span class="ot">&lt;-</span><span class="fu">data.frame</span>(prenom,nais,</span>
+<span id="cb67-3"><a href="01-principes.html#cb67-3" tabindex="-1"></a>                age,sexe,likeR)</span>
+<span id="cb67-4"><a href="01-principes.html#cb67-4" tabindex="-1"></a><span class="fu">str</span>(tab1)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  5 variables:
+##  $ prenom: chr  &quot;Ali&quot; &quot;Amine&quot; &quot;Anne&quot; &quot;Marc&quot; ...
+##  $ nais  : Date, format: &quot;1999-10-28&quot; &quot;1998-10-13&quot; ...
+##  $ age   : num  21 22 24 18 25
+##  $ sexe  : Factor w/ 2 levels &quot;Homme&quot;,&quot;Femme&quot;: 1 1 2 1 2
+##  $ likeR : logi  TRUE FALSE TRUE FALSE FALSE</code></pre>
 </div>
 <div id="le-type-tibble" class="section level3 hasAnchor" number="1.5.2">
 <h3><span class="header-section-number">1.5.2</span> Le type <em>tibble</em><a href="01-principes.html#le-type-tibble" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>c’est un type créé par Hadley Wickham pour développer la suite de fonctions <strong>Tidyverse</strong> ou <strong>ggplot</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="01-principes.html#cb10-1" tabindex="-1"></a><span class="co"># Création d&#39;un tibble</span></span>
-<span id="cb10-2"><a href="01-principes.html#cb10-2" tabindex="-1"></a><span class="fu">library</span>(tidyr, <span class="at">quiet=</span>T)</span>
-<span id="cb10-3"><a href="01-principes.html#cb10-3" tabindex="-1"></a>tab2<span class="ot">&lt;-</span><span class="fu">tibble</span>(prenom,nais,</span>
-<span id="cb10-4"><a href="01-principes.html#cb10-4" tabindex="-1"></a>            age,sexe,likeR)</span>
-<span id="cb10-5"><a href="01-principes.html#cb10-5" tabindex="-1"></a><span class="fu">str</span>(tab2)</span>
-<span id="cb10-6"><a href="01-principes.html#cb10-6" tabindex="-1"></a><span class="co">#&gt; tibble [5 × 5] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb10-7"><a href="01-principes.html#cb10-7" tabindex="-1"></a><span class="co">#&gt;  $ prenom: chr [1:5] &quot;Ali&quot; &quot;Amine&quot; &quot;Anne&quot; &quot;Marc&quot; ...</span></span>
-<span id="cb10-8"><a href="01-principes.html#cb10-8" tabindex="-1"></a><span class="co">#&gt;  $ nais  : Date[1:5], format: &quot;1999-10-28&quot; &quot;1998-10-13&quot; ...</span></span>
-<span id="cb10-9"><a href="01-principes.html#cb10-9" tabindex="-1"></a><span class="co">#&gt;  $ age   : num [1:5] 21 22 24 18 25</span></span>
-<span id="cb10-10"><a href="01-principes.html#cb10-10" tabindex="-1"></a><span class="co">#&gt;  $ sexe  : Factor w/ 2 levels &quot;Homme&quot;,&quot;Femme&quot;: 1 1 2 1 2</span></span>
-<span id="cb10-11"><a href="01-principes.html#cb10-11" tabindex="-1"></a><span class="co">#&gt;  $ likeR : logi [1:5] TRUE FALSE TRUE FALSE FALSE</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="01-principes.html#cb69-1" tabindex="-1"></a><span class="co"># Création d&#39;un tibble</span></span>
+<span id="cb69-2"><a href="01-principes.html#cb69-2" tabindex="-1"></a><span class="fu">library</span>(tidyr, <span class="at">quiet=</span>T)</span>
+<span id="cb69-3"><a href="01-principes.html#cb69-3" tabindex="-1"></a>tab2<span class="ot">&lt;-</span><span class="fu">tibble</span>(prenom,nais,</span>
+<span id="cb69-4"><a href="01-principes.html#cb69-4" tabindex="-1"></a>            age,sexe,likeR)</span>
+<span id="cb69-5"><a href="01-principes.html#cb69-5" tabindex="-1"></a><span class="fu">str</span>(tab2)</span></code></pre></div>
+<pre><code>## tibble [5 × 5] (S3: tbl_df/tbl/data.frame)
+##  $ prenom: chr [1:5] &quot;Ali&quot; &quot;Amine&quot; &quot;Anne&quot; &quot;Marc&quot; ...
+##  $ nais  : Date[1:5], format: &quot;1999-10-28&quot; &quot;1998-10-13&quot; ...
+##  $ age   : num [1:5] 21 22 24 18 25
+##  $ sexe  : Factor w/ 2 levels &quot;Homme&quot;,&quot;Femme&quot;: 1 1 2 1 2
+##  $ likeR : logi [1:5] TRUE FALSE TRUE FALSE FALSE</code></pre>
 </div>
 <div id="le-type-data.table" class="section level3 hasAnchor" number="1.5.3">
 <h3><span class="header-section-number">1.5.3</span> Le type <em>data.table</em><a href="01-principes.html#le-type-data.table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>C’est un type récent créé pour traiter les tableaux de très grande taille à l’aide du package … <strong>data.table</strong></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="01-principes.html#cb11-1" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="01-principes.html#cb11-2" tabindex="-1"></a><span class="co"># Création d&#39;un data.table</span></span>
-<span id="cb11-3"><a href="01-principes.html#cb11-3" tabindex="-1"></a><span class="fu">library</span>(data.table, <span class="at">quiet=</span>T)</span>
-<span id="cb11-4"><a href="01-principes.html#cb11-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb11-5"><a href="01-principes.html#cb11-5" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;data.table&#39;</span></span>
-<span id="cb11-6"><a href="01-principes.html#cb11-6" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:lubridate&#39;:</span></span>
-<span id="cb11-7"><a href="01-principes.html#cb11-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb11-8"><a href="01-principes.html#cb11-8" tabindex="-1"></a><span class="co">#&gt;     hour, isoweek, mday, minute, month, quarter, second, wday, week,</span></span>
-<span id="cb11-9"><a href="01-principes.html#cb11-9" tabindex="-1"></a><span class="co">#&gt;     yday, year</span></span>
-<span id="cb11-10"><a href="01-principes.html#cb11-10" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:dplyr&#39;:</span></span>
-<span id="cb11-11"><a href="01-principes.html#cb11-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb11-12"><a href="01-principes.html#cb11-12" tabindex="-1"></a><span class="co">#&gt;     between, first, last</span></span>
-<span id="cb11-13"><a href="01-principes.html#cb11-13" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:purrr&#39;:</span></span>
-<span id="cb11-14"><a href="01-principes.html#cb11-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb11-15"><a href="01-principes.html#cb11-15" tabindex="-1"></a><span class="co">#&gt;     transpose</span></span>
-<span id="cb11-16"><a href="01-principes.html#cb11-16" tabindex="-1"></a>tab3<span class="ot">&lt;-</span><span class="fu">data.table</span>(prenom,nais,</span>
-<span id="cb11-17"><a href="01-principes.html#cb11-17" tabindex="-1"></a>                age,sexe,likeR)</span>
-<span id="cb11-18"><a href="01-principes.html#cb11-18" tabindex="-1"></a><span class="fu">str</span>(tab3)</span>
-<span id="cb11-19"><a href="01-principes.html#cb11-19" tabindex="-1"></a><span class="co">#&gt; Classes &#39;data.table&#39; and &#39;data.frame&#39;:   5 obs. of  5 variables:</span></span>
-<span id="cb11-20"><a href="01-principes.html#cb11-20" tabindex="-1"></a><span class="co">#&gt;  $ prenom: chr  &quot;Ali&quot; &quot;Amine&quot; &quot;Anne&quot; &quot;Marc&quot; ...</span></span>
-<span id="cb11-21"><a href="01-principes.html#cb11-21" tabindex="-1"></a><span class="co">#&gt;  $ nais  : Date, format: &quot;1999-10-28&quot; &quot;1998-10-13&quot; ...</span></span>
-<span id="cb11-22"><a href="01-principes.html#cb11-22" tabindex="-1"></a><span class="co">#&gt;  $ age   : num  21 22 24 18 25</span></span>
-<span id="cb11-23"><a href="01-principes.html#cb11-23" tabindex="-1"></a><span class="co">#&gt;  $ sexe  : Factor w/ 2 levels &quot;Homme&quot;,&quot;Femme&quot;: 1 1 2 1 2</span></span>
-<span id="cb11-24"><a href="01-principes.html#cb11-24" tabindex="-1"></a><span class="co">#&gt;  $ likeR : logi  TRUE FALSE TRUE FALSE FALSE</span></span>
-<span id="cb11-25"><a href="01-principes.html#cb11-25" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="01-principes.html#cb71-1" tabindex="-1"></a><span class="co"># Création d&#39;un data.table</span></span>
+<span id="cb71-2"><a href="01-principes.html#cb71-2" tabindex="-1"></a><span class="fu">library</span>(data.table, <span class="at">quiet=</span>T)</span></code></pre></div>
+<pre><code>## Warning: package &#39;data.table&#39; was built under R version 4.3.3</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="01-principes.html#cb73-1" tabindex="-1"></a>tab3<span class="ot">&lt;-</span><span class="fu">data.table</span>(prenom,nais,</span>
+<span id="cb73-2"><a href="01-principes.html#cb73-2" tabindex="-1"></a>                age,sexe,likeR)</span>
+<span id="cb73-3"><a href="01-principes.html#cb73-3" tabindex="-1"></a><span class="fu">str</span>(tab3)</span></code></pre></div>
+<pre><code>## Classes &#39;data.table&#39; and &#39;data.frame&#39;:   5 obs. of  5 variables:
+##  $ prenom: chr  &quot;Ali&quot; &quot;Amine&quot; &quot;Anne&quot; &quot;Marc&quot; ...
+##  $ nais  : Date, format: &quot;1999-10-28&quot; &quot;1998-10-13&quot; ...
+##  $ age   : num  21 22 24 18 25
+##  $ sexe  : Factor w/ 2 levels &quot;Homme&quot;,&quot;Femme&quot;: 1 1 2 1 2
+##  $ likeR : logi  TRUE FALSE TRUE FALSE FALSE
+##  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt;</code></pre>
 </div>
 </div>
 <div id="en-résumé" class="section level2 hasAnchor" number="1.6">
@@ -859,51 +823,76 @@ de consulter la <code>documentation</code> et les
 <h2><span class="header-section-number">1.7</span> Exercices<a href="01-principes.html#exercices" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Exercice 1</strong></p>
 <p>Construire le vecteur <code>x</code> suivant :</p>
-<pre><code>#&gt; [1] &quot;Paris&quot;    &quot;Londres&quot;  &quot;Tokyo&quot;    &quot;New York&quot;</code></pre>
-\iffalse
+<pre><code>## [1] &quot;Paris&quot;    &quot;Londres&quot;  &quot;Tokyo&quot;    &quot;New York&quot;</code></pre>
 <div class="solution-exo">
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="01-principes.html#cb13-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Paris&quot;</span>, <span class="st">&quot;Londres&quot;</span>,<span class="st">&quot;Tokyo&quot;</span>,<span class="st">&quot;New York&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="01-principes.html#cb76-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Paris&quot;</span>, <span class="st">&quot;Londres&quot;</span>,<span class="st">&quot;Tokyo&quot;</span>,<span class="st">&quot;New York&quot;</span>)</span></code></pre></div>
 </div>
 <p>Construire le vecteur <code>y</code> suivant :</p>
-<pre><code>#&gt; [1] &quot;France&quot;      &quot;Royaume-Uni&quot; &quot;Japon&quot;       &quot;USA&quot;</code></pre>
-\iffalse
+<pre><code>## [1] &quot;France&quot;      &quot;Royaume-Uni&quot; &quot;Japon&quot;       &quot;USA&quot;</code></pre>
 <div class="solution-exo">
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="01-principes.html#cb15-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Royaume-Uni&quot;</span>,<span class="st">&quot;Japon&quot;</span>,<span class="st">&quot;USA&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="01-principes.html#cb78-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;France&quot;</span>, <span class="st">&quot;Royaume-Uni&quot;</span>,<span class="st">&quot;Japon&quot;</span>,<span class="st">&quot;USA&quot;</span>)</span></code></pre></div>
 </div>
 <p>Construire le vecteur <code>z</code> suivant :</p>
-<pre><code>#&gt; [1] 10.2 14.6 42.8 23.9</code></pre>
-\iffalse
+<pre><code>## [1] 10.2 14.6 42.8 23.9</code></pre>
 <div class="solution-exo">
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="01-principes.html#cb17-1" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">14.6</span>,<span class="fl">42.8</span>,<span class="fl">23.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="01-principes.html#cb80-1" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">10.2</span>, <span class="fl">14.6</span>,<span class="fl">42.8</span>,<span class="fl">23.9</span>)</span></code></pre></div>
 </div>
 <p>Construire la matrice <code>m1</code></p>
-<pre><code>#&gt;   [,1]     [,2]          [,3]    [,4]      
-#&gt; x &quot;Paris&quot;  &quot;Londres&quot;     &quot;Tokyo&quot; &quot;New York&quot;
-#&gt; y &quot;France&quot; &quot;Royaume-Uni&quot; &quot;Japon&quot; &quot;USA&quot;</code></pre>
-\iffalse
+<pre><code>##   [,1]     [,2]          [,3]    [,4]      
+## x &quot;Paris&quot;  &quot;Londres&quot;     &quot;Tokyo&quot; &quot;New York&quot;
+## y &quot;France&quot; &quot;Royaume-Uni&quot; &quot;Japon&quot; &quot;USA&quot;</code></pre>
 <div class="solution-exo">
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="01-principes.html#cb19-1" tabindex="-1"></a>m1<span class="ot">&lt;-</span><span class="fu">rbind</span>(x,y)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="01-principes.html#cb82-1" tabindex="-1"></a>m1<span class="ot">&lt;-</span><span class="fu">rbind</span>(x,y)</span></code></pre></div>
 </div>
 <p>Construire le data.frame <code>df</code></p>
-<pre><code>#&gt;             y        x    z
-#&gt; 1      France    Paris 10.2
-#&gt; 2 Royaume-Uni  Londres 14.6
-#&gt; 3       Japon    Tokyo 42.8
-#&gt; 4         USA New York 23.9</code></pre>
-\iffalse
+<pre><code>##             y        x    z
+## 1      France    Paris 10.2
+## 2 Royaume-Uni  Londres 14.6
+## 3       Japon    Tokyo 42.8
+## 4         USA New York 23.9</code></pre>
 <div class="solution-exo">
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="01-principes.html#cb21-1" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(y,x,z)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="01-principes.html#cb84-1" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(y,x,z)</span></code></pre></div>
 </div>
 <p><strong>Exercice 2 (d’après J.Barnier)</strong></p>
 <p>On a demandé à 4 ménages le revenu des deux conjoints, et le nombre de personnes du ménage :</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="01-principes.html#cb22-1" tabindex="-1"></a>conjoint1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1200</span>, <span class="dv">1180</span>, <span class="dv">1750</span>, <span class="dv">2100</span>)</span>
-<span id="cb22-2"><a href="01-principes.html#cb22-2" tabindex="-1"></a>conjoint2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1450</span>, <span class="dv">1870</span>, <span class="dv">1690</span>, <span class="dv">0</span>)</span>
-<span id="cb22-3"><a href="01-principes.html#cb22-3" tabindex="-1"></a>nb_personnes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="01-principes.html#cb85-1" tabindex="-1"></a>conjoint1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1200</span>, <span class="dv">1180</span>, <span class="dv">1750</span>, <span class="dv">2100</span>)</span>
+<span id="cb85-2"><a href="01-principes.html#cb85-2" tabindex="-1"></a>conjoint2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1450</span>, <span class="dv">1870</span>, <span class="dv">1690</span>, <span class="dv">0</span>)</span>
+<span id="cb85-3"><a href="01-principes.html#cb85-3" tabindex="-1"></a>nb_personnes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span></code></pre></div>
 <p>Calculer le revenu total de chaque ménage, puis diviser par le nombre de personnes pour obtenir le revenu par personne de chaque ménage.</p>
-\iffalse
 <div class="solution-exo">
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="01-principes.html#cb23-1" tabindex="-1"></a>revenu_total <span class="ot">&lt;-</span> conjoint1 <span class="sc">+</span> conjoint2</span>
-<span id="cb23-2"><a href="01-principes.html#cb23-2" tabindex="-1"></a>revenu_total <span class="sc">/</span> nb_personnes</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="01-principes.html#cb86-1" tabindex="-1"></a>revenu_total <span class="ot">&lt;-</span> conjoint1 <span class="sc">+</span> conjoint2</span>
+<span id="cb86-2"><a href="01-principes.html#cb86-2" tabindex="-1"></a>revenu_total <span class="sc">/</span> nb_personnes</span></code></pre></div>
+<pre><code>## [1]  662.500 1525.000 1146.667 1050.000</code></pre>
+</div>
+<p><strong>Exercice 3 (très difficile !) </strong></p>
+<p>On a enregistré les données de trois indivius sous forme de <code>listes</code> et on voudrais convertir le tout en <code>data.frame</code> :</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="01-principes.html#cb88-1" tabindex="-1"></a>ind1<span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">prenom=</span><span class="st">&quot;Alice&quot;</span>,<span class="at">age =</span> <span class="dv">20</span>, <span class="at">likeR=</span><span class="cn">TRUE</span>)</span>
+<span id="cb88-2"><a href="01-principes.html#cb88-2" tabindex="-1"></a>ind2<span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">prenom=</span><span class="st">&quot;Bob&quot;</span>,<span class="at">age =</span> <span class="dv">18</span>, <span class="at">likeR=</span><span class="cn">FALSE</span>)</span>
+<span id="cb88-3"><a href="01-principes.html#cb88-3" tabindex="-1"></a>ind3<span class="ot">&lt;-</span><span class="fu">list</span>(<span class="at">prenom=</span><span class="st">&quot;Rose&quot;</span>,<span class="at">age =</span> <span class="dv">14</span>, <span class="at">likeR=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Voici le résultat attendu :</p>
+<pre><code>##   prenom age likeR
+## 1  Alice  20  TRUE
+## 2    Bob  18 FALSE
+## 3   Rose  14  TRUE</code></pre>
+<div class="solution-exo">
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="01-principes.html#cb90-1" tabindex="-1"></a><span class="co"># On forme une liste de liste ...</span></span>
+<span id="cb90-2"><a href="01-principes.html#cb90-2" tabindex="-1"></a>list_ind<span class="ot">&lt;-</span><span class="fu">list</span>(ind1,ind2,ind3)</span>
+<span id="cb90-3"><a href="01-principes.html#cb90-3" tabindex="-1"></a><span class="co"># On applique une formule obscure...</span></span>
+<span id="cb90-4"><a href="01-principes.html#cb90-4" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">as.data.frame</span>(<span class="fu">do.call</span>(rbind.data.frame,list_ind))</span>
+<span id="cb90-5"><a href="01-principes.html#cb90-5" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##   prenom age likeR
+## 1  Alice  20  TRUE
+## 2    Bob  18 FALSE
+## 3   Rose  14  TRUE</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="01-principes.html#cb92-1" tabindex="-1"></a><span class="co"># Où on utilise un package spécialisé ...</span></span>
+<span id="cb92-2"><a href="01-principes.html#cb92-2" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb92-3"><a href="01-principes.html#cb92-3" tabindex="-1"></a>df<span class="ot">&lt;-</span><span class="fu">rbindlist</span>(list_ind)</span>
+<span id="cb92-4"><a href="01-principes.html#cb92-4" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##    prenom   age  likeR
+##    &lt;char&gt; &lt;num&gt; &lt;lgcl&gt;
+## 1:  Alice    20   TRUE
+## 2:    Bob    18  FALSE
+## 3:   Rose    14   TRUE</code></pre>
 </div>
 
 </div>
@@ -970,20 +959,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

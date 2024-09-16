@@ -281,13 +281,13 @@ x <- c("Paris", "Londres","Tokyo","New York")
 x
 ```
 
-\iffalse
+
 <div class="solution-exo">
 ```{r eval=FALSE}
 x <- c("Paris", "Londres","Tokyo","New York")
 ```
 </div>
-\fi
+
 
 Construire le vecteur `y` suivant :
 
@@ -296,13 +296,13 @@ y <- c("France", "Royaume-Uni","Japon","USA")
 y
 ```
 
-\iffalse
+
 <div class="solution-exo">
 ```{r eval=FALSE}
 y <- c("France", "Royaume-Uni","Japon","USA")
 ```
 </div>
-\fi
+
 
 
 Construire le vecteur `z` suivant :
@@ -312,13 +312,13 @@ z <- c(10.2, 14.6,42.8,23.9)
 z
 ```
 
-\iffalse
+
 <div class="solution-exo">
 ```{r eval=FALSE}
 z <- c(10.2, 14.6,42.8,23.9)
 ```
 </div>
-\fi
+
 
 
 Construire la matrice `m1` 
@@ -328,13 +328,13 @@ m1<-rbind(x,y)
 m1
 ```
 
-\iffalse
+
 <div class="solution-exo">
 ```{r eval=FALSE}
 m1<-rbind(x,y)
 ```
 </div>
-\fi
+
 
 
 
@@ -346,13 +346,13 @@ df<-data.frame(y,x,z)
 df
 ```
 
-\iffalse
+
 <div class="solution-exo">
 ```{r eval=FALSE}
 df<-data.frame(y,x,z)
 ```
 </div>
-\fi
+
 
 
 
@@ -360,7 +360,7 @@ df<-data.frame(y,x,z)
 
 On a demandé à 4 ménages le revenu des deux conjoints, et le nombre de personnes du ménage :
 
-```{r eval=FALSE}
+```{r}
 conjoint1 <- c(1200, 1180, 1750, 2100)
 conjoint2 <- c(1450, 1870, 1690, 0)
 nb_personnes <- c(4, 2, 3, 2)
@@ -368,12 +368,50 @@ nb_personnes <- c(4, 2, 3, 2)
 
 Calculer le revenu total de chaque ménage, puis diviser par le nombre de personnes pour obtenir le revenu par personne de chaque ménage.
 
-\iffalse
+
 <div class="solution-exo">
-```{r eval=FALSE}
+```{r}
 revenu_total <- conjoint1 + conjoint2
 revenu_total / nb_personnes
 ```
 </div>
-\fi
+
+**Exercice 3 (très difficile !) **
+
+
+
+
+On a enregistré les données de trois indivius sous forme de `listes`  et on voudrais convertir le tout en `data.frame` :
+
+```{r, echo=TRUE}
+ind1<-list(prenom="Alice",age = 20, likeR=TRUE)
+ind2<-list(prenom="Bob",age = 18, likeR=FALSE)
+ind3<-list(prenom="Rose",age = 14, likeR=TRUE)
+
+```
+
+
+Voici le résultat attendu : 
+
+```{r echo=FALSE}
+list_ind<-list(ind1,ind2,ind3)
+df<-as.data.frame(do.call(rbind.data.frame,list_ind))
+df
+```
+
+
+<div class="solution-exo">
+```{r}
+# On forme une liste de liste ...
+list_ind<-list(ind1,ind2,ind3)
+# On applique une formule obscure...
+df<-as.data.frame(do.call(rbind.data.frame,list_ind))
+df
+# Où on utilise un package spécialisé ...
+library(data.table)
+df<-rbindlist(list_ind)
+df
+```
+</div>
+
 
