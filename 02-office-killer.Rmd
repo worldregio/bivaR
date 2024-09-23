@@ -8,7 +8,7 @@ knitr::include_graphics("resources/figures/Excel_horror.jpg")
 ```
 
 
-- **Mise en place** : Télécharger le [dossier exo2](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo2.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo2.Rproj` dans Rstudio.
+- **Mise en place** : Télécharger le [dossier exo2](https://github.com/worldregio/bivaR/raw/main/resources/exos/exo2.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo2.Rproj` dans Rstudio.
 
 
 Le but de ce chapitre est de montrer le plus tôt possible aux étudiants les possibilités de R et de son environnement R-Studio en ce qui concerne la production de documents ou de présentations dans le cadre d'une démarche reproductible. L'apprentissage précoce de **Rmarkdown** nous semble en effet indispensable, ne serait-ce que pour que les étudiants apprennent à prendre en cours des notes mélangeant les exemples de code R et les explications données en cours ou en TD.

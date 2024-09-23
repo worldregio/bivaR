@@ -542,7 +542,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <h1><span class="header-section-number">Partie 2</span> Office killer<a href="02-office-killer.html#office-killer" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><img src="resources/figures/Excel_horror.jpg" width="200" /></p>
 <ul>
-<li><strong>Mise en place</strong> : Télécharger le <a href="https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo2.zip">dossier exo2</a> et décompressez le sur votre ordinateur. Puis ouvrez le projet R <code>exo2.Rproj</code> dans Rstudio.</li>
+<li><strong>Mise en place</strong> : Télécharger le <a href="https://github.com/worldregio/bivaR/raw/main/resources/exos/exo2.zip">dossier exo2</a> et décompressez le sur votre ordinateur. Puis ouvrez le projet R <code>exo2.Rproj</code> dans Rstudio.</li>
 </ul>
 <p>Le but de ce chapitre est de montrer le plus tôt possible aux étudiants les possibilités de R et de son environnement R-Studio en ce qui concerne la production de documents ou de présentations dans le cadre d’une démarche reproductible. L’apprentissage précoce de <strong>Rmarkdown</strong> nous semble en effet indispensable, ne serait-ce que pour que les étudiants apprennent à prendre en cours des notes mélangeant les exemples de code R et les explications données en cours ou en TD.</p>
 <p>Mais le but véritable est de convaincre tout ou partie des étudiants qu’ils peuvent remplacer à terme les logiciels de bureautique des suites office par un environnement de travail plus intégré et plus performant… à condition d’oublier la souris pour revenir au clavier !</p>
@@ -598,315 +598,329 @@ code span.wa { color: #bf0303; } /* Warning */
 <h3><span class="header-section-number">2.2.1</span> Round 1 : Importation du tableau de données<a href="02-office-killer.html#round-1-importation-du-tableau-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Il faut importer le tableau, déterminer le nombre de lignes et de colonnes puis afficher les 5 premières et 5 dernières lignes</p>
 <p>On crée un programme R avec <em>File/New File/R Script</em> puis on l’enregistre avec <em>File/Save/ …</em> suivi du nom du programme.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="02-office-killer.html#cb27-1" tabindex="-1"></a><span class="co"># Importation du tableau</span></span>
-<span id="cb27-2"><a href="02-office-killer.html#cb27-2" tabindex="-1"></a>don <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/olympic/120-years-of-olympic-history-athletes-and-results.csv&quot;</span>,</span>
-<span id="cb27-3"><a href="02-office-killer.html#cb27-3" tabindex="-1"></a>                  <span class="at">header=</span> <span class="cn">TRUE</span>,</span>
-<span id="cb27-4"><a href="02-office-killer.html#cb27-4" tabindex="-1"></a>                  <span class="at">sep =</span><span class="st">&quot;,&quot;</span>)</span>
-<span id="cb27-5"><a href="02-office-killer.html#cb27-5" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="02-office-killer.html#cb27-6" tabindex="-1"></a><span class="co"># détermination du nombre de lignes et de colonnes</span></span>
-<span id="cb27-7"><a href="02-office-killer.html#cb27-7" tabindex="-1"></a><span class="fu">dim</span>(don)</span>
-<span id="cb27-8"><a href="02-office-killer.html#cb27-8" tabindex="-1"></a><span class="co">#&gt; [1] 271116     15</span></span>
-<span id="cb27-9"><a href="02-office-killer.html#cb27-9" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="02-office-killer.html#cb27-10" tabindex="-1"></a><span class="co"># affichage des 5 premières lignes</span></span>
-<span id="cb27-11"><a href="02-office-killer.html#cb27-11" tabindex="-1"></a><span class="fu">head</span>(don,<span class="dv">5</span>)</span>
-<span id="cb27-12"><a href="02-office-killer.html#cb27-12" tabindex="-1"></a><span class="co">#&gt;   ID                     Name Sex Age Height Weight           Team NOC</span></span>
-<span id="cb27-13"><a href="02-office-killer.html#cb27-13" tabindex="-1"></a><span class="co">#&gt; 1  1                A Dijiang   M  24    180     80          China CHN</span></span>
-<span id="cb27-14"><a href="02-office-killer.html#cb27-14" tabindex="-1"></a><span class="co">#&gt; 2  2                 A Lamusi   M  23    170     60          China CHN</span></span>
-<span id="cb27-15"><a href="02-office-killer.html#cb27-15" tabindex="-1"></a><span class="co">#&gt; 3  3      Gunnar Nielsen Aaby   M  24     NA     NA        Denmark DEN</span></span>
-<span id="cb27-16"><a href="02-office-killer.html#cb27-16" tabindex="-1"></a><span class="co">#&gt; 4  4     Edgar Lindenau Aabye   M  34     NA     NA Denmark/Sweden DEN</span></span>
-<span id="cb27-17"><a href="02-office-killer.html#cb27-17" tabindex="-1"></a><span class="co">#&gt; 5  5 Christine Jacoba Aaftink   F  21    185     82    Netherlands NED</span></span>
-<span id="cb27-18"><a href="02-office-killer.html#cb27-18" tabindex="-1"></a><span class="co">#&gt;         Games Year Season      City         Sport</span></span>
-<span id="cb27-19"><a href="02-office-killer.html#cb27-19" tabindex="-1"></a><span class="co">#&gt; 1 1992 Summer 1992 Summer Barcelona    Basketball</span></span>
-<span id="cb27-20"><a href="02-office-killer.html#cb27-20" tabindex="-1"></a><span class="co">#&gt; 2 2012 Summer 2012 Summer    London          Judo</span></span>
-<span id="cb27-21"><a href="02-office-killer.html#cb27-21" tabindex="-1"></a><span class="co">#&gt; 3 1920 Summer 1920 Summer Antwerpen      Football</span></span>
-<span id="cb27-22"><a href="02-office-killer.html#cb27-22" tabindex="-1"></a><span class="co">#&gt; 4 1900 Summer 1900 Summer     Paris    Tug-Of-War</span></span>
-<span id="cb27-23"><a href="02-office-killer.html#cb27-23" tabindex="-1"></a><span class="co">#&gt; 5 1988 Winter 1988 Winter   Calgary Speed Skating</span></span>
-<span id="cb27-24"><a href="02-office-killer.html#cb27-24" tabindex="-1"></a><span class="co">#&gt;                              Event Medal</span></span>
-<span id="cb27-25"><a href="02-office-killer.html#cb27-25" tabindex="-1"></a><span class="co">#&gt; 1      Basketball Men&#39;s Basketball  &lt;NA&gt;</span></span>
-<span id="cb27-26"><a href="02-office-killer.html#cb27-26" tabindex="-1"></a><span class="co">#&gt; 2     Judo Men&#39;s Extra-Lightweight  &lt;NA&gt;</span></span>
-<span id="cb27-27"><a href="02-office-killer.html#cb27-27" tabindex="-1"></a><span class="co">#&gt; 3          Football Men&#39;s Football  &lt;NA&gt;</span></span>
-<span id="cb27-28"><a href="02-office-killer.html#cb27-28" tabindex="-1"></a><span class="co">#&gt; 4      Tug-Of-War Men&#39;s Tug-Of-War  Gold</span></span>
-<span id="cb27-29"><a href="02-office-killer.html#cb27-29" tabindex="-1"></a><span class="co">#&gt; 5 Speed Skating Women&#39;s 500 metres  &lt;NA&gt;</span></span>
-<span id="cb27-30"><a href="02-office-killer.html#cb27-30" tabindex="-1"></a></span>
-<span id="cb27-31"><a href="02-office-killer.html#cb27-31" tabindex="-1"></a><span class="co"># Affichage du tableau</span></span>
-<span id="cb27-32"><a href="02-office-killer.html#cb27-32" tabindex="-1"></a><span class="fu">tail</span>(don,<span class="dv">5</span>)</span>
-<span id="cb27-33"><a href="02-office-killer.html#cb27-33" tabindex="-1"></a><span class="co">#&gt;            ID               Name Sex Age Height Weight     Team NOC       Games</span></span>
-<span id="cb27-34"><a href="02-office-killer.html#cb27-34" tabindex="-1"></a><span class="co">#&gt; 271112 135569         Andrzej ya   M  29    179     89 Poland-1 POL 1976 Winter</span></span>
-<span id="cb27-35"><a href="02-office-killer.html#cb27-35" tabindex="-1"></a><span class="co">#&gt; 271113 135570           Piotr ya   M  27    176     59   Poland POL 2014 Winter</span></span>
-<span id="cb27-36"><a href="02-office-killer.html#cb27-36" tabindex="-1"></a><span class="co">#&gt; 271114 135570           Piotr ya   M  27    176     59   Poland POL 2014 Winter</span></span>
-<span id="cb27-37"><a href="02-office-killer.html#cb27-37" tabindex="-1"></a><span class="co">#&gt; 271115 135571 Tomasz Ireneusz ya   M  30    185     96   Poland POL 1998 Winter</span></span>
-<span id="cb27-38"><a href="02-office-killer.html#cb27-38" tabindex="-1"></a><span class="co">#&gt; 271116 135571 Tomasz Ireneusz ya   M  34    185     96   Poland POL 2002 Winter</span></span>
-<span id="cb27-39"><a href="02-office-killer.html#cb27-39" tabindex="-1"></a><span class="co">#&gt;        Year Season           City       Sport</span></span>
-<span id="cb27-40"><a href="02-office-killer.html#cb27-40" tabindex="-1"></a><span class="co">#&gt; 271112 1976 Winter      Innsbruck        Luge</span></span>
-<span id="cb27-41"><a href="02-office-killer.html#cb27-41" tabindex="-1"></a><span class="co">#&gt; 271113 2014 Winter          Sochi Ski Jumping</span></span>
-<span id="cb27-42"><a href="02-office-killer.html#cb27-42" tabindex="-1"></a><span class="co">#&gt; 271114 2014 Winter          Sochi Ski Jumping</span></span>
-<span id="cb27-43"><a href="02-office-killer.html#cb27-43" tabindex="-1"></a><span class="co">#&gt; 271115 1998 Winter         Nagano   Bobsleigh</span></span>
-<span id="cb27-44"><a href="02-office-killer.html#cb27-44" tabindex="-1"></a><span class="co">#&gt; 271116 2002 Winter Salt Lake City   Bobsleigh</span></span>
-<span id="cb27-45"><a href="02-office-killer.html#cb27-45" tabindex="-1"></a><span class="co">#&gt;                                           Event Medal</span></span>
-<span id="cb27-46"><a href="02-office-killer.html#cb27-46" tabindex="-1"></a><span class="co">#&gt; 271112               Luge Mixed (Men)&#39;s Doubles  &lt;NA&gt;</span></span>
-<span id="cb27-47"><a href="02-office-killer.html#cb27-47" tabindex="-1"></a><span class="co">#&gt; 271113 Ski Jumping Men&#39;s Large Hill, Individual  &lt;NA&gt;</span></span>
-<span id="cb27-48"><a href="02-office-killer.html#cb27-48" tabindex="-1"></a><span class="co">#&gt; 271114       Ski Jumping Men&#39;s Large Hill, Team  &lt;NA&gt;</span></span>
-<span id="cb27-49"><a href="02-office-killer.html#cb27-49" tabindex="-1"></a><span class="co">#&gt; 271115                     Bobsleigh Men&#39;s Four  &lt;NA&gt;</span></span>
-<span id="cb27-50"><a href="02-office-killer.html#cb27-50" tabindex="-1"></a><span class="co">#&gt; 271116                     Bobsleigh Men&#39;s Four  &lt;NA&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="02-office-killer.html#cb1-1" tabindex="-1"></a><span class="co"># Importation du tableau</span></span>
+<span id="cb1-2"><a href="02-office-killer.html#cb1-2" tabindex="-1"></a>don <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/olympic/120-years-of-olympic-history-athletes-and-results.csv&quot;</span>,</span>
+<span id="cb1-3"><a href="02-office-killer.html#cb1-3" tabindex="-1"></a>                  <span class="at">header=</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-4"><a href="02-office-killer.html#cb1-4" tabindex="-1"></a>                  <span class="at">sep =</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb1-5"><a href="02-office-killer.html#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="02-office-killer.html#cb1-6" tabindex="-1"></a><span class="co"># détermination du nombre de lignes et de colonnes</span></span>
+<span id="cb1-7"><a href="02-office-killer.html#cb1-7" tabindex="-1"></a><span class="fu">dim</span>(don)</span></code></pre></div>
+<pre><code>## [1] 271116     15</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="02-office-killer.html#cb3-1" tabindex="-1"></a><span class="co"># affichage des 5 premières lignes</span></span>
+<span id="cb3-2"><a href="02-office-killer.html#cb3-2" tabindex="-1"></a><span class="fu">head</span>(don,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   ID                     Name Sex Age Height Weight           Team NOC
+## 1  1                A Dijiang   M  24    180     80          China CHN
+## 2  2                 A Lamusi   M  23    170     60          China CHN
+## 3  3      Gunnar Nielsen Aaby   M  24     NA     NA        Denmark DEN
+## 4  4     Edgar Lindenau Aabye   M  34     NA     NA Denmark/Sweden DEN
+## 5  5 Christine Jacoba Aaftink   F  21    185     82    Netherlands NED
+##         Games Year Season      City         Sport
+## 1 1992 Summer 1992 Summer Barcelona    Basketball
+## 2 2012 Summer 2012 Summer    London          Judo
+## 3 1920 Summer 1920 Summer Antwerpen      Football
+## 4 1900 Summer 1900 Summer     Paris    Tug-Of-War
+## 5 1988 Winter 1988 Winter   Calgary Speed Skating
+##                              Event Medal
+## 1      Basketball Men&#39;s Basketball  &lt;NA&gt;
+## 2     Judo Men&#39;s Extra-Lightweight  &lt;NA&gt;
+## 3          Football Men&#39;s Football  &lt;NA&gt;
+## 4      Tug-Of-War Men&#39;s Tug-Of-War  Gold
+## 5 Speed Skating Women&#39;s 500 metres  &lt;NA&gt;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="02-office-killer.html#cb5-1" tabindex="-1"></a><span class="co"># Affichage du tableau</span></span>
+<span id="cb5-2"><a href="02-office-killer.html#cb5-2" tabindex="-1"></a><span class="fu">tail</span>(don,<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##            ID               Name Sex Age Height Weight     Team NOC       Games
+## 271112 135569         Andrzej ya   M  29    179     89 Poland-1 POL 1976 Winter
+## 271113 135570           Piotr ya   M  27    176     59   Poland POL 2014 Winter
+## 271114 135570           Piotr ya   M  27    176     59   Poland POL 2014 Winter
+## 271115 135571 Tomasz Ireneusz ya   M  30    185     96   Poland POL 1998 Winter
+## 271116 135571 Tomasz Ireneusz ya   M  34    185     96   Poland POL 2002 Winter
+##        Year Season           City       Sport
+## 271112 1976 Winter      Innsbruck        Luge
+## 271113 2014 Winter          Sochi Ski Jumping
+## 271114 2014 Winter          Sochi Ski Jumping
+## 271115 1998 Winter         Nagano   Bobsleigh
+## 271116 2002 Winter Salt Lake City   Bobsleigh
+##                                           Event Medal
+## 271112               Luge Mixed (Men)&#39;s Doubles  &lt;NA&gt;
+## 271113 Ski Jumping Men&#39;s Large Hill, Individual  &lt;NA&gt;
+## 271114       Ski Jumping Men&#39;s Large Hill, Team  &lt;NA&gt;
+## 271115                     Bobsleigh Men&#39;s Four  &lt;NA&gt;
+## 271116                     Bobsleigh Men&#39;s Four  &lt;NA&gt;</code></pre>
 <p>Normalement, les étudiants qui utilisent un tableur ont du aller plus vite et Excel mène sur R par 1-0</p>
 </div>
 <div id="round-2.-inventaire-des-sports-disponible" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Round 2. Inventaire des sports disponible<a href="02-office-killer.html#round-2.-inventaire-des-sports-disponible" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On souhaite faire l’inventaire de l’ensemble des sports disponibles dans la base de données. Puis créer un tableau indiquant les 10 sports sur lesquels on dispose du plus grand nombre d’information.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="02-office-killer.html#cb28-1" tabindex="-1"></a><span class="co"># Création d&#39;une table</span></span>
-<span id="cb28-2"><a href="02-office-killer.html#cb28-2" tabindex="-1"></a>tab<span class="ot">&lt;-</span><span class="fu">table</span>(don<span class="sc">$</span>Sport)</span>
-<span id="cb28-3"><a href="02-office-killer.html#cb28-3" tabindex="-1"></a><span class="fu">class</span>(tab)</span>
-<span id="cb28-4"><a href="02-office-killer.html#cb28-4" tabindex="-1"></a><span class="co">#&gt; [1] &quot;table&quot;</span></span>
-<span id="cb28-5"><a href="02-office-killer.html#cb28-5" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="02-office-killer.html#cb28-6" tabindex="-1"></a><span class="co"># Transformation de la table en data.frame</span></span>
-<span id="cb28-7"><a href="02-office-killer.html#cb28-7" tabindex="-1"></a>res<span class="ot">&lt;-</span><span class="fu">data.frame</span>(tab)</span>
-<span id="cb28-8"><a href="02-office-killer.html#cb28-8" tabindex="-1"></a></span>
-<span id="cb28-9"><a href="02-office-killer.html#cb28-9" tabindex="-1"></a><span class="co"># Recodage des noms de variables</span></span>
-<span id="cb28-10"><a href="02-office-killer.html#cb28-10" tabindex="-1"></a><span class="fu">names</span>(res)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Sport&quot;</span>,<span class="st">&quot;Nbresul&quot;</span>)</span>
-<span id="cb28-11"><a href="02-office-killer.html#cb28-11" tabindex="-1"></a></span>
-<span id="cb28-12"><a href="02-office-killer.html#cb28-12" tabindex="-1"></a><span class="co"># Tri du tableau</span></span>
-<span id="cb28-13"><a href="02-office-killer.html#cb28-13" tabindex="-1"></a>res<span class="ot">&lt;-</span>res[<span class="fu">order</span>(<span class="sc">-</span>res<span class="sc">$</span>Nbresul),]</span>
-<span id="cb28-14"><a href="02-office-killer.html#cb28-14" tabindex="-1"></a></span>
-<span id="cb28-15"><a href="02-office-killer.html#cb28-15" tabindex="-1"></a></span>
-<span id="cb28-16"><a href="02-office-killer.html#cb28-16" tabindex="-1"></a><span class="co"># Affichage de res</span></span>
-<span id="cb28-17"><a href="02-office-killer.html#cb28-17" tabindex="-1"></a><span class="fu">head</span>(res, <span class="dv">20</span>)</span>
-<span id="cb28-18"><a href="02-office-killer.html#cb28-18" tabindex="-1"></a><span class="co">#&gt;                   Sport Nbresul</span></span>
-<span id="cb28-19"><a href="02-office-killer.html#cb28-19" tabindex="-1"></a><span class="co">#&gt; 6             Athletics   38624</span></span>
-<span id="cb28-20"><a href="02-office-killer.html#cb28-20" tabindex="-1"></a><span class="co">#&gt; 28           Gymnastics   26707</span></span>
-<span id="cb28-21"><a href="02-office-killer.html#cb28-21" tabindex="-1"></a><span class="co">#&gt; 55             Swimming   23195</span></span>
-<span id="cb28-22"><a href="02-office-killer.html#cb28-22" tabindex="-1"></a><span class="co">#&gt; 48             Shooting   11448</span></span>
-<span id="cb28-23"><a href="02-office-killer.html#cb28-23" tabindex="-1"></a><span class="co">#&gt; 20              Cycling   10859</span></span>
-<span id="cb28-24"><a href="02-office-killer.html#cb28-24" tabindex="-1"></a><span class="co">#&gt; 23              Fencing   10735</span></span>
-<span id="cb28-25"><a href="02-office-killer.html#cb28-25" tabindex="-1"></a><span class="co">#&gt; 44               Rowing   10595</span></span>
-<span id="cb28-26"><a href="02-office-killer.html#cb28-26" tabindex="-1"></a><span class="co">#&gt; 18 Cross Country Skiing    9133</span></span>
-<span id="cb28-27"><a href="02-office-killer.html#cb28-27" tabindex="-1"></a><span class="co">#&gt; 2         Alpine Skiing    8829</span></span>
-<span id="cb28-28"><a href="02-office-killer.html#cb28-28" tabindex="-1"></a><span class="co">#&gt; 66            Wrestling    7154</span></span>
-<span id="cb28-29"><a href="02-office-killer.html#cb28-29" tabindex="-1"></a><span class="co">#&gt; 25             Football    6745</span></span>
-<span id="cb28-30"><a href="02-office-killer.html#cb28-30" tabindex="-1"></a><span class="co">#&gt; 47              Sailing    6586</span></span>
-<span id="cb28-31"><a href="02-office-killer.html#cb28-31" tabindex="-1"></a><span class="co">#&gt; 22        Equestrianism    6344</span></span>
-<span id="cb28-32"><a href="02-office-killer.html#cb28-32" tabindex="-1"></a><span class="co">#&gt; 15             Canoeing    6171</span></span>
-<span id="cb28-33"><a href="02-office-killer.html#cb28-33" tabindex="-1"></a><span class="co">#&gt; 14               Boxing    6047</span></span>
-<span id="cb28-34"><a href="02-office-killer.html#cb28-34" tabindex="-1"></a><span class="co">#&gt; 54        Speed Skating    5613</span></span>
-<span id="cb28-35"><a href="02-office-killer.html#cb28-35" tabindex="-1"></a><span class="co">#&gt; 31           Ice Hockey    5516</span></span>
-<span id="cb28-36"><a href="02-office-killer.html#cb28-36" tabindex="-1"></a><span class="co">#&gt; 30               Hockey    5417</span></span>
-<span id="cb28-37"><a href="02-office-killer.html#cb28-37" tabindex="-1"></a><span class="co">#&gt; 12             Biathlon    4893</span></span>
-<span id="cb28-38"><a href="02-office-killer.html#cb28-38" tabindex="-1"></a><span class="co">#&gt; 9            Basketball    4536</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="02-office-killer.html#cb7-1" tabindex="-1"></a><span class="co"># Création d&#39;une table</span></span>
+<span id="cb7-2"><a href="02-office-killer.html#cb7-2" tabindex="-1"></a>tab<span class="ot">&lt;-</span><span class="fu">table</span>(don<span class="sc">$</span>Sport)</span>
+<span id="cb7-3"><a href="02-office-killer.html#cb7-3" tabindex="-1"></a><span class="fu">class</span>(tab)</span></code></pre></div>
+<pre><code>## [1] &quot;table&quot;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="02-office-killer.html#cb9-1" tabindex="-1"></a><span class="co"># Transformation de la table en data.frame</span></span>
+<span id="cb9-2"><a href="02-office-killer.html#cb9-2" tabindex="-1"></a>res<span class="ot">&lt;-</span><span class="fu">data.frame</span>(tab)</span>
+<span id="cb9-3"><a href="02-office-killer.html#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="02-office-killer.html#cb9-4" tabindex="-1"></a><span class="co"># Recodage des noms de variables</span></span>
+<span id="cb9-5"><a href="02-office-killer.html#cb9-5" tabindex="-1"></a><span class="fu">names</span>(res)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Sport&quot;</span>,<span class="st">&quot;Nbresul&quot;</span>)</span>
+<span id="cb9-6"><a href="02-office-killer.html#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="02-office-killer.html#cb9-7" tabindex="-1"></a><span class="co"># Tri du tableau</span></span>
+<span id="cb9-8"><a href="02-office-killer.html#cb9-8" tabindex="-1"></a>res<span class="ot">&lt;-</span>res[<span class="fu">order</span>(<span class="sc">-</span>res<span class="sc">$</span>Nbresul),]</span>
+<span id="cb9-9"><a href="02-office-killer.html#cb9-9" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="02-office-killer.html#cb9-10" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="02-office-killer.html#cb9-11" tabindex="-1"></a><span class="co"># Affichage de res</span></span>
+<span id="cb9-12"><a href="02-office-killer.html#cb9-12" tabindex="-1"></a><span class="fu">head</span>(res, <span class="dv">20</span>)</span></code></pre></div>
+<pre><code>##                   Sport Nbresul
+## 6             Athletics   38624
+## 28           Gymnastics   26707
+## 55             Swimming   23195
+## 48             Shooting   11448
+## 20              Cycling   10859
+## 23              Fencing   10735
+## 44               Rowing   10595
+## 18 Cross Country Skiing    9133
+## 2         Alpine Skiing    8829
+## 66            Wrestling    7154
+## 25             Football    6745
+## 47              Sailing    6586
+## 22        Equestrianism    6344
+## 15             Canoeing    6171
+## 14               Boxing    6047
+## 54        Speed Skating    5613
+## 31           Ice Hockey    5516
+## 30               Hockey    5417
+## 12             Biathlon    4893
+## 9            Basketball    4536</code></pre>
 <p>La création d’un tableau est à première vue plus facile avec un logiciel click-bouton. L’expert en Excel va utiliser la fonction tableau croisé dynamique et produire le tableau en quelques secondes. Il devrait par contre perdre un peu de temps pour trier le tableau mais finir par l’emporter.
 Excel mène 2-0.</p>
 </div>
 <div id="round-3.-sélection-dun-sport" class="section level3 hasAnchor" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Round 3. Sélection d’un sport<a href="02-office-killer.html#round-3.-sélection-dun-sport" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Vous devez maintenant extraire le tableau des résultats de tir à l’arc (“<em>Archery</em>”) après 1990 en ne conservant que les personnes qui ont obtenu une médaille.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="02-office-killer.html#cb29-1" tabindex="-1"></a></span>
-<span id="cb29-2"><a href="02-office-killer.html#cb29-2" tabindex="-1"></a><span class="co"># sélection</span></span>
-<span id="cb29-3"><a href="02-office-killer.html#cb29-3" tabindex="-1"></a>sel <span class="ot">&lt;-</span> don[don<span class="sc">$</span>Year <span class="sc">&gt;</span> <span class="dv">1990</span> <span class="sc">&amp;</span> don<span class="sc">$</span>Sport<span class="sc">==</span><span class="st">&quot;Archery&quot;</span> <span class="sc">&amp;</span> <span class="fu">is.na</span>(don<span class="sc">$</span>Medal)<span class="sc">==</span><span class="cn">FALSE</span>,]</span>
-<span id="cb29-4"><a href="02-office-killer.html#cb29-4" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="02-office-killer.html#cb29-5" tabindex="-1"></a><span class="co"># Affichage</span></span>
-<span id="cb29-6"><a href="02-office-killer.html#cb29-6" tabindex="-1"></a><span class="fu">head</span>(sel)</span>
-<span id="cb29-7"><a href="02-office-killer.html#cb29-7" tabindex="-1"></a><span class="co">#&gt;          ID                       Name Sex Age Height Weight         Team NOC</span></span>
-<span id="cb29-8"><a href="02-office-killer.html#cb29-8" tabindex="-1"></a><span class="co">#&gt; 9542   5233            Virginie Arnold   F  28    155     50       France FRA</span></span>
-<span id="cb29-9"><a href="02-office-killer.html#cb29-9" tabindex="-1"></a><span class="co">#&gt; 9966   5447      Loedmila Arzjannikova   F  34    168     62 Unified Team EUN</span></span>
-<span id="cb29-10"><a href="02-office-killer.html#cb29-10" tabindex="-1"></a><span class="co">#&gt; 11205  6126     Mariana Avitia Martnez   F  18    164     61       Mexico MEX</span></span>
-<span id="cb29-11"><a href="02-office-killer.html#cb29-11" tabindex="-1"></a><span class="co">#&gt; 12356  6710 Bair Dorzhiyevich Badyonov   M  32    178     75       Russia RUS</span></span>
-<span id="cb29-12"><a href="02-office-killer.html#cb29-12" tabindex="-1"></a><span class="co">#&gt; 22407 11799             Matteo Bisiani   M  19    184     85        Italy ITA</span></span>
-<span id="cb29-13"><a href="02-office-killer.html#cb29-13" tabindex="-1"></a><span class="co">#&gt; 22409 11799             Matteo Bisiani   M  24    184     85        Italy ITA</span></span>
-<span id="cb29-14"><a href="02-office-killer.html#cb29-14" tabindex="-1"></a><span class="co">#&gt;             Games Year Season      City   Sport                      Event</span></span>
-<span id="cb29-15"><a href="02-office-killer.html#cb29-15" tabindex="-1"></a><span class="co">#&gt; 9542  2008 Summer 2008 Summer   Beijing Archery       Archery Women&#39;s Team</span></span>
-<span id="cb29-16"><a href="02-office-killer.html#cb29-16" tabindex="-1"></a><span class="co">#&gt; 9966  1992 Summer 1992 Summer Barcelona Archery       Archery Women&#39;s Team</span></span>
-<span id="cb29-17"><a href="02-office-killer.html#cb29-17" tabindex="-1"></a><span class="co">#&gt; 11205 2012 Summer 2012 Summer    London Archery Archery Women&#39;s Individual</span></span>
-<span id="cb29-18"><a href="02-office-killer.html#cb29-18" tabindex="-1"></a><span class="co">#&gt; 12356 2008 Summer 2008 Summer   Beijing Archery   Archery Men&#39;s Individual</span></span>
-<span id="cb29-19"><a href="02-office-killer.html#cb29-19" tabindex="-1"></a><span class="co">#&gt; 22407 1996 Summer 1996 Summer   Atlanta Archery         Archery Men&#39;s Team</span></span>
-<span id="cb29-20"><a href="02-office-killer.html#cb29-20" tabindex="-1"></a><span class="co">#&gt; 22409 2000 Summer 2000 Summer    Sydney Archery         Archery Men&#39;s Team</span></span>
-<span id="cb29-21"><a href="02-office-killer.html#cb29-21" tabindex="-1"></a><span class="co">#&gt;        Medal</span></span>
-<span id="cb29-22"><a href="02-office-killer.html#cb29-22" tabindex="-1"></a><span class="co">#&gt; 9542  Bronze</span></span>
-<span id="cb29-23"><a href="02-office-killer.html#cb29-23" tabindex="-1"></a><span class="co">#&gt; 9966  Bronze</span></span>
-<span id="cb29-24"><a href="02-office-killer.html#cb29-24" tabindex="-1"></a><span class="co">#&gt; 11205 Bronze</span></span>
-<span id="cb29-25"><a href="02-office-killer.html#cb29-25" tabindex="-1"></a><span class="co">#&gt; 12356 Bronze</span></span>
-<span id="cb29-26"><a href="02-office-killer.html#cb29-26" tabindex="-1"></a><span class="co">#&gt; 22407 Bronze</span></span>
-<span id="cb29-27"><a href="02-office-killer.html#cb29-27" tabindex="-1"></a><span class="co">#&gt; 22409 Silver</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="02-office-killer.html#cb11-1" tabindex="-1"></a><span class="co"># sélection</span></span>
+<span id="cb11-2"><a href="02-office-killer.html#cb11-2" tabindex="-1"></a>sel <span class="ot">&lt;-</span> don[don<span class="sc">$</span>Year <span class="sc">&gt;</span> <span class="dv">1990</span> <span class="sc">&amp;</span> don<span class="sc">$</span>Sport<span class="sc">==</span><span class="st">&quot;Archery&quot;</span> <span class="sc">&amp;</span> <span class="fu">is.na</span>(don<span class="sc">$</span>Medal)<span class="sc">==</span><span class="cn">FALSE</span>,]</span>
+<span id="cb11-3"><a href="02-office-killer.html#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="02-office-killer.html#cb11-4" tabindex="-1"></a><span class="co"># Affichage</span></span>
+<span id="cb11-5"><a href="02-office-killer.html#cb11-5" tabindex="-1"></a><span class="fu">head</span>(sel)</span></code></pre></div>
+<pre><code>##          ID                       Name Sex Age Height Weight         Team NOC
+## 9542   5233            Virginie Arnold   F  28    155     50       France FRA
+## 9966   5447      Loedmila Arzjannikova   F  34    168     62 Unified Team EUN
+## 11205  6126     Mariana Avitia Martnez   F  18    164     61       Mexico MEX
+## 12356  6710 Bair Dorzhiyevich Badyonov   M  32    178     75       Russia RUS
+## 22407 11799             Matteo Bisiani   M  19    184     85        Italy ITA
+## 22409 11799             Matteo Bisiani   M  24    184     85        Italy ITA
+##             Games Year Season      City   Sport                      Event
+## 9542  2008 Summer 2008 Summer   Beijing Archery       Archery Women&#39;s Team
+## 9966  1992 Summer 1992 Summer Barcelona Archery       Archery Women&#39;s Team
+## 11205 2012 Summer 2012 Summer    London Archery Archery Women&#39;s Individual
+## 12356 2008 Summer 2008 Summer   Beijing Archery   Archery Men&#39;s Individual
+## 22407 1996 Summer 1996 Summer   Atlanta Archery         Archery Men&#39;s Team
+## 22409 2000 Summer 2000 Summer    Sydney Archery         Archery Men&#39;s Team
+##        Medal
+## 9542  Bronze
+## 9966  Bronze
+## 11205 Bronze
+## 12356 Bronze
+## 22407 Bronze
+## 22409 Silver</code></pre>
 <p>Là, je parie que les utilisateurs d’Excel ont eu un peu plus de mal … mais on va supposer qu’il y a match nul : Excel = 3, R = 1</p>
 </div>
 <div id="round-4.-analyse-de-lâge-du-poids-de-la-taille-et-de-limc-des-sportifs" class="section level3 hasAnchor" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> Round 4. Analyse de l’âge, du poids, de la taille et de l’IMC des sportifs<a href="02-office-killer.html#round-4.-analyse-de-lâge-du-poids-de-la-taille-et-de-limc-des-sportifs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Résumez statistiquement, l’âge, le poids, la taille et l’Indice de Masse Corporelle (IMC = Poids en kg/ carré de la taille en mètres ) des personnes ayant obtenu une médaille en séparant les hommes et les femmes.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="02-office-killer.html#cb30-1" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Age, </span>
-<span id="cb30-2"><a href="02-office-killer.html#cb30-2" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
-<span id="cb30-3"><a href="02-office-killer.html#cb30-3" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
-<span id="cb30-4"><a href="02-office-killer.html#cb30-4" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
-<span id="cb30-5"><a href="02-office-killer.html#cb30-5" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span id="cb30-6"><a href="02-office-killer.html#cb30-6" tabindex="-1"></a><span class="co">#&gt;   17.00   21.00   24.00   24.31   27.00   39.00 </span></span>
-<span id="cb30-7"><a href="02-office-killer.html#cb30-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-8"><a href="02-office-killer.html#cb30-8" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
-<span id="cb30-9"><a href="02-office-killer.html#cb30-9" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span id="cb30-10"><a href="02-office-killer.html#cb30-10" tabindex="-1"></a><span class="co">#&gt;   17.00   21.00   24.00   25.25   27.25   45.00</span></span>
-<span id="cb30-11"><a href="02-office-killer.html#cb30-11" tabindex="-1"></a></span>
-<span id="cb30-12"><a href="02-office-killer.html#cb30-12" tabindex="-1"></a></span>
-<span id="cb30-13"><a href="02-office-killer.html#cb30-13" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Height, </span>
-<span id="cb30-14"><a href="02-office-killer.html#cb30-14" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
-<span id="cb30-15"><a href="02-office-killer.html#cb30-15" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
-<span id="cb30-16"><a href="02-office-killer.html#cb30-16" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
-<span id="cb30-17"><a href="02-office-killer.html#cb30-17" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb30-18"><a href="02-office-killer.html#cb30-18" tabindex="-1"></a><span class="co">#&gt;   155.0   165.0   168.0   167.8   170.0   185.0       7 </span></span>
-<span id="cb30-19"><a href="02-office-killer.html#cb30-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-20"><a href="02-office-killer.html#cb30-20" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
-<span id="cb30-21"><a href="02-office-killer.html#cb30-21" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb30-22"><a href="02-office-killer.html#cb30-22" tabindex="-1"></a><span class="co">#&gt;   170.0   178.0   180.0   179.9   183.0   191.0       2</span></span>
-<span id="cb30-23"><a href="02-office-killer.html#cb30-23" tabindex="-1"></a></span>
-<span id="cb30-24"><a href="02-office-killer.html#cb30-24" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Weight,</span>
-<span id="cb30-25"><a href="02-office-killer.html#cb30-25" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
-<span id="cb30-26"><a href="02-office-killer.html#cb30-26" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
-<span id="cb30-27"><a href="02-office-killer.html#cb30-27" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
-<span id="cb30-28"><a href="02-office-killer.html#cb30-28" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb30-29"><a href="02-office-killer.html#cb30-29" tabindex="-1"></a><span class="co">#&gt;   50.00   58.00   63.00   62.84   65.00   86.00       7 </span></span>
-<span id="cb30-30"><a href="02-office-killer.html#cb30-30" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-31"><a href="02-office-killer.html#cb30-31" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
-<span id="cb30-32"><a href="02-office-killer.html#cb30-32" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb30-33"><a href="02-office-killer.html#cb30-33" tabindex="-1"></a><span class="co">#&gt;   58.00   73.00   78.50   81.71   89.75  110.00       2</span></span>
-<span id="cb30-34"><a href="02-office-killer.html#cb30-34" tabindex="-1"></a></span>
-<span id="cb30-35"><a href="02-office-killer.html#cb30-35" tabindex="-1"></a>sel<span class="sc">$</span>IMC <span class="ot">&lt;-</span> sel<span class="sc">$</span>Weight<span class="sc">/</span>(sel<span class="sc">$</span>Height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">**</span><span class="dv">2</span></span>
-<span id="cb30-36"><a href="02-office-killer.html#cb30-36" tabindex="-1"></a></span>
-<span id="cb30-37"><a href="02-office-killer.html#cb30-37" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>IMC,</span>
-<span id="cb30-38"><a href="02-office-killer.html#cb30-38" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
-<span id="cb30-39"><a href="02-office-killer.html#cb30-39" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
-<span id="cb30-40"><a href="02-office-killer.html#cb30-40" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
-<span id="cb30-41"><a href="02-office-killer.html#cb30-41" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb30-42"><a href="02-office-killer.html#cb30-42" tabindex="-1"></a><span class="co">#&gt;   18.78   20.44   22.06   22.31   24.01   28.73       7 </span></span>
-<span id="cb30-43"><a href="02-office-killer.html#cb30-43" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-44"><a href="02-office-killer.html#cb30-44" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
-<span id="cb30-45"><a href="02-office-killer.html#cb30-45" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb30-46"><a href="02-office-killer.html#cb30-46" tabindex="-1"></a><span class="co">#&gt;   19.82   22.23   24.43   25.22   27.31   33.58       2</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="02-office-killer.html#cb13-1" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Age, </span>
+<span id="cb13-2"><a href="02-office-killer.html#cb13-2" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
+<span id="cb13-3"><a href="02-office-killer.html#cb13-3" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span></code></pre></div>
+<pre><code>## $F
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   17.00   21.00   24.00   24.31   27.00   39.00 
+## 
+## $M
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   17.00   21.00   24.00   25.25   27.25   45.00</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="02-office-killer.html#cb15-1" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Height, </span>
+<span id="cb15-2"><a href="02-office-killer.html#cb15-2" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
+<span id="cb15-3"><a href="02-office-killer.html#cb15-3" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span></code></pre></div>
+<pre><code>## $F
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   155.0   165.0   168.0   167.8   170.0   185.0       7 
+## 
+## $M
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   170.0   178.0   180.0   179.9   183.0   191.0       2</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="02-office-killer.html#cb17-1" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Weight,</span>
+<span id="cb17-2"><a href="02-office-killer.html#cb17-2" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
+<span id="cb17-3"><a href="02-office-killer.html#cb17-3" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span></code></pre></div>
+<pre><code>## $F
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   50.00   58.00   63.00   62.84   65.00   86.00       7 
+## 
+## $M
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   58.00   73.00   78.50   81.71   89.75  110.00       2</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="02-office-killer.html#cb19-1" tabindex="-1"></a>sel<span class="sc">$</span>IMC <span class="ot">&lt;-</span> sel<span class="sc">$</span>Weight<span class="sc">/</span>(sel<span class="sc">$</span>Height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">**</span><span class="dv">2</span></span>
+<span id="cb19-2"><a href="02-office-killer.html#cb19-2" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="02-office-killer.html#cb19-3" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>IMC,</span>
+<span id="cb19-4"><a href="02-office-killer.html#cb19-4" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
+<span id="cb19-5"><a href="02-office-killer.html#cb19-5" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span></code></pre></div>
+<pre><code>## $F
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   18.78   20.44   22.06   22.31   24.01   28.73       7 
+## 
+## $M
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   19.82   22.23   24.43   25.22   27.31   33.58       2</code></pre>
 <p>Quelque chose me dit qu’Excel a eu un peu de mal à résoudre le problème. Le score est désormais
 de 3-2</p>
 </div>
 <div id="round-5-nombre-de-médailles-dor-par-pays-et-par-épreuve" class="section level3 hasAnchor" number="2.2.5">
 <h3><span class="header-section-number">2.2.5</span> Round 5 : Nombre de médailles d’or par pays et par épreuve<a href="02-office-killer.html#round-5-nombre-de-médailles-dor-par-pays-et-par-épreuve" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On cherche maintenant à déterminer le nombre de médailles par pays et par épreuve. Attention, dans le cas des épreuves par équipe il ne faut compter les membres d’une équipe qu’une seule fois …</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="02-office-killer.html#cb31-1" tabindex="-1"></a><span class="co"># Sélection des lignes  (médailles d&#39;or)</span></span>
-<span id="cb31-2"><a href="02-office-killer.html#cb31-2" tabindex="-1"></a>sel2 <span class="ot">&lt;-</span> sel[sel<span class="sc">$</span>Medal<span class="sc">==</span><span class="st">&quot;Gold&quot;</span>,]</span>
-<span id="cb31-3"><a href="02-office-killer.html#cb31-3" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="02-office-killer.html#cb31-4" tabindex="-1"></a><span class="co"># Selection des colonnes </span></span>
-<span id="cb31-5"><a href="02-office-killer.html#cb31-5" tabindex="-1"></a>sel3 <span class="ot">&lt;-</span> sel2[,<span class="fu">c</span>(<span class="st">&quot;NOC&quot;</span>,<span class="st">&quot;Year&quot;</span>,<span class="st">&quot;Event&quot;</span>)]</span>
-<span id="cb31-6"><a href="02-office-killer.html#cb31-6" tabindex="-1"></a></span>
-<span id="cb31-7"><a href="02-office-killer.html#cb31-7" tabindex="-1"></a><span class="co"># Elimination des doublons</span></span>
-<span id="cb31-8"><a href="02-office-killer.html#cb31-8" tabindex="-1"></a>sel4 <span class="ot">&lt;-</span><span class="fu">unique</span>(sel3)</span>
-<span id="cb31-9"><a href="02-office-killer.html#cb31-9" tabindex="-1"></a></span>
-<span id="cb31-10"><a href="02-office-killer.html#cb31-10" tabindex="-1"></a><span class="co"># Tableau croisé</span></span>
-<span id="cb31-11"><a href="02-office-killer.html#cb31-11" tabindex="-1"></a>tab<span class="ot">&lt;-</span><span class="fu">table</span>(sel4<span class="sc">$</span>Event,sel4<span class="sc">$</span>NOC)</span>
-<span id="cb31-12"><a href="02-office-killer.html#cb31-12" tabindex="-1"></a></span>
-<span id="cb31-13"><a href="02-office-killer.html#cb31-13" tabindex="-1"></a><span class="co"># Tri des pays ayant le plus de médailles</span></span>
-<span id="cb31-14"><a href="02-office-killer.html#cb31-14" tabindex="-1"></a></span>
-<span id="cb31-15"><a href="02-office-killer.html#cb31-15" tabindex="-1"></a></span>
-<span id="cb31-16"><a href="02-office-killer.html#cb31-16" tabindex="-1"></a><span class="co"># Ajout des marges</span></span>
-<span id="cb31-17"><a href="02-office-killer.html#cb31-17" tabindex="-1"></a><span class="fu">addmargins</span>(tab)</span>
-<span id="cb31-18"><a href="02-office-killer.html#cb31-18" tabindex="-1"></a><span class="co">#&gt;                             </span></span>
-<span id="cb31-19"><a href="02-office-killer.html#cb31-19" tabindex="-1"></a><span class="co">#&gt;                              AUS CHN ESP FRA ITA KOR UKR USA Sum</span></span>
-<span id="cb31-20"><a href="02-office-killer.html#cb31-20" tabindex="-1"></a><span class="co">#&gt;   Archery Men&#39;s Individual     1   0   0   1   1   2   1   1   7</span></span>
-<span id="cb31-21"><a href="02-office-killer.html#cb31-21" tabindex="-1"></a><span class="co">#&gt;   Archery Men&#39;s Team           0   0   1   0   1   4   0   1   7</span></span>
-<span id="cb31-22"><a href="02-office-killer.html#cb31-22" tabindex="-1"></a><span class="co">#&gt;   Archery Women&#39;s Individual   0   1   0   0   0   6   0   0   7</span></span>
-<span id="cb31-23"><a href="02-office-killer.html#cb31-23" tabindex="-1"></a><span class="co">#&gt;   Archery Women&#39;s Team         0   0   0   0   0   7   0   0   7</span></span>
-<span id="cb31-24"><a href="02-office-killer.html#cb31-24" tabindex="-1"></a><span class="co">#&gt;   Sum                          1   1   1   1   2  19   1   2  28</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="02-office-killer.html#cb21-1" tabindex="-1"></a><span class="co"># Sélection des lignes  (médailles d&#39;or)</span></span>
+<span id="cb21-2"><a href="02-office-killer.html#cb21-2" tabindex="-1"></a>sel2 <span class="ot">&lt;-</span> sel[sel<span class="sc">$</span>Medal<span class="sc">==</span><span class="st">&quot;Gold&quot;</span>,]</span>
+<span id="cb21-3"><a href="02-office-killer.html#cb21-3" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="02-office-killer.html#cb21-4" tabindex="-1"></a><span class="co"># Selection des colonnes </span></span>
+<span id="cb21-5"><a href="02-office-killer.html#cb21-5" tabindex="-1"></a>sel3 <span class="ot">&lt;-</span> sel2[,<span class="fu">c</span>(<span class="st">&quot;NOC&quot;</span>,<span class="st">&quot;Year&quot;</span>,<span class="st">&quot;Event&quot;</span>)]</span>
+<span id="cb21-6"><a href="02-office-killer.html#cb21-6" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="02-office-killer.html#cb21-7" tabindex="-1"></a><span class="co"># Elimination des doublons</span></span>
+<span id="cb21-8"><a href="02-office-killer.html#cb21-8" tabindex="-1"></a>sel4 <span class="ot">&lt;-</span><span class="fu">unique</span>(sel3)</span>
+<span id="cb21-9"><a href="02-office-killer.html#cb21-9" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="02-office-killer.html#cb21-10" tabindex="-1"></a><span class="co"># Tableau croisé</span></span>
+<span id="cb21-11"><a href="02-office-killer.html#cb21-11" tabindex="-1"></a>tab<span class="ot">&lt;-</span><span class="fu">table</span>(sel4<span class="sc">$</span>Event,sel4<span class="sc">$</span>NOC)</span>
+<span id="cb21-12"><a href="02-office-killer.html#cb21-12" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="02-office-killer.html#cb21-13" tabindex="-1"></a><span class="co"># Tri des pays ayant le plus de médailles</span></span>
+<span id="cb21-14"><a href="02-office-killer.html#cb21-14" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="02-office-killer.html#cb21-15" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="02-office-killer.html#cb21-16" tabindex="-1"></a><span class="co"># Ajout des marges</span></span>
+<span id="cb21-17"><a href="02-office-killer.html#cb21-17" tabindex="-1"></a><span class="fu">addmargins</span>(tab)</span></code></pre></div>
+<pre><code>##                             
+##                              AUS CHN ESP FRA ITA KOR UKR USA Sum
+##   Archery Men&#39;s Individual     1   0   0   1   1   2   1   1   7
+##   Archery Men&#39;s Team           0   0   1   0   1   4   0   1   7
+##   Archery Women&#39;s Individual   0   1   0   0   0   6   0   0   7
+##   Archery Women&#39;s Team         0   0   0   0   0   7   0   0   7
+##   Sum                          1   1   1   1   2  19   1   2  28</code></pre>
 <p>Quelque chose me dit qu’Excel a eu un beaucoup de mal à résoudre le problème. Le score est désormais
 de 3-3</p>
 </div>
 <div id="dernier-round.-refaire-toute-lanalyse-en-changeant-de-sport" class="section level3 hasAnchor" number="2.2.6">
 <h3><span class="header-section-number">2.2.6</span> Dernier round. Refaire toute l’analyse en changeant de sport<a href="02-office-killer.html#dernier-round.-refaire-toute-lanalyse-en-changeant-de-sport" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On remplace le sport “Archery” par le sport “Judo” et on refait toute les analyses</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="02-office-killer.html#cb32-1" tabindex="-1"></a><span class="co"># (1) Importation du tableau</span></span>
-<span id="cb32-2"><a href="02-office-killer.html#cb32-2" tabindex="-1"></a>don <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/olympic/120-years-of-olympic-history-athletes-and-results.csv&quot;</span>,</span>
-<span id="cb32-3"><a href="02-office-killer.html#cb32-3" tabindex="-1"></a>                  <span class="at">header=</span> <span class="cn">TRUE</span>,</span>
-<span id="cb32-4"><a href="02-office-killer.html#cb32-4" tabindex="-1"></a>                  <span class="at">sep =</span><span class="st">&quot;,&quot;</span>)</span>
-<span id="cb32-5"><a href="02-office-killer.html#cb32-5" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="02-office-killer.html#cb32-6" tabindex="-1"></a><span class="co"># (2) Sélection du sport et de la data</span></span>
-<span id="cb32-7"><a href="02-office-killer.html#cb32-7" tabindex="-1"></a>sel <span class="ot">&lt;-</span> don[don<span class="sc">$</span>Year <span class="sc">&gt;</span> <span class="dv">1990</span> <span class="sc">&amp;</span> don<span class="sc">$</span>Sport<span class="sc">==</span><span class="st">&quot;Judo&quot;</span> <span class="sc">&amp;</span> <span class="fu">is.na</span>(don<span class="sc">$</span>Medal)<span class="sc">==</span><span class="cn">FALSE</span>,]</span>
-<span id="cb32-8"><a href="02-office-killer.html#cb32-8" tabindex="-1"></a></span>
-<span id="cb32-9"><a href="02-office-killer.html#cb32-9" tabindex="-1"></a><span class="co"># (3) Caractéristiques des sportifs</span></span>
-<span id="cb32-10"><a href="02-office-killer.html#cb32-10" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Age, </span>
-<span id="cb32-11"><a href="02-office-killer.html#cb32-11" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
-<span id="cb32-12"><a href="02-office-killer.html#cb32-12" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
-<span id="cb32-13"><a href="02-office-killer.html#cb32-13" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
-<span id="cb32-14"><a href="02-office-killer.html#cb32-14" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span id="cb32-15"><a href="02-office-killer.html#cb32-15" tabindex="-1"></a><span class="co">#&gt;   16.00   23.00   25.00   25.03   28.00   33.00 </span></span>
-<span id="cb32-16"><a href="02-office-killer.html#cb32-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-17"><a href="02-office-killer.html#cb32-17" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
-<span id="cb32-18"><a href="02-office-killer.html#cb32-18" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span id="cb32-19"><a href="02-office-killer.html#cb32-19" tabindex="-1"></a><span class="co">#&gt;   17.00   23.00   25.00   25.32   27.00   34.00</span></span>
-<span id="cb32-20"><a href="02-office-killer.html#cb32-20" tabindex="-1"></a></span>
-<span id="cb32-21"><a href="02-office-killer.html#cb32-21" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Height, </span>
-<span id="cb32-22"><a href="02-office-killer.html#cb32-22" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
-<span id="cb32-23"><a href="02-office-killer.html#cb32-23" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
-<span id="cb32-24"><a href="02-office-killer.html#cb32-24" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
-<span id="cb32-25"><a href="02-office-killer.html#cb32-25" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb32-26"><a href="02-office-killer.html#cb32-26" tabindex="-1"></a><span class="co">#&gt;   146.0   160.0   166.0   166.1   173.0   186.0       7 </span></span>
-<span id="cb32-27"><a href="02-office-killer.html#cb32-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-28"><a href="02-office-killer.html#cb32-28" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
-<span id="cb32-29"><a href="02-office-killer.html#cb32-29" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb32-30"><a href="02-office-killer.html#cb32-30" tabindex="-1"></a><span class="co">#&gt;   159.0   170.2   178.0   178.7   185.0   203.0      10</span></span>
-<span id="cb32-31"><a href="02-office-killer.html#cb32-31" tabindex="-1"></a></span>
-<span id="cb32-32"><a href="02-office-killer.html#cb32-32" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Weight,</span>
-<span id="cb32-33"><a href="02-office-killer.html#cb32-33" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
-<span id="cb32-34"><a href="02-office-killer.html#cb32-34" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
-<span id="cb32-35"><a href="02-office-killer.html#cb32-35" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
-<span id="cb32-36"><a href="02-office-killer.html#cb32-36" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb32-37"><a href="02-office-killer.html#cb32-37" tabindex="-1"></a><span class="co">#&gt;   48.00   55.50   63.00   68.38   76.25  135.00       8 </span></span>
-<span id="cb32-38"><a href="02-office-killer.html#cb32-38" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-39"><a href="02-office-killer.html#cb32-39" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
-<span id="cb32-40"><a href="02-office-killer.html#cb32-40" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb32-41"><a href="02-office-killer.html#cb32-41" tabindex="-1"></a><span class="co">#&gt;   60.00   66.00   81.00   86.69  100.00  175.00      10</span></span>
-<span id="cb32-42"><a href="02-office-killer.html#cb32-42" tabindex="-1"></a></span>
-<span id="cb32-43"><a href="02-office-killer.html#cb32-43" tabindex="-1"></a>sel<span class="sc">$</span>IMC <span class="ot">&lt;-</span> sel<span class="sc">$</span>Weight<span class="sc">/</span>(sel<span class="sc">$</span>Height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">**</span><span class="dv">2</span></span>
-<span id="cb32-44"><a href="02-office-killer.html#cb32-44" tabindex="-1"></a></span>
-<span id="cb32-45"><a href="02-office-killer.html#cb32-45" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>IMC,</span>
-<span id="cb32-46"><a href="02-office-killer.html#cb32-46" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
-<span id="cb32-47"><a href="02-office-killer.html#cb32-47" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
-<span id="cb32-48"><a href="02-office-killer.html#cb32-48" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
-<span id="cb32-49"><a href="02-office-killer.html#cb32-49" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb32-50"><a href="02-office-killer.html#cb32-50" tabindex="-1"></a><span class="co">#&gt;   18.52   21.38   22.85   24.45   25.24   43.60       8 </span></span>
-<span id="cb32-51"><a href="02-office-killer.html#cb32-51" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-52"><a href="02-office-killer.html#cb32-52" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
-<span id="cb32-53"><a href="02-office-killer.html#cb32-53" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
-<span id="cb32-54"><a href="02-office-killer.html#cb32-54" tabindex="-1"></a><span class="co">#&gt;   19.37   23.84   25.78   26.76   28.40   56.50      10</span></span>
-<span id="cb32-55"><a href="02-office-killer.html#cb32-55" tabindex="-1"></a></span>
-<span id="cb32-56"><a href="02-office-killer.html#cb32-56" tabindex="-1"></a><span class="co"># (4) Médailles d&#39;or par pays et épreuve</span></span>
-<span id="cb32-57"><a href="02-office-killer.html#cb32-57" tabindex="-1"></a></span>
-<span id="cb32-58"><a href="02-office-killer.html#cb32-58" tabindex="-1"></a><span class="co"># Sélection des lignes  (médailles d&#39;or)</span></span>
-<span id="cb32-59"><a href="02-office-killer.html#cb32-59" tabindex="-1"></a>sel2 <span class="ot">&lt;-</span> sel[sel<span class="sc">$</span>Medal<span class="sc">==</span><span class="st">&quot;Gold&quot;</span>,]</span>
-<span id="cb32-60"><a href="02-office-killer.html#cb32-60" tabindex="-1"></a></span>
-<span id="cb32-61"><a href="02-office-killer.html#cb32-61" tabindex="-1"></a><span class="co"># Selection des colonnes </span></span>
-<span id="cb32-62"><a href="02-office-killer.html#cb32-62" tabindex="-1"></a>sel3 <span class="ot">&lt;-</span> sel2[,<span class="fu">c</span>(<span class="st">&quot;NOC&quot;</span>,<span class="st">&quot;Year&quot;</span>,<span class="st">&quot;Event&quot;</span>)]</span>
-<span id="cb32-63"><a href="02-office-killer.html#cb32-63" tabindex="-1"></a></span>
-<span id="cb32-64"><a href="02-office-killer.html#cb32-64" tabindex="-1"></a><span class="co"># Elimination des doublons</span></span>
-<span id="cb32-65"><a href="02-office-killer.html#cb32-65" tabindex="-1"></a>sel4 <span class="ot">&lt;-</span><span class="fu">unique</span>(sel3)</span>
-<span id="cb32-66"><a href="02-office-killer.html#cb32-66" tabindex="-1"></a></span>
-<span id="cb32-67"><a href="02-office-killer.html#cb32-67" tabindex="-1"></a><span class="co"># Tableau croisé</span></span>
-<span id="cb32-68"><a href="02-office-killer.html#cb32-68" tabindex="-1"></a>tab<span class="ot">&lt;-</span><span class="fu">table</span>(sel4<span class="sc">$</span>Event,sel4<span class="sc">$</span>NOC)</span>
-<span id="cb32-69"><a href="02-office-killer.html#cb32-69" tabindex="-1"></a></span>
-<span id="cb32-70"><a href="02-office-killer.html#cb32-70" tabindex="-1"></a><span class="co"># Ajout des marges</span></span>
-<span id="cb32-71"><a href="02-office-killer.html#cb32-71" tabindex="-1"></a><span class="fu">addmargins</span>(tab)</span>
-<span id="cb32-72"><a href="02-office-killer.html#cb32-72" tabindex="-1"></a><span class="co">#&gt;                                 </span></span>
-<span id="cb32-73"><a href="02-office-killer.html#cb32-73" tabindex="-1"></a><span class="co">#&gt;                                  ARG AZE BEL BLR BRA CHN CUB CZE ESP EUN FRA</span></span>
-<span id="cb32-74"><a href="02-office-killer.html#cb32-74" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Extra-Lightweight     0   0   0   0   0   0   0   0   0   1   0</span></span>
-<span id="cb32-75"><a href="02-office-killer.html#cb32-75" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Heavyweight      0   0   0   1   0   0   0   1   0   0   0</span></span>
-<span id="cb32-76"><a href="02-office-killer.html#cb32-76" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Lightweight      0   0   0   0   1   0   0   0   0   0   0</span></span>
-<span id="cb32-77"><a href="02-office-killer.html#cb32-77" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Middleweight     0   0   0   0   0   0   0   0   0   0   1</span></span>
-<span id="cb32-78"><a href="02-office-killer.html#cb32-78" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Heavyweight           0   0   0   0   0   0   0   0   0   1   4</span></span>
-<span id="cb32-79"><a href="02-office-killer.html#cb32-79" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Lightweight           0   1   0   0   0   0   0   0   0   0   0</span></span>
-<span id="cb32-80"><a href="02-office-killer.html#cb32-80" tabindex="-1"></a><span class="co">#&gt;                                 </span></span>
-<span id="cb32-81"><a href="02-office-killer.html#cb32-81" tabindex="-1"></a><span class="co">#&gt;                                  GEO GER GRE HUN ITA JPN KOR KOS MGL NED POL</span></span>
-<span id="cb32-82"><a href="02-office-killer.html#cb32-82" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Extra-Lightweight     0   0   0   0   0   3   1   0   0   0   0</span></span>
-<span id="cb32-83"><a href="02-office-killer.html#cb32-83" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Heavyweight      0   0   0   1   0   1   0   0   1   0   1</span></span>
-<span id="cb32-84"><a href="02-office-killer.html#cb32-84" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Lightweight      1   1   0   0   1   2   0   0   0   0   0</span></span>
-<span id="cb32-85"><a href="02-office-killer.html#cb32-85" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Middleweight     0   1   1   0   0   2   1   0   0   0   0</span></span>
-<span id="cb32-86"><a href="02-office-killer.html#cb32-86" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Heavyweight           0   0   0   0   0   2   0   0   0   0   0</span></span>
-<span id="cb32-87"><a href="02-office-killer.html#cb32-87" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Lightweight           0   0   0   0   1   3   1   0   0   0   0</span></span>
-<span id="cb32-88"><a href="02-office-killer.html#cb32-88" tabindex="-1"></a><span class="co">#&gt;                                 </span></span>
-<span id="cb32-89"><a href="02-office-killer.html#cb32-89" tabindex="-1"></a><span class="co">#&gt;                                  PRK ROU RUS SLO TUR USA Sum</span></span>
-<span id="cb32-90"><a href="02-office-killer.html#cb32-90" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Extra-Lightweight     0   0   2   0   0   0   7</span></span>
-<span id="cb32-91"><a href="02-office-killer.html#cb32-91" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Heavyweight      0   0   1   0   0   0   7</span></span>
-<span id="cb32-92"><a href="02-office-killer.html#cb32-92" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Lightweight      0   0   0   0   1   0   7</span></span>
-<span id="cb32-93"><a href="02-office-killer.html#cb32-93" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Middleweight     0   0   1   0   0   0   7</span></span>
-<span id="cb32-94"><a href="02-office-killer.html#cb32-94" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Heavyweight           0   0   0   0   0   0   7</span></span>
-<span id="cb32-95"><a href="02-office-killer.html#cb32-95" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Lightweight           0   0   1   0   0   0   7</span></span>
-<span id="cb32-96"><a href="02-office-killer.html#cb32-96" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 9 rows ]</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="02-office-killer.html#cb23-1" tabindex="-1"></a><span class="co"># (1) Importation du tableau</span></span>
+<span id="cb23-2"><a href="02-office-killer.html#cb23-2" tabindex="-1"></a>don <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/olympic/120-years-of-olympic-history-athletes-and-results.csv&quot;</span>,</span>
+<span id="cb23-3"><a href="02-office-killer.html#cb23-3" tabindex="-1"></a>                  <span class="at">header=</span> <span class="cn">TRUE</span>,</span>
+<span id="cb23-4"><a href="02-office-killer.html#cb23-4" tabindex="-1"></a>                  <span class="at">sep =</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb23-5"><a href="02-office-killer.html#cb23-5" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="02-office-killer.html#cb23-6" tabindex="-1"></a><span class="co"># (2) Sélection du sport et de la data</span></span>
+<span id="cb23-7"><a href="02-office-killer.html#cb23-7" tabindex="-1"></a>sel <span class="ot">&lt;-</span> don[don<span class="sc">$</span>Year <span class="sc">&gt;</span> <span class="dv">1990</span> <span class="sc">&amp;</span> don<span class="sc">$</span>Sport<span class="sc">==</span><span class="st">&quot;Judo&quot;</span> <span class="sc">&amp;</span> <span class="fu">is.na</span>(don<span class="sc">$</span>Medal)<span class="sc">==</span><span class="cn">FALSE</span>,]</span>
+<span id="cb23-8"><a href="02-office-killer.html#cb23-8" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="02-office-killer.html#cb23-9" tabindex="-1"></a><span class="co"># (3) Caractéristiques des sportifs</span></span>
+<span id="cb23-10"><a href="02-office-killer.html#cb23-10" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Age, </span>
+<span id="cb23-11"><a href="02-office-killer.html#cb23-11" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
+<span id="cb23-12"><a href="02-office-killer.html#cb23-12" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span></code></pre></div>
+<pre><code>## $F
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   16.00   23.00   25.00   25.03   28.00   33.00 
+## 
+## $M
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   17.00   23.00   25.00   25.32   27.00   34.00</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="02-office-killer.html#cb25-1" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Height, </span>
+<span id="cb25-2"><a href="02-office-killer.html#cb25-2" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
+<span id="cb25-3"><a href="02-office-killer.html#cb25-3" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span></code></pre></div>
+<pre><code>## $F
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   146.0   160.0   166.0   166.1   173.0   186.0       7 
+## 
+## $M
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   159.0   170.2   178.0   178.7   185.0   203.0      10</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="02-office-killer.html#cb27-1" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Weight,</span>
+<span id="cb27-2"><a href="02-office-killer.html#cb27-2" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
+<span id="cb27-3"><a href="02-office-killer.html#cb27-3" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span></code></pre></div>
+<pre><code>## $F
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   48.00   55.50   63.00   68.38   76.25  135.00       8 
+## 
+## $M
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   60.00   66.00   81.00   86.69  100.00  175.00      10</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="02-office-killer.html#cb29-1" tabindex="-1"></a>sel<span class="sc">$</span>IMC <span class="ot">&lt;-</span> sel<span class="sc">$</span>Weight<span class="sc">/</span>(sel<span class="sc">$</span>Height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">**</span><span class="dv">2</span></span>
+<span id="cb29-2"><a href="02-office-killer.html#cb29-2" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="02-office-killer.html#cb29-3" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>IMC,</span>
+<span id="cb29-4"><a href="02-office-killer.html#cb29-4" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
+<span id="cb29-5"><a href="02-office-killer.html#cb29-5" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span></code></pre></div>
+<pre><code>## $F
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   18.52   21.38   22.85   24.45   25.24   43.60       8 
+## 
+## $M
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##   19.37   23.84   25.78   26.76   28.40   56.50      10</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="02-office-killer.html#cb31-1" tabindex="-1"></a><span class="co"># (4) Médailles d&#39;or par pays et épreuve</span></span>
+<span id="cb31-2"><a href="02-office-killer.html#cb31-2" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="02-office-killer.html#cb31-3" tabindex="-1"></a><span class="co"># Sélection des lignes  (médailles d&#39;or)</span></span>
+<span id="cb31-4"><a href="02-office-killer.html#cb31-4" tabindex="-1"></a>sel2 <span class="ot">&lt;-</span> sel[sel<span class="sc">$</span>Medal<span class="sc">==</span><span class="st">&quot;Gold&quot;</span>,]</span>
+<span id="cb31-5"><a href="02-office-killer.html#cb31-5" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="02-office-killer.html#cb31-6" tabindex="-1"></a><span class="co"># Selection des colonnes </span></span>
+<span id="cb31-7"><a href="02-office-killer.html#cb31-7" tabindex="-1"></a>sel3 <span class="ot">&lt;-</span> sel2[,<span class="fu">c</span>(<span class="st">&quot;NOC&quot;</span>,<span class="st">&quot;Year&quot;</span>,<span class="st">&quot;Event&quot;</span>)]</span>
+<span id="cb31-8"><a href="02-office-killer.html#cb31-8" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="02-office-killer.html#cb31-9" tabindex="-1"></a><span class="co"># Elimination des doublons</span></span>
+<span id="cb31-10"><a href="02-office-killer.html#cb31-10" tabindex="-1"></a>sel4 <span class="ot">&lt;-</span><span class="fu">unique</span>(sel3)</span>
+<span id="cb31-11"><a href="02-office-killer.html#cb31-11" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="02-office-killer.html#cb31-12" tabindex="-1"></a><span class="co"># Tableau croisé</span></span>
+<span id="cb31-13"><a href="02-office-killer.html#cb31-13" tabindex="-1"></a>tab<span class="ot">&lt;-</span><span class="fu">table</span>(sel4<span class="sc">$</span>Event,sel4<span class="sc">$</span>NOC)</span>
+<span id="cb31-14"><a href="02-office-killer.html#cb31-14" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="02-office-killer.html#cb31-15" tabindex="-1"></a><span class="co"># Ajout des marges</span></span>
+<span id="cb31-16"><a href="02-office-killer.html#cb31-16" tabindex="-1"></a><span class="fu">addmargins</span>(tab)</span></code></pre></div>
+<pre><code>##                                 
+##                                  ARG AZE BEL BLR BRA CHN CUB CZE ESP EUN FRA
+##   Judo Men&#39;s Extra-Lightweight     0   0   0   0   0   0   0   0   0   1   0
+##   Judo Men&#39;s Half-Heavyweight      0   0   0   1   0   0   0   1   0   0   0
+##   Judo Men&#39;s Half-Lightweight      0   0   0   0   1   0   0   0   0   0   0
+##   Judo Men&#39;s Half-Middleweight     0   0   0   0   0   0   0   0   0   0   1
+##   Judo Men&#39;s Heavyweight           0   0   0   0   0   0   0   0   0   1   4
+##   Judo Men&#39;s Lightweight           0   1   0   0   0   0   0   0   0   0   0
+##   Judo Men&#39;s Middleweight          0   0   0   0   0   0   0   0   0   0   0
+##   Judo Women&#39;s Extra-Lightweight   1   0   0   0   1   0   0   0   0   0   1
+##   Judo Women&#39;s Half-Heavyweight    0   0   1   0   0   2   0   0   0   0   0
+##   Judo Women&#39;s Half-Lightweight    0   0   0   0   0   2   1   0   1   0   1
+##   Judo Women&#39;s Half-Middleweight   0   0   0   0   0   0   0   0   0   0   2
+##   Judo Women&#39;s Heavyweight         0   0   0   0   0   4   1   0   0   0   1
+##   Judo Women&#39;s Lightweight         0   0   0   0   1   0   1   0   2   0   0
+##   Judo Women&#39;s Middleweight        0   0   0   0   0   0   2   0   0   0   1
+##   Sum                              1   1   1   1   3   8   5   1   3   2  11
+##                                 
+##                                  GEO GER GRE HUN ITA JPN KOR KOS MGL NED POL
+##   Judo Men&#39;s Extra-Lightweight     0   0   0   0   0   3   1   0   0   0   0
+##   Judo Men&#39;s Half-Heavyweight      0   0   0   1   0   1   0   0   1   0   1
+##   Judo Men&#39;s Half-Lightweight      1   1   0   0   1   2   0   0   0   0   0
+##   Judo Men&#39;s Half-Middleweight     0   1   1   0   0   2   1   0   0   0   0
+##   Judo Men&#39;s Heavyweight           0   0   0   0   0   2   0   0   0   0   0
+##   Judo Men&#39;s Lightweight           0   0   0   0   1   3   1   0   0   0   0
+##   Judo Men&#39;s Middleweight          2   0   0   0   0   1   2   0   0   1   1
+##   Judo Women&#39;s Extra-Lightweight   0   0   0   0   0   2   0   0   0   0   0
+##   Judo Women&#39;s Half-Heavyweight    0   0   0   0   0   1   1   0   0   0   0
+##   Judo Women&#39;s Half-Lightweight    0   0   0   0   0   0   0   1   0   0   0
+##   Judo Women&#39;s Half-Middleweight   0   0   0   0   0   3   0   0   0   0   0
+##   Judo Women&#39;s Heavyweight         0   0   0   0   0   1   0   0   0   0   0
+##   Judo Women&#39;s Lightweight         0   1   0   0   1   1   0   0   0   0   0
+##   Judo Women&#39;s Middleweight        0   0   0   0   0   3   1   0   0   0   0
+##   Sum                              3   3   1   1   3  25   7   1   1   1   2
+##                                 
+##                                  PRK ROU RUS SLO TUR USA Sum
+##   Judo Men&#39;s Extra-Lightweight     0   0   2   0   0   0   7
+##   Judo Men&#39;s Half-Heavyweight      0   0   1   0   0   0   7
+##   Judo Men&#39;s Half-Lightweight      0   0   0   0   1   0   7
+##   Judo Men&#39;s Half-Middleweight     0   0   1   0   0   0   7
+##   Judo Men&#39;s Heavyweight           0   0   0   0   0   0   7
+##   Judo Men&#39;s Lightweight           0   0   1   0   0   0   7
+##   Judo Men&#39;s Middleweight          0   0   0   0   0   0   7
+##   Judo Women&#39;s Extra-Lightweight   1   1   0   0   0   0   7
+##   Judo Women&#39;s Half-Heavyweight    0   0   0   0   0   2   7
+##   Judo Women&#39;s Half-Lightweight    1   0   0   0   0   0   7
+##   Judo Women&#39;s Half-Middleweight   0   0   0   2   0   0   7
+##   Judo Women&#39;s Heavyweight         0   0   0   0   0   0   7
+##   Judo Women&#39;s Lightweight         0   0   0   0   0   0   7
+##   Judo Women&#39;s Middleweight        0   0   0   0   0   0   7
+##   Sum                              2   1   5   2   1   2  98</code></pre>
 <p>Excel n’a aucune chance d’aller plus vite et R remporte le match par KO !</p>
 </div>
 </div>
@@ -1060,20 +1074,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
