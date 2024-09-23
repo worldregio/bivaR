@@ -632,23 +632,6 @@ ggplot(aes(x = SEX,
 
 
 
-```{r}
-# création et sockage de la figure ggplot
-  toto <- ggplot(don, aes(x = TOTBILL, y = TIP) )+
-          geom_point (aes(colour = SEX, shape = SMOKER)) +
-          scale_x_log10(name="Prix du repas en $") +
-          scale_y_log10(name="Montant du pourboire en $") +
-          geom_smooth(method="lm") 
-
-  # conversion en plotly
-library(plotly)
-   titi <-ggplotly(toto)
-
-   
-# affichage
-   titi
-```
-
 
 
 

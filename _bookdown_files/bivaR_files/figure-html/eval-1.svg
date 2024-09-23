@@ -80,9 +80,9 @@
 <text transform='translate(41.76,109.60) rotate(-90)' text-anchor='middle' style='font-size: 9.60px; font-family: "Arial";' textLength='10.67px' lengthAdjust='spacingAndGlyphs'>40</text>
 <text transform='translate(41.76,67.47) rotate(-90)' text-anchor='middle' style='font-size: 9.60px; font-family: "Arial";' textLength='10.67px' lengthAdjust='spacingAndGlyphs'>50</text>
 <polygon points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 ' style='stroke-width: 0.75;' />
-<text x='266.40' y='33.82' text-anchor='middle' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='162.76px' lengthAdjust='spacingAndGlyphs'>Les pays européens en 1988</text>
+<text x='266.40' y='33.84' text-anchor='middle' style='font-size: 12.00px; font-weight: bold; font-family: "Arial";' textLength='162.76px' lengthAdjust='spacingAndGlyphs'>Les pays européens en 1988</text>
 <text x='266.40' y='355.68' text-anchor='middle' style='font-size: 7.20px; font-family: "Arial";' textLength='153.35px' lengthAdjust='spacingAndGlyphs'>Claude Grasland, Université Paris Diderot, 2020</text>
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 9.60px; font-family: "Arial";' textLength='106.88px' lengthAdjust='spacingAndGlyphs'>Taux d'urbanisation en %</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 9.60px; font-family: "Arial";' textLength='156.77px' lengthAdjust='spacingAndGlyphs'>Taux de mortalité infantile en p. 1000</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 9.60px; font-family: "Arial";' textLength='107.95px' lengthAdjust='spacingAndGlyphs'>Taux d'urbanisation en %</text>
+<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 9.60px; font-family: "Arial";' textLength='157.84px' lengthAdjust='spacingAndGlyphs'>Taux de mortalité infantile en p. 1000</text>
 </g>
 </svg>

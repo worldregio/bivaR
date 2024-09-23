@@ -12,7 +12,7 @@ new_session: no
 rmd_files: [
   "index.Rmd",
   "01-principes.Rmd",
-  "02-initiation.Rmd",
+  "02-office-killer.Rmd",
   "03-R-Base.Rmd",
   "04-Corrélation.Rmd",
   "05-Régression.Rmd",

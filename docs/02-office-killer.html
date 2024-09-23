@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Partie 2 Office killer | Introduction à la statistique bivariée et aux représentations graphiques avec R</title>
+  <meta name="description" content="Cours dispensé en M1 MECI Option Data" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Partie 2 Office killer | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Partie 2 Office killer | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  
+  <meta name="twitter:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+<meta name="author" content="Claude Grasland" />
+
+
+<meta name="date" content="2024-09-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="01-principes.html"/>
+<link rel="next" href="03-R-Base.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/tidyverse.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">Introduction à la statistique bivariée et aux représentations graphiques avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>À propos de ce document</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#remerciements"><i class="fa fa-check"></i>Remerciements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
+</ul></li>
+<li class="part"><span><b>I DEBUTER EN R</b></span></li>
+<li class="chapter" data-level="1" data-path="01-principes.html"><a href="01-principes.html"><i class="fa fa-check"></i><b>1</b> Premiers pas</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="01-principes.html"><a href="01-principes.html#opérations-arithmétiques"><i class="fa fa-check"></i><b>1.1</b> Opérations arithmétiques</a></li>
+<li class="chapter" data-level="1.2" data-path="01-principes.html"><a href="01-principes.html#les-objets-de-base-valeur-vecteur-matrice"><i class="fa fa-check"></i><b>1.2</b> Les objets de base : valeur, vecteur, matrice</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="01-principes.html"><a href="01-principes.html#eléments"><i class="fa fa-check"></i><b>1.2.1</b> Eléments</a></li>
+<li class="chapter" data-level="1.2.2" data-path="01-principes.html"><a href="01-principes.html#vecteurs-vectors"><i class="fa fa-check"></i><b>1.2.2</b> vecteurs (<em>vectors</em>)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="01-principes.html"><a href="01-principes.html#matrices-matrix"><i class="fa fa-check"></i><b>1.2.3</b> Matrices (<em>matrix</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="01-principes.html"><a href="01-principes.html#ne-pas-confondre-listes-et-vecteurs"><i class="fa fa-check"></i><b>1.3</b> Ne pas confondre listes et vecteurs !</a></li>
+<li class="chapter" data-level="1.4" data-path="01-principes.html"><a href="01-principes.html#attention-aux-types-de-variables"><i class="fa fa-check"></i><b>1.4</b> Attention aux types de variables …</a></li>
+<li class="chapter" data-level="1.5" data-path="01-principes.html"><a href="01-principes.html#types-de-tableaux-et-guerres-de-religion."><i class="fa fa-check"></i><b>1.5</b> Types de tableaux et guerres de religion.</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="01-principes.html"><a href="01-principes.html#le-type-data.frame"><i class="fa fa-check"></i><b>1.5.1</b> Le type <em>data.frame</em> :</a></li>
+<li class="chapter" data-level="1.5.2" data-path="01-principes.html"><a href="01-principes.html#le-type-tibble"><i class="fa fa-check"></i><b>1.5.2</b> Le type <em>tibble</em></a></li>
+<li class="chapter" data-level="1.5.3" data-path="01-principes.html"><a href="01-principes.html#le-type-data.table"><i class="fa fa-check"></i><b>1.5.3</b> Le type <em>data.table</em></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="01-principes.html"><a href="01-principes.html#en-résumé"><i class="fa fa-check"></i><b>1.6</b> En résumé</a></li>
+<li class="chapter" data-level="1.7" data-path="01-principes.html"><a href="01-principes.html#exercices"><i class="fa fa-check"></i><b>1.7</b> Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="02-office-killer.html"><a href="02-office-killer.html"><i class="fa fa-check"></i><b>2</b> Office killer</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="02-office-killer.html"><a href="02-office-killer.html#rstudio-et-les-projets-r"><i class="fa fa-check"></i><b>2.1</b> Rstudio et les projets R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="02-office-killer.html"><a href="02-office-killer.html#lancement-de-r-studio"><i class="fa fa-check"></i><b>2.1.1</b> Lancement de R studio</a></li>
+<li class="chapter" data-level="2.1.2" data-path="02-office-killer.html"><a href="02-office-killer.html#création-dun-projet"><i class="fa fa-check"></i><b>2.1.2</b> Création d’un projet</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="02-office-killer.html"><a href="02-office-killer.html#programme-r-excel-killer"><i class="fa fa-check"></i><b>2.2</b> Programme R : Excel killer ?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="02-office-killer.html"><a href="02-office-killer.html#round-1-importation-du-tableau-de-données"><i class="fa fa-check"></i><b>2.2.1</b> Round 1 : Importation du tableau de données</a></li>
+<li class="chapter" data-level="2.2.2" data-path="02-office-killer.html"><a href="02-office-killer.html#round-2.-inventaire-des-sports-disponible"><i class="fa fa-check"></i><b>2.2.2</b> Round 2. Inventaire des sports disponible</a></li>
+<li class="chapter" data-level="2.2.3" data-path="02-office-killer.html"><a href="02-office-killer.html#round-3.-sélection-dun-sport"><i class="fa fa-check"></i><b>2.2.3</b> Round 3. Sélection d’un sport</a></li>
+<li class="chapter" data-level="2.2.4" data-path="02-office-killer.html"><a href="02-office-killer.html#round-4.-analyse-de-lâge-du-poids-de-la-taille-et-de-limc-des-sportifs"><i class="fa fa-check"></i><b>2.2.4</b> Round 4. Analyse de l’âge, du poids, de la taille et de l’IMC des sportifs</a></li>
+<li class="chapter" data-level="2.2.5" data-path="02-office-killer.html"><a href="02-office-killer.html#round-5-nombre-de-médailles-dor-par-pays-et-par-épreuve"><i class="fa fa-check"></i><b>2.2.5</b> Round 5 : Nombre de médailles d’or par pays et par épreuve</a></li>
+<li class="chapter" data-level="2.2.6" data-path="02-office-killer.html"><a href="02-office-killer.html#dernier-round.-refaire-toute-lanalyse-en-changeant-de-sport"><i class="fa fa-check"></i><b>2.2.6</b> Dernier round. Refaire toute l’analyse en changeant de sport</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="02-office-killer.html"><a href="02-office-killer.html#document-rmd-word-killer"><i class="fa fa-check"></i><b>2.3</b> Document Rmd : Word killer ?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="02-office-killer.html"><a href="02-office-killer.html#préparation-du-document-rmarkdown"><i class="fa fa-check"></i><b>2.3.1</b> Préparation du document Rmarkdown</a></li>
+<li class="chapter" data-level="2.3.2" data-path="02-office-killer.html"><a href="02-office-killer.html#préparation-du-plan"><i class="fa fa-check"></i><b>2.3.2</b> Préparation du plan</a></li>
+<li class="chapter" data-level="2.3.3" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dimages-externes"><i class="fa fa-check"></i><b>2.3.3</b> Ajout d’images externes</a></li>
+<li class="chapter" data-level="2.3.4" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-de-texte"><i class="fa fa-check"></i><b>2.3.4</b> Ajout de texte</a></li>
+<li class="chapter" data-level="2.3.5" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dun-tableau"><i class="fa fa-check"></i><b>2.3.5</b> Ajout d’un tableau</a></li>
+<li class="chapter" data-level="2.3.6" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dun-graphique"><i class="fa fa-check"></i><b>2.3.6</b> Ajout d’un graphique</a></li>
+<li class="chapter" data-level="2.3.7" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dune-carte"><i class="fa fa-check"></i><b>2.3.7</b> Ajout d’une carte</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="02-office-killer.html"><a href="02-office-killer.html#diapos-rmd-power-point-killer"><i class="fa fa-check"></i><b>2.4</b> Diapos Rmd : Power Point killer</a></li>
+<li class="chapter" data-level="2.5" data-path="02-office-killer.html"><a href="02-office-killer.html#en-résumé-1"><i class="fa fa-check"></i><b>2.5</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03-R-Base.html"><a href="03-R-Base.html"><i class="fa fa-check"></i><b>3</b> R-Base</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#tableaux"><i class="fa fa-check"></i><b>3.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="03-R-Base.html"><a href="03-R-Base.html#importation"><i class="fa fa-check"></i><b>3.1.1</b> Importation</a></li>
+<li class="chapter" data-level="3.1.2" data-path="03-R-Base.html"><a href="03-R-Base.html#transformations"><i class="fa fa-check"></i><b>3.1.2</b> Transformations</a></li>
+<li class="chapter" data-level="3.1.3" data-path="03-R-Base.html"><a href="03-R-Base.html#extractions"><i class="fa fa-check"></i><b>3.1.3</b> Extractions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-i-var.-quali."><i class="fa fa-check"></i><b>3.2</b> Exploration I (<em>var. quali.</em>)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="03-R-Base.html"><a href="03-R-Base.html#sélection-et-recodage"><i class="fa fa-check"></i><b>3.2.1</b> Sélection et recodage</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03-R-Base.html"><a href="03-R-Base.html#table-de-dénombrement"><i class="fa fa-check"></i><b>3.2.2</b> Table de dénombrement</a></li>
+<li class="chapter" data-level="3.2.3" data-path="03-R-Base.html"><a href="03-R-Base.html#graphique-avec-plot"><i class="fa fa-check"></i><b>3.2.3</b> Graphique avec plot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-ii-var.-quanti"><i class="fa fa-check"></i><b>3.3</b> Exploration II (<em>var. quanti</em>)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#résumés-numériques"><i class="fa fa-check"></i><b>3.3.1</b> Résumés numériques</a></li>
+<li class="chapter" data-level="3.3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#dénombrement"><i class="fa fa-check"></i><b>3.3.2</b> Dénombrement</a></li>
+<li class="chapter" data-level="3.3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#boîte-à-moustaches"><i class="fa fa-check"></i><b>3.3.3</b> Boîte à moustaches</a></li>
+<li class="chapter" data-level="3.3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#histogramme"><i class="fa fa-check"></i><b>3.3.4</b> Histogramme</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-iii-2-variables"><i class="fa fa-check"></i><b>3.4</b> Exploration III (<em>2 variables</em>)</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-qualitatives"><i class="fa fa-check"></i><b>3.4.1</b> Deux variables qualitatives</a></li>
+<li class="chapter" data-level="3.4.2" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-quantitatives"><i class="fa fa-check"></i><b>3.4.2</b> Deux variables quantitatives</a></li>
+<li class="chapter" data-level="3.4.3" data-path="03-R-Base.html"><a href="03-R-Base.html#une-quantitative-et-une-qualitative"><i class="fa fa-check"></i><b>3.4.3</b> Une quantitative et une qualitative</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="03-R-Base.html"><a href="03-R-Base.html#en-résumé-2"><i class="fa fa-check"></i><b>3.5</b> En résumé</a></li>
+</ul></li>
+<li class="part"><span><b>II VARIABLES QUANTITATIVES</b></span></li>
+<li class="chapter" data-level="4" data-path="04-Corrélation.html"><a href="04-Corrélation.html"><i class="fa fa-check"></i><b>4</b> Corrélation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#préparation-des-données"><i class="fa fa-check"></i><b>4.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#chargement-du-tableau-principal"><i class="fa fa-check"></i><b>4.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#choix-des-deux-variables-à-analyser"><i class="fa fa-check"></i><b>4.1.2</b> Choix des deux variables à analyser</a></li>
+<li class="chapter" data-level="4.1.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-malin"><i class="fa fa-check"></i><b>4.1.3</b> On est malin …</a></li>
+<li class="chapter" data-level="4.1.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-paresseux"><i class="fa fa-check"></i><b>4.1.4</b> On est paresseux …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exploration-visuelle"><i class="fa fa-check"></i><b>4.2</b> Exploration visuelle</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-avec-plotxy"><i class="fa fa-check"></i><b>4.2.1</b> Visualisation avec plot(X,Y)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#identification-des-points-avec-cor-text"><i class="fa fa-check"></i><b>4.2.2</b> Identification des points avec <strong>cor</strong> + <strong>text(…)</strong></a></li>
+<li class="chapter" data-level="4.2.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#ajout-de-lignes-horizontales-ou-verticales-avec-cor-abline"><i class="fa fa-check"></i><b>4.2.3</b> Ajout de lignes horizontales ou verticales avec <strong>cor()</strong> + <strong>abline(…)</strong></a></li>
+<li class="chapter" data-level="4.2.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#au-delà-de-r-base"><i class="fa fa-check"></i><b>4.2.4</b> Au delà de R-Base …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#coefficients-de-corrélation"><i class="fa fa-check"></i><b>4.3</b> Coefficients de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#définition"><i class="fa fa-check"></i><b>4.3.1</b> Définition</a></li>
+<li class="chapter" data-level="4.3.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor"><i class="fa fa-check"></i><b>4.3.2</b> La fonction <strong>cor()</strong></a></li>
+<li class="chapter" data-level="4.3.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor.test"><i class="fa fa-check"></i><b>4.3.3</b> La fonction cor.test()</a></li>
+<li class="chapter" data-level="4.3.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#en-résumé-intensité-ou-significativité"><i class="fa fa-check"></i><b>4.3.4</b> En résumé : intensité ou significativité ?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4</b> Matrice de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#objectif-de-lanalyse"><i class="fa fa-check"></i><b>4.4.1</b> Objectif de l’analyse</a></li>
+<li class="chapter" data-level="4.4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-des-résultats"><i class="fa fa-check"></i><b>4.4.2</b> Utilisation des résultats</a></li>
+<li class="chapter" data-level="4.4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-dune-matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4.3</b> Visualisation d’une matrice de corrélation</a></li>
+<li class="chapter" data-level="4.4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exemple-création-dun-tableau-quantitatif"><i class="fa fa-check"></i><b>4.4.4</b> Exemple : création d’un tableau quantitatif</a></li>
+<li class="chapter" data-level="4.4.5" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-psych"><i class="fa fa-check"></i><b>4.4.5</b> Utilisation du package psych</a></li>
+<li class="chapter" data-level="4.4.6" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-factominer"><i class="fa fa-check"></i><b>4.4.6</b> Utilisation du package factoMineR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-Régression.html"><a href="05-Régression.html"><i class="fa fa-check"></i><b>5</b> Régression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05-Régression.html"><a href="05-Régression.html#préparation-des-données-1"><i class="fa fa-check"></i><b>5.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="05-Régression.html"><a href="05-Régression.html#chargement-du-tableau-principal-1"><i class="fa fa-check"></i><b>5.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="5.1.2" data-path="05-Régression.html"><a href="05-Régression.html#choix-des-deux-variables-à-analyser-1"><i class="fa fa-check"></i><b>5.1.2</b> Choix des deux variables à analyser</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="05-Régression.html"><a href="05-Régression.html#forme-de-la-relation"><i class="fa fa-check"></i><b>5.2</b> Forme de la relation</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="05-Régression.html"><a href="05-Régression.html#vérification-de-la-normalité-de-x-et-y"><i class="fa fa-check"></i><b>5.2.1</b> Vérification de la normalité de X et Y</a></li>
+<li class="chapter" data-level="5.2.2" data-path="05-Régression.html"><a href="05-Régression.html#visualisation-de-la-forme-de-la-relation"><i class="fa fa-check"></i><b>5.2.2</b> Visualisation de la forme de la relation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="05-Régression.html"><a href="05-Régression.html#analyse-de-la-corrélation"><i class="fa fa-check"></i><b>5.2.3</b> Analyse de la corrélation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="05-Régression.html"><a href="05-Régression.html#ajustement-du-modèle"><i class="fa fa-check"></i><b>5.3</b> Ajustement du modèle</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="05-Régression.html"><a href="05-Régression.html#hypothèses-statistiques"><i class="fa fa-check"></i><b>5.3.1</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="5.3.2" data-path="05-Régression.html"><a href="05-Régression.html#la-fonction-lm"><i class="fa fa-check"></i><b>5.3.2</b> La fonction lm()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostics-du-modèle"><i class="fa fa-check"></i><b>5.4</b> Diagnostics du modèle</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-1-indépendance-des-résidus"><i class="fa fa-check"></i><b>5.4.1</b> Diagnostic 1 : Indépendance des résidus ?</a></li>
+<li class="chapter" data-level="5.4.2" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-2-normalité-des-résidus"><i class="fa fa-check"></i><b>5.4.2</b> Diagnostic 2 : Normalité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.3" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-3-homogénéité-des-résidus"><i class="fa fa-check"></i><b>5.4.3</b> Diagnostic 3 : Homogénéité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-4-absence-de-valeur-exceptionnelles"><i class="fa fa-check"></i><b>5.4.4</b> Diagnostic 4 : Absence de valeur exceptionnelles ?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="05-Régression.html"><a href="05-Régression.html#améliorations-du-modèle"><i class="fa fa-check"></i><b>5.5</b> Améliorations du modèle</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-r2-46"><i class="fa fa-check"></i><b>5.5.1</b> Modèle linéaire (R2 = 46%)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-sans-lalbanie-r2-53"><i class="fa fa-check"></i><b>5.5.2</b> Modèle linéaire sans l’Albanie (R2 = 53%)</a></li>
+<li class="chapter" data-level="5.5.3" data-path="05-Régression.html"><a href="05-Régression.html#modèle-exponentiel-r2-63"><i class="fa fa-check"></i><b>5.5.3</b> Modèle exponentiel (R2 = 63%)</a></li>
+<li class="chapter" data-level="5.5.4" data-path="05-Régression.html"><a href="05-Régression.html#modèle-puissance-r2-83"><i class="fa fa-check"></i><b>5.5.4</b> Modèle puissance (R2 = 83%)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="06-Anova.html"><a href="06-Anova.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="06-Anova.html"><a href="06-Anova.html#préparation-des-données-2"><i class="fa fa-check"></i><b>6.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="06-Anova.html"><a href="06-Anova.html#chargement-du-fichier"><i class="fa fa-check"></i><b>6.1.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="6.1.2" data-path="06-Anova.html"><a href="06-Anova.html#contenu-du-fichier"><i class="fa fa-check"></i><b>6.1.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="6.1.3" data-path="06-Anova.html"><a href="06-Anova.html#dictionaire-des-variables"><i class="fa fa-check"></i><b>6.1.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="6.1.4" data-path="06-Anova.html"><a href="06-Anova.html#recodage-des-variables"><i class="fa fa-check"></i><b>6.1.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="6.1.5" data-path="06-Anova.html"><a href="06-Anova.html#ajout-dune-nouvelle-variable"><i class="fa fa-check"></i><b>6.1.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="6.1.6" data-path="06-Anova.html"><a href="06-Anova.html#résumé-de-lensemble-du-tableau"><i class="fa fa-check"></i><b>6.1.6</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="06-Anova.html"><a href="06-Anova.html#rappels-sur-la-régression"><i class="fa fa-check"></i><b>6.2</b> Rappels sur la régression</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="06-Anova.html"><a href="06-Anova.html#la-distribution-de-pct-est-elle-normale"><i class="fa fa-check"></i><b>6.2.1</b> La distribution de PCT est-elle normale ?</a></li>
+<li class="chapter" data-level="6.2.2" data-path="06-Anova.html"><a href="06-Anova.html#y-a-t-il-une-relation-entre-le-prix-du-repas-et-le-pourboire"><i class="fa fa-check"></i><b>6.2.2</b> Y-a-t-il une relation entre le prix du repas et le pourboire ?</a></li>
+<li class="chapter" data-level="6.2.3" data-path="06-Anova.html"><a href="06-Anova.html#modèle-de-régression"><i class="fa fa-check"></i><b>6.2.3</b> Modèle de régression</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="06-Anova.html"><a href="06-Anova.html#test-dégalité-des-moyennes"><i class="fa fa-check"></i><b>6.3</b> Test d’égalité des moyennes</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="06-Anova.html"><a href="06-Anova.html#hypothèses"><i class="fa fa-check"></i><b>6.3.1</b> Hypothèses</a></li>
+<li class="chapter" data-level="6.3.2" data-path="06-Anova.html"><a href="06-Anova.html#visualisations"><i class="fa fa-check"></i><b>6.3.2</b> Visualisations</a></li>
+<li class="chapter" data-level="6.3.3" data-path="06-Anova.html"><a href="06-Anova.html#paramètres-principaux"><i class="fa fa-check"></i><b>6.3.3</b> Paramètres principaux</a></li>
+<li class="chapter" data-level="6.3.4" data-path="06-Anova.html"><a href="06-Anova.html#test-dégalité-des-moyennes-1"><i class="fa fa-check"></i><b>6.3.4</b> Test d’égalité des moyennes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="06-Anova.html"><a href="06-Anova.html#analyse-de-variance-1"><i class="fa fa-check"></i><b>6.4</b> Analyse de variance</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="06-Anova.html"><a href="06-Anova.html#hypothèses-1"><i class="fa fa-check"></i><b>6.4.1</b> Hypothèses</a></li>
+<li class="chapter" data-level="6.4.2" data-path="06-Anova.html"><a href="06-Anova.html#calcul-des-paramètres-principaux"><i class="fa fa-check"></i><b>6.4.2</b> Calcul des paramètres principaux</a></li>
+<li class="chapter" data-level="6.4.3" data-path="06-Anova.html"><a href="06-Anova.html#visualisation"><i class="fa fa-check"></i><b>6.4.3</b> Visualisation</a></li>
+<li class="chapter" data-level="6.4.4" data-path="06-Anova.html"><a href="06-Anova.html#modélisation-simple"><i class="fa fa-check"></i><b>6.4.4</b> Modélisation simple</a></li>
+<li class="chapter" data-level="6.4.5" data-path="06-Anova.html"><a href="06-Anova.html#modélisation-avancée"><i class="fa fa-check"></i><b>6.4.5</b> Modélisation avancée</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="06-Anova.html"><a href="06-Anova.html#annexe-les-variables-hybrides"><i class="fa fa-check"></i><b>6.5</b> Annexe : les variables hybrides</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="06-Anova.html"><a href="06-Anova.html#size-quantitative-discrète"><i class="fa fa-check"></i><b>6.5.1</b> SIZE = quantitative discrète</a></li>
+<li class="chapter" data-level="6.5.2" data-path="06-Anova.html"><a href="06-Anova.html#size-qualitative-ordinale"><i class="fa fa-check"></i><b>6.5.2</b> SIZE = qualitative ordinale</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III VARIABLES CATEGORIELLES</b></span></li>
+<li class="chapter" data-level="7" data-path="07-Tabcont.html"><a href="07-Tabcont.html"><i class="fa fa-check"></i><b>7</b> Analyse d’enquêtes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#préparation-des-données-3"><i class="fa fa-check"></i><b>7.2</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#importation-du-fichier-au-format-.rds"><i class="fa fa-check"></i><b>7.2.1</b> Importation du fichier au format .RDS</a></li>
+<li class="chapter" data-level="7.2.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#simplifiée-des-variables"><i class="fa fa-check"></i><b>7.2.2</b> (simplifiée) des variables</a></li>
+<li class="chapter" data-level="7.2.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#résumé-des-variables-tri-à-plat"><i class="fa fa-check"></i><b>7.2.3</b> Résumé des variables (tri à plat)</a></li>
+<li class="chapter" data-level="7.2.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#tailles-des-échantillons-par-pays-et-par-date"><i class="fa fa-check"></i><b>7.2.4</b> Tailles des échantillons par pays et par date</a></li>
+<li class="chapter" data-level="7.2.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sélection-dun-échantillon"><i class="fa fa-check"></i><b>7.2.5</b> Sélection d’un échantillon</a></li>
+<li class="chapter" data-level="7.2.6" data-path="07-Tabcont.html"><a href="07-Tabcont.html#recodage-des-modalités"><i class="fa fa-check"></i><b>7.2.6</b> Recodage des modalités</a></li>
+<li class="chapter" data-level="7.2.7" data-path="07-Tabcont.html"><a href="07-Tabcont.html#découpage-de-variables-quantitatives-en-classes"><i class="fa fa-check"></i><b>7.2.7</b> Découpage de variables quantitatives en classes</a></li>
+<li class="chapter" data-level="7.2.8" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sélection"><i class="fa fa-check"></i><b>7.2.8</b> Sélection</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa"><i class="fa fa-check"></i><b>7.3</b> Opinion USA</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#la-fonction-table"><i class="fa fa-check"></i><b>7.3.1</b> la fonction table()</a></li>
+<li class="chapter" data-level="7.3.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#visualisation-avec-plot-ou-barplot"><i class="fa fa-check"></i><b>7.3.2</b> Visualisation avec plot ou barplot</a></li>
+<li class="chapter" data-level="7.3.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#recodage"><i class="fa fa-check"></i><b>7.3.3</b> Recodage</a></li>
+<li class="chapter" data-level="7.3.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#calcul-de-lintervalle-de-confiance"><i class="fa fa-check"></i><b>7.3.4</b> Calcul de l’intervalle de confiance</a></li>
+<li class="chapter" data-level="7.3.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#prise-en-compte-de-la-variable-de-redressement."><i class="fa fa-check"></i><b>7.3.5</b> Prise en compte de la variable de redressement.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-sexe"><i class="fa fa-check"></i><b>7.4</b> Opinion USA / Sexe</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#tableau-de-contingence"><i class="fa fa-check"></i><b>7.4.1</b> tableau de contingence</a></li>
+<li class="chapter" data-level="7.4.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#pourcentages"><i class="fa fa-check"></i><b>7.4.2</b> Pourcentages</a></li>
+<li class="chapter" data-level="7.4.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#première-visualisation"><i class="fa fa-check"></i><b>7.4.3</b> Première visualisation</a></li>
+<li class="chapter" data-level="7.4.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#test-du-chi-2"><i class="fa fa-check"></i><b>7.4.4</b> test du chi-2</a></li>
+<li class="chapter" data-level="7.4.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#analyse-des-résidus"><i class="fa fa-check"></i><b>7.4.5</b> Analyse des résidus</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-âge"><i class="fa fa-check"></i><b>7.5</b> Opinion USA / Âge</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#effet-de-génération"><i class="fa fa-check"></i><b>7.5.1</b> Effet de génération</a></li>
+<li class="chapter" data-level="7.5.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#effet-dâge"><i class="fa fa-check"></i><b>7.5.2</b> Effet d’âge</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-age-sexe"><i class="fa fa-check"></i><b>7.6</b> Opinion USA / Age &amp; Sexe</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sous-échantillon-des-hommes"><i class="fa fa-check"></i><b>7.6.1</b> Sous-échantillon des hommes</a></li>
+<li class="chapter" data-level="7.6.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sous-échantillon-des-femmes"><i class="fa fa-check"></i><b>7.6.2</b> Sous-échantillon des femmes</a></li>
+<li class="chapter" data-level="7.6.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#régression-logistique"><i class="fa fa-check"></i><b>7.6.3</b> Régression logistique</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV GRAPHIQUES &amp; TABLEAUX</b></span></li>
+<li class="chapter" data-level="8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html"><i class="fa fa-check"></i><b>8</b> Graphiques avec R-Base</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#pourquoi-sembêter-à-utiliser-les-fonctions-primitives-de-r-pour-faire-des-graphiques"><i class="fa fa-check"></i><b>8.1.1</b> Pourquoi s’em…bêter à utiliser les fonctions primitives de R pour faire des graphiques ?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#trois-étapes-pour-créer-un-graphique"><i class="fa fa-check"></i><b>8.1.2</b> Trois étapes pour créer un graphique</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#préparation-des-données-4"><i class="fa fa-check"></i><b>8.2</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#chargement-du-fichier-1"><i class="fa fa-check"></i><b>8.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="8.2.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#contenu-du-fichier-1"><i class="fa fa-check"></i><b>8.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="8.2.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#dictionaire-des-variables-1"><i class="fa fa-check"></i><b>8.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="8.2.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#recodage-des-variables-1"><i class="fa fa-check"></i><b>8.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="8.2.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ajout-dune-nouvelle-variable-1"><i class="fa fa-check"></i><b>8.2.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="8.2.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#résumé-de-lensemble-du-tableau-1"><i class="fa fa-check"></i><b>8.2.6</b> Résumé de l’ensemble du tableau</a></li>
+<li class="chapter" data-level="8.2.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-par"><i class="fa fa-check"></i><b>8.2.7</b> La fonction par()</a></li>
+<li class="chapter" data-level="8.2.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#fonction-par-mfrow"><i class="fa fa-check"></i><b>8.2.8</b> fonction par() + mfrow</a></li>
+<li class="chapter" data-level="8.2.9" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#autres-paramètres-de-par"><i class="fa fa-check"></i><b>8.2.9</b> Autres paramètres de par()</a></li>
+<li class="chapter" data-level="8.2.10" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-layout"><i class="fa fa-check"></i><b>8.2.10</b> La fonction layout()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-génératrice-plot"><i class="fa fa-check"></i><b>8.3</b> La fonction génératrice plot()</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#une-super-fonction"><i class="fa fa-check"></i><b>8.3.1</b> Une super-fonction</a></li>
+<li class="chapter" data-level="8.3.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-factor"><i class="fa fa-check"></i><b>8.3.2</b> plot(X) / X de type factor</a></li>
+<li class="chapter" data-level="8.3.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-numeric"><i class="fa fa-check"></i><b>8.3.3</b> plot(X) / X de type numeric</a></li>
+<li class="chapter" data-level="8.3.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-factor"><i class="fa fa-check"></i><b>8.3.4</b> plot(X,Y) / X et Y de type factor</a></li>
+<li class="chapter" data-level="8.3.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-numerique"><i class="fa fa-check"></i><b>8.3.5</b> plot(X,Y) / X et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique"><i class="fa fa-check"></i><b>8.3.6</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique-1"><i class="fa fa-check"></i><b>8.3.7</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotmodel-model-lmyx"><i class="fa fa-check"></i><b>8.3.8</b> plot(model) / model = lm(Y~X)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-autres-fonctions-génératrice"><i class="fa fa-check"></i><b>8.4</b> Les autres fonctions génératrice</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-barplot"><i class="fa fa-check"></i><b>8.4.1</b> La fonction barplot()</a></li>
+<li class="chapter" data-level="8.4.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-hist-et-density"><i class="fa fa-check"></i><b>8.4.2</b> Les fonctions hist() et density()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-complémentaires"><i class="fa fa-check"></i><b>8.5</b> Les fonctions complémentaires</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#exemple-dun-nuage-de-points-xy"><i class="fa fa-check"></i><b>8.5.1</b> Exemple d’un nuage de points (X,Y)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#conclusion"><i class="fa fa-check"></i><b>8.6</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-faire-de-beaux-graphiques-avec-r-base"><i class="fa fa-check"></i><b>8.6.1</b> On peut faire de beaux graphiques avec R-Base …</a></li>
+<li class="chapter" data-level="8.6.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-utiliser-des-packages-spécialisés"><i class="fa fa-check"></i><b>8.6.2</b> On peut utiliser des packages spécialisés</a></li>
+<li class="chapter" data-level="8.6.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggally-un-package-spécialisé-dans-la-statistique-bivariée"><i class="fa fa-check"></i><b>8.6.3</b> ggally : un package spécialisé dans la statistique bivariée</a></li>
+<li class="chapter" data-level="8.6.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggplot2-un-package-graphique-universel"><i class="fa fa-check"></i><b>8.6.4</b> ggplot2 : un package graphique universel ?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html"><i class="fa fa-check"></i><b>9</b> Graphiques avec ggplot2</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-et-tydiverse"><i class="fa fa-check"></i><b>9.1.1</b> ggplot2 et tydiverse</a></li>
+<li class="chapter" data-level="9.1.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-cheatsheet"><i class="fa fa-check"></i><b>9.1.2</b> ggplot2 cheatsheet</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#préparation-des-données-5"><i class="fa fa-check"></i><b>9.2</b> préparation des données</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#chargement-du-fichier-2"><i class="fa fa-check"></i><b>9.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="9.2.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#contenu-du-fichier-2"><i class="fa fa-check"></i><b>9.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="9.2.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#dictionaire-des-variables-2"><i class="fa fa-check"></i><b>9.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="9.2.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#recodage-des-variables-2"><i class="fa fa-check"></i><b>9.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="9.2.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#résumé-de-lensemble-du-tableau-2"><i class="fa fa-check"></i><b>9.2.5</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#principes-généraux"><i class="fa fa-check"></i><b>9.3</b> Principes généraux</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#les-différentes-étapes"><i class="fa fa-check"></i><b>9.3.1</b> Les différentes étapes</a></li>
+<li class="chapter" data-level="9.3.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-figure-à-réaliser"><i class="fa fa-check"></i><b>9.3.2</b> La figure à réaliser</a></li>
+<li class="chapter" data-level="9.3.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-construction-pas-à-pas"><i class="fa fa-check"></i><b>9.3.3</b> La construction pas à pas</a></li>
+<li class="chapter" data-level="9.3.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#comparaison-avec-r-base"><i class="fa fa-check"></i><b>9.3.4</b> Comparaison avec R-Base</a></li>
+<li class="chapter" data-level="9.3.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#attention-paramètres-aes-locaux-et-globaux"><i class="fa fa-check"></i><b>9.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-discrète"><i class="fa fa-check"></i><b>9.4</b> X discrète</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#barplot-r-base"><i class="fa fa-check"></i><b>9.4.1</b> barplot (R-base)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2"><i class="fa fa-check"></i><b>9.4.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue"><i class="fa fa-check"></i><b>9.5</b> X quantitative continue</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#hist-r-base"><i class="fa fa-check"></i><b>9.5.1</b> hist (R-base)</a></li>
+<li class="chapter" data-level="9.5.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_histogram-ggplot2"><i class="fa fa-check"></i><b>9.5.2</b> geom_histogram (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-et-y-quantitatives-continues"><i class="fa fa-check"></i><b>9.6</b> X et Y quantitatives continues</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plot-r-base"><i class="fa fa-check"></i><b>9.6.1</b> plot (R-base)</a></li>
+<li class="chapter" data-level="9.6.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_point-ggplot2"><i class="fa fa-check"></i><b>9.6.2</b> geom_point (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète"><i class="fa fa-check"></i><b>9.7</b> X quantitative continue et Y discrète</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#boxplot-r-base"><i class="fa fa-check"></i><b>9.7.1</b> 6.1 boxplot (R-base)</a></li>
+<li class="chapter" data-level="9.7.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_boxplot-ggplot2"><i class="fa fa-check"></i><b>9.7.2</b> geom_boxplot (ggplot2)</a></li>
+<li class="chapter" data-level="9.7.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#beanplot-r-base-package-beanplot"><i class="fa fa-check"></i><b>9.7.3</b> beanplot (R-base + package beanplot)</a></li>
+<li class="chapter" data-level="9.7.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_violin-ggplot2"><i class="fa fa-check"></i><b>9.7.4</b> geom_violin (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#deux-variables-x-et-y-discrètes"><i class="fa fa-check"></i><b>9.8</b> Deux variables X et Y discrètes</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#mosaicplot-r-base"><i class="fa fa-check"></i><b>9.8.1</b> mosaicplot (R-base)</a></li>
+<li class="chapter" data-level="9.8.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2-1"><i class="fa fa-check"></i><b>9.8.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#conclusion-1"><i class="fa fa-check"></i><b>9.9</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#r-base-1"><i class="fa fa-check"></i><b>9.9.1</b> R-base</a></li>
+<li class="chapter" data-level="9.9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2"><i class="fa fa-check"></i><b>9.9.2</b> ggplot2</a></li>
+<li class="chapter" data-level="9.9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#le-meilleur-des-deux-mondes"><i class="fa fa-check"></i><b>9.9.3</b> Le meilleur des deux mondes ?</a></li>
+<li class="chapter" data-level="9.9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web"><i class="fa fa-check"></i><b>9.9.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html"><i class="fa fa-check"></i><b>10</b> Initiation à tidyverse</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#introduction-3"><i class="fa fa-check"></i><b>10.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#un-nouvel-empire"><i class="fa fa-check"></i><b>10.1.1</b> Un nouvel empire ?</a></li>
+<li class="chapter" data-level="10.1.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#pour-une-utilisation-sélective"><i class="fa fa-check"></i><b>10.1.2</b> Pour une utilisation sélective</a></li>
+<li class="chapter" data-level="10.1.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#jeu-de-données"><i class="fa fa-check"></i><b>10.1.3</b> Jeu de données</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#manipuler-avec-dplyr"><i class="fa fa-check"></i><b>10.2</b> Manipuler avec dplyr</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#filter"><i class="fa fa-check"></i><b>10.2.1</b> <strong>filter()</strong></a></li>
+<li class="chapter" data-level="10.2.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#select"><i class="fa fa-check"></i><b>10.2.2</b> <strong>select()</strong></a></li>
+<li class="chapter" data-level="10.2.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#mutate"><i class="fa fa-check"></i><b>10.2.3</b> <strong>mutate()</strong></a></li>
+<li class="chapter" data-level="10.2.4" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#arrange"><i class="fa fa-check"></i><b>10.2.4</b> arrange()</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#visualiser-avec-ggplot2"><i class="fa fa-check"></i><b>10.3</b> Visualiser avec ggplot2</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#les-différentes-étapes-1"><i class="fa fa-check"></i><b>10.3.1</b> Les différentes étapes</a></li>
+<li class="chapter" data-level="10.3.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#la-figure-à-réaliser-1"><i class="fa fa-check"></i><b>10.3.2</b> La figure à réaliser</a></li>
+<li class="chapter" data-level="10.3.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#la-construction-pas-à-pas-1"><i class="fa fa-check"></i><b>10.3.3</b> La construction pas à pas</a></li>
+<li class="chapter" data-level="10.3.4" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#comparaison-avec-r-base-1"><i class="fa fa-check"></i><b>10.3.4</b> Comparaison avec R-Base</a></li>
+<li class="chapter" data-level="10.3.5" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#attention-paramètres-aes-locaux-et-globaux-1"><i class="fa fa-check"></i><b>10.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#comparaison-r-base-ggplot2"><i class="fa fa-check"></i><b>10.4</b> Comparaison R-Base / Ggplot2</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#x-discrète-1"><i class="fa fa-check"></i><b>10.4.1</b> X discrète</a></li>
+<li class="chapter" data-level="10.4.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#x-quantitative-continue-1"><i class="fa fa-check"></i><b>10.4.2</b> X quantitative continue</a></li>
+<li class="chapter" data-level="10.4.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#x-et-y-quantitatives-continues-1"><i class="fa fa-check"></i><b>10.4.3</b> X et Y quantitatives continues</a></li>
+<li class="chapter" data-level="10.4.4" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#x-quantitative-continue-et-y-discrète-1"><i class="fa fa-check"></i><b>10.4.4</b> X quantitative continue et Y discrète</a></li>
+<li class="chapter" data-level="10.4.5" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#deux-variables-x-et-y-discrètes-1"><i class="fa fa-check"></i><b>10.4.5</b> Deux variables X et Y discrètes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#conclusion-2"><i class="fa fa-check"></i><b>10.5</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#r-base-2"><i class="fa fa-check"></i><b>10.5.1</b> R-base</a></li>
+<li class="chapter" data-level="10.5.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#ggplot2-1"><i class="fa fa-check"></i><b>10.5.2</b> ggplot2</a></li>
+<li class="chapter" data-level="10.5.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#le-meilleur-des-deux-mondes-1"><i class="fa fa-check"></i><b>10.5.3</b> Le meilleur des deux mondes ?</a></li>
+<li class="chapter" data-level="10.5.4" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web-1"><i class="fa fa-check"></i><b>10.5.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction à la statistique bivariée et aux représentations graphiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="office-killer" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Partie 2</span> Office killer<a href="02-office-killer.html#office-killer" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="resources/figures/Excel_horror.jpg" width="200" /></p>
+<ul>
+<li><strong>Mise en place</strong> : Télécharger le <a href="https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo2.zip">dossier exo2</a> et décompressez le sur votre ordinateur. Puis ouvrez le projet R <code>exo2.Rproj</code> dans Rstudio.</li>
+</ul>
+<p>Le but de ce chapitre est de montrer le plus tôt possible aux étudiants les possibilités de R et de son environnement R-Studio en ce qui concerne la production de documents ou de présentations dans le cadre d’une démarche reproductible. L’apprentissage précoce de <strong>Rmarkdown</strong> nous semble en effet indispensable, ne serait-ce que pour que les étudiants apprennent à prendre en cours des notes mélangeant les exemples de code R et les explications données en cours ou en TD.</p>
+<p>Mais le but véritable est de convaincre tout ou partie des étudiants qu’ils peuvent remplacer à terme les logiciels de bureautique des suites office par un environnement de travail plus intégré et plus performant… à condition d’oublier la souris pour revenir au clavier !</p>
+<blockquote>
+<p>Real mensch never clcik !</p>
+</blockquote>
+<div id="rstudio-et-les-projets-r" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Rstudio et les projets R<a href="02-office-killer.html#rstudio-et-les-projets-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<ul>
+<li>Au commencement, les dieux de la statistique créèrent le langage R.</li>
+<li>Mais l’interface était vide et vague,</li>
+<li>les ténèbres couvraient les lignes de code</li>
+<li>R-Studio dit : Que le projet soit et le projet fut.</li>
+</ul>
+</blockquote>
+<p>Si l’on veut s’épargner bien des désagréments dans l’apprentissage de R, il faut prendre dès le départ de bonnes habitudes. Parmi celles-ci, l’une des plus importantes est le fait d’inscrire toujours son travail dans le cadre d’un <strong>projet R</strong> c’est-à-dire - en simplifiant beaucoup - un <strong>répertoire de travail</strong> contenant l’ensemble des données, programmes, résultats… que l’on pourra par la suite compresser, archiver et transmettre à quelqu’un d’autre.</p>
+<div id="lancement-de-r-studio" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Lancement de R studio<a href="02-office-killer.html#lancement-de-r-studio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sauf à être complètement masochiste, on n’utilise jamais <strong>R</strong> directement mais on lance d’abord l’interface <strong>R-Studio</strong> qui facilite conisdérablement l’ensemble des opérations et offre une gamme considérable de services. Il ne faut toutefois pas confondre les deux et il serait par exemple ridicule d’indiquer sur un CV en vue d’un emploi de statisticien que l’on sait utiliser R-studio en oubliant de préciser que l’on maîtrise R.</p>
+</div>
+<div id="création-dun-projet" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Création d’un projet<a href="02-office-killer.html#création-dun-projet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour créer un projet on utilise le menus déroulant <em>File/new project/ …</em> et on définit un dossier de notre ordinateur (existant ou à créer) qui contiendra le projet. Une fois l’opération effectuée, on pourra constater que ce dossier contient un fichier <em>xxx.Rproj</em> ou xxx est en principe le nom du dossier dans lequel vous avez stocké le projet.</p>
+<p>Ce fichier contient toute une série d’informations dont nous ne parlerons pas dans ce cours d’initiation mais qui, pour faire simple, définissent un ensemble de réglages du logiciel et de préférences de l’utilisateur.</p>
+<p>Si vous fermez Rstudio (faites-le !) il vous suffira pour reprendre votre travail là où vous vous étiez arrêté :</p>
+<ul>
+<li>de lancer R-studio et de cliquer sur <em>File/open project/…</em> suivi du nom du fichier xxx.Rproj</li>
+<li>ou plus simplement encore de double cliquer sur le fichier xxx.Rproj ce qui lancera automatiquement Rstudio</li>
+</ul>
+<p>Le dossier contenant votre projet R peut être organisé à votre convenance. Certains mettent tout les fichier pêle-mêle dans le dossier. D’autres préfèrent créer des sous-dossiers contenant des données, des programmes, des résultats, des figures. Vous déciderez à l’usage de ce qui vous convient le mieux, mais le point important est que <strong>tout ce qui entre ou sort de vos programmes R doit être de préférence stocké dans le répertoire du projet</strong>.</p>
+<p><img src="resources/figures/monprojet.png" width="516" /></p>
+</div>
+</div>
+<div id="programme-r-excel-killer" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Programme R : Excel killer ?<a href="02-office-killer.html#programme-r-excel-killer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<ul>
+<li>C’est pourquoi tu quittera Word et Excel, et t’attachera à R studio,</li>
+<li>et vous deviendrez une seule chair.</li>
+</ul>
+</blockquote>
+<p>La fonction initiale d’un langage de programmation comme R est … de créer des <strong>programmes</strong> c’est-à-dire des ensembles d’instruction permettant d’accomplir une tâche à l’intérieur d’une chaîne de production. Dans le cas d’un logiciel spécialisé dans l’analyse statistique, il s’agira donc de partir de données (statistiques, géographiques, textuelles, …) pour aboutir à des résultats prenant la forme de tableaux, cartes ou graphiques. Il ne s’agit donc en somme que d’une étape du travail de recherche où le principal avantage de R est d’<strong>automatiser une tâche</strong> et de faciliter sa <strong>reproduction ultérieure</strong> avec en arrière plan un objectif de <strong>productivité</strong> puisque l’ordinateur réalise en quelques millisecondes des tâches qui prendraient des heures avec un logiciel click-bouton de type Excel.</p>
+<p><img src="resources/figures/ProgrammeR.png" width="800px" /></p>
+<p>Prenons comme exemple le cas d’un éditeur qui souhaite réaliser une grande encyclopédie des jeux olympiques. Il a besoin pour cela d’embaucher un <strong>data analyst</strong> qui l’aidera à exploiter une grande base de données qu’il a trouvé sur internet, intitulée <a href="https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results">120 years of olympic history, athlets and results</a></p>
+<p>Deux candidats se présentent pour le poste :</p>
+<ul>
+<li><strong>Le candidat A</strong> est un expert dans la manipulation du package office (Excel, Word, Power Point, …) avec plus de 30 ans d’expérience.</li>
+<li><strong>Le candidat B</strong> est un étudiant de Master 1 ayant suivi un semestre de formation à R et Rstudio.</li>
+</ul>
+<p>L’éditeur décide de les mettre en concurrence pour voir lequel des deux candidats est le plus efficace et prépare une série d’épreuves qui seront chronométrées</p>
+<div id="round-1-importation-du-tableau-de-données" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Round 1 : Importation du tableau de données<a href="02-office-killer.html#round-1-importation-du-tableau-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il faut importer le tableau, déterminer le nombre de lignes et de colonnes puis afficher les 5 premières et 5 dernières lignes</p>
+<p>On crée un programme R avec <em>File/New File/R Script</em> puis on l’enregistre avec <em>File/Save/ …</em> suivi du nom du programme.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="02-office-killer.html#cb27-1" tabindex="-1"></a><span class="co"># Importation du tableau</span></span>
+<span id="cb27-2"><a href="02-office-killer.html#cb27-2" tabindex="-1"></a>don <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/olympic/120-years-of-olympic-history-athletes-and-results.csv&quot;</span>,</span>
+<span id="cb27-3"><a href="02-office-killer.html#cb27-3" tabindex="-1"></a>                  <span class="at">header=</span> <span class="cn">TRUE</span>,</span>
+<span id="cb27-4"><a href="02-office-killer.html#cb27-4" tabindex="-1"></a>                  <span class="at">sep =</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb27-5"><a href="02-office-killer.html#cb27-5" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="02-office-killer.html#cb27-6" tabindex="-1"></a><span class="co"># détermination du nombre de lignes et de colonnes</span></span>
+<span id="cb27-7"><a href="02-office-killer.html#cb27-7" tabindex="-1"></a><span class="fu">dim</span>(don)</span>
+<span id="cb27-8"><a href="02-office-killer.html#cb27-8" tabindex="-1"></a><span class="co">#&gt; [1] 271116     15</span></span>
+<span id="cb27-9"><a href="02-office-killer.html#cb27-9" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="02-office-killer.html#cb27-10" tabindex="-1"></a><span class="co"># affichage des 5 premières lignes</span></span>
+<span id="cb27-11"><a href="02-office-killer.html#cb27-11" tabindex="-1"></a><span class="fu">head</span>(don,<span class="dv">5</span>)</span>
+<span id="cb27-12"><a href="02-office-killer.html#cb27-12" tabindex="-1"></a><span class="co">#&gt;   ID                     Name Sex Age Height Weight           Team NOC</span></span>
+<span id="cb27-13"><a href="02-office-killer.html#cb27-13" tabindex="-1"></a><span class="co">#&gt; 1  1                A Dijiang   M  24    180     80          China CHN</span></span>
+<span id="cb27-14"><a href="02-office-killer.html#cb27-14" tabindex="-1"></a><span class="co">#&gt; 2  2                 A Lamusi   M  23    170     60          China CHN</span></span>
+<span id="cb27-15"><a href="02-office-killer.html#cb27-15" tabindex="-1"></a><span class="co">#&gt; 3  3      Gunnar Nielsen Aaby   M  24     NA     NA        Denmark DEN</span></span>
+<span id="cb27-16"><a href="02-office-killer.html#cb27-16" tabindex="-1"></a><span class="co">#&gt; 4  4     Edgar Lindenau Aabye   M  34     NA     NA Denmark/Sweden DEN</span></span>
+<span id="cb27-17"><a href="02-office-killer.html#cb27-17" tabindex="-1"></a><span class="co">#&gt; 5  5 Christine Jacoba Aaftink   F  21    185     82    Netherlands NED</span></span>
+<span id="cb27-18"><a href="02-office-killer.html#cb27-18" tabindex="-1"></a><span class="co">#&gt;         Games Year Season      City         Sport</span></span>
+<span id="cb27-19"><a href="02-office-killer.html#cb27-19" tabindex="-1"></a><span class="co">#&gt; 1 1992 Summer 1992 Summer Barcelona    Basketball</span></span>
+<span id="cb27-20"><a href="02-office-killer.html#cb27-20" tabindex="-1"></a><span class="co">#&gt; 2 2012 Summer 2012 Summer    London          Judo</span></span>
+<span id="cb27-21"><a href="02-office-killer.html#cb27-21" tabindex="-1"></a><span class="co">#&gt; 3 1920 Summer 1920 Summer Antwerpen      Football</span></span>
+<span id="cb27-22"><a href="02-office-killer.html#cb27-22" tabindex="-1"></a><span class="co">#&gt; 4 1900 Summer 1900 Summer     Paris    Tug-Of-War</span></span>
+<span id="cb27-23"><a href="02-office-killer.html#cb27-23" tabindex="-1"></a><span class="co">#&gt; 5 1988 Winter 1988 Winter   Calgary Speed Skating</span></span>
+<span id="cb27-24"><a href="02-office-killer.html#cb27-24" tabindex="-1"></a><span class="co">#&gt;                              Event Medal</span></span>
+<span id="cb27-25"><a href="02-office-killer.html#cb27-25" tabindex="-1"></a><span class="co">#&gt; 1      Basketball Men&#39;s Basketball  &lt;NA&gt;</span></span>
+<span id="cb27-26"><a href="02-office-killer.html#cb27-26" tabindex="-1"></a><span class="co">#&gt; 2     Judo Men&#39;s Extra-Lightweight  &lt;NA&gt;</span></span>
+<span id="cb27-27"><a href="02-office-killer.html#cb27-27" tabindex="-1"></a><span class="co">#&gt; 3          Football Men&#39;s Football  &lt;NA&gt;</span></span>
+<span id="cb27-28"><a href="02-office-killer.html#cb27-28" tabindex="-1"></a><span class="co">#&gt; 4      Tug-Of-War Men&#39;s Tug-Of-War  Gold</span></span>
+<span id="cb27-29"><a href="02-office-killer.html#cb27-29" tabindex="-1"></a><span class="co">#&gt; 5 Speed Skating Women&#39;s 500 metres  &lt;NA&gt;</span></span>
+<span id="cb27-30"><a href="02-office-killer.html#cb27-30" tabindex="-1"></a></span>
+<span id="cb27-31"><a href="02-office-killer.html#cb27-31" tabindex="-1"></a><span class="co"># Affichage du tableau</span></span>
+<span id="cb27-32"><a href="02-office-killer.html#cb27-32" tabindex="-1"></a><span class="fu">tail</span>(don,<span class="dv">5</span>)</span>
+<span id="cb27-33"><a href="02-office-killer.html#cb27-33" tabindex="-1"></a><span class="co">#&gt;            ID               Name Sex Age Height Weight     Team NOC       Games</span></span>
+<span id="cb27-34"><a href="02-office-killer.html#cb27-34" tabindex="-1"></a><span class="co">#&gt; 271112 135569         Andrzej ya   M  29    179     89 Poland-1 POL 1976 Winter</span></span>
+<span id="cb27-35"><a href="02-office-killer.html#cb27-35" tabindex="-1"></a><span class="co">#&gt; 271113 135570           Piotr ya   M  27    176     59   Poland POL 2014 Winter</span></span>
+<span id="cb27-36"><a href="02-office-killer.html#cb27-36" tabindex="-1"></a><span class="co">#&gt; 271114 135570           Piotr ya   M  27    176     59   Poland POL 2014 Winter</span></span>
+<span id="cb27-37"><a href="02-office-killer.html#cb27-37" tabindex="-1"></a><span class="co">#&gt; 271115 135571 Tomasz Ireneusz ya   M  30    185     96   Poland POL 1998 Winter</span></span>
+<span id="cb27-38"><a href="02-office-killer.html#cb27-38" tabindex="-1"></a><span class="co">#&gt; 271116 135571 Tomasz Ireneusz ya   M  34    185     96   Poland POL 2002 Winter</span></span>
+<span id="cb27-39"><a href="02-office-killer.html#cb27-39" tabindex="-1"></a><span class="co">#&gt;        Year Season           City       Sport</span></span>
+<span id="cb27-40"><a href="02-office-killer.html#cb27-40" tabindex="-1"></a><span class="co">#&gt; 271112 1976 Winter      Innsbruck        Luge</span></span>
+<span id="cb27-41"><a href="02-office-killer.html#cb27-41" tabindex="-1"></a><span class="co">#&gt; 271113 2014 Winter          Sochi Ski Jumping</span></span>
+<span id="cb27-42"><a href="02-office-killer.html#cb27-42" tabindex="-1"></a><span class="co">#&gt; 271114 2014 Winter          Sochi Ski Jumping</span></span>
+<span id="cb27-43"><a href="02-office-killer.html#cb27-43" tabindex="-1"></a><span class="co">#&gt; 271115 1998 Winter         Nagano   Bobsleigh</span></span>
+<span id="cb27-44"><a href="02-office-killer.html#cb27-44" tabindex="-1"></a><span class="co">#&gt; 271116 2002 Winter Salt Lake City   Bobsleigh</span></span>
+<span id="cb27-45"><a href="02-office-killer.html#cb27-45" tabindex="-1"></a><span class="co">#&gt;                                           Event Medal</span></span>
+<span id="cb27-46"><a href="02-office-killer.html#cb27-46" tabindex="-1"></a><span class="co">#&gt; 271112               Luge Mixed (Men)&#39;s Doubles  &lt;NA&gt;</span></span>
+<span id="cb27-47"><a href="02-office-killer.html#cb27-47" tabindex="-1"></a><span class="co">#&gt; 271113 Ski Jumping Men&#39;s Large Hill, Individual  &lt;NA&gt;</span></span>
+<span id="cb27-48"><a href="02-office-killer.html#cb27-48" tabindex="-1"></a><span class="co">#&gt; 271114       Ski Jumping Men&#39;s Large Hill, Team  &lt;NA&gt;</span></span>
+<span id="cb27-49"><a href="02-office-killer.html#cb27-49" tabindex="-1"></a><span class="co">#&gt; 271115                     Bobsleigh Men&#39;s Four  &lt;NA&gt;</span></span>
+<span id="cb27-50"><a href="02-office-killer.html#cb27-50" tabindex="-1"></a><span class="co">#&gt; 271116                     Bobsleigh Men&#39;s Four  &lt;NA&gt;</span></span></code></pre></div>
+<p>Normalement, les étudiants qui utilisent un tableur ont du aller plus vite et Excel mène sur R par 1-0</p>
+</div>
+<div id="round-2.-inventaire-des-sports-disponible" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Round 2. Inventaire des sports disponible<a href="02-office-killer.html#round-2.-inventaire-des-sports-disponible" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On souhaite faire l’inventaire de l’ensemble des sports disponibles dans la base de données. Puis créer un tableau indiquant les 10 sports sur lesquels on dispose du plus grand nombre d’information.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="02-office-killer.html#cb28-1" tabindex="-1"></a><span class="co"># Création d&#39;une table</span></span>
+<span id="cb28-2"><a href="02-office-killer.html#cb28-2" tabindex="-1"></a>tab<span class="ot">&lt;-</span><span class="fu">table</span>(don<span class="sc">$</span>Sport)</span>
+<span id="cb28-3"><a href="02-office-killer.html#cb28-3" tabindex="-1"></a><span class="fu">class</span>(tab)</span>
+<span id="cb28-4"><a href="02-office-killer.html#cb28-4" tabindex="-1"></a><span class="co">#&gt; [1] &quot;table&quot;</span></span>
+<span id="cb28-5"><a href="02-office-killer.html#cb28-5" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="02-office-killer.html#cb28-6" tabindex="-1"></a><span class="co"># Transformation de la table en data.frame</span></span>
+<span id="cb28-7"><a href="02-office-killer.html#cb28-7" tabindex="-1"></a>res<span class="ot">&lt;-</span><span class="fu">data.frame</span>(tab)</span>
+<span id="cb28-8"><a href="02-office-killer.html#cb28-8" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="02-office-killer.html#cb28-9" tabindex="-1"></a><span class="co"># Recodage des noms de variables</span></span>
+<span id="cb28-10"><a href="02-office-killer.html#cb28-10" tabindex="-1"></a><span class="fu">names</span>(res)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Sport&quot;</span>,<span class="st">&quot;Nbresul&quot;</span>)</span>
+<span id="cb28-11"><a href="02-office-killer.html#cb28-11" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="02-office-killer.html#cb28-12" tabindex="-1"></a><span class="co"># Tri du tableau</span></span>
+<span id="cb28-13"><a href="02-office-killer.html#cb28-13" tabindex="-1"></a>res<span class="ot">&lt;-</span>res[<span class="fu">order</span>(<span class="sc">-</span>res<span class="sc">$</span>Nbresul),]</span>
+<span id="cb28-14"><a href="02-office-killer.html#cb28-14" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="02-office-killer.html#cb28-15" tabindex="-1"></a></span>
+<span id="cb28-16"><a href="02-office-killer.html#cb28-16" tabindex="-1"></a><span class="co"># Affichage de res</span></span>
+<span id="cb28-17"><a href="02-office-killer.html#cb28-17" tabindex="-1"></a><span class="fu">head</span>(res, <span class="dv">20</span>)</span>
+<span id="cb28-18"><a href="02-office-killer.html#cb28-18" tabindex="-1"></a><span class="co">#&gt;                   Sport Nbresul</span></span>
+<span id="cb28-19"><a href="02-office-killer.html#cb28-19" tabindex="-1"></a><span class="co">#&gt; 6             Athletics   38624</span></span>
+<span id="cb28-20"><a href="02-office-killer.html#cb28-20" tabindex="-1"></a><span class="co">#&gt; 28           Gymnastics   26707</span></span>
+<span id="cb28-21"><a href="02-office-killer.html#cb28-21" tabindex="-1"></a><span class="co">#&gt; 55             Swimming   23195</span></span>
+<span id="cb28-22"><a href="02-office-killer.html#cb28-22" tabindex="-1"></a><span class="co">#&gt; 48             Shooting   11448</span></span>
+<span id="cb28-23"><a href="02-office-killer.html#cb28-23" tabindex="-1"></a><span class="co">#&gt; 20              Cycling   10859</span></span>
+<span id="cb28-24"><a href="02-office-killer.html#cb28-24" tabindex="-1"></a><span class="co">#&gt; 23              Fencing   10735</span></span>
+<span id="cb28-25"><a href="02-office-killer.html#cb28-25" tabindex="-1"></a><span class="co">#&gt; 44               Rowing   10595</span></span>
+<span id="cb28-26"><a href="02-office-killer.html#cb28-26" tabindex="-1"></a><span class="co">#&gt; 18 Cross Country Skiing    9133</span></span>
+<span id="cb28-27"><a href="02-office-killer.html#cb28-27" tabindex="-1"></a><span class="co">#&gt; 2         Alpine Skiing    8829</span></span>
+<span id="cb28-28"><a href="02-office-killer.html#cb28-28" tabindex="-1"></a><span class="co">#&gt; 66            Wrestling    7154</span></span>
+<span id="cb28-29"><a href="02-office-killer.html#cb28-29" tabindex="-1"></a><span class="co">#&gt; 25             Football    6745</span></span>
+<span id="cb28-30"><a href="02-office-killer.html#cb28-30" tabindex="-1"></a><span class="co">#&gt; 47              Sailing    6586</span></span>
+<span id="cb28-31"><a href="02-office-killer.html#cb28-31" tabindex="-1"></a><span class="co">#&gt; 22        Equestrianism    6344</span></span>
+<span id="cb28-32"><a href="02-office-killer.html#cb28-32" tabindex="-1"></a><span class="co">#&gt; 15             Canoeing    6171</span></span>
+<span id="cb28-33"><a href="02-office-killer.html#cb28-33" tabindex="-1"></a><span class="co">#&gt; 14               Boxing    6047</span></span>
+<span id="cb28-34"><a href="02-office-killer.html#cb28-34" tabindex="-1"></a><span class="co">#&gt; 54        Speed Skating    5613</span></span>
+<span id="cb28-35"><a href="02-office-killer.html#cb28-35" tabindex="-1"></a><span class="co">#&gt; 31           Ice Hockey    5516</span></span>
+<span id="cb28-36"><a href="02-office-killer.html#cb28-36" tabindex="-1"></a><span class="co">#&gt; 30               Hockey    5417</span></span>
+<span id="cb28-37"><a href="02-office-killer.html#cb28-37" tabindex="-1"></a><span class="co">#&gt; 12             Biathlon    4893</span></span>
+<span id="cb28-38"><a href="02-office-killer.html#cb28-38" tabindex="-1"></a><span class="co">#&gt; 9            Basketball    4536</span></span></code></pre></div>
+<p>La création d’un tableau est à première vue plus facile avec un logiciel click-bouton. L’expert en Excel va utiliser la fonction tableau croisé dynamique et produire le tableau en quelques secondes. Il devrait par contre perdre un peu de temps pour trier le tableau mais finir par l’emporter.
+Excel mène 2-0.</p>
+</div>
+<div id="round-3.-sélection-dun-sport" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Round 3. Sélection d’un sport<a href="02-office-killer.html#round-3.-sélection-dun-sport" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Vous devez maintenant extraire le tableau des résultats de tir à l’arc (“<em>Archery</em>”) après 1990 en ne conservant que les personnes qui ont obtenu une médaille.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="02-office-killer.html#cb29-1" tabindex="-1"></a></span>
+<span id="cb29-2"><a href="02-office-killer.html#cb29-2" tabindex="-1"></a><span class="co"># sélection</span></span>
+<span id="cb29-3"><a href="02-office-killer.html#cb29-3" tabindex="-1"></a>sel <span class="ot">&lt;-</span> don[don<span class="sc">$</span>Year <span class="sc">&gt;</span> <span class="dv">1990</span> <span class="sc">&amp;</span> don<span class="sc">$</span>Sport<span class="sc">==</span><span class="st">&quot;Archery&quot;</span> <span class="sc">&amp;</span> <span class="fu">is.na</span>(don<span class="sc">$</span>Medal)<span class="sc">==</span><span class="cn">FALSE</span>,]</span>
+<span id="cb29-4"><a href="02-office-killer.html#cb29-4" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="02-office-killer.html#cb29-5" tabindex="-1"></a><span class="co"># Affichage</span></span>
+<span id="cb29-6"><a href="02-office-killer.html#cb29-6" tabindex="-1"></a><span class="fu">head</span>(sel)</span>
+<span id="cb29-7"><a href="02-office-killer.html#cb29-7" tabindex="-1"></a><span class="co">#&gt;          ID                       Name Sex Age Height Weight         Team NOC</span></span>
+<span id="cb29-8"><a href="02-office-killer.html#cb29-8" tabindex="-1"></a><span class="co">#&gt; 9542   5233            Virginie Arnold   F  28    155     50       France FRA</span></span>
+<span id="cb29-9"><a href="02-office-killer.html#cb29-9" tabindex="-1"></a><span class="co">#&gt; 9966   5447      Loedmila Arzjannikova   F  34    168     62 Unified Team EUN</span></span>
+<span id="cb29-10"><a href="02-office-killer.html#cb29-10" tabindex="-1"></a><span class="co">#&gt; 11205  6126     Mariana Avitia Martnez   F  18    164     61       Mexico MEX</span></span>
+<span id="cb29-11"><a href="02-office-killer.html#cb29-11" tabindex="-1"></a><span class="co">#&gt; 12356  6710 Bair Dorzhiyevich Badyonov   M  32    178     75       Russia RUS</span></span>
+<span id="cb29-12"><a href="02-office-killer.html#cb29-12" tabindex="-1"></a><span class="co">#&gt; 22407 11799             Matteo Bisiani   M  19    184     85        Italy ITA</span></span>
+<span id="cb29-13"><a href="02-office-killer.html#cb29-13" tabindex="-1"></a><span class="co">#&gt; 22409 11799             Matteo Bisiani   M  24    184     85        Italy ITA</span></span>
+<span id="cb29-14"><a href="02-office-killer.html#cb29-14" tabindex="-1"></a><span class="co">#&gt;             Games Year Season      City   Sport                      Event</span></span>
+<span id="cb29-15"><a href="02-office-killer.html#cb29-15" tabindex="-1"></a><span class="co">#&gt; 9542  2008 Summer 2008 Summer   Beijing Archery       Archery Women&#39;s Team</span></span>
+<span id="cb29-16"><a href="02-office-killer.html#cb29-16" tabindex="-1"></a><span class="co">#&gt; 9966  1992 Summer 1992 Summer Barcelona Archery       Archery Women&#39;s Team</span></span>
+<span id="cb29-17"><a href="02-office-killer.html#cb29-17" tabindex="-1"></a><span class="co">#&gt; 11205 2012 Summer 2012 Summer    London Archery Archery Women&#39;s Individual</span></span>
+<span id="cb29-18"><a href="02-office-killer.html#cb29-18" tabindex="-1"></a><span class="co">#&gt; 12356 2008 Summer 2008 Summer   Beijing Archery   Archery Men&#39;s Individual</span></span>
+<span id="cb29-19"><a href="02-office-killer.html#cb29-19" tabindex="-1"></a><span class="co">#&gt; 22407 1996 Summer 1996 Summer   Atlanta Archery         Archery Men&#39;s Team</span></span>
+<span id="cb29-20"><a href="02-office-killer.html#cb29-20" tabindex="-1"></a><span class="co">#&gt; 22409 2000 Summer 2000 Summer    Sydney Archery         Archery Men&#39;s Team</span></span>
+<span id="cb29-21"><a href="02-office-killer.html#cb29-21" tabindex="-1"></a><span class="co">#&gt;        Medal</span></span>
+<span id="cb29-22"><a href="02-office-killer.html#cb29-22" tabindex="-1"></a><span class="co">#&gt; 9542  Bronze</span></span>
+<span id="cb29-23"><a href="02-office-killer.html#cb29-23" tabindex="-1"></a><span class="co">#&gt; 9966  Bronze</span></span>
+<span id="cb29-24"><a href="02-office-killer.html#cb29-24" tabindex="-1"></a><span class="co">#&gt; 11205 Bronze</span></span>
+<span id="cb29-25"><a href="02-office-killer.html#cb29-25" tabindex="-1"></a><span class="co">#&gt; 12356 Bronze</span></span>
+<span id="cb29-26"><a href="02-office-killer.html#cb29-26" tabindex="-1"></a><span class="co">#&gt; 22407 Bronze</span></span>
+<span id="cb29-27"><a href="02-office-killer.html#cb29-27" tabindex="-1"></a><span class="co">#&gt; 22409 Silver</span></span></code></pre></div>
+<p>Là, je parie que les utilisateurs d’Excel ont eu un peu plus de mal … mais on va supposer qu’il y a match nul : Excel = 3, R = 1</p>
+</div>
+<div id="round-4.-analyse-de-lâge-du-poids-de-la-taille-et-de-limc-des-sportifs" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Round 4. Analyse de l’âge, du poids, de la taille et de l’IMC des sportifs<a href="02-office-killer.html#round-4.-analyse-de-lâge-du-poids-de-la-taille-et-de-limc-des-sportifs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Résumez statistiquement, l’âge, le poids, la taille et l’Indice de Masse Corporelle (IMC = Poids en kg/ carré de la taille en mètres ) des personnes ayant obtenu une médaille en séparant les hommes et les femmes.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="02-office-killer.html#cb30-1" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Age, </span>
+<span id="cb30-2"><a href="02-office-killer.html#cb30-2" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
+<span id="cb30-3"><a href="02-office-killer.html#cb30-3" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
+<span id="cb30-4"><a href="02-office-killer.html#cb30-4" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
+<span id="cb30-5"><a href="02-office-killer.html#cb30-5" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb30-6"><a href="02-office-killer.html#cb30-6" tabindex="-1"></a><span class="co">#&gt;   17.00   21.00   24.00   24.31   27.00   39.00 </span></span>
+<span id="cb30-7"><a href="02-office-killer.html#cb30-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-8"><a href="02-office-killer.html#cb30-8" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
+<span id="cb30-9"><a href="02-office-killer.html#cb30-9" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb30-10"><a href="02-office-killer.html#cb30-10" tabindex="-1"></a><span class="co">#&gt;   17.00   21.00   24.00   25.25   27.25   45.00</span></span>
+<span id="cb30-11"><a href="02-office-killer.html#cb30-11" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="02-office-killer.html#cb30-12" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="02-office-killer.html#cb30-13" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Height, </span>
+<span id="cb30-14"><a href="02-office-killer.html#cb30-14" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
+<span id="cb30-15"><a href="02-office-killer.html#cb30-15" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
+<span id="cb30-16"><a href="02-office-killer.html#cb30-16" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
+<span id="cb30-17"><a href="02-office-killer.html#cb30-17" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb30-18"><a href="02-office-killer.html#cb30-18" tabindex="-1"></a><span class="co">#&gt;   155.0   165.0   168.0   167.8   170.0   185.0       7 </span></span>
+<span id="cb30-19"><a href="02-office-killer.html#cb30-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-20"><a href="02-office-killer.html#cb30-20" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
+<span id="cb30-21"><a href="02-office-killer.html#cb30-21" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb30-22"><a href="02-office-killer.html#cb30-22" tabindex="-1"></a><span class="co">#&gt;   170.0   178.0   180.0   179.9   183.0   191.0       2</span></span>
+<span id="cb30-23"><a href="02-office-killer.html#cb30-23" tabindex="-1"></a></span>
+<span id="cb30-24"><a href="02-office-killer.html#cb30-24" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Weight,</span>
+<span id="cb30-25"><a href="02-office-killer.html#cb30-25" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
+<span id="cb30-26"><a href="02-office-killer.html#cb30-26" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
+<span id="cb30-27"><a href="02-office-killer.html#cb30-27" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
+<span id="cb30-28"><a href="02-office-killer.html#cb30-28" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb30-29"><a href="02-office-killer.html#cb30-29" tabindex="-1"></a><span class="co">#&gt;   50.00   58.00   63.00   62.84   65.00   86.00       7 </span></span>
+<span id="cb30-30"><a href="02-office-killer.html#cb30-30" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-31"><a href="02-office-killer.html#cb30-31" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
+<span id="cb30-32"><a href="02-office-killer.html#cb30-32" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb30-33"><a href="02-office-killer.html#cb30-33" tabindex="-1"></a><span class="co">#&gt;   58.00   73.00   78.50   81.71   89.75  110.00       2</span></span>
+<span id="cb30-34"><a href="02-office-killer.html#cb30-34" tabindex="-1"></a></span>
+<span id="cb30-35"><a href="02-office-killer.html#cb30-35" tabindex="-1"></a>sel<span class="sc">$</span>IMC <span class="ot">&lt;-</span> sel<span class="sc">$</span>Weight<span class="sc">/</span>(sel<span class="sc">$</span>Height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">**</span><span class="dv">2</span></span>
+<span id="cb30-36"><a href="02-office-killer.html#cb30-36" tabindex="-1"></a></span>
+<span id="cb30-37"><a href="02-office-killer.html#cb30-37" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>IMC,</span>
+<span id="cb30-38"><a href="02-office-killer.html#cb30-38" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
+<span id="cb30-39"><a href="02-office-killer.html#cb30-39" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
+<span id="cb30-40"><a href="02-office-killer.html#cb30-40" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
+<span id="cb30-41"><a href="02-office-killer.html#cb30-41" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb30-42"><a href="02-office-killer.html#cb30-42" tabindex="-1"></a><span class="co">#&gt;   18.78   20.44   22.06   22.31   24.01   28.73       7 </span></span>
+<span id="cb30-43"><a href="02-office-killer.html#cb30-43" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-44"><a href="02-office-killer.html#cb30-44" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
+<span id="cb30-45"><a href="02-office-killer.html#cb30-45" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb30-46"><a href="02-office-killer.html#cb30-46" tabindex="-1"></a><span class="co">#&gt;   19.82   22.23   24.43   25.22   27.31   33.58       2</span></span></code></pre></div>
+<p>Quelque chose me dit qu’Excel a eu un peu de mal à résoudre le problème. Le score est désormais
+de 3-2</p>
+</div>
+<div id="round-5-nombre-de-médailles-dor-par-pays-et-par-épreuve" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Round 5 : Nombre de médailles d’or par pays et par épreuve<a href="02-office-killer.html#round-5-nombre-de-médailles-dor-par-pays-et-par-épreuve" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On cherche maintenant à déterminer le nombre de médailles par pays et par épreuve. Attention, dans le cas des épreuves par équipe il ne faut compter les membres d’une équipe qu’une seule fois …</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="02-office-killer.html#cb31-1" tabindex="-1"></a><span class="co"># Sélection des lignes  (médailles d&#39;or)</span></span>
+<span id="cb31-2"><a href="02-office-killer.html#cb31-2" tabindex="-1"></a>sel2 <span class="ot">&lt;-</span> sel[sel<span class="sc">$</span>Medal<span class="sc">==</span><span class="st">&quot;Gold&quot;</span>,]</span>
+<span id="cb31-3"><a href="02-office-killer.html#cb31-3" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="02-office-killer.html#cb31-4" tabindex="-1"></a><span class="co"># Selection des colonnes </span></span>
+<span id="cb31-5"><a href="02-office-killer.html#cb31-5" tabindex="-1"></a>sel3 <span class="ot">&lt;-</span> sel2[,<span class="fu">c</span>(<span class="st">&quot;NOC&quot;</span>,<span class="st">&quot;Year&quot;</span>,<span class="st">&quot;Event&quot;</span>)]</span>
+<span id="cb31-6"><a href="02-office-killer.html#cb31-6" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="02-office-killer.html#cb31-7" tabindex="-1"></a><span class="co"># Elimination des doublons</span></span>
+<span id="cb31-8"><a href="02-office-killer.html#cb31-8" tabindex="-1"></a>sel4 <span class="ot">&lt;-</span><span class="fu">unique</span>(sel3)</span>
+<span id="cb31-9"><a href="02-office-killer.html#cb31-9" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="02-office-killer.html#cb31-10" tabindex="-1"></a><span class="co"># Tableau croisé</span></span>
+<span id="cb31-11"><a href="02-office-killer.html#cb31-11" tabindex="-1"></a>tab<span class="ot">&lt;-</span><span class="fu">table</span>(sel4<span class="sc">$</span>Event,sel4<span class="sc">$</span>NOC)</span>
+<span id="cb31-12"><a href="02-office-killer.html#cb31-12" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="02-office-killer.html#cb31-13" tabindex="-1"></a><span class="co"># Tri des pays ayant le plus de médailles</span></span>
+<span id="cb31-14"><a href="02-office-killer.html#cb31-14" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="02-office-killer.html#cb31-15" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="02-office-killer.html#cb31-16" tabindex="-1"></a><span class="co"># Ajout des marges</span></span>
+<span id="cb31-17"><a href="02-office-killer.html#cb31-17" tabindex="-1"></a><span class="fu">addmargins</span>(tab)</span>
+<span id="cb31-18"><a href="02-office-killer.html#cb31-18" tabindex="-1"></a><span class="co">#&gt;                             </span></span>
+<span id="cb31-19"><a href="02-office-killer.html#cb31-19" tabindex="-1"></a><span class="co">#&gt;                              AUS CHN ESP FRA ITA KOR UKR USA Sum</span></span>
+<span id="cb31-20"><a href="02-office-killer.html#cb31-20" tabindex="-1"></a><span class="co">#&gt;   Archery Men&#39;s Individual     1   0   0   1   1   2   1   1   7</span></span>
+<span id="cb31-21"><a href="02-office-killer.html#cb31-21" tabindex="-1"></a><span class="co">#&gt;   Archery Men&#39;s Team           0   0   1   0   1   4   0   1   7</span></span>
+<span id="cb31-22"><a href="02-office-killer.html#cb31-22" tabindex="-1"></a><span class="co">#&gt;   Archery Women&#39;s Individual   0   1   0   0   0   6   0   0   7</span></span>
+<span id="cb31-23"><a href="02-office-killer.html#cb31-23" tabindex="-1"></a><span class="co">#&gt;   Archery Women&#39;s Team         0   0   0   0   0   7   0   0   7</span></span>
+<span id="cb31-24"><a href="02-office-killer.html#cb31-24" tabindex="-1"></a><span class="co">#&gt;   Sum                          1   1   1   1   2  19   1   2  28</span></span></code></pre></div>
+<p>Quelque chose me dit qu’Excel a eu un beaucoup de mal à résoudre le problème. Le score est désormais
+de 3-3</p>
+</div>
+<div id="dernier-round.-refaire-toute-lanalyse-en-changeant-de-sport" class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Dernier round. Refaire toute l’analyse en changeant de sport<a href="02-office-killer.html#dernier-round.-refaire-toute-lanalyse-en-changeant-de-sport" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On remplace le sport “Archery” par le sport “Judo” et on refait toute les analyses</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="02-office-killer.html#cb32-1" tabindex="-1"></a><span class="co"># (1) Importation du tableau</span></span>
+<span id="cb32-2"><a href="02-office-killer.html#cb32-2" tabindex="-1"></a>don <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;resources/data/olympic/120-years-of-olympic-history-athletes-and-results.csv&quot;</span>,</span>
+<span id="cb32-3"><a href="02-office-killer.html#cb32-3" tabindex="-1"></a>                  <span class="at">header=</span> <span class="cn">TRUE</span>,</span>
+<span id="cb32-4"><a href="02-office-killer.html#cb32-4" tabindex="-1"></a>                  <span class="at">sep =</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb32-5"><a href="02-office-killer.html#cb32-5" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="02-office-killer.html#cb32-6" tabindex="-1"></a><span class="co"># (2) Sélection du sport et de la data</span></span>
+<span id="cb32-7"><a href="02-office-killer.html#cb32-7" tabindex="-1"></a>sel <span class="ot">&lt;-</span> don[don<span class="sc">$</span>Year <span class="sc">&gt;</span> <span class="dv">1990</span> <span class="sc">&amp;</span> don<span class="sc">$</span>Sport<span class="sc">==</span><span class="st">&quot;Judo&quot;</span> <span class="sc">&amp;</span> <span class="fu">is.na</span>(don<span class="sc">$</span>Medal)<span class="sc">==</span><span class="cn">FALSE</span>,]</span>
+<span id="cb32-8"><a href="02-office-killer.html#cb32-8" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="02-office-killer.html#cb32-9" tabindex="-1"></a><span class="co"># (3) Caractéristiques des sportifs</span></span>
+<span id="cb32-10"><a href="02-office-killer.html#cb32-10" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Age, </span>
+<span id="cb32-11"><a href="02-office-killer.html#cb32-11" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
+<span id="cb32-12"><a href="02-office-killer.html#cb32-12" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
+<span id="cb32-13"><a href="02-office-killer.html#cb32-13" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
+<span id="cb32-14"><a href="02-office-killer.html#cb32-14" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb32-15"><a href="02-office-killer.html#cb32-15" tabindex="-1"></a><span class="co">#&gt;   16.00   23.00   25.00   25.03   28.00   33.00 </span></span>
+<span id="cb32-16"><a href="02-office-killer.html#cb32-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-17"><a href="02-office-killer.html#cb32-17" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
+<span id="cb32-18"><a href="02-office-killer.html#cb32-18" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb32-19"><a href="02-office-killer.html#cb32-19" tabindex="-1"></a><span class="co">#&gt;   17.00   23.00   25.00   25.32   27.00   34.00</span></span>
+<span id="cb32-20"><a href="02-office-killer.html#cb32-20" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="02-office-killer.html#cb32-21" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Height, </span>
+<span id="cb32-22"><a href="02-office-killer.html#cb32-22" tabindex="-1"></a>       <span class="at">INDEX =</span> sel<span class="sc">$</span>Sex,</span>
+<span id="cb32-23"><a href="02-office-killer.html#cb32-23" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
+<span id="cb32-24"><a href="02-office-killer.html#cb32-24" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
+<span id="cb32-25"><a href="02-office-killer.html#cb32-25" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb32-26"><a href="02-office-killer.html#cb32-26" tabindex="-1"></a><span class="co">#&gt;   146.0   160.0   166.0   166.1   173.0   186.0       7 </span></span>
+<span id="cb32-27"><a href="02-office-killer.html#cb32-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-28"><a href="02-office-killer.html#cb32-28" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
+<span id="cb32-29"><a href="02-office-killer.html#cb32-29" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb32-30"><a href="02-office-killer.html#cb32-30" tabindex="-1"></a><span class="co">#&gt;   159.0   170.2   178.0   178.7   185.0   203.0      10</span></span>
+<span id="cb32-31"><a href="02-office-killer.html#cb32-31" tabindex="-1"></a></span>
+<span id="cb32-32"><a href="02-office-killer.html#cb32-32" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>Weight,</span>
+<span id="cb32-33"><a href="02-office-killer.html#cb32-33" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
+<span id="cb32-34"><a href="02-office-killer.html#cb32-34" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
+<span id="cb32-35"><a href="02-office-killer.html#cb32-35" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
+<span id="cb32-36"><a href="02-office-killer.html#cb32-36" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb32-37"><a href="02-office-killer.html#cb32-37" tabindex="-1"></a><span class="co">#&gt;   48.00   55.50   63.00   68.38   76.25  135.00       8 </span></span>
+<span id="cb32-38"><a href="02-office-killer.html#cb32-38" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-39"><a href="02-office-killer.html#cb32-39" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
+<span id="cb32-40"><a href="02-office-killer.html#cb32-40" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb32-41"><a href="02-office-killer.html#cb32-41" tabindex="-1"></a><span class="co">#&gt;   60.00   66.00   81.00   86.69  100.00  175.00      10</span></span>
+<span id="cb32-42"><a href="02-office-killer.html#cb32-42" tabindex="-1"></a></span>
+<span id="cb32-43"><a href="02-office-killer.html#cb32-43" tabindex="-1"></a>sel<span class="sc">$</span>IMC <span class="ot">&lt;-</span> sel<span class="sc">$</span>Weight<span class="sc">/</span>(sel<span class="sc">$</span>Height<span class="sc">/</span><span class="dv">100</span>)<span class="sc">**</span><span class="dv">2</span></span>
+<span id="cb32-44"><a href="02-office-killer.html#cb32-44" tabindex="-1"></a></span>
+<span id="cb32-45"><a href="02-office-killer.html#cb32-45" tabindex="-1"></a><span class="fu">tapply</span>(sel<span class="sc">$</span>IMC,</span>
+<span id="cb32-46"><a href="02-office-killer.html#cb32-46" tabindex="-1"></a>       <span class="at">INDEX=</span>sel<span class="sc">$</span>Sex,</span>
+<span id="cb32-47"><a href="02-office-killer.html#cb32-47" tabindex="-1"></a>       <span class="at">FUN=</span><span class="st">&quot;summary&quot;</span>)</span>
+<span id="cb32-48"><a href="02-office-killer.html#cb32-48" tabindex="-1"></a><span class="co">#&gt; $F</span></span>
+<span id="cb32-49"><a href="02-office-killer.html#cb32-49" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb32-50"><a href="02-office-killer.html#cb32-50" tabindex="-1"></a><span class="co">#&gt;   18.52   21.38   22.85   24.45   25.24   43.60       8 </span></span>
+<span id="cb32-51"><a href="02-office-killer.html#cb32-51" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-52"><a href="02-office-killer.html#cb32-52" tabindex="-1"></a><span class="co">#&gt; $M</span></span>
+<span id="cb32-53"><a href="02-office-killer.html#cb32-53" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s </span></span>
+<span id="cb32-54"><a href="02-office-killer.html#cb32-54" tabindex="-1"></a><span class="co">#&gt;   19.37   23.84   25.78   26.76   28.40   56.50      10</span></span>
+<span id="cb32-55"><a href="02-office-killer.html#cb32-55" tabindex="-1"></a></span>
+<span id="cb32-56"><a href="02-office-killer.html#cb32-56" tabindex="-1"></a><span class="co"># (4) Médailles d&#39;or par pays et épreuve</span></span>
+<span id="cb32-57"><a href="02-office-killer.html#cb32-57" tabindex="-1"></a></span>
+<span id="cb32-58"><a href="02-office-killer.html#cb32-58" tabindex="-1"></a><span class="co"># Sélection des lignes  (médailles d&#39;or)</span></span>
+<span id="cb32-59"><a href="02-office-killer.html#cb32-59" tabindex="-1"></a>sel2 <span class="ot">&lt;-</span> sel[sel<span class="sc">$</span>Medal<span class="sc">==</span><span class="st">&quot;Gold&quot;</span>,]</span>
+<span id="cb32-60"><a href="02-office-killer.html#cb32-60" tabindex="-1"></a></span>
+<span id="cb32-61"><a href="02-office-killer.html#cb32-61" tabindex="-1"></a><span class="co"># Selection des colonnes </span></span>
+<span id="cb32-62"><a href="02-office-killer.html#cb32-62" tabindex="-1"></a>sel3 <span class="ot">&lt;-</span> sel2[,<span class="fu">c</span>(<span class="st">&quot;NOC&quot;</span>,<span class="st">&quot;Year&quot;</span>,<span class="st">&quot;Event&quot;</span>)]</span>
+<span id="cb32-63"><a href="02-office-killer.html#cb32-63" tabindex="-1"></a></span>
+<span id="cb32-64"><a href="02-office-killer.html#cb32-64" tabindex="-1"></a><span class="co"># Elimination des doublons</span></span>
+<span id="cb32-65"><a href="02-office-killer.html#cb32-65" tabindex="-1"></a>sel4 <span class="ot">&lt;-</span><span class="fu">unique</span>(sel3)</span>
+<span id="cb32-66"><a href="02-office-killer.html#cb32-66" tabindex="-1"></a></span>
+<span id="cb32-67"><a href="02-office-killer.html#cb32-67" tabindex="-1"></a><span class="co"># Tableau croisé</span></span>
+<span id="cb32-68"><a href="02-office-killer.html#cb32-68" tabindex="-1"></a>tab<span class="ot">&lt;-</span><span class="fu">table</span>(sel4<span class="sc">$</span>Event,sel4<span class="sc">$</span>NOC)</span>
+<span id="cb32-69"><a href="02-office-killer.html#cb32-69" tabindex="-1"></a></span>
+<span id="cb32-70"><a href="02-office-killer.html#cb32-70" tabindex="-1"></a><span class="co"># Ajout des marges</span></span>
+<span id="cb32-71"><a href="02-office-killer.html#cb32-71" tabindex="-1"></a><span class="fu">addmargins</span>(tab)</span>
+<span id="cb32-72"><a href="02-office-killer.html#cb32-72" tabindex="-1"></a><span class="co">#&gt;                                 </span></span>
+<span id="cb32-73"><a href="02-office-killer.html#cb32-73" tabindex="-1"></a><span class="co">#&gt;                                  ARG AZE BEL BLR BRA CHN CUB CZE ESP EUN FRA</span></span>
+<span id="cb32-74"><a href="02-office-killer.html#cb32-74" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Extra-Lightweight     0   0   0   0   0   0   0   0   0   1   0</span></span>
+<span id="cb32-75"><a href="02-office-killer.html#cb32-75" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Heavyweight      0   0   0   1   0   0   0   1   0   0   0</span></span>
+<span id="cb32-76"><a href="02-office-killer.html#cb32-76" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Lightweight      0   0   0   0   1   0   0   0   0   0   0</span></span>
+<span id="cb32-77"><a href="02-office-killer.html#cb32-77" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Middleweight     0   0   0   0   0   0   0   0   0   0   1</span></span>
+<span id="cb32-78"><a href="02-office-killer.html#cb32-78" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Heavyweight           0   0   0   0   0   0   0   0   0   1   4</span></span>
+<span id="cb32-79"><a href="02-office-killer.html#cb32-79" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Lightweight           0   1   0   0   0   0   0   0   0   0   0</span></span>
+<span id="cb32-80"><a href="02-office-killer.html#cb32-80" tabindex="-1"></a><span class="co">#&gt;                                 </span></span>
+<span id="cb32-81"><a href="02-office-killer.html#cb32-81" tabindex="-1"></a><span class="co">#&gt;                                  GEO GER GRE HUN ITA JPN KOR KOS MGL NED POL</span></span>
+<span id="cb32-82"><a href="02-office-killer.html#cb32-82" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Extra-Lightweight     0   0   0   0   0   3   1   0   0   0   0</span></span>
+<span id="cb32-83"><a href="02-office-killer.html#cb32-83" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Heavyweight      0   0   0   1   0   1   0   0   1   0   1</span></span>
+<span id="cb32-84"><a href="02-office-killer.html#cb32-84" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Lightweight      1   1   0   0   1   2   0   0   0   0   0</span></span>
+<span id="cb32-85"><a href="02-office-killer.html#cb32-85" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Middleweight     0   1   1   0   0   2   1   0   0   0   0</span></span>
+<span id="cb32-86"><a href="02-office-killer.html#cb32-86" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Heavyweight           0   0   0   0   0   2   0   0   0   0   0</span></span>
+<span id="cb32-87"><a href="02-office-killer.html#cb32-87" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Lightweight           0   0   0   0   1   3   1   0   0   0   0</span></span>
+<span id="cb32-88"><a href="02-office-killer.html#cb32-88" tabindex="-1"></a><span class="co">#&gt;                                 </span></span>
+<span id="cb32-89"><a href="02-office-killer.html#cb32-89" tabindex="-1"></a><span class="co">#&gt;                                  PRK ROU RUS SLO TUR USA Sum</span></span>
+<span id="cb32-90"><a href="02-office-killer.html#cb32-90" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Extra-Lightweight     0   0   2   0   0   0   7</span></span>
+<span id="cb32-91"><a href="02-office-killer.html#cb32-91" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Heavyweight      0   0   1   0   0   0   7</span></span>
+<span id="cb32-92"><a href="02-office-killer.html#cb32-92" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Lightweight      0   0   0   0   1   0   7</span></span>
+<span id="cb32-93"><a href="02-office-killer.html#cb32-93" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Half-Middleweight     0   0   1   0   0   0   7</span></span>
+<span id="cb32-94"><a href="02-office-killer.html#cb32-94" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Heavyweight           0   0   0   0   0   0   7</span></span>
+<span id="cb32-95"><a href="02-office-killer.html#cb32-95" tabindex="-1"></a><span class="co">#&gt;   Judo Men&#39;s Lightweight           0   0   1   0   0   0   7</span></span>
+<span id="cb32-96"><a href="02-office-killer.html#cb32-96" tabindex="-1"></a><span class="co">#&gt;  [ reached getOption(&quot;max.print&quot;) -- omitted 9 rows ]</span></span></code></pre></div>
+<p>Excel n’a aucune chance d’aller plus vite et R remporte le match par KO !</p>
+</div>
+</div>
+<div id="document-rmd-word-killer" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Document Rmd : Word killer ?<a href="02-office-killer.html#document-rmd-word-killer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<ul>
+<li>R-Studio dit : « Faisons une interface de rédaction adaptée à notre travail,</li>
+<li>Que l’utilisateur puissent y insérer les tableaux, les graphiques, les cartes, les références bibliographiques, et tous les écrits qui les commentent. »</li>
+</ul>
+</blockquote>
+<p>Nous venons de voir comment une bonne pratique de R peut conduire progressivement à abandonner l’usage des tableurs (Excel, Open Office) sauf peut-être pour l’étape de saisie des données. Dès lors qu’il s’agit de réaliser des graphiques ou des calculs statistiques complexes, la rédaction d’un programme se révèle beaucoup plus intéressante même si elle impose un coût initial d’apprentissage.</p>
+<p>Mais une bonne pratique de R ou plus précisément des documents R markdown peut vous conduire beaucoup plus loin et vous amener à abandonner également votre logiciel de traitement de texte (Word) et votre outil de présentation (Power Point). Le coût d’apprentissage est naturellement un peu plus élevé mais les bénéfices sont à la mesure de l’investissement.</p>
+<p>Comme le montre la figure ci-dessous, un document R markdown est en quelques sorte un mélange entre des lignes de code R qui executent des tâches et des lignes de texte où sont expliqués les calculs et commentés les résultats obtenus. En d’autres termes, un document R markdown vous permet de rédiger un article de recherche complet, une présentation à une conférence, un syllabus de cours, dans un seul environnement logiciel (R studio).</p>
+<p>Nul besoin de ciseau et de colle pour aller chercher tel tableau ici, tel figure là-bas ou telle carte ailleurs. Tous ces éléments sont intégrs au fur et à mesure de la rédaction ce qui facilite considérablement la concentration. Et surtout - on l’a déjà vu pour le programme R - le document peut facilement être reproduit ou mise à jour sans être obligé de réplique des dizaines de click de souris.</p>
+<p><img src="resources/figures/DocumentRmd.png" width="800px" /></p>
+<p>On va supposer que l’on veut rédiger une fiche de synthèse d’une page sur une épreuve sportive comportant un tableau, un graphique et une carte</p>
+<div id="préparation-du-document-rmarkdown" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Préparation du document Rmarkdown<a href="02-office-killer.html#préparation-du-document-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On commence par rassembler dans un dossier les données dont nous aurons besoin et on les stocke dans des sous-dossiers. Dans l’exemple ci-dessous on a créé un dossier appelé <code>olympic</code> avec un sous-dossier <code>data</code> pour les tableaux statistiques, un dossier <code>img</code> pour les photographies et un dossier <code>map</code> pour les fonds de carte. Une fois que cela est fait, on crée un projet R dans le dossier ce qui entraîne la création du fichier `olympic.Rproj’.</p>
+<p><img src="resources/figures/makdown001.jpg" width="400px" /></p>
+<p>A l’intérieur de ce projet, on crée un document de type Rmd (R markdown) auquel on donne le titre “Tir à l’arc” et on le sauvegarde sous le nom <code>Rapport.Rmd</code>.</p>
+<p><img src="resources/figures/Create_Rmd.jpg" width="400px" /></p>
+</div>
+<div id="préparation-du-plan" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Préparation du plan<a href="02-office-killer.html#préparation-du-plan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Au moment de l’ouverture, le document ressemble à ceci:</p>
+<p><img src="resources/figures/markdown002.jpg" width="700px" /></p>
+<p>On garde le premier bloc de programme (en gris) et on élimine toute la partie créée par Rstudio pour servir d’exemple. On la remplace par notre plan en utilisant des instructions pour hiérarchiser les parties (<code>##</code>) , sous-parties (<code>###</code>) et sous-sous parties (<code>####</code>). On évitera d’utiliser (<code>#</code>) qui correspond à un titre de chapitre ou d’ouvrage.</p>
+<p><img src="resources/figures/markdown003.jpg" width="700px" /></p>
+<p>On clique alors sur le bouton “Knit” (une pelotte de laine bleue) pour visualiser le résultat qui s’affiche sous la forme d’une page .html.</p>
+<p><img src="resources/figures/markdown003res.jpg" width="400px" /></p>
+</div>
+<div id="ajout-dimages-externes" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Ajout d’images externes<a href="02-office-killer.html#ajout-dimages-externes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On décide de placer en tête de notre document une image d’une sportive française ayant obtenu la médaille de bronze au JO de Paris 2024. Il y a deux solution pour cela. Soit on utilise directement une commande Markdown, soit on crée un bloc de programme. Dans ce cas on utilisera la commande <code>include_graphics()</code> du package knitr et l’on précisera les paramètres de l’image dans l’en-tête du bloc de programme.</p>
+<p><img src="resources/figures/markdown005.jpg" width="700px" /></p>
+<p>Les résultats sont identiques mais la seconde solution est en général préférable car elle permet d’opérer des réglages plus précis, notamment pour les renvois.</p>
+<p><img src="resources/figures/markdown005res.jpg" width="700px" /></p>
+</div>
+<div id="ajout-de-texte" class="section level3 hasAnchor" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Ajout de texte<a href="02-office-killer.html#ajout-de-texte" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On rédige l’introduction de la note en tapant du texte et en ajoutant du gras ou de l’italique à l’aide des caractères spéciaux du langage Markdown. Dans l’exemple ci-dessous, on a également introduit un lien web vers une URL et une énumération sous forme de puces.</p>
+<p><img src="resources/figures/markdown004.jpg" width="700px" /></p>
+<p>Voici le résultat en html une fois que l’on a cliqué sur le bouton <code>knit</code></p>
+<p><img src="resources/figures/markdown004res.jpg" width="700px" /></p>
+</div>
+<div id="ajout-dun-tableau" class="section level3 hasAnchor" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> Ajout d’un tableau<a href="02-office-killer.html#ajout-dun-tableau" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On décide d’ajouter un tableau de l’ensemble des femmes qui ont été médaillées dans l’épreuve individuelle de tir à l’arc de 1992 à 2024. Pour que le tableau soit plus joli on va l’afficher avec la commande <code>kable()</code> du package <code>knitr</code></p>
+<p><img src="resources/figures/markdown006.jpg" width="700px" /></p>
+<p>Voici le résultat dans la page .html</p>
+<p><img src="resources/figures/markdown006res.jpg" width="700px" /></p>
+</div>
+<div id="ajout-dun-graphique" class="section level3 hasAnchor" number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> Ajout d’un graphique<a href="02-office-killer.html#ajout-dun-graphique" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On souhaite comparer la taille des hommes et des femmes à l’aide d’une boîte à moustache. On introduit donc dans notre document markdown le bloc de code suivant :</p>
+<p><img src="resources/figures/markdown007.jpg" width="700px" /></p>
+<p>Ce qui donne le résultat suivant :</p>
+<p><img src="resources/figures/markdown007res.jpg" width="700px" /></p>
+</div>
+<div id="ajout-dune-carte" class="section level3 hasAnchor" number="2.3.7">
+<h3><span class="header-section-number">2.3.7</span> Ajout d’une carte<a href="02-office-killer.html#ajout-dune-carte" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Supposons pour finir qu’on veuille afficher une carte du Monde indiquant la répartition par pays des médailles du sport considéré. On dispose pour cela d’un fonds de carte des pays du Monde que l’on va charger pour ensuite visualiser le nombre de médailles par pays. Le programme est un peu plus complexe que les précédents et fait appel aux packages <code>sf</code>et <code>map_sf</code> qui sont spécialisées dans la cartographie. Voici le programme :</p>
+<p><img src="resources/figures/markdown008.jpg" width="700px" /></p>
+<p>Et le résultat :</p>
+<p><img src="resources/figures/markdown008res.jpg" width="700px" /></p>
+</div>
+</div>
+<div id="diapos-rmd-power-point-killer" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Diapos Rmd : Power Point killer<a href="02-office-killer.html#diapos-rmd-power-point-killer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lorsque l’on crée un fichier Markdown, on peut décider qu’il ne s’agit pas d’un document mais d’une présentation et opter pour l’un des deux modes par défaut appelés <code>slidy</code> et <code>ioslides</code>.</p>
+<p><img src="resources/figures/RmdDiapo.png" width="669" /></p>
+<p>On peut ensuite créer un diaporama en donnant un titre général et en séparant chaque diapo par un titre de niveau 2 correspondant à des lignes débutant par <code>##</code> comme dans l’exemple ci-dessous :</p>
+<p><img src="resources/figures/diapo_prog.png" width="805" /></p>
+<p>Il ne reste plus qu’à compiler le programme avec l’icône <code>Knit</code> (pelotte de laine) pour générer un document .html en forme de dipositives.</p>
+<p><img src="resources/figures/diapo1.png" width="897" /><img src="resources/figures/diapo2.png" width="897" /><img src="resources/figures/diapo3.png" width="897" /></p>
+</div>
+<div id="en-résumé-1" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> En résumé<a href="02-office-killer.html#en-résumé-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="rmdnote">
+<p>
+R est un <code>Excel killer</code> mais aussi un
+<code>Word killer</code> voire un <code>Power point killer</code>…
+Adopter R peut nuire gravement à vos habitudes antérieures de
+travail.
+</p>
+</div>
+
+</div>
+</div>
+<script src="js/tidyverse.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="01-principes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="03-R-Base.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"instapper": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ClaudeGrasland/bivR/blob/main/02-office-killer.Rmd",
+"text": "Source"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bivaR.epub", "bivaR.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
