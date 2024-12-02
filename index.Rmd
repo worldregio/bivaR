@@ -34,9 +34,9 @@ Il est basé sur `r R.Version()[["version.string"]]`.
 
 Ce document est régulièrement corrigé et mis à jour. La version de référence est disponible en ligne à l'adresse :
 
-- [https://github.com/ClaudeGrasland/bivaR](https://github.com/ClaudeGrasland/bivaR)
+- [https://github.com/worldregio/bivaR](https://github.com/worldregiobivaR)
 
-Le code source est disponible [sur GitHub](https://github.com/ClaudeGrasland/bivaR).
+Le code source est disponible [sur GitHub](https://github.com/worldregio/bivaR).
 
 Pour toute suggestion ou correction, il est possible de me contacter [par mail](mailto:claude.grasland@parisgeo.cnrs.fr)
 

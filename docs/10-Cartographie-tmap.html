@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Partie 10 Cartographie avec tmap (2024) | Introduction à la statistique bivariée et aux représentations graphiques avec R</title>
+  <meta name="description" content="Cours dispensé en M1 MECI Option Data" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Partie 10 Cartographie avec tmap (2024) | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Partie 10 Cartographie avec tmap (2024) | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  
+  <meta name="twitter:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+<meta name="author" content="Claude Grasland" />
+
+
+<meta name="date" content="2024-12-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="09bis-Graphique-ggplot.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/tidyverse.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">Introduction à la statistique bivariée et aux représentations graphiques avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>À propos de ce document</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#remerciements"><i class="fa fa-check"></i>Remerciements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
+</ul></li>
+<li class="part"><span><b>I DEBUTER EN R</b></span></li>
+<li class="chapter" data-level="1" data-path="01-principes.html"><a href="01-principes.html"><i class="fa fa-check"></i><b>1</b> Premiers pas</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="01-principes.html"><a href="01-principes.html#opérations-arithmétiques"><i class="fa fa-check"></i><b>1.1</b> Opérations arithmétiques</a></li>
+<li class="chapter" data-level="1.2" data-path="01-principes.html"><a href="01-principes.html#les-objets-de-base-valeur-vecteur-matrice"><i class="fa fa-check"></i><b>1.2</b> Les objets de base : valeur, vecteur, matrice</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="01-principes.html"><a href="01-principes.html#eléments"><i class="fa fa-check"></i><b>1.2.1</b> Eléments</a></li>
+<li class="chapter" data-level="1.2.2" data-path="01-principes.html"><a href="01-principes.html#vecteurs-vectors"><i class="fa fa-check"></i><b>1.2.2</b> vecteurs (<em>vectors</em>)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="01-principes.html"><a href="01-principes.html#matrices-matrix"><i class="fa fa-check"></i><b>1.2.3</b> Matrices (<em>matrix</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="01-principes.html"><a href="01-principes.html#ne-pas-confondre-listes-et-vecteurs"><i class="fa fa-check"></i><b>1.3</b> Ne pas confondre listes et vecteurs !</a></li>
+<li class="chapter" data-level="1.4" data-path="01-principes.html"><a href="01-principes.html#attention-aux-types-de-variables"><i class="fa fa-check"></i><b>1.4</b> Attention aux types de variables …</a></li>
+<li class="chapter" data-level="1.5" data-path="01-principes.html"><a href="01-principes.html#types-de-tableaux-et-guerres-de-religion."><i class="fa fa-check"></i><b>1.5</b> Types de tableaux et guerres de religion.</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="01-principes.html"><a href="01-principes.html#le-type-data.frame"><i class="fa fa-check"></i><b>1.5.1</b> Le type <em>data.frame</em> :</a></li>
+<li class="chapter" data-level="1.5.2" data-path="01-principes.html"><a href="01-principes.html#le-type-tibble"><i class="fa fa-check"></i><b>1.5.2</b> Le type <em>tibble</em></a></li>
+<li class="chapter" data-level="1.5.3" data-path="01-principes.html"><a href="01-principes.html#le-type-data.table"><i class="fa fa-check"></i><b>1.5.3</b> Le type <em>data.table</em></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="01-principes.html"><a href="01-principes.html#en-résumé"><i class="fa fa-check"></i><b>1.6</b> En résumé</a></li>
+<li class="chapter" data-level="1.7" data-path="01-principes.html"><a href="01-principes.html#exercices"><i class="fa fa-check"></i><b>1.7</b> Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="02-office-killer.html"><a href="02-office-killer.html"><i class="fa fa-check"></i><b>2</b> Office killer</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="02-office-killer.html"><a href="02-office-killer.html#rstudio-et-les-projets-r"><i class="fa fa-check"></i><b>2.1</b> Rstudio et les projets R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="02-office-killer.html"><a href="02-office-killer.html#lancement-de-r-studio"><i class="fa fa-check"></i><b>2.1.1</b> Lancement de R studio</a></li>
+<li class="chapter" data-level="2.1.2" data-path="02-office-killer.html"><a href="02-office-killer.html#création-dun-projet"><i class="fa fa-check"></i><b>2.1.2</b> Création d’un projet</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="02-office-killer.html"><a href="02-office-killer.html#programme-r-excel-killer"><i class="fa fa-check"></i><b>2.2</b> Programme R : Excel killer ?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="02-office-killer.html"><a href="02-office-killer.html#round-1-importation-du-tableau-de-données"><i class="fa fa-check"></i><b>2.2.1</b> Round 1 : Importation du tableau de données</a></li>
+<li class="chapter" data-level="2.2.2" data-path="02-office-killer.html"><a href="02-office-killer.html#round-2.-inventaire-des-sports-disponible"><i class="fa fa-check"></i><b>2.2.2</b> Round 2. Inventaire des sports disponible</a></li>
+<li class="chapter" data-level="2.2.3" data-path="02-office-killer.html"><a href="02-office-killer.html#round-3.-sélection-dun-sport"><i class="fa fa-check"></i><b>2.2.3</b> Round 3. Sélection d’un sport</a></li>
+<li class="chapter" data-level="2.2.4" data-path="02-office-killer.html"><a href="02-office-killer.html#round-4.-analyse-de-lâge-du-poids-de-la-taille-et-de-limc-des-sportifs"><i class="fa fa-check"></i><b>2.2.4</b> Round 4. Analyse de l’âge, du poids, de la taille et de l’IMC des sportifs</a></li>
+<li class="chapter" data-level="2.2.5" data-path="02-office-killer.html"><a href="02-office-killer.html#round-5-nombre-de-médailles-dor-par-pays-et-par-épreuve"><i class="fa fa-check"></i><b>2.2.5</b> Round 5 : Nombre de médailles d’or par pays et par épreuve</a></li>
+<li class="chapter" data-level="2.2.6" data-path="02-office-killer.html"><a href="02-office-killer.html#dernier-round.-refaire-toute-lanalyse-en-changeant-de-sport"><i class="fa fa-check"></i><b>2.2.6</b> Dernier round. Refaire toute l’analyse en changeant de sport</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="02-office-killer.html"><a href="02-office-killer.html#document-rmd-word-killer"><i class="fa fa-check"></i><b>2.3</b> Document Rmd : Word killer ?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="02-office-killer.html"><a href="02-office-killer.html#préparation-du-document-rmarkdown"><i class="fa fa-check"></i><b>2.3.1</b> Préparation du document Rmarkdown</a></li>
+<li class="chapter" data-level="2.3.2" data-path="02-office-killer.html"><a href="02-office-killer.html#préparation-du-plan"><i class="fa fa-check"></i><b>2.3.2</b> Préparation du plan</a></li>
+<li class="chapter" data-level="2.3.3" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dimages-externes"><i class="fa fa-check"></i><b>2.3.3</b> Ajout d’images externes</a></li>
+<li class="chapter" data-level="2.3.4" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-de-texte"><i class="fa fa-check"></i><b>2.3.4</b> Ajout de texte</a></li>
+<li class="chapter" data-level="2.3.5" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dun-tableau"><i class="fa fa-check"></i><b>2.3.5</b> Ajout d’un tableau</a></li>
+<li class="chapter" data-level="2.3.6" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dun-graphique"><i class="fa fa-check"></i><b>2.3.6</b> Ajout d’un graphique</a></li>
+<li class="chapter" data-level="2.3.7" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dune-carte"><i class="fa fa-check"></i><b>2.3.7</b> Ajout d’une carte</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="02-office-killer.html"><a href="02-office-killer.html#diapos-rmd-power-point-killer"><i class="fa fa-check"></i><b>2.4</b> Diapos Rmd : Power Point killer</a></li>
+<li class="chapter" data-level="2.5" data-path="02-office-killer.html"><a href="02-office-killer.html#en-résumé-1"><i class="fa fa-check"></i><b>2.5</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03-R-Base.html"><a href="03-R-Base.html"><i class="fa fa-check"></i><b>3</b> R-Base</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#tableaux"><i class="fa fa-check"></i><b>3.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="03-R-Base.html"><a href="03-R-Base.html#importation"><i class="fa fa-check"></i><b>3.1.1</b> Importation</a></li>
+<li class="chapter" data-level="3.1.2" data-path="03-R-Base.html"><a href="03-R-Base.html#transformations"><i class="fa fa-check"></i><b>3.1.2</b> Transformations</a></li>
+<li class="chapter" data-level="3.1.3" data-path="03-R-Base.html"><a href="03-R-Base.html#extractions"><i class="fa fa-check"></i><b>3.1.3</b> Extractions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-i-var.-quali."><i class="fa fa-check"></i><b>3.2</b> Exploration I (<em>var. quali.</em>)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="03-R-Base.html"><a href="03-R-Base.html#sélection-et-recodage"><i class="fa fa-check"></i><b>3.2.1</b> Sélection et recodage</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03-R-Base.html"><a href="03-R-Base.html#table-de-dénombrement"><i class="fa fa-check"></i><b>3.2.2</b> Table de dénombrement</a></li>
+<li class="chapter" data-level="3.2.3" data-path="03-R-Base.html"><a href="03-R-Base.html#graphique-avec-plot"><i class="fa fa-check"></i><b>3.2.3</b> Graphique avec plot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-ii-var.-quanti"><i class="fa fa-check"></i><b>3.3</b> Exploration II (<em>var. quanti</em>)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#résumés-numériques"><i class="fa fa-check"></i><b>3.3.1</b> Résumés numériques</a></li>
+<li class="chapter" data-level="3.3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#dénombrement"><i class="fa fa-check"></i><b>3.3.2</b> Dénombrement</a></li>
+<li class="chapter" data-level="3.3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#boîte-à-moustaches"><i class="fa fa-check"></i><b>3.3.3</b> Boîte à moustaches</a></li>
+<li class="chapter" data-level="3.3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#histogramme"><i class="fa fa-check"></i><b>3.3.4</b> Histogramme</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-iii-2-variables"><i class="fa fa-check"></i><b>3.4</b> Exploration III (<em>2 variables</em>)</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-qualitatives"><i class="fa fa-check"></i><b>3.4.1</b> Deux variables qualitatives</a></li>
+<li class="chapter" data-level="3.4.2" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-quantitatives"><i class="fa fa-check"></i><b>3.4.2</b> Deux variables quantitatives</a></li>
+<li class="chapter" data-level="3.4.3" data-path="03-R-Base.html"><a href="03-R-Base.html#une-quantitative-et-une-qualitative"><i class="fa fa-check"></i><b>3.4.3</b> Une quantitative et une qualitative</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="03-R-Base.html"><a href="03-R-Base.html#en-résumé-2"><i class="fa fa-check"></i><b>3.5</b> En résumé</a></li>
+</ul></li>
+<li class="part"><span><b>II VARIABLES QUANTITATIVES</b></span></li>
+<li class="chapter" data-level="4" data-path="04-Corrélation.html"><a href="04-Corrélation.html"><i class="fa fa-check"></i><b>4</b> Corrélation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#préparation-des-données"><i class="fa fa-check"></i><b>4.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#chargement-du-tableau-principal"><i class="fa fa-check"></i><b>4.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#choix-des-deux-variables-à-analyser"><i class="fa fa-check"></i><b>4.1.2</b> Choix des deux variables à analyser</a></li>
+<li class="chapter" data-level="4.1.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-malin"><i class="fa fa-check"></i><b>4.1.3</b> On est malin …</a></li>
+<li class="chapter" data-level="4.1.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-paresseux"><i class="fa fa-check"></i><b>4.1.4</b> On est paresseux …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exploration-visuelle"><i class="fa fa-check"></i><b>4.2</b> Exploration visuelle</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-avec-plotxy"><i class="fa fa-check"></i><b>4.2.1</b> Visualisation avec plot(X,Y)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#identification-des-points-avec-cor-text"><i class="fa fa-check"></i><b>4.2.2</b> Identification des points avec <strong>cor</strong> + <strong>text(…)</strong></a></li>
+<li class="chapter" data-level="4.2.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#ajout-de-lignes-horizontales-ou-verticales-avec-cor-abline"><i class="fa fa-check"></i><b>4.2.3</b> Ajout de lignes horizontales ou verticales avec <strong>cor()</strong> + <strong>abline(…)</strong></a></li>
+<li class="chapter" data-level="4.2.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#au-delà-de-r-base"><i class="fa fa-check"></i><b>4.2.4</b> Au delà de R-Base …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#coefficients-de-corrélation"><i class="fa fa-check"></i><b>4.3</b> Coefficients de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#définition"><i class="fa fa-check"></i><b>4.3.1</b> Définition</a></li>
+<li class="chapter" data-level="4.3.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor"><i class="fa fa-check"></i><b>4.3.2</b> La fonction <strong>cor()</strong></a></li>
+<li class="chapter" data-level="4.3.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor.test"><i class="fa fa-check"></i><b>4.3.3</b> La fonction cor.test()</a></li>
+<li class="chapter" data-level="4.3.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#en-résumé-intensité-ou-significativité"><i class="fa fa-check"></i><b>4.3.4</b> En résumé : intensité ou significativité ?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4</b> Matrice de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#objectif-de-lanalyse"><i class="fa fa-check"></i><b>4.4.1</b> Objectif de l’analyse</a></li>
+<li class="chapter" data-level="4.4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-des-résultats"><i class="fa fa-check"></i><b>4.4.2</b> Utilisation des résultats</a></li>
+<li class="chapter" data-level="4.4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-dune-matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4.3</b> Visualisation d’une matrice de corrélation</a></li>
+<li class="chapter" data-level="4.4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exemple-création-dun-tableau-quantitatif"><i class="fa fa-check"></i><b>4.4.4</b> Exemple : création d’un tableau quantitatif</a></li>
+<li class="chapter" data-level="4.4.5" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-psych"><i class="fa fa-check"></i><b>4.4.5</b> Utilisation du package psych</a></li>
+<li class="chapter" data-level="4.4.6" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-factominer"><i class="fa fa-check"></i><b>4.4.6</b> Utilisation du package factoMineR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-Régression.html"><a href="05-Régression.html"><i class="fa fa-check"></i><b>5</b> Régression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05-Régression.html"><a href="05-Régression.html#préparation-des-données-1"><i class="fa fa-check"></i><b>5.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="05-Régression.html"><a href="05-Régression.html#chargement-du-tableau-principal-1"><i class="fa fa-check"></i><b>5.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="5.1.2" data-path="05-Régression.html"><a href="05-Régression.html#choix-des-deux-variables-à-analyser-1"><i class="fa fa-check"></i><b>5.1.2</b> Choix des deux variables à analyser</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="05-Régression.html"><a href="05-Régression.html#forme-de-la-relation"><i class="fa fa-check"></i><b>5.2</b> Forme de la relation</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="05-Régression.html"><a href="05-Régression.html#vérification-de-la-normalité-de-x-et-y"><i class="fa fa-check"></i><b>5.2.1</b> Vérification de la normalité de X et Y</a></li>
+<li class="chapter" data-level="5.2.2" data-path="05-Régression.html"><a href="05-Régression.html#visualisation-de-la-forme-de-la-relation"><i class="fa fa-check"></i><b>5.2.2</b> Visualisation de la forme de la relation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="05-Régression.html"><a href="05-Régression.html#analyse-de-la-corrélation"><i class="fa fa-check"></i><b>5.2.3</b> Analyse de la corrélation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="05-Régression.html"><a href="05-Régression.html#ajustement-du-modèle"><i class="fa fa-check"></i><b>5.3</b> Ajustement du modèle</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="05-Régression.html"><a href="05-Régression.html#hypothèses-statistiques"><i class="fa fa-check"></i><b>5.3.1</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="5.3.2" data-path="05-Régression.html"><a href="05-Régression.html#la-fonction-lm"><i class="fa fa-check"></i><b>5.3.2</b> La fonction lm()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostics-du-modèle"><i class="fa fa-check"></i><b>5.4</b> Diagnostics du modèle</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-1-indépendance-des-résidus"><i class="fa fa-check"></i><b>5.4.1</b> Diagnostic 1 : Indépendance des résidus ?</a></li>
+<li class="chapter" data-level="5.4.2" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-2-normalité-des-résidus"><i class="fa fa-check"></i><b>5.4.2</b> Diagnostic 2 : Normalité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.3" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-3-homogénéité-des-résidus"><i class="fa fa-check"></i><b>5.4.3</b> Diagnostic 3 : Homogénéité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-4-absence-de-valeur-exceptionnelles"><i class="fa fa-check"></i><b>5.4.4</b> Diagnostic 4 : Absence de valeur exceptionnelles ?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="05-Régression.html"><a href="05-Régression.html#améliorations-du-modèle"><i class="fa fa-check"></i><b>5.5</b> Améliorations du modèle</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-r2-46"><i class="fa fa-check"></i><b>5.5.1</b> Modèle linéaire (R2 = 46%)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-sans-lalbanie-r2-53"><i class="fa fa-check"></i><b>5.5.2</b> Modèle linéaire sans l’Albanie (R2 = 53%)</a></li>
+<li class="chapter" data-level="5.5.3" data-path="05-Régression.html"><a href="05-Régression.html#modèle-exponentiel-r2-63"><i class="fa fa-check"></i><b>5.5.3</b> Modèle exponentiel (R2 = 63%)</a></li>
+<li class="chapter" data-level="5.5.4" data-path="05-Régression.html"><a href="05-Régression.html#modèle-puissance-r2-83"><i class="fa fa-check"></i><b>5.5.4</b> Modèle puissance (R2 = 83%)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="06-Anova.html"><a href="06-Anova.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="06-Anova.html"><a href="06-Anova.html#préparation-des-données-2"><i class="fa fa-check"></i><b>6.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="06-Anova.html"><a href="06-Anova.html#chargement-du-fichier"><i class="fa fa-check"></i><b>6.1.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="6.1.2" data-path="06-Anova.html"><a href="06-Anova.html#contenu-du-fichier"><i class="fa fa-check"></i><b>6.1.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="6.1.3" data-path="06-Anova.html"><a href="06-Anova.html#dictionaire-des-variables"><i class="fa fa-check"></i><b>6.1.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="6.1.4" data-path="06-Anova.html"><a href="06-Anova.html#recodage-des-variables"><i class="fa fa-check"></i><b>6.1.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="6.1.5" data-path="06-Anova.html"><a href="06-Anova.html#ajout-dune-nouvelle-variable"><i class="fa fa-check"></i><b>6.1.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="6.1.6" data-path="06-Anova.html"><a href="06-Anova.html#résumé-de-lensemble-du-tableau"><i class="fa fa-check"></i><b>6.1.6</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="06-Anova.html"><a href="06-Anova.html#rappels-sur-la-régression"><i class="fa fa-check"></i><b>6.2</b> Rappels sur la régression</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="06-Anova.html"><a href="06-Anova.html#la-distribution-de-pct-est-elle-normale"><i class="fa fa-check"></i><b>6.2.1</b> La distribution de PCT est-elle normale ?</a></li>
+<li class="chapter" data-level="6.2.2" data-path="06-Anova.html"><a href="06-Anova.html#y-a-t-il-une-relation-entre-le-prix-du-repas-et-le-pourboire"><i class="fa fa-check"></i><b>6.2.2</b> Y-a-t-il une relation entre le prix du repas et le pourboire ?</a></li>
+<li class="chapter" data-level="6.2.3" data-path="06-Anova.html"><a href="06-Anova.html#modèle-de-régression"><i class="fa fa-check"></i><b>6.2.3</b> Modèle de régression</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="06-Anova.html"><a href="06-Anova.html#test-dégalité-des-moyennes"><i class="fa fa-check"></i><b>6.3</b> Test d’égalité des moyennes</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="06-Anova.html"><a href="06-Anova.html#hypothèses"><i class="fa fa-check"></i><b>6.3.1</b> Hypothèses</a></li>
+<li class="chapter" data-level="6.3.2" data-path="06-Anova.html"><a href="06-Anova.html#visualisations"><i class="fa fa-check"></i><b>6.3.2</b> Visualisations</a></li>
+<li class="chapter" data-level="6.3.3" data-path="06-Anova.html"><a href="06-Anova.html#paramètres-principaux"><i class="fa fa-check"></i><b>6.3.3</b> Paramètres principaux</a></li>
+<li class="chapter" data-level="6.3.4" data-path="06-Anova.html"><a href="06-Anova.html#test-dégalité-des-moyennes-1"><i class="fa fa-check"></i><b>6.3.4</b> Test d’égalité des moyennes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="06-Anova.html"><a href="06-Anova.html#analyse-de-variance-1"><i class="fa fa-check"></i><b>6.4</b> Analyse de variance</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="06-Anova.html"><a href="06-Anova.html#hypothèses-1"><i class="fa fa-check"></i><b>6.4.1</b> Hypothèses</a></li>
+<li class="chapter" data-level="6.4.2" data-path="06-Anova.html"><a href="06-Anova.html#calcul-des-paramètres-principaux"><i class="fa fa-check"></i><b>6.4.2</b> Calcul des paramètres principaux</a></li>
+<li class="chapter" data-level="6.4.3" data-path="06-Anova.html"><a href="06-Anova.html#visualisation"><i class="fa fa-check"></i><b>6.4.3</b> Visualisation</a></li>
+<li class="chapter" data-level="6.4.4" data-path="06-Anova.html"><a href="06-Anova.html#modélisation-simple"><i class="fa fa-check"></i><b>6.4.4</b> Modélisation simple</a></li>
+<li class="chapter" data-level="6.4.5" data-path="06-Anova.html"><a href="06-Anova.html#modélisation-avancée"><i class="fa fa-check"></i><b>6.4.5</b> Modélisation avancée</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="06-Anova.html"><a href="06-Anova.html#annexe-les-variables-hybrides"><i class="fa fa-check"></i><b>6.5</b> Annexe : les variables hybrides</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="06-Anova.html"><a href="06-Anova.html#size-quantitative-discrète"><i class="fa fa-check"></i><b>6.5.1</b> SIZE = quantitative discrète</a></li>
+<li class="chapter" data-level="6.5.2" data-path="06-Anova.html"><a href="06-Anova.html#size-qualitative-ordinale"><i class="fa fa-check"></i><b>6.5.2</b> SIZE = qualitative ordinale</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III VARIABLES CATEGORIELLES</b></span></li>
+<li class="chapter" data-level="7" data-path="07-Tabcont.html"><a href="07-Tabcont.html"><i class="fa fa-check"></i><b>7</b> Analyse d’enquêtes</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#préparation-des-données-3"><i class="fa fa-check"></i><b>7.2</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#importation-du-fichier-au-format-.rds"><i class="fa fa-check"></i><b>7.2.1</b> Importation du fichier au format .RDS</a></li>
+<li class="chapter" data-level="7.2.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#simplifiée-des-variables"><i class="fa fa-check"></i><b>7.2.2</b> (simplifiée) des variables</a></li>
+<li class="chapter" data-level="7.2.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#résumé-des-variables-tri-à-plat"><i class="fa fa-check"></i><b>7.2.3</b> Résumé des variables (tri à plat)</a></li>
+<li class="chapter" data-level="7.2.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#tailles-des-échantillons-par-pays-et-par-date"><i class="fa fa-check"></i><b>7.2.4</b> Tailles des échantillons par pays et par date</a></li>
+<li class="chapter" data-level="7.2.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sélection-dun-échantillon"><i class="fa fa-check"></i><b>7.2.5</b> Sélection d’un échantillon</a></li>
+<li class="chapter" data-level="7.2.6" data-path="07-Tabcont.html"><a href="07-Tabcont.html#recodage-des-modalités"><i class="fa fa-check"></i><b>7.2.6</b> Recodage des modalités</a></li>
+<li class="chapter" data-level="7.2.7" data-path="07-Tabcont.html"><a href="07-Tabcont.html#découpage-de-variables-quantitatives-en-classes"><i class="fa fa-check"></i><b>7.2.7</b> Découpage de variables quantitatives en classes</a></li>
+<li class="chapter" data-level="7.2.8" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sélection"><i class="fa fa-check"></i><b>7.2.8</b> Sélection</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa"><i class="fa fa-check"></i><b>7.3</b> Opinion USA</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#la-fonction-table"><i class="fa fa-check"></i><b>7.3.1</b> la fonction table()</a></li>
+<li class="chapter" data-level="7.3.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#visualisation-avec-plot-ou-barplot"><i class="fa fa-check"></i><b>7.3.2</b> Visualisation avec plot ou barplot</a></li>
+<li class="chapter" data-level="7.3.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#recodage"><i class="fa fa-check"></i><b>7.3.3</b> Recodage</a></li>
+<li class="chapter" data-level="7.3.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#calcul-de-lintervalle-de-confiance"><i class="fa fa-check"></i><b>7.3.4</b> Calcul de l’intervalle de confiance</a></li>
+<li class="chapter" data-level="7.3.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#prise-en-compte-de-la-variable-de-redressement."><i class="fa fa-check"></i><b>7.3.5</b> Prise en compte de la variable de redressement.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-sexe"><i class="fa fa-check"></i><b>7.4</b> Opinion USA / Sexe</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#tableau-de-contingence"><i class="fa fa-check"></i><b>7.4.1</b> tableau de contingence</a></li>
+<li class="chapter" data-level="7.4.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#pourcentages"><i class="fa fa-check"></i><b>7.4.2</b> Pourcentages</a></li>
+<li class="chapter" data-level="7.4.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#première-visualisation"><i class="fa fa-check"></i><b>7.4.3</b> Première visualisation</a></li>
+<li class="chapter" data-level="7.4.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#test-du-chi-2"><i class="fa fa-check"></i><b>7.4.4</b> test du chi-2</a></li>
+<li class="chapter" data-level="7.4.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#analyse-des-résidus"><i class="fa fa-check"></i><b>7.4.5</b> Analyse des résidus</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-âge"><i class="fa fa-check"></i><b>7.5</b> Opinion USA / Âge</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#effet-de-génération"><i class="fa fa-check"></i><b>7.5.1</b> Effet de génération</a></li>
+<li class="chapter" data-level="7.5.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#effet-dâge"><i class="fa fa-check"></i><b>7.5.2</b> Effet d’âge</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-age-sexe"><i class="fa fa-check"></i><b>7.6</b> Opinion USA / Age &amp; Sexe</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sous-échantillon-des-hommes"><i class="fa fa-check"></i><b>7.6.1</b> Sous-échantillon des hommes</a></li>
+<li class="chapter" data-level="7.6.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sous-échantillon-des-femmes"><i class="fa fa-check"></i><b>7.6.2</b> Sous-échantillon des femmes</a></li>
+<li class="chapter" data-level="7.6.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#régression-logistique"><i class="fa fa-check"></i><b>7.6.3</b> Régression logistique</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV GRAPHIQUES, CARTES &amp; TABLEAUX</b></span></li>
+<li class="chapter" data-level="8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html"><i class="fa fa-check"></i><b>8</b> Graphiques avec R-Base</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#pourquoi-sembêter-à-utiliser-les-fonctions-primitives-de-r-pour-faire-des-graphiques"><i class="fa fa-check"></i><b>8.1.1</b> Pourquoi s’em…bêter à utiliser les fonctions primitives de R pour faire des graphiques ?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#trois-étapes-pour-créer-un-graphique"><i class="fa fa-check"></i><b>8.1.2</b> Trois étapes pour créer un graphique</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#préparation-des-données-4"><i class="fa fa-check"></i><b>8.2</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#chargement-du-fichier-1"><i class="fa fa-check"></i><b>8.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="8.2.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#contenu-du-fichier-1"><i class="fa fa-check"></i><b>8.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="8.2.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#dictionaire-des-variables-1"><i class="fa fa-check"></i><b>8.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="8.2.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#recodage-des-variables-1"><i class="fa fa-check"></i><b>8.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="8.2.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ajout-dune-nouvelle-variable-1"><i class="fa fa-check"></i><b>8.2.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="8.2.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#résumé-de-lensemble-du-tableau-1"><i class="fa fa-check"></i><b>8.2.6</b> Résumé de l’ensemble du tableau</a></li>
+<li class="chapter" data-level="8.2.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-par"><i class="fa fa-check"></i><b>8.2.7</b> La fonction par()</a></li>
+<li class="chapter" data-level="8.2.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#fonction-par-mfrow"><i class="fa fa-check"></i><b>8.2.8</b> fonction par() + mfrow</a></li>
+<li class="chapter" data-level="8.2.9" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#autres-paramètres-de-par"><i class="fa fa-check"></i><b>8.2.9</b> Autres paramètres de par()</a></li>
+<li class="chapter" data-level="8.2.10" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-layout"><i class="fa fa-check"></i><b>8.2.10</b> La fonction layout()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-génératrice-plot"><i class="fa fa-check"></i><b>8.3</b> La fonction génératrice plot()</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#une-super-fonction"><i class="fa fa-check"></i><b>8.3.1</b> Une super-fonction</a></li>
+<li class="chapter" data-level="8.3.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-factor"><i class="fa fa-check"></i><b>8.3.2</b> plot(X) / X de type factor</a></li>
+<li class="chapter" data-level="8.3.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-numeric"><i class="fa fa-check"></i><b>8.3.3</b> plot(X) / X de type numeric</a></li>
+<li class="chapter" data-level="8.3.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-factor"><i class="fa fa-check"></i><b>8.3.4</b> plot(X,Y) / X et Y de type factor</a></li>
+<li class="chapter" data-level="8.3.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-numerique"><i class="fa fa-check"></i><b>8.3.5</b> plot(X,Y) / X et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique"><i class="fa fa-check"></i><b>8.3.6</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique-1"><i class="fa fa-check"></i><b>8.3.7</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="8.3.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotmodel-model-lmyx"><i class="fa fa-check"></i><b>8.3.8</b> plot(model) / model = lm(Y~X)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-autres-fonctions-génératrice"><i class="fa fa-check"></i><b>8.4</b> Les autres fonctions génératrice</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-barplot"><i class="fa fa-check"></i><b>8.4.1</b> La fonction barplot()</a></li>
+<li class="chapter" data-level="8.4.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-hist-et-density"><i class="fa fa-check"></i><b>8.4.2</b> Les fonctions hist() et density()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-complémentaires"><i class="fa fa-check"></i><b>8.5</b> Les fonctions complémentaires</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#exemple-dun-nuage-de-points-xy"><i class="fa fa-check"></i><b>8.5.1</b> Exemple d’un nuage de points (X,Y)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#conclusion"><i class="fa fa-check"></i><b>8.6</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-faire-de-beaux-graphiques-avec-r-base"><i class="fa fa-check"></i><b>8.6.1</b> On peut faire de beaux graphiques avec R-Base …</a></li>
+<li class="chapter" data-level="8.6.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-utiliser-des-packages-spécialisés"><i class="fa fa-check"></i><b>8.6.2</b> On peut utiliser des packages spécialisés</a></li>
+<li class="chapter" data-level="8.6.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggally-un-package-spécialisé-dans-la-statistique-bivariée"><i class="fa fa-check"></i><b>8.6.3</b> ggally : un package spécialisé dans la statistique bivariée</a></li>
+<li class="chapter" data-level="8.6.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggplot2-un-package-graphique-universel"><i class="fa fa-check"></i><b>8.6.4</b> ggplot2 : un package graphique universel ?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html"><i class="fa fa-check"></i><b>9</b> Graphiques avec ggplot2 (2024)</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#ggplot2-et-tydiverse"><i class="fa fa-check"></i><b>9.1.1</b> ggplot2 et tydiverse</a></li>
+<li class="chapter" data-level="9.1.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#ggplot2-cheatsheet"><i class="fa fa-check"></i><b>9.1.2</b> ggplot2 cheatsheet</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#préparation-des-données-5"><i class="fa fa-check"></i><b>9.2</b> préparation des données</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#chargement-du-fichier-2"><i class="fa fa-check"></i><b>9.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="9.2.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#dictionaire-des-variables-2"><i class="fa fa-check"></i><b>9.2.2</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="9.2.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#résumé-de-lensemble-du-tableau-2"><i class="fa fa-check"></i><b>9.2.3</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#principes-généraux"><i class="fa fa-check"></i><b>9.3</b> Principes généraux</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#les-différentes-étapes"><i class="fa fa-check"></i><b>9.3.1</b> Les différentes étapes</a></li>
+<li class="chapter" data-level="9.3.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#la-figure-à-réaliser"><i class="fa fa-check"></i><b>9.3.2</b> La figure à réaliser</a></li>
+<li class="chapter" data-level="9.3.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#la-construction-pas-à-pas"><i class="fa fa-check"></i><b>9.3.3</b> La construction pas à pas</a></li>
+<li class="chapter" data-level="9.3.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#comparaison-avec-r-base"><i class="fa fa-check"></i><b>9.3.4</b> Comparaison avec R-Base</a></li>
+<li class="chapter" data-level="9.3.5" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#attention-paramètres-aes-locaux-et-globaux"><i class="fa fa-check"></i><b>9.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-discrète"><i class="fa fa-check"></i><b>9.4</b> X discrète</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#barplot-r-base"><i class="fa fa-check"></i><b>9.4.1</b> barplot (R-base)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_bar-ggplot2"><i class="fa fa-check"></i><b>9.4.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-quantitative-continue"><i class="fa fa-check"></i><b>9.5</b> X quantitative continue</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#hist-r-base"><i class="fa fa-check"></i><b>9.5.1</b> hist (R-base)</a></li>
+<li class="chapter" data-level="9.5.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_histogram-ggplot2"><i class="fa fa-check"></i><b>9.5.2</b> geom_histogram (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-et-y-quantitatives-continues"><i class="fa fa-check"></i><b>9.6</b> X et Y quantitatives continues</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#plot-r-base"><i class="fa fa-check"></i><b>9.6.1</b> plot (R-base)</a></li>
+<li class="chapter" data-level="9.6.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_point-ggplot2"><i class="fa fa-check"></i><b>9.6.2</b> geom_point (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète"><i class="fa fa-check"></i><b>9.7</b> X quantitative continue et Y discrète</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#boxplot-r-base"><i class="fa fa-check"></i><b>9.7.1</b> 6.1 boxplot (R-base)</a></li>
+<li class="chapter" data-level="9.7.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_boxplot-ggplot2"><i class="fa fa-check"></i><b>9.7.2</b> geom_boxplot (ggplot2)</a></li>
+<li class="chapter" data-level="9.7.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#beanplot-r-base-package-beanplot"><i class="fa fa-check"></i><b>9.7.3</b> beanplot (R-base + package beanplot)</a></li>
+<li class="chapter" data-level="9.7.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_violin-ggplot2"><i class="fa fa-check"></i><b>9.7.4</b> geom_violin (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#deux-variables-x-et-y-discrètes"><i class="fa fa-check"></i><b>9.8</b> Deux variables X et Y discrètes</a>
+<ul>
+<li class="chapter" data-level="9.8.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#mosaicplot-r-base"><i class="fa fa-check"></i><b>9.8.1</b> mosaicplot (R-base)</a></li>
+<li class="chapter" data-level="9.8.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_bar-ggplot2-1"><i class="fa fa-check"></i><b>9.8.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.9" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#conclusion-1"><i class="fa fa-check"></i><b>9.9</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="9.9.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#r-base-1"><i class="fa fa-check"></i><b>9.9.1</b> R-base</a></li>
+<li class="chapter" data-level="9.9.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#ggplot2"><i class="fa fa-check"></i><b>9.9.2</b> ggplot2</a></li>
+<li class="chapter" data-level="9.9.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#le-meilleur-des-deux-mondes"><i class="fa fa-check"></i><b>9.9.3</b> Le meilleur des deux mondes ?</a></li>
+<li class="chapter" data-level="9.9.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web"><i class="fa fa-check"></i><b>9.9.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html"><i class="fa fa-check"></i><b>10</b> Cartographie avec tmap (2024)</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#introduction-3"><i class="fa fa-check"></i><b>10.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#cartographie-dans-r"><i class="fa fa-check"></i><b>10.1.1</b> Cartographie dans R</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#données-statistiques"><i class="fa fa-check"></i><b>10.2</b> Données statistiques</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#chargement-du-fichier-3"><i class="fa fa-check"></i><b>10.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="10.2.2" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#dictionaire-des-variables-3"><i class="fa fa-check"></i><b>10.2.2</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="10.2.3" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#résumé-de-lensemble-du-tableau-3"><i class="fa fa-check"></i><b>10.2.3</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#données-cartographiques"><i class="fa fa-check"></i><b>10.3</b> Données cartographiques</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-des-circonscriptions"><i class="fa fa-check"></i><b>10.3.1</b> Carte des circonscriptions</a></li>
+<li class="chapter" data-level="10.3.2" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#autres-fonds-de-carte"><i class="fa fa-check"></i><b>10.3.2</b> Autres fonds de carte</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#jointure"><i class="fa fa-check"></i><b>10.4</b> Jointure</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#extraction-dune-région"><i class="fa fa-check"></i><b>10.4.1</b> Extraction d’une région</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-de-repérage"><i class="fa fa-check"></i><b>10.5</b> Carte de repérage</a></li>
+<li class="chapter" data-level="10.6" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-dune-variable-qualitative"><i class="fa fa-check"></i><b>10.6</b> Carte d’une variable qualitative</a></li>
+<li class="chapter" data-level="10.7" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-dune-variable-quantitative-de-taux"><i class="fa fa-check"></i><b>10.7</b> Carte d’une variable quantitative de taux</a></li>
+<li class="chapter" data-level="10.8" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-dune-variable-quantitative-de-stock"><i class="fa fa-check"></i><b>10.8</b> Carte d’une variable quantitative de stock</a></li>
+<li class="chapter" data-level="10.9" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#combinaison-de-cartes-quantitatives-de-stock-et-de-taux"><i class="fa fa-check"></i><b>10.9</b> Combinaison de cartes quantitatives de stock et de taux</a></li>
+<li class="chapter" data-level="10.10" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#superposition-de-cartes"><i class="fa fa-check"></i><b>10.10</b> Superposition de cartes</a></li>
+<li class="chapter" data-level="10.11" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#juxtaposition-de-cartes"><i class="fa fa-check"></i><b>10.11</b> Juxtaposition de cartes</a></li>
+<li class="chapter" data-level="10.12" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#pour-en-savoir-plus"><i class="fa fa-check"></i><b>10.12</b> Pour en savoir plus</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction à la statistique bivariée et aux représentations graphiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cartographie-avec-tmap-2024" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Partie 10</span> Cartographie avec tmap (2024)<a href="10-Cartographie-tmap.html#cartographie-avec-tmap-2024" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="resources/figures/tmap.png" width="360" /></p>
+<ul>
+<li><strong>Mise en place</strong> : Télécharger le <a href="https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo8.zip">dossier exo8</a> et décompressez le sur votre ordinateur. Puis ouvrez le projet R <code>exo8.Rproj</code> dans Rstudio.</li>
+</ul>
+<div id="introduction-3" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Introduction<a href="10-Cartographie-tmap.html#introduction-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cartographie-dans-r" class="section level3 hasAnchor" number="10.1.1">
+<h3><span class="header-section-number">10.1.1</span> Cartographie dans R<a href="10-Cartographie-tmap.html#cartographie-dans-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il est très facile de faire des cartes dans R. Le package cental est <strong>sf</strong> (<em>spatial features</em>) qui permet d’importer, exporter, transformer des fonds de cartes. Toutefois ce package sf a des fonctionalités limitées en matière de représentations finales de documents et son rôle est davantage la gestion des données spatiales que leur représentation. On utilisera donc des packages spécialisés comme :</p>
+<ul>
+<li>mapsf</li>
+<li>ggmap</li>
+<li>tmap</li>
+<li>mapview</li>
+<li>etc.</li>
+</ul>
+<p>On a choisi ici d’utiliser <strong>tmap</strong> car c’est l’un des plus simples pour les débutants et sa syntaxe est très proche de celle de <strong>ggplot2</strong></p>
+<p>Les principales commandes sont résumées <a href="https://cran.r-project.org/web/packages/tmap/vignettes/tmap-getstarted.html">ici</a> ou bien <a href="http://cran.nexr.com/web/packages/tmap/vignettes/tmap-nutshell.html">là</a></p>
+</div>
+</div>
+<div id="données-statistiques" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Données statistiques<a href="10-Cartographie-tmap.html#données-statistiques" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="chargement-du-fichier-3" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Chargement du fichier<a href="10-Cartographie-tmap.html#chargement-du-fichier-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On charge un fichier statistique portant sur les élections européennes de 2024 par circonscriptions en France et on sélectionne quelques variables</p>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="10-Cartographie-tmap.html#cb281-1" tabindex="-1"></a>don<span class="ot">&lt;-</span><span class="fu">readRDS</span>(<span class="st">&quot;resources/data/elect2024/elec2024_circ.RDS&quot;</span>)</span>
+<span id="cb281-2"><a href="10-Cartographie-tmap.html#cb281-2" tabindex="-1"></a>don<span class="sc">$</span>urb3 <span class="ot">&lt;-</span> <span class="fu">cut</span>(don<span class="sc">$</span>loc_urb, <span class="at">breaks=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">50</span>,<span class="dv">90</span>,<span class="dv">101</span>))</span>
+<span id="cb281-3"><a href="10-Cartographie-tmap.html#cb281-3" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>urb3) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;rural (&lt;50%) &quot;</span>,<span class="st">&quot;mixte (50-90%)&quot;</span>,<span class="st">&quot;urbain (&gt;90%)&quot;</span>)</span>
+<span id="cb281-4"><a href="10-Cartographie-tmap.html#cb281-4" tabindex="-1"></a>don<span class="sc">$</span>tx_abs <span class="ot">&lt;-</span> <span class="dv">100</span><span class="sc">*</span>(don<span class="sc">$</span>INS<span class="sc">-</span>don<span class="sc">$</span>EXP)<span class="sc">/</span>don<span class="sc">$</span>INS</span>
+<span id="cb281-5"><a href="10-Cartographie-tmap.html#cb281-5" tabindex="-1"></a>don<span class="ot">&lt;-</span>don[,<span class="fu">c</span>(<span class="st">&quot;ID&quot;</span>,<span class="st">&quot;code_reg&quot;</span>,<span class="st">&quot;nom_reg&quot;</span>, <span class="st">&quot;INS&quot;</span>,<span class="st">&quot;EXP&quot;</span>, <span class="st">&quot;urb3&quot;</span>, <span class="st">&quot;dip_supbac&quot;</span>,<span class="st">&quot;tx_abs&quot;</span>)]</span>
+<span id="cb281-6"><a href="10-Cartographie-tmap.html#cb281-6" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(don))</span></code></pre></div>
+<table style="width:100%;">
+<colgroup>
+<col width="6%" />
+<col width="9%" />
+<col width="36%" />
+<col width="7%" />
+<col width="6%" />
+<col width="15%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">ID</th>
+<th align="left">code_reg</th>
+<th align="left">nom_reg</th>
+<th align="right">INS</th>
+<th align="right">EXP</th>
+<th align="left">urb3</th>
+<th align="right">dip_supbac</th>
+<th align="right">tx_abs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">33004</td>
+<td align="left">75</td>
+<td align="left">AQUITAINE-LIMOUSIN-POITOU-CHARENTES</td>
+<td align="right">100017</td>
+<td align="right">49376</td>
+<td align="left">urbain (&gt;90%)</td>
+<td align="right">34.3</td>
+<td align="right">50.63239</td>
+</tr>
+<tr class="even">
+<td align="left">38001</td>
+<td align="left">84</td>
+<td align="left">AUVERGNE-RHONE-ALPES</td>
+<td align="right">81713</td>
+<td align="right">50493</td>
+<td align="left">urbain (&gt;90%)</td>
+<td align="right">67.9</td>
+<td align="right">38.20689</td>
+</tr>
+<tr class="odd">
+<td align="left">59010</td>
+<td align="left">32</td>
+<td align="left">NORD-PAS-DE-CALAIS-PICARDIE</td>
+<td align="right">78179</td>
+<td align="right">34081</td>
+<td align="left">urbain (&gt;90%)</td>
+<td align="right">33.6</td>
+<td align="right">56.40645</td>
+</tr>
+<tr class="even">
+<td align="left">33007</td>
+<td align="left">75</td>
+<td align="left">AQUITAINE-LIMOUSIN-POITOU-CHARENTES</td>
+<td align="right">80870</td>
+<td align="right">44597</td>
+<td align="left">urbain (&gt;90%)</td>
+<td align="right">55.2</td>
+<td align="right">44.85347</td>
+</tr>
+<tr class="odd">
+<td align="left">01001</td>
+<td align="left">84</td>
+<td align="left">AUVERGNE-RHONE-ALPES</td>
+<td align="right">83122</td>
+<td align="right">45120</td>
+<td align="left">rural (&lt;50%)</td>
+<td align="right">33.1</td>
+<td align="right">45.71834</td>
+</tr>
+<tr class="even">
+<td align="left">01002</td>
+<td align="left">84</td>
+<td align="left">AUVERGNE-RHONE-ALPES</td>
+<td align="right">102088</td>
+<td align="right">56962</td>
+<td align="left">mixte (50-90%)</td>
+<td align="right">40.0</td>
+<td align="right">44.20304</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="dictionaire-des-variables-3" class="section level3 hasAnchor" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> Dictionaire des variables<a href="10-Cartographie-tmap.html#dictionaire-des-variables-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nous n’utiliserons ici que quelques variables</p>
+<ul>
+<li><strong>ID</strong> : Code de la circonscription</li>
+<li><strong>code_reg</strong> : code de la région</li>
+<li><strong>nom_reg</strong> : nom de la région</li>
+<li><strong>INS</strong> : nombre d’inscrits</li>
+<li><strong>EXP</strong> : nombre de suffrages exprimés</li>
+<li><strong>urb3</strong> : typologie des circonscriptions</li>
+<li><strong>dip_supbac</strong> : % actifs diplômés &gt; bac</li>
+<li><strong>tx_abs</strong> : taux d’abstention</li>
+</ul>
+<hr />
+</div>
+<div id="résumé-de-lensemble-du-tableau-3" class="section level3 hasAnchor" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> Résumé de l’ensemble du tableau<a href="10-Cartographie-tmap.html#résumé-de-lensemble-du-tableau-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="10-Cartographie-tmap.html#cb282-1" tabindex="-1"></a><span class="fu">summary</span>(don)</span>
+<span id="cb282-2"><a href="10-Cartographie-tmap.html#cb282-2" tabindex="-1"></a><span class="co">#&gt;       ID              code_reg           nom_reg               INS        </span></span>
+<span id="cb282-3"><a href="10-Cartographie-tmap.html#cb282-3" tabindex="-1"></a><span class="co">#&gt;  Length:535         Length:535         Length:535         Min.   : 33901  </span></span>
+<span id="cb282-4"><a href="10-Cartographie-tmap.html#cb282-4" tabindex="-1"></a><span class="co">#&gt;  Class :character   Class :character   Class :character   1st Qu.: 75148  </span></span>
+<span id="cb282-5"><a href="10-Cartographie-tmap.html#cb282-5" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Mode  :character   Mode  :character   Median : 84248  </span></span>
+<span id="cb282-6"><a href="10-Cartographie-tmap.html#cb282-6" tabindex="-1"></a><span class="co">#&gt;                                                           Mean   : 85422  </span></span>
+<span id="cb282-7"><a href="10-Cartographie-tmap.html#cb282-7" tabindex="-1"></a><span class="co">#&gt;                                                           3rd Qu.: 96414  </span></span>
+<span id="cb282-8"><a href="10-Cartographie-tmap.html#cb282-8" tabindex="-1"></a><span class="co">#&gt;                                                           Max.   :147319  </span></span>
+<span id="cb282-9"><a href="10-Cartographie-tmap.html#cb282-9" tabindex="-1"></a><span class="co">#&gt;       EXP                    urb3       dip_supbac        tx_abs     </span></span>
+<span id="cb282-10"><a href="10-Cartographie-tmap.html#cb282-10" tabindex="-1"></a><span class="co">#&gt;  Min.   :15577   rural (&lt;50%)  :183   Min.   :21.00   Min.   :37.22  </span></span>
+<span id="cb282-11"><a href="10-Cartographie-tmap.html#cb282-11" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:38112   mixte (50-90%):174   1st Qu.:30.75   1st Qu.:44.77  </span></span>
+<span id="cb282-12"><a href="10-Cartographie-tmap.html#cb282-12" tabindex="-1"></a><span class="co">#&gt;  Median :44568   urbain (&gt;90%) :178   Median :35.70   Median :47.25  </span></span>
+<span id="cb282-13"><a href="10-Cartographie-tmap.html#cb282-13" tabindex="-1"></a><span class="co">#&gt;  Mean   :44957                        Mean   :39.40   Mean   :47.54  </span></span>
+<span id="cb282-14"><a href="10-Cartographie-tmap.html#cb282-14" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:51238                        3rd Qu.:44.55   3rd Qu.:49.94  </span></span>
+<span id="cb282-15"><a href="10-Cartographie-tmap.html#cb282-15" tabindex="-1"></a><span class="co">#&gt;  Max.   :82024                        Max.   :80.10   Max.   :65.48</span></span></code></pre></div>
+</div>
+</div>
+<div id="données-cartographiques" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Données cartographiques<a href="10-Cartographie-tmap.html#données-cartographiques" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="carte-des-circonscriptions" class="section level3 hasAnchor" number="10.3.1">
+<h3><span class="header-section-number">10.3.1</span> Carte des circonscriptions<a href="10-Cartographie-tmap.html#carte-des-circonscriptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On importe en premier le fonds de carte des circonscriptions à l’aide de la commande <code>st_read()</code> du package <strong>sf</strong>. Ceci permet de convertir le fichier shapefile (externe) en fichier sf (utilisable par R).</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="10-Cartographie-tmap.html#cb283-1" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb283-2"><a href="10-Cartographie-tmap.html#cb283-2" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;resources/data/elect2024/map_circ.shp&quot;</span>)</span>
+<span id="cb283-3"><a href="10-Cartographie-tmap.html#cb283-3" tabindex="-1"></a><span class="co">#&gt; Reading layer `map_circ&#39; from data source </span></span>
+<span id="cb283-4"><a href="10-Cartographie-tmap.html#cb283-4" tabindex="-1"></a><span class="co">#&gt;   `/Users/claudegrasland1/worldregio/bivaR/resources/data/elect2024/map_circ.shp&#39; </span></span>
+<span id="cb283-5"><a href="10-Cartographie-tmap.html#cb283-5" tabindex="-1"></a><span class="co">#&gt;   using driver `ESRI Shapefile&#39;</span></span>
+<span id="cb283-6"><a href="10-Cartographie-tmap.html#cb283-6" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 535 features and 6 fields</span></span>
+<span id="cb283-7"><a href="10-Cartographie-tmap.html#cb283-7" tabindex="-1"></a><span class="co">#&gt; Geometry type: MULTIPOLYGON</span></span>
+<span id="cb283-8"><a href="10-Cartographie-tmap.html#cb283-8" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
+<span id="cb283-9"><a href="10-Cartographie-tmap.html#cb283-9" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -5.115104 ymin: 42.33349 xmax: 8.197396 ymax: 51.0894</span></span>
+<span id="cb283-10"><a href="10-Cartographie-tmap.html#cb283-10" tabindex="-1"></a><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
+<span id="cb283-11"><a href="10-Cartographie-tmap.html#cb283-11" tabindex="-1"></a><span class="fu">class</span>(map)</span>
+<span id="cb283-12"><a href="10-Cartographie-tmap.html#cb283-12" tabindex="-1"></a><span class="co">#&gt; [1] &quot;sf&quot;         &quot;data.frame&quot;</span></span>
+<span id="cb283-13"><a href="10-Cartographie-tmap.html#cb283-13" tabindex="-1"></a><span class="fu">head</span>(map)</span>
+<span id="cb283-14"><a href="10-Cartographie-tmap.html#cb283-14" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 6 features and 6 fields</span></span>
+<span id="cb283-15"><a href="10-Cartographie-tmap.html#cb283-15" tabindex="-1"></a><span class="co">#&gt; Geometry type: MULTIPOLYGON</span></span>
+<span id="cb283-16"><a href="10-Cartographie-tmap.html#cb283-16" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
+<span id="cb283-17"><a href="10-Cartographie-tmap.html#cb283-17" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -0.837084 ymin: 44.67258 xmax: 5.889757 ymax: 50.7899</span></span>
+<span id="cb283-18"><a href="10-Cartographie-tmap.html#cb283-18" tabindex="-1"></a><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
+<span id="cb283-19"><a href="10-Cartographie-tmap.html#cb283-19" tabindex="-1"></a><span class="co">#&gt;      ID code_dpt nom_dpt                             nom_reg num_circ code_reg</span></span>
+<span id="cb283-20"><a href="10-Cartographie-tmap.html#cb283-20" tabindex="-1"></a><span class="co">#&gt; 1 33004       33 GIRONDE AQUITAINE-LIMOUSIN-POITOU-CHARENTES        4       75</span></span>
+<span id="cb283-21"><a href="10-Cartographie-tmap.html#cb283-21" tabindex="-1"></a><span class="co">#&gt; 2 38001       38   ISERE                AUVERGNE-RHONE-ALPES        1       84</span></span>
+<span id="cb283-22"><a href="10-Cartographie-tmap.html#cb283-22" tabindex="-1"></a><span class="co">#&gt; 3 59010       59    NORD         NORD-PAS-DE-CALAIS-PICARDIE       10       32</span></span>
+<span id="cb283-23"><a href="10-Cartographie-tmap.html#cb283-23" tabindex="-1"></a><span class="co">#&gt; 4 33007       33 GIRONDE AQUITAINE-LIMOUSIN-POITOU-CHARENTES        7       75</span></span>
+<span id="cb283-24"><a href="10-Cartographie-tmap.html#cb283-24" tabindex="-1"></a><span class="co">#&gt; 5 01001       01     AIN                AUVERGNE-RHONE-ALPES        1       84</span></span>
+<span id="cb283-25"><a href="10-Cartographie-tmap.html#cb283-25" tabindex="-1"></a><span class="co">#&gt; 6 01002       01     AIN                AUVERGNE-RHONE-ALPES        2       84</span></span>
+<span id="cb283-26"><a href="10-Cartographie-tmap.html#cb283-26" tabindex="-1"></a><span class="co">#&gt;                         geometry</span></span>
+<span id="cb283-27"><a href="10-Cartographie-tmap.html#cb283-27" tabindex="-1"></a><span class="co">#&gt; 1 MULTIPOLYGON (((-0.474471 4...</span></span>
+<span id="cb283-28"><a href="10-Cartographie-tmap.html#cb283-28" tabindex="-1"></a><span class="co">#&gt; 2 MULTIPOLYGON (((5.820517 45...</span></span>
+<span id="cb283-29"><a href="10-Cartographie-tmap.html#cb283-29" tabindex="-1"></a><span class="co">#&gt; 3 MULTIPOLYGON (((3.065825 50...</span></span>
+<span id="cb283-30"><a href="10-Cartographie-tmap.html#cb283-30" tabindex="-1"></a><span class="co">#&gt; 4 MULTIPOLYGON (((-0.729251 4...</span></span>
+<span id="cb283-31"><a href="10-Cartographie-tmap.html#cb283-31" tabindex="-1"></a><span class="co">#&gt; 5 MULTIPOLYGON (((4.896281 46...</span></span>
+<span id="cb283-32"><a href="10-Cartographie-tmap.html#cb283-32" tabindex="-1"></a><span class="co">#&gt; 6 MULTIPOLYGON (((5.478565 45...</span></span></code></pre></div>
+<p>On remarque que ce fichier comporte une colonne spéciale appelée <code>geometry</code>. C’est celle qui contient le fonds de carte, que l’on peut visualiser avec la fonction plot() :</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="10-Cartographie-tmap.html#cb284-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">0</span>))</span>
+<span id="cb284-2"><a href="10-Cartographie-tmap.html#cb284-2" tabindex="-1"></a><span class="fu">plot</span>(map<span class="sc">$</span>geometry)</span>
+<span id="cb284-3"><a href="10-Cartographie-tmap.html#cb284-3" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Circonscriptions&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-307-1.svg" width="672" /></p>
+</div>
+<div id="autres-fonds-de-carte" class="section level3 hasAnchor" number="10.3.2">
+<h3><span class="header-section-number">10.3.2</span> Autres fonds de carte<a href="10-Cartographie-tmap.html#autres-fonds-de-carte" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nous chargeons également deux autres fonds de carte présentant les déparements et les régions.</p>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="10-Cartographie-tmap.html#cb285-1" tabindex="-1"></a>map_dept  <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;resources/data/elect2024/map_dept.shp&quot;</span>)</span>
+<span id="cb285-2"><a href="10-Cartographie-tmap.html#cb285-2" tabindex="-1"></a><span class="co">#&gt; Reading layer `map_dept&#39; from data source </span></span>
+<span id="cb285-3"><a href="10-Cartographie-tmap.html#cb285-3" tabindex="-1"></a><span class="co">#&gt;   `/Users/claudegrasland1/worldregio/bivaR/resources/data/elect2024/map_dept.shp&#39; </span></span>
+<span id="cb285-4"><a href="10-Cartographie-tmap.html#cb285-4" tabindex="-1"></a><span class="co">#&gt;   using driver `ESRI Shapefile&#39;</span></span>
+<span id="cb285-5"><a href="10-Cartographie-tmap.html#cb285-5" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 94 features and 4 fields</span></span>
+<span id="cb285-6"><a href="10-Cartographie-tmap.html#cb285-6" tabindex="-1"></a><span class="co">#&gt; Geometry type: MULTIPOLYGON</span></span>
+<span id="cb285-7"><a href="10-Cartographie-tmap.html#cb285-7" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
+<span id="cb285-8"><a href="10-Cartographie-tmap.html#cb285-8" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -5.115104 ymin: 42.33349 xmax: 8.197396 ymax: 51.0894</span></span>
+<span id="cb285-9"><a href="10-Cartographie-tmap.html#cb285-9" tabindex="-1"></a><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
+<span id="cb285-10"><a href="10-Cartographie-tmap.html#cb285-10" tabindex="-1"></a>map_reg  <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;resources/data/elect2024/map_reg.shp&quot;</span>)</span>
+<span id="cb285-11"><a href="10-Cartographie-tmap.html#cb285-11" tabindex="-1"></a><span class="co">#&gt; Reading layer `map_reg&#39; from data source </span></span>
+<span id="cb285-12"><a href="10-Cartographie-tmap.html#cb285-12" tabindex="-1"></a><span class="co">#&gt;   `/Users/claudegrasland1/worldregio/bivaR/resources/data/elect2024/map_reg.shp&#39; </span></span>
+<span id="cb285-13"><a href="10-Cartographie-tmap.html#cb285-13" tabindex="-1"></a><span class="co">#&gt;   using driver `ESRI Shapefile&#39;</span></span>
+<span id="cb285-14"><a href="10-Cartographie-tmap.html#cb285-14" tabindex="-1"></a><span class="co">#&gt; Simple feature collection with 12 features and 2 fields</span></span>
+<span id="cb285-15"><a href="10-Cartographie-tmap.html#cb285-15" tabindex="-1"></a><span class="co">#&gt; Geometry type: MULTIPOLYGON</span></span>
+<span id="cb285-16"><a href="10-Cartographie-tmap.html#cb285-16" tabindex="-1"></a><span class="co">#&gt; Dimension:     XY</span></span>
+<span id="cb285-17"><a href="10-Cartographie-tmap.html#cb285-17" tabindex="-1"></a><span class="co">#&gt; Bounding box:  xmin: -5.115104 ymin: 42.33349 xmax: 8.197396 ymax: 51.0894</span></span>
+<span id="cb285-18"><a href="10-Cartographie-tmap.html#cb285-18" tabindex="-1"></a><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
+<span id="cb285-19"><a href="10-Cartographie-tmap.html#cb285-19" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">0</span>))</span>
+<span id="cb285-20"><a href="10-Cartographie-tmap.html#cb285-20" tabindex="-1"></a><span class="fu">plot</span>(map_dept<span class="sc">$</span>geometry)</span>
+<span id="cb285-21"><a href="10-Cartographie-tmap.html#cb285-21" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Départements&quot;</span>)</span>
+<span id="cb285-22"><a href="10-Cartographie-tmap.html#cb285-22" tabindex="-1"></a><span class="fu">plot</span>(map_reg<span class="sc">$</span>geometry)</span>
+<span id="cb285-23"><a href="10-Cartographie-tmap.html#cb285-23" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Régions&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-308-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="jointure" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Jointure<a href="10-Cartographie-tmap.html#jointure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Afin de représenter les variables contenues dans le tableau statsitique (don), il faut effectuer une jointure avec le fonds de carte (map) en trouvant une variable commune et en appliquant la fonction <code>merge()</code>. On retire les variables en double du fonds de carte</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="10-Cartographie-tmap.html#cb286-1" tabindex="-1"></a>mapdon <span class="ot">&lt;-</span> <span class="fu">merge</span>(map[,<span class="dv">1</span>], don, <span class="at">by=</span><span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<div id="extraction-dune-région" class="section level3 hasAnchor" number="10.4.1">
+<h3><span class="header-section-number">10.4.1</span> Extraction d’une région<a href="10-Cartographie-tmap.html#extraction-dune-région" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pour illustrer les fonctions de mapsf, nous allons sélectionner la région Bretagne</p>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="10-Cartographie-tmap.html#cb287-1" tabindex="-1"></a>mapdon_reg<span class="ot">&lt;-</span>mapdon[mapdon<span class="sc">$</span>nom_reg<span class="sc">==</span><span class="st">&quot;BRETAGNE&quot;</span>,]</span>
+<span id="cb287-2"><a href="10-Cartographie-tmap.html#cb287-2" tabindex="-1"></a><span class="fu">plot</span>(mapdon_reg<span class="sc">$</span>geometry)</span>
+<span id="cb287-3"><a href="10-Cartographie-tmap.html#cb287-3" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Circonscriptions de Bretagne&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-310-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="carte-de-repérage" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Carte de repérage<a href="10-Cartographie-tmap.html#carte-de-repérage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La création d’une carte avec tmap se fait à l’aide de la fonction <code>tm_shape()</code> suivie de la fonction <code>tm_polygons()</code> que l’on relie par un opérateur <code>+</code>comme dans ggplot.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="10-Cartographie-tmap.html#cb288-1" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg) <span class="sc">+</span></span>
+<span id="cb288-2"><a href="10-Cartographie-tmap.html#cb288-2" tabindex="-1"></a>  <span class="fu">tm_polygons</span>()</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-311-1.svg" width="672" /></p>
+<p>On peut ajouter un texte à l’aide de <code>tm_text()</code> et un titre à l’aide de <code>tm_layout()</code>.</p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="10-Cartographie-tmap.html#cb289-1" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg) <span class="sc">+</span></span>
+<span id="cb289-2"><a href="10-Cartographie-tmap.html#cb289-2" tabindex="-1"></a>  <span class="fu">tm_polygons</span>() <span class="sc">+</span> </span>
+<span id="cb289-3"><a href="10-Cartographie-tmap.html#cb289-3" tabindex="-1"></a>   <span class="fu">tm_text</span>(<span class="st">&quot;ID&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb289-4"><a href="10-Cartographie-tmap.html#cb289-4" tabindex="-1"></a>    <span class="fu">tm_layout</span>(<span class="at">title =</span> <span class="st">&quot;Circonscriptions de Bretagne&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-312-1.svg" width="672" /></p>
+<p>Toute une série d’options permettent d’améliorer la carte.</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="10-Cartographie-tmap.html#cb290-1" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg) <span class="sc">+</span></span>
+<span id="cb290-2"><a href="10-Cartographie-tmap.html#cb290-2" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="at">col =</span> <span class="st">&quot;lightyellow&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb290-3"><a href="10-Cartographie-tmap.html#cb290-3" tabindex="-1"></a>   <span class="fu">tm_text</span>(<span class="st">&quot;ID&quot;</span>,</span>
+<span id="cb290-4"><a href="10-Cartographie-tmap.html#cb290-4" tabindex="-1"></a>           <span class="at">size =</span> <span class="fl">0.7</span>,</span>
+<span id="cb290-5"><a href="10-Cartographie-tmap.html#cb290-5" tabindex="-1"></a>           <span class="at">col=</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb290-6"><a href="10-Cartographie-tmap.html#cb290-6" tabindex="-1"></a>    <span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">&quot;Circonscriptions de Bretagne&quot;</span>,</span>
+<span id="cb290-7"><a href="10-Cartographie-tmap.html#cb290-7" tabindex="-1"></a>              <span class="at">bg.color =</span> <span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-313-1.svg" width="672" /></p>
+</div>
+<div id="carte-dune-variable-qualitative" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Carte d’une variable qualitative<a href="10-Cartographie-tmap.html#carte-dune-variable-qualitative" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Il suffit que la varaible qualitative soit bien de type <em>factor</em> ou <em>character</em> et tmap va automatiquement utiliser la solution adaptée. On donne juste le nom de la variable à représenter dans <code>tm_polygons()</code> .</p>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="10-Cartographie-tmap.html#cb291-1" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg,) <span class="sc">+</span></span>
+<span id="cb291-2"><a href="10-Cartographie-tmap.html#cb291-2" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="st">&quot;urb3&quot;</span>) </span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-314-1.svg" width="672" /></p>
+<p>On peut ensuite ajouter un habillage comme on l’a vu précédemment et modifier les paramètres.</p>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="10-Cartographie-tmap.html#cb292-1" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg,) <span class="sc">+</span></span>
+<span id="cb292-2"><a href="10-Cartographie-tmap.html#cb292-2" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="st">&quot;urb3&quot;</span>)  <span class="sc">+</span></span>
+<span id="cb292-3"><a href="10-Cartographie-tmap.html#cb292-3" tabindex="-1"></a>  <span class="fu">tm_text</span>(<span class="st">&quot;ID&quot;</span>,</span>
+<span id="cb292-4"><a href="10-Cartographie-tmap.html#cb292-4" tabindex="-1"></a>           <span class="at">size =</span> <span class="fl">0.7</span>,</span>
+<span id="cb292-5"><a href="10-Cartographie-tmap.html#cb292-5" tabindex="-1"></a>           <span class="at">col=</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb292-6"><a href="10-Cartographie-tmap.html#cb292-6" tabindex="-1"></a>    <span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">&quot;Typologie Urbain-Rural&quot;</span>,</span>
+<span id="cb292-7"><a href="10-Cartographie-tmap.html#cb292-7" tabindex="-1"></a>              <span class="at">title.size =</span> <span class="fl">1.2</span>,)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-315-1.svg" width="672" /></p>
+</div>
+<div id="carte-dune-variable-quantitative-de-taux" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Carte d’une variable quantitative de taux<a href="10-Cartographie-tmap.html#carte-dune-variable-quantitative-de-taux" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lorsqu’un phénomène correspond à un taux concernant une population répartie dans l’ensemble de l’espace, il suffit d’indiquer celle-ci dans tm_polygons() pour la visualiser.</p>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="10-Cartographie-tmap.html#cb293-1" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg,) <span class="sc">+</span></span>
+<span id="cb293-2"><a href="10-Cartographie-tmap.html#cb293-2" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="st">&quot;tx_abs&quot;</span>) </span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-316-1.svg" width="672" /></p>
+<p>L’habillage se fait sans difficultés. De nombreuses options permettent de modifier les classes, les couleurs, etc.</p>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="10-Cartographie-tmap.html#cb294-1" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg,) <span class="sc">+</span></span>
+<span id="cb294-2"><a href="10-Cartographie-tmap.html#cb294-2" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="st">&quot;tx_abs&quot;</span>)  <span class="sc">+</span></span>
+<span id="cb294-3"><a href="10-Cartographie-tmap.html#cb294-3" tabindex="-1"></a>  <span class="fu">tm_text</span>(<span class="st">&quot;ID&quot;</span>,</span>
+<span id="cb294-4"><a href="10-Cartographie-tmap.html#cb294-4" tabindex="-1"></a>           <span class="at">size =</span> <span class="fl">0.7</span>,</span>
+<span id="cb294-5"><a href="10-Cartographie-tmap.html#cb294-5" tabindex="-1"></a>           <span class="at">col=</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb294-6"><a href="10-Cartographie-tmap.html#cb294-6" tabindex="-1"></a>    <span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">&quot;Taux d&#39;abstention aux européennes de 2024&quot;</span>,</span>
+<span id="cb294-7"><a href="10-Cartographie-tmap.html#cb294-7" tabindex="-1"></a>              <span class="at">title.size =</span> <span class="fl">1.2</span>,)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-317-1.svg" width="672" /></p>
+</div>
+<div id="carte-dune-variable-quantitative-de-stock" class="section level2 hasAnchor" number="10.8">
+<h2><span class="header-section-number">10.8</span> Carte d’une variable quantitative de stock<a href="10-Cartographie-tmap.html#carte-dune-variable-quantitative-de-stock" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dans le cas où la variable quantitative décrit des stocks que l’on peut additionner il faut changer de représentation et utilise des figurés proportionnels à l’aide de la fonction <code>tm_bubbles()</code></p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="10-Cartographie-tmap.html#cb295-1" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg,) <span class="sc">+</span></span>
+<span id="cb295-2"><a href="10-Cartographie-tmap.html#cb295-2" tabindex="-1"></a>  <span class="fu">tm_polygons</span>() <span class="sc">+</span></span>
+<span id="cb295-3"><a href="10-Cartographie-tmap.html#cb295-3" tabindex="-1"></a>   <span class="fu">tm_bubbles</span> (<span class="at">size =</span> <span class="st">&quot;INS&quot;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb295-4"><a href="10-Cartographie-tmap.html#cb295-4" tabindex="-1"></a>      <span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">&quot;Nombre de suffrages exprimés par circonscription&quot;</span>,</span>
+<span id="cb295-5"><a href="10-Cartographie-tmap.html#cb295-5" tabindex="-1"></a>              <span class="at">title.size =</span> <span class="fl">1.2</span>,)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-318-1.svg" width="672" /></p>
+</div>
+<div id="combinaison-de-cartes-quantitatives-de-stock-et-de-taux" class="section level2 hasAnchor" number="10.9">
+<h2><span class="header-section-number">10.9</span> Combinaison de cartes quantitatives de stock et de taux<a href="10-Cartographie-tmap.html#combinaison-de-cartes-quantitatives-de-stock-et-de-taux" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Dans la mesure où un taux est en général le rapport de deux stocks, il est intéressant de représenter simultanément un tauxw et son dénominateur. Par exemple le taux d’abstention ert le nombre d’inscrits :</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="10-Cartographie-tmap.html#cb296-1" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg,) <span class="sc">+</span></span>
+<span id="cb296-2"><a href="10-Cartographie-tmap.html#cb296-2" tabindex="-1"></a>  <span class="fu">tm_polygons</span>()  <span class="sc">+</span></span>
+<span id="cb296-3"><a href="10-Cartographie-tmap.html#cb296-3" tabindex="-1"></a>  <span class="fu">tm_bubbles</span>(<span class="at">size=</span><span class="st">&quot;INS&quot;</span>,<span class="at">col=</span><span class="st">&quot;tx_abs&quot;</span>)<span class="sc">+</span></span>
+<span id="cb296-4"><a href="10-Cartographie-tmap.html#cb296-4" tabindex="-1"></a>    <span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">&quot;Taux d&#39;abstention et nombre d&#39;inscrits&quot;</span>,</span>
+<span id="cb296-5"><a href="10-Cartographie-tmap.html#cb296-5" tabindex="-1"></a>              <span class="at">title.size =</span> <span class="fl">1.2</span>,</span>
+<span id="cb296-6"><a href="10-Cartographie-tmap.html#cb296-6" tabindex="-1"></a>              <span class="at">legend.outside =</span> T)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-319-1.svg" width="672" /></p>
+</div>
+<div id="superposition-de-cartes" class="section level2 hasAnchor" number="10.10">
+<h2><span class="header-section-number">10.10</span> Superposition de cartes<a href="10-Cartographie-tmap.html#superposition-de-cartes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>On peut facilement superposer des cartes de types différents en les ajoutant les unes après les autres. Par exemple :</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="10-Cartographie-tmap.html#cb297-1" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg,) <span class="sc">+</span></span>
+<span id="cb297-2"><a href="10-Cartographie-tmap.html#cb297-2" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="st">&quot;urb3&quot;</span>)  <span class="sc">+</span> </span>
+<span id="cb297-3"><a href="10-Cartographie-tmap.html#cb297-3" tabindex="-1"></a>  <span class="fu">tm_bubbles</span>(<span class="at">size=</span><span class="st">&quot;INS&quot;</span>,<span class="at">col=</span><span class="st">&quot;tx_abs&quot;</span>)<span class="sc">+</span></span>
+<span id="cb297-4"><a href="10-Cartographie-tmap.html#cb297-4" tabindex="-1"></a>    <span class="fu">tm_layout</span>(<span class="at">main.title =</span> <span class="st">&quot;Taux d&#39;abstention selon le milieu urbain ou rural&quot;</span>,</span>
+<span id="cb297-5"><a href="10-Cartographie-tmap.html#cb297-5" tabindex="-1"></a>              <span class="at">title.size =</span> <span class="fl">1.2</span>,</span>
+<span id="cb297-6"><a href="10-Cartographie-tmap.html#cb297-6" tabindex="-1"></a>              <span class="at">legend.outside =</span> T)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-320-1.svg" width="672" /></p>
+</div>
+<div id="juxtaposition-de-cartes" class="section level2 hasAnchor" number="10.11">
+<h2><span class="header-section-number">10.11</span> Juxtaposition de cartes<a href="10-Cartographie-tmap.html#juxtaposition-de-cartes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Une façon très simple consiste à donner plusieurs variables dans la fonction <code>tm_polygons()</code> puis à spécifier la disposition des deux cartes avec <code>tm_facets()</code>.</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="10-Cartographie-tmap.html#cb298-1" tabindex="-1"></a><span class="co"># Dispossition verticale</span></span>
+<span id="cb298-2"><a href="10-Cartographie-tmap.html#cb298-2" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg) <span class="sc">+</span></span>
+<span id="cb298-3"><a href="10-Cartographie-tmap.html#cb298-3" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="fu">c</span>(<span class="st">&quot;tx_abs&quot;</span>,<span class="st">&quot;dip_supbac&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb298-4"><a href="10-Cartographie-tmap.html#cb298-4" tabindex="-1"></a>  <span class="fu">tm_facets</span>(<span class="at">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-321-1.svg" width="672" /></p>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="10-Cartographie-tmap.html#cb299-1" tabindex="-1"></a> </span>
+<span id="cb299-2"><a href="10-Cartographie-tmap.html#cb299-2" tabindex="-1"></a><span class="co"># Dispossition horizontale</span></span>
+<span id="cb299-3"><a href="10-Cartographie-tmap.html#cb299-3" tabindex="-1"></a><span class="fu">tm_shape</span>(mapdon_reg) <span class="sc">+</span></span>
+<span id="cb299-4"><a href="10-Cartographie-tmap.html#cb299-4" tabindex="-1"></a>  <span class="fu">tm_polygons</span>(<span class="fu">c</span>(<span class="st">&quot;tx_abs&quot;</span>,<span class="st">&quot;dip_supbac&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb299-5"><a href="10-Cartographie-tmap.html#cb299-5" tabindex="-1"></a>  <span class="fu">tm_facets</span>(<span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-321-2.svg" width="672" /></p>
+</div>
+<div id="pour-en-savoir-plus" class="section level2 hasAnchor" number="10.12">
+<h2><span class="header-section-number">10.12</span> Pour en savoir plus<a href="10-Cartographie-tmap.html#pour-en-savoir-plus" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nous nous sommes limité ici au bases élémentaires de la cartographie. Il y a évidemment beaucoup plus à apprendre pour connaître la manière de faire une bonne carte.</p>
+
+</div>
+</div>
+<script src="js/tidyverse.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="09bis-Graphique-ggplot.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"instapper": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ClaudeGrasland/bivR/blob/main/10-Cartographie-tmap.Rmd",
+"text": "Source"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bivaR.epub", "bivaR.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

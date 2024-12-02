@@ -1,4 +1,4 @@
-# (PART) GRAPHIQUES & TABLEAUX {-}
+# (PART) GRAPHIQUES, CARTES & TABLEAUX {-}
 
 # Graphiques avec R-Base
 

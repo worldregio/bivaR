@@ -1,0 +1,570 @@
+# Graphiques avec ggplot2 (2024)
+
+
+```{r, echo = FALSE, warning=F,message=F}
+knitr::opts_chunk$set(echo = TRUE,warning=F,message = F)
+library(knitr)
+library(ggplot2,quiet=T)
+library(dplyr,quiet=T)
+knitr::include_graphics("resources/figures/ggplot2.jpeg")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo8](https://github.com/ClaudeGrasland/bivaR/raw/main/resources/exos/exo8.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R `exo8.Rproj` dans Rstudio.
+
+
+
+## Introduction
+
+
+### ggplot2 et tydiverse
+
+- **ggplot2** est un package de visualisation graphique qui s'incrit dans l'écosystème plus général du **tydiverse** mis au point par **Hadley Wickham**, l'un des grands prêtres de R, responsable scientifique en chef de **Rstudio**.
+
+http://hadley.nz/
+
+- **ggplot2** est considéré actuellement comme la **référence mondiale** en matière de visualisation de données statistiques sous R en raison de sa puissance et de sa polyvalence.
+
+- mais son usage avancé n'est pas très facile même si les principes de base sont (relativement) simples. 
+
+- ggplot2 peut fonctionner sans tidyverse mais il est probablement plus efficace lorsque l'on l'utilise à l'intérieur de son écosystème. En d'autres termes, l'apprentissage de ggplot2 est souvent couplé avec celui de tidyverse. Voir par exemple l'excellent cours de J. Barnier.
+
+---
+
+### ggplot2 cheatsheet
+
+- Il est recommandé d'imprimer et d'avoir toujours avec soi la **ggplot2 cheatsheet** qui est [disponible en français](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwi62f3p4__2AhWox4UKHZbNCZ0QFnoECBwQAQ&url=https%3A%2F%2Fthinkr.fr%2Fpdf%2Fggplot2-french-cheatsheet.pdf&usg=AOvVaw3pLi41NLcJnklIg6maoJym). 
+
+
+
+
+
+## préparation des données
+
+
+### Chargement du fichier
+
+On charge un fichier statistique portant sur les élections européennes de 2024 par circonscriptions en France et on sélectionne quelques variables
+
+```{r }
+don<-readRDS("resources/data/elect2024/elec2024_circ.RDS")
+don$urb3 <- cut(don$loc_urb, breaks=c(-1,50,90,101))
+levels(don$urb3) <- c("rural (<50%) ","mixte (50-90%)","urbain (>90%)")
+don$tx_abs <- 100*(don$INS-don$EXP)/don$INS
+don<-don[,c("ID","code_reg","nom_reg", "INS","EXP", "urb3", "dip_supbac","tx_abs")]
+kable(head(don))
+```
+
+
+
+### Dictionaire des variables
+
+Nous n'utiliserons ici que quelques variables
+
+- **ID**    : Code de la circonscription
+- **code_reg** : code de la région
+- **nom_reg** : nom de la région
+- **INS** : nombre d'inscrits
+- **EXP** : nombre de suffrages exprimés
+- **urb3** : typologie des circonscriptions 
+- **dip_supbac** : % actifs diplômés > bac
+- **tx_abs** : taux d'abstention
+
+---
+
+
+
+### Résumé de l'ensemble du tableau
+
+```{r}
+summary(don)
+```
+
+
+
+
+## Principes généraux
+
+On commence par charger le package `ggplot2` qui est une partie de l'univers `tidyverse` mais que l'on peut utiliser indépendamment du reste de l'empire d'Hadley Wickham...
+
+```{r}
+library(ggplot2)
+```
+
+
+### Les différentes étapes
+
+- la commande **ggplot**(*data*) initie la création du graphique.
+- la commande **aes()** qui est l'abrévation de *aesthetics* définit les paramètres généraux de l'ensemble du graphique et comporte en général 
+  + **x =** variable liée à l'axe horizontal
+  + **y=**  variable liée à l'axe vertical
+  + **colour=** : variable définissant des groupes /  couleur
+  + **shape=** : variable définissant des groupes /  forme
+- la commande **geom_xxx** crée un graphique de type xxx 
+- les commandes additionnelles **scale_xxx** précisent les axes
+- la commande additionelle **facet_xxx** partitionne la figure en plusieurs
+- la commande **theme_xxx** retouche l'ensemble des paramètres de couleur, police, épaisseur
+
+N.B. Toutes les étapes ci-dessus ne sont pas obligatoires. 
+
+
+
+### La figure à réaliser
+
+Comment réaliser la figure ci-dessous ?
+
+```{r exo1, include = TRUE, echo=FALSE}
+
+  ggplot(don) +
+  aes(x = dip_supbac) +
+  aes(y = tx_abs) +
+  geom_point() +
+  scale_x_continuous(name="% actifs dipl. > bac")+
+  scale_y_continuous(name="% abstention")+
+  facet_wrap(vars(urb3))+
+  geom_smooth(method="lm") +
+  ggtitle(label = "Relation entre taux d'abstention et diplôme par type d'espace",
+          subtitle = "Source : INSEE et Min. de l'Intérieur") +
+  theme_light()
+
+
+```
+
+### La construction pas à pas 
+
+
+
+On définit le tableau de données avec `ggplot()` et les variables principales avec `aes()`
+
+```{r }
+
+ ggplot(don) +
+  aes(x = dip_supbac) +
+  aes(y = tx_abs)
+
+```
+
+
+On ajoute le type principal du graphique avec la commande `geom_point()`
+
+```{r }
+
+  ggplot(don) +
+  aes(x = dip_supbac) +
+  aes(y = tx_abs) +
+  geom_point() 
+```
+
+
+
+On retouche les axes horizontaux et verticaux en les passant en logarithme et en leur donnant un titre. 
+
+```{r }
+
+ ggplot(don) +
+  aes(x = dip_supbac) +
+  aes(y = tx_abs) +
+  geom_point() +
+  scale_x_continuous(name="% actifs dipl. > bac")+
+  scale_y_continuous(name="% abstention")
+ 
+
+```
+
+On segmente le graphique en facettes selon une ou plusieurs variables avec `facet_wrap()`. Du coup, on retire ces variables de l'esthétique générale : 
+
+```{r }
+
+  ggplot(don) +
+  aes(x = dip_supbac) +
+  aes(y = tx_abs) +
+  geom_point() +
+  scale_x_continuous(name="% actifs dipl. > bac")+
+  scale_y_continuous(name="% abstention")+
+  facet_wrap(vars(urb3))
+
+
+```
+
+On ajoute dans chaque facette une droite de tendance et son intervalle de confiance avec `geom_smooth()`. On précise *method="lm"* pour avoir une droite et non pas une courbe
+
+```{r }
+
+  ggplot(don) +
+  aes(x = dip_supbac) +
+  aes(y = tx_abs) +
+  geom_point() +
+  scale_x_continuous(name="% actifs dipl. > bac")+
+  scale_y_continuous(name="% abstention")+
+  facet_wrap(vars(urb3))+
+  geom_smooth(method="lm")
+
+
+```
+
+Onajoute un titre principal avec `ggtitle()` et on retouche l'ensemble de l'apparence avec `theme_light()`.
+
+```{r }
+
+  ggplot(don) +
+  aes(x = dip_supbac) +
+  aes(y = tx_abs) +
+  geom_point() +
+  scale_x_continuous(name="% actifs dipl. > bac")+
+  scale_y_continuous(name="% abstention")+
+  facet_wrap(vars(urb3))+
+  geom_smooth(method="lm") +
+  ggtitle(label = "Relation entre taux d'abstention et diplôme par type d'espace",
+          subtitle = "Source : INSEE et Min. de l'Intérieur") +
+  theme_light()
+
+
+```
+
+### Comparaison avec R-Base
+
+- La principale différence réside dans la **construction séquentielle** de la figure avec l'opérateur **+**. A tout moment on peut sauvegarder la figure au cours d'une des étapes décrites dans l'exemple. On parle de **pipeline** pour ce type de programme que l'on retrouve dans la manipulation de données avec **tidyverse** et **dplyr**.
+
+- La seconde différence réside dans la **production rapide** d'une figure de qualité graphique acceptable sans avoir besoin de spécifier les paramètres **par()** de R-Base. 
+
+- Au total, ggplot2 s'impose actuellement comme un **standard mondial** autour duquel se greffent d'autres applications. Par exemple, on peut rendre interactif un graphique ggplot() en le couplant avec **plotly()**.
+
+- Mais ... ggplot2 est **beaucoup moins simple** qu'il n'y paraît de prime abord. Et on peut facilement s'arracher les cheveux sur certaines commandes !
+
+
+
+### Attention ! Paramètres aes() locaux et globaux
+
+Une des plus grandes difficultés que l'on rencontre dans ggplot() est **la manipulation du paramètre aes()** qui peut renvoyer :  
+
+- soit à des **paramètres globaux** s'ils apparaissent dans le ggplot initial ou dans des lignes de codes isolées
+- soit à des **paramètres locaux**, s'ils apparaissent à l'intérieur d'une fonction geom().
+
+Deux exemples rapides pour bien comprendre 
+
+
+- **urb3 est un paramètre global** : dans ce cas il s'applique à toutes les commandes qui suivent. Il y aura donc **trois** droites de régression générées par geom_smooth
+
+```{r}
+ggplot(don, aes(x = dip_supbac, y = tx_abs, color = urb3)) +
+geom_point() +
+geom_smooth(method="lm")
+```
+
+
+- **SEX est un paramètre local de geom_point()** : dans ce cas il n'aura pas d'effet sur geom_smooth() qui va générer **une** seule droite de régression.
+
+```{r, echo=TRUE}
+ggplot(don, aes(x = dip_supbac, y = tx_abs)) +
+geom_point(aes(color=urb3)) +
+geom_smooth(method="lm", color="black")
+```
+
+
+## X discrète
+
+
+### barplot (R-base)
+
+
+```{r }
+barplot(table(don$urb3), col = c("yellow","orange", "red"),
+        xlab="types d'espace", ylab = "effectif")
+```
+
+### geom_bar (ggplot2)
+
+
+```{r }
+# ggplot
+ggplot(don) +
+  aes(x =urb3) +
+  geom_bar(fill =  c("yellow","orange", "red"))+
+  scale_x_discrete(name="type d'espace")+
+  scale_y_continuous(name="effectif")
+
+
+```
+
+
+
+
+
+
+## X quantitative continue
+
+
+### hist (R-base)
+
+
+
+```{r }
+
+hist(don$tx_abs,breaks = 15,
+     col = "lightyellow",
+     border = "blue",
+     xlab="Taux d'abstention (%)",
+     ylab = "Nombre de circonscriptions",
+     main = "L'abstention aux élections européennes de 2024")
+```
+
+
+
+
+
+### geom_histogram (ggplot2)
+
+```{r }
+
+#   
+  ggplot(don) +
+  aes(x =tx_abs) + 
+# Appel de la fonction principale  
+  geom_histogram( bins = 15,     
+                 fill="lightyellow",
+                 col="blue" 
+                 ) +   
+# Retouche de l'échelle
+ scale_x_continuous( name = "taux d'abstention") + 
+ scale_y_continuous(name = "Nombre de circonscriptions")+
+# Ajout du titre 
+ ggtitle("L'abstention aux élections européennes de 2024") 
+
+
+```
+
+
+
+
+
+## X et Y quantitatives continues
+
+
+### plot (R-base)
+
+
+
+```{r }
+
+plot(x = don$dip_supbac,
+     y = don$tx_abs, 
+     cex=0, 
+     xlab="% actifs diplômés > bac",
+     ylab="% abstention",
+     main= "Influence du diplôme sur l'abstention")
+points(x=don$dip_supbac, 
+       y=don$tx_abs, 
+       pch=20)
+abline(lm(don$tx_abs~don$dip_supbac), 
+       col="red",
+       lwd=3)
+
+```
+
+
+
+
+
+### geom_point (ggplot2)
+
+```{r }
+
+  
+#  On définit les paramètres globaux 
+  ggplot(don, aes(x =dip_supbac, y=tx_abs)) +
+  
+# On trace les points 
+  geom_point() +
+  
+# On ajoute la droite de régression
+  geom_smooth(method = "lm", col="red") +
+  
+# On ajoute les titres
+  scale_x_continuous(name="% actifs diplômés > bac") +
+  scale_y_continuous(name="% abstention") +
+  ggtitle("Influence du diplôme sur l'abstention")
+
+```
+
+
+
+
+
+
+
+## X quantitative continue et Y discrète
+
+
+### 6.1 boxplot (R-base)
+
+
+```{r }
+
+boxplot(don$tx_abs~don$urb3, 
+      col=rainbow(n=12, alpha=0.5),
+       xlab="type d'espace",
+       ylab="taux d'abstention",
+      main= "Typologie urbain-rural et abstention")
+
+```
+
+
+
+### geom_boxplot (ggplot2)
+
+
+
+```{r }
+
+  
+# On définit les paramètres principaux
+ggplot(don, aes(x= urb3,y = tx_abs)) +
+  
+# On ajoute la boxplot
+geom_boxplot(aes(fill = urb3)) +
+  
+  
+# On ajoute les titres
+  scale_x_discrete(name="typologie urbain-rural") +
+  scale_y_continuous(name="% abstention") +
+  ggtitle("Typologie urbain-rural et abstention")
+
+```
+
+
+
+
+### beanplot (R-base + package beanplot)
+
+
+```{r }
+par(bg="black",fg="white",col.lab ="white", col.axis ="white",col.main="white" )
+
+#levels(don2$SIZE)<-c("1 ou 2", "1 ou 2", "3 ou 4", "3 ou 4", "5 ou 6", "5 ou 6")
+library(beanplot)
+beanplot(don$tx_abs~don$urb3, 
+         col=c("lightyellow","red"),
+       xlab="type d'espace",
+       ylab="taux d'abstention",
+      main= "Typologie urbain-rural et abstention")
+
+```
+
+
+
+### geom_violin (ggplot2)
+
+
+
+```{r }
+# On définit les paramètres principaux
+ggplot(don, aes(x= urb3,y = tx_abs)) +
+  
+# On ajoute les violons
+geom_violin(fill="lightyellow") +
+  
+  # On ajoute les points en agitant
+  geom_jitter(col="red")+
+  
+  
+# On ajoute les titres
+  scale_x_discrete(name="typologie urbain-rural") +
+  scale_y_continuous(name="% abstention") +
+  ggtitle("Typologie urbain-rural et abstention") +
+
+
+# On passe en thème "dark"
+  theme_dark()
+
+
+```
+
+
+
+
+
+
+## Deux variables X et Y discrètes 
+
+
+
+### mosaicplot (R-base)
+
+
+
+```{r}
+
+mosaicplot(don$code_reg~don$urb3, 
+      col=c("lightyellow","orange","red"),
+       xlab="Code de la région",
+       ylab="Typologie",
+      las=1,
+      main= "Circonscriptions urbaines et rurales par région")
+
+```
+
+
+
+
+
+### geom_bar (ggplot2) 
+
+Solution simple mais pas terrible !
+
+```{r}
+
+  
+# On définit les paramètres principaux
+ggplot(don, aes(x= code_reg, fill = urb3)) +
+  
+
+# On ajoute geom_bar
+geom_bar() +
+
+  
+# On ajoute les titres
+  scale_x_discrete(name="Code de la région") +
+  ggtitle("Circonscriptions urbaines et rurales par région")
+
+
+```
+
+
+
+
+
+
+## Conclusion 
+
+
+### R-base
+- simple d'utilisation 
+- peut être amélioré par des packages spécialisés
+- permet de créer ses propres fonctions
+- n'impose pas d'apprendre tidyverse
+
+### ggplot2
+- standard mondial du graphisme ... actuellement
+- compatible avec la religion du tidyverse
+- rédaction séquentielle très efficace
+- mais apprentissage difficile (plusieurs semaines ...)
+
+### Le meilleur des deux mondes ?
+- ne pas hésiter à combiner les deux
+- exportation facile des résultats dans les deux cas (pdf, jpeg, png, ...)
+
+### plotly, un challenger sérieux de ggplot pour le web
+- plotly crée des graphiques interactifs au format .html
+- plotly peut convertir des documents ggplot
+- plotly a une syntaxe proche de ggplot mais avec des fonctionnalités en plus
+- plotly est multilangage (R, Python, ...)
+
+
+
+
+
+
+
+
+
+

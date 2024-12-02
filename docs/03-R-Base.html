@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Partie 3 R-Base | Introduction à la statistique bivariée et aux représentations graphiques avec R</title>
   <meta name="description" content="Cours dispensé en M1 MECI Option Data" />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Partie 3 R-Base | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Claude Grasland" />
 
 
-<meta name="date" content="2024-09-23" />
+<meta name="date" content="2024-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -375,7 +375,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="7.6.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#régression-logistique"><i class="fa fa-check"></i><b>7.6.3</b> Régression logistique</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>IV GRAPHIQUES &amp; TABLEAUX</b></span></li>
+<li class="part"><span><b>IV GRAPHIQUES, CARTES &amp; TABLEAUX</b></span></li>
 <li class="chapter" data-level="8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html"><i class="fa fa-check"></i><b>8</b> Graphiques avec R-Base</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a>
@@ -424,102 +424,91 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="8.6.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggplot2-un-package-graphique-universel"><i class="fa fa-check"></i><b>8.6.4</b> ggplot2 : un package graphique universel ?</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html"><i class="fa fa-check"></i><b>9</b> Graphiques avec ggplot2</a>
+<li class="chapter" data-level="9" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html"><i class="fa fa-check"></i><b>9</b> Graphiques avec ggplot2 (2024)</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
+<li class="chapter" data-level="9.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-et-tydiverse"><i class="fa fa-check"></i><b>9.1.1</b> ggplot2 et tydiverse</a></li>
-<li class="chapter" data-level="9.1.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2-cheatsheet"><i class="fa fa-check"></i><b>9.1.2</b> ggplot2 cheatsheet</a></li>
+<li class="chapter" data-level="9.1.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#ggplot2-et-tydiverse"><i class="fa fa-check"></i><b>9.1.1</b> ggplot2 et tydiverse</a></li>
+<li class="chapter" data-level="9.1.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#ggplot2-cheatsheet"><i class="fa fa-check"></i><b>9.1.2</b> ggplot2 cheatsheet</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#préparation-des-données-5"><i class="fa fa-check"></i><b>9.2</b> préparation des données</a>
+<li class="chapter" data-level="9.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#préparation-des-données-5"><i class="fa fa-check"></i><b>9.2</b> préparation des données</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#chargement-du-fichier-2"><i class="fa fa-check"></i><b>9.2.1</b> Chargement du fichier</a></li>
-<li class="chapter" data-level="9.2.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#contenu-du-fichier-2"><i class="fa fa-check"></i><b>9.2.2</b> Contenu du fichier</a></li>
-<li class="chapter" data-level="9.2.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#dictionaire-des-variables-2"><i class="fa fa-check"></i><b>9.2.3</b> Dictionaire des variables</a></li>
-<li class="chapter" data-level="9.2.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#recodage-des-variables-2"><i class="fa fa-check"></i><b>9.2.4</b> Recodage des variables</a></li>
-<li class="chapter" data-level="9.2.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#résumé-de-lensemble-du-tableau-2"><i class="fa fa-check"></i><b>9.2.5</b> Résumé de l’ensemble du tableau</a></li>
+<li class="chapter" data-level="9.2.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#chargement-du-fichier-2"><i class="fa fa-check"></i><b>9.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="9.2.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#dictionaire-des-variables-2"><i class="fa fa-check"></i><b>9.2.2</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="9.2.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#résumé-de-lensemble-du-tableau-2"><i class="fa fa-check"></i><b>9.2.3</b> Résumé de l’ensemble du tableau</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#principes-généraux"><i class="fa fa-check"></i><b>9.3</b> Principes généraux</a>
+<li class="chapter" data-level="9.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#principes-généraux"><i class="fa fa-check"></i><b>9.3</b> Principes généraux</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#les-différentes-étapes"><i class="fa fa-check"></i><b>9.3.1</b> Les différentes étapes</a></li>
-<li class="chapter" data-level="9.3.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-figure-à-réaliser"><i class="fa fa-check"></i><b>9.3.2</b> La figure à réaliser</a></li>
-<li class="chapter" data-level="9.3.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#la-construction-pas-à-pas"><i class="fa fa-check"></i><b>9.3.3</b> La construction pas à pas</a></li>
-<li class="chapter" data-level="9.3.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#comparaison-avec-r-base"><i class="fa fa-check"></i><b>9.3.4</b> Comparaison avec R-Base</a></li>
-<li class="chapter" data-level="9.3.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#attention-paramètres-aes-locaux-et-globaux"><i class="fa fa-check"></i><b>9.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+<li class="chapter" data-level="9.3.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#les-différentes-étapes"><i class="fa fa-check"></i><b>9.3.1</b> Les différentes étapes</a></li>
+<li class="chapter" data-level="9.3.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#la-figure-à-réaliser"><i class="fa fa-check"></i><b>9.3.2</b> La figure à réaliser</a></li>
+<li class="chapter" data-level="9.3.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#la-construction-pas-à-pas"><i class="fa fa-check"></i><b>9.3.3</b> La construction pas à pas</a></li>
+<li class="chapter" data-level="9.3.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#comparaison-avec-r-base"><i class="fa fa-check"></i><b>9.3.4</b> Comparaison avec R-Base</a></li>
+<li class="chapter" data-level="9.3.5" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#attention-paramètres-aes-locaux-et-globaux"><i class="fa fa-check"></i><b>9.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-discrète"><i class="fa fa-check"></i><b>9.4</b> X discrète</a>
+<li class="chapter" data-level="9.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-discrète"><i class="fa fa-check"></i><b>9.4</b> X discrète</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#barplot-r-base"><i class="fa fa-check"></i><b>9.4.1</b> barplot (R-base)</a></li>
-<li class="chapter" data-level="9.4.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2"><i class="fa fa-check"></i><b>9.4.2</b> geom_bar (ggplot2)</a></li>
+<li class="chapter" data-level="9.4.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#barplot-r-base"><i class="fa fa-check"></i><b>9.4.1</b> barplot (R-base)</a></li>
+<li class="chapter" data-level="9.4.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_bar-ggplot2"><i class="fa fa-check"></i><b>9.4.2</b> geom_bar (ggplot2)</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue"><i class="fa fa-check"></i><b>9.5</b> X quantitative continue</a>
+<li class="chapter" data-level="9.5" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-quantitative-continue"><i class="fa fa-check"></i><b>9.5</b> X quantitative continue</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#hist-r-base"><i class="fa fa-check"></i><b>9.5.1</b> hist (R-base)</a></li>
-<li class="chapter" data-level="9.5.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_histogram-ggplot2"><i class="fa fa-check"></i><b>9.5.2</b> geom_histogram (ggplot2)</a></li>
+<li class="chapter" data-level="9.5.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#hist-r-base"><i class="fa fa-check"></i><b>9.5.1</b> hist (R-base)</a></li>
+<li class="chapter" data-level="9.5.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_histogram-ggplot2"><i class="fa fa-check"></i><b>9.5.2</b> geom_histogram (ggplot2)</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-et-y-quantitatives-continues"><i class="fa fa-check"></i><b>9.6</b> X et Y quantitatives continues</a>
+<li class="chapter" data-level="9.6" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-et-y-quantitatives-continues"><i class="fa fa-check"></i><b>9.6</b> X et Y quantitatives continues</a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plot-r-base"><i class="fa fa-check"></i><b>9.6.1</b> plot (R-base)</a></li>
-<li class="chapter" data-level="9.6.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_point-ggplot2"><i class="fa fa-check"></i><b>9.6.2</b> geom_point (ggplot2)</a></li>
+<li class="chapter" data-level="9.6.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#plot-r-base"><i class="fa fa-check"></i><b>9.6.1</b> plot (R-base)</a></li>
+<li class="chapter" data-level="9.6.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_point-ggplot2"><i class="fa fa-check"></i><b>9.6.2</b> geom_point (ggplot2)</a></li>
 </ul></li>
-<li class="chapter" data-level="9.7" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète"><i class="fa fa-check"></i><b>9.7</b> X quantitative continue et Y discrète</a>
+<li class="chapter" data-level="9.7" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète"><i class="fa fa-check"></i><b>9.7</b> X quantitative continue et Y discrète</a>
 <ul>
-<li class="chapter" data-level="9.7.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#boxplot-r-base"><i class="fa fa-check"></i><b>9.7.1</b> 6.1 boxplot (R-base)</a></li>
-<li class="chapter" data-level="9.7.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_boxplot-ggplot2"><i class="fa fa-check"></i><b>9.7.2</b> geom_boxplot (ggplot2)</a></li>
-<li class="chapter" data-level="9.7.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#beanplot-r-base-package-beanplot"><i class="fa fa-check"></i><b>9.7.3</b> beanplot (R-base + package beanplot)</a></li>
-<li class="chapter" data-level="9.7.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_violin-ggplot2"><i class="fa fa-check"></i><b>9.7.4</b> geom_violin (ggplot2)</a></li>
+<li class="chapter" data-level="9.7.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#boxplot-r-base"><i class="fa fa-check"></i><b>9.7.1</b> 6.1 boxplot (R-base)</a></li>
+<li class="chapter" data-level="9.7.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_boxplot-ggplot2"><i class="fa fa-check"></i><b>9.7.2</b> geom_boxplot (ggplot2)</a></li>
+<li class="chapter" data-level="9.7.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#beanplot-r-base-package-beanplot"><i class="fa fa-check"></i><b>9.7.3</b> beanplot (R-base + package beanplot)</a></li>
+<li class="chapter" data-level="9.7.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_violin-ggplot2"><i class="fa fa-check"></i><b>9.7.4</b> geom_violin (ggplot2)</a></li>
 </ul></li>
-<li class="chapter" data-level="9.8" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#deux-variables-x-et-y-discrètes"><i class="fa fa-check"></i><b>9.8</b> Deux variables X et Y discrètes</a>
+<li class="chapter" data-level="9.8" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#deux-variables-x-et-y-discrètes"><i class="fa fa-check"></i><b>9.8</b> Deux variables X et Y discrètes</a>
 <ul>
-<li class="chapter" data-level="9.8.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#mosaicplot-r-base"><i class="fa fa-check"></i><b>9.8.1</b> mosaicplot (R-base)</a></li>
-<li class="chapter" data-level="9.8.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#geom_bar-ggplot2-1"><i class="fa fa-check"></i><b>9.8.2</b> geom_bar (ggplot2)</a></li>
+<li class="chapter" data-level="9.8.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#mosaicplot-r-base"><i class="fa fa-check"></i><b>9.8.1</b> mosaicplot (R-base)</a></li>
+<li class="chapter" data-level="9.8.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_bar-ggplot2-1"><i class="fa fa-check"></i><b>9.8.2</b> geom_bar (ggplot2)</a></li>
 </ul></li>
-<li class="chapter" data-level="9.9" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#conclusion-1"><i class="fa fa-check"></i><b>9.9</b> Conclusion</a>
+<li class="chapter" data-level="9.9" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#conclusion-1"><i class="fa fa-check"></i><b>9.9</b> Conclusion</a>
 <ul>
-<li class="chapter" data-level="9.9.1" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#r-base-1"><i class="fa fa-check"></i><b>9.9.1</b> R-base</a></li>
-<li class="chapter" data-level="9.9.2" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#ggplot2"><i class="fa fa-check"></i><b>9.9.2</b> ggplot2</a></li>
-<li class="chapter" data-level="9.9.3" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#le-meilleur-des-deux-mondes"><i class="fa fa-check"></i><b>9.9.3</b> Le meilleur des deux mondes ?</a></li>
-<li class="chapter" data-level="9.9.4" data-path="09-Graphique-ggplot.html"><a href="09-Graphique-ggplot.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web"><i class="fa fa-check"></i><b>9.9.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
+<li class="chapter" data-level="9.9.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#r-base-1"><i class="fa fa-check"></i><b>9.9.1</b> R-base</a></li>
+<li class="chapter" data-level="9.9.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#ggplot2"><i class="fa fa-check"></i><b>9.9.2</b> ggplot2</a></li>
+<li class="chapter" data-level="9.9.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#le-meilleur-des-deux-mondes"><i class="fa fa-check"></i><b>9.9.3</b> Le meilleur des deux mondes ?</a></li>
+<li class="chapter" data-level="9.9.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web"><i class="fa fa-check"></i><b>9.9.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html"><i class="fa fa-check"></i><b>10</b> Initiation à tidyverse</a>
+<li class="chapter" data-level="10" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html"><i class="fa fa-check"></i><b>10</b> Cartographie avec tmap (2024)</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#introduction-3"><i class="fa fa-check"></i><b>10.1</b> Introduction</a>
+<li class="chapter" data-level="10.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#introduction-3"><i class="fa fa-check"></i><b>10.1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="10.1.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#un-nouvel-empire"><i class="fa fa-check"></i><b>10.1.1</b> Un nouvel empire ?</a></li>
-<li class="chapter" data-level="10.1.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#pour-une-utilisation-sélective"><i class="fa fa-check"></i><b>10.1.2</b> Pour une utilisation sélective</a></li>
-<li class="chapter" data-level="10.1.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#jeu-de-données"><i class="fa fa-check"></i><b>10.1.3</b> Jeu de données</a></li>
+<li class="chapter" data-level="10.1.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#cartographie-dans-r"><i class="fa fa-check"></i><b>10.1.1</b> Cartographie dans R</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#manipuler-avec-dplyr"><i class="fa fa-check"></i><b>10.2</b> Manipuler avec dplyr</a>
+<li class="chapter" data-level="10.2" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#données-statistiques"><i class="fa fa-check"></i><b>10.2</b> Données statistiques</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#filter"><i class="fa fa-check"></i><b>10.2.1</b> <strong>filter()</strong></a></li>
-<li class="chapter" data-level="10.2.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#select"><i class="fa fa-check"></i><b>10.2.2</b> <strong>select()</strong></a></li>
-<li class="chapter" data-level="10.2.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#mutate"><i class="fa fa-check"></i><b>10.2.3</b> <strong>mutate()</strong></a></li>
-<li class="chapter" data-level="10.2.4" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#arrange"><i class="fa fa-check"></i><b>10.2.4</b> arrange()</a></li>
+<li class="chapter" data-level="10.2.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#chargement-du-fichier-3"><i class="fa fa-check"></i><b>10.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="10.2.2" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#dictionaire-des-variables-3"><i class="fa fa-check"></i><b>10.2.2</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="10.2.3" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#résumé-de-lensemble-du-tableau-3"><i class="fa fa-check"></i><b>10.2.3</b> Résumé de l’ensemble du tableau</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#visualiser-avec-ggplot2"><i class="fa fa-check"></i><b>10.3</b> Visualiser avec ggplot2</a>
+<li class="chapter" data-level="10.3" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#données-cartographiques"><i class="fa fa-check"></i><b>10.3</b> Données cartographiques</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#les-différentes-étapes-1"><i class="fa fa-check"></i><b>10.3.1</b> Les différentes étapes</a></li>
-<li class="chapter" data-level="10.3.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#la-figure-à-réaliser-1"><i class="fa fa-check"></i><b>10.3.2</b> La figure à réaliser</a></li>
-<li class="chapter" data-level="10.3.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#la-construction-pas-à-pas-1"><i class="fa fa-check"></i><b>10.3.3</b> La construction pas à pas</a></li>
-<li class="chapter" data-level="10.3.4" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#comparaison-avec-r-base-1"><i class="fa fa-check"></i><b>10.3.4</b> Comparaison avec R-Base</a></li>
-<li class="chapter" data-level="10.3.5" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#attention-paramètres-aes-locaux-et-globaux-1"><i class="fa fa-check"></i><b>10.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+<li class="chapter" data-level="10.3.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-des-circonscriptions"><i class="fa fa-check"></i><b>10.3.1</b> Carte des circonscriptions</a></li>
+<li class="chapter" data-level="10.3.2" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#autres-fonds-de-carte"><i class="fa fa-check"></i><b>10.3.2</b> Autres fonds de carte</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#comparaison-r-base-ggplot2"><i class="fa fa-check"></i><b>10.4</b> Comparaison R-Base / Ggplot2</a>
+<li class="chapter" data-level="10.4" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#jointure"><i class="fa fa-check"></i><b>10.4</b> Jointure</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#x-discrète-1"><i class="fa fa-check"></i><b>10.4.1</b> X discrète</a></li>
-<li class="chapter" data-level="10.4.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#x-quantitative-continue-1"><i class="fa fa-check"></i><b>10.4.2</b> X quantitative continue</a></li>
-<li class="chapter" data-level="10.4.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#x-et-y-quantitatives-continues-1"><i class="fa fa-check"></i><b>10.4.3</b> X et Y quantitatives continues</a></li>
-<li class="chapter" data-level="10.4.4" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#x-quantitative-continue-et-y-discrète-1"><i class="fa fa-check"></i><b>10.4.4</b> X quantitative continue et Y discrète</a></li>
-<li class="chapter" data-level="10.4.5" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#deux-variables-x-et-y-discrètes-1"><i class="fa fa-check"></i><b>10.4.5</b> Deux variables X et Y discrètes</a></li>
+<li class="chapter" data-level="10.4.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#extraction-dune-région"><i class="fa fa-check"></i><b>10.4.1</b> Extraction d’une région</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#conclusion-2"><i class="fa fa-check"></i><b>10.5</b> Conclusion</a>
-<ul>
-<li class="chapter" data-level="10.5.1" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#r-base-2"><i class="fa fa-check"></i><b>10.5.1</b> R-base</a></li>
-<li class="chapter" data-level="10.5.2" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#ggplot2-1"><i class="fa fa-check"></i><b>10.5.2</b> ggplot2</a></li>
-<li class="chapter" data-level="10.5.3" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#le-meilleur-des-deux-mondes-1"><i class="fa fa-check"></i><b>10.5.3</b> Le meilleur des deux mondes ?</a></li>
-<li class="chapter" data-level="10.5.4" data-path="10-Tidyverse.html"><a href="10-Tidyverse.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web-1"><i class="fa fa-check"></i><b>10.5.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
-</ul></li>
+<li class="chapter" data-level="10.5" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-de-repérage"><i class="fa fa-check"></i><b>10.5</b> Carte de repérage</a></li>
+<li class="chapter" data-level="10.6" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-dune-variable-qualitative"><i class="fa fa-check"></i><b>10.6</b> Carte d’une variable qualitative</a></li>
+<li class="chapter" data-level="10.7" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-dune-variable-quantitative-de-taux"><i class="fa fa-check"></i><b>10.7</b> Carte d’une variable quantitative de taux</a></li>
+<li class="chapter" data-level="10.8" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-dune-variable-quantitative-de-stock"><i class="fa fa-check"></i><b>10.8</b> Carte d’une variable quantitative de stock</a></li>
+<li class="chapter" data-level="10.9" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#combinaison-de-cartes-quantitatives-de-stock-et-de-taux"><i class="fa fa-check"></i><b>10.9</b> Combinaison de cartes quantitatives de stock et de taux</a></li>
+<li class="chapter" data-level="10.10" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#superposition-de-cartes"><i class="fa fa-check"></i><b>10.10</b> Superposition de cartes</a></li>
+<li class="chapter" data-level="10.11" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#juxtaposition-de-cartes"><i class="fa fa-check"></i><b>10.11</b> Juxtaposition de cartes</a></li>
+<li class="chapter" data-level="10.12" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#pour-en-savoir-plus"><i class="fa fa-check"></i><b>10.12</b> Pour en savoir plus</a></li>
 </ul></li>
 </ul>
 
