@@ -1,6 +1,4 @@
-# (PART) VARIABLES CATEGORIELLES {-}
-
-# Analyse d'enquêtes
+# Analyse d'enquêtes (application)
 
 
 ```{r, echo = FALSE}

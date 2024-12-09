@@ -1,0 +1,435 @@
+# (PART) VARIABLES CATEGORIELLES {-}
+
+# Analyse d'enquêtes (bases)
+
+
+```{r, echo = FALSE}
+library(knitr)
+library(questionr)
+library(gtsummary)
+library(ggplot2)
+library(survey)
+knitr::include_graphics("resources/figures/chap7_intro.gif")
+```
+
+
+- **Mise en place** : Télécharger le [dossier exo7](https://github.com/worlregio/bivaR/raw/main/resources/exos/exo7_2023.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R  dans Rstudio.
+
+
+## Introduction
+
+On propose ici une démarche simplifiée de l'analyse d'enquête utilisant les fonctions R-base et quelques fonctions supplémentaires issues du package **questionR** qui permettent de simplifier l'écriture des programmes. Les explications détaillées se trouvent dans le très beau site web analyse-R auquel ont notamment contribué Julien Barnier et Joseph Larmarange. 
+
+
+https://larmarange.github.io/analyse-R/
+
+ce programme suffit pour des analyses simples de questionnaires. Mais pour des analyses plus avancées, il faudra utiliser des packages plus avancés comme **survey**.
+
+
+
+
+## Données
+
+### Chargement du fichier 
+
+
+```{r}
+base<-read.table("resources/data/pew/pew2019_fra_V2.csv",
+                sep=";",
+                header=T,
+                stringsAsFactors = T)
+
+```
+
+### Liste des variables
+
+
+Les données sont issues de la *Global attitude Survey* réalisée par le Pew Research Center en 2019. On y trouve notamment les variables suivantes
+
+            
+ Variable        |  type  | Description                        
+------------- | ------------- | ----  
+ pays           |  quali  | pays de résidence de l'enquêté   
+ sexe           | quali  | genre de l'enqueté         
+ age            | quali/quanti | Âge de l'enquêté en années révolues 
+ opi_usa    | quali  | Opinion sur les USA  
+
+
+### Echantillonage
+
+L'enquête a été réalisaée dans plusieurs pays du Monde sur des échantillons représentatifs (méthode des quotas), mais avec une variable de redressement pour compenser les biais d'échantillonage.
+
+```{r}
+table(base$pays)
+```
+
+### Choix des variables et du pays
+
+On extrait un tableau ne comportant que les données utiles à notre analyse.
+
+
+```{r}
+don <-base[base$pays=="FRA",c("poids","age","sexe","opi_usa")]
+kable(head(don,3))
+```
+
+### Transformation quanti-quali
+
+Comment transformer la variable âge en variable qualitative  ?
+
+```{r}
+hist(don$age)
+```
+
+
+
+On peut choisir des seuils basés sur des normes. Par exemple considéré comme jeunes les moins de 30 ans et vieux les plus de 65 ans
+
+```{r}
+don$age3a <- cut(don$age, c(0,30,65, 100))
+levels(don$age3a)<-c("Jeunes","Adultes","Vieux")
+kable(table(don$age3a))
+```
+
+
+
+On peut aussi utiliser des critères statistiques comme les quantiles permettant d'avoir des classes d'effectifs approximativement égaux :
+
+
+```{r}
+mybreaks <- quantile(don$age, c(0,1/3,2/3,1))
+don$age3b <- cut(don$age, breaks = mybreaks)
+kable(table(don$age3b))
+```
+
+### Recodage des modalités
+
+Dans le cas d'une variable qualitative, on peut effectuer des recodages pour supprimer ou fusionner des niveaux. Considérons la variable opi_usa qui possède au départ 6 modalités 
+
+```{r}
+kable(table(don$opi_usa))
+```
+
+
+
+Suppression des non réponses en remplaçant leurs niveau de factor par NA
+
+```{r}
+don$opi_usa_rep4 <- don$opi_usa
+levels(don$opi_usa_rep4)<-c( "1.Très fav.", "2. Plutôt fav.",
+                             "3. Plutôt défav.", "4.Très défav.",
+                             NA, NA)
+kable(table(don$opi_usa_rep4))
+```
+
+
+
+Fusions des non réponses pour étudier leur importance par rapport aux réponses
+
+```{r}
+don$opi_usa_nr <- don$opi_usa
+levels(don$opi_usa_nr)<-c( "Réponse", "Réponse",
+                           "Réponse", "Réponse",
+                           "Non réponse", "Non réponse")
+kable(table(don$opi_usa_nr))
+```
+
+
+
+Fusion en deux classes "Favorable" et "Défavorable"
+
+```{r}
+don$opi_usa_rep2 <- don$opi_usa
+levels(don$opi_usa_rep2)<-c( "Favorable", "Favorable", 
+                             "Défavorable", "Défavorable",
+                             NA, NA)
+kable(table(don$opi_usa_rep2))
+```
+
+
+Mais on pourrait aussi recoder autrement en "Modéré" ou  "Polarisé"
+
+```{r}
+don$opi_usa_pol2 <- don$opi_usa
+levels(don$opi_usa_pol2)<-c( "Polarisé", "Modéré", 
+                             "Modéré", "Polarisé",
+                             NA, NA)
+kable(table(don$opi_usa_pol2))
+```
+
+## Analyse univariée
+
+### Fréquence simple 
+
+En l'absence de pondération il suffit de calculer les fréquences avec l'instruction `table()`puis de les afficher en ajoutant le total avec `addmargins()`
+
+```{r}
+mytab1 <-table(don$opi_usa_rep4)
+kable(addmargins(mytab1))
+```
+
+
+### Pourcentage (R-base)
+
+On peut ensuite facilement calculer les valeurs en pourcentage en utlisant la fonction `prop.table()` de R-base,  en lui appliquant la fonction `addmargins()` et en multipliant le tout par 100 ...
+
+```{r}
+kable(100*addmargins(prop.table(mytab1)), 
+      digits = 1)
+```
+
+La fonction `freq()`du package **questionr** permet d'obtenir directement le résultat  :
+
+```{r}
+library(questionr)
+kable(freq(don$opi_usa_rep4,total = T))
+```
+
+On peut également utiliser la fonction `tbl_summary()` du package **gtsummary**
+
+```{r}
+library(gtsummary)
+tbl_summary(data = don, include="opi_usa_rep4")
+```
+
+### Marge d'erreur d'un pourcentage
+
+L'inconvénient des tableaux précédents est qu'il ne permettent pas de voir la marge d'erreur des pourcentages en fonction de l'effectif. Considérez le cas suivant :
+
+```{r}
+kable(freq(don$opi_usa_rep2))
+```
+Peut-on conclure qu'il existe une majorité défavorable aux USA ?
+
+
+On peut utiliser la  fonction `prop.test()` 
+
+```{r}
+mytab2 <- table(don$opi_usa_rep2)
+prop.test(mytab2)
+```
+
+- **Conclusion** : H0 il n'y a pas de majorité est acceptée (p < 0.524)
+
+
+
+```{r}
+tbl_summary(data = don, include="opi_usa_rep2") %>% 
+       add_ci()
+```
+
+- **Conclusion** : pas de majorité défavorable [48,54] ou favorable [46 ; 52]
+
+
+### Diagramme en bâton 
+
+On peut utiliser R-base :
+
+```{r, fig.height = 4}
+mytab1<-table(don$opi_usa_rep4)
+barplot(mytab1, col=c("darkgreen","green", "lightyellow","orange"))
+```
+
+Ou bien ggplot2 : 
+
+```{r, fig.height = 4}
+ggplot(don, aes(x=opi_usa_rep4)) +
+      geom_bar()
+```
+
+## Tableau de contingence
+
+### Tableau de contingence 
+
+On suppose qu'on veut croiser l'opinion sur les USA (Y) avec le sexe (X). On utilise comme précédemment `table()` et on affiche les marges avec `addmargins()`
+
+```{r}
+tabcont<-table(don$sexe, don$opi_usa_rep2)
+kable(addmargins(tabcont))
+```
+
+
+### Pourcentage du total
+
+On utilise la fonction `prop()` 
+
+```{r}
+kable(prop(tabcont), digits=1)
+```
+
+### Pourcentage en ligne 
+
+On utilise `lprop()` : 
+
+```{r}
+kable(lprop(tabcont), digits=1)
+```
+
+### Pourcentage en colonnes 
+
+On utilise `cprop()`
+
+```{r}
+kable(cprop(tabcont), digits=1)
+```
+
+### effectif + pourcentage (gtsummary)
+
+
+```{r}
+tbl_summary(don, 
+            include = opi_usa_rep2,
+            by = sexe) 
+```
+
+### Diagramme en mosaïque
+
+La représentation la plus efficace d'un tableau de contingence est le diagramme en mosaïque à l'aide de la fonction `mosaicplot()` de R-base : 
+
+```{r}
+mosaicplot(tabcont)
+```
+
+
+On peut améliorer la figure à l'aide des paramètres habituels
+
+```{r, echo=FALSE}
+mosaicplot(tabcont, main = "Genre et avis sur les USA", 
+           sub = "Source : Global Attitude Survey, 2019",
+           xlab= "Sexe", ylab = "opinion sur les USA",
+           col = c("blue","red"))
+```
+
+
+
+
+## Test du chi-2
+
+### Hypothèse d'indépendance 
+
+Comme toujours en statistique, on part de l'hypothèse H0 d'absence de relation entre les deux variables. Soit dans notre exemple :
+
+- Y = Opinion sur les USA (2 modalités)
+- X = Sexe (2 modalités)
+
+H0 : il n'y a pas de relation entre l'opinion exprimée sur les USA et le sexe de la personne qui a répondu. 
+
+En cas de rejet de H0 on pourra accepter l'une des hypothèses altrnatives : 
+
+- H1A : Les femmes ont une opinion plus favorable que les hommes sur les USA
+- H1B : les hommes ont une opinion  plus favorable que les femmes sur les USA
+
+### test du chi-2 simple 
+
+Lorsqu'il n'y a pas besoin de pondérer les calculs, on peut utiliser le fonction `chisq.test()`de R-base. On stocke le résultat avant de l'afficher
+
+```{r}
+tabcont <- table(don$opi_usa_rep2,don$sexe)
+montest <- chisq.test(tabcont)
+montest
+```
+
+- **Conclusion** : Le chi-2 du tableau est égal à 0.66 pour 1 degré de liberté. La probabilité que les différences de pourcentage entre hommes et femmes soit l'effet du hasard est égal à p=0.42. Donc on ne peut rejeter H0.
+
+On peut aboutir au même résultat avec gtsummary en ajoutant l'instruction *add_p()* à un tableau :
+
+```{r}
+tbl_summary(data = don, include = opi_usa_rep2,
+            by = sexe) %>% add_p()
+```
+
+- **Commentaire** : On obtient directement la p-value ce qui facilite le commentaire.
+
+### Exemple de rejet de H0 
+
+Considérons maintenant le cas de la relation entre opinion sur les USA et l'âge en 3 classes d'effectif égaux.
+
+
+```{r}
+tabcont<-table(don$age3b,don$opi_usa_rep2)
+kable(lprop(tabcont), digits=1)
+```
+
+- **Commentaire** : Il semble y avoir une différence nette entre les plus de 60 ans et les deux autres classes d'âge. Les plus âgés sont les mopins favorables aux USA.
+
+On effectue le test du chi-2
+
+```{r}
+montest <- chisq.test(tabcont)
+montest
+```
+
+- **Commentaire** : ici on rejette clairement H0 avec un chi-2 de 12.8 pour 2 degrés de liberté et une relation significative (p < 0.01)
+
+### Valeurs observées et  estimées 
+
+```{r}
+kable(montest$observed,  digits=1)
+kable(montest$expected,  digits=1)
+```
+
+### Résidus bruts et standardisées
+
+```{r}
+kable(montest$observed-montest$expected, digits=1)
+kable(montest$residuals)
+```
+
+### Graphique des écarts les plus significatifs
+
+```{r}
+mosaicplot(tabcont, shade = T)
+```
+
+
+## Pondération
+
+### Tableau pondéré
+
+On calcule un tableau de contingence pondéré avec la fonction `wtd.table()` du package **questionr**. Elle ressemble beaucoup à la fonction `table()`mais avec un paramètre supplémentaire.
+
+```{r}
+tabcont_P <-wtd.table(x = don$age3b, 
+                      y = don$opi_usa_rep2, 
+                      weights = don$poids)
+kable(addmargins(tabcont_P), digits = 1, caption = "Tableau de contingence pondéré")
+```
+
+### Comparaison des pourcentages
+
+```{r, echo=F}
+kable(lprop(tabcont), caption = "Calculs non pondérés", digits = 1)
+kable(lprop (tabcont_P), caption = "Calculs pondérés", digits = 1)
+```
+
+- **Commentaire** : les pourcentages obtenus après pondération sont différents.
+
+### Comparaison des tests
+
+```{r}
+chisq.test(tabcont)
+chisq.test(tabcont_P)
+```
+
+- **Commentaire** : les résultats du test sont un peu différents même si la conclusion reste la même.
+
+### Solution exacte
+
+En réalité la pondération ne modifie pas seulement les valeurs du tableau de contingence mais aussi la méthode de calcul du test du chi-2. Si l'on voulait un solution exacte, il faudrait utiliser le package **survey**.
+
+```{r}
+library(survey)
+```
+
+
+```{r}
+# Précise le mode d'échantillonage et la pondération
+don_w <- svydesign(ids =~1, data = don, weights = ~ don$poids)
+# effectue le test
+chi2_w <-svychisq(~opi_usa_rep2+age3b, don_w)
+chi2_w
+```
+
+- **Commentaire** : En fait notre relation n'est pas tout à fait significative (p = 0.06) contrairement à ce que pouvait laisser penser les analyses précédentes. 
+
+

@@ -1,0 +1,3643 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Partie 7 Analyse d’enquêtes (bases) | Introduction à la statistique bivariée et aux représentations graphiques avec R</title>
+  <meta name="description" content="Cours dispensé en M1 MECI Option Data" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Partie 7 Analyse d’enquêtes (bases) | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Partie 7 Analyse d’enquêtes (bases) | Introduction à la statistique bivariée et aux représentations graphiques avec R" />
+  
+  <meta name="twitter:description" content="Cours dispensé en M1 MECI Option Data" />
+  
+
+<meta name="author" content="Claude Grasland" />
+
+
+<meta name="date" content="2024-12-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="06-Anova.html"/>
+<link rel="next" href="07-Tabcont.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/tidyverse.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">Introduction à la statistique bivariée et aux représentations graphiques avec R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>À propos de ce document</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#remerciements"><i class="fa fa-check"></i>Remerciements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i>Licence</a></li>
+</ul></li>
+<li class="part"><span><b>I DEBUTER EN R</b></span></li>
+<li class="chapter" data-level="1" data-path="01-principes.html"><a href="01-principes.html"><i class="fa fa-check"></i><b>1</b> Premiers pas</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="01-principes.html"><a href="01-principes.html#opérations-arithmétiques"><i class="fa fa-check"></i><b>1.1</b> Opérations arithmétiques</a></li>
+<li class="chapter" data-level="1.2" data-path="01-principes.html"><a href="01-principes.html#les-objets-de-base-valeur-vecteur-matrice"><i class="fa fa-check"></i><b>1.2</b> Les objets de base : valeur, vecteur, matrice</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="01-principes.html"><a href="01-principes.html#eléments"><i class="fa fa-check"></i><b>1.2.1</b> Eléments</a></li>
+<li class="chapter" data-level="1.2.2" data-path="01-principes.html"><a href="01-principes.html#vecteurs-vectors"><i class="fa fa-check"></i><b>1.2.2</b> vecteurs (<em>vectors</em>)</a></li>
+<li class="chapter" data-level="1.2.3" data-path="01-principes.html"><a href="01-principes.html#matrices-matrix"><i class="fa fa-check"></i><b>1.2.3</b> Matrices (<em>matrix</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="01-principes.html"><a href="01-principes.html#ne-pas-confondre-listes-et-vecteurs"><i class="fa fa-check"></i><b>1.3</b> Ne pas confondre listes et vecteurs !</a></li>
+<li class="chapter" data-level="1.4" data-path="01-principes.html"><a href="01-principes.html#attention-aux-types-de-variables"><i class="fa fa-check"></i><b>1.4</b> Attention aux types de variables …</a></li>
+<li class="chapter" data-level="1.5" data-path="01-principes.html"><a href="01-principes.html#types-de-tableaux-et-guerres-de-religion."><i class="fa fa-check"></i><b>1.5</b> Types de tableaux et guerres de religion.</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="01-principes.html"><a href="01-principes.html#le-type-data.frame"><i class="fa fa-check"></i><b>1.5.1</b> Le type <em>data.frame</em> :</a></li>
+<li class="chapter" data-level="1.5.2" data-path="01-principes.html"><a href="01-principes.html#le-type-tibble"><i class="fa fa-check"></i><b>1.5.2</b> Le type <em>tibble</em></a></li>
+<li class="chapter" data-level="1.5.3" data-path="01-principes.html"><a href="01-principes.html#le-type-data.table"><i class="fa fa-check"></i><b>1.5.3</b> Le type <em>data.table</em></a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="01-principes.html"><a href="01-principes.html#en-résumé"><i class="fa fa-check"></i><b>1.6</b> En résumé</a></li>
+<li class="chapter" data-level="1.7" data-path="01-principes.html"><a href="01-principes.html#exercices"><i class="fa fa-check"></i><b>1.7</b> Exercices</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="02-office-killer.html"><a href="02-office-killer.html"><i class="fa fa-check"></i><b>2</b> Office killer</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="02-office-killer.html"><a href="02-office-killer.html#rstudio-et-les-projets-r"><i class="fa fa-check"></i><b>2.1</b> Rstudio et les projets R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="02-office-killer.html"><a href="02-office-killer.html#lancement-de-r-studio"><i class="fa fa-check"></i><b>2.1.1</b> Lancement de R studio</a></li>
+<li class="chapter" data-level="2.1.2" data-path="02-office-killer.html"><a href="02-office-killer.html#création-dun-projet"><i class="fa fa-check"></i><b>2.1.2</b> Création d’un projet</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="02-office-killer.html"><a href="02-office-killer.html#programme-r-excel-killer"><i class="fa fa-check"></i><b>2.2</b> Programme R : Excel killer ?</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="02-office-killer.html"><a href="02-office-killer.html#round-1-importation-du-tableau-de-données"><i class="fa fa-check"></i><b>2.2.1</b> Round 1 : Importation du tableau de données</a></li>
+<li class="chapter" data-level="2.2.2" data-path="02-office-killer.html"><a href="02-office-killer.html#round-2.-inventaire-des-sports-disponible"><i class="fa fa-check"></i><b>2.2.2</b> Round 2. Inventaire des sports disponible</a></li>
+<li class="chapter" data-level="2.2.3" data-path="02-office-killer.html"><a href="02-office-killer.html#round-3.-sélection-dun-sport"><i class="fa fa-check"></i><b>2.2.3</b> Round 3. Sélection d’un sport</a></li>
+<li class="chapter" data-level="2.2.4" data-path="02-office-killer.html"><a href="02-office-killer.html#round-4.-analyse-de-lâge-du-poids-de-la-taille-et-de-limc-des-sportifs"><i class="fa fa-check"></i><b>2.2.4</b> Round 4. Analyse de l’âge, du poids, de la taille et de l’IMC des sportifs</a></li>
+<li class="chapter" data-level="2.2.5" data-path="02-office-killer.html"><a href="02-office-killer.html#round-5-nombre-de-médailles-dor-par-pays-et-par-épreuve"><i class="fa fa-check"></i><b>2.2.5</b> Round 5 : Nombre de médailles d’or par pays et par épreuve</a></li>
+<li class="chapter" data-level="2.2.6" data-path="02-office-killer.html"><a href="02-office-killer.html#dernier-round.-refaire-toute-lanalyse-en-changeant-de-sport"><i class="fa fa-check"></i><b>2.2.6</b> Dernier round. Refaire toute l’analyse en changeant de sport</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="02-office-killer.html"><a href="02-office-killer.html#document-rmd-word-killer"><i class="fa fa-check"></i><b>2.3</b> Document Rmd : Word killer ?</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="02-office-killer.html"><a href="02-office-killer.html#préparation-du-document-rmarkdown"><i class="fa fa-check"></i><b>2.3.1</b> Préparation du document Rmarkdown</a></li>
+<li class="chapter" data-level="2.3.2" data-path="02-office-killer.html"><a href="02-office-killer.html#préparation-du-plan"><i class="fa fa-check"></i><b>2.3.2</b> Préparation du plan</a></li>
+<li class="chapter" data-level="2.3.3" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dimages-externes"><i class="fa fa-check"></i><b>2.3.3</b> Ajout d’images externes</a></li>
+<li class="chapter" data-level="2.3.4" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-de-texte"><i class="fa fa-check"></i><b>2.3.4</b> Ajout de texte</a></li>
+<li class="chapter" data-level="2.3.5" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dun-tableau"><i class="fa fa-check"></i><b>2.3.5</b> Ajout d’un tableau</a></li>
+<li class="chapter" data-level="2.3.6" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dun-graphique"><i class="fa fa-check"></i><b>2.3.6</b> Ajout d’un graphique</a></li>
+<li class="chapter" data-level="2.3.7" data-path="02-office-killer.html"><a href="02-office-killer.html#ajout-dune-carte"><i class="fa fa-check"></i><b>2.3.7</b> Ajout d’une carte</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="02-office-killer.html"><a href="02-office-killer.html#diapos-rmd-power-point-killer"><i class="fa fa-check"></i><b>2.4</b> Diapos Rmd : Power Point killer</a></li>
+<li class="chapter" data-level="2.5" data-path="02-office-killer.html"><a href="02-office-killer.html#en-résumé-1"><i class="fa fa-check"></i><b>2.5</b> En résumé</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="03-R-Base.html"><a href="03-R-Base.html"><i class="fa fa-check"></i><b>3</b> R-Base</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#tableaux"><i class="fa fa-check"></i><b>3.1</b> Tableaux</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="03-R-Base.html"><a href="03-R-Base.html#importation"><i class="fa fa-check"></i><b>3.1.1</b> Importation</a></li>
+<li class="chapter" data-level="3.1.2" data-path="03-R-Base.html"><a href="03-R-Base.html#transformations"><i class="fa fa-check"></i><b>3.1.2</b> Transformations</a></li>
+<li class="chapter" data-level="3.1.3" data-path="03-R-Base.html"><a href="03-R-Base.html#extractions"><i class="fa fa-check"></i><b>3.1.3</b> Extractions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-i-var.-quali."><i class="fa fa-check"></i><b>3.2</b> Exploration I (<em>var. quali.</em>)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="03-R-Base.html"><a href="03-R-Base.html#sélection-et-recodage"><i class="fa fa-check"></i><b>3.2.1</b> Sélection et recodage</a></li>
+<li class="chapter" data-level="3.2.2" data-path="03-R-Base.html"><a href="03-R-Base.html#table-de-dénombrement"><i class="fa fa-check"></i><b>3.2.2</b> Table de dénombrement</a></li>
+<li class="chapter" data-level="3.2.3" data-path="03-R-Base.html"><a href="03-R-Base.html#graphique-avec-plot"><i class="fa fa-check"></i><b>3.2.3</b> Graphique avec plot()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-ii-var.-quanti"><i class="fa fa-check"></i><b>3.3</b> Exploration II (<em>var. quanti</em>)</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="03-R-Base.html"><a href="03-R-Base.html#résumés-numériques"><i class="fa fa-check"></i><b>3.3.1</b> Résumés numériques</a></li>
+<li class="chapter" data-level="3.3.2" data-path="03-R-Base.html"><a href="03-R-Base.html#dénombrement"><i class="fa fa-check"></i><b>3.3.2</b> Dénombrement</a></li>
+<li class="chapter" data-level="3.3.3" data-path="03-R-Base.html"><a href="03-R-Base.html#boîte-à-moustaches"><i class="fa fa-check"></i><b>3.3.3</b> Boîte à moustaches</a></li>
+<li class="chapter" data-level="3.3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#histogramme"><i class="fa fa-check"></i><b>3.3.4</b> Histogramme</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="03-R-Base.html"><a href="03-R-Base.html#exploration-iii-2-variables"><i class="fa fa-check"></i><b>3.4</b> Exploration III (<em>2 variables</em>)</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-qualitatives"><i class="fa fa-check"></i><b>3.4.1</b> Deux variables qualitatives</a></li>
+<li class="chapter" data-level="3.4.2" data-path="03-R-Base.html"><a href="03-R-Base.html#deux-variables-quantitatives"><i class="fa fa-check"></i><b>3.4.2</b> Deux variables quantitatives</a></li>
+<li class="chapter" data-level="3.4.3" data-path="03-R-Base.html"><a href="03-R-Base.html#une-quantitative-et-une-qualitative"><i class="fa fa-check"></i><b>3.4.3</b> Une quantitative et une qualitative</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="03-R-Base.html"><a href="03-R-Base.html#en-résumé-2"><i class="fa fa-check"></i><b>3.5</b> En résumé</a></li>
+</ul></li>
+<li class="part"><span><b>II VARIABLES QUANTITATIVES</b></span></li>
+<li class="chapter" data-level="4" data-path="04-Corrélation.html"><a href="04-Corrélation.html"><i class="fa fa-check"></i><b>4</b> Corrélation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#préparation-des-données"><i class="fa fa-check"></i><b>4.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#chargement-du-tableau-principal"><i class="fa fa-check"></i><b>4.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#choix-des-deux-variables-à-analyser"><i class="fa fa-check"></i><b>4.1.2</b> Choix des deux variables à analyser</a></li>
+<li class="chapter" data-level="4.1.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-malin"><i class="fa fa-check"></i><b>4.1.3</b> On est malin …</a></li>
+<li class="chapter" data-level="4.1.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#on-est-paresseux"><i class="fa fa-check"></i><b>4.1.4</b> On est paresseux …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exploration-visuelle"><i class="fa fa-check"></i><b>4.2</b> Exploration visuelle</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-avec-plotxy"><i class="fa fa-check"></i><b>4.2.1</b> Visualisation avec plot(X,Y)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#identification-des-points-avec-cor-text"><i class="fa fa-check"></i><b>4.2.2</b> Identification des points avec <strong>cor</strong> + <strong>text(…)</strong></a></li>
+<li class="chapter" data-level="4.2.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#ajout-de-lignes-horizontales-ou-verticales-avec-cor-abline"><i class="fa fa-check"></i><b>4.2.3</b> Ajout de lignes horizontales ou verticales avec <strong>cor()</strong> + <strong>abline(…)</strong></a></li>
+<li class="chapter" data-level="4.2.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#au-delà-de-r-base"><i class="fa fa-check"></i><b>4.2.4</b> Au delà de R-Base …</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#coefficients-de-corrélation"><i class="fa fa-check"></i><b>4.3</b> Coefficients de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#définition"><i class="fa fa-check"></i><b>4.3.1</b> Définition</a></li>
+<li class="chapter" data-level="4.3.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor"><i class="fa fa-check"></i><b>4.3.2</b> La fonction <strong>cor()</strong></a></li>
+<li class="chapter" data-level="4.3.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#la-fonction-cor.test"><i class="fa fa-check"></i><b>4.3.3</b> La fonction cor.test()</a></li>
+<li class="chapter" data-level="4.3.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#en-résumé-intensité-ou-significativité"><i class="fa fa-check"></i><b>4.3.4</b> En résumé : intensité ou significativité ?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4</b> Matrice de corrélation</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="04-Corrélation.html"><a href="04-Corrélation.html#objectif-de-lanalyse"><i class="fa fa-check"></i><b>4.4.1</b> Objectif de l’analyse</a></li>
+<li class="chapter" data-level="4.4.2" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-des-résultats"><i class="fa fa-check"></i><b>4.4.2</b> Utilisation des résultats</a></li>
+<li class="chapter" data-level="4.4.3" data-path="04-Corrélation.html"><a href="04-Corrélation.html#visualisation-dune-matrice-de-corrélation"><i class="fa fa-check"></i><b>4.4.3</b> Visualisation d’une matrice de corrélation</a></li>
+<li class="chapter" data-level="4.4.4" data-path="04-Corrélation.html"><a href="04-Corrélation.html#exemple-création-dun-tableau-quantitatif"><i class="fa fa-check"></i><b>4.4.4</b> Exemple : création d’un tableau quantitatif</a></li>
+<li class="chapter" data-level="4.4.5" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-psych"><i class="fa fa-check"></i><b>4.4.5</b> Utilisation du package psych</a></li>
+<li class="chapter" data-level="4.4.6" data-path="04-Corrélation.html"><a href="04-Corrélation.html#utilisation-du-package-factominer"><i class="fa fa-check"></i><b>4.4.6</b> Utilisation du package factoMineR</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="05-Régression.html"><a href="05-Régression.html"><i class="fa fa-check"></i><b>5</b> Régression</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="05-Régression.html"><a href="05-Régression.html#préparation-des-données-1"><i class="fa fa-check"></i><b>5.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="05-Régression.html"><a href="05-Régression.html#chargement-du-tableau-principal-1"><i class="fa fa-check"></i><b>5.1.1</b> Chargement du tableau principal</a></li>
+<li class="chapter" data-level="5.1.2" data-path="05-Régression.html"><a href="05-Régression.html#choix-des-deux-variables-à-analyser-1"><i class="fa fa-check"></i><b>5.1.2</b> Choix des deux variables à analyser</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="05-Régression.html"><a href="05-Régression.html#forme-de-la-relation"><i class="fa fa-check"></i><b>5.2</b> Forme de la relation</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="05-Régression.html"><a href="05-Régression.html#vérification-de-la-normalité-de-x-et-y"><i class="fa fa-check"></i><b>5.2.1</b> Vérification de la normalité de X et Y</a></li>
+<li class="chapter" data-level="5.2.2" data-path="05-Régression.html"><a href="05-Régression.html#visualisation-de-la-forme-de-la-relation"><i class="fa fa-check"></i><b>5.2.2</b> Visualisation de la forme de la relation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="05-Régression.html"><a href="05-Régression.html#analyse-de-la-corrélation"><i class="fa fa-check"></i><b>5.2.3</b> Analyse de la corrélation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="05-Régression.html"><a href="05-Régression.html#ajustement-du-modèle"><i class="fa fa-check"></i><b>5.3</b> Ajustement du modèle</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="05-Régression.html"><a href="05-Régression.html#hypothèses-statistiques"><i class="fa fa-check"></i><b>5.3.1</b> Hypothèses statistiques</a></li>
+<li class="chapter" data-level="5.3.2" data-path="05-Régression.html"><a href="05-Régression.html#la-fonction-lm"><i class="fa fa-check"></i><b>5.3.2</b> La fonction lm()</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostics-du-modèle"><i class="fa fa-check"></i><b>5.4</b> Diagnostics du modèle</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-1-indépendance-des-résidus"><i class="fa fa-check"></i><b>5.4.1</b> Diagnostic 1 : Indépendance des résidus ?</a></li>
+<li class="chapter" data-level="5.4.2" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-2-normalité-des-résidus"><i class="fa fa-check"></i><b>5.4.2</b> Diagnostic 2 : Normalité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.3" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-3-homogénéité-des-résidus"><i class="fa fa-check"></i><b>5.4.3</b> Diagnostic 3 : Homogénéité des résidus ?</a></li>
+<li class="chapter" data-level="5.4.4" data-path="05-Régression.html"><a href="05-Régression.html#diagnostic-4-absence-de-valeur-exceptionnelles"><i class="fa fa-check"></i><b>5.4.4</b> Diagnostic 4 : Absence de valeur exceptionnelles ?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="05-Régression.html"><a href="05-Régression.html#améliorations-du-modèle"><i class="fa fa-check"></i><b>5.5</b> Améliorations du modèle</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-r2-46"><i class="fa fa-check"></i><b>5.5.1</b> Modèle linéaire (R2 = 46%)</a></li>
+<li class="chapter" data-level="5.5.2" data-path="05-Régression.html"><a href="05-Régression.html#modèle-linéaire-sans-lalbanie-r2-53"><i class="fa fa-check"></i><b>5.5.2</b> Modèle linéaire sans l’Albanie (R2 = 53%)</a></li>
+<li class="chapter" data-level="5.5.3" data-path="05-Régression.html"><a href="05-Régression.html#modèle-exponentiel-r2-63"><i class="fa fa-check"></i><b>5.5.3</b> Modèle exponentiel (R2 = 63%)</a></li>
+<li class="chapter" data-level="5.5.4" data-path="05-Régression.html"><a href="05-Régression.html#modèle-puissance-r2-83"><i class="fa fa-check"></i><b>5.5.4</b> Modèle puissance (R2 = 83%)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="06-Anova.html"><a href="06-Anova.html"><i class="fa fa-check"></i><b>6</b> Analyse de variance</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="06-Anova.html"><a href="06-Anova.html#préparation-des-données-2"><i class="fa fa-check"></i><b>6.1</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="06-Anova.html"><a href="06-Anova.html#chargement-du-fichier"><i class="fa fa-check"></i><b>6.1.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="6.1.2" data-path="06-Anova.html"><a href="06-Anova.html#contenu-du-fichier"><i class="fa fa-check"></i><b>6.1.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="6.1.3" data-path="06-Anova.html"><a href="06-Anova.html#dictionaire-des-variables"><i class="fa fa-check"></i><b>6.1.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="6.1.4" data-path="06-Anova.html"><a href="06-Anova.html#recodage-des-variables"><i class="fa fa-check"></i><b>6.1.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="6.1.5" data-path="06-Anova.html"><a href="06-Anova.html#ajout-dune-nouvelle-variable"><i class="fa fa-check"></i><b>6.1.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="6.1.6" data-path="06-Anova.html"><a href="06-Anova.html#résumé-de-lensemble-du-tableau"><i class="fa fa-check"></i><b>6.1.6</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="06-Anova.html"><a href="06-Anova.html#rappels-sur-la-régression"><i class="fa fa-check"></i><b>6.2</b> Rappels sur la régression</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="06-Anova.html"><a href="06-Anova.html#la-distribution-de-pct-est-elle-normale"><i class="fa fa-check"></i><b>6.2.1</b> La distribution de PCT est-elle normale ?</a></li>
+<li class="chapter" data-level="6.2.2" data-path="06-Anova.html"><a href="06-Anova.html#y-a-t-il-une-relation-entre-le-prix-du-repas-et-le-pourboire"><i class="fa fa-check"></i><b>6.2.2</b> Y-a-t-il une relation entre le prix du repas et le pourboire ?</a></li>
+<li class="chapter" data-level="6.2.3" data-path="06-Anova.html"><a href="06-Anova.html#modèle-de-régression"><i class="fa fa-check"></i><b>6.2.3</b> Modèle de régression</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="06-Anova.html"><a href="06-Anova.html#test-dégalité-des-moyennes"><i class="fa fa-check"></i><b>6.3</b> Test d’égalité des moyennes</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="06-Anova.html"><a href="06-Anova.html#hypothèses"><i class="fa fa-check"></i><b>6.3.1</b> Hypothèses</a></li>
+<li class="chapter" data-level="6.3.2" data-path="06-Anova.html"><a href="06-Anova.html#visualisations"><i class="fa fa-check"></i><b>6.3.2</b> Visualisations</a></li>
+<li class="chapter" data-level="6.3.3" data-path="06-Anova.html"><a href="06-Anova.html#paramètres-principaux"><i class="fa fa-check"></i><b>6.3.3</b> Paramètres principaux</a></li>
+<li class="chapter" data-level="6.3.4" data-path="06-Anova.html"><a href="06-Anova.html#test-dégalité-des-moyennes-1"><i class="fa fa-check"></i><b>6.3.4</b> Test d’égalité des moyennes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="06-Anova.html"><a href="06-Anova.html#analyse-de-variance-1"><i class="fa fa-check"></i><b>6.4</b> Analyse de variance</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="06-Anova.html"><a href="06-Anova.html#hypothèses-1"><i class="fa fa-check"></i><b>6.4.1</b> Hypothèses</a></li>
+<li class="chapter" data-level="6.4.2" data-path="06-Anova.html"><a href="06-Anova.html#calcul-des-paramètres-principaux"><i class="fa fa-check"></i><b>6.4.2</b> Calcul des paramètres principaux</a></li>
+<li class="chapter" data-level="6.4.3" data-path="06-Anova.html"><a href="06-Anova.html#visualisation"><i class="fa fa-check"></i><b>6.4.3</b> Visualisation</a></li>
+<li class="chapter" data-level="6.4.4" data-path="06-Anova.html"><a href="06-Anova.html#modélisation-simple"><i class="fa fa-check"></i><b>6.4.4</b> Modélisation simple</a></li>
+<li class="chapter" data-level="6.4.5" data-path="06-Anova.html"><a href="06-Anova.html#modélisation-avancée"><i class="fa fa-check"></i><b>6.4.5</b> Modélisation avancée</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="06-Anova.html"><a href="06-Anova.html#annexe-les-variables-hybrides"><i class="fa fa-check"></i><b>6.5</b> Annexe : les variables hybrides</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="06-Anova.html"><a href="06-Anova.html#size-quantitative-discrète"><i class="fa fa-check"></i><b>6.5.1</b> SIZE = quantitative discrète</a></li>
+<li class="chapter" data-level="6.5.2" data-path="06-Anova.html"><a href="06-Anova.html#size-qualitative-ordinale"><i class="fa fa-check"></i><b>6.5.2</b> SIZE = qualitative ordinale</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III VARIABLES CATEGORIELLES</b></span></li>
+<li class="chapter" data-level="7" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html"><i class="fa fa-check"></i><b>7</b> Analyse d’enquêtes (bases)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#données"><i class="fa fa-check"></i><b>7.2</b> Données</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#chargement-du-fichier-1"><i class="fa fa-check"></i><b>7.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="7.2.2" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#liste-des-variables"><i class="fa fa-check"></i><b>7.2.2</b> Liste des variables</a></li>
+<li class="chapter" data-level="7.2.3" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#echantillonage"><i class="fa fa-check"></i><b>7.2.3</b> Echantillonage</a></li>
+<li class="chapter" data-level="7.2.4" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#choix-des-variables-et-du-pays"><i class="fa fa-check"></i><b>7.2.4</b> Choix des variables et du pays</a></li>
+<li class="chapter" data-level="7.2.5" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#transformation-quanti-quali"><i class="fa fa-check"></i><b>7.2.5</b> Transformation quanti-quali</a></li>
+<li class="chapter" data-level="7.2.6" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#recodage-des-modalités"><i class="fa fa-check"></i><b>7.2.6</b> Recodage des modalités</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#analyse-univariée"><i class="fa fa-check"></i><b>7.3</b> Analyse univariée</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#fréquence-simple"><i class="fa fa-check"></i><b>7.3.1</b> Fréquence simple</a></li>
+<li class="chapter" data-level="7.3.2" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#pourcentage-r-base"><i class="fa fa-check"></i><b>7.3.2</b> Pourcentage (R-base)</a></li>
+<li class="chapter" data-level="7.3.3" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#marge-derreur-dun-pourcentage"><i class="fa fa-check"></i><b>7.3.3</b> Marge d’erreur d’un pourcentage</a></li>
+<li class="chapter" data-level="7.3.4" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#diagramme-en-bâton"><i class="fa fa-check"></i><b>7.3.4</b> Diagramme en bâton</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#tableau-de-contingence"><i class="fa fa-check"></i><b>7.4</b> Tableau de contingence</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#tableau-de-contingence-1"><i class="fa fa-check"></i><b>7.4.1</b> Tableau de contingence</a></li>
+<li class="chapter" data-level="7.4.2" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#pourcentage-du-total"><i class="fa fa-check"></i><b>7.4.2</b> Pourcentage du total</a></li>
+<li class="chapter" data-level="7.4.3" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#pourcentage-en-ligne"><i class="fa fa-check"></i><b>7.4.3</b> Pourcentage en ligne</a></li>
+<li class="chapter" data-level="7.4.4" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#pourcentage-en-colonnes"><i class="fa fa-check"></i><b>7.4.4</b> Pourcentage en colonnes</a></li>
+<li class="chapter" data-level="7.4.5" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#effectif-pourcentage-gtsummary"><i class="fa fa-check"></i><b>7.4.5</b> effectif + pourcentage (gtsummary)</a></li>
+<li class="chapter" data-level="7.4.6" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#diagramme-en-mosaïque"><i class="fa fa-check"></i><b>7.4.6</b> Diagramme en mosaïque</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#test-du-chi-2"><i class="fa fa-check"></i><b>7.5</b> Test du chi-2</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#hypothèse-dindépendance"><i class="fa fa-check"></i><b>7.5.1</b> Hypothèse d’indépendance</a></li>
+<li class="chapter" data-level="7.5.2" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#test-du-chi-2-simple"><i class="fa fa-check"></i><b>7.5.2</b> test du chi-2 simple</a></li>
+<li class="chapter" data-level="7.5.3" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#exemple-de-rejet-de-h0"><i class="fa fa-check"></i><b>7.5.3</b> Exemple de rejet de H0</a></li>
+<li class="chapter" data-level="7.5.4" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#valeurs-observées-et-estimées"><i class="fa fa-check"></i><b>7.5.4</b> Valeurs observées et estimées</a></li>
+<li class="chapter" data-level="7.5.5" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#résidus-bruts-et-standardisées"><i class="fa fa-check"></i><b>7.5.5</b> Résidus bruts et standardisées</a></li>
+<li class="chapter" data-level="7.5.6" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#graphique-des-écarts-les-plus-significatifs"><i class="fa fa-check"></i><b>7.5.6</b> Graphique des écarts les plus significatifs</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#pondération"><i class="fa fa-check"></i><b>7.6</b> Pondération</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#tableau-pondéré"><i class="fa fa-check"></i><b>7.6.1</b> Tableau pondéré</a></li>
+<li class="chapter" data-level="7.6.2" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#comparaison-des-pourcentages"><i class="fa fa-check"></i><b>7.6.2</b> Comparaison des pourcentages</a></li>
+<li class="chapter" data-level="7.6.3" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#comparaison-des-tests"><i class="fa fa-check"></i><b>7.6.3</b> Comparaison des tests</a></li>
+<li class="chapter" data-level="7.6.4" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#solution-exacte"><i class="fa fa-check"></i><b>7.6.4</b> Solution exacte</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="07-Tabcont.html"><a href="07-Tabcont.html"><i class="fa fa-check"></i><b>8</b> Analyse d’enquêtes (application)</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#préparation-des-données-3"><i class="fa fa-check"></i><b>8.2</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#importation-du-fichier-au-format-.rds"><i class="fa fa-check"></i><b>8.2.1</b> Importation du fichier au format .RDS</a></li>
+<li class="chapter" data-level="8.2.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#simplifiée-des-variables"><i class="fa fa-check"></i><b>8.2.2</b> (simplifiée) des variables</a></li>
+<li class="chapter" data-level="8.2.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#résumé-des-variables-tri-à-plat"><i class="fa fa-check"></i><b>8.2.3</b> Résumé des variables (tri à plat)</a></li>
+<li class="chapter" data-level="8.2.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#tailles-des-échantillons-par-pays-et-par-date"><i class="fa fa-check"></i><b>8.2.4</b> Tailles des échantillons par pays et par date</a></li>
+<li class="chapter" data-level="8.2.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sélection-dun-échantillon"><i class="fa fa-check"></i><b>8.2.5</b> Sélection d’un échantillon</a></li>
+<li class="chapter" data-level="8.2.6" data-path="07-Tabcont.html"><a href="07-Tabcont.html#recodage-des-modalités-1"><i class="fa fa-check"></i><b>8.2.6</b> Recodage des modalités</a></li>
+<li class="chapter" data-level="8.2.7" data-path="07-Tabcont.html"><a href="07-Tabcont.html#découpage-de-variables-quantitatives-en-classes"><i class="fa fa-check"></i><b>8.2.7</b> Découpage de variables quantitatives en classes</a></li>
+<li class="chapter" data-level="8.2.8" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sélection"><i class="fa fa-check"></i><b>8.2.8</b> Sélection</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa"><i class="fa fa-check"></i><b>8.3</b> Opinion USA</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#la-fonction-table"><i class="fa fa-check"></i><b>8.3.1</b> la fonction table()</a></li>
+<li class="chapter" data-level="8.3.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#visualisation-avec-plot-ou-barplot"><i class="fa fa-check"></i><b>8.3.2</b> Visualisation avec plot ou barplot</a></li>
+<li class="chapter" data-level="8.3.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#recodage"><i class="fa fa-check"></i><b>8.3.3</b> Recodage</a></li>
+<li class="chapter" data-level="8.3.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#calcul-de-lintervalle-de-confiance"><i class="fa fa-check"></i><b>8.3.4</b> Calcul de l’intervalle de confiance</a></li>
+<li class="chapter" data-level="8.3.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#prise-en-compte-de-la-variable-de-redressement."><i class="fa fa-check"></i><b>8.3.5</b> Prise en compte de la variable de redressement.</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-sexe"><i class="fa fa-check"></i><b>8.4</b> Opinion USA / Sexe</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#tableau-de-contingence-2"><i class="fa fa-check"></i><b>8.4.1</b> tableau de contingence</a></li>
+<li class="chapter" data-level="8.4.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#pourcentages"><i class="fa fa-check"></i><b>8.4.2</b> Pourcentages</a></li>
+<li class="chapter" data-level="8.4.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#première-visualisation"><i class="fa fa-check"></i><b>8.4.3</b> Première visualisation</a></li>
+<li class="chapter" data-level="8.4.4" data-path="07-Tabcont.html"><a href="07-Tabcont.html#test-du-chi-2-1"><i class="fa fa-check"></i><b>8.4.4</b> test du chi-2</a></li>
+<li class="chapter" data-level="8.4.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#analyse-des-résidus"><i class="fa fa-check"></i><b>8.4.5</b> Analyse des résidus</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-âge"><i class="fa fa-check"></i><b>8.5</b> Opinion USA / Âge</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#effet-de-génération"><i class="fa fa-check"></i><b>8.5.1</b> Effet de génération</a></li>
+<li class="chapter" data-level="8.5.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#effet-dâge"><i class="fa fa-check"></i><b>8.5.2</b> Effet d’âge</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="07-Tabcont.html"><a href="07-Tabcont.html#opinion-usa-age-sexe"><i class="fa fa-check"></i><b>8.6</b> Opinion USA / Age &amp; Sexe</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sous-échantillon-des-hommes"><i class="fa fa-check"></i><b>8.6.1</b> Sous-échantillon des hommes</a></li>
+<li class="chapter" data-level="8.6.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#sous-échantillon-des-femmes"><i class="fa fa-check"></i><b>8.6.2</b> Sous-échantillon des femmes</a></li>
+<li class="chapter" data-level="8.6.3" data-path="07-Tabcont.html"><a href="07-Tabcont.html#régression-logistique"><i class="fa fa-check"></i><b>8.6.3</b> Régression logistique</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV GRAPHIQUES, CARTES &amp; TABLEAUX</b></span></li>
+<li class="chapter" data-level="9" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html"><i class="fa fa-check"></i><b>9</b> Graphiques avec R-Base</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#introduction-2"><i class="fa fa-check"></i><b>9.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#pourquoi-sembêter-à-utiliser-les-fonctions-primitives-de-r-pour-faire-des-graphiques"><i class="fa fa-check"></i><b>9.1.1</b> Pourquoi s’em…bêter à utiliser les fonctions primitives de R pour faire des graphiques ?</a></li>
+<li class="chapter" data-level="9.1.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#trois-étapes-pour-créer-un-graphique"><i class="fa fa-check"></i><b>9.1.2</b> Trois étapes pour créer un graphique</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#préparation-des-données-4"><i class="fa fa-check"></i><b>9.2</b> Préparation des données</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#chargement-du-fichier-2"><i class="fa fa-check"></i><b>9.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="9.2.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#contenu-du-fichier-1"><i class="fa fa-check"></i><b>9.2.2</b> Contenu du fichier</a></li>
+<li class="chapter" data-level="9.2.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#dictionaire-des-variables-1"><i class="fa fa-check"></i><b>9.2.3</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="9.2.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#recodage-des-variables-1"><i class="fa fa-check"></i><b>9.2.4</b> Recodage des variables</a></li>
+<li class="chapter" data-level="9.2.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ajout-dune-nouvelle-variable-1"><i class="fa fa-check"></i><b>9.2.5</b> Ajout d’une nouvelle variable</a></li>
+<li class="chapter" data-level="9.2.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#résumé-de-lensemble-du-tableau-1"><i class="fa fa-check"></i><b>9.2.6</b> Résumé de l’ensemble du tableau</a></li>
+<li class="chapter" data-level="9.2.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-par"><i class="fa fa-check"></i><b>9.2.7</b> La fonction par()</a></li>
+<li class="chapter" data-level="9.2.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#fonction-par-mfrow"><i class="fa fa-check"></i><b>9.2.8</b> fonction par() + mfrow</a></li>
+<li class="chapter" data-level="9.2.9" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#autres-paramètres-de-par"><i class="fa fa-check"></i><b>9.2.9</b> Autres paramètres de par()</a></li>
+<li class="chapter" data-level="9.2.10" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-layout"><i class="fa fa-check"></i><b>9.2.10</b> La fonction layout()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-génératrice-plot"><i class="fa fa-check"></i><b>9.3</b> La fonction génératrice plot()</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#une-super-fonction"><i class="fa fa-check"></i><b>9.3.1</b> Une super-fonction</a></li>
+<li class="chapter" data-level="9.3.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-factor"><i class="fa fa-check"></i><b>9.3.2</b> plot(X) / X de type factor</a></li>
+<li class="chapter" data-level="9.3.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotx-x-de-type-numeric"><i class="fa fa-check"></i><b>9.3.3</b> plot(X) / X de type numeric</a></li>
+<li class="chapter" data-level="9.3.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-factor"><i class="fa fa-check"></i><b>9.3.4</b> plot(X,Y) / X et Y de type factor</a></li>
+<li class="chapter" data-level="9.3.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-et-y-de-type-numerique"><i class="fa fa-check"></i><b>9.3.5</b> plot(X,Y) / X et Y de type numerique</a></li>
+<li class="chapter" data-level="9.3.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique"><i class="fa fa-check"></i><b>9.3.6</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="9.3.7" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotxy-x-de-type-factor-et-y-de-type-numerique-1"><i class="fa fa-check"></i><b>9.3.7</b> plot(X,Y) / X de type factor et Y de type numerique</a></li>
+<li class="chapter" data-level="9.3.8" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#plotmodel-model-lmyx"><i class="fa fa-check"></i><b>9.3.8</b> plot(model) / model = lm(Y~X)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-autres-fonctions-génératrice"><i class="fa fa-check"></i><b>9.4</b> Les autres fonctions génératrice</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#la-fonction-barplot"><i class="fa fa-check"></i><b>9.4.1</b> La fonction barplot()</a></li>
+<li class="chapter" data-level="9.4.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-hist-et-density"><i class="fa fa-check"></i><b>9.4.2</b> Les fonctions hist() et density()</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#les-fonctions-complémentaires"><i class="fa fa-check"></i><b>9.5</b> Les fonctions complémentaires</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#exemple-dun-nuage-de-points-xy"><i class="fa fa-check"></i><b>9.5.1</b> Exemple d’un nuage de points (X,Y)</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#conclusion"><i class="fa fa-check"></i><b>9.6</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-faire-de-beaux-graphiques-avec-r-base"><i class="fa fa-check"></i><b>9.6.1</b> On peut faire de beaux graphiques avec R-Base …</a></li>
+<li class="chapter" data-level="9.6.2" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#on-peut-utiliser-des-packages-spécialisés"><i class="fa fa-check"></i><b>9.6.2</b> On peut utiliser des packages spécialisés</a></li>
+<li class="chapter" data-level="9.6.3" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggally-un-package-spécialisé-dans-la-statistique-bivariée"><i class="fa fa-check"></i><b>9.6.3</b> ggally : un package spécialisé dans la statistique bivariée</a></li>
+<li class="chapter" data-level="9.6.4" data-path="08-Graphique-Base.html"><a href="08-Graphique-Base.html#ggplot2-un-package-graphique-universel"><i class="fa fa-check"></i><b>9.6.4</b> ggplot2 : un package graphique universel ?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html"><i class="fa fa-check"></i><b>10</b> Graphiques avec ggplot2 (2024)</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#introduction-3"><i class="fa fa-check"></i><b>10.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#ggplot2-et-tydiverse"><i class="fa fa-check"></i><b>10.1.1</b> ggplot2 et tydiverse</a></li>
+<li class="chapter" data-level="10.1.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#ggplot2-cheatsheet"><i class="fa fa-check"></i><b>10.1.2</b> ggplot2 cheatsheet</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#préparation-des-données-5"><i class="fa fa-check"></i><b>10.2</b> préparation des données</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#chargement-du-fichier-3"><i class="fa fa-check"></i><b>10.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="10.2.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#dictionaire-des-variables-2"><i class="fa fa-check"></i><b>10.2.2</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="10.2.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#résumé-de-lensemble-du-tableau-2"><i class="fa fa-check"></i><b>10.2.3</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#principes-généraux"><i class="fa fa-check"></i><b>10.3</b> Principes généraux</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#les-différentes-étapes"><i class="fa fa-check"></i><b>10.3.1</b> Les différentes étapes</a></li>
+<li class="chapter" data-level="10.3.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#la-figure-à-réaliser"><i class="fa fa-check"></i><b>10.3.2</b> La figure à réaliser</a></li>
+<li class="chapter" data-level="10.3.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#la-construction-pas-à-pas"><i class="fa fa-check"></i><b>10.3.3</b> La construction pas à pas</a></li>
+<li class="chapter" data-level="10.3.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#comparaison-avec-r-base"><i class="fa fa-check"></i><b>10.3.4</b> Comparaison avec R-Base</a></li>
+<li class="chapter" data-level="10.3.5" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#attention-paramètres-aes-locaux-et-globaux"><i class="fa fa-check"></i><b>10.3.5</b> Attention ! Paramètres aes() locaux et globaux</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-discrète"><i class="fa fa-check"></i><b>10.4</b> X discrète</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#barplot-r-base"><i class="fa fa-check"></i><b>10.4.1</b> barplot (R-base)</a></li>
+<li class="chapter" data-level="10.4.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_bar-ggplot2"><i class="fa fa-check"></i><b>10.4.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-quantitative-continue"><i class="fa fa-check"></i><b>10.5</b> X quantitative continue</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#hist-r-base"><i class="fa fa-check"></i><b>10.5.1</b> hist (R-base)</a></li>
+<li class="chapter" data-level="10.5.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_histogram-ggplot2"><i class="fa fa-check"></i><b>10.5.2</b> geom_histogram (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-et-y-quantitatives-continues"><i class="fa fa-check"></i><b>10.6</b> X et Y quantitatives continues</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#plot-r-base"><i class="fa fa-check"></i><b>10.6.1</b> plot (R-base)</a></li>
+<li class="chapter" data-level="10.6.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_point-ggplot2"><i class="fa fa-check"></i><b>10.6.2</b> geom_point (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète"><i class="fa fa-check"></i><b>10.7</b> X quantitative continue et Y discrète</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#boxplot-r-base"><i class="fa fa-check"></i><b>10.7.1</b> 6.1 boxplot (R-base)</a></li>
+<li class="chapter" data-level="10.7.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_boxplot-ggplot2"><i class="fa fa-check"></i><b>10.7.2</b> geom_boxplot (ggplot2)</a></li>
+<li class="chapter" data-level="10.7.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#beanplot-r-base-package-beanplot"><i class="fa fa-check"></i><b>10.7.3</b> beanplot (R-base + package beanplot)</a></li>
+<li class="chapter" data-level="10.7.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_violin-ggplot2"><i class="fa fa-check"></i><b>10.7.4</b> geom_violin (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#deux-variables-x-et-y-discrètes"><i class="fa fa-check"></i><b>10.8</b> Deux variables X et Y discrètes</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#mosaicplot-r-base"><i class="fa fa-check"></i><b>10.8.1</b> mosaicplot (R-base)</a></li>
+<li class="chapter" data-level="10.8.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#geom_bar-ggplot2-1"><i class="fa fa-check"></i><b>10.8.2</b> geom_bar (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#conclusion-1"><i class="fa fa-check"></i><b>10.9</b> Conclusion</a>
+<ul>
+<li class="chapter" data-level="10.9.1" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#r-base-1"><i class="fa fa-check"></i><b>10.9.1</b> R-base</a></li>
+<li class="chapter" data-level="10.9.2" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#ggplot2"><i class="fa fa-check"></i><b>10.9.2</b> ggplot2</a></li>
+<li class="chapter" data-level="10.9.3" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#le-meilleur-des-deux-mondes"><i class="fa fa-check"></i><b>10.9.3</b> Le meilleur des deux mondes ?</a></li>
+<li class="chapter" data-level="10.9.4" data-path="09bis-Graphique-ggplot.html"><a href="09bis-Graphique-ggplot.html#plotly-un-challenger-sérieux-de-ggplot-pour-le-web"><i class="fa fa-check"></i><b>10.9.4</b> plotly, un challenger sérieux de ggplot pour le web</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html"><i class="fa fa-check"></i><b>11</b> Cartographie avec tmap (2024)</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#introduction-4"><i class="fa fa-check"></i><b>11.1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#cartographie-dans-r"><i class="fa fa-check"></i><b>11.1.1</b> Cartographie dans R</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#données-statistiques"><i class="fa fa-check"></i><b>11.2</b> Données statistiques</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#chargement-du-fichier-4"><i class="fa fa-check"></i><b>11.2.1</b> Chargement du fichier</a></li>
+<li class="chapter" data-level="11.2.2" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#dictionaire-des-variables-3"><i class="fa fa-check"></i><b>11.2.2</b> Dictionaire des variables</a></li>
+<li class="chapter" data-level="11.2.3" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#résumé-de-lensemble-du-tableau-3"><i class="fa fa-check"></i><b>11.2.3</b> Résumé de l’ensemble du tableau</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#données-cartographiques"><i class="fa fa-check"></i><b>11.3</b> Données cartographiques</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-des-circonscriptions"><i class="fa fa-check"></i><b>11.3.1</b> Carte des circonscriptions</a></li>
+<li class="chapter" data-level="11.3.2" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#autres-fonds-de-carte"><i class="fa fa-check"></i><b>11.3.2</b> Autres fonds de carte</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#jointure"><i class="fa fa-check"></i><b>11.4</b> Jointure</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#extraction-dune-région"><i class="fa fa-check"></i><b>11.4.1</b> Extraction d’une région</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-de-repérage"><i class="fa fa-check"></i><b>11.5</b> Carte de repérage</a></li>
+<li class="chapter" data-level="11.6" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-dune-variable-qualitative"><i class="fa fa-check"></i><b>11.6</b> Carte d’une variable qualitative</a></li>
+<li class="chapter" data-level="11.7" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-dune-variable-quantitative-de-taux"><i class="fa fa-check"></i><b>11.7</b> Carte d’une variable quantitative de taux</a></li>
+<li class="chapter" data-level="11.8" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#carte-dune-variable-quantitative-de-stock"><i class="fa fa-check"></i><b>11.8</b> Carte d’une variable quantitative de stock</a></li>
+<li class="chapter" data-level="11.9" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#combinaison-de-cartes-quantitatives-de-stock-et-de-taux"><i class="fa fa-check"></i><b>11.9</b> Combinaison de cartes quantitatives de stock et de taux</a></li>
+<li class="chapter" data-level="11.10" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#superposition-de-cartes"><i class="fa fa-check"></i><b>11.10</b> Superposition de cartes</a></li>
+<li class="chapter" data-level="11.11" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#juxtaposition-de-cartes"><i class="fa fa-check"></i><b>11.11</b> Juxtaposition de cartes</a></li>
+<li class="chapter" data-level="11.12" data-path="10-Cartographie-tmap.html"><a href="10-Cartographie-tmap.html#pour-en-savoir-plus"><i class="fa fa-check"></i><b>11.12</b> Pour en savoir plus</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction à la statistique bivariée et aux représentations graphiques avec R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analyse-denquêtes-bases" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Partie 7</span> Analyse d’enquêtes (bases)<a href="07-TabcontV2.html#analyse-denquêtes-bases" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<pre><code>#&gt; Loading required package: Matrix
+#&gt; 
+#&gt; Attaching package: &#39;Matrix&#39;
+#&gt; The following objects are masked from &#39;package:tidyr&#39;:
+#&gt; 
+#&gt;     expand, pack, unpack
+#&gt; Loading required package: survival
+#&gt; 
+#&gt; Attaching package: &#39;survey&#39;
+#&gt; The following object is masked _by_ &#39;.GlobalEnv&#39;:
+#&gt; 
+#&gt;     cv
+#&gt; The following object is masked from &#39;package:graphics&#39;:
+#&gt; 
+#&gt;     dotchart</code></pre>
+<p><img src="resources/figures/chap7_intro.gif" /><!-- --></p>
+<ul>
+<li><strong>Mise en place</strong> : Télécharger le <a href="https://github.com/worlregio/bivaR/raw/main/resources/exos/exo7_2023.zip">dossier exo7</a> et décompressez le sur votre ordinateur. Puis ouvrez le projet R dans Rstudio.</li>
+</ul>
+<div id="introduction" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Introduction<a href="07-TabcontV2.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>On propose ici une démarche simplifiée de l’analyse d’enquête utilisant les fonctions R-base et quelques fonctions supplémentaires issues du package <strong>questionR</strong> qui permettent de simplifier l’écriture des programmes. Les explications détaillées se trouvent dans le très beau site web analyse-R auquel ont notamment contribué Julien Barnier et Joseph Larmarange.</p>
+<p><a href="https://larmarange.github.io/analyse-R/" class="uri">https://larmarange.github.io/analyse-R/</a></p>
+<p>ce programme suffit pour des analyses simples de questionnaires. Mais pour des analyses plus avancées, il faudra utiliser des packages plus avancés comme <strong>survey</strong>.</p>
+</div>
+<div id="données" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Données<a href="07-TabcontV2.html#données" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="chargement-du-fichier-1" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Chargement du fichier<a href="07-TabcontV2.html#chargement-du-fichier-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="07-TabcontV2.html#cb184-1" tabindex="-1"></a>base<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">&quot;resources/data/pew/pew2019_fra_V2.csv&quot;</span>,</span>
+<span id="cb184-2"><a href="07-TabcontV2.html#cb184-2" tabindex="-1"></a>                <span class="at">sep=</span><span class="st">&quot;;&quot;</span>,</span>
+<span id="cb184-3"><a href="07-TabcontV2.html#cb184-3" tabindex="-1"></a>                <span class="at">header=</span>T,</span>
+<span id="cb184-4"><a href="07-TabcontV2.html#cb184-4" tabindex="-1"></a>                <span class="at">stringsAsFactors =</span> T)</span></code></pre></div>
+</div>
+<div id="liste-des-variables" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Liste des variables<a href="07-TabcontV2.html#liste-des-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Les données sont issues de la <em>Global attitude Survey</em> réalisée par le Pew Research Center en 2019. On y trouve notamment les variables suivantes</p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pays</td>
+<td>quali</td>
+<td>pays de résidence de l’enquêté</td>
+</tr>
+<tr class="even">
+<td>sexe</td>
+<td>quali</td>
+<td>genre de l’enqueté</td>
+</tr>
+<tr class="odd">
+<td>age</td>
+<td>quali/quanti</td>
+<td>Âge de l’enquêté en années révolues</td>
+</tr>
+<tr class="even">
+<td>opi_usa</td>
+<td>quali</td>
+<td>Opinion sur les USA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="echantillonage" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Echantillonage<a href="07-TabcontV2.html#echantillonage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’enquête a été réalisaée dans plusieurs pays du Monde sur des échantillons représentatifs (méthode des quotas), mais avec une variable de redressement pour compenser les biais d’échantillonage.</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="07-TabcontV2.html#cb185-1" tabindex="-1"></a><span class="fu">table</span>(base<span class="sc">$</span>pays)</span>
+<span id="cb185-2"><a href="07-TabcontV2.html#cb185-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb185-3"><a href="07-TabcontV2.html#cb185-3" tabindex="-1"></a><span class="co">#&gt;  ARG  AUS  BGR  BRA  CAN  CZE  DEU  ESP  FRA  GBR  GRC  HUN  IDN  IND  ISR  ITA </span></span>
+<span id="cb185-4"><a href="07-TabcontV2.html#cb185-4" tabindex="-1"></a><span class="co">#&gt; 1033  985 1042 1043  964 1021 1976 1054 1008  995 1037 1028 1207 2475  967 1026 </span></span>
+<span id="cb185-5"><a href="07-TabcontV2.html#cb185-5" tabindex="-1"></a><span class="co">#&gt;  JPN  KEN  KOR  LBN  LTU  MEX  NGA  NLD  PHL  POL  RUS  SVK  SWE  TUN  TUR  UKR </span></span>
+<span id="cb185-6"><a href="07-TabcontV2.html#cb185-6" tabindex="-1"></a><span class="co">#&gt; 1036  971 1001  993  968 1027  994  992 1035 1024 1038 1009 1012 1043 1046 1045 </span></span>
+<span id="cb185-7"><a href="07-TabcontV2.html#cb185-7" tabindex="-1"></a><span class="co">#&gt;  USA  ZAF </span></span>
+<span id="cb185-8"><a href="07-TabcontV2.html#cb185-8" tabindex="-1"></a><span class="co">#&gt; 1473 1443</span></span></code></pre></div>
+</div>
+<div id="choix-des-variables-et-du-pays" class="section level3 hasAnchor" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> Choix des variables et du pays<a href="07-TabcontV2.html#choix-des-variables-et-du-pays" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On extrait un tableau ne comportant que les données utiles à notre analyse.</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="07-TabcontV2.html#cb186-1" tabindex="-1"></a>don <span class="ot">&lt;-</span>base[base<span class="sc">$</span>pays<span class="sc">==</span><span class="st">&quot;FRA&quot;</span>,<span class="fu">c</span>(<span class="st">&quot;poids&quot;</span>,<span class="st">&quot;age&quot;</span>,<span class="st">&quot;sexe&quot;</span>,<span class="st">&quot;opi_usa&quot;</span>)]</span>
+<span id="cb186-2"><a href="07-TabcontV2.html#cb186-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(don,<span class="dv">3</span>))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">poids</th>
+<th align="right">age</th>
+<th align="left">sexe</th>
+<th align="left">opi_usa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">6089</td>
+<td align="right">2.0253670</td>
+<td align="right">20</td>
+<td align="left">1.Homme</td>
+<td align="left">2.Plutôt favorable</td>
+</tr>
+<tr class="even">
+<td align="left">6090</td>
+<td align="right">0.6678256</td>
+<td align="right">35</td>
+<td align="left">1.Homme</td>
+<td align="left">4.Très défavorable</td>
+</tr>
+<tr class="odd">
+<td align="left">6091</td>
+<td align="right">0.2282839</td>
+<td align="right">68</td>
+<td align="left">1.Homme</td>
+<td align="left">4.Très défavorable</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="transformation-quanti-quali" class="section level3 hasAnchor" number="7.2.5">
+<h3><span class="header-section-number">7.2.5</span> Transformation quanti-quali<a href="07-TabcontV2.html#transformation-quanti-quali" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Comment transformer la variable âge en variable qualitative ?</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="07-TabcontV2.html#cb187-1" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>age)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-213-1.svg" width="672" /></p>
+<p>On peut choisir des seuils basés sur des normes. Par exemple considéré comme jeunes les moins de 30 ans et vieux les plus de 65 ans</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="07-TabcontV2.html#cb188-1" tabindex="-1"></a>don<span class="sc">$</span>age3a <span class="ot">&lt;-</span> <span class="fu">cut</span>(don<span class="sc">$</span>age, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">30</span>,<span class="dv">65</span>, <span class="dv">100</span>))</span>
+<span id="cb188-2"><a href="07-TabcontV2.html#cb188-2" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>age3a)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;Jeunes&quot;</span>,<span class="st">&quot;Adultes&quot;</span>,<span class="st">&quot;Vieux&quot;</span>)</span>
+<span id="cb188-3"><a href="07-TabcontV2.html#cb188-3" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">table</span>(don<span class="sc">$</span>age3a))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Jeunes</td>
+<td align="right">185</td>
+</tr>
+<tr class="even">
+<td align="left">Adultes</td>
+<td align="right">617</td>
+</tr>
+<tr class="odd">
+<td align="left">Vieux</td>
+<td align="right">206</td>
+</tr>
+</tbody>
+</table>
+<p>On peut aussi utiliser des critères statistiques comme les quantiles permettant d’avoir des classes d’effectifs approximativement égaux :</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="07-TabcontV2.html#cb189-1" tabindex="-1"></a>mybreaks <span class="ot">&lt;-</span> <span class="fu">quantile</span>(don<span class="sc">$</span>age, <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>,<span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>,<span class="dv">1</span>))</span>
+<span id="cb189-2"><a href="07-TabcontV2.html#cb189-2" tabindex="-1"></a>don<span class="sc">$</span>age3b <span class="ot">&lt;-</span> <span class="fu">cut</span>(don<span class="sc">$</span>age, <span class="at">breaks =</span> mybreaks)</span>
+<span id="cb189-3"><a href="07-TabcontV2.html#cb189-3" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">table</span>(don<span class="sc">$</span>age3b))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(18,41]</td>
+<td align="right">331</td>
+</tr>
+<tr class="even">
+<td align="left">(41,60]</td>
+<td align="right">350</td>
+</tr>
+<tr class="odd">
+<td align="left">(60,93]</td>
+<td align="right">314</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="recodage-des-modalités" class="section level3 hasAnchor" number="7.2.6">
+<h3><span class="header-section-number">7.2.6</span> Recodage des modalités<a href="07-TabcontV2.html#recodage-des-modalités" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dans le cas d’une variable qualitative, on peut effectuer des recodages pour supprimer ou fusionner des niveaux. Considérons la variable opi_usa qui possède au départ 6 modalités</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="07-TabcontV2.html#cb190-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">table</span>(don<span class="sc">$</span>opi_usa))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.Très favorable</td>
+<td align="right">78</td>
+</tr>
+<tr class="even">
+<td align="left">2.Plutôt favorable</td>
+<td align="right">404</td>
+</tr>
+<tr class="odd">
+<td align="left">3.Plutôt défavorable</td>
+<td align="right">368</td>
+</tr>
+<tr class="even">
+<td align="left">4.Très défavorable</td>
+<td align="right">135</td>
+</tr>
+<tr class="odd">
+<td align="left">Ne sait pas</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="left">Refuse de répondre</td>
+<td align="right">3</td>
+</tr>
+</tbody>
+</table>
+<p>Suppression des non réponses en remplaçant leurs niveau de factor par NA</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="07-TabcontV2.html#cb191-1" tabindex="-1"></a>don<span class="sc">$</span>opi_usa_rep4 <span class="ot">&lt;-</span> don<span class="sc">$</span>opi_usa</span>
+<span id="cb191-2"><a href="07-TabcontV2.html#cb191-2" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>opi_usa_rep4)<span class="ot">&lt;-</span><span class="fu">c</span>( <span class="st">&quot;1.Très fav.&quot;</span>, <span class="st">&quot;2. Plutôt fav.&quot;</span>,</span>
+<span id="cb191-3"><a href="07-TabcontV2.html#cb191-3" tabindex="-1"></a>                             <span class="st">&quot;3. Plutôt défav.&quot;</span>, <span class="st">&quot;4.Très défav.&quot;</span>,</span>
+<span id="cb191-4"><a href="07-TabcontV2.html#cb191-4" tabindex="-1"></a>                             <span class="cn">NA</span>, <span class="cn">NA</span>)</span>
+<span id="cb191-5"><a href="07-TabcontV2.html#cb191-5" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">table</span>(don<span class="sc">$</span>opi_usa_rep4))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.Très fav.</td>
+<td align="right">78</td>
+</tr>
+<tr class="even">
+<td align="left">2. Plutôt fav.</td>
+<td align="right">404</td>
+</tr>
+<tr class="odd">
+<td align="left">3. Plutôt défav.</td>
+<td align="right">368</td>
+</tr>
+<tr class="even">
+<td align="left">4.Très défav.</td>
+<td align="right">135</td>
+</tr>
+</tbody>
+</table>
+<p>Fusions des non réponses pour étudier leur importance par rapport aux réponses</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="07-TabcontV2.html#cb192-1" tabindex="-1"></a>don<span class="sc">$</span>opi_usa_nr <span class="ot">&lt;-</span> don<span class="sc">$</span>opi_usa</span>
+<span id="cb192-2"><a href="07-TabcontV2.html#cb192-2" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>opi_usa_nr)<span class="ot">&lt;-</span><span class="fu">c</span>( <span class="st">&quot;Réponse&quot;</span>, <span class="st">&quot;Réponse&quot;</span>,</span>
+<span id="cb192-3"><a href="07-TabcontV2.html#cb192-3" tabindex="-1"></a>                           <span class="st">&quot;Réponse&quot;</span>, <span class="st">&quot;Réponse&quot;</span>,</span>
+<span id="cb192-4"><a href="07-TabcontV2.html#cb192-4" tabindex="-1"></a>                           <span class="st">&quot;Non réponse&quot;</span>, <span class="st">&quot;Non réponse&quot;</span>)</span>
+<span id="cb192-5"><a href="07-TabcontV2.html#cb192-5" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">table</span>(don<span class="sc">$</span>opi_usa_nr))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Réponse</td>
+<td align="right">985</td>
+</tr>
+<tr class="even">
+<td align="left">Non réponse</td>
+<td align="right">23</td>
+</tr>
+</tbody>
+</table>
+<p>Fusion en deux classes “Favorable” et “Défavorable”</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="07-TabcontV2.html#cb193-1" tabindex="-1"></a>don<span class="sc">$</span>opi_usa_rep2 <span class="ot">&lt;-</span> don<span class="sc">$</span>opi_usa</span>
+<span id="cb193-2"><a href="07-TabcontV2.html#cb193-2" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>opi_usa_rep2)<span class="ot">&lt;-</span><span class="fu">c</span>( <span class="st">&quot;Favorable&quot;</span>, <span class="st">&quot;Favorable&quot;</span>, </span>
+<span id="cb193-3"><a href="07-TabcontV2.html#cb193-3" tabindex="-1"></a>                             <span class="st">&quot;Défavorable&quot;</span>, <span class="st">&quot;Défavorable&quot;</span>,</span>
+<span id="cb193-4"><a href="07-TabcontV2.html#cb193-4" tabindex="-1"></a>                             <span class="cn">NA</span>, <span class="cn">NA</span>)</span>
+<span id="cb193-5"><a href="07-TabcontV2.html#cb193-5" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">table</span>(don<span class="sc">$</span>opi_usa_rep2))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Favorable</td>
+<td align="right">482</td>
+</tr>
+<tr class="even">
+<td align="left">Défavorable</td>
+<td align="right">503</td>
+</tr>
+</tbody>
+</table>
+<p>Mais on pourrait aussi recoder autrement en “Modéré” ou “Polarisé”</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="07-TabcontV2.html#cb194-1" tabindex="-1"></a>don<span class="sc">$</span>opi_usa_pol2 <span class="ot">&lt;-</span> don<span class="sc">$</span>opi_usa</span>
+<span id="cb194-2"><a href="07-TabcontV2.html#cb194-2" tabindex="-1"></a><span class="fu">levels</span>(don<span class="sc">$</span>opi_usa_pol2)<span class="ot">&lt;-</span><span class="fu">c</span>( <span class="st">&quot;Polarisé&quot;</span>, <span class="st">&quot;Modéré&quot;</span>, </span>
+<span id="cb194-3"><a href="07-TabcontV2.html#cb194-3" tabindex="-1"></a>                             <span class="st">&quot;Modéré&quot;</span>, <span class="st">&quot;Polarisé&quot;</span>,</span>
+<span id="cb194-4"><a href="07-TabcontV2.html#cb194-4" tabindex="-1"></a>                             <span class="cn">NA</span>, <span class="cn">NA</span>)</span>
+<span id="cb194-5"><a href="07-TabcontV2.html#cb194-5" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">table</span>(don<span class="sc">$</span>opi_usa_pol2))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Polarisé</td>
+<td align="right">213</td>
+</tr>
+<tr class="even">
+<td align="left">Modéré</td>
+<td align="right">772</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="analyse-univariée" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Analyse univariée<a href="07-TabcontV2.html#analyse-univariée" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="fréquence-simple" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Fréquence simple<a href="07-TabcontV2.html#fréquence-simple" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En l’absence de pondération il suffit de calculer les fréquences avec l’instruction <code>table()</code>puis de les afficher en ajoutant le total avec <code>addmargins()</code></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="07-TabcontV2.html#cb195-1" tabindex="-1"></a>mytab1 <span class="ot">&lt;-</span><span class="fu">table</span>(don<span class="sc">$</span>opi_usa_rep4)</span>
+<span id="cb195-2"><a href="07-TabcontV2.html#cb195-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">addmargins</span>(mytab1))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.Très fav.</td>
+<td align="right">78</td>
+</tr>
+<tr class="even">
+<td align="left">2. Plutôt fav.</td>
+<td align="right">404</td>
+</tr>
+<tr class="odd">
+<td align="left">3. Plutôt défav.</td>
+<td align="right">368</td>
+</tr>
+<tr class="even">
+<td align="left">4.Très défav.</td>
+<td align="right">135</td>
+</tr>
+<tr class="odd">
+<td align="left">Sum</td>
+<td align="right">985</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="pourcentage-r-base" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Pourcentage (R-base)<a href="07-TabcontV2.html#pourcentage-r-base" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On peut ensuite facilement calculer les valeurs en pourcentage en utlisant la fonction <code>prop.table()</code> de R-base, en lui appliquant la fonction <code>addmargins()</code> et en multipliant le tout par 100 …</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="07-TabcontV2.html#cb196-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="dv">100</span><span class="sc">*</span><span class="fu">addmargins</span>(<span class="fu">prop.table</span>(mytab1)), </span>
+<span id="cb196-2"><a href="07-TabcontV2.html#cb196-2" tabindex="-1"></a>      <span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Var1</th>
+<th align="right">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.Très fav.</td>
+<td align="right">7.9</td>
+</tr>
+<tr class="even">
+<td align="left">2. Plutôt fav.</td>
+<td align="right">41.0</td>
+</tr>
+<tr class="odd">
+<td align="left">3. Plutôt défav.</td>
+<td align="right">37.4</td>
+</tr>
+<tr class="even">
+<td align="left">4.Très défav.</td>
+<td align="right">13.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Sum</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+<p>La fonction <code>freq()</code>du package <strong>questionr</strong> permet d’obtenir directement le résultat :</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="07-TabcontV2.html#cb197-1" tabindex="-1"></a><span class="fu">library</span>(questionr)</span>
+<span id="cb197-2"><a href="07-TabcontV2.html#cb197-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">freq</span>(don<span class="sc">$</span>opi_usa_rep4,<span class="at">total =</span> T))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">n</th>
+<th align="right">%</th>
+<th align="right">val%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.Très fav.</td>
+<td align="right">78</td>
+<td align="right">7.7</td>
+<td align="right">7.9</td>
+</tr>
+<tr class="even">
+<td align="left">2. Plutôt fav.</td>
+<td align="right">404</td>
+<td align="right">40.1</td>
+<td align="right">41.0</td>
+</tr>
+<tr class="odd">
+<td align="left">3. Plutôt défav.</td>
+<td align="right">368</td>
+<td align="right">36.5</td>
+<td align="right">37.4</td>
+</tr>
+<tr class="even">
+<td align="left">4.Très défav.</td>
+<td align="right">135</td>
+<td align="right">13.4</td>
+<td align="right">13.7</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="right">23</td>
+<td align="right">2.3</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td align="right">1008</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+<p>On peut également utiliser la fonction <code>tbl_summary()</code> du package <strong>gtsummary</strong></p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="07-TabcontV2.html#cb198-1" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb198-2"><a href="07-TabcontV2.html#cb198-2" tabindex="-1"></a><span class="fu">tbl_summary</span>(<span class="at">data =</span> don, <span class="at">include=</span><span class="st">&quot;opi_usa_rep4&quot;</span>)</span></code></pre></div>
+<div id="zirazzihgw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zirazzihgw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#zirazzihgw thead, #zirazzihgw tbody, #zirazzihgw tfoot, #zirazzihgw tr, #zirazzihgw td, #zirazzihgw th {
+  border-style: none;
+}
+
+#zirazzihgw p {
+  margin: 0;
+  padding: 0;
+}
+
+#zirazzihgw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#zirazzihgw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zirazzihgw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zirazzihgw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zirazzihgw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zirazzihgw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zirazzihgw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zirazzihgw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zirazzihgw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#zirazzihgw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#zirazzihgw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zirazzihgw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zirazzihgw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zirazzihgw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zirazzihgw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zirazzihgw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zirazzihgw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zirazzihgw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#zirazzihgw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zirazzihgw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zirazzihgw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zirazzihgw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zirazzihgw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zirazzihgw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zirazzihgw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zirazzihgw .gt_left {
+  text-align: left;
+}
+
+#zirazzihgw .gt_center {
+  text-align: center;
+}
+
+#zirazzihgw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zirazzihgw .gt_font_normal {
+  font-weight: normal;
+}
+
+#zirazzihgw .gt_font_bold {
+  font-weight: bold;
+}
+
+#zirazzihgw .gt_font_italic {
+  font-style: italic;
+}
+
+#zirazzihgw .gt_super {
+  font-size: 65%;
+}
+
+#zirazzihgw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#zirazzihgw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zirazzihgw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zirazzihgw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zirazzihgw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zirazzihgw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zirazzihgw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#zirazzihgw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#zirazzihgw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="label"><span class='gt_from_md'><strong>Characteristic</strong></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_0"><span class='gt_from_md'><strong>N = 1,008</strong></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">opi_usa_rep4</td>
+<td headers="stat_0" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    1.Très fav.</td>
+<td headers="stat_0" class="gt_row gt_center">78 (7.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    2. Plutôt fav.</td>
+<td headers="stat_0" class="gt_row gt_center">404 (41%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    3. Plutôt défav.</td>
+<td headers="stat_0" class="gt_row gt_center">368 (37%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    4.Très défav.</td>
+<td headers="stat_0" class="gt_row gt_center">135 (14%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Unknown</td>
+<td headers="stat_0" class="gt_row gt_center">23</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="2"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> <span class='gt_from_md'>n (%)</span></td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+<div id="marge-derreur-dun-pourcentage" class="section level3 hasAnchor" number="7.3.3">
+<h3><span class="header-section-number">7.3.3</span> Marge d’erreur d’un pourcentage<a href="07-TabcontV2.html#marge-derreur-dun-pourcentage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’inconvénient des tableaux précédents est qu’il ne permettent pas de voir la marge d’erreur des pourcentages en fonction de l’effectif. Considérez le cas suivant :</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="07-TabcontV2.html#cb199-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">freq</span>(don<span class="sc">$</span>opi_usa_rep2))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">n</th>
+<th align="right">%</th>
+<th align="right">val%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Favorable</td>
+<td align="right">482</td>
+<td align="right">47.8</td>
+<td align="right">48.9</td>
+</tr>
+<tr class="even">
+<td align="left">Défavorable</td>
+<td align="right">503</td>
+<td align="right">49.9</td>
+<td align="right">51.1</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="right">23</td>
+<td align="right">2.3</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<p>Peut-on conclure qu’il existe une majorité défavorable aux USA ?</p>
+<p>On peut utiliser la fonction <code>prop.test()</code></p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="07-TabcontV2.html#cb200-1" tabindex="-1"></a>mytab2 <span class="ot">&lt;-</span> <span class="fu">table</span>(don<span class="sc">$</span>opi_usa_rep2)</span>
+<span id="cb200-2"><a href="07-TabcontV2.html#cb200-2" tabindex="-1"></a><span class="fu">prop.test</span>(mytab2)</span>
+<span id="cb200-3"><a href="07-TabcontV2.html#cb200-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb200-4"><a href="07-TabcontV2.html#cb200-4" tabindex="-1"></a><span class="co">#&gt;  1-sample proportions test with continuity correction</span></span>
+<span id="cb200-5"><a href="07-TabcontV2.html#cb200-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb200-6"><a href="07-TabcontV2.html#cb200-6" tabindex="-1"></a><span class="co">#&gt; data:  mytab2, null probability 0.5</span></span>
+<span id="cb200-7"><a href="07-TabcontV2.html#cb200-7" tabindex="-1"></a><span class="co">#&gt; X-squared = 0.40609, df = 1, p-value = 0.524</span></span>
+<span id="cb200-8"><a href="07-TabcontV2.html#cb200-8" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true p is not equal to 0.5</span></span>
+<span id="cb200-9"><a href="07-TabcontV2.html#cb200-9" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb200-10"><a href="07-TabcontV2.html#cb200-10" tabindex="-1"></a><span class="co">#&gt;  0.4577195 0.5210449</span></span>
+<span id="cb200-11"><a href="07-TabcontV2.html#cb200-11" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb200-12"><a href="07-TabcontV2.html#cb200-12" tabindex="-1"></a><span class="co">#&gt;         p </span></span>
+<span id="cb200-13"><a href="07-TabcontV2.html#cb200-13" tabindex="-1"></a><span class="co">#&gt; 0.4893401</span></span></code></pre></div>
+<ul>
+<li><strong>Conclusion</strong> : H0 il n’y a pas de majorité est acceptée (p &lt; 0.524)</li>
+</ul>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="07-TabcontV2.html#cb201-1" tabindex="-1"></a><span class="fu">tbl_summary</span>(<span class="at">data =</span> don, <span class="at">include=</span><span class="st">&quot;opi_usa_rep2&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb201-2"><a href="07-TabcontV2.html#cb201-2" tabindex="-1"></a>       <span class="fu">add_ci</span>()</span></code></pre></div>
+<div id="nolmebfarx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nolmebfarx table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#nolmebfarx thead, #nolmebfarx tbody, #nolmebfarx tfoot, #nolmebfarx tr, #nolmebfarx td, #nolmebfarx th {
+  border-style: none;
+}
+
+#nolmebfarx p {
+  margin: 0;
+  padding: 0;
+}
+
+#nolmebfarx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#nolmebfarx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nolmebfarx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nolmebfarx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#nolmebfarx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#nolmebfarx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#nolmebfarx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#nolmebfarx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#nolmebfarx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#nolmebfarx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#nolmebfarx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#nolmebfarx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nolmebfarx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nolmebfarx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#nolmebfarx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nolmebfarx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#nolmebfarx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#nolmebfarx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#nolmebfarx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nolmebfarx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#nolmebfarx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nolmebfarx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#nolmebfarx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nolmebfarx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#nolmebfarx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#nolmebfarx .gt_left {
+  text-align: left;
+}
+
+#nolmebfarx .gt_center {
+  text-align: center;
+}
+
+#nolmebfarx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nolmebfarx .gt_font_normal {
+  font-weight: normal;
+}
+
+#nolmebfarx .gt_font_bold {
+  font-weight: bold;
+}
+
+#nolmebfarx .gt_font_italic {
+  font-style: italic;
+}
+
+#nolmebfarx .gt_super {
+  font-size: 65%;
+}
+
+#nolmebfarx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#nolmebfarx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#nolmebfarx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#nolmebfarx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#nolmebfarx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#nolmebfarx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#nolmebfarx .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#nolmebfarx .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#nolmebfarx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="label"><span class='gt_from_md'><strong>Characteristic</strong></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_0"><span class='gt_from_md'><strong>N = 1,008</strong></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="ci_stat_0"><span class='gt_from_md'><strong>95% CI</strong></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">opi_usa_rep2</td>
+<td headers="stat_0" class="gt_row gt_center"><br /></td>
+<td headers="ci_stat_0" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Favorable</td>
+<td headers="stat_0" class="gt_row gt_center">482 (49%)</td>
+<td headers="ci_stat_0" class="gt_row gt_center">46%, 52%</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Défavorable</td>
+<td headers="stat_0" class="gt_row gt_center">503 (51%)</td>
+<td headers="ci_stat_0" class="gt_row gt_center">48%, 54%</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Unknown</td>
+<td headers="stat_0" class="gt_row gt_center">23</td>
+<td headers="ci_stat_0" class="gt_row gt_center"><br /></td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="3"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> <span class='gt_from_md'>n (%)</span></td>
+    </tr>
+    <tr>
+      <td class="gt_footnote" colspan="3"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> <span class='gt_from_md'>CI = Confidence Interval</span></td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<ul>
+<li><strong>Conclusion</strong> : pas de majorité défavorable [48,54] ou favorable [46 ; 52]</li>
+</ul>
+</div>
+<div id="diagramme-en-bâton" class="section level3 hasAnchor" number="7.3.4">
+<h3><span class="header-section-number">7.3.4</span> Diagramme en bâton<a href="07-TabcontV2.html#diagramme-en-bâton" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On peut utiliser R-base :</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="07-TabcontV2.html#cb202-1" tabindex="-1"></a>mytab1<span class="ot">&lt;-</span><span class="fu">table</span>(don<span class="sc">$</span>opi_usa_rep4)</span>
+<span id="cb202-2"><a href="07-TabcontV2.html#cb202-2" tabindex="-1"></a><span class="fu">barplot</span>(mytab1, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;darkgreen&quot;</span>,<span class="st">&quot;green&quot;</span>, <span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;orange&quot;</span>))</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-228-1.svg" width="672" /></p>
+<p>Ou bien ggplot2 :</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="07-TabcontV2.html#cb203-1" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x=</span>opi_usa_rep4)) <span class="sc">+</span></span>
+<span id="cb203-2"><a href="07-TabcontV2.html#cb203-2" tabindex="-1"></a>      <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-229-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="tableau-de-contingence" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Tableau de contingence<a href="07-TabcontV2.html#tableau-de-contingence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tableau-de-contingence-1" class="section level3 hasAnchor" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> Tableau de contingence<a href="07-TabcontV2.html#tableau-de-contingence-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On suppose qu’on veut croiser l’opinion sur les USA (Y) avec le sexe (X). On utilise comme précédemment <code>table()</code> et on affiche les marges avec <code>addmargins()</code></p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="07-TabcontV2.html#cb204-1" tabindex="-1"></a>tabcont<span class="ot">&lt;-</span><span class="fu">table</span>(don<span class="sc">$</span>sexe, don<span class="sc">$</span>opi_usa_rep2)</span>
+<span id="cb204-2"><a href="07-TabcontV2.html#cb204-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">addmargins</span>(tabcont))</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+<th align="right">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.Homme</td>
+<td align="right">294</td>
+<td align="right">293</td>
+<td align="right">587</td>
+</tr>
+<tr class="even">
+<td align="left">2.Femme</td>
+<td align="right">188</td>
+<td align="right">210</td>
+<td align="right">398</td>
+</tr>
+<tr class="odd">
+<td align="left">Sum</td>
+<td align="right">482</td>
+<td align="right">503</td>
+<td align="right">985</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="pourcentage-du-total" class="section level3 hasAnchor" number="7.4.2">
+<h3><span class="header-section-number">7.4.2</span> Pourcentage du total<a href="07-TabcontV2.html#pourcentage-du-total" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On utilise la fonction <code>prop()</code></p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="07-TabcontV2.html#cb205-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">prop</span>(tabcont), <span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.Homme</td>
+<td align="right">29.8</td>
+<td align="right">29.7</td>
+<td align="right">59.6</td>
+</tr>
+<tr class="even">
+<td align="left">2.Femme</td>
+<td align="right">19.1</td>
+<td align="right">21.3</td>
+<td align="right">40.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="right">48.9</td>
+<td align="right">51.1</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="pourcentage-en-ligne" class="section level3 hasAnchor" number="7.4.3">
+<h3><span class="header-section-number">7.4.3</span> Pourcentage en ligne<a href="07-TabcontV2.html#pourcentage-en-ligne" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On utilise <code>lprop()</code> :</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="07-TabcontV2.html#cb206-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">lprop</span>(tabcont), <span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.Homme</td>
+<td align="right">50.1</td>
+<td align="right">49.9</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="left">2.Femme</td>
+<td align="right">47.2</td>
+<td align="right">52.8</td>
+<td align="right">100</td>
+</tr>
+<tr class="odd">
+<td align="left">All</td>
+<td align="right">48.9</td>
+<td align="right">51.1</td>
+<td align="right">100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="pourcentage-en-colonnes" class="section level3 hasAnchor" number="7.4.4">
+<h3><span class="header-section-number">7.4.4</span> Pourcentage en colonnes<a href="07-TabcontV2.html#pourcentage-en-colonnes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On utilise <code>cprop()</code></p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="07-TabcontV2.html#cb207-1" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">cprop</span>(tabcont), <span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+<th align="right">All</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1.Homme</td>
+<td align="right">61</td>
+<td align="right">58.3</td>
+<td align="right">59.6</td>
+</tr>
+<tr class="even">
+<td align="left">2.Femme</td>
+<td align="right">39</td>
+<td align="right">41.7</td>
+<td align="right">40.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="right">100</td>
+<td align="right">100.0</td>
+<td align="right">100.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="effectif-pourcentage-gtsummary" class="section level3 hasAnchor" number="7.4.5">
+<h3><span class="header-section-number">7.4.5</span> effectif + pourcentage (gtsummary)<a href="07-TabcontV2.html#effectif-pourcentage-gtsummary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="07-TabcontV2.html#cb208-1" tabindex="-1"></a><span class="fu">tbl_summary</span>(don, </span>
+<span id="cb208-2"><a href="07-TabcontV2.html#cb208-2" tabindex="-1"></a>            <span class="at">include =</span> opi_usa_rep2,</span>
+<span id="cb208-3"><a href="07-TabcontV2.html#cb208-3" tabindex="-1"></a>            <span class="at">by =</span> sexe) </span></code></pre></div>
+<div id="ohtwdhcpqx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ohtwdhcpqx table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ohtwdhcpqx thead, #ohtwdhcpqx tbody, #ohtwdhcpqx tfoot, #ohtwdhcpqx tr, #ohtwdhcpqx td, #ohtwdhcpqx th {
+  border-style: none;
+}
+
+#ohtwdhcpqx p {
+  margin: 0;
+  padding: 0;
+}
+
+#ohtwdhcpqx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ohtwdhcpqx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ohtwdhcpqx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ohtwdhcpqx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ohtwdhcpqx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ohtwdhcpqx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ohtwdhcpqx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ohtwdhcpqx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ohtwdhcpqx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ohtwdhcpqx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ohtwdhcpqx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ohtwdhcpqx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ohtwdhcpqx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ohtwdhcpqx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ohtwdhcpqx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ohtwdhcpqx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ohtwdhcpqx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ohtwdhcpqx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ohtwdhcpqx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ohtwdhcpqx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ohtwdhcpqx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ohtwdhcpqx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ohtwdhcpqx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ohtwdhcpqx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ohtwdhcpqx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ohtwdhcpqx .gt_left {
+  text-align: left;
+}
+
+#ohtwdhcpqx .gt_center {
+  text-align: center;
+}
+
+#ohtwdhcpqx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ohtwdhcpqx .gt_font_normal {
+  font-weight: normal;
+}
+
+#ohtwdhcpqx .gt_font_bold {
+  font-weight: bold;
+}
+
+#ohtwdhcpqx .gt_font_italic {
+  font-style: italic;
+}
+
+#ohtwdhcpqx .gt_super {
+  font-size: 65%;
+}
+
+#ohtwdhcpqx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ohtwdhcpqx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ohtwdhcpqx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ohtwdhcpqx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ohtwdhcpqx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ohtwdhcpqx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ohtwdhcpqx .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ohtwdhcpqx .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ohtwdhcpqx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="label"><span class='gt_from_md'><strong>Characteristic</strong></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_1"><span class='gt_from_md'><strong>1.Homme</strong><br />
+N = 595</span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_2"><span class='gt_from_md'><strong>2.Femme</strong><br />
+N = 413</span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">opi_usa_rep2</td>
+<td headers="stat_1" class="gt_row gt_center"><br /></td>
+<td headers="stat_2" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Favorable</td>
+<td headers="stat_1" class="gt_row gt_center">294 (50%)</td>
+<td headers="stat_2" class="gt_row gt_center">188 (47%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Défavorable</td>
+<td headers="stat_1" class="gt_row gt_center">293 (50%)</td>
+<td headers="stat_2" class="gt_row gt_center">210 (53%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Unknown</td>
+<td headers="stat_1" class="gt_row gt_center">8</td>
+<td headers="stat_2" class="gt_row gt_center">15</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="3"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> <span class='gt_from_md'>n (%)</span></td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+<div id="diagramme-en-mosaïque" class="section level3 hasAnchor" number="7.4.6">
+<h3><span class="header-section-number">7.4.6</span> Diagramme en mosaïque<a href="07-TabcontV2.html#diagramme-en-mosaïque" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La représentation la plus efficace d’un tableau de contingence est le diagramme en mosaïque à l’aide de la fonction <code>mosaicplot()</code> de R-base :</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="07-TabcontV2.html#cb209-1" tabindex="-1"></a><span class="fu">mosaicplot</span>(tabcont)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-235-1.svg" width="672" /></p>
+<p>On peut améliorer la figure à l’aide des paramètres habituels</p>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-236-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="test-du-chi-2" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Test du chi-2<a href="07-TabcontV2.html#test-du-chi-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="hypothèse-dindépendance" class="section level3 hasAnchor" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> Hypothèse d’indépendance<a href="07-TabcontV2.html#hypothèse-dindépendance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Comme toujours en statistique, on part de l’hypothèse H0 d’absence de relation entre les deux variables. Soit dans notre exemple :</p>
+<ul>
+<li>Y = Opinion sur les USA (2 modalités)</li>
+<li>X = Sexe (2 modalités)</li>
+</ul>
+<p>H0 : il n’y a pas de relation entre l’opinion exprimée sur les USA et le sexe de la personne qui a répondu.</p>
+<p>En cas de rejet de H0 on pourra accepter l’une des hypothèses altrnatives :</p>
+<ul>
+<li>H1A : Les femmes ont une opinion plus favorable que les hommes sur les USA</li>
+<li>H1B : les hommes ont une opinion plus favorable que les femmes sur les USA</li>
+</ul>
+</div>
+<div id="test-du-chi-2-simple" class="section level3 hasAnchor" number="7.5.2">
+<h3><span class="header-section-number">7.5.2</span> test du chi-2 simple<a href="07-TabcontV2.html#test-du-chi-2-simple" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Lorsqu’il n’y a pas besoin de pondérer les calculs, on peut utiliser le fonction <code>chisq.test()</code>de R-base. On stocke le résultat avant de l’afficher</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="07-TabcontV2.html#cb210-1" tabindex="-1"></a>tabcont <span class="ot">&lt;-</span> <span class="fu">table</span>(don<span class="sc">$</span>opi_usa_rep2,don<span class="sc">$</span>sexe)</span>
+<span id="cb210-2"><a href="07-TabcontV2.html#cb210-2" tabindex="-1"></a>montest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tabcont)</span>
+<span id="cb210-3"><a href="07-TabcontV2.html#cb210-3" tabindex="-1"></a>montest</span>
+<span id="cb210-4"><a href="07-TabcontV2.html#cb210-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb210-5"><a href="07-TabcontV2.html#cb210-5" tabindex="-1"></a><span class="co">#&gt;  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction</span></span>
+<span id="cb210-6"><a href="07-TabcontV2.html#cb210-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb210-7"><a href="07-TabcontV2.html#cb210-7" tabindex="-1"></a><span class="co">#&gt; data:  tabcont</span></span>
+<span id="cb210-8"><a href="07-TabcontV2.html#cb210-8" tabindex="-1"></a><span class="co">#&gt; X-squared = 0.66062, df = 1, p-value = 0.4163</span></span></code></pre></div>
+<ul>
+<li><strong>Conclusion</strong> : Le chi-2 du tableau est égal à 0.66 pour 1 degré de liberté. La probabilité que les différences de pourcentage entre hommes et femmes soit l’effet du hasard est égal à p=0.42. Donc on ne peut rejeter H0.</li>
+</ul>
+<p>On peut aboutir au même résultat avec gtsummary en ajoutant l’instruction <em>add_p()</em> à un tableau :</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="07-TabcontV2.html#cb211-1" tabindex="-1"></a><span class="fu">tbl_summary</span>(<span class="at">data =</span> don, <span class="at">include =</span> opi_usa_rep2,</span>
+<span id="cb211-2"><a href="07-TabcontV2.html#cb211-2" tabindex="-1"></a>            <span class="at">by =</span> sexe) <span class="sc">%&gt;%</span> <span class="fu">add_p</span>()</span></code></pre></div>
+<div id="avcxhliypn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#avcxhliypn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#avcxhliypn thead, #avcxhliypn tbody, #avcxhliypn tfoot, #avcxhliypn tr, #avcxhliypn td, #avcxhliypn th {
+  border-style: none;
+}
+
+#avcxhliypn p {
+  margin: 0;
+  padding: 0;
+}
+
+#avcxhliypn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#avcxhliypn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#avcxhliypn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#avcxhliypn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#avcxhliypn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#avcxhliypn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#avcxhliypn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#avcxhliypn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#avcxhliypn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#avcxhliypn .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#avcxhliypn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#avcxhliypn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#avcxhliypn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#avcxhliypn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#avcxhliypn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#avcxhliypn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#avcxhliypn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#avcxhliypn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#avcxhliypn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#avcxhliypn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#avcxhliypn .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#avcxhliypn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#avcxhliypn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#avcxhliypn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#avcxhliypn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#avcxhliypn .gt_left {
+  text-align: left;
+}
+
+#avcxhliypn .gt_center {
+  text-align: center;
+}
+
+#avcxhliypn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#avcxhliypn .gt_font_normal {
+  font-weight: normal;
+}
+
+#avcxhliypn .gt_font_bold {
+  font-weight: bold;
+}
+
+#avcxhliypn .gt_font_italic {
+  font-style: italic;
+}
+
+#avcxhliypn .gt_super {
+  font-size: 65%;
+}
+
+#avcxhliypn .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#avcxhliypn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#avcxhliypn .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#avcxhliypn .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#avcxhliypn .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#avcxhliypn .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#avcxhliypn .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#avcxhliypn .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#avcxhliypn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="label"><span class='gt_from_md'><strong>Characteristic</strong></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_1"><span class='gt_from_md'><strong>1.Homme</strong><br />
+N = 595</span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_2"><span class='gt_from_md'><strong>2.Femme</strong><br />
+N = 413</span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="p.value"><span class='gt_from_md'><strong>p-value</strong></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">opi_usa_rep2</td>
+<td headers="stat_1" class="gt_row gt_center"><br /></td>
+<td headers="stat_2" class="gt_row gt_center"><br /></td>
+<td headers="p.value" class="gt_row gt_center">0.4</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Favorable</td>
+<td headers="stat_1" class="gt_row gt_center">294 (50%)</td>
+<td headers="stat_2" class="gt_row gt_center">188 (47%)</td>
+<td headers="p.value" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Défavorable</td>
+<td headers="stat_1" class="gt_row gt_center">293 (50%)</td>
+<td headers="stat_2" class="gt_row gt_center">210 (53%)</td>
+<td headers="p.value" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Unknown</td>
+<td headers="stat_1" class="gt_row gt_center">8</td>
+<td headers="stat_2" class="gt_row gt_center">15</td>
+<td headers="p.value" class="gt_row gt_center"><br /></td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> <span class='gt_from_md'>n (%)</span></td>
+    </tr>
+    <tr>
+      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> <span class='gt_from_md'>Pearson’s Chi-squared test</span></td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<ul>
+<li><strong>Commentaire</strong> : On obtient directement la p-value ce qui facilite le commentaire.</li>
+</ul>
+</div>
+<div id="exemple-de-rejet-de-h0" class="section level3 hasAnchor" number="7.5.3">
+<h3><span class="header-section-number">7.5.3</span> Exemple de rejet de H0<a href="07-TabcontV2.html#exemple-de-rejet-de-h0" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Considérons maintenant le cas de la relation entre opinion sur les USA et l’âge en 3 classes d’effectif égaux.</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="07-TabcontV2.html#cb212-1" tabindex="-1"></a>tabcont<span class="ot">&lt;-</span><span class="fu">table</span>(don<span class="sc">$</span>age3b,don<span class="sc">$</span>opi_usa_rep2)</span>
+<span id="cb212-2"><a href="07-TabcontV2.html#cb212-2" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">lprop</span>(tabcont), <span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(18,41]</td>
+<td align="right">51.6</td>
+<td align="right">48.4</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="left">(41,60]</td>
+<td align="right">54.1</td>
+<td align="right">45.9</td>
+<td align="right">100</td>
+</tr>
+<tr class="odd">
+<td align="left">(60,93]</td>
+<td align="right">40.5</td>
+<td align="right">59.5</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="left">All</td>
+<td align="right">49.0</td>
+<td align="right">51.0</td>
+<td align="right">100</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Commentaire</strong> : Il semble y avoir une différence nette entre les plus de 60 ans et les deux autres classes d’âge. Les plus âgés sont les mopins favorables aux USA.</li>
+</ul>
+<p>On effectue le test du chi-2</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="07-TabcontV2.html#cb213-1" tabindex="-1"></a>montest <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tabcont)</span>
+<span id="cb213-2"><a href="07-TabcontV2.html#cb213-2" tabindex="-1"></a>montest</span>
+<span id="cb213-3"><a href="07-TabcontV2.html#cb213-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb213-4"><a href="07-TabcontV2.html#cb213-4" tabindex="-1"></a><span class="co">#&gt;  Pearson&#39;s Chi-squared test</span></span>
+<span id="cb213-5"><a href="07-TabcontV2.html#cb213-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb213-6"><a href="07-TabcontV2.html#cb213-6" tabindex="-1"></a><span class="co">#&gt; data:  tabcont</span></span>
+<span id="cb213-7"><a href="07-TabcontV2.html#cb213-7" tabindex="-1"></a><span class="co">#&gt; X-squared = 13.177, df = 2, p-value = 0.001376</span></span></code></pre></div>
+<ul>
+<li><strong>Commentaire</strong> : ici on rejette clairement H0 avec un chi-2 de 12.8 pour 2 degrés de liberté et une relation significative (p &lt; 0.01)</li>
+</ul>
+</div>
+<div id="valeurs-observées-et-estimées" class="section level3 hasAnchor" number="7.5.4">
+<h3><span class="header-section-number">7.5.4</span> Valeurs observées et estimées<a href="07-TabcontV2.html#valeurs-observées-et-estimées" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="07-TabcontV2.html#cb214-1" tabindex="-1"></a><span class="fu">kable</span>(montest<span class="sc">$</span>observed,  <span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(18,41]</td>
+<td align="right">166</td>
+<td align="right">156</td>
+</tr>
+<tr class="even">
+<td align="left">(41,60]</td>
+<td align="right">186</td>
+<td align="right">158</td>
+</tr>
+<tr class="odd">
+<td align="left">(60,93]</td>
+<td align="right">124</td>
+<td align="right">182</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="07-TabcontV2.html#cb215-1" tabindex="-1"></a><span class="fu">kable</span>(montest<span class="sc">$</span>expected,  <span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(18,41]</td>
+<td align="right">157.7</td>
+<td align="right">164.3</td>
+</tr>
+<tr class="even">
+<td align="left">(41,60]</td>
+<td align="right">168.5</td>
+<td align="right">175.5</td>
+</tr>
+<tr class="odd">
+<td align="left">(60,93]</td>
+<td align="right">149.9</td>
+<td align="right">156.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="résidus-bruts-et-standardisées" class="section level3 hasAnchor" number="7.5.5">
+<h3><span class="header-section-number">7.5.5</span> Résidus bruts et standardisées<a href="07-TabcontV2.html#résidus-bruts-et-standardisées" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="07-TabcontV2.html#cb216-1" tabindex="-1"></a><span class="fu">kable</span>(montest<span class="sc">$</span>observed<span class="sc">-</span>montest<span class="sc">$</span>expected, <span class="at">digits=</span><span class="dv">1</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(18,41]</td>
+<td align="right">8.3</td>
+<td align="right">-8.3</td>
+</tr>
+<tr class="even">
+<td align="left">(41,60]</td>
+<td align="right">17.5</td>
+<td align="right">-17.5</td>
+</tr>
+<tr class="odd">
+<td align="left">(60,93]</td>
+<td align="right">-25.9</td>
+<td align="right">25.9</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="07-TabcontV2.html#cb217-1" tabindex="-1"></a><span class="fu">kable</span>(montest<span class="sc">$</span>residuals)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(18,41]</td>
+<td align="right">0.661983</td>
+<td align="right">-0.6484992</td>
+</tr>
+<tr class="even">
+<td align="left">(41,60]</td>
+<td align="right">1.351318</td>
+<td align="right">-1.3237935</td>
+</tr>
+<tr class="odd">
+<td align="left">(60,93]</td>
+<td align="right">-2.111838</td>
+<td align="right">2.0688225</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="graphique-des-écarts-les-plus-significatifs" class="section level3 hasAnchor" number="7.5.6">
+<h3><span class="header-section-number">7.5.6</span> Graphique des écarts les plus significatifs<a href="07-TabcontV2.html#graphique-des-écarts-les-plus-significatifs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="07-TabcontV2.html#cb218-1" tabindex="-1"></a><span class="fu">mosaicplot</span>(tabcont, <span class="at">shade =</span> T)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-243-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="pondération" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Pondération<a href="07-TabcontV2.html#pondération" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tableau-pondéré" class="section level3 hasAnchor" number="7.6.1">
+<h3><span class="header-section-number">7.6.1</span> Tableau pondéré<a href="07-TabcontV2.html#tableau-pondéré" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On calcule un tableau de contingence pondéré avec la fonction <code>wtd.table()</code> du package <strong>questionr</strong>. Elle ressemble beaucoup à la fonction <code>table()</code>mais avec un paramètre supplémentaire.</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="07-TabcontV2.html#cb219-1" tabindex="-1"></a>tabcont_P <span class="ot">&lt;-</span><span class="fu">wtd.table</span>(<span class="at">x =</span> don<span class="sc">$</span>age3b, </span>
+<span id="cb219-2"><a href="07-TabcontV2.html#cb219-2" tabindex="-1"></a>                      <span class="at">y =</span> don<span class="sc">$</span>opi_usa_rep2, </span>
+<span id="cb219-3"><a href="07-TabcontV2.html#cb219-3" tabindex="-1"></a>                      <span class="at">weights =</span> don<span class="sc">$</span>poids)</span>
+<span id="cb219-4"><a href="07-TabcontV2.html#cb219-4" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">addmargins</span>(tabcont_P), <span class="at">digits =</span> <span class="dv">1</span>, <span class="at">caption =</span> <span class="st">&quot;Tableau de contingence pondéré&quot;</span>)</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-244">Table 7.1: </span>Tableau de contingence pondéré</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+<th align="right">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(18,41]</td>
+<td align="right">192.5</td>
+<td align="right">176.2</td>
+<td align="right">368.7</td>
+</tr>
+<tr class="even">
+<td align="left">(41,60]</td>
+<td align="right">163.3</td>
+<td align="right">134.7</td>
+<td align="right">298.0</td>
+</tr>
+<tr class="odd">
+<td align="left">(60,93]</td>
+<td align="right">121.2</td>
+<td align="right">165.9</td>
+<td align="right">287.1</td>
+</tr>
+<tr class="even">
+<td align="left">Sum</td>
+<td align="right">477.0</td>
+<td align="right">476.9</td>
+<td align="right">953.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="comparaison-des-pourcentages" class="section level3 hasAnchor" number="7.6.2">
+<h3><span class="header-section-number">7.6.2</span> Comparaison des pourcentages<a href="07-TabcontV2.html#comparaison-des-pourcentages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<caption><span id="tab:unnamed-chunk-245">Table 7.2: </span>Calculs non pondérés</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(18,41]</td>
+<td align="right">51.6</td>
+<td align="right">48.4</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="left">(41,60]</td>
+<td align="right">54.1</td>
+<td align="right">45.9</td>
+<td align="right">100</td>
+</tr>
+<tr class="odd">
+<td align="left">(60,93]</td>
+<td align="right">40.5</td>
+<td align="right">59.5</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="left">All</td>
+<td align="right">49.0</td>
+<td align="right">51.0</td>
+<td align="right">100</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption><span id="tab:unnamed-chunk-245">Table 7.2: </span>Calculs pondérés</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Favorable</th>
+<th align="right">Défavorable</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(18,41]</td>
+<td align="right">52.2</td>
+<td align="right">47.8</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="left">(41,60]</td>
+<td align="right">54.8</td>
+<td align="right">45.2</td>
+<td align="right">100</td>
+</tr>
+<tr class="odd">
+<td align="left">(60,93]</td>
+<td align="right">42.2</td>
+<td align="right">57.8</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="left">All</td>
+<td align="right">50.0</td>
+<td align="right">50.0</td>
+<td align="right">100</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Commentaire</strong> : les pourcentages obtenus après pondération sont différents.</li>
+</ul>
+</div>
+<div id="comparaison-des-tests" class="section level3 hasAnchor" number="7.6.3">
+<h3><span class="header-section-number">7.6.3</span> Comparaison des tests<a href="07-TabcontV2.html#comparaison-des-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="07-TabcontV2.html#cb220-1" tabindex="-1"></a><span class="fu">chisq.test</span>(tabcont)</span>
+<span id="cb220-2"><a href="07-TabcontV2.html#cb220-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb220-3"><a href="07-TabcontV2.html#cb220-3" tabindex="-1"></a><span class="co">#&gt;  Pearson&#39;s Chi-squared test</span></span>
+<span id="cb220-4"><a href="07-TabcontV2.html#cb220-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb220-5"><a href="07-TabcontV2.html#cb220-5" tabindex="-1"></a><span class="co">#&gt; data:  tabcont</span></span>
+<span id="cb220-6"><a href="07-TabcontV2.html#cb220-6" tabindex="-1"></a><span class="co">#&gt; X-squared = 13.177, df = 2, p-value = 0.001376</span></span>
+<span id="cb220-7"><a href="07-TabcontV2.html#cb220-7" tabindex="-1"></a><span class="fu">chisq.test</span>(tabcont_P)</span>
+<span id="cb220-8"><a href="07-TabcontV2.html#cb220-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb220-9"><a href="07-TabcontV2.html#cb220-9" tabindex="-1"></a><span class="co">#&gt;  Pearson&#39;s Chi-squared test</span></span>
+<span id="cb220-10"><a href="07-TabcontV2.html#cb220-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb220-11"><a href="07-TabcontV2.html#cb220-11" tabindex="-1"></a><span class="co">#&gt; data:  tabcont_P</span></span>
+<span id="cb220-12"><a href="07-TabcontV2.html#cb220-12" tabindex="-1"></a><span class="co">#&gt; X-squared = 10.414, df = 2, p-value = 0.005478</span></span></code></pre></div>
+<ul>
+<li><strong>Commentaire</strong> : les résultats du test sont un peu différents même si la conclusion reste la même.</li>
+</ul>
+</div>
+<div id="solution-exacte" class="section level3 hasAnchor" number="7.6.4">
+<h3><span class="header-section-number">7.6.4</span> Solution exacte<a href="07-TabcontV2.html#solution-exacte" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En réalité la pondération ne modifie pas seulement les valeurs du tableau de contingence mais aussi la méthode de calcul du test du chi-2. Si l’on voulait un solution exacte, il faudrait utiliser le package <strong>survey</strong>.</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="07-TabcontV2.html#cb221-1" tabindex="-1"></a><span class="fu">library</span>(survey)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="07-TabcontV2.html#cb222-1" tabindex="-1"></a><span class="co"># Précise le mode d&#39;échantillonage et la pondération</span></span>
+<span id="cb222-2"><a href="07-TabcontV2.html#cb222-2" tabindex="-1"></a>don_w <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">data =</span> don, <span class="at">weights =</span> <span class="sc">~</span> don<span class="sc">$</span>poids)</span>
+<span id="cb222-3"><a href="07-TabcontV2.html#cb222-3" tabindex="-1"></a><span class="co"># effectue le test</span></span>
+<span id="cb222-4"><a href="07-TabcontV2.html#cb222-4" tabindex="-1"></a>chi2_w <span class="ot">&lt;-</span><span class="fu">svychisq</span>(<span class="sc">~</span>opi_usa_rep2<span class="sc">+</span>age3b, don_w)</span>
+<span id="cb222-5"><a href="07-TabcontV2.html#cb222-5" tabindex="-1"></a>chi2_w</span>
+<span id="cb222-6"><a href="07-TabcontV2.html#cb222-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb222-7"><a href="07-TabcontV2.html#cb222-7" tabindex="-1"></a><span class="co">#&gt;  Pearson&#39;s X^2: Rao &amp; Scott adjustment</span></span>
+<span id="cb222-8"><a href="07-TabcontV2.html#cb222-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb222-9"><a href="07-TabcontV2.html#cb222-9" tabindex="-1"></a><span class="co">#&gt; data:  svychisq(~opi_usa_rep2 + age3b, don_w)</span></span>
+<span id="cb222-10"><a href="07-TabcontV2.html#cb222-10" tabindex="-1"></a><span class="co">#&gt; F = 2.8986, ndf = 1.9914, ddf = 2005.3796, p-value = 0.05557</span></span></code></pre></div>
+<ul>
+<li><strong>Commentaire</strong> : En fait notre relation n’est pas tout à fait significative (p = 0.06) contrairement à ce que pouvait laisser penser les analyses précédentes.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<script src="js/tidyverse.js"></script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="06-Anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="07-Tabcont.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"],
+"instapper": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/ClaudeGrasland/bivR/blob/main/07-TabcontV2.Rmd",
+"text": "Source"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bivaR.epub", "bivaR.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

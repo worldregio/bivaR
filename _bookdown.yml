@@ -17,6 +17,7 @@ rmd_files: [
   "04-Corrélation.Rmd",
   "05-Régression.Rmd",
   "06-Anova.Rmd",
+  "07-TabcontV2.Rmd",
   "07-Tabcont.Rmd",
   "08-Graphique-Base.Rmd",
   "09bis-Graphique-ggplot.Rmd",
