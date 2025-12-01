@@ -435,7 +435,3 @@ knitr::include_graphics("resources/figures/diapo3.png")
 R est un `Excel killer` mais aussi un `Word killer` voire un `Power point killer`...  Adopter R peut nuire gravement à vos habitudes antérieures de travail.
 
 ```
-
-
-
-

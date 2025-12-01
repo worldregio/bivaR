@@ -21,7 +21,8 @@ rmd_files: [
   "07-Tabcont.Rmd",
   "08-Graphique-Base.Rmd",
   "09bis-Graphique-ggplot.Rmd",
-  "10-Cartographie-tmap.Rmd"
+  "10-Cartographie-tmap.Rmd",
+  "10-Tidyverse.Rmd"
   
 ]
 

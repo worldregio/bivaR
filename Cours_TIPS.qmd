@@ -1,0 +1,388 @@
+---
+title: "Test d'égalité des moyennes et analyse de variance"
+subtitle: "Cours"
+format: html
+---
+
+
+
+
+
+## Préparation des données
+
+### Chargement du fichier
+
+On charge un fichier statistique appelé *tips.csv* où les séparateurs sont des points-virgules et les décimales des points.
+
+```{r }
+don<-read.table(file = "tips/tips.csv",
+                sep = ";",
+                header = T)
+head(don)
+```
+
+### Contenu du fichier
+
+Ce dossier contient les pourboires (*tips* en anglais, d'où le nom du fichier) d'un serveur dans un restaurant américain aux débuts des années 1990. Le restaurant était dans un centre commercial. Il y avait une zone fumeurs et une zone non fumeurs.Les données indiquent le prix du repas, le pourboire, le sexe de la personne qui a payé et donné le pourboire, si c'était dans la zone fumeurs ou non, le jour où le repas a été pris, si c'était en journée ou en soirée et enfin, le nombre de convives. 
+
+**Sources** : Ces données sont disponibles dans le package R nommé rggobi et sont décrites dans l'ouvrage de Cook et Swayne intitulé *Interactive and Dynamic Graphics for Data Analysi*s. Elles font partie des données d'exemple du livre de Bryant et Smith dont la première édition est parue en 1995 dont le titre est *Practical Data Analysis: Case Studies in Business Statistics*. 
+
+### Dictionaire des variables
+
+- **IDEN**    : identifiant du repas
+- **TOTBILL** : prix du repas (en dollars des années 1990)
+- **TIP** : pourboire (en dollars des années 1990)
+- **SEX** : sexe de la personne qui a payé (0 = Homme, 1 = Femme)
+- **SMOKER** : la personne qui a payé est non-fumeur (O) ou fumeur (1)
+- **DAY** : jour de la semaine (1 = dimanche, 2 = lundi, 3 = mardi, ...)
+- **TIME** : repas pris en journée (0) ou le soir (1)
+- **SIZE** : nombre de convives 
+
+### Recodage des variables 
+
+Le type de plusieurs variables est incorrect. On transforme les codes numériques en facteur et on recode les niveaux en français : 
+
+```{r}
+don$IDEN<-as.character(don$IDEN)
+don$SEX<-as.factor(don$SEX)
+levels(don$SEX)<-c("Homme","Femme")
+don$SMOKER<-as.factor(don$SMOKER)
+levels(don$SMOKER)<-c("Non fumeur", "Fumeur")
+don$DAY<-as.factor(don$DAY)
+levels(don$DAY)<-c("Mercredi","Jeudi","Vendredi","Samedi")
+don$TIME<-as.factor(don$TIME)
+levels(don$TIME)<-c("Journée","Soirée")
+```
+
+
+### Ajout d'une nouvelle variable
+
+On crée la variable PCT qui est le rapport entre le pourboire (TIP) et le prix total (TOTBILL) du repas exprimé en pourcentage.
+
+```{r}
+don$PCT<-100*don$TIP/don$TOTBILL
+```
+
+
+### Résumé de l'ensemble du tableau
+
+```{r}
+summary(don)
+```
+
+## Rappels sur la régression
+
+
+### La distribution de PCT est-elle normale ?
+
+```{r}
+hist(don$PCT, breaks = 10,col="lightyellow",probability = TRUE)
+lines(density(don$PCT,bw=3),col="red",lwd=1)
+```
+
+La distribution semble normale . Mais est-ce l'avis du test de Shapiro ?
+
+```{r}
+shapiro.test(don$PCT)
+```
+
+
+Que nous apprend la boxplot ?
+
+```{r}
+boxplot(don$PCT, col="lightyellow",horizontal = T)
+```
+
+
+La distribution devient presque parfaitement gaussienne si on retire les 4 valeurs exceptionnelles !
+
+```{r}
+don2<-don[don$PCT<30,]
+shapiro.test(don2$PCT)
+```
+
+
+```{r}
+hist(don2$PCT, breaks = 10,col="lightyellow",probability = TRUE)
+lines(density(don2$PCT,bw=3),col="red",lwd=1)
+```
+
+
+
+### Y-a-t-il une relation entre le prix du repas et le pourboire ?
+
+On fait le graphique ...
+
+```{r}
+plot(don2$TOTBILL,don2$TIP)
+
+```
+
+Puis on teste le coefficient de Pearson et celui de Sperman
+
+```{r}
+cor.test(don2$TIP,don2$TOTBILL)
+
+cor.test(don2$TIP,don2$TOTBILL, method="spearman")
+```
+
+
+### Modèle de régression
+
+On calcule le modèle de régression
+
+```{r}
+mareg<-lm(don2$TIP~don2$TOTBILL)
+```
+
+
+```{r,fig.height=4}
+plot(don2$TOTBILL,don2$TIP, xlab="Repas ($)",ylab = "Pourboire ($)",pch=19,cex=0.5)
+abline(mareg,col="red",lwd=1)
+```
+
+
+
+## Test d'égalité des moyennes
+
+### Hypothèses
+
+On considère une variable **Y quantitative continue** définie sur une population de réféence P  et une variable **X qualitative à deux modalités** divisant P en deux sous population P1 et P2. 
+
+Soit par exemple la variable Y = PCT et la variable X = SEX. On peut se demander si les femmes sont plus généreuses que les hommes, les hommes sont plus généreux que les femmes, les hommes sont différents des femmes, etc...
+
+
+```{r}
+
+Y<-don2$PCT
+nomY <-"Pourboire relatif (%)"
+
+X<-don2$SEX
+nomX <- "Sexe du client"
+
+#X<-don2$SMOKER
+#nomX<- "Tabagisme"
+
+#X<-don2$TIME
+#nomX<- "Moment de la journée"
+
+
+```
+
+### Visualisations
+
+Le plus simple est d'utiliser  **boxplot()** en version de base ...
+
+```{r}
+
+boxplot(Y~X)
+```
+
+
+
+... ou améliorée
+
+```{r}
+
+boxplot(Y~X,horizontal=T, xlab = nomY, ylab=nomX, col="gray80")
+```
+
+
+
+On peut aussi utiliser le package **beanplot()** en version simple ...
+
+```{r}
+library(beanplot)
+beanplot(Y~X)
+```
+
+... ou améliorée : 
+
+
+```{r}
+library(beanplot)
+beanplot(Y~X,horizontal=T, xlab = nomY, ylab=nomX,col = "gray80")
+```
+
+
+### Paramètres principaux 
+
+On détermine la moyenne et l'écart-type de chaque échantillon avec la fonction tapply() couplée avec les fonctions mean(), sd() ou summary()
+
+
+```{r}
+tapply(Y,X, mean)
+tapply(Y,X,sd)
+tapply(Y,X, summary)
+```
+
+
+### Test d'égalité des moyennes 
+
+Si la distribution est gaussienne on utilise le test de Student :
+
+```{r}
+t.test(Y~X)
+```
+
+
+Si ce n'est pas le cas et s'il y a des valeurs exceptionnelles on préfèrera le test de Wilcoxon basé sur les rangs des valeurs (comme le coefficient de corrélation de Spearman)
+
+```{r}
+wilcox.test(Y~X)
+```
+
+Lorsque les deux tests divergent dans leur conclusions, il y a certainement un problème de violation de l'hypothèse gaussienne. Dans ce cas, il faut sans doute transformer Y ou retirer des valeurs exceptionnelles (Cf.cours sur la corrélation et la régression)
+
+
+## Analyse de variance 
+
+### Hypothèses
+
+On considère une variable **Y quantitative continue** définie sur une population de réféence P  et une variable **X qualitative à k  modalités** divisant P en k sous population P1...Pk. 
+
+Soit par exemple la variable Y = PCT et la variable X = DAY. On peut se demander si la générosité des pourboires varie en fonction des jours de la semaine (mercredi, jeudi, vendredi ou samedi). On fera toutefois attention au fait que l'échantillon n'est pas très équilibré
+
+```{r}
+table(don2$DAY)
+```
+
+### Calcul des paramètres principaux 
+
+On va calculer les paramètres principaux de chacune des quatre sous population à l'aide de **la superfonction tapply()** dont la syntaxe est la suivante
+
+tapply(*variable à analyser, variable de partition  , function*)
+
+La fonction **tapply()** s'applique sur les tableaux (*data.frame*). Il y a des fonctions équvalentes pour les listes, les matrices, etc...
+
+```{r}
+moy<-tapply(X = don2$PCT, INDEX = don2$DAY, FUN = mean)
+moy
+ect<-tapply(don2$PCT, don2$DAY, sd)
+ect
+100*ect/moy
+```
+
+
+```{r}
+tapply(don2$PCT, don2$DAY, summary)
+```
+
+
+### Visualisation
+
+On utilise comme précédemment boxplot() : 
+
+
+```{r}
+boxplot(don2$PCT~don2$DAY, col="gray80")
+```
+
+
+
+Ou bien beanplot() : 
+
+```{r}
+library(beanplot)
+beanplot(don2$PCT~don2$DAY,col = "gray80")
+```
+
+
+### Modélisation simple
+
+La solution la plus simple est d'utiliser la fonction **lm()** que l'on a déjà vu pour la régression.
+
+```{r}
+monmodel<-lm(don2$PCT~don2$DAY)
+summary(monmodel)
+```
+
+
+On peut ensuite appliquer une analyse de variance avec **anova()**  sur le modèle pour mesurer la variance totale et la variance résiduelle ainsi que la significativité de la relation. 
+
+```{r}
+anova(monmodel)
+```
+
+
+Et on peut effectuer quelques diagnostics sur les résidus : 
+
+```{r}
+par(mfrow = c(2,2))
+plot(monmodel,c(1,2,3,4))
+```
+
+
+
+
+### Modélisation avancée
+
+D'un point de vue statistique, l'analyse de variance à un facteur fait appel à des modèles et des hhypothèses plus sophistiqués que le modèle de base présenté ici et comporte de nombreux tests. On se reportera donc ave profit aux trois cours en lignes de Claire Della Vedova pour une approche plus poussée
+
+https://statistique-et-logiciel-r.com/anova-a-un-facteur-partie-1/
+
+https://statistique-et-logiciel-r.com/anova-a-un-facteur-partie-2-la-pratique/
+
+https://statistique-et-logiciel-r.com/anova-a-un-facteur-quand-les-hypotheses-ne-sont-pas-satisfaites/
+
+
+
+## Annexe : les variables hybrides
+
+
+Le nombre de convives (SIZE) n'est ni une variable quantitative continue, ni une variable qualitative de type catégorielle. On peut donc l'appréhender de deux points de vue différents sur le plan statistique
+
+- variable **quantitative discrète** : ce qui permet d'utiliser un modèle de régression linéaire.
+
+- variable **qualitative ordinale** : ce qui permet d'utiliser un modèle d'analyse de variance.
+
+### SIZE = quantitative discrète
+
+```{r}
+hist(don$SIZE, breaks=6, col="gray80")
+```
+
+
+
+```{r}
+modreg<-lm(don2$PCT~don2$SIZE)
+summary(modreg)
+```
+
+
+```{r}
+plot(don2$SIZE,don2$PCT, col="blue", pch=19, cex=0.7)
+abline(modreg, col="red")
+```
+
+### SIZE = qualitative ordinale
+
+On recode les catégories trop rares ...
+
+```{r}
+don2$SIZE2<-as.factor(don2$SIZE)
+levels(don2$SIZE2)<-c("1-2","1-2","3+","3+","3+","3+")
+summary(don2$SIZE2)
+plot(don2$SIZE2)
+```
+
+
+
+```{r}
+tapply(don2$PCT, don2$SIZE2, mean)
+tapply(don2$PCT, don2$SIZE2, sd)
+```
+
+
+
+```{r}
+beanplot(don2$PCT~don2$SIZE2)
+
+```
+
+
+
+```{r}
+modvar<-lm(don2$PCT~don2$SIZE2)
+summary(modvar)
+```

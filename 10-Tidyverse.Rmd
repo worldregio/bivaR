@@ -209,7 +209,7 @@ don$dist_gare<-don$dist_gare/1000
 don<-don[,c("prixm2", "dist_gare")]
 head(don,3)
 
-#Solution dplyr n°1
+#Solution dplyr 
 don<-base %>% filter(com_code==94068) %>%              # sélection de Saint-Maur
               mutate(prixm2 = prix/sup,                # création du prix au m2
                      dist_gare = dist_gare/1000)%>%    # conversion de la distance en km
@@ -235,7 +235,7 @@ don <- don[order(don$dist_gare),]
 head(don,3)
 tail(don,3)
 
-#Solution dplyr n°1
+#Solution dplyr 
 don<-base %>% filter(com_code==94068) %>%              # sélection de Saint-Maur
               mutate(prixm2 = prix/sup,                # création du prix au m2
                      dist_gare = dist_gare/1000)%>%    # conversion de la distance en km
@@ -247,6 +247,70 @@ tail(don,3)
 ```
 
 
+### group_by() & summarise()
+
+En dehors des fonctions élémentaires précédentes, **dplyr** permet des manipulations beaucoup plus avancées avec des fonctions telles que *group_by()* et *summarise()* qui remplacent les fonctions de type *tapply()* ou *aggregate()* utilisées dans R-base. On se limitera ici à quelques cas très simple d'utilisation de ces deux fonctions
+
+
+- **Exemple 1 : Dénombrement**
+
+Supposons qu'on veuille connaître le type de logement vendu chaque année pour la commune de St-Maur
+```{r}
+## Solution R-base
+don <- base[base$com_code==94068,]
+table(don$type, don$ann)
+
+## Solution dplyr
+don <- base %>% filter(com_code == 94068) %>%
+                group_by(type, ann) %>%
+                count()
+don
+```
+
+On récupère un tableau de données facile à exploiter.
+
+- **Exemple 2 : agrégation**
+
+On cherche à connaître les prix minimum, moyen et maximum à St Maur par année et par type de logement :
+
+
+```{r}
+## Solution R-base
+don <- base[base$com_code==94068,]
+don$prixm2 <- don$prix/don$sup
+tab1<-aggregate(don$prixm2,
+          by= list(don$ann,don$type),
+          FUN="min")
+names(tab1)<-c("ann","type","minimum")
+tab2<-aggregate(don$prixm2,
+          by= list(don$ann,don$type),
+          FUN="mean")
+names(tab2)<-c("ann","type","moyenne")
+tab3<-aggregate(don$prixm2,
+          by= list(don$ann,don$type),
+          FUN="max")
+names(tab3)<-c("ann","type","maximum")
+tab<-merge(tab1,tab2, by=c("ann","type"))
+tab<-merge(tab, tab3, by=c("ann","type"))
+tab
+
+
+```
+
+
+
+```{r}
+## Solution dplyr
+tab <- base %>% filter(com_code == 94068) %>%
+                mutate(prixm2 = prix/sup)%>%
+                group_by(type, ann) %>%
+                summarise(minimum = min(prixm2),
+                          maximum=max(prixm2),
+                          moyenne = mean(prixm2))
+tab
+```
+
+On aboutit au même résultat mais l'écriture en dplyr est beaucoup plus concise et beaucoup plus élégante qu'en R-base.
 
 ## Visualiser avec ggplot2
 
@@ -494,9 +558,6 @@ hist(sel2$prix,breaks = 15,
      ylab = "Nombre de ventes",
      main = "Ventes de maison")
 ```
-
-
-
 
 
 #### geom_histogram (ggplot2)

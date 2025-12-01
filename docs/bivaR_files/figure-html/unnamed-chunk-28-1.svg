@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='504.00pt' height='360.00pt' viewBox='0 0 504.00 360.00'>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='504.00pt' height='360.00pt' viewBox='0 0 504.00 360.00'>
+<g class='svglite'>
 <defs>
   <style type='text/css'><![CDATA[
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
@@ -12,6 +13,10 @@
     .svglite text {
       white-space: pre;
     }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
   ]]></style>
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
@@ -21,24 +26,23 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='175.20px' lengthAdjust='spacingAndGlyphs'>Genre et avis sur les USA</text>
-<text x='266.40' y='326.88' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='200.78px' lengthAdjust='spacingAndGlyphs'>Source : Global Attitude Survey, 2019</text>
-<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='27.35px' lengthAdjust='spacingAndGlyphs'>Sexe</text>
-<text transform='translate(41.76,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='105.39px' lengthAdjust='spacingAndGlyphs'>opinion sur les USA</text>
-<text x='188.48' y='64.69' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='34.28px' lengthAdjust='spacingAndGlyphs'>1.Homme</text>
-<text x='379.03' y='64.69' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='33.40px' lengthAdjust='spacingAndGlyphs'>2.Femme</text>
-<text transform='translate(67.62,123.25) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='35.17px' lengthAdjust='spacingAndGlyphs'>Favorable</text>
-<text transform='translate(67.68,233.01) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='42.65px' lengthAdjust='spacingAndGlyphs'>Défavorable</text>
+<rect x='74.40' y='59.04' width='174.55' height='225.27' style='stroke-width: 0.75; fill: #0000FF;' />
+<rect x='283.85' y='184.54' width='174.55' height='99.76' style='stroke-width: 0.75; fill: #FF0000;' />
+<text x='161.67' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='68.69px' lengthAdjust='spacingAndGlyphs'>Appartement</text>
+<text x='371.13' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='38.69px' lengthAdjust='spacingAndGlyphs'>Maison</text>
+<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='95.38px' lengthAdjust='spacingAndGlyphs'>Type de logement</text>
+<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='35.11px' lengthAdjust='spacingAndGlyphs'>effectif</text>
+<line x1='59.04' y1='284.31' x2='59.04' y2='88.21' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='284.31' x2='51.84' y2='284.31' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='235.28' x2='51.84' y2='235.28' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='186.26' x2='51.84' y2='186.26' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='137.23' x2='51.84' y2='137.23' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='88.21' x2='51.84' y2='88.21' style='stroke-width: 0.75;' />
+<text transform='translate(41.76,284.31) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text transform='translate(41.76,235.28) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>1000</text>
+<text transform='translate(41.76,186.26) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>2000</text>
+<text transform='translate(41.76,137.23) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>3000</text>
+<text transform='translate(41.76,88.21) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>4000</text>
 </g>
-<defs>
-  <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
-    <rect x='59.04' y='59.04' width='414.72' height='227.52' />
-  </clipPath>
-</defs>
-<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
-<polygon points='79.38,176.07 297.58,176.07 297.58,70.43 79.38,70.43 ' style='stroke-width: 0.75; fill: #0000FF;' />
-<polygon points='79.38,285.65 297.58,285.65 297.58,180.37 79.38,180.37 ' style='stroke-width: 0.75; fill: #FF0000;' />
-<polygon points='305.06,170.06 453.00,170.06 453.00,70.43 305.06,70.43 ' style='stroke-width: 0.75; fill: #0000FF;' />
-<polygon points='305.06,285.65 453.00,285.65 453.00,174.36 305.06,174.36 ' style='stroke-width: 0.75; fill: #FF0000;' />
 </g>
 </svg>
