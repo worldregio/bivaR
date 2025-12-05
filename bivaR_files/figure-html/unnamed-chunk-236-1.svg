@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='504.00pt' height='360.00pt' viewBox='0 0 504.00 360.00'>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='504.00pt' height='360.00pt' viewBox='0 0 504.00 360.00'>
+<g class='svglite'>
 <defs>
   <style type='text/css'><![CDATA[
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
@@ -12,6 +13,10 @@
     .svglite text {
       white-space: pre;
     }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
   ]]></style>
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
@@ -21,14 +26,11 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<text x='266.40' y='34.70' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='175.20px' lengthAdjust='spacingAndGlyphs'>Genre et avis sur les USA</text>
-<text x='266.40' y='326.88' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='200.78px' lengthAdjust='spacingAndGlyphs'>Source : Global Attitude Survey, 2019</text>
-<text x='266.40' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='27.35px' lengthAdjust='spacingAndGlyphs'>Sexe</text>
-<text transform='translate(41.76,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='105.39px' lengthAdjust='spacingAndGlyphs'>opinion sur les USA</text>
-<text x='188.48' y='64.69' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='34.28px' lengthAdjust='spacingAndGlyphs'>1.Homme</text>
-<text x='379.03' y='64.69' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='33.40px' lengthAdjust='spacingAndGlyphs'>2.Femme</text>
-<text transform='translate(67.62,123.25) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='35.17px' lengthAdjust='spacingAndGlyphs'>Favorable</text>
-<text transform='translate(67.68,233.01) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='42.65px' lengthAdjust='spacingAndGlyphs'>Défavorable</text>
+<text x='266.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='51.98px' lengthAdjust='spacingAndGlyphs'>tabcont</text>
+<text x='169.97' y='64.71' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='26.80px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text x='360.51' y='64.71' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='27.67px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text transform='translate(67.63,129.25) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='30.94px' lengthAdjust='spacingAndGlyphs'>D'accord</text>
+<text transform='translate(67.63,239.01) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='45.44px' lengthAdjust='spacingAndGlyphs'>Pas d'accord</text>
 </g>
 <defs>
   <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
@@ -36,9 +38,10 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
-<polygon points='79.38,176.07 297.58,176.07 297.58,70.43 79.38,70.43 ' style='stroke-width: 0.75; fill: #0000FF;' />
-<polygon points='79.38,285.65 297.58,285.65 297.58,180.37 79.38,180.37 ' style='stroke-width: 0.75; fill: #FF0000;' />
-<polygon points='305.06,170.06 453.00,170.06 453.00,70.43 305.06,70.43 ' style='stroke-width: 0.75; fill: #0000FF;' />
-<polygon points='305.06,285.65 453.00,285.65 453.00,174.36 305.06,174.36 ' style='stroke-width: 0.75; fill: #FF0000;' />
+<polygon points='79.38,188.07 260.55,188.07 260.55,70.43 79.38,70.43 ' style='stroke-width: 0.75; fill: #BEBEBE;' />
+<polygon points='79.38,285.65 260.55,285.65 260.55,192.37 79.38,192.37 ' style='stroke-width: 0.75; fill: #BEBEBE;' />
+<polygon points='268.03,215.06 453.00,215.06 453.00,70.43 268.03,70.43 ' style='stroke-width: 0.75; fill: #BEBEBE;' />
+<polygon points='268.03,285.65 453.00,285.65 453.00,219.36 268.03,219.36 ' style='stroke-width: 0.75; fill: #BEBEBE;' />
+</g>
 </g>
 </svg>

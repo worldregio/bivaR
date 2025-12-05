@@ -26,23 +26,22 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
-<rect x='74.40' y='59.04' width='174.55' height='225.27' style='stroke-width: 0.75; fill: #0000FF;' />
-<rect x='283.85' y='184.54' width='174.55' height='99.76' style='stroke-width: 0.75; fill: #FF0000;' />
-<text x='161.67' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='68.69px' lengthAdjust='spacingAndGlyphs'>Appartement</text>
-<text x='371.13' y='312.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='38.69px' lengthAdjust='spacingAndGlyphs'>Maison</text>
-<text x='266.40' y='341.28' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='95.38px' lengthAdjust='spacingAndGlyphs'>Type de logement</text>
-<text transform='translate(12.96,172.80) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='35.11px' lengthAdjust='spacingAndGlyphs'>effectif</text>
-<line x1='59.04' y1='284.31' x2='59.04' y2='88.21' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='284.31' x2='51.84' y2='284.31' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='235.28' x2='51.84' y2='235.28' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='186.26' x2='51.84' y2='186.26' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='137.23' x2='51.84' y2='137.23' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='88.21' x2='51.84' y2='88.21' style='stroke-width: 0.75;' />
-<text transform='translate(41.76,284.31) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text transform='translate(41.76,235.28) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>1000</text>
-<text transform='translate(41.76,186.26) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>2000</text>
-<text transform='translate(41.76,137.23) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>3000</text>
-<text transform='translate(41.76,88.21) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>4000</text>
+<text x='266.40' y='34.67' text-anchor='middle' style='font-size: 14.40px; font-weight: bold; font-family: "Arial";' textLength='51.98px' lengthAdjust='spacingAndGlyphs'>tabcont</text>
+<text x='169.97' y='64.71' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='26.80px' lengthAdjust='spacingAndGlyphs'>Femme</text>
+<text x='360.51' y='64.71' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='27.67px' lengthAdjust='spacingAndGlyphs'>Homme</text>
+<text transform='translate(67.63,129.25) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='30.94px' lengthAdjust='spacingAndGlyphs'>D'accord</text>
+<text transform='translate(67.63,239.01) rotate(-90)' text-anchor='middle' style='font-size: 7.92px; font-family: "Arial";' textLength='45.44px' lengthAdjust='spacingAndGlyphs'>Pas d'accord</text>
+</g>
+<defs>
+  <clipPath id='cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng=='>
+    <rect x='59.04' y='59.04' width='414.72' height='227.52' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNTkuMDR8NDczLjc2fDU5LjA0fDI4Ni41Ng==)'>
+<polygon points='79.38,188.07 260.55,188.07 260.55,70.43 79.38,70.43 ' style='stroke-width: 0.75; fill: #BEBEBE;' />
+<polygon points='79.38,285.65 260.55,285.65 260.55,192.37 79.38,192.37 ' style='stroke-width: 0.75; fill: #BEBEBE;' />
+<polygon points='268.03,215.06 453.00,215.06 453.00,70.43 268.03,70.43 ' style='stroke-width: 0.75; fill: #BEBEBE;' />
+<polygon points='268.03,285.65 453.00,285.65 453.00,219.36 268.03,219.36 ' style='stroke-width: 0.75; fill: #BEBEBE;' />
 </g>
 </g>
 </svg>

@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='504.00pt' height='288.00pt' viewBox='0 0 504.00 288.00'>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='504.00pt' height='288.00pt' viewBox='0 0 504.00 288.00'>
+<g class='svglite'>
 <defs>
   <style type='text/css'><![CDATA[
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
@@ -12,6 +13,10 @@
     .svglite text {
       white-space: pre;
     }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
   ]]></style>
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
@@ -21,24 +26,23 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwyODguMDA=)'>
-<rect x='74.40' y='183.29' width='83.48' height='29.73' style='stroke-width: 0.75; fill: #006400;' />
-<rect x='174.57' y='59.04' width='83.48' height='153.98' style='stroke-width: 0.75; fill: #00FF00;' />
-<rect x='274.75' y='72.76' width='83.48' height='140.26' style='stroke-width: 0.75; fill: #FFFFE0;' />
-<rect x='374.92' y='161.57' width='83.48' height='51.45' style='stroke-width: 0.75; fill: #FFA500;' />
-<text x='116.14' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='56.68px' lengthAdjust='spacingAndGlyphs'>1.Très fav.</text>
-<text x='216.31' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='66.70px' lengthAdjust='spacingAndGlyphs'>2. Plutôt fav.</text>
-<text x='316.49' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='80.05px' lengthAdjust='spacingAndGlyphs'>3. Plutôt défav.</text>
-<text x='416.66' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='70.03px' lengthAdjust='spacingAndGlyphs'>4.Très défav.</text>
-<line x1='59.04' y1='213.02' x2='59.04' y2='60.56' style='stroke-width: 0.75;' />
+<rect x='74.40' y='59.04' width='112.94' height='153.98' style='stroke-width: 0.75; fill: #006400;' />
+<rect x='209.93' y='119.60' width='112.94' height='93.42' style='stroke-width: 0.75; fill: #FFFFE0;' />
+<rect x='345.46' y='197.88' width='112.94' height='15.14' style='stroke-width: 0.75; fill: #FFA500;' />
+<text x='130.87' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='46.98px' lengthAdjust='spacingAndGlyphs'>D'accord</text>
+<text x='266.40' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='68.98px' lengthAdjust='spacingAndGlyphs'>Pas d'accord</text>
+<text x='401.93' y='240.48' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='81.30px' lengthAdjust='spacingAndGlyphs'>Ni l'un ni l'autre</text>
+<line x1='59.04' y1='213.02' x2='59.04' y2='70.18' style='stroke-width: 0.75;' />
 <line x1='59.04' y1='213.02' x2='51.84' y2='213.02' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='174.91' x2='51.84' y2='174.91' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='136.79' x2='51.84' y2='136.79' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='98.68' x2='51.84' y2='98.68' style='stroke-width: 0.75;' />
-<line x1='59.04' y1='60.56' x2='51.84' y2='60.56' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='184.45' x2='51.84' y2='184.45' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='155.88' x2='51.84' y2='155.88' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='127.32' x2='51.84' y2='127.32' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='98.75' x2='51.84' y2='98.75' style='stroke-width: 0.75;' />
+<line x1='59.04' y1='70.18' x2='51.84' y2='70.18' style='stroke-width: 0.75;' />
 <text transform='translate(41.76,213.02) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text transform='translate(41.76,174.91) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>100</text>
-<text transform='translate(41.76,136.79) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>200</text>
-<text transform='translate(41.76,98.68) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>300</text>
-<text transform='translate(41.76,60.56) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>400</text>
+<text transform='translate(41.76,184.45) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>200</text>
+<text transform='translate(41.76,127.32) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='20.02px' lengthAdjust='spacingAndGlyphs'>600</text>
+<text transform='translate(41.76,70.18) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>1000</text>
+</g>
 </g>
 </svg>

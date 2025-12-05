@@ -1,6 +1,6 @@
-tab:unnamed-chunk-244
 tab:unnamed-chunk-245
-tab:unnamed-chunk-267
+tab:unnamed-chunk-246
+tab:unnamed-chunk-270
 premiers-pas
 opérations-arithmétiques
 les-objets-de-base-valeur-vecteur-matrice
@@ -149,7 +149,8 @@ données
 chargement-du-fichier-1
 liste-des-variables
 echantillonage
-choix-des-variables-et-du-pays
+résumé-rapide
+choix-des-variables-du-pays-et-de-la-date
 transformation-quanti-quali
 recodage-des-modalités
 analyse-univariée
@@ -176,9 +177,12 @@ tableau-pondéré
 comparaison-des-pourcentages
 comparaison-des-tests
 solution-exacte
+analyse-multivariée
+préparation-des-données-3
+modèle-logit
 analyse-denquêtes-application
 introduction-1
-préparation-des-données-3
+préparation-des-données-4
 importation-du-fichier-au-format-.rds
 simplifiée-des-variables
 résumé-des-variables-tri-à-plat
@@ -210,7 +214,7 @@ graphiques-avec-r-base
 introduction-2
 pourquoi-sembêter-à-utiliser-les-fonctions-primitives-de-r-pour-faire-des-graphiques
 trois-étapes-pour-créer-un-graphique
-préparation-des-données-4
+préparation-des-données-5
 chargement-du-fichier-2
 contenu-du-fichier-1
 dictionaire-des-variables-1
@@ -244,7 +248,7 @@ graphiques-avec-ggplot2-2024
 introduction-3
 ggplot2-et-tydiverse
 ggplot2-cheatsheet
-préparation-des-données-5
+préparation-des-données-6
 chargement-du-fichier-3
 dictionaire-des-variables-2
 résumé-de-lensemble-du-tableau-2
@@ -307,6 +311,7 @@ filter
 select
 mutate
 arrange
+group_by-summarise
 visualiser-avec-ggplot2
 les-différentes-étapes-1
 la-figure-à-réaliser-1
@@ -336,4 +341,3 @@ r-base-2
 ggplot2-1
 le-meilleur-des-deux-mondes-1
 plotly-un-challenger-sérieux-de-ggplot-pour-le-web-1
-group_by-summarise
