@@ -1,4 +1,4 @@
-# Analyse d'enquêtes (application)
+# Analyse d'enquêtes (old)
 
 
 ```{r, echo = FALSE}

@@ -333,7 +333,7 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III VARIABLES CATEGORIELLES</b></span></li>
-<li class="chapter" data-level="7" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html"><i class="fa fa-check"></i><b>7</b> Analyse d’enquêtes (bases)</a>
+<li class="chapter" data-level="7" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html"><i class="fa fa-check"></i><b>7</b> Analyse d’enquêtes (new)</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#introduction"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
 <li class="chapter" data-level="7.2" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#données"><i class="fa fa-check"></i><b>7.2</b> Données</a>
@@ -384,7 +384,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="7.7.2" data-path="07-TabcontV2.html"><a href="07-TabcontV2.html#modèle-logit"><i class="fa fa-check"></i><b>7.7.2</b> Modèle logit</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="07-Tabcont.html"><a href="07-Tabcont.html"><i class="fa fa-check"></i><b>8</b> Analyse d’enquêtes (application)</a>
+<li class="chapter" data-level="8" data-path="07-Tabcont.html"><a href="07-Tabcont.html"><i class="fa fa-check"></i><b>8</b> Analyse d’enquêtes (old)</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="07-Tabcont.html"><a href="07-Tabcont.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
 <li class="chapter" data-level="8.2" data-path="07-Tabcont.html"><a href="07-Tabcont.html#préparation-des-données-4"><i class="fa fa-check"></i><b>8.2</b> Préparation des données</a>
@@ -803,43 +803,34 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="la-figure-à-réaliser" class="section level3 hasAnchor" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> La figure à réaliser<a href="09bis-Graphique-ggplot.html#la-figure-à-réaliser" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Comment réaliser la figure ci-dessous ?</p>
+<pre><code>#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="bivaR_files/figure-html/exo1-1.svg" width="672" /></p>
 </div>
 <div id="la-construction-pas-à-pas" class="section level3 hasAnchor" number="10.3.3">
 <h3><span class="header-section-number">10.3.3</span> La construction pas à pas<a href="09bis-Graphique-ggplot.html#la-construction-pas-à-pas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>On définit le tableau de données avec <code>ggplot()</code> et les variables principales avec <code>aes()</code></p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="09bis-Graphique-ggplot.html#cb303-1" tabindex="-1"></a></span>
-<span id="cb303-2"><a href="09bis-Graphique-ggplot.html#cb303-2" tabindex="-1"></a> <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
-<span id="cb303-3"><a href="09bis-Graphique-ggplot.html#cb303-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac) <span class="sc">+</span></span>
-<span id="cb303-4"><a href="09bis-Graphique-ggplot.html#cb303-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> tx_abs)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="09bis-Graphique-ggplot.html#cb304-1" tabindex="-1"></a></span>
+<span id="cb304-2"><a href="09bis-Graphique-ggplot.html#cb304-2" tabindex="-1"></a> <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb304-3"><a href="09bis-Graphique-ggplot.html#cb304-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac) <span class="sc">+</span></span>
+<span id="cb304-4"><a href="09bis-Graphique-ggplot.html#cb304-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> tx_abs)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-326-1.svg" width="672" /></p>
 <p>On ajoute le type principal du graphique avec la commande <code>geom_point()</code></p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="09bis-Graphique-ggplot.html#cb304-1" tabindex="-1"></a></span>
-<span id="cb304-2"><a href="09bis-Graphique-ggplot.html#cb304-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
-<span id="cb304-3"><a href="09bis-Graphique-ggplot.html#cb304-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac) <span class="sc">+</span></span>
-<span id="cb304-4"><a href="09bis-Graphique-ggplot.html#cb304-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> tx_abs) <span class="sc">+</span></span>
-<span id="cb304-5"><a href="09bis-Graphique-ggplot.html#cb304-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-327-1.svg" width="672" /></p>
-<p>On retouche les axes horizontaux et verticaux en les passant en logarithme et en leur donnant un titre.</p>
 <div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="09bis-Graphique-ggplot.html#cb305-1" tabindex="-1"></a></span>
-<span id="cb305-2"><a href="09bis-Graphique-ggplot.html#cb305-2" tabindex="-1"></a> <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb305-2"><a href="09bis-Graphique-ggplot.html#cb305-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
 <span id="cb305-3"><a href="09bis-Graphique-ggplot.html#cb305-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac) <span class="sc">+</span></span>
 <span id="cb305-4"><a href="09bis-Graphique-ggplot.html#cb305-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> tx_abs) <span class="sc">+</span></span>
-<span id="cb305-5"><a href="09bis-Graphique-ggplot.html#cb305-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb305-6"><a href="09bis-Graphique-ggplot.html#cb305-6" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;% actifs dipl. &gt; bac&quot;</span>)<span class="sc">+</span></span>
-<span id="cb305-7"><a href="09bis-Graphique-ggplot.html#cb305-7" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-328-1.svg" width="672" /></p>
-<p>On segmente le graphique en facettes selon une ou plusieurs variables avec <code>facet_wrap()</code>. Du coup, on retire ces variables de l’esthétique générale :</p>
+<span id="cb305-5"><a href="09bis-Graphique-ggplot.html#cb305-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-327-1.svg" width="672" /></p>
+<p>On retouche les axes horizontaux et verticaux en les passant en logarithme et en leur donnant un titre.</p>
 <div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="09bis-Graphique-ggplot.html#cb306-1" tabindex="-1"></a></span>
-<span id="cb306-2"><a href="09bis-Graphique-ggplot.html#cb306-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb306-2"><a href="09bis-Graphique-ggplot.html#cb306-2" tabindex="-1"></a> <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
 <span id="cb306-3"><a href="09bis-Graphique-ggplot.html#cb306-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac) <span class="sc">+</span></span>
 <span id="cb306-4"><a href="09bis-Graphique-ggplot.html#cb306-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> tx_abs) <span class="sc">+</span></span>
 <span id="cb306-5"><a href="09bis-Graphique-ggplot.html#cb306-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb306-6"><a href="09bis-Graphique-ggplot.html#cb306-6" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;% actifs dipl. &gt; bac&quot;</span>)<span class="sc">+</span></span>
-<span id="cb306-7"><a href="09bis-Graphique-ggplot.html#cb306-7" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>)<span class="sc">+</span></span>
-<span id="cb306-8"><a href="09bis-Graphique-ggplot.html#cb306-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(urb3))</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-329-1.svg" width="672" /></p>
-<p>On ajoute dans chaque facette une droite de tendance et son intervalle de confiance avec <code>geom_smooth()</code>. On précise <em>method=“lm”</em> pour avoir une droite et non pas une courbe</p>
+<span id="cb306-7"><a href="09bis-Graphique-ggplot.html#cb306-7" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>)</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-328-1.svg" width="672" /></p>
+<p>On segmente le graphique en facettes selon une ou plusieurs variables avec <code>facet_wrap()</code>. Du coup, on retire ces variables de l’esthétique générale :</p>
 <div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="09bis-Graphique-ggplot.html#cb307-1" tabindex="-1"></a></span>
 <span id="cb307-2"><a href="09bis-Graphique-ggplot.html#cb307-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
 <span id="cb307-3"><a href="09bis-Graphique-ggplot.html#cb307-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac) <span class="sc">+</span></span>
@@ -847,10 +838,9 @@ code span.wa { color: #bf0303; } /* Warning */
 <span id="cb307-5"><a href="09bis-Graphique-ggplot.html#cb307-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb307-6"><a href="09bis-Graphique-ggplot.html#cb307-6" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;% actifs dipl. &gt; bac&quot;</span>)<span class="sc">+</span></span>
 <span id="cb307-7"><a href="09bis-Graphique-ggplot.html#cb307-7" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>)<span class="sc">+</span></span>
-<span id="cb307-8"><a href="09bis-Graphique-ggplot.html#cb307-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(urb3))<span class="sc">+</span></span>
-<span id="cb307-9"><a href="09bis-Graphique-ggplot.html#cb307-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<p><img src="bivaR_files/figure-html/unnamed-chunk-330-1.svg" width="672" /></p>
-<p>Onajoute un titre principal avec <code>ggtitle()</code> et on retouche l’ensemble de l’apparence avec <code>theme_light()</code>.</p>
+<span id="cb307-8"><a href="09bis-Graphique-ggplot.html#cb307-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(urb3))</span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-329-1.svg" width="672" /></p>
+<p>On ajoute dans chaque facette une droite de tendance et son intervalle de confiance avec <code>geom_smooth()</code>. On précise <em>method=“lm”</em> pour avoir une droite et non pas une courbe</p>
 <div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="09bis-Graphique-ggplot.html#cb308-1" tabindex="-1"></a></span>
 <span id="cb308-2"><a href="09bis-Graphique-ggplot.html#cb308-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
 <span id="cb308-3"><a href="09bis-Graphique-ggplot.html#cb308-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac) <span class="sc">+</span></span>
@@ -859,10 +849,23 @@ code span.wa { color: #bf0303; } /* Warning */
 <span id="cb308-6"><a href="09bis-Graphique-ggplot.html#cb308-6" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;% actifs dipl. &gt; bac&quot;</span>)<span class="sc">+</span></span>
 <span id="cb308-7"><a href="09bis-Graphique-ggplot.html#cb308-7" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>)<span class="sc">+</span></span>
 <span id="cb308-8"><a href="09bis-Graphique-ggplot.html#cb308-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(urb3))<span class="sc">+</span></span>
-<span id="cb308-9"><a href="09bis-Graphique-ggplot.html#cb308-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb308-10"><a href="09bis-Graphique-ggplot.html#cb308-10" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&quot;Relation entre taux d&#39;abstention et diplôme par type d&#39;espace&quot;</span>,</span>
-<span id="cb308-11"><a href="09bis-Graphique-ggplot.html#cb308-11" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">&quot;Source : INSEE et Min. de l&#39;Intérieur&quot;</span>) <span class="sc">+</span></span>
-<span id="cb308-12"><a href="09bis-Graphique-ggplot.html#cb308-12" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span></code></pre></div>
+<span id="cb308-9"><a href="09bis-Graphique-ggplot.html#cb308-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb308-10"><a href="09bis-Graphique-ggplot.html#cb308-10" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</span></span></code></pre></div>
+<p><img src="bivaR_files/figure-html/unnamed-chunk-330-1.svg" width="672" /></p>
+<p>Onajoute un titre principal avec <code>ggtitle()</code> et on retouche l’ensemble de l’apparence avec <code>theme_light()</code>.</p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="09bis-Graphique-ggplot.html#cb309-1" tabindex="-1"></a></span>
+<span id="cb309-2"><a href="09bis-Graphique-ggplot.html#cb309-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb309-3"><a href="09bis-Graphique-ggplot.html#cb309-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac) <span class="sc">+</span></span>
+<span id="cb309-4"><a href="09bis-Graphique-ggplot.html#cb309-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> tx_abs) <span class="sc">+</span></span>
+<span id="cb309-5"><a href="09bis-Graphique-ggplot.html#cb309-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb309-6"><a href="09bis-Graphique-ggplot.html#cb309-6" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;% actifs dipl. &gt; bac&quot;</span>)<span class="sc">+</span></span>
+<span id="cb309-7"><a href="09bis-Graphique-ggplot.html#cb309-7" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>)<span class="sc">+</span></span>
+<span id="cb309-8"><a href="09bis-Graphique-ggplot.html#cb309-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(urb3))<span class="sc">+</span></span>
+<span id="cb309-9"><a href="09bis-Graphique-ggplot.html#cb309-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb309-10"><a href="09bis-Graphique-ggplot.html#cb309-10" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="st">&quot;Relation entre taux d&#39;abstention et diplôme par type d&#39;espace&quot;</span>,</span>
+<span id="cb309-11"><a href="09bis-Graphique-ggplot.html#cb309-11" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">&quot;Source : INSEE et Min. de l&#39;Intérieur&quot;</span>) <span class="sc">+</span></span>
+<span id="cb309-12"><a href="09bis-Graphique-ggplot.html#cb309-12" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb309-13"><a href="09bis-Graphique-ggplot.html#cb309-13" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-331-1.svg" width="672" /></p>
 </div>
 <div id="comparaison-avec-r-base" class="section level3 hasAnchor" number="10.3.4">
@@ -885,16 +888,18 @@ code span.wa { color: #bf0303; } /* Warning */
 <ul>
 <li><strong>urb3 est un paramètre global</strong> : dans ce cas il s’applique à toutes les commandes qui suivent. Il y aura donc <strong>trois</strong> droites de régression générées par geom_smooth</li>
 </ul>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="09bis-Graphique-ggplot.html#cb309-1" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac, <span class="at">y =</span> tx_abs, <span class="at">color =</span> urb3)) <span class="sc">+</span></span>
-<span id="cb309-2"><a href="09bis-Graphique-ggplot.html#cb309-2" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb309-3"><a href="09bis-Graphique-ggplot.html#cb309-3" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="09bis-Graphique-ggplot.html#cb310-1" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac, <span class="at">y =</span> tx_abs, <span class="at">color =</span> urb3)) <span class="sc">+</span></span>
+<span id="cb310-2"><a href="09bis-Graphique-ggplot.html#cb310-2" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb310-3"><a href="09bis-Graphique-ggplot.html#cb310-3" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>)</span>
+<span id="cb310-4"><a href="09bis-Graphique-ggplot.html#cb310-4" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-332-1.svg" width="672" /></p>
 <ul>
 <li><strong>SEX est un paramètre local de geom_point()</strong> : dans ce cas il n’aura pas d’effet sur geom_smooth() qui va générer <strong>une</strong> seule droite de régression.</li>
 </ul>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="09bis-Graphique-ggplot.html#cb310-1" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac, <span class="at">y =</span> tx_abs)) <span class="sc">+</span></span>
-<span id="cb310-2"><a href="09bis-Graphique-ggplot.html#cb310-2" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>urb3)) <span class="sc">+</span></span>
-<span id="cb310-3"><a href="09bis-Graphique-ggplot.html#cb310-3" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="09bis-Graphique-ggplot.html#cb311-1" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x =</span> dip_supbac, <span class="at">y =</span> tx_abs)) <span class="sc">+</span></span>
+<span id="cb311-2"><a href="09bis-Graphique-ggplot.html#cb311-2" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>urb3)) <span class="sc">+</span></span>
+<span id="cb311-3"><a href="09bis-Graphique-ggplot.html#cb311-3" tabindex="-1"></a><span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>)</span>
+<span id="cb311-4"><a href="09bis-Graphique-ggplot.html#cb311-4" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-333-1.svg" width="672" /></p>
 </div>
 </div>
@@ -902,18 +907,18 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">10.4</span> X discrète<a href="09bis-Graphique-ggplot.html#x-discrète" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="barplot-r-base" class="section level3 hasAnchor" number="10.4.1">
 <h3><span class="header-section-number">10.4.1</span> barplot (R-base)<a href="09bis-Graphique-ggplot.html#barplot-r-base" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="09bis-Graphique-ggplot.html#cb311-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(don<span class="sc">$</span>urb3), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb311-2"><a href="09bis-Graphique-ggplot.html#cb311-2" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;types d&#39;espace&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="09bis-Graphique-ggplot.html#cb312-1" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(don<span class="sc">$</span>urb3), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb312-2"><a href="09bis-Graphique-ggplot.html#cb312-2" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;types d&#39;espace&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-334-1.svg" width="672" /></p>
 </div>
 <div id="geom_bar-ggplot2" class="section level3 hasAnchor" number="10.4.2">
 <h3><span class="header-section-number">10.4.2</span> geom_bar (ggplot2)<a href="09bis-Graphique-ggplot.html#geom_bar-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="09bis-Graphique-ggplot.html#cb312-1" tabindex="-1"></a><span class="co"># ggplot</span></span>
-<span id="cb312-2"><a href="09bis-Graphique-ggplot.html#cb312-2" tabindex="-1"></a><span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
-<span id="cb312-3"><a href="09bis-Graphique-ggplot.html#cb312-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span>urb3) <span class="sc">+</span></span>
-<span id="cb312-4"><a href="09bis-Graphique-ggplot.html#cb312-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span>  <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;red&quot;</span>))<span class="sc">+</span></span>
-<span id="cb312-5"><a href="09bis-Graphique-ggplot.html#cb312-5" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;type d&#39;espace&quot;</span>)<span class="sc">+</span></span>
-<span id="cb312-6"><a href="09bis-Graphique-ggplot.html#cb312-6" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="09bis-Graphique-ggplot.html#cb313-1" tabindex="-1"></a><span class="co"># ggplot</span></span>
+<span id="cb313-2"><a href="09bis-Graphique-ggplot.html#cb313-2" tabindex="-1"></a><span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb313-3"><a href="09bis-Graphique-ggplot.html#cb313-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span>urb3) <span class="sc">+</span></span>
+<span id="cb313-4"><a href="09bis-Graphique-ggplot.html#cb313-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span>  <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;red&quot;</span>))<span class="sc">+</span></span>
+<span id="cb313-5"><a href="09bis-Graphique-ggplot.html#cb313-5" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;type d&#39;espace&quot;</span>)<span class="sc">+</span></span>
+<span id="cb313-6"><a href="09bis-Graphique-ggplot.html#cb313-6" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;effectif&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-335-1.svg" width="672" /></p>
 </div>
 </div>
@@ -921,31 +926,31 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">10.5</span> X quantitative continue<a href="09bis-Graphique-ggplot.html#x-quantitative-continue" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="hist-r-base" class="section level3 hasAnchor" number="10.5.1">
 <h3><span class="header-section-number">10.5.1</span> hist (R-base)<a href="09bis-Graphique-ggplot.html#hist-r-base" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="09bis-Graphique-ggplot.html#cb313-1" tabindex="-1"></a></span>
-<span id="cb313-2"><a href="09bis-Graphique-ggplot.html#cb313-2" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>tx_abs,<span class="at">breaks =</span> <span class="dv">15</span>,</span>
-<span id="cb313-3"><a href="09bis-Graphique-ggplot.html#cb313-3" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb313-4"><a href="09bis-Graphique-ggplot.html#cb313-4" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb313-5"><a href="09bis-Graphique-ggplot.html#cb313-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Taux d&#39;abstention (%)&quot;</span>,</span>
-<span id="cb313-6"><a href="09bis-Graphique-ggplot.html#cb313-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Nombre de circonscriptions&quot;</span>,</span>
-<span id="cb313-7"><a href="09bis-Graphique-ggplot.html#cb313-7" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;L&#39;abstention aux élections européennes de 2024&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="09bis-Graphique-ggplot.html#cb314-1" tabindex="-1"></a></span>
+<span id="cb314-2"><a href="09bis-Graphique-ggplot.html#cb314-2" tabindex="-1"></a><span class="fu">hist</span>(don<span class="sc">$</span>tx_abs,<span class="at">breaks =</span> <span class="dv">15</span>,</span>
+<span id="cb314-3"><a href="09bis-Graphique-ggplot.html#cb314-3" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb314-4"><a href="09bis-Graphique-ggplot.html#cb314-4" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb314-5"><a href="09bis-Graphique-ggplot.html#cb314-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Taux d&#39;abstention (%)&quot;</span>,</span>
+<span id="cb314-6"><a href="09bis-Graphique-ggplot.html#cb314-6" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Nombre de circonscriptions&quot;</span>,</span>
+<span id="cb314-7"><a href="09bis-Graphique-ggplot.html#cb314-7" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;L&#39;abstention aux élections européennes de 2024&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-336-1.svg" width="672" /></p>
 </div>
 <div id="geom_histogram-ggplot2" class="section level3 hasAnchor" number="10.5.2">
 <h3><span class="header-section-number">10.5.2</span> geom_histogram (ggplot2)<a href="09bis-Graphique-ggplot.html#geom_histogram-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="09bis-Graphique-ggplot.html#cb314-1" tabindex="-1"></a></span>
-<span id="cb314-2"><a href="09bis-Graphique-ggplot.html#cb314-2" tabindex="-1"></a><span class="co">#   </span></span>
-<span id="cb314-3"><a href="09bis-Graphique-ggplot.html#cb314-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
-<span id="cb314-4"><a href="09bis-Graphique-ggplot.html#cb314-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span>tx_abs) <span class="sc">+</span> </span>
-<span id="cb314-5"><a href="09bis-Graphique-ggplot.html#cb314-5" tabindex="-1"></a><span class="co"># Appel de la fonction principale  </span></span>
-<span id="cb314-6"><a href="09bis-Graphique-ggplot.html#cb314-6" tabindex="-1"></a>  <span class="fu">geom_histogram</span>( <span class="at">bins =</span> <span class="dv">15</span>,     </span>
-<span id="cb314-7"><a href="09bis-Graphique-ggplot.html#cb314-7" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb314-8"><a href="09bis-Graphique-ggplot.html#cb314-8" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">&quot;blue&quot;</span> </span>
-<span id="cb314-9"><a href="09bis-Graphique-ggplot.html#cb314-9" tabindex="-1"></a>                 ) <span class="sc">+</span>   </span>
-<span id="cb314-10"><a href="09bis-Graphique-ggplot.html#cb314-10" tabindex="-1"></a><span class="co"># Retouche de l&#39;échelle</span></span>
-<span id="cb314-11"><a href="09bis-Graphique-ggplot.html#cb314-11" tabindex="-1"></a> <span class="fu">scale_x_continuous</span>( <span class="at">name =</span> <span class="st">&quot;taux d&#39;abstention&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb314-12"><a href="09bis-Graphique-ggplot.html#cb314-12" tabindex="-1"></a> <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Nombre de circonscriptions&quot;</span>)<span class="sc">+</span></span>
-<span id="cb314-13"><a href="09bis-Graphique-ggplot.html#cb314-13" tabindex="-1"></a><span class="co"># Ajout du titre </span></span>
-<span id="cb314-14"><a href="09bis-Graphique-ggplot.html#cb314-14" tabindex="-1"></a> <span class="fu">ggtitle</span>(<span class="st">&quot;L&#39;abstention aux élections européennes de 2024&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="09bis-Graphique-ggplot.html#cb315-1" tabindex="-1"></a></span>
+<span id="cb315-2"><a href="09bis-Graphique-ggplot.html#cb315-2" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb315-3"><a href="09bis-Graphique-ggplot.html#cb315-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(don) <span class="sc">+</span></span>
+<span id="cb315-4"><a href="09bis-Graphique-ggplot.html#cb315-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span>tx_abs) <span class="sc">+</span> </span>
+<span id="cb315-5"><a href="09bis-Graphique-ggplot.html#cb315-5" tabindex="-1"></a><span class="co"># Appel de la fonction principale  </span></span>
+<span id="cb315-6"><a href="09bis-Graphique-ggplot.html#cb315-6" tabindex="-1"></a>  <span class="fu">geom_histogram</span>( <span class="at">bins =</span> <span class="dv">15</span>,     </span>
+<span id="cb315-7"><a href="09bis-Graphique-ggplot.html#cb315-7" tabindex="-1"></a>                 <span class="at">fill=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb315-8"><a href="09bis-Graphique-ggplot.html#cb315-8" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">&quot;blue&quot;</span> </span>
+<span id="cb315-9"><a href="09bis-Graphique-ggplot.html#cb315-9" tabindex="-1"></a>                 ) <span class="sc">+</span>   </span>
+<span id="cb315-10"><a href="09bis-Graphique-ggplot.html#cb315-10" tabindex="-1"></a><span class="co"># Retouche de l&#39;échelle</span></span>
+<span id="cb315-11"><a href="09bis-Graphique-ggplot.html#cb315-11" tabindex="-1"></a> <span class="fu">scale_x_continuous</span>( <span class="at">name =</span> <span class="st">&quot;taux d&#39;abstention&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb315-12"><a href="09bis-Graphique-ggplot.html#cb315-12" tabindex="-1"></a> <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Nombre de circonscriptions&quot;</span>)<span class="sc">+</span></span>
+<span id="cb315-13"><a href="09bis-Graphique-ggplot.html#cb315-13" tabindex="-1"></a><span class="co"># Ajout du titre </span></span>
+<span id="cb315-14"><a href="09bis-Graphique-ggplot.html#cb315-14" tabindex="-1"></a> <span class="fu">ggtitle</span>(<span class="st">&quot;L&#39;abstention aux élections européennes de 2024&quot;</span>) </span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-337-1.svg" width="672" /></p>
 </div>
 </div>
@@ -953,38 +958,39 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">10.6</span> X et Y quantitatives continues<a href="09bis-Graphique-ggplot.html#x-et-y-quantitatives-continues" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="plot-r-base" class="section level3 hasAnchor" number="10.6.1">
 <h3><span class="header-section-number">10.6.1</span> plot (R-base)<a href="09bis-Graphique-ggplot.html#plot-r-base" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="09bis-Graphique-ggplot.html#cb315-1" tabindex="-1"></a></span>
-<span id="cb315-2"><a href="09bis-Graphique-ggplot.html#cb315-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> don<span class="sc">$</span>dip_supbac,</span>
-<span id="cb315-3"><a href="09bis-Graphique-ggplot.html#cb315-3" tabindex="-1"></a>     <span class="at">y =</span> don<span class="sc">$</span>tx_abs, </span>
-<span id="cb315-4"><a href="09bis-Graphique-ggplot.html#cb315-4" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">0</span>, </span>
-<span id="cb315-5"><a href="09bis-Graphique-ggplot.html#cb315-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;% actifs diplômés &gt; bac&quot;</span>,</span>
-<span id="cb315-6"><a href="09bis-Graphique-ggplot.html#cb315-6" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;% abstention&quot;</span>,</span>
-<span id="cb315-7"><a href="09bis-Graphique-ggplot.html#cb315-7" tabindex="-1"></a>     <span class="at">main=</span> <span class="st">&quot;Influence du diplôme sur l&#39;abstention&quot;</span>)</span>
-<span id="cb315-8"><a href="09bis-Graphique-ggplot.html#cb315-8" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x=</span>don<span class="sc">$</span>dip_supbac, </span>
-<span id="cb315-9"><a href="09bis-Graphique-ggplot.html#cb315-9" tabindex="-1"></a>       <span class="at">y=</span>don<span class="sc">$</span>tx_abs, </span>
-<span id="cb315-10"><a href="09bis-Graphique-ggplot.html#cb315-10" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">20</span>)</span>
-<span id="cb315-11"><a href="09bis-Graphique-ggplot.html#cb315-11" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(don<span class="sc">$</span>tx_abs<span class="sc">~</span>don<span class="sc">$</span>dip_supbac), </span>
-<span id="cb315-12"><a href="09bis-Graphique-ggplot.html#cb315-12" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;red&quot;</span>,</span>
-<span id="cb315-13"><a href="09bis-Graphique-ggplot.html#cb315-13" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="09bis-Graphique-ggplot.html#cb316-1" tabindex="-1"></a></span>
+<span id="cb316-2"><a href="09bis-Graphique-ggplot.html#cb316-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> don<span class="sc">$</span>dip_supbac,</span>
+<span id="cb316-3"><a href="09bis-Graphique-ggplot.html#cb316-3" tabindex="-1"></a>     <span class="at">y =</span> don<span class="sc">$</span>tx_abs, </span>
+<span id="cb316-4"><a href="09bis-Graphique-ggplot.html#cb316-4" tabindex="-1"></a>     <span class="at">cex=</span><span class="dv">0</span>, </span>
+<span id="cb316-5"><a href="09bis-Graphique-ggplot.html#cb316-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;% actifs diplômés &gt; bac&quot;</span>,</span>
+<span id="cb316-6"><a href="09bis-Graphique-ggplot.html#cb316-6" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;% abstention&quot;</span>,</span>
+<span id="cb316-7"><a href="09bis-Graphique-ggplot.html#cb316-7" tabindex="-1"></a>     <span class="at">main=</span> <span class="st">&quot;Influence du diplôme sur l&#39;abstention&quot;</span>)</span>
+<span id="cb316-8"><a href="09bis-Graphique-ggplot.html#cb316-8" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x=</span>don<span class="sc">$</span>dip_supbac, </span>
+<span id="cb316-9"><a href="09bis-Graphique-ggplot.html#cb316-9" tabindex="-1"></a>       <span class="at">y=</span>don<span class="sc">$</span>tx_abs, </span>
+<span id="cb316-10"><a href="09bis-Graphique-ggplot.html#cb316-10" tabindex="-1"></a>       <span class="at">pch=</span><span class="dv">20</span>)</span>
+<span id="cb316-11"><a href="09bis-Graphique-ggplot.html#cb316-11" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(don<span class="sc">$</span>tx_abs<span class="sc">~</span>don<span class="sc">$</span>dip_supbac), </span>
+<span id="cb316-12"><a href="09bis-Graphique-ggplot.html#cb316-12" tabindex="-1"></a>       <span class="at">col=</span><span class="st">&quot;red&quot;</span>,</span>
+<span id="cb316-13"><a href="09bis-Graphique-ggplot.html#cb316-13" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-338-1.svg" width="672" /></p>
 </div>
 <div id="geom_point-ggplot2" class="section level3 hasAnchor" number="10.6.2">
 <h3><span class="header-section-number">10.6.2</span> geom_point (ggplot2)<a href="09bis-Graphique-ggplot.html#geom_point-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="09bis-Graphique-ggplot.html#cb316-1" tabindex="-1"></a></span>
-<span id="cb316-2"><a href="09bis-Graphique-ggplot.html#cb316-2" tabindex="-1"></a>  </span>
-<span id="cb316-3"><a href="09bis-Graphique-ggplot.html#cb316-3" tabindex="-1"></a><span class="co">#  On définit les paramètres globaux </span></span>
-<span id="cb316-4"><a href="09bis-Graphique-ggplot.html#cb316-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x =</span>dip_supbac, <span class="at">y=</span>tx_abs)) <span class="sc">+</span></span>
-<span id="cb316-5"><a href="09bis-Graphique-ggplot.html#cb316-5" tabindex="-1"></a>  </span>
-<span id="cb316-6"><a href="09bis-Graphique-ggplot.html#cb316-6" tabindex="-1"></a><span class="co"># On trace les points </span></span>
-<span id="cb316-7"><a href="09bis-Graphique-ggplot.html#cb316-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb316-8"><a href="09bis-Graphique-ggplot.html#cb316-8" tabindex="-1"></a>  </span>
-<span id="cb316-9"><a href="09bis-Graphique-ggplot.html#cb316-9" tabindex="-1"></a><span class="co"># On ajoute la droite de régression</span></span>
-<span id="cb316-10"><a href="09bis-Graphique-ggplot.html#cb316-10" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb316-11"><a href="09bis-Graphique-ggplot.html#cb316-11" tabindex="-1"></a>  </span>
-<span id="cb316-12"><a href="09bis-Graphique-ggplot.html#cb316-12" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
-<span id="cb316-13"><a href="09bis-Graphique-ggplot.html#cb316-13" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;% actifs diplômés &gt; bac&quot;</span>) <span class="sc">+</span></span>
-<span id="cb316-14"><a href="09bis-Graphique-ggplot.html#cb316-14" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>) <span class="sc">+</span></span>
-<span id="cb316-15"><a href="09bis-Graphique-ggplot.html#cb316-15" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Influence du diplôme sur l&#39;abstention&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="09bis-Graphique-ggplot.html#cb317-1" tabindex="-1"></a></span>
+<span id="cb317-2"><a href="09bis-Graphique-ggplot.html#cb317-2" tabindex="-1"></a>  </span>
+<span id="cb317-3"><a href="09bis-Graphique-ggplot.html#cb317-3" tabindex="-1"></a><span class="co">#  On définit les paramètres globaux </span></span>
+<span id="cb317-4"><a href="09bis-Graphique-ggplot.html#cb317-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x =</span>dip_supbac, <span class="at">y=</span>tx_abs)) <span class="sc">+</span></span>
+<span id="cb317-5"><a href="09bis-Graphique-ggplot.html#cb317-5" tabindex="-1"></a>  </span>
+<span id="cb317-6"><a href="09bis-Graphique-ggplot.html#cb317-6" tabindex="-1"></a><span class="co"># On trace les points </span></span>
+<span id="cb317-7"><a href="09bis-Graphique-ggplot.html#cb317-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb317-8"><a href="09bis-Graphique-ggplot.html#cb317-8" tabindex="-1"></a>  </span>
+<span id="cb317-9"><a href="09bis-Graphique-ggplot.html#cb317-9" tabindex="-1"></a><span class="co"># On ajoute la droite de régression</span></span>
+<span id="cb317-10"><a href="09bis-Graphique-ggplot.html#cb317-10" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb317-11"><a href="09bis-Graphique-ggplot.html#cb317-11" tabindex="-1"></a>  </span>
+<span id="cb317-12"><a href="09bis-Graphique-ggplot.html#cb317-12" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb317-13"><a href="09bis-Graphique-ggplot.html#cb317-13" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name=</span><span class="st">&quot;% actifs diplômés &gt; bac&quot;</span>) <span class="sc">+</span></span>
+<span id="cb317-14"><a href="09bis-Graphique-ggplot.html#cb317-14" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>) <span class="sc">+</span></span>
+<span id="cb317-15"><a href="09bis-Graphique-ggplot.html#cb317-15" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Influence du diplôme sur l&#39;abstention&quot;</span>)</span>
+<span id="cb317-16"><a href="09bis-Graphique-ggplot.html#cb317-16" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using formula = &#39;y ~ x&#39;</span></span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-339-1.svg" width="672" /></p>
 </div>
 </div>
@@ -992,64 +998,65 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">10.7</span> X quantitative continue et Y discrète<a href="09bis-Graphique-ggplot.html#x-quantitative-continue-et-y-discrète" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="boxplot-r-base" class="section level3 hasAnchor" number="10.7.1">
 <h3><span class="header-section-number">10.7.1</span> 6.1 boxplot (R-base)<a href="09bis-Graphique-ggplot.html#boxplot-r-base" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="09bis-Graphique-ggplot.html#cb317-1" tabindex="-1"></a></span>
-<span id="cb317-2"><a href="09bis-Graphique-ggplot.html#cb317-2" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>tx_abs<span class="sc">~</span>don<span class="sc">$</span>urb3, </span>
-<span id="cb317-3"><a href="09bis-Graphique-ggplot.html#cb317-3" tabindex="-1"></a>      <span class="at">col=</span><span class="fu">rainbow</span>(<span class="at">n=</span><span class="dv">12</span>, <span class="at">alpha=</span><span class="fl">0.5</span>),</span>
-<span id="cb317-4"><a href="09bis-Graphique-ggplot.html#cb317-4" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;type d&#39;espace&quot;</span>,</span>
-<span id="cb317-5"><a href="09bis-Graphique-ggplot.html#cb317-5" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;taux d&#39;abstention&quot;</span>,</span>
-<span id="cb317-6"><a href="09bis-Graphique-ggplot.html#cb317-6" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Typologie urbain-rural et abstention&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="09bis-Graphique-ggplot.html#cb318-1" tabindex="-1"></a></span>
+<span id="cb318-2"><a href="09bis-Graphique-ggplot.html#cb318-2" tabindex="-1"></a><span class="fu">boxplot</span>(don<span class="sc">$</span>tx_abs<span class="sc">~</span>don<span class="sc">$</span>urb3, </span>
+<span id="cb318-3"><a href="09bis-Graphique-ggplot.html#cb318-3" tabindex="-1"></a>      <span class="at">col=</span><span class="fu">rainbow</span>(<span class="at">n=</span><span class="dv">12</span>, <span class="at">alpha=</span><span class="fl">0.5</span>),</span>
+<span id="cb318-4"><a href="09bis-Graphique-ggplot.html#cb318-4" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;type d&#39;espace&quot;</span>,</span>
+<span id="cb318-5"><a href="09bis-Graphique-ggplot.html#cb318-5" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;taux d&#39;abstention&quot;</span>,</span>
+<span id="cb318-6"><a href="09bis-Graphique-ggplot.html#cb318-6" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Typologie urbain-rural et abstention&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-340-1.svg" width="672" /></p>
 </div>
 <div id="geom_boxplot-ggplot2" class="section level3 hasAnchor" number="10.7.2">
 <h3><span class="header-section-number">10.7.2</span> geom_boxplot (ggplot2)<a href="09bis-Graphique-ggplot.html#geom_boxplot-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="09bis-Graphique-ggplot.html#cb318-1" tabindex="-1"></a></span>
-<span id="cb318-2"><a href="09bis-Graphique-ggplot.html#cb318-2" tabindex="-1"></a>  </span>
-<span id="cb318-3"><a href="09bis-Graphique-ggplot.html#cb318-3" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
-<span id="cb318-4"><a href="09bis-Graphique-ggplot.html#cb318-4" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x=</span> urb3,<span class="at">y =</span> tx_abs)) <span class="sc">+</span></span>
-<span id="cb318-5"><a href="09bis-Graphique-ggplot.html#cb318-5" tabindex="-1"></a>  </span>
-<span id="cb318-6"><a href="09bis-Graphique-ggplot.html#cb318-6" tabindex="-1"></a><span class="co"># On ajoute la boxplot</span></span>
-<span id="cb318-7"><a href="09bis-Graphique-ggplot.html#cb318-7" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> urb3)) <span class="sc">+</span></span>
-<span id="cb318-8"><a href="09bis-Graphique-ggplot.html#cb318-8" tabindex="-1"></a>  </span>
-<span id="cb318-9"><a href="09bis-Graphique-ggplot.html#cb318-9" tabindex="-1"></a>  </span>
-<span id="cb318-10"><a href="09bis-Graphique-ggplot.html#cb318-10" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
-<span id="cb318-11"><a href="09bis-Graphique-ggplot.html#cb318-11" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;typologie urbain-rural&quot;</span>) <span class="sc">+</span></span>
-<span id="cb318-12"><a href="09bis-Graphique-ggplot.html#cb318-12" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>) <span class="sc">+</span></span>
-<span id="cb318-13"><a href="09bis-Graphique-ggplot.html#cb318-13" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Typologie urbain-rural et abstention&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="09bis-Graphique-ggplot.html#cb319-1" tabindex="-1"></a></span>
+<span id="cb319-2"><a href="09bis-Graphique-ggplot.html#cb319-2" tabindex="-1"></a>  </span>
+<span id="cb319-3"><a href="09bis-Graphique-ggplot.html#cb319-3" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
+<span id="cb319-4"><a href="09bis-Graphique-ggplot.html#cb319-4" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x=</span> urb3,<span class="at">y =</span> tx_abs)) <span class="sc">+</span></span>
+<span id="cb319-5"><a href="09bis-Graphique-ggplot.html#cb319-5" tabindex="-1"></a>  </span>
+<span id="cb319-6"><a href="09bis-Graphique-ggplot.html#cb319-6" tabindex="-1"></a><span class="co"># On ajoute la boxplot</span></span>
+<span id="cb319-7"><a href="09bis-Graphique-ggplot.html#cb319-7" tabindex="-1"></a><span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> urb3)) <span class="sc">+</span></span>
+<span id="cb319-8"><a href="09bis-Graphique-ggplot.html#cb319-8" tabindex="-1"></a>  </span>
+<span id="cb319-9"><a href="09bis-Graphique-ggplot.html#cb319-9" tabindex="-1"></a>  </span>
+<span id="cb319-10"><a href="09bis-Graphique-ggplot.html#cb319-10" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb319-11"><a href="09bis-Graphique-ggplot.html#cb319-11" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;typologie urbain-rural&quot;</span>) <span class="sc">+</span></span>
+<span id="cb319-12"><a href="09bis-Graphique-ggplot.html#cb319-12" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>) <span class="sc">+</span></span>
+<span id="cb319-13"><a href="09bis-Graphique-ggplot.html#cb319-13" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Typologie urbain-rural et abstention&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-341-1.svg" width="672" /></p>
 </div>
 <div id="beanplot-r-base-package-beanplot" class="section level3 hasAnchor" number="10.7.3">
 <h3><span class="header-section-number">10.7.3</span> beanplot (R-base + package beanplot)<a href="09bis-Graphique-ggplot.html#beanplot-r-base-package-beanplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="09bis-Graphique-ggplot.html#cb319-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="st">&quot;black&quot;</span>,<span class="at">fg=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.lab =</span><span class="st">&quot;white&quot;</span>, <span class="at">col.axis =</span><span class="st">&quot;white&quot;</span>,<span class="at">col.main=</span><span class="st">&quot;white&quot;</span> )</span>
-<span id="cb319-2"><a href="09bis-Graphique-ggplot.html#cb319-2" tabindex="-1"></a></span>
-<span id="cb319-3"><a href="09bis-Graphique-ggplot.html#cb319-3" tabindex="-1"></a><span class="co">#levels(don2$SIZE)&lt;-c(&quot;1 ou 2&quot;, &quot;1 ou 2&quot;, &quot;3 ou 4&quot;, &quot;3 ou 4&quot;, &quot;5 ou 6&quot;, &quot;5 ou 6&quot;)</span></span>
-<span id="cb319-4"><a href="09bis-Graphique-ggplot.html#cb319-4" tabindex="-1"></a><span class="fu">library</span>(beanplot)</span>
-<span id="cb319-5"><a href="09bis-Graphique-ggplot.html#cb319-5" tabindex="-1"></a><span class="fu">beanplot</span>(don<span class="sc">$</span>tx_abs<span class="sc">~</span>don<span class="sc">$</span>urb3, </span>
-<span id="cb319-6"><a href="09bis-Graphique-ggplot.html#cb319-6" tabindex="-1"></a>         <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;red&quot;</span>),</span>
-<span id="cb319-7"><a href="09bis-Graphique-ggplot.html#cb319-7" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;type d&#39;espace&quot;</span>,</span>
-<span id="cb319-8"><a href="09bis-Graphique-ggplot.html#cb319-8" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;taux d&#39;abstention&quot;</span>,</span>
-<span id="cb319-9"><a href="09bis-Graphique-ggplot.html#cb319-9" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Typologie urbain-rural et abstention&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="09bis-Graphique-ggplot.html#cb320-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bg=</span><span class="st">&quot;black&quot;</span>,<span class="at">fg=</span><span class="st">&quot;white&quot;</span>,<span class="at">col.lab =</span><span class="st">&quot;white&quot;</span>, <span class="at">col.axis =</span><span class="st">&quot;white&quot;</span>,<span class="at">col.main=</span><span class="st">&quot;white&quot;</span> )</span>
+<span id="cb320-2"><a href="09bis-Graphique-ggplot.html#cb320-2" tabindex="-1"></a></span>
+<span id="cb320-3"><a href="09bis-Graphique-ggplot.html#cb320-3" tabindex="-1"></a><span class="co">#levels(don2$SIZE)&lt;-c(&quot;1 ou 2&quot;, &quot;1 ou 2&quot;, &quot;3 ou 4&quot;, &quot;3 ou 4&quot;, &quot;5 ou 6&quot;, &quot;5 ou 6&quot;)</span></span>
+<span id="cb320-4"><a href="09bis-Graphique-ggplot.html#cb320-4" tabindex="-1"></a><span class="fu">library</span>(beanplot)</span>
+<span id="cb320-5"><a href="09bis-Graphique-ggplot.html#cb320-5" tabindex="-1"></a><span class="fu">beanplot</span>(don<span class="sc">$</span>tx_abs<span class="sc">~</span>don<span class="sc">$</span>urb3, </span>
+<span id="cb320-6"><a href="09bis-Graphique-ggplot.html#cb320-6" tabindex="-1"></a>         <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;red&quot;</span>),</span>
+<span id="cb320-7"><a href="09bis-Graphique-ggplot.html#cb320-7" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;type d&#39;espace&quot;</span>,</span>
+<span id="cb320-8"><a href="09bis-Graphique-ggplot.html#cb320-8" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;taux d&#39;abstention&quot;</span>,</span>
+<span id="cb320-9"><a href="09bis-Graphique-ggplot.html#cb320-9" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Typologie urbain-rural et abstention&quot;</span>)</span>
+<span id="cb320-10"><a href="09bis-Graphique-ggplot.html#cb320-10" tabindex="-1"></a><span class="co">#&gt; log=&quot;y&quot; selected</span></span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-342-1.svg" width="672" /></p>
 </div>
 <div id="geom_violin-ggplot2" class="section level3 hasAnchor" number="10.7.4">
 <h3><span class="header-section-number">10.7.4</span> geom_violin (ggplot2)<a href="09bis-Graphique-ggplot.html#geom_violin-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="09bis-Graphique-ggplot.html#cb320-1" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
-<span id="cb320-2"><a href="09bis-Graphique-ggplot.html#cb320-2" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x=</span> urb3,<span class="at">y =</span> tx_abs)) <span class="sc">+</span></span>
-<span id="cb320-3"><a href="09bis-Graphique-ggplot.html#cb320-3" tabindex="-1"></a>  </span>
-<span id="cb320-4"><a href="09bis-Graphique-ggplot.html#cb320-4" tabindex="-1"></a><span class="co"># On ajoute les violons</span></span>
-<span id="cb320-5"><a href="09bis-Graphique-ggplot.html#cb320-5" tabindex="-1"></a><span class="fu">geom_violin</span>(<span class="at">fill=</span><span class="st">&quot;lightyellow&quot;</span>) <span class="sc">+</span></span>
-<span id="cb320-6"><a href="09bis-Graphique-ggplot.html#cb320-6" tabindex="-1"></a>  </span>
-<span id="cb320-7"><a href="09bis-Graphique-ggplot.html#cb320-7" tabindex="-1"></a>  <span class="co"># On ajoute les points en agitant</span></span>
-<span id="cb320-8"><a href="09bis-Graphique-ggplot.html#cb320-8" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
-<span id="cb320-9"><a href="09bis-Graphique-ggplot.html#cb320-9" tabindex="-1"></a>  </span>
-<span id="cb320-10"><a href="09bis-Graphique-ggplot.html#cb320-10" tabindex="-1"></a>  </span>
-<span id="cb320-11"><a href="09bis-Graphique-ggplot.html#cb320-11" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
-<span id="cb320-12"><a href="09bis-Graphique-ggplot.html#cb320-12" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;typologie urbain-rural&quot;</span>) <span class="sc">+</span></span>
-<span id="cb320-13"><a href="09bis-Graphique-ggplot.html#cb320-13" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>) <span class="sc">+</span></span>
-<span id="cb320-14"><a href="09bis-Graphique-ggplot.html#cb320-14" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Typologie urbain-rural et abstention&quot;</span>) <span class="sc">+</span></span>
-<span id="cb320-15"><a href="09bis-Graphique-ggplot.html#cb320-15" tabindex="-1"></a></span>
-<span id="cb320-16"><a href="09bis-Graphique-ggplot.html#cb320-16" tabindex="-1"></a></span>
-<span id="cb320-17"><a href="09bis-Graphique-ggplot.html#cb320-17" tabindex="-1"></a><span class="co"># On passe en thème &quot;dark&quot;</span></span>
-<span id="cb320-18"><a href="09bis-Graphique-ggplot.html#cb320-18" tabindex="-1"></a>  <span class="fu">theme_dark</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="09bis-Graphique-ggplot.html#cb321-1" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
+<span id="cb321-2"><a href="09bis-Graphique-ggplot.html#cb321-2" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x=</span> urb3,<span class="at">y =</span> tx_abs)) <span class="sc">+</span></span>
+<span id="cb321-3"><a href="09bis-Graphique-ggplot.html#cb321-3" tabindex="-1"></a>  </span>
+<span id="cb321-4"><a href="09bis-Graphique-ggplot.html#cb321-4" tabindex="-1"></a><span class="co"># On ajoute les violons</span></span>
+<span id="cb321-5"><a href="09bis-Graphique-ggplot.html#cb321-5" tabindex="-1"></a><span class="fu">geom_violin</span>(<span class="at">fill=</span><span class="st">&quot;lightyellow&quot;</span>) <span class="sc">+</span></span>
+<span id="cb321-6"><a href="09bis-Graphique-ggplot.html#cb321-6" tabindex="-1"></a>  </span>
+<span id="cb321-7"><a href="09bis-Graphique-ggplot.html#cb321-7" tabindex="-1"></a>  <span class="co"># On ajoute les points en agitant</span></span>
+<span id="cb321-8"><a href="09bis-Graphique-ggplot.html#cb321-8" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>)<span class="sc">+</span></span>
+<span id="cb321-9"><a href="09bis-Graphique-ggplot.html#cb321-9" tabindex="-1"></a>  </span>
+<span id="cb321-10"><a href="09bis-Graphique-ggplot.html#cb321-10" tabindex="-1"></a>  </span>
+<span id="cb321-11"><a href="09bis-Graphique-ggplot.html#cb321-11" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb321-12"><a href="09bis-Graphique-ggplot.html#cb321-12" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;typologie urbain-rural&quot;</span>) <span class="sc">+</span></span>
+<span id="cb321-13"><a href="09bis-Graphique-ggplot.html#cb321-13" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name=</span><span class="st">&quot;% abstention&quot;</span>) <span class="sc">+</span></span>
+<span id="cb321-14"><a href="09bis-Graphique-ggplot.html#cb321-14" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Typologie urbain-rural et abstention&quot;</span>) <span class="sc">+</span></span>
+<span id="cb321-15"><a href="09bis-Graphique-ggplot.html#cb321-15" tabindex="-1"></a></span>
+<span id="cb321-16"><a href="09bis-Graphique-ggplot.html#cb321-16" tabindex="-1"></a></span>
+<span id="cb321-17"><a href="09bis-Graphique-ggplot.html#cb321-17" tabindex="-1"></a><span class="co"># On passe en thème &quot;dark&quot;</span></span>
+<span id="cb321-18"><a href="09bis-Graphique-ggplot.html#cb321-18" tabindex="-1"></a>  <span class="fu">theme_dark</span>()</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-343-1.svg" width="672" /></p>
 </div>
 </div>
@@ -1057,31 +1064,31 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">10.8</span> Deux variables X et Y discrètes<a href="09bis-Graphique-ggplot.html#deux-variables-x-et-y-discrètes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="mosaicplot-r-base" class="section level3 hasAnchor" number="10.8.1">
 <h3><span class="header-section-number">10.8.1</span> mosaicplot (R-base)<a href="09bis-Graphique-ggplot.html#mosaicplot-r-base" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="09bis-Graphique-ggplot.html#cb321-1" tabindex="-1"></a></span>
-<span id="cb321-2"><a href="09bis-Graphique-ggplot.html#cb321-2" tabindex="-1"></a><span class="fu">mosaicplot</span>(don<span class="sc">$</span>code_reg<span class="sc">~</span>don<span class="sc">$</span>urb3, </span>
-<span id="cb321-3"><a href="09bis-Graphique-ggplot.html#cb321-3" tabindex="-1"></a>      <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;red&quot;</span>),</span>
-<span id="cb321-4"><a href="09bis-Graphique-ggplot.html#cb321-4" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Code de la région&quot;</span>,</span>
-<span id="cb321-5"><a href="09bis-Graphique-ggplot.html#cb321-5" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Typologie&quot;</span>,</span>
-<span id="cb321-6"><a href="09bis-Graphique-ggplot.html#cb321-6" tabindex="-1"></a>      <span class="at">las=</span><span class="dv">1</span>,</span>
-<span id="cb321-7"><a href="09bis-Graphique-ggplot.html#cb321-7" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Circonscriptions urbaines et rurales par région&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="09bis-Graphique-ggplot.html#cb322-1" tabindex="-1"></a></span>
+<span id="cb322-2"><a href="09bis-Graphique-ggplot.html#cb322-2" tabindex="-1"></a><span class="fu">mosaicplot</span>(don<span class="sc">$</span>code_reg<span class="sc">~</span>don<span class="sc">$</span>urb3, </span>
+<span id="cb322-3"><a href="09bis-Graphique-ggplot.html#cb322-3" tabindex="-1"></a>      <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;lightyellow&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;red&quot;</span>),</span>
+<span id="cb322-4"><a href="09bis-Graphique-ggplot.html#cb322-4" tabindex="-1"></a>       <span class="at">xlab=</span><span class="st">&quot;Code de la région&quot;</span>,</span>
+<span id="cb322-5"><a href="09bis-Graphique-ggplot.html#cb322-5" tabindex="-1"></a>       <span class="at">ylab=</span><span class="st">&quot;Typologie&quot;</span>,</span>
+<span id="cb322-6"><a href="09bis-Graphique-ggplot.html#cb322-6" tabindex="-1"></a>      <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb322-7"><a href="09bis-Graphique-ggplot.html#cb322-7" tabindex="-1"></a>      <span class="at">main=</span> <span class="st">&quot;Circonscriptions urbaines et rurales par région&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-344-1.svg" width="672" /></p>
 </div>
 <div id="geom_bar-ggplot2-1" class="section level3 hasAnchor" number="10.8.2">
 <h3><span class="header-section-number">10.8.2</span> geom_bar (ggplot2)<a href="09bis-Graphique-ggplot.html#geom_bar-ggplot2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Solution simple mais pas terrible !</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="09bis-Graphique-ggplot.html#cb322-1" tabindex="-1"></a></span>
-<span id="cb322-2"><a href="09bis-Graphique-ggplot.html#cb322-2" tabindex="-1"></a>  </span>
-<span id="cb322-3"><a href="09bis-Graphique-ggplot.html#cb322-3" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
-<span id="cb322-4"><a href="09bis-Graphique-ggplot.html#cb322-4" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x=</span> code_reg, <span class="at">fill =</span> urb3)) <span class="sc">+</span></span>
-<span id="cb322-5"><a href="09bis-Graphique-ggplot.html#cb322-5" tabindex="-1"></a>  </span>
-<span id="cb322-6"><a href="09bis-Graphique-ggplot.html#cb322-6" tabindex="-1"></a></span>
-<span id="cb322-7"><a href="09bis-Graphique-ggplot.html#cb322-7" tabindex="-1"></a><span class="co"># On ajoute geom_bar</span></span>
-<span id="cb322-8"><a href="09bis-Graphique-ggplot.html#cb322-8" tabindex="-1"></a><span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb322-9"><a href="09bis-Graphique-ggplot.html#cb322-9" tabindex="-1"></a></span>
-<span id="cb322-10"><a href="09bis-Graphique-ggplot.html#cb322-10" tabindex="-1"></a>  </span>
-<span id="cb322-11"><a href="09bis-Graphique-ggplot.html#cb322-11" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
-<span id="cb322-12"><a href="09bis-Graphique-ggplot.html#cb322-12" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Code de la région&quot;</span>) <span class="sc">+</span></span>
-<span id="cb322-13"><a href="09bis-Graphique-ggplot.html#cb322-13" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Circonscriptions urbaines et rurales par région&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="09bis-Graphique-ggplot.html#cb323-1" tabindex="-1"></a></span>
+<span id="cb323-2"><a href="09bis-Graphique-ggplot.html#cb323-2" tabindex="-1"></a>  </span>
+<span id="cb323-3"><a href="09bis-Graphique-ggplot.html#cb323-3" tabindex="-1"></a><span class="co"># On définit les paramètres principaux</span></span>
+<span id="cb323-4"><a href="09bis-Graphique-ggplot.html#cb323-4" tabindex="-1"></a><span class="fu">ggplot</span>(don, <span class="fu">aes</span>(<span class="at">x=</span> code_reg, <span class="at">fill =</span> urb3)) <span class="sc">+</span></span>
+<span id="cb323-5"><a href="09bis-Graphique-ggplot.html#cb323-5" tabindex="-1"></a>  </span>
+<span id="cb323-6"><a href="09bis-Graphique-ggplot.html#cb323-6" tabindex="-1"></a></span>
+<span id="cb323-7"><a href="09bis-Graphique-ggplot.html#cb323-7" tabindex="-1"></a><span class="co"># On ajoute geom_bar</span></span>
+<span id="cb323-8"><a href="09bis-Graphique-ggplot.html#cb323-8" tabindex="-1"></a><span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb323-9"><a href="09bis-Graphique-ggplot.html#cb323-9" tabindex="-1"></a></span>
+<span id="cb323-10"><a href="09bis-Graphique-ggplot.html#cb323-10" tabindex="-1"></a>  </span>
+<span id="cb323-11"><a href="09bis-Graphique-ggplot.html#cb323-11" tabindex="-1"></a><span class="co"># On ajoute les titres</span></span>
+<span id="cb323-12"><a href="09bis-Graphique-ggplot.html#cb323-12" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">name=</span><span class="st">&quot;Code de la région&quot;</span>) <span class="sc">+</span></span>
+<span id="cb323-13"><a href="09bis-Graphique-ggplot.html#cb323-13" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Circonscriptions urbaines et rurales par région&quot;</span>)</span></code></pre></div>
 <p><img src="bivaR_files/figure-html/unnamed-chunk-345-1.svg" width="672" /></p>
 </div>
 </div>

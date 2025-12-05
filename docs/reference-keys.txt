@@ -143,7 +143,7 @@ modélisation-avancée
 annexe-les-variables-hybrides
 size-quantitative-discrète
 size-qualitative-ordinale
-analyse-denquêtes-bases
+analyse-denquêtes-new
 introduction
 données
 chargement-du-fichier-1
@@ -180,7 +180,7 @@ solution-exacte
 analyse-multivariée
 préparation-des-données-3
 modèle-logit
-analyse-denquêtes-application
+analyse-denquêtes-old
 introduction-1
 préparation-des-données-4
 importation-du-fichier-au-format-.rds

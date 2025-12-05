@@ -1,6 +1,6 @@
 # (PART) VARIABLES CATEGORIELLES {-}
 
-# Analyse d'enquêtes (bases)
+# Analyse d'enquêtes (new)
 
 
 ```{r, echo = FALSE}
@@ -14,7 +14,7 @@ knitr::include_graphics("resources/figures/chap7_intro.gif")
 ```
 
 
-- **Mise en place** : Télécharger le [dossier exo7](https://github.com/worlregio/bivaR/raw/main/resources/exos/exo7_2023.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R  dans Rstudio.
+- **Mise en place** : Télécharger le [dossier exo7](https://github.com/worlregio/bivaR/raw/main/resources/exos/exo7bis.zip) et décompressez le sur votre ordinateur. Puis ouvrez le projet R  dans Rstudio.
 
 
 ## Introduction
